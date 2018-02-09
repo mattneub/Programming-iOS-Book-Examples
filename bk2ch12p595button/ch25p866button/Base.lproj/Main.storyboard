@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,10 +15,6 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch25p866button" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7Gq-wZ-gjP"/>
-                        <viewControllerLayoutGuide type="bottom" id="gW6-Y0-wgy"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,12 +47,13 @@
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pLZ-Vd-VuA" firstAttribute="top" secondItem="2wn-kC-bTr" secondAttribute="bottom" constant="47" id="2z3-bE-qHN"/>
-                            <constraint firstItem="2wn-kC-bTr" firstAttribute="top" secondItem="7Gq-wZ-gjP" secondAttribute="bottom" constant="121" id="3j5-jl-ZLC"/>
+                            <constraint firstItem="2wn-kC-bTr" firstAttribute="top" secondItem="Vih-vx-BFb" secondAttribute="top" constant="121" id="3j5-jl-ZLC"/>
                             <constraint firstItem="2wn-kC-bTr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="24" id="SIU-Bf-ZX6"/>
-                            <constraint firstItem="pLZ-Vd-VuA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="40" id="ZKa-Eb-Hit"/>
-                            <constraint firstItem="sCf-Ib-WMW" firstAttribute="top" secondItem="7Gq-wZ-gjP" secondAttribute="bottom" constant="31" id="cSd-ob-TEu"/>
-                            <constraint firstItem="sCf-Ib-WMW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="44" id="xk0-qs-NMi"/>
+                            <constraint firstItem="pLZ-Vd-VuA" firstAttribute="leading" secondItem="Vih-vx-BFb" secondAttribute="leading" constant="40" id="ZKa-Eb-Hit"/>
+                            <constraint firstItem="sCf-Ib-WMW" firstAttribute="top" secondItem="Vih-vx-BFb" secondAttribute="top" constant="31" id="cSd-ob-TEu"/>
+                            <constraint firstItem="sCf-Ib-WMW" firstAttribute="leading" secondItem="Vih-vx-BFb" secondAttribute="leading" constant="44" id="xk0-qs-NMi"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vih-vx-BFb"/>
                     </view>
                     <connections>
                         <outlet property="button" destination="sCf-Ib-WMW" id="604-O7-Gt6"/>
@@ -65,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.5" y="412.5"/>
+            <point key="canvasLocation" x="487.20000000000005" y="371.06446776611699"/>
         </scene>
     </scenes>
     <resources>

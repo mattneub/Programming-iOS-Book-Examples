@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch25p840customThermometer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="X4O-ot-uIK"/>
-                        <viewControllerLayoutGuide type="bottom" id="KV0-NR-Xu7"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -63,20 +60,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="UCK-Do-u01" secondAttribute="trailing" constant="85" id="0tp-IQ-ORx"/>
-                            <constraint firstItem="gx8-VP-Ybz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="CTL-qB-6Qf"/>
-                            <constraint firstItem="zOz-Ky-Vjs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="H7G-Sc-moR"/>
-                            <constraint firstItem="UCK-Do-u01" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="JQy-xc-68z"/>
+                            <constraint firstItem="vem-o9-fBa" firstAttribute="trailing" secondItem="UCK-Do-u01" secondAttribute="trailing" constant="85" id="0tp-IQ-ORx"/>
+                            <constraint firstItem="gx8-VP-Ybz" firstAttribute="leading" secondItem="vem-o9-fBa" secondAttribute="leading" constant="85" id="CTL-qB-6Qf"/>
+                            <constraint firstItem="zOz-Ky-Vjs" firstAttribute="leading" secondItem="vem-o9-fBa" secondAttribute="leading" constant="85" id="H7G-Sc-moR"/>
+                            <constraint firstItem="UCK-Do-u01" firstAttribute="leading" secondItem="vem-o9-fBa" secondAttribute="leading" constant="85" id="JQy-xc-68z"/>
                             <constraint firstItem="FbH-bB-0xj" firstAttribute="top" secondItem="UCK-Do-u01" secondAttribute="bottom" constant="32" id="Koi-E2-n1Y"/>
-                            <constraint firstAttribute="trailing" secondItem="zOz-Ky-Vjs" secondAttribute="trailing" constant="85" id="Xe8-dG-q4L"/>
-                            <constraint firstItem="KV0-NR-Xu7" firstAttribute="top" secondItem="R2p-m8-tnW" secondAttribute="bottom" constant="20" id="f8H-d1-eN4"/>
-                            <constraint firstItem="FbH-bB-0xj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="klI-l9-K1r"/>
-                            <constraint firstItem="zOz-Ky-Vjs" firstAttribute="top" secondItem="X4O-ot-uIK" secondAttribute="bottom" constant="36" id="pbA-tn-Bnx"/>
-                            <constraint firstAttribute="trailing" secondItem="R2p-m8-tnW" secondAttribute="trailing" constant="20" id="tMS-NR-Xjz"/>
-                            <constraint firstItem="UCK-Do-u01" firstAttribute="top" secondItem="X4O-ot-uIK" secondAttribute="bottom" constant="160" id="u2F-nu-7BG"/>
-                            <constraint firstItem="gx8-VP-Ybz" firstAttribute="top" secondItem="X4O-ot-uIK" secondAttribute="bottom" constant="97" id="w6I-BQ-K2J"/>
-                            <constraint firstAttribute="trailing" secondItem="gx8-VP-Ybz" secondAttribute="trailing" constant="85" id="zAO-vd-pzH"/>
+                            <constraint firstItem="vem-o9-fBa" firstAttribute="trailing" secondItem="zOz-Ky-Vjs" secondAttribute="trailing" constant="85" id="Xe8-dG-q4L"/>
+                            <constraint firstItem="vem-o9-fBa" firstAttribute="bottom" secondItem="R2p-m8-tnW" secondAttribute="bottom" constant="20" id="f8H-d1-eN4"/>
+                            <constraint firstItem="FbH-bB-0xj" firstAttribute="leading" secondItem="vem-o9-fBa" secondAttribute="leading" constant="85" id="klI-l9-K1r"/>
+                            <constraint firstItem="zOz-Ky-Vjs" firstAttribute="top" secondItem="vem-o9-fBa" secondAttribute="top" constant="36" id="pbA-tn-Bnx"/>
+                            <constraint firstItem="vem-o9-fBa" firstAttribute="trailing" secondItem="R2p-m8-tnW" secondAttribute="trailing" constant="20" id="tMS-NR-Xjz"/>
+                            <constraint firstItem="UCK-Do-u01" firstAttribute="top" secondItem="vem-o9-fBa" secondAttribute="top" constant="160" id="u2F-nu-7BG"/>
+                            <constraint firstItem="gx8-VP-Ybz" firstAttribute="top" secondItem="vem-o9-fBa" secondAttribute="top" constant="97" id="w6I-BQ-K2J"/>
+                            <constraint firstItem="vem-o9-fBa" firstAttribute="trailing" secondItem="gx8-VP-Ybz" secondAttribute="trailing" constant="85" id="zAO-vd-pzH"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="vem-o9-fBa"/>
                     </view>
                     <connections>
                         <outlet property="prog1" destination="zOz-Ky-Vjs" id="MVX-t4-Bvs"/>
@@ -87,15 +85,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="414"/>
+            <point key="canvasLocation" x="385.60000000000002" y="372.41379310344831"/>
         </scene>
     </scenes>
     <resources>
         <image name="pause.png" width="18" height="18"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

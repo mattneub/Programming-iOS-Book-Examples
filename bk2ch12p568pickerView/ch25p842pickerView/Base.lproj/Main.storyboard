@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch25p842pickerView" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6Ue-57-pDm"/>
-                        <viewControllerLayoutGuide type="bottom" id="wAO-Cz-tCs"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,10 +32,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ESM-Gh-Wl4" secondAttribute="trailing" id="bwC-WV-pFV"/>
-                            <constraint firstItem="ESM-Gh-Wl4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="oCx-y7-9Gu"/>
-                            <constraint firstItem="ESM-Gh-Wl4" firstAttribute="top" secondItem="6Ue-57-pDm" secondAttribute="bottom" constant="28" id="sEJ-Pz-3JP"/>
+                            <constraint firstItem="6hS-KM-T9T" firstAttribute="trailing" secondItem="ESM-Gh-Wl4" secondAttribute="trailing" id="bwC-WV-pFV"/>
+                            <constraint firstItem="ESM-Gh-Wl4" firstAttribute="leading" secondItem="6hS-KM-T9T" secondAttribute="leading" id="oCx-y7-9Gu"/>
+                            <constraint firstItem="ESM-Gh-Wl4" firstAttribute="top" secondItem="6hS-KM-T9T" secondAttribute="top" constant="28" id="sEJ-Pz-3JP"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="6hS-KM-T9T"/>
                     </view>
                     <connections>
                         <outlet property="picker" destination="ESM-Gh-Wl4" id="2nn-1s-C2t"/>
@@ -46,6 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="40" y="26.086956521739133"/>
         </scene>
     </scenes>
 </document>
