@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N60-9x-FxO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N60-9x-FxO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,14 +23,14 @@
                     <navigationItem key="navigationItem" id="Iy8-F2-3yG">
                         <barButtonItem key="rightBarButtonItem" title="Push" id="rn3-7C-v4J">
                             <connections>
-                                <segue destination="lgY-5K-Su5" kind="push" id="UtY-dV-Vdf"/>
+                                <segue destination="lgY-5K-Su5" kind="show" id="UtY-dV-Vdf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="664" y="138"/>
+            <point key="canvasLocation" x="1062.4000000000001" y="124.13793103448278"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Tt-4t-X49">
@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" id="fLT-fw-vnT">
                         <barButtonItem key="rightBarButtonItem" title="Push" id="eYq-59-HUF">
                             <connections>
-                                <segue destination="AB3-wA-Sys" kind="push" id="T2e-fh-vLP"/>
+                                <segue destination="AB3-wA-Sys" kind="show" id="T2e-fh-vLP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Amh-1O-yz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="142"/>
+            <point key="canvasLocation" x="1800" y="127.736131934033"/>
         </scene>
         <!--My Table View Controller-->
         <scene sceneID="dbQ-WM-zbR">
@@ -100,7 +100,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrQ-Rl-XSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1536" y="147"/>
+            <point key="canvasLocation" x="2457.6000000000004" y="132.23388305847078"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Vc-4Y-EJi">
@@ -118,7 +118,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAG-qW-66z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="138"/>
+            <point key="canvasLocation" x="403.20000000000005" y="124.13793103448278"/>
         </scene>
     </scenes>
 </document>
