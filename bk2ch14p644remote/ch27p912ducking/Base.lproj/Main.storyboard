@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="VeY-93-Arz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VeY-93-Arz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="bk2ch14p644remote" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vun-3T-snA"/>
-                        <viewControllerLayoutGuide type="bottom" id="FWu-lM-DgI"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,18 +36,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="veA-6I-L3B" secondAttribute="trailing" constant="20" id="IYT-58-bOM"/>
-                            <constraint firstItem="hoa-Xy-UTv" firstAttribute="top" secondItem="Vun-3T-snA" secondAttribute="bottom" constant="109" id="UHl-lo-Q2m"/>
-                            <constraint firstItem="veA-6I-L3B" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="XmN-5X-now"/>
-                            <constraint firstAttribute="centerX" secondItem="hoa-Xy-UTv" secondAttribute="centerX" constant="11" id="e3B-ae-lF7"/>
+                            <constraint firstItem="YlP-na-ch8" firstAttribute="trailing" secondItem="veA-6I-L3B" secondAttribute="trailing" constant="20" id="IYT-58-bOM"/>
+                            <constraint firstItem="hoa-Xy-UTv" firstAttribute="top" secondItem="YlP-na-ch8" secondAttribute="top" constant="109" id="UHl-lo-Q2m"/>
+                            <constraint firstItem="veA-6I-L3B" firstAttribute="leading" secondItem="YlP-na-ch8" secondAttribute="leading" constant="20" id="XmN-5X-now"/>
+                            <constraint firstItem="YlP-na-ch8" firstAttribute="centerX" secondItem="hoa-Xy-UTv" secondAttribute="centerX" constant="11" id="e3B-ae-lF7"/>
                             <constraint firstItem="veA-6I-L3B" firstAttribute="top" secondItem="hoa-Xy-UTv" secondAttribute="bottom" constant="43" id="tOD-8o-Ktd"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="YlP-na-ch8"/>
                     </view>
                     <navigationItem key="navigationItem" id="5Dc-FL-aHR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="29"/>
+            <point key="canvasLocation" x="953.60000000000002" y="26.086956521739133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T0e-aB-aP7">
@@ -68,32 +66,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKP-cO-Zyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="29"/>
+            <point key="canvasLocation" x="-416" y="26.086956521739133"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FoU-bR-uP5">
             <objects>
                 <viewController id="a6W-PV-4bh" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RDT-5W-eca"/>
-                        <viewControllerLayoutGuide type="bottom" id="MmB-jK-t4l"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4TE-na-9zK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="b1D-Wg-ztK"/>
                     </view>
                     <navigationItem key="navigationItem" id="gHF-Xg-SoG">
                         <barButtonItem key="rightBarButtonItem" title="Push" id="fWX-sk-hn1">
                             <connections>
-                                <segue destination="vXZ-lx-hvc" kind="push" id="OaS-ZT-63i"/>
+                                <segue destination="vXZ-lx-hvc" kind="show" id="OaS-ZT-63i"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVk-dW-wUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="161" y="29"/>
+            <point key="canvasLocation" x="257.60000000000002" y="26.086956521739133"/>
         </scene>
     </scenes>
 </document>

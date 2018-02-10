@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +13,6 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch29p946mediaQuery" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZIY-Md-ito"/>
-                        <viewControllerLayoutGuide type="bottom" id="qgP-7F-NMz"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -93,19 +90,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="tvp-hQ-SPH" secondAttribute="centerX" id="0zB-Ph-d76"/>
-                            <constraint firstItem="lik-uU-PIR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="5" id="F5p-p8-rF8"/>
-                            <constraint firstItem="ut6-m3-s2Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="J7t-Cc-2tV"/>
+                            <constraint firstItem="Dvt-9p-4pv" firstAttribute="centerX" secondItem="tvp-hQ-SPH" secondAttribute="centerX" id="0zB-Ph-d76"/>
+                            <constraint firstItem="lik-uU-PIR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dvt-9p-4pv" secondAttribute="leading" constant="5" id="F5p-p8-rF8"/>
+                            <constraint firstItem="ut6-m3-s2Y" firstAttribute="leading" secondItem="Dvt-9p-4pv" secondAttribute="leading" constant="85" id="J7t-Cc-2tV"/>
                             <constraint firstItem="lik-uU-PIR" firstAttribute="top" secondItem="ut6-m3-s2Y" secondAttribute="bottom" constant="18" id="Nej-KW-vOq"/>
-                            <constraint firstAttribute="centerX" secondItem="lik-uU-PIR" secondAttribute="centerX" id="UFP-9n-fN7"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lik-uU-PIR" secondAttribute="trailing" constant="5" id="YQ8-4b-1Ck"/>
-                            <constraint firstAttribute="centerX" secondItem="ut6-m3-s2Y" secondAttribute="centerX" id="azB-47-dpX"/>
-                            <constraint firstItem="tvp-hQ-SPH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="bgP-aB-sxc"/>
-                            <constraint firstAttribute="trailing" secondItem="ut6-m3-s2Y" secondAttribute="trailing" constant="85" id="uGr-yQ-4Ux"/>
+                            <constraint firstItem="Dvt-9p-4pv" firstAttribute="centerX" secondItem="lik-uU-PIR" secondAttribute="centerX" id="UFP-9n-fN7"/>
+                            <constraint firstItem="Dvt-9p-4pv" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lik-uU-PIR" secondAttribute="trailing" constant="5" id="YQ8-4b-1Ck"/>
+                            <constraint firstItem="Dvt-9p-4pv" firstAttribute="centerX" secondItem="ut6-m3-s2Y" secondAttribute="centerX" id="azB-47-dpX"/>
+                            <constraint firstItem="tvp-hQ-SPH" firstAttribute="leading" secondItem="Dvt-9p-4pv" secondAttribute="leading" constant="20" id="bgP-aB-sxc"/>
+                            <constraint firstItem="Dvt-9p-4pv" firstAttribute="trailing" secondItem="ut6-m3-s2Y" secondAttribute="trailing" constant="85" id="uGr-yQ-4Ux"/>
                             <constraint firstItem="ut6-m3-s2Y" firstAttribute="top" secondItem="tvp-hQ-SPH" secondAttribute="bottom" constant="28" id="uqR-ca-3AA"/>
-                            <constraint firstItem="qgP-7F-NMz" firstAttribute="top" secondItem="lik-uU-PIR" secondAttribute="bottom" constant="20" id="xfC-Ub-nna"/>
-                            <constraint firstAttribute="trailing" secondItem="tvp-hQ-SPH" secondAttribute="trailing" constant="20" id="xgB-ev-2Lx"/>
+                            <constraint firstItem="Dvt-9p-4pv" firstAttribute="bottom" secondItem="lik-uU-PIR" secondAttribute="bottom" constant="20" id="xfC-Ub-nna"/>
+                            <constraint firstItem="Dvt-9p-4pv" firstAttribute="trailing" secondItem="tvp-hQ-SPH" secondAttribute="trailing" constant="20" id="xgB-ev-2Lx"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dvt-9p-4pv"/>
                     </view>
                     <connections>
                         <outlet property="label" destination="lik-uU-PIR" id="Kzb-qY-Ca5"/>
