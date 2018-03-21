@@ -97,7 +97,7 @@ class ViewController : UIViewController {
             ba.toValue = 3.0
             ba.duration = 4
             ba.autoreverses = true
-            ba.repeatCount = .infinity
+            ba.repeatCount = .greatestFiniteMagnitude
             emit.add(ba, forKey:nil)
 
             if which > 3 {fallthrough}
@@ -144,7 +144,7 @@ class ViewController : UIViewController {
             ba2.toValue = CGPoint(200,100)
             ba2.duration = 6
             ba2.autoreverses = true
-            ba2.repeatCount = .infinity
+            ba2.repeatCount = .greatestFiniteMagnitude
             emit.add(ba2, forKey:nil)
             
 

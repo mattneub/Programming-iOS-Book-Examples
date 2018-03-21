@@ -49,11 +49,11 @@ class MyKnob: UIControl {
         let ang = pToA(t) - self.initialAngle
         let absoluteAngle = self.angle + ang
         switch absoluteAngle { // how to do inequalities in a Swift switch statement
-        case -CGFloat.infinity...0:
+        case -CGFloat.greatestFiniteMagnitude...0:
             self.angle = 0
             self.sendActions(for: .valueChanged)
             return false
-        case 5...CGFloat.infinity:
+        case 5...CGFloat.greatestFiniteMagnitude:
             self.angle = 5
             self.sendActions(for: .valueChanged)
             return false

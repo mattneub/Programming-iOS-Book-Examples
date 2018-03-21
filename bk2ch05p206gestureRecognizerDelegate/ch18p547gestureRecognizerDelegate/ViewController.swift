@@ -25,7 +25,7 @@ class ViewController  : UIViewController {
             let anim = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
             anim.toValue = CATransform3DMakeScale(1.1, 1.1, 1)
             anim.fromValue = CATransform3DIdentity
-            anim.repeatCount = .infinity
+            anim.repeatCount = .greatestFiniteMagnitude
             anim.autoreverses = true
             lp.view!.layer.add(anim, forKey:nil)
         case .ended, .cancelled:
