@@ -68,6 +68,7 @@ class ActionViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
+        UIPasteboard.general.string = self.expansion! // legal and works
         self.extensionContext?.completeRequest(
             returningItems: self.stuffThatEnvelope(self.expansion!))
     }

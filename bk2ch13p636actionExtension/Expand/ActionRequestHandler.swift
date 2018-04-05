@@ -55,6 +55,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         if let item = item,
             let state = self.state(for:item) {
                 result = self.stuffThatEnvelope(state)
+                UIPasteboard.general.string = state // legal and works
         }
         self.extensionContext?.completeRequest(returningItems: result)
         self.extensionContext = nil
