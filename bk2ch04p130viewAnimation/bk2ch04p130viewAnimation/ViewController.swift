@@ -42,10 +42,14 @@ extension UIView {
 class ViewController: UIViewController {
     @IBOutlet weak var v: UIView!
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 3
+        let which = 14
         
         delay(3) {
             print(0)
@@ -57,7 +61,7 @@ class ViewController: UIViewController {
                 self.v.backgroundColor = .red
                 UIView.commitAnimations()
             case 1:
-                UIView.animate(withDuration:1) {
+                UIView.animate(withDuration:2) {
                     self.v.backgroundColor = .red
                 }
             case 2:
@@ -161,12 +165,13 @@ class ViewController: UIViewController {
                 }
                 anim.startAnimation()
             case 6:
+                self.v.layer.contents = UIImage(named:"smileySquareIcon")!.cgImage
                 let v2 = UIView()
                 v2.backgroundColor = .black
                 v2.alpha = 0
                 v2.frame = self.v.frame
                 self.v.superview!.addSubview(v2)
-                let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                let anim = UIViewPropertyAnimator(duration: 2, curve: .linear) {
                     self.v.alpha = 0
                     v2.alpha = 1
                 }
@@ -177,7 +182,7 @@ class ViewController: UIViewController {
                 anim.addCompletion {
                     _ in print("one ringy dingy") // proving that multiple completions work
                 }
-                anim.startAnimation()
+                anim.startAnimation(afterDelay:3)
             case 7:
                 UIView.perform(.delete, on: [self.v], animations: nil) {
                     _ in print(self.v.superview as Any)
@@ -249,6 +254,29 @@ class ViewController: UIViewController {
                         self.v.center.x = xorig
                 })
             case 14:
+                // something like an autoreversing repeating animation
+                // made with a property animator
+                var right = true
+                var count = 6
+                func goOneWay() {
+                    let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut)
+                    anim.addAnimations {
+                        if right {
+                            self.v.center.x += 100
+                        } else {
+                            self.v.center.x -= 100
+                        }
+                    }
+                    anim.addCompletion { _ in
+                        count -= 1
+                        guard count > 0 else { return }
+                        right = !right
+                        goOneWay()
+                    }
+                    anim.startAnimation()
+                }
+                goOneWay()
+            case 15:
                 print(self.v.center)
                 let anim = UIViewPropertyAnimator(duration: 2, curve: .easeInOut) {
                     self.v.center.y += 100
@@ -260,7 +288,7 @@ class ViewController: UIViewController {
                     _ in print(self.v.center)
                 }
                 anim.startAnimation()
-            case 15:
+            case 16:
                 print(self.v.center)
                 let yorig = self.v.center.y
                 let anim = UIViewPropertyAnimator(duration: 2, curve: .easeInOut) {

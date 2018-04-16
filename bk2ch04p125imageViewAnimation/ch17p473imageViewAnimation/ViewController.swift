@@ -30,7 +30,7 @@ class ViewController : UIViewController {
         delay(1.0) {self.animate()}
     }
     
-    let which = 5
+    let which = 2
 
     func animate () {
         
@@ -61,28 +61,17 @@ class ViewController : UIViewController {
             let w : CGFloat = 18
             for i in 0 ..< 6 {
                 let r = UIGraphicsImageRenderer(size:CGSize(w,w))
-                arr += [r.image {
-                    ctx in
+                arr += [r.image { ctx in
                     let con = ctx.cgContext
                     con.setFillColor(UIColor.red.cgColor)
                     let ii = CGFloat(i)
                     con.addEllipse(in:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
                     con.fillPath()
                 }]
-
-//                UIGraphicsBeginImageContextWithOptions(CGSize(w,w), false, 0)
-//                let con = UIGraphicsGetCurrentContext()!
-//                con.setFillColor(UIColor.red().cgColor)
-//                let ii = CGFloat(i)
-//                con.addEllipse(inRect:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
-//                con.fillPath()
-//                let im = UIGraphicsGetImageFromCurrentImageContext()!
-//                UIGraphicsEndImageContext()
-//                arr += [im]
             }
             let im = UIImage.animatedImage(with:arr, duration:0.5)
             let b = UIButton(type:.system)
-            b.setTitle("Howdy", for:.normal)
+            b.setTitle("Stop!", for:.normal)
             b.setImage(im, for:.normal)
             b.center = CGPoint(100,200)
             b.sizeToFit()

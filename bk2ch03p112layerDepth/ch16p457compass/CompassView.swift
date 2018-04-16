@@ -63,7 +63,7 @@ class CompassLayer : CALayer, CALayerDelegate {
             
             var transform = CATransform3DIdentity
             transform.m34 = -1.0/1000.0
-            self.sublayerTransform = transform
+            self.rotationLayer.superlayer?.sublayerTransform = transform
 
         default: break
         }

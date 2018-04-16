@@ -24,6 +24,7 @@ class ViewController: UIViewController {
             self.v.swing = !self.v.swing
         }
         anim.startAnimation()
+        return; // uncomment to test interruption
         delay(0.5) {
             anim.pauseAnimation()  // to prove it's an interruptible animation
             // but in iOS 11 we then crash because you can't release a paused animator...
