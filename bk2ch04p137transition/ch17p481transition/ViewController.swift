@@ -11,6 +11,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 class ViewController : UIViewController {
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     @IBOutlet var iv : UIImageView!
     @IBOutlet var v : MyView!
     @IBOutlet var outer : UIView!
@@ -46,11 +50,14 @@ class ViewController : UIViewController {
         
         // ======
         
-        self.v.reverse = !self.v.reverse
-        UIView.transition(with:self.v, duration: 1, options: opts,
-            animations: {
-                self.v.setNeedsDisplay()
+        do { // looks a little more compelling if we do a curl up transition
+            let opts : UIViewAnimationOptions = .transitionCurlUp
+            self.v.reverse = !self.v.reverse
+            UIView.transition(with:self.v, duration: 1, options: opts,
+                              animations: {
+                                self.v.setNeedsDisplay()
             })
+        }
         
         // ======
                 
