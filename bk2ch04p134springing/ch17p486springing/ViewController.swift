@@ -4,7 +4,7 @@ class ViewController : UIViewController {
     
     @IBOutlet var v : UIView!
     
-    let which = 1
+    let which = 3
     
     @IBAction func doButton(_ sender: Any?) {
         switch which {
@@ -27,6 +27,16 @@ class ViewController : UIViewController {
             anim.duration = 1 // ignored, but you need to supply something
             print(anim.settlingDuration)
             self.v.layer.add(anim, forKey: nil)
+        case 3:
+            let anim = UIViewPropertyAnimator(
+                duration: 0.8,
+                timingParameters: UISpringTimingParameters(
+                    dampingRatio: 0.7,
+                    initialVelocity: CGVector(dx: 20, dy: 20)))
+            anim.addAnimations {
+                self.v.center.y += 100
+            }
+            anim.startAnimation()
         default:break
         }
     }
