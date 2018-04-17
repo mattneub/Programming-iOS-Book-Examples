@@ -60,7 +60,7 @@ class ViewController : UIViewController {
         self.anim.startAnimation()
     }
     
-    let which = 5
+    let which = 3
 
     func cancel() {
         switch which {
@@ -116,7 +116,8 @@ class ViewController : UIViewController {
             self.anim.continueAnimation(withTimingParameters: nil, durationFactor: 0.1)
         case 3: // hurry to start position
             print("hurry to start")
-            self.anim.scrubsLinearly = false // I regard the need to add this as a bug
+            // self.anim.scrubsLinearly = false // I regard the need to add this as a bug
+            // ok the bug seems to be fixed
             self.anim.pauseAnimation()
             self.anim.isReversed = true
             self.anim.continueAnimation(withTimingParameters: nil, durationFactor: 0.1)
