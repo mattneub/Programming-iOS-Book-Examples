@@ -9,7 +9,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
-    var useAnimator = true
+    var useAnimator = false
     
     @IBAction func doButton(_ sender: Any?) {
         switch useAnimator {
@@ -31,46 +31,93 @@ class ViewController : UIViewController {
         }
     }
     
+    var which = 2
     func animate() {
-        var p = self.v.center
-        var opts : UIViewKeyframeAnimationOptions = .calculationModeLinear
-        let opt2 : UIViewAnimationOptions = .curveLinear
-        // opts.insert(opt2)
-        opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
-        let dur = 0.25
-        var start = 0.0
-        let dx : CGFloat = 100
-        let dy : CGFloat = 50
-        var dir : CGFloat = 1
-        UIView.animateKeyframes(withDuration:4,
-            delay: 0,
-            options: opts, // comment in or out
-            animations: {
-                // self.v.alpha = 0
-                UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur) {
-                        p.x += dx*dir; p.y += dy
-                        self.v.center = p
+        switch which {
+        case 1:
+            var p = self.v.center
+            var opts : UIViewKeyframeAnimationOptions = .calculationModeLinear
+            let opt2 : UIViewAnimationOptions = .curveLinear
+            // opts.insert(opt2)
+            opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
+            let dur = 0.25
+            var start = 0.0
+            let dx : CGFloat = 100
+            let dy : CGFloat = 50
+            var dir : CGFloat = 1
+            UIView.animateKeyframes(withDuration:4,
+                                    delay: 0,
+                                    options: opts, // comment in or out
+                animations: {
+                    // self.v.alpha = 0
+                    UIView.addKeyframe(withRelativeStartTime:start,
+                                       relativeDuration: dur) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
                     }
-                start += dur; dir *= -1
-                UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur) {
-                        p.x += dx*dir; p.y += dy
-                        self.v.center = p
+                    start += dur; dir *= -1
+                    UIView.addKeyframe(withRelativeStartTime:start,
+                                       relativeDuration: dur) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
                     }
-                start += dur; dir *= -1
-                UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur) {
-                        p.x += dx*dir; p.y += dy
-                        self.v.center = p
+                    start += dur; dir *= -1
+                    UIView.addKeyframe(withRelativeStartTime:start,
+                                       relativeDuration: dur) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
                     }
-                start += dur; dir *= -1
-                UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur) {
-                        p.x += dx*dir; p.y += dy
-                        self.v.center = p
+                    start += dur; dir *= -1
+                    UIView.addKeyframe(withRelativeStartTime:start,
+                                       relativeDuration: dur) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
                     }
             })
+        case 2:
+            var p = self.v.center
+            var opts : UIViewKeyframeAnimationOptions = .calculationModeCubic
+            let opt2 : UIViewAnimationOptions = .curveLinear
+            // opts.insert(opt2)
+            opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
+            let durs = [0.5, 0.3, 0.15, 0.05]
+            let starts = [0.0, 0.5, 0.8, 0.95]
+            let dx : CGFloat = 100
+            let dy : CGFloat = 50
+            var dir : CGFloat = 1
+            var ix = 0
+            UIView.animateKeyframes(withDuration:2,
+                                    delay: 0,
+                                    options: opts, // comment in or out
+                animations: {
+                    // self.v.alpha = 0
+                    UIView.addKeyframe(withRelativeStartTime:starts[ix],
+                                       relativeDuration: durs[ix]) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
+                    }
+                    dir *= -1; ix += 1
+                    UIView.addKeyframe(withRelativeStartTime:starts[ix],
+                                       relativeDuration: durs[ix]) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
+                    }
+                    dir *= -1; ix += 1
+                    UIView.addKeyframe(withRelativeStartTime:starts[ix],
+                                       relativeDuration: durs[ix]) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
+                    }
+                    dir *= -1; ix += 1
+                    UIView.addKeyframe(withRelativeStartTime:starts[ix],
+                                       relativeDuration: durs[ix]) {
+                                        p.x += dx*dir; p.y += dy
+                                        self.v.center = p
+                    }
+            })
+
+        default : break
+        }
         
     }
     
