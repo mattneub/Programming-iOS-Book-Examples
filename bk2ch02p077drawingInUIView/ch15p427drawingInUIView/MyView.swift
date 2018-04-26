@@ -56,10 +56,11 @@ class MyView : UIView {
             con.fillPath()
             
             // snip a triangle out of the shaft by drawing in Clear blend mode
+            con.setFillColor(UIColor.white.cgColor)
             con.move(to:CGPoint(90, 101))
             con.addLine(to:CGPoint(100, 90))
             con.addLine(to:CGPoint(110, 101))
-            con.setBlendMode(.clear)
+            //con.setBlendMode(.clear)
             con.fillPath()
             
         case 2:
