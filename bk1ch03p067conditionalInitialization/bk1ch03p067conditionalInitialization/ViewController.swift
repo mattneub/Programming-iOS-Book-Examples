@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         
         // var opts1 = [.autoreverse, .repeat] // compile error
         
-        let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
+        let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
         _ = opts
         
         if dothis {
@@ -101,11 +101,10 @@ class ViewController: UIViewController {
         }
 */
         do {
-            var bti : UIBackgroundTaskIdentifier = 0
+            var bti : UIBackgroundTaskIdentifier = .invalid
             bti = UIApplication.shared.beginBackgroundTask {
-                    UIApplication.shared.endBackgroundTask(bti)
-                }
-
+                UIApplication.shared.endBackgroundTask(bti)
+            }
         }
         
         // but Joe Groff points out that this might be a better way to write it
@@ -115,13 +114,7 @@ class ViewController: UIViewController {
             bti = UIApplication.shared.beginBackgroundTask {
                 UIApplication.shared.endBackgroundTask(bti!)
             }
-            
         }
-
-
     }
     
-
-
 }
-

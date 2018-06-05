@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let opts = UIViewAnimationOptions(rawValue:0b00011000)
+            let opts = UIView.AnimationOptions(rawValue:0b00011000)
             _ = opts
         }
         
@@ -62,24 +62,24 @@ class ViewController: UIViewController {
         }
         
         do {
-            let val = UIViewAnimationOptions.autoreverse.rawValue | UIViewAnimationOptions.repeat.rawValue
-            let opts = UIViewAnimationOptions(rawValue: val)
+            let val = UIView.AnimationOptions.autoreverse.rawValue | UIView.AnimationOptions.repeat.rawValue
+            let opts = UIView.AnimationOptions(rawValue: val)
             print(opts)
         }
         
         do {
-            let opts : UIViewAnimationOptions = [UIViewAnimationOptions.autoreverse, UIViewAnimationOptions.repeat]
+            let opts : UIView.AnimationOptions = [UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
             print(opts)
         }
         
         do {
-            var opts = UIViewAnimationOptions.autoreverse
+            var opts = UIView.AnimationOptions.autoreverse
             opts.insert(.repeat) // compiler no longer complains
             print(opts)
         }
         
         do {
-            let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
+            let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
             print(opts)
         }
         
@@ -125,8 +125,8 @@ class ViewController: UIViewController {
 }
 
 class MyTableViewCell : UITableViewCell {
-    override func didTransition(to state: UITableViewCellStateMask) {
-        let editing = UITableViewCellStateMask.showingEditControlMask.rawValue
+    override func didTransition(to state: UITableViewCell.StateMask) {
+        let editing = UITableViewCell.StateMask.showingEditControlMask.rawValue
         if state.rawValue & editing != 0 {
             // ... the ShowingEditControlMask bit is set ...
         }
@@ -134,7 +134,7 @@ class MyTableViewCell : UITableViewCell {
 }
 
 class MyTableViewCell2 : UITableViewCell {
-    override func didTransition(to state: UITableViewCellStateMask) {
+    override func didTransition(to state: UITableViewCell.StateMask) {
         if state.contains(.showingEditControlMask) {
             // ... the ShowingEditControlMask bit is set ...
         }

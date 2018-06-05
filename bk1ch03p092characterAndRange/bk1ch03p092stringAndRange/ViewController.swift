@@ -282,8 +282,10 @@ class ViewController: UIViewController {
             // let r3 = Range(r)
             _ = r
             let r2 = ix1..<ix2
-            let r3 = Range(r2) // no problem
-            _ = r3
+            //let r3 = Range(r2) // no problem
+            // okay, now it _IS_ a problem
+            // but we don't actually need to do it because it's already a Range
+            //_ = r3
         }
         
         

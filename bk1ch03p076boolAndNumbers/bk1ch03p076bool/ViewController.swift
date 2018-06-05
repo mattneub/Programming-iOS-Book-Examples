@@ -199,7 +199,7 @@ extension ViewController {
 extension ViewController {
     func test () {
         // how to make a bitmask
-        let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
+        let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
         
         _ = opts
     }
@@ -207,7 +207,7 @@ extension ViewController {
 
 class MyTableViewCell : UITableViewCell {
     // how to test a bit in a bitmask
-    override func didTransition(to state: UITableViewCellStateMask) {
+    override func didTransition(to state: UITableViewCell.StateMask) {
         if state.contains(.showingEditControlMask) {
             // ... the ShowingEditControlMask bit is set ...
         }

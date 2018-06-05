@@ -294,7 +294,8 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         }
         
         do {
-            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            // try? AVAudioSession.sharedInstance().setCategory(.ambient)
+            try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
         }
         
         do {
@@ -595,7 +596,7 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto sampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let prev = previewPhotoSampleBuffer {
-            if let buff = CMSampleBufferGetImageBuffer(prev) {
+            if let buff = prev.imageBuffer {
                 
                 // buff is a CVImageBuffer
                 if let baseAddress = CVPixelBufferGetBaseAddress(buff) {

@@ -98,6 +98,7 @@ class MyScrollView : UIScrollView {
     
     override func layoutSubviews() {
         // see WWDC 2010 video on this topic
+        // super.layoutSubviews(); return; // uncomment to see the issue we're trying to solve
         var which : Int {return 1}
         switch which {
         case 1:

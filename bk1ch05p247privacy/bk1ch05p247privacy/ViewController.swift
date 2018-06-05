@@ -2,11 +2,11 @@
 
 import UIKit
 
-extension CGAffineTransform : CustomStringConvertible {
-    public var description : String {
-        return NSStringFromCGAffineTransform(self)
-    }
-}
+//extension CGAffineTransform : CustomStringConvertible {
+//    public var description : String {
+//        return NSStringFromCGAffineTransform(self)
+//    }
+//}
 
 struct Dog2 : CustomStringConvertible {
     var name = "Fido"
