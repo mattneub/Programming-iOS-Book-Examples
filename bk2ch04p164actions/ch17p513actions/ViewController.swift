@@ -49,7 +49,7 @@ class MyWagglePositionAction : NSObject, CAAction {
                 oldP.y + CGFloat(r*2*sin(theta-wag)))
             let anim = CAKeyframeAnimation(keyPath: event)
             anim.values = [oldP,p1,p2,newP]
-            anim.calculationMode = kCAAnimationCubic
+            anim.calculationMode = .cubic
             
             lay.add(anim, forKey:nil)
     }
@@ -65,7 +65,7 @@ class ViewController : UIViewController {
         layer.frame = CGRect(50,50,40,40)
         CATransaction.setDisableActions(true) // prevent MyLayer automatic contents animation on next line
         layer.contents = UIImage(named:"Mars")!.cgImage
-        layer.contentsGravity = kCAGravityResizeAspectFill
+        layer.contentsGravity = .resizeAspectFill
         self.view.layer.addSublayer(layer)
         self.layer = layer
     }
@@ -130,7 +130,7 @@ class ViewController : UIViewController {
         case 8:
             let layer = CALayer()
             layer.frame = CGRect(200,50,40,40)
-            layer.contentsGravity = kCAGravityResizeAspectFill
+            layer.contentsGravity = .resizeAspectFill
             layer.contents = UIImage(named:"Smiley")!.cgImage
             layer.delegate = self
             self.view.layer.addSublayer(layer)
@@ -165,8 +165,8 @@ class MyLayer : CALayer {
     override class func defaultAction(forKey key: String) -> CAAction? {
         if key == #keyPath(contents) {
             let tr = CATransition()
-            tr.type = kCATransitionPush
-            tr.subtype = kCATransitionFromLeft
+            tr.type = .push
+            tr.subtype = .fromLeft
             return tr
         }
         return super.defaultAction(forKey:key)

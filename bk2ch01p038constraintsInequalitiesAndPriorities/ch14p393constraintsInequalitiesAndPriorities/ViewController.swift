@@ -95,7 +95,7 @@ class ViewController : UIViewController {
                 "V:[v1]-(112)-|", metrics: nil, views: d2),
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|-(>=10)-[v2]-[v1]-(>=10)-|",
-                options: NSLayoutFormatOptions.alignAllLastBaseline,
+                options: .alignAllLastBaseline,
                 metrics: nil, views: d2)
             ].flatMap{$0})
         

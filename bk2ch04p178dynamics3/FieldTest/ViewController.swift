@@ -78,7 +78,7 @@ class ViewController: UIViewController {
             self.view.addSubview(v2)
             
             let a = UIAttachmentBehavior.slidingAttachment(with:v, attachedTo: v2, attachmentAnchor: CGPoint(125,25), axisOfTranslation: CGVector(0,1))
-            a.attachmentRange = UIFloatRangeMake(-200,200)
+            a.attachmentRange = UIFloatRange(minimum: -200,maximum: 200)
             self.anim.addBehavior(a)
             
             delay(2) {

@@ -24,7 +24,7 @@ class ViewController : UIViewController {
         lay.addSublayer(tlay)
         tlay.string = "\(ix)"
         tlay.fontSize = 30
-        tlay.alignmentMode = kCAAlignmentCenter
+        tlay.alignmentMode = .center
         tlay.foregroundColor = UIColor.green.cgColor
         
         return lay;
@@ -49,3 +49,4 @@ class ViewController : UIViewController {
     }
 
 }
+

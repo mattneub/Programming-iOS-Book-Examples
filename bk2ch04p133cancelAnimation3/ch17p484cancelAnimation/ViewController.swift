@@ -8,7 +8,7 @@ class ViewController : UIViewController {
     func animate() {
         let val = self.v.center
         self.v.layer.setValue(val, forKey:"pOrig")
-        let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
+        let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
         UIView.animate(withDuration:1, delay: 0, options: opts,
             animations: {
                 self.v.center.x += 100

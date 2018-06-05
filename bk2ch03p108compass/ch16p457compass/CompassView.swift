@@ -89,7 +89,7 @@ class CompassLayer : CALayer, CALayerDelegate {
             let vert = circle.bounds.midY / t.bounds.height
             t.anchorPoint = CGPoint(0.5, vert)
             //print(t.anchorPoint)
-            t.alignmentMode = kCAAlignmentCenter
+            t.alignmentMode = .center
             t.foregroundColor = UIColor.black.cgColor
             t.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(ix) * .pi/2.0))
             circle.addSublayer(t)
@@ -168,7 +168,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         print("resize arrow")
         arrow.needsDisplayOnBoundsChange = false
         arrow.contentsCenter = CGRect(0.0, 0.4, 1.0, 0.6)
-        arrow.contentsGravity = kCAGravityResizeAspect
+        arrow.contentsGravity = .resizeAspect
         arrow.bounds = arrow.bounds.insetBy(dx: -20, dy: -20)
     }
     

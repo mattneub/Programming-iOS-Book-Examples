@@ -27,7 +27,7 @@ class ViewController : UIViewController {
         // apparently only vector PDFs are acceptable
                 
         
-        let im3 = UIImage(named:"photo")!.withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 24, 0))
+        let im3 = UIImage(named:"photo")!.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0))
         let iv = UIImageView(image:im3)
         self.view.addSubview(iv)
         iv.translatesAutoresizingMaskIntoConstraints = false

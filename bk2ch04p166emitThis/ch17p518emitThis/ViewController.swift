@@ -55,8 +55,8 @@ class ViewController : UIViewController {
         
         let emit = CAEmitterLayer()
         emit.emitterPosition = CGPoint(30,100)
-        emit.emitterShape = kCAEmitterLayerPoint
-        emit.emitterMode = kCAEmitterLayerPoints
+        emit.emitterShape = .point
+        emit.emitterMode = .points
         
         emit.emitterCells = [cell]
         self.view.layer.addSublayer(emit)
@@ -134,8 +134,8 @@ class ViewController : UIViewController {
         case 5:
             emit.emitterPosition = CGPoint(100,25)
             emit.emitterSize = CGSize(100,100)
-            emit.emitterShape = kCAEmitterLayerLine
-            emit.emitterMode = kCAEmitterLayerOutline
+            emit.emitterShape = .line
+            emit.emitterMode = .outline
             cell.emissionLongitude = 3 * .pi/4
             
             // might also be fun to animate position of source back and forth

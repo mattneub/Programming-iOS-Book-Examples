@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         lay.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
         lay.fillColor = nil
         lay.strokeColor = UIColor.black.cgColor
-        lay.lineCap = kCALineCapRound
+        lay.lineCap = .round
         lay.lineWidth = 10
         lay.strokeStart = 0
         lay.strokeEnd = 0.1

@@ -36,10 +36,10 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             var p = self.v.center
-            var opts : UIViewKeyframeAnimationOptions = .calculationModeLinear
-            let opt2 : UIViewAnimationOptions = .curveLinear
+            var opts : UIView.KeyframeAnimationOptions = .calculationModeLinear
+            let opt2 : UIView.AnimationOptions = .curveLinear
             // opts.insert(opt2)
-            opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
+            opts.insert(UIView.KeyframeAnimationOptions(rawValue:opt2.rawValue))
             let dur = 0.25
             var start = 0.0
             let dx : CGFloat = 100
@@ -76,10 +76,10 @@ class ViewController : UIViewController {
             })
         case 2:
             var p = self.v.center
-            var opts : UIViewKeyframeAnimationOptions = .calculationModeCubic
-            let opt2 : UIViewAnimationOptions = .curveLinear
+            var opts : UIView.KeyframeAnimationOptions = .calculationModeCubic
+            let opt2 : UIView.AnimationOptions = .curveLinear
             // opts.insert(opt2)
-            opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
+            opts.insert(UIView.KeyframeAnimationOptions(rawValue:opt2.rawValue))
             let durs = [0.5, 0.3, 0.15, 0.05]
             let starts = [0.0, 0.5, 0.8, 0.95]
             let dx : CGFloat = 100

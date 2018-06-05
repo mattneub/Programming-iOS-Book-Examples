@@ -18,8 +18,8 @@ class ViewController: UIViewController {
                 print("changing constraints")
                 NSLayoutConstraint.deactivate([self.con1, self.con2])
                 NSLayoutConstraint.activate([
-                    self.lab.topAnchor.constraintEqualToSystemSpacingBelow(
-                        self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
+                    self.lab.topAnchor.constraint(
+                        equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
                     self.lab.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
                     ])
                 let sz = self.lab.font.pointSize * 2

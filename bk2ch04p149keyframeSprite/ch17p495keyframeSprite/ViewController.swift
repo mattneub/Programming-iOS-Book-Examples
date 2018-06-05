@@ -51,7 +51,7 @@ class ViewController : UIViewController {
         let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.contents))
         anim.values = self.images.map {$0.cgImage!}
         anim.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
-        anim.calculationMode = kCAAnimationDiscrete
+        anim.calculationMode = .discrete
         anim.duration = 1.5
         anim.repeatCount = .greatestFiniteMagnitude
         

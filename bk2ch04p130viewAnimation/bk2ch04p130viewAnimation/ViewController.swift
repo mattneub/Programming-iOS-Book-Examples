@@ -11,13 +11,13 @@ extension UIView {
     class func animate(times:Int,
         duration dur: TimeInterval,
         delay del: TimeInterval,
-        options opts: UIViewAnimationOptions,
+        options opts: UIView.AnimationOptions,
         animations anim: @escaping () -> Void,
         completion comp: ((Bool) -> Void)?) {
             func helper(_ t:Int,
                 _ dur: TimeInterval,
                 _ del: TimeInterval,
-                _ opt: UIViewAnimationOptions,
+                _ opt: UIView.AnimationOptions,
                 _ anim: @escaping () -> Void,
                 _ com: ((Bool) -> Void)?) {
                     UIView.animate(withDuration: dur,
@@ -234,7 +234,7 @@ class ViewController: UIViewController {
                 print(anim.isManualHitTestingEnabled)
                 print("start")
             case 12:
-                let opts : UIViewAnimationOptions = .autoreverse
+                let opts : UIView.AnimationOptions = .autoreverse
                 let xorig = self.v.center.x
                 UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
                     self.v.center.x += 100
@@ -244,7 +244,7 @@ class ViewController: UIViewController {
                 })
                 // can't figure out how to reproduce that using property animator
             case 13:
-                let opts : UIViewAnimationOptions = .autoreverse
+                let opts : UIView.AnimationOptions = .autoreverse
                 let xorig = self.v.center.x
                 UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
                     UIView.setAnimationRepeatCount(3) // *
@@ -343,7 +343,7 @@ class ViewController: UIViewController {
     func animate(count:Int) {
         switch whichAnimateWay {
         case 1:
-            let opts = UIViewAnimationOptions.autoreverse
+            let opts = UIView.AnimationOptions.autoreverse
             let xorig = self.v.center.x
             UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
                 UIView.setAnimationRepeatCount(Float(count)) // I really don't like this
@@ -353,7 +353,7 @@ class ViewController: UIViewController {
                     self.v.center.x = xorig
             })
         case 2:
-            let opts = UIViewAnimationOptions.autoreverse
+            let opts = UIView.AnimationOptions.autoreverse
             let xorig = self.v.center.x
             UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
                 self.v.center.x += 100

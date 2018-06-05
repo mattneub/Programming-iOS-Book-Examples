@@ -63,7 +63,7 @@ class ViewController : UIViewController {
         }
         sender.isPaused = false
         
-        print("here \(self.frame)") // useful for seeing dropped frame rate
+        print("here \(self.frame!)") // useful for seeing dropped frame rate
     }
     
 }
