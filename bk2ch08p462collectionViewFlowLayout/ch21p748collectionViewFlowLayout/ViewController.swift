@@ -51,7 +51,7 @@ class ViewController : UICollectionViewController {
         
         self.navigationItem.title = "States"
         
-        self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID)
+        self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID)
         // if you don't do something about header size...
         // ...you won't see any headers
         let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
@@ -72,8 +72,8 @@ class ViewController : UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var v : UICollectionReusableView! = nil
-        if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
+        if kind == UICollectionView.elementKindSectionHeader {
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
             if v.subviews.count == 0 {
                 v.addSubview(UILabel(frame:CGRect(0,0,30,30)))
             }

@@ -15,7 +15,7 @@ class ViewController2 : UICollectionViewController {
         self.navigationItem.rightBarButtonItem = b
         if let flow = self.collectionViewLayout as? UICollectionViewFlowLayout {
             flow.headerReferenceSize = CGSize(50,50)
-            flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10)
+            flow.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
         }
         self.collectionView!.reloadData()
     }

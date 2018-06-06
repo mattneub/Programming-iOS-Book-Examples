@@ -177,7 +177,7 @@ class ViewController : UIViewController {
 
 
             // autolayout helps us learn the consequences of those constraints
-            let minsz = v.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            let minsz = v.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
             // set content view frame and content size explicitly
             v.frame = CGRect(origin:.zero, size:minsz)
             sv.contentSize = minsz

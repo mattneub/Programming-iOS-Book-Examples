@@ -59,10 +59,10 @@ class RootViewController : UITableViewController {
         // self.tableView.separatorEffect = UIBlurEffect(style: .Dark)
         
         // headers and cells are all sized automatically by internal constraints!
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
-        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedSectionHeaderHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        self.tableView.sectionHeaderHeight = UITableView.automaticDimension
+        self.tableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
         
         // but table header view is not...
         let hv = UITableViewHeaderFooterView(frame:(CGRect(0,0,1,1)))
@@ -83,7 +83,7 @@ class RootViewController : UITableViewController {
         // but it isn't; you have to give it an absolute height or you won't see it
         // only reason for using UITableViewHeaderFooterView is content view obeys the safe area?
         
-        let sz = hv.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let sz = hv.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         hv.bounds.size.height = sz.height // this is what I should NOT have to do
         
         // failed experiment

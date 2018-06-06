@@ -44,7 +44,7 @@ class PrimaryViewController : UIViewController {
         if !self.splitViewController!.isCollapsed {
             vc = self.splitViewController!.viewControllers[1] 
         } else {
-            vc = self.childViewControllers[0] 
+            vc = self.children[0] 
         }
         let seg = sender as! UISegmentedControl
         switch seg.selectedSegmentIndex {
@@ -65,9 +65,9 @@ class PrimaryViewController : UIViewController {
     // we would also need to implement the inverse operation
     
     override func collapseSecondaryViewController(_ vc2: UIViewController, for splitViewController: UISplitViewController) {
-        self.addChildViewController(vc2)
+        self.addChild(vc2)
         self.view.addSubview(vc2.view)
-        vc2.didMove(toParentViewController: self)
+        vc2.didMove(toParent: self)
         
         vc2.view.translatesAutoresizingMaskIntoConstraints = false
         self.verticalConstraints =

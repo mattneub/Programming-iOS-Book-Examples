@@ -67,7 +67,7 @@ class ViewController : UICollectionViewController {
         self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:self.cellID)
         // register headers (for the other view controller!)
         self.collectionView!.register(UICollectionReusableView.self,
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
+            forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: self.headerID)
 
         // no supplementary views or anything
@@ -88,8 +88,8 @@ class ViewController : UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
-        if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath)
+        if kind == UICollectionView.elementKindSectionHeader {
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath)
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -196,7 +196,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
-        var sz = self.modelCell.container.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        var sz = self.modelCell.container.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = sz.width.rounded(.up); sz.height = sz.height.rounded(.up)
         return sz
     }

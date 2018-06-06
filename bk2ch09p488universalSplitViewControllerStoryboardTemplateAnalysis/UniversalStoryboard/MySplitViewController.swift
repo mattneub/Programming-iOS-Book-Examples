@@ -16,14 +16,14 @@ class MySplitViewController: UISplitViewController {
         super.showDetailViewController(vc, sender: sender)
     }
     
-    override var childViewControllerForStatusBarHidden : UIViewController? {
-        let vc = super.childViewControllerForStatusBarHidden
+    override var childForStatusBarHidden : UIViewController? {
+        let vc = super.childForStatusBarHidden
         print("hidden: \(vc as Any)")
         return vc
     }
     
-    override var childViewControllerForStatusBarStyle : UIViewController? {
-        let vc = super.childViewControllerForStatusBarStyle
+    override var childForStatusBarStyle : UIViewController? {
+        let vc = super.childForStatusBarStyle
         print("style: \(vc as Any)")
         return vc
     }

@@ -31,7 +31,7 @@ class RootViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName:"MyCell", bundle:nil), forCellReuseIdentifier: self.cellID) // *
-        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         // self.tableView.rowHeight = 58 // *
     }
     

@@ -46,7 +46,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if indexPath.section == 1 {
             let ct = self.tableView(tableView, numberOfRowsInSection:indexPath.section)
             if ct-1 == indexPath.row {
@@ -115,7 +115,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return false
     }
     
-    override func tableView(_ tv: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
+    override func tableView(_ tv: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt ip: IndexPath) {
         tv.endEditing(true) // user can click minus/plus while still editing
         // so we must force saving to the model
         if editingStyle == .insert {

@@ -9,7 +9,7 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
     override class func arrowHeight() -> CGFloat { return 20 }
     
     override class func contentViewInsets() -> UIEdgeInsets {
-        return UIEdgeInsetsMake(20,20,20,20)
+        return UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
     }
 
     // inherits:
@@ -55,7 +55,7 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         let capw = linOrig.size.width / 2.0 - 1
         let caph = linOrig.size.height / 2.0 - 1
         let lin = linOrig.resizableImage(
-            withCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw),
+            withCapInsets:UIEdgeInsets(top: caph, left: capw, bottom: caph, right: capw),
             resizingMode:.tile)
         
         let klass = type(of:self)

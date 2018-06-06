@@ -6,7 +6,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var didChooseDetail = false
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
     
         self.window = self.window ?? UIWindow()
 
@@ -67,7 +67,7 @@ extension AppDelegate : UISplitViewControllerDelegate {
         }
         return true
     }
-    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewController.DisplayMode {
         print("target display mode")
         return .automatic
     }

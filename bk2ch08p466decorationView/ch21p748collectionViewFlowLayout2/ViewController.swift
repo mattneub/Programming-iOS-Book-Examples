@@ -76,7 +76,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:self.cellID)
         // register headers
         self.collectionView!.register(UICollectionReusableView.self,
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
+            forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: self.headerID)
         
         self.navigationItem.title = "States"
@@ -90,7 +90,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     func setUpFlowLayout(_ flow:UICollectionViewFlowLayout) {
         flow.headerReferenceSize = CGSize(50,50) // larger - we will place label within this
-        flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10) // looks nicer
+        flow.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10) // looks nicer
         
         // flow.sectionHeadersPinToVisibleBounds = true // try cool new iOS 9 feature
         
@@ -111,8 +111,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
-        if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
+        if kind == UICollectionView.elementKindSectionHeader {
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -222,7 +222,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
         //the "container" workaround is no longer needed
         //var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        var sz = self.modelCell.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        var sz = self.modelCell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         return sz
     }
