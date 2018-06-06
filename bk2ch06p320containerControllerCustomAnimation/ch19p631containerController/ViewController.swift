@@ -18,11 +18,11 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         let vc = self.swappers[cur]
-        self.addChildViewController(vc) // "will" called for us
+        self.addChild(vc) // "will" called for us
         vc.view.frame = self.panel.bounds
         self.panel.addSubview(vc.view) // insert view into interface between "will" and "did"
         // note: when we call add, we must call "did" afterwards
-        vc.didMove(toParentViewController: self)
+        vc.didMove(toParent: self)
         
         self.constrainInPanel(vc.view) // *
     }
@@ -46,9 +46,9 @@ class ViewController : UIViewController {
         tovc.view.alpha = 0 // hide the real view
         
         // must have both as children before we can transition between them
-        self.addChildViewController(tovc) // "will" called for us
+        self.addChild(tovc) // "will" called for us
         // when we call remove, we must call "will" (with nil) beforehand
-        fromvc.willMove(toParentViewController: nil)
+        fromvc.willMove(toParent: nil)
         // then perform the transition
         self.transition(
             from:fromvc, to:tovc,
@@ -60,8 +60,8 @@ class ViewController : UIViewController {
             tovc.view.alpha = 1
             iv.removeFromSuperview()
             // when we call add, we must call "did" afterwards
-            tovc.didMove(toParentViewController: self)
-            fromvc.removeFromParentViewController() // "did" called for us
+            tovc.didMove(toParent: self)
+            fromvc.removeFromParent() // "did" called for us
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }

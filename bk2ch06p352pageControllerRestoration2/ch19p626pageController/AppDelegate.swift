@@ -6,7 +6,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     let pep = ["Manny", "Moe", "Jack"]
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         self.window = self.window ?? UIWindow()
         
         self.setUpPageViewController()

@@ -10,7 +10,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     let pep : [String] = ["Manny", "Moe", "Jack"]
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         self.window = self.window ?? UIWindow()
         
         self.setUpPageViewController()
@@ -87,7 +87,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
                 let vc0 = pvc.viewControllers![0]
                 guard let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBefore: vc0) : self.pageViewController(pvc, viewControllerAfter: vc0))
                     else {return}
-                let dir : UIPageViewControllerNavigationDirection = which == 0 ? .reverse : .forward
+                let dir : UIPageViewController.NavigationDirection = which == 0 ? .reverse : .forward
                 UIApplication.shared.beginIgnoringInteractionEvents()
                 pvc.setViewControllers([vc], direction: dir, animated: true) {
                     _ in

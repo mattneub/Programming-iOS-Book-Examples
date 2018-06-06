@@ -41,12 +41,12 @@ class FirstViewController: UIViewController {
         func f() {
             let h = self.tabBarController!.tabBar.bounds.size.height
             print(h)
-            let vc = self.tabBarController!.childViewControllerForScreenEdgesDeferringSystemGestures()
+            let vc = self.tabBarController!.childForScreenEdgesDeferringSystemGestures
             print("child for screen edges", vc as Any)
         }
         f()
         NotificationCenter.default.addObserver(
-        forName: .UIApplicationDidChangeStatusBarOrientation,
+        forName: UIApplication.didChangeStatusBarOrientationNotification,
         object: nil, queue: nil) { _ in
             f()
         }

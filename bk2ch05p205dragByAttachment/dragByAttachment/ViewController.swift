@@ -35,7 +35,7 @@ class ViewController : UIViewController {
             self.anim.delegate = self
             let loc = p.location(ofTouch:0, in:p.view)
             let cen = CGPoint(p.view!.bounds.midX, p.view!.bounds.midY)
-            let off = UIOffsetMake(loc.x-cen.x, loc.y-cen.y)
+            let off = UIOffset(horizontal: loc.x-cen.x, vertical: loc.y-cen.y)
             let anchor = p.location(ofTouch:0, in:self.view)
             let att = UIAttachmentBehavior(item:p.view!,
                 offsetFromCenter:off, attachedToAnchor:anchor)

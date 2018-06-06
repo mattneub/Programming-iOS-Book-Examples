@@ -60,11 +60,11 @@ class SecondViewController : UIViewController {
 // "Warning: restoration class for view controller does not conform to UIViewControllerRestoration protocol: Class is ..."
 
 extension SecondViewController : UIViewControllerRestoration {
-    class func viewController(withRestorationIdentifierPath ip: [Any],
+    class func viewController(withRestorationIdentifierPath ip: [String],
         coder: NSCoder) -> UIViewController? {
             print("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
             var vc : UIViewController? = nil
-            let last = ip.last as! String
+            let last = ip.last!
             switch last {
             case "presented":
                 vc = self.makePresentedViewController()

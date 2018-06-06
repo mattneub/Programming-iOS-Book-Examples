@@ -7,22 +7,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
 }
 
 class MyTabBarController : UITabBarController {
-    override func allowedChildViewControllersForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
-        let result = super.allowedChildViewControllersForUnwinding(from: source)
+    override func allowedChildrenForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
+        let result = super.allowedChildrenForUnwinding(from: source)
         print("\(type(of:self)) \(#function) \(result)")
         return result
     }
     
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
         print("\(type(of:self)) \(#function) \(subsequentVC)")
-        super.unwind(for: unwindSegue, towardsViewController: subsequentVC)
+        super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
     override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
@@ -64,15 +64,15 @@ class MyTabBarController : UITabBarController {
 }
 
 class MyNavController : UINavigationController {
-    override func allowedChildViewControllersForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
-        let result = super.allowedChildViewControllersForUnwinding(from: source)
+    override func allowedChildrenForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
+        let result = super.allowedChildrenForUnwinding(from: source)
         print("\(type(of:self)) \(#function) \(result)")
         return result
     }
     
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
         print("\(type(of:self)) \(#function) \(subsequentVC)")
-        super.unwind(for: unwindSegue, towardsViewController: subsequentVC)
+        super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
     override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {

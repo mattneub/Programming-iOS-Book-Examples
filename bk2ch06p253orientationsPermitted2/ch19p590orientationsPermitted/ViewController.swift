@@ -10,7 +10,7 @@ class ViewController : UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         //print("transition to size", size)
-        NSLog("transition to size %@", NSStringFromCGSize(size))
+        NSLog("transition to size %@", NSCoder.string(for: size))
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {

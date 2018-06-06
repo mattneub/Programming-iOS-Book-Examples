@@ -7,7 +7,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var anim : UIViewImplicitlyAnimating?
     var context : UIViewControllerContextTransitioning?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
     
         (self.window!.rootViewController as! UINavigationController).delegate = self
         return true
@@ -17,7 +17,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
 extension AppDelegate : UINavigationControllerDelegate {
     // comment out this whole function to restore the default pop gesture
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if operation == .push {
             return self
         }

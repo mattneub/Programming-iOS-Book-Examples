@@ -19,14 +19,14 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
         
         let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         pvc.dataSource = self
-        self.addChildViewController(pvc)
+        self.addChild(pvc)
         self.view.addSubview(pvc.view)
         
         let (_,f) = self.view.bounds.divided(atDistance: 50, from: .minYEdge)
         pvc.view.frame = f
         pvc.view.autoresizingMask = [.flexibleHeight]
         
-        pvc.didMove(toParentViewController: self)
+        pvc.didMove(toParent: self)
         
         let page = Pep(pepBoy: self.pep[0])
         pvc.setViewControllers([page], direction: .forward, animated: false)

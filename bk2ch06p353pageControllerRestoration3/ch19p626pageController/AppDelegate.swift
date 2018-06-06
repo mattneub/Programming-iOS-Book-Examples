@@ -6,7 +6,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     let pep = ["Manny", "Moe", "Jack"]
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         self.window = self.window ?? UIWindow()
         
         self.setUpPageViewController()
@@ -49,8 +49,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // to do this, first we restore the whole interface;
     // all restorable view controllers already exist, so we just point to them
     
-    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [Any], coder: NSCoder) -> UIViewController? {
-        let last = (ip as NSArray).lastObject as! String
+    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [String], coder: NSCoder) -> UIViewController? {
+        let last = ip.last!
         var result : UIViewController? = nil
         switch last {
         case "pvc":

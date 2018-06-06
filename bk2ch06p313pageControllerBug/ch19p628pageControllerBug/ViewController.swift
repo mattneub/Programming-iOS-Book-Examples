@@ -39,7 +39,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
     @objc func jumpTo8(_ sender: Any?) {
         let page = MyPage()
         page.num = 8
-        let pvc = self.childViewControllers[0] as! UIPageViewController
+        let pvc = self.children[0] as! UIPageViewController
         pvc.setViewControllers([page], direction: .forward, animated: true) {
             _ in
             // workaround:

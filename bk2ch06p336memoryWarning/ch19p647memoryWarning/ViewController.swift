@@ -122,7 +122,7 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     @objc func backgrounding(_ n:Notification) {

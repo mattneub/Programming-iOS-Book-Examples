@@ -21,16 +21,16 @@ class ViewController: UIViewController {
         self.transitionContainerTo(pep)
     }
     func transitionContainerTo(_ pep:Pep) {
-        let oldvc = self.childViewControllers[0]
+        let oldvc = self.children[0]
         pep.view.frame = self.container.bounds
-        self.addChildViewController(pep)
-        oldvc.willMove(toParentViewController: nil)
+        self.addChild(pep)
+        oldvc.willMove(toParent: nil)
         self.transition(
             from: oldvc, to: pep,
             duration: 0.2, options: .transitionCrossDissolve,
             animations: nil) { _ in
-                pep.didMove(toParentViewController: self)
-                oldvc.removeFromParentViewController()
+                pep.didMove(toParent: self)
+                oldvc.removeFromParent()
         }
     }
 }
