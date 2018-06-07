@@ -13,7 +13,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
             break skip
             // not very satisfying
             let mas = NSMutableAttributedString(string:"Polly, want a cracker?")
-            let key = NSAttributedStringKey(rawValue: AVSpeechSynthesisIPANotationAttribute)
+            let key = NSAttributedString.Key(rawValue: AVSpeechSynthesisIPANotationAttribute)
             let s = mas.string as NSString
             mas.addAttribute(key, value: "krækö", range: s.range(of:"cracker"))
             utter = AVSpeechUtterance(attributedString: mas)

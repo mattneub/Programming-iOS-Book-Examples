@@ -94,7 +94,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.s = ""
             self.tv.text = ""
             var ob : Any = ""
-            ob = NotificationCenter.default.addObserver(forName: .UIApplicationDidEnterBackground, object: nil, queue: OperationQueue.main) {
+            ob = NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: OperationQueue.main) {
                 _ in
                 NotificationCenter.default.removeObserver(ob)
                 if CLLocationManager.deferredLocationUpdatesAvailable() {

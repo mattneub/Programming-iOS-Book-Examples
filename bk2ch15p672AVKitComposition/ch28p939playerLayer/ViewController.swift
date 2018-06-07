@@ -48,9 +48,9 @@ class ViewController: UIViewController {
         vc.player = p
         vc.view.frame = CGRect(10,10,300,200)
         vc.view.isHidden = true // looks nicer if we don't show until ready
-        self.addChildViewController(vc)
+        self.addChild(vc)
         self.view.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        vc.didMove(toParent: self)
         
         var ob : NSKeyValueObservation!
         ob = p.observe(\.status) { vc, ch in
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     }
     
     func finishConstructingInterface () {
-        let vc = self.childViewControllers[0] as! AVPlayerViewController
+        let vc = self.children[0] as! AVPlayerViewController
         let p = vc.player!
 
         vc.view.isHidden = false
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         // (of course the one in this example is kind of pointless...
         // ...because the AVPlayerViewController's view gives us a position interface!)
         
-        let vc = self.childViewControllers[0] as! AVPlayerViewController
+        let vc = self.children[0] as! AVPlayerViewController
         let p = vc.player!
         
         // absolutely no reason why we shouldn't have a synch layer if we want one
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         anim.toValue = CGPoint(295,5)
         anim.isRemovedOnCompletion = false
         anim.beginTime = AVCoreAnimationBeginTimeAtZero // important trick
-        anim.duration = CMTimeGetSeconds(item.asset.duration)
+        anim.duration = item.asset.duration.getSeconds()
         subLayer.add(anim, forKey:nil)
         
         self.synchLayer = syncLayer
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton2 (_ sender: Any!) {
         
-        let vc = self.childViewControllers[0] as! AVPlayerViewController
+        let vc = self.children[0] as! AVPlayerViewController
         let p = vc.player! //
         p.pause()
         
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             preferredTrackID: Int32(kCMPersistentTrackID_Invalid))!
         
         try! comptrack.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:0, preferredTimescale:600))
-        try! comptrack.insertTimeRange(CMTimeRange(start: CMTimeSubtract(duration, CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:5, preferredTimescale:600))
+        try! comptrack.insertTimeRange(CMTimeRange(start: duration.subtract(CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:5, preferredTimescale:600))
         
         let type2 = AVMediaType.audio
         let arr2 = asset1.tracks(withMediaType: type2)
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
         let comptrack2 = comp.addMutableTrack(withMediaType: type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))!
         
         try! comptrack2.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:0, preferredTimescale:600))
-        try! comptrack2.insertTimeRange(CMTimeRange(start: CMTimeSubtract(duration, CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:5, preferredTimescale:600))
+        try! comptrack2.insertTimeRange(CMTimeRange(start: duration.subtract(CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:5, preferredTimescale:600))
         
         
         let type3 = AVMediaType.audio

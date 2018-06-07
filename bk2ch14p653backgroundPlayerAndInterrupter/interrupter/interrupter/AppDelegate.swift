@@ -8,16 +8,16 @@ import AVFoundation
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+        try? AVAudioSession.sharedInstance().setCategory(.ambient, mode:.default)
         try? AVAudioSession.sharedInstance().setActive(true)
 
         NotificationCenter.default.addObserver(forName:
-            .AVAudioSessionInterruption, object: nil, queue: nil) {
+            AVAudioSession.interruptionNotification, object: nil, queue: nil) {
                 n in
                 let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
-                let type = AVAudioSessionInterruptionType(rawValue: why)!
+                let type = AVAudioSession.InterruptionType(rawValue: why)!
                 if type == .ended {
                     print("interruption ended, reactivating audio session")
                     try? AVAudioSession.sharedInstance().setActive(true)

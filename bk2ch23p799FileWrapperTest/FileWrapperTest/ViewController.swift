@@ -10,7 +10,7 @@ class ViewController: UIViewController {
         let imnames = ["manny.jpg", "moe.jpg", "jack.jpg"]
         for imname in imnames {
             let im = UIImage(named:imname)!
-            let imfw = FileWrapper(regularFileWithContents: UIImageJPEGRepresentation(im, 1)!)
+            let imfw = FileWrapper(regularFileWithContents: im.jpegData(compressionQuality: 1)!)
             imfw.preferredFilename = imname
             d.addFileWrapper(imfw)
         }

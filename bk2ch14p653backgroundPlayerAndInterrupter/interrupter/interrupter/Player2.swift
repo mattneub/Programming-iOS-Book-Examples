@@ -24,7 +24,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         // error-checking omitted
         
         // switch to playback category while playing, interrupt background audio
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode:.default)
         try? AVAudioSession.sharedInstance().setActive(true)
         
         self.player.prepareToPlay()
@@ -36,9 +36,9 @@ class Player : NSObject, AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) { // *
         let sess = AVAudioSession.sharedInstance()
         // this is the key move
-        try? sess.setActive(false, with: .notifyOthersOnDeactivation)
+        try? sess.setActive(false, options: .notifyOthersOnDeactivation)
         // now go back to ambient
-        try? sess.setCategory(AVAudioSessionCategoryAmbient)
+        try? sess.setCategory(.ambient, mode:.default)
         try? sess.setActive(true)
         delegate?.soundFinished(self)
     }

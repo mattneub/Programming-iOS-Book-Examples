@@ -53,16 +53,18 @@ class PeopleDocument: UIDocument {
     }
     
     // ??? I don't see that this does anything perceptible
-    override func fileAttributesToWrite(to url: URL, for saveOperation: UIDocumentSaveOperation) throws -> [AnyHashable : Any] {
+    override func fileAttributesToWrite(to url: URL, for saveOperation: UIDocument.SaveOperation) throws -> [FileAttributeKey : Any] {
         let icon = UIImage(named:"smiley.jpg")!
         let sz = CGSize(1024,1024)
         let im = UIGraphicsImageRenderer(size:sz).image {_ in
             icon.draw(at: CGPoint((sz.width-icon.size.width)/2, (sz.height-icon.size.height)/2))
         }
         var d = try super.fileAttributesToWrite(to: url, for: saveOperation)
+        // bizarre coercion needed because we have to return a [FileAttributeKey : Any]
         let key1 = URLResourceKey.thumbnailDictionaryKey
+        let key1coerced = FileAttributeKey(key1.rawValue)
         let key2 = URLThumbnailDictionaryItem.NSThumbnail1024x1024SizeKey
-        d[key1] = [key2:im]
+        d[key1coerced] = [key2:im]
         return d
     }
     

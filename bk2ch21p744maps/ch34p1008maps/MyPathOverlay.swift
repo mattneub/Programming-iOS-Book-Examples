@@ -7,8 +7,8 @@ class MyPathOverlay : NSObject, MKOverlay {
     
     var coordinate : CLLocationCoordinate2D {
         get {
-            let pt = MKMapPointMake(MKMapRectGetMidX(self.boundingMapRect), MKMapRectGetMidY(self.boundingMapRect))
-            return MKCoordinateForMapPoint(pt)
+            let pt = MKMapPoint(x: self.boundingMapRect.midX, y: self.boundingMapRect.midY)
+            return pt.coordinate
         }
     }
     

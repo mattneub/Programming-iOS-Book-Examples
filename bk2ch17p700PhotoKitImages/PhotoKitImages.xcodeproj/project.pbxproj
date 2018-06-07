@@ -283,17 +283,17 @@
 					3276DA4D1BC0A17900DDD64E = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 					};
 					32C5A8851C5C0CE600064A33 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 					};
 					32EBFD6F19A10EA9008F9D28 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -419,8 +419,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.PhotoKitImages.VignettePhotoExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -436,8 +435,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.PhotoKitImages.VignettePhotoExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -464,8 +462,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -493,8 +490,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.VignetteFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -587,8 +583,7 @@
 				INFOPLIST_FILE = PhotoKitImages/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -602,8 +597,7 @@
 				INFOPLIST_FILE = PhotoKitImages/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

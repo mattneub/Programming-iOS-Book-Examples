@@ -19,14 +19,14 @@ class MyPathOverlayRenderer : MKOverlayRenderer {
         // print isn't thread-safe
         // we are already clipping to the mapRect equivalent
         NSLog("draw this: %@", MKStringFromMapRect(mapRect))
-        NSLog("converts to: %@", NSStringFromCGRect(self.rect(for:mapRect)))
-        NSLog("currently clipping to: %@", NSStringFromCGRect(con.boundingBoxOfClipPath))
+        NSLog("converts to: %@", NSCoder.string(for: self.rect(for:mapRect)))
+        NSLog("currently clipping to: %@", NSCoder.string(for: con.boundingBoxOfClipPath))
 
         con.setStrokeColor(UIColor.black.cgColor)
         con.setFillColor(UIColor.red.withAlphaComponent(0.2).cgColor)
         con.setLineWidth(1.2/zoomScale)
         
-        let unit = CGFloat(MKMapRectGetWidth(self.overlay.boundingMapRect)/4.0)
+        let unit = CGFloat(overlay.boundingMapRect.width/4.0)
         
         let p = CGMutablePath()
         let start = CGPoint(0, unit*1.5)

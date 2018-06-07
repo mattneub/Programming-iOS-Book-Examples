@@ -110,10 +110,10 @@ class ViewController: UIViewController {
     func reset() {
         self.curplayer?.pause()
         self.curplayer = nil
-        if self.childViewControllers.count > 0 {
-            let vc = self.childViewControllers[0]
-            vc.willMove(toParentViewController: nil)
-            vc.removeFromParentViewController()
+        if self.children.count > 0 {
+            let vc = self.children[0]
+            vc.willMove(toParent: nil)
+            vc.removeFromParent()
         }
         let scc = MPRemoteCommandCenter.shared()
         scc.togglePlayPauseCommand.removeTarget(nil)
@@ -182,8 +182,8 @@ class ViewController: UIViewController {
                 // don't let it steal our remote events
                 vc.updatesNowPlayingInfoCenter = false
                 vc.player = p
-                self.addChildViewController(vc)
-                vc.didMove(toParentViewController: self)
+                self.addChild(vc)
+                vc.didMove(toParent: self)
                 p.play()
                 self.curplayer = p
                 

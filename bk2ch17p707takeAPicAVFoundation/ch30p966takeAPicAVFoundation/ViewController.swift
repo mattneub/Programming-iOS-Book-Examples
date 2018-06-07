@@ -76,7 +76,7 @@ func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
         alert.addAction(UIAlertAction(
         title: "OK", style: .default) {
             _ in
-            let url = URL(string:UIApplicationOpenSettingsURLString)!
+            let url = URL(string:UIApplication.openSettingsURLString)!
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
@@ -112,7 +112,7 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
         alert.addAction(UIAlertAction(
         title: "OK", style: .default) {
             _ in
-            let url = URL(string:UIApplicationOpenSettingsURLString)!
+            let url = URL(string:UIApplication.openSettingsURLString)!
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
@@ -228,7 +228,7 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
         
         if let cgim = photo.previewCGImageRepresentation()?.takeUnretainedValue() {
             // grapple with orientation issue relative to preview
-            var orient : UIImageOrientation {
+            var orient : UIImage.Orientation {
                 switch UIDevice.current.orientation {
                 case .portrait: return .right
                 case .portraitUpsideDown: return .left

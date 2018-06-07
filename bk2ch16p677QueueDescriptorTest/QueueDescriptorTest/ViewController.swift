@@ -20,7 +20,7 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
         // do nothing
         break
         // just testing the syntax; this is how you get to the settings app
-        let url = URL(string:UIApplicationOpenSettingsURLString)!
+        let url = URL(string:UIApplication.openSettingsURLString)!
         UIApplication.shared.open(url)
     case .denied:
         // do nothing, or beg the user to authorize us in Settings
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             UIApplication.shared.beginReceivingRemoteControlEvents()
             
             // this doesn't help
-            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try? AVAudioSession.sharedInstance().setCategory(.playback, mode:.default)
             try? AVAudioSession.sharedInstance().setActive(true)
             
             // this doesn't help
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
             
             // proving that MPMusicPlayerMediaItemQueueDescriptor(itemCollection:) is broken
             
-            let useCollection = false
+            var useCollection : Bool { return false }
             
             if useCollection {
                 let coll = MPMediaItemCollection(items: [song])

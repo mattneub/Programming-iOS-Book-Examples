@@ -55,9 +55,9 @@ class ViewController: UIViewController {
         let vc = AVPlayerViewController()
         vc.player = player
         vc.view.frame = self.v.bounds
-        self.addChildViewController(vc)
+        self.addChild(vc)
         self.v.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        vc.didMove(toParent: self)
     }
 
 }

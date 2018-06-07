@@ -102,7 +102,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         self.doc.updateChangeCount(.done)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         self.tableView.endEditing(true)
         self.people.remove(at:indexPath.row)
         tableView.deleteRows(at:[indexPath], with:.automatic)
@@ -118,7 +118,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(forceSave), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(forceSave), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

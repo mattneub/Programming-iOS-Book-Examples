@@ -86,16 +86,16 @@ class ViewController: UIViewController {
         }
 
         self.vv.setMinimumVolumeSliderImage(
-            im1.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
+            im1.resizableImage(withCapInsets:UIEdgeInsets(top: 9,left: 9,bottom: 9,right: 9),
                 resizingMode:.stretch),
             for:.normal)
         self.vv.setMaximumVolumeSliderImage(
-            im2.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
+            im2.resizableImage(withCapInsets:UIEdgeInsets(top: 9,left: 9,bottom: 9,right: 9),
                 resizingMode:.stretch),
             for:.normal)
         // only for EU devices; to test, use the EU switch under Developer settings on device
         self.vv.volumeWarningSliderImage =
-            im3.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
+            im3.resizableImage(withCapInsets:UIEdgeInsets(top: 9,left: 9,bottom: 9,right: 9),
                 resizingMode:.stretch)
         
         let sz2 = CGSize(40,40)

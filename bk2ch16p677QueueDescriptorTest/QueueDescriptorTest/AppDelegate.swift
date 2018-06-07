@@ -8,16 +8,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         return true
         
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode:.default)
         try? AVAudioSession.sharedInstance().setActive(true)
         NotificationCenter.default.addObserver(forName:
-        .AVAudioSessionInterruption, object: nil, queue: nil) { n in
+        AVAudioSession.interruptionNotification, object: nil, queue: nil) { n in
             let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
-            let type = AVAudioSessionInterruptionType(rawValue: why)!
+            let type = AVAudioSession.InterruptionType(rawValue: why)!
             switch type {
             case .began:
                 // update interface if needed

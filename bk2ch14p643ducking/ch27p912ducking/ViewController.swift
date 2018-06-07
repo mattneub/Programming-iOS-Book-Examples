@@ -33,7 +33,7 @@ class ViewController: UIViewController, PlayerDelegate {
         }
         print("ducking")
         let sess = AVAudioSession.sharedInstance()
-        try? sess.setCategory(AVAudioSessionCategoryAmbient)
+        try? sess.setCategory(.ambient, mode:.default)
         try? sess.setActive(false)
         let opts = sess.categoryOptions.union(.duckOthers)
         try? sess.setCategory(sess.category, mode: sess.mode, options: opts)
@@ -46,7 +46,7 @@ class ViewController: UIViewController, PlayerDelegate {
         self.player.delegate = self
         let path = Bundle.main.path(forResource:"test", ofType: "aif")!
         // interrupt background audio if any
-        let ok : Void? = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        let ok : Void? = try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         if ok == nil { print("failed to set session to playback") }
         try? AVAudioSession.sharedInstance().setActive(true)
         self.player.looping = true

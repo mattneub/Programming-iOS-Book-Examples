@@ -120,7 +120,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     snidely.familyName = "Whiplash"
                     let email = CNLabeledValue(label: CNLabelHome, value: "snidely@villains.com" as NSString)
                     snidely.emailAddresses.append(email)
-                    snidely.imageData = UIImagePNGRepresentation(UIImage(named:"snidely")!)
+                    snidely.imageData = UIImage(named:"snidely")!.pngData()
                     let save = CNSaveRequest()
                     save.add(snidely, toContainerWithIdentifier: nil)
                     try CNContactStore().execute(save)
