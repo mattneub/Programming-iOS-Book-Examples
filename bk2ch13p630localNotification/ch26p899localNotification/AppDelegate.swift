@@ -13,7 +13,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     let notifHelper = MyUserNotificationHelper()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         // must set user notification center delegate before we finish launching!
         let center = UNUserNotificationCenter.current()
         center.delegate = self.notifHelper

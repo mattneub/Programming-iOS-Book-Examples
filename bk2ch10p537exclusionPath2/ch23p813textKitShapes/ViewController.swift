@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         self.tv = tv
         
         self.tv.attributedText = mas
-        self.tv.textContainerInset = UIEdgeInsetsMake(2, 2, 2, 2)
+        self.tv.textContainerInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         self.tv.isScrollEnabled = false
         self.tv.backgroundColor = .yellow
 

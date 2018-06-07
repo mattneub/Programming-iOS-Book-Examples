@@ -45,7 +45,7 @@ class ViewController : UIViewController {
                 ], range: r)
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsets(top: 30,left: 0,bottom: 0,right: 0)
             if which > 0 {fallthrough}
         case 1, 4, 5:
             let para = NSMutableParagraphStyle()
@@ -60,7 +60,7 @@ class ViewController : UIViewController {
                 value:para, range:NSMakeRange(0,1))
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsets(top: 30,left: 0,bottom: 0,right: 0)
             if which >= 4 {fallthrough}
         case 2, 3, 4, 5:
             let s2 = """
@@ -80,7 +80,7 @@ class ViewController : UIViewController {
                 ], range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
-            self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsets(top: 30,left: 0,bottom: 0,right: 0)
             if which > 2 {fallthrough}
         case 3, 4, 5:
             content2.addAttribute(.paragraphStyle,
@@ -96,7 +96,7 @@ class ViewController : UIViewController {
             }, range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
-            self.tv.textContainerInset = UIEdgeInsetsMake(20,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
             if which > 3 {fallthrough}
         case 4, 5:
             let end = content.length
@@ -104,7 +104,7 @@ class ViewController : UIViewController {
             content.append(content2)
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.textContainerInset = UIEdgeInsetsMake(20,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
             
             // need this for a different book example
             var range : NSRange = NSMakeRange(0,0)
@@ -131,7 +131,7 @@ class ViewController : UIViewController {
             }
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.textContainerInset = UIEdgeInsetsMake(0,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         default:break
         }
     }

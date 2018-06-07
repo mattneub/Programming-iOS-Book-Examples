@@ -59,7 +59,7 @@ class MyUserNotificationHelper : NSObject {
             case .denied:
                 print("denied, giving up")
             break // nothing to do, pointless to go on
-            case .authorized:
+            case .authorized, .provisional:
                 self.checkCategories() // prepare create notification
             }
         }
@@ -137,7 +137,7 @@ class MyUserNotificationHelper : NSObject {
         content.title = "Caffeine!" // title now always appears
         // content.subtitle = "whatever" // new
         content.body = "Time for another cup of coffee!"
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         
         // if we want to see actions, we must add category identifier
         content.categoryIdentifier = self.categoryIdentifier
@@ -240,7 +240,7 @@ class ViewController: UIViewController {
         // we can added that to our app's quick actions
         let subtitle = "In 1 hour..."
         let time = 60
-        let item = UIApplicationShortcutItem(type: "coffee.schedule", localizedTitle: "Coffee Reminder", localizedSubtitle: subtitle, icon: UIApplicationShortcutIcon(templateImageName: "cup"), userInfo: ["time":time])
+        let item = UIApplicationShortcutItem(type: "coffee.schedule", localizedTitle: "Coffee Reminder", localizedSubtitle: subtitle, icon: UIApplicationShortcutIcon(templateImageName: "cup"), userInfo: ["time":time as NSSecureCoding])
         UIApplication.shared.shortcutItems = [item]
         
     }

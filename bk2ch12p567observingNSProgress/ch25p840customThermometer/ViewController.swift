@@ -144,7 +144,7 @@ class ViewController: UIViewController {
             con.setStrokeColor(UIColor.black.cgColor)
             con.stroke(r)
             con.strokeEllipse(in: r)
-        }.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
+        }.resizableImage(withCapInsets:UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), resizingMode:.stretch)
         
         self.prog2.progressImage = im
         

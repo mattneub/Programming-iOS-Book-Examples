@@ -1,8 +1,8 @@
 
 import UIKit
 
-extension NSAttributedStringKey {
-    static let myDate = NSAttributedStringKey(rawValue:"myDate")
+extension NSAttributedString.Key {
+    static let myDate = NSAttributedString.Key(rawValue:"myDate")
 }
 
 class ViewController: UIViewController {

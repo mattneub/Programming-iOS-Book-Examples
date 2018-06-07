@@ -10,7 +10,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // configure accessory view
         let arr = UINib(nibName:"AccessoryView", bundle:nil).instantiate(withOwner:nil)
-        self.accessoryView = arr[0] as! UIView
+        self.accessoryView = (arr[0] as! UIView) // silence warning with parens
         let b = self.accessoryView.subviews[0] as! UIButton
         b.addTarget(self, action:#selector(doNextButton), for:.touchUpInside)
         let b2 = self.accessoryView.subviews[1] as! UIButton

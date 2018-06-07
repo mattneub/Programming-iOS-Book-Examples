@@ -88,9 +88,9 @@ class ViewController : UIViewController {
         
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "LINK", attributes: [
-            NSAttributedStringKey.link : URL(string: "https://www.apple.com")!,
-            NSAttributedStringKey.foregroundColor : UIColor.green,
-            NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue
+            .link : URL(string: "https://www.apple.com")!,
+            .foregroundColor : UIColor.green,
+            .underlineStyle : NSUnderlineStyle.single.rawValue
         ]))
         // aha! son of a gun, I finally figured this out!
         // you have to set the overall `linkTextAttributes` to an empty dictionary
@@ -107,7 +107,7 @@ class ViewController : UIViewController {
         
         // this works but it applies to all links
         print(self.tv.linkTextAttributes)
-        self.tv.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue : UIColor.orange]
+        self.tv.linkTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange]
         self.tv.linkTextAttributes = [:]
         
 //        print(NSAttachmentCharacter)
@@ -120,9 +120,9 @@ class ViewController : UIViewController {
         do {
             let mas = NSMutableAttributedString()
             mas.append(NSAttributedString(string: "LINKNOT", attributes: [
-                NSAttributedStringKey.link : URL(string: "https://www.apple.com")!,
-                NSAttributedStringKey.foregroundColor : UIColor.green,
-                NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue
+                .link : URL(string: "https://www.apple.com")!,
+                .foregroundColor : UIColor.green,
+                .underlineStyle : NSUnderlineStyle.single.rawValue
             ]))
             let lab = UILabel()
             lab.attributedText = mas

@@ -57,8 +57,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         self.edgesForExtendedLayout = [] // none, get accurate offset restoration
     }
 
-    class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
-        let id = identifierComponents.last as! String
+    class func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
+        let id = identifierComponents.last!
         if id == "wvc" {
             print("recreating wvc view controller")
             return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wvc")
@@ -208,7 +208,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         super.viewDidAppear(animated)
         print("view did appear, req: \(self.wv.url as Any)")
 
-        if !self.isMovingToParentViewController {
+        if !self.isMovingToParent {
             return // so we don't do this again when a presented view controller is dismissed
         }
         

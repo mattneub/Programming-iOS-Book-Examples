@@ -74,17 +74,17 @@ class ViewController : UIViewController {
 			(namely Thursday, November 19, 1863) by A. Lincoln
 			"""
         content = NSMutableAttributedString(string:s1, attributes:[
-            NSAttributedStringKey.font: UIFont(name:"Arial-BoldMT", size:15)!,
-            NSAttributedStringKey.foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
+            .font: UIFont(name:"Arial-BoldMT", size:15)!,
+            .foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
         )
 
         let r = (content.string as NSString).range(of:"Gettysburg Address")
         content.addAttributes([
-            NSAttributedStringKey.strokeColor: UIColor.red,
-            NSAttributedStringKey.strokeWidth: -2.0
+            .strokeColor: UIColor.red,
+            .strokeWidth: -2.0
         ], range: r)
         
-        content.addAttribute(NSAttributedStringKey.paragraphStyle,
+        content.addAttribute(.paragraphStyle,
             value:lend(){
             (para:NSMutableParagraphStyle) in
             para.headIndent = 10
@@ -101,15 +101,15 @@ class ViewController : UIViewController {
 			dedicated to the proposition that all men are created equal.
 			"""
         content2 = NSMutableAttributedString(string:s2, attributes: [
-            NSAttributedStringKey.font: UIFont(name:"HoeflerText-Black", size:16)!
+            .font: UIFont(name:"HoeflerText-Black", size:16)!
             ])
         content2.addAttributes([
-            NSAttributedStringKey.font: UIFont(name:"HoeflerText-Black", size:24)!,
-            NSAttributedStringKey.expansion: 0.3,
-            NSAttributedStringKey.kern: -4 // negative kerning bug fixed in iOS 8
+            .font: UIFont(name:"HoeflerText-Black", size:24)!,
+            .expansion: 0.3,
+            .kern: -4 // negative kerning bug fixed in iOS 8
             ], range:NSMakeRange(0,1))
         
-        content2.addAttribute(NSAttributedStringKey.paragraphStyle,
+        content2.addAttribute(.paragraphStyle,
             value:lend(){
             (para2 : NSMutableParagraphStyle) in
             para2.headIndent = 10

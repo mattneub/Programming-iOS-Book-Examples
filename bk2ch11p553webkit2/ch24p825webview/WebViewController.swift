@@ -18,7 +18,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         fatalError("NSCoding not supported")
     }
 
-    class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
         return self.init(nibName:nil, bundle:nil)
     }
     

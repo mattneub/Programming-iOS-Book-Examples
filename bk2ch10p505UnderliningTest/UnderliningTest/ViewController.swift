@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 //            ], range: NSMakeRange(4, mas.length-4))
     
         // showing that it is necessary to use freaking bitwise-or to form this bitmask still
-        let under = NSUnderlineStyle.styleThick.rawValue | NSUnderlineStyle.patternDash.rawValue
+        let under = NSUnderlineStyle.thick.rawValue | NSUnderlineStyle.patternDash.rawValue
         mas.addAttributes([
             .underlineStyle: under
             ], range: NSMakeRange(4, mas.length-4))

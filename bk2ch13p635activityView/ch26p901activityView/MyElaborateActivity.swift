@@ -20,12 +20,12 @@ class MyElaborateActivity : UIActivity {
         super.init()
     }
     
-    override class var activityCategory : UIActivityCategory {
+    override class var activityCategory : UIActivity.Category {
         return .action // the default
     }
     
-    override var activityType : UIActivityType? {
-        return UIActivityType("com.neuburg.matt.elaborateActivity")
+    override var activityType : UIActivity.ActivityType? {
+        return UIActivity.ActivityType("com.neuburg.matt.elaborateActivity")
     }
     
     override var activityTitle : String? {

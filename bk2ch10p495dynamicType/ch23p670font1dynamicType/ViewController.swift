@@ -14,7 +14,7 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         // just testing, pay no attention
-        NotificationCenter.default.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { _ in
             print(UIFont.preferredFont(forTextStyle: .headline))
             print(UIFont.buttonFontSize)
             print(UIFont.labelFontSize)

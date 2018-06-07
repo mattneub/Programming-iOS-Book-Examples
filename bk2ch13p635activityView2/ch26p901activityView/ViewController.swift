@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         let avc = UIActivityViewController(activityItems:[MyProvider(placeholderItem: "")], applicationActivities:nil)
 
         avc.completionWithItemsHandler = {
-            (type: UIActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
+            (type: UIActivity.ActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
             print("completed \(type as Any) \(ok) \(items as Any) \(err as Any)")
         }
         avc.excludedActivityTypes = [
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             .postToTencentWeibo,
             .airDrop,
             .openInIBooks,
-            UIActivityType("com.apple.mobilenotes.SharingExtension") // nope, can't exclude a sharing extension
+            UIActivity.ActivityType("com.apple.mobilenotes.SharingExtension") // nope, can't exclude a sharing extension
         ]
         // avc.excludedActivityTypes = nil
         self.present(avc, animated:true)
@@ -59,14 +59,14 @@ extension ViewController : UIActivityItemSource {
     }
     func activityViewController(
         _ activityViewController: UIActivityViewController,
-        itemForActivityType activityType: UIActivityType?)
+        itemForActivityType activityType: UIActivity.ActivityType?)
         -> Any? {
             print(activityType as Any)
             return "Coolness"
     }
     func activityViewController(
         _ activityViewController: UIActivityViewController,
-        subjectForActivityType activityType: UIActivityType?) -> String {
+        subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
             return "This is cool"
     }
 }

@@ -77,7 +77,7 @@ class ViewController : UIViewController {
             .foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
         )
         let r = (content.string as NSString).range(of:"Gettysburg Address")
-        let atts : [NSAttributedStringKey:Any] = [
+        let atts : [NSAttributedString.Key:Any] = [
             .strokeColor: UIColor.red,
             .strokeWidth: -2.0
         ]

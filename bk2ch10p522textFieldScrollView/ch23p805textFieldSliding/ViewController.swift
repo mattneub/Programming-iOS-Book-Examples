@@ -5,15 +5,15 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var scrollView : UIScrollView!
-    var oldContentInset = UIEdgeInsets.zero
-    var oldIndicatorInset = UIEdgeInsets.zero
+    var oldContentInset = UIEdgeInsets()
+    var oldIndicatorInset = UIEdgeInsets()
     var oldOffset = CGPoint.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // content view's width and height constraints in storyboard are placeholders
         let contentView = self.scrollView.subviews[0]
@@ -42,8 +42,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func keyboardState(for d:[AnyHashable:Any], in v:UIView?) -> (KeyboardState, CGRect?) {
-        var rold = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
-        var rnew = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        var rold = d[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+        var rnew = d[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         var ks : KeyboardState = .unknown
         var newRect : CGRect? = nil
         if let v = v {

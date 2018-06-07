@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         
         self.tv.attributedText = mas
         
-        self.tv.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 0)
+        self.tv.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 0)
         self.tv.isScrollEnabled = false
         
         do {
