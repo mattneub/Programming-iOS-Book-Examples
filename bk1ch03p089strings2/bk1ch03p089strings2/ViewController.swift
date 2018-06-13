@@ -18,6 +18,8 @@ class ViewController: UIViewController {
             let s = "hello"
             let range = s.range(of:"ell") // Optional(Range(1..<4))
             print(range as Any)
+            let s2 = s[range!]
+            print(s2)
         }
         
         do { // cast is not needed in Swift 4

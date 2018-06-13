@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     @IBAction func doButton(_ sender: Any) {
         
 //        UIView.animate(withDuration:1) {
-//            self.v.swing = !self.v.swing // "animatable" Bool property
+//            self.v.swing.toggle() // "animatable" Bool property
 //        }
 
         // can use a property animator here
         let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
-            self.v.swing = !self.v.swing
+            self.v.swing.toggle()
         }
         anim.startAnimation()
         return; // uncomment to test interruption

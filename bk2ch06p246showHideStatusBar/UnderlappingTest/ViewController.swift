@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func doButton(_ sender: Any) {
-        self.hide = !self.hide
+        self.hide.toggle()
         UIView.animate(withDuration:0.4) {
             self.setNeedsStatusBarAppearanceUpdate()
             self.view.layoutIfNeeded()

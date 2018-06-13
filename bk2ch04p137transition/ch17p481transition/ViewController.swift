@@ -52,7 +52,7 @@ class ViewController : UIViewController {
         
         do { // looks a little more compelling if we do a curl up transition
             let opts : UIView.AnimationOptions = .transitionCurlUp
-            self.v.reverse = !self.v.reverse
+            self.v.reverse.toggle()
             UIView.transition(with:self.v, duration: 1, options: opts,
                               animations: {
                                 self.v.setNeedsDisplay()

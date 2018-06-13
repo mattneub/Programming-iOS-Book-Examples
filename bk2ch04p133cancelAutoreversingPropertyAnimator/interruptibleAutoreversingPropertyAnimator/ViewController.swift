@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             self.anim.addCompletion { _ in
                 self.count -= 1
                 guard self.count > 0 else { return }
-                right = !right
+                right.toggle()
                 goOneWay()
             }
             self.anim.startAnimation()

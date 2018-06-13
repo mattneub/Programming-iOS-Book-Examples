@@ -18,6 +18,13 @@ class RootViewController : UITableViewController {
             // ... drawing goes here ...
         }
     }()
+    
+    // let cellBackgroundImage2 : UIImage = self.makeTheImage() // illegal
+    func makeTheImage() -> UIImage {
+        return imageOfSize(CGSize(width:320, height:44)) {
+            // ... drawing goes here ...
+        }
+    }
 }
 
 

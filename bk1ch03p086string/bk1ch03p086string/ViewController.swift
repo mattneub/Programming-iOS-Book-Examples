@@ -15,7 +15,7 @@ class ViewController: UIViewController {
             let s = """
             Line 1
                 Line 2
-            Line 3
+            Line 3\n
             """
             print(s)
             print(Array(s).filter{$0 == "\n"}.count)
@@ -131,6 +131,11 @@ class ViewController: UIViewController {
             for c in s {
                 print(c) // print each Character on its own line
             }
+        }
+        
+        do {
+            let c = "hello".last
+            _ = c
         }
 
 

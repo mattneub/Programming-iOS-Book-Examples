@@ -270,7 +270,7 @@ class ViewController: UIViewController {
                     anim.addCompletion { _ in
                         count -= 1
                         guard count > 0 else { return }
-                        right = !right
+                        right.toggle()
                         goOneWay()
                     }
                     anim.startAnimation()
