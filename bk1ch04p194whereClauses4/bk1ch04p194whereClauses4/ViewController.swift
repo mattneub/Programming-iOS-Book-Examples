@@ -20,6 +20,37 @@ extension Animal : Flier where Parent : Flier {
     // we can tell parent to fly because we implement fly only if parent is a Flier
 }
 
+// we could say this, without the extension, but that can hardly be called conditional
+struct Animal2<Parent> : Flier where Parent : Flier {
+    func fly() {
+    }
+    var parent : Parent
+}
+
+// the above is merely a reexpression of
+struct Animal3<Parent:Flier> : Flier {
+    func fly() {
+    }
+    var parent : Parent
+}
+
+// note that conditional conformance does not automatically bring in super-protocols
+
+protocol Bear {associatedtype T; func growl() }
+protocol Grizzly : Bear { func kill() }
+struct Thing<T> {}
+// if you comment out this first extension, compiler stops you
+// you must somehow say what you want done _explicitly_ for all superprotocols
+// you cannot adopt _just_ Grizzy conditionally
+extension Thing: Bear where T == String {
+    func growl() {
+    }
+}
+extension Thing : Grizzly where T == String {
+    func kill() {
+    }
+}
+
 struct Bird : Flier {
     func fly() {print("flap flap flap")}
 }

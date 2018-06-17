@@ -170,11 +170,11 @@ class ViewController: UIViewController {
         }
         
         do {
-            let sq = sqrt(2.0)
-            print(sq)
-            let n = 10
-            let i = Int(arc4random())%n
-            print(i)
+//            let sq = sqrt(2.0)
+//            print(sq)
+//            let n = 10
+//            let i = Int(arc4random())%n
+//            print(i)
             
             print(2.squareRoot()) // legal because Swift coerces to Double
             let two = 2

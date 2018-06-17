@@ -3,13 +3,25 @@
 import UIKit
 import UserNotifications
 
+struct Person : Hashable {
+    let firstName: String
+    let lastName: String
+}
+
+// suppose you don't want all members involved in equality / hashability
 struct Dog : Hashable {
     let name : String
     let license : Int
-    static func ==(lhs:Dog, rhs:Dog) -> Bool {
-        return lhs.name == rhs.name
+    let color : UIColor
+    // for equatable, write out == by hand
+    static func ==(lhs:Dog,rhs:Dog) -> Bool {
+        return lhs.name == rhs.name && lhs.license == rhs.license
     }
-    var hashValue: Int { return name.hashValue }
+    // for hashable, implement hash(into:)
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(license)
+    }
 }
 
 class ViewController: UIViewController {
@@ -52,12 +64,25 @@ class ViewController: UIViewController {
         }
         
         do {
+            let set : Set<Person> = [
+                Person(firstName: "Matt", lastName: "Neuburg"),
+                Person(firstName: "Groucho", lastName: "Marx")
+            ]
+            let ok = set.contains(Person(firstName: "Groucho", lastName: "Marx")) // true
+            print(ok)
+            let h = Person(firstName: "Matt", lastName: "Neuburg").hashValue
+            print(h)
+
+        }
+        
+        do {
             // showing the difference between insert and update
-            var set : Set = [Dog(name:"Fido", license:1)]
-            let d = Dog(name:"Fido", license:2)
-            set.insert(d) // [Dog(name: "Fido", license: 1)]
+            var set : Set = [Dog(name:"Fido", license:1, color: .green)]
+            let d = Dog(name:"Fido", license:1, color: .red)
+            set.insert(d) // green dog
+            print(set.count)
             print(set)
-            set.update(with:d) // [Dog(name: "Fido", license: 2)]
+            set.update(with:d) // red dog
             print(set)
         }
         
@@ -114,9 +139,7 @@ class ViewController: UIViewController {
         }
         var forbiddenNumbers = Set(recents!)
         let legalNumbers = Set(1...PIXCOUNT).subtracting(forbiddenNumbers)
-        let newNumber = Array(legalNumbers)[
-            Int(arc4random_uniform(UInt32(legalNumbers.count)))
-        ]
+        let newNumber = legalNumbers.randomElement()!
         forbiddenNumbers.insert(newNumber)
         ud.set(Array(forbiddenNumbers), forKey:RECENTS)
     }

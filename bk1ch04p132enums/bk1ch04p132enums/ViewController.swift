@@ -67,6 +67,11 @@ enum MyError2 {
     case fatal(n:Int, s:String)
 }
 
+enum MyError3 : Equatable {
+    case number(Int)
+    case message(String)
+    case fatal
+}
 
 
 class ViewController: UIViewController {
@@ -138,11 +143,16 @@ class ViewController: UIViewController {
             let ok2 = opt == Optional.none
             print(ok2)
             let err = MyError.fatal
-            // let ok = err == MyError.fatal
+            // let ok3 = err == MyError.fatal
             if case .fatal = err { // this is how you have to do it
                 print("yep, it's fatal")
             }
             _ = err
+            // but hold my beer and watch this!
+            let err2 = MyError3.fatal
+            let ok4 = err2 == MyError3.fatal // legal because we declared the thing Equatable
+            _ = ok4
+            
             
         }
     

@@ -20,7 +20,7 @@ class Dog : Quadruped {
     }
     func barkAt(cat:Kitten) {}
     func barkAt1(cat:Kitten) {}
-    //func barkAt2(cat:Cat) {}
+    func barkAt2a(cat:Cat) {}
     func barkAt2(cat:Cat) {}
     func barkAt3(cat:Kitten?) {}
 
@@ -38,7 +38,7 @@ class NoisyDog : Dog {
     }
     override func barkAt(cat:Cat) {}
     override func barkAt1(cat:Cat?) {}
-    //override func barkAt2(cat:Kitten) {}
+    // override func barkAt2a(cat:Kitten) {}
     override func barkAt2(cat:Cat?) {}
     override func barkAt3(cat:Cat?) {}
 }

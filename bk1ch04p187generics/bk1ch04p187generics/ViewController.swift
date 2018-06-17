@@ -15,16 +15,26 @@ struct Bird : Flier {
 protocol Flier2 {
     associatedtype Other
     func flockTogetherWith(_ f:Self.Other) // just showing that this is legal
-    func mateWith(f:Other)
+    func mateWith(_ f:Other)
 }
 struct Bird2 : Flier2 {
     func flockTogetherWith(_ f:Bird2) {}
-    func mateWith(f:Bird2) {}
+    func mateWith(_ f:Bird2) {}
 }
+/*
+struct Bird2Not : Flier2 { // does not conform
+    func flockTogetherWith(_ f: String) {}
+    func mateWith(_ f:Int) {}
+}
+ */
 
 func takeAndReturnSameThing<T> (_ t:T) -> T {
+    if T.self is String.Type {
+        print("hey, it's a string")
+    }
     return t
 }
+
 let thing = takeAndReturnSameThing("howdy")
 
 struct HolderOfTwoSameThings<T> {
@@ -114,10 +124,10 @@ let vd2 : Void = flockTwoTogether2(Bird3(), Bird3())
 // let vd4 : Void = flockTwoTogether2("hey", "ho")
 
 func myMin<T:Comparable>(_ things:T...) -> T {
-    var minimum = things[0]
-    for ix in 1..<things.count {
-        if things[ix] < minimum { // compile error if you remove Comparable constraint
-            minimum = things[ix]
+    var minimum = things.first!
+    for item in things.dropFirst() {
+        if item < minimum { // compile error if you remove Comparable constraint
+            minimum = item
         }
     }
     return minimum
@@ -174,6 +184,19 @@ class Cat {
 class CalicoCat : Cat {
 }
 
+protocol Meower3 {
+    func meow()
+}
+struct Wrapper3<T:Meower3> {
+    let meower : T
+}
+class Cat3 : Meower3 {
+    func meow() { print("meow") }
+}
+class CalicoCat3 : Cat3 {
+}
+
+
 protocol Walker {}
 struct Quadruped : Walker {}
 
@@ -207,7 +230,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let min = myMin(4,1,5,2)
+        print(thing)
+        
+        let min = myMin(1,8,5,2)
         print(min)
         
         do {
@@ -233,6 +258,11 @@ class ViewController: UIViewController {
             let w2 = Wrapper2(CalicoCat())
             // w = w2 // nope
             _ = (o, w, w2)
+        }
+        
+        do {
+            let w2 : Wrapper3<Cat3> = Wrapper3(meower:CalicoCat3())
+            
         }
         
         do {

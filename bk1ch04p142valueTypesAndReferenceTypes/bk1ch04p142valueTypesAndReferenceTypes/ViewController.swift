@@ -30,6 +30,11 @@ class Dog {
     var name : String = "Fido"
 }
 
+struct Cat {
+    var name : String = "Fluffy"
+}
+
+
 /*
 func digitChanger(d:Digit) {
     d.number = 42 // compile error: cannot assign to 'number' in 'd'
@@ -57,6 +62,10 @@ func digitChanger(_ d:Digit) {
 
 func dogChanger(_ d:Dog) {
     d.name = "Rover"
+}
+
+func catChanger(_ c: inout Cat) {
+    c.name = "Hairball" // legal
 }
 
 /*
@@ -140,6 +149,13 @@ class ViewController: UIViewController {
             dogChanger(fido)
             print(fido.name) // "Rover"
             
+        }
+        
+        do {
+            var c = Cat()
+            print(c.name) // "Fluffy"
+            catChanger(&c)
+            print(c.name) // "Hairball"
         }
         
         

@@ -122,7 +122,24 @@ class ViewController: UIViewController {
         
         _ = c2
 
-
+        do {
+            // showing what map and flatMap do
+            let i : Int? = nil
+            let result1 = i.map {_ in "hello"} // String?
+            let result2 = i.flatMap {_ in "hello"} // String?
+            let result3 = i.map {_ in Optional("hello") } // String??
+            let result4 = i.flatMap {_ in Optional("hello") } // String?
+        }
+        
+        do {
+            let s : String? = "howdy"
+            let s2 = s.map {$0.uppercased()}
+        }
+        
+        do {
+            let s : String? = "1"
+            let i = s.flatMap {Int($0)}
+        }
     
     }
     

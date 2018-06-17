@@ -115,6 +115,22 @@ class ViewController: UIViewController {
                 print(arr2)
             }
         }
+        
+        do {
+            let arr = ["Manny", "Moe", "Jack"]
+            let target = "Matt"
+            let pos = arr.index(of:target)
+            let s = pos != nil ? String(pos!) : "NOT FOUND"
+            _ = s
+        }
+
+        do {
+            let arr = ["Manny", "Moe", "Jack"]
+            let target = "Matt"
+            let s = arr.index(of:target).map {String($0)} ?? "NOT FOUND"
+            _ = s
+        }
+
 
         let i1 : Any = 1
         let i2 : Any = 2

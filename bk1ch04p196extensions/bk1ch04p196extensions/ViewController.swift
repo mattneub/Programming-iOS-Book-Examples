@@ -2,6 +2,8 @@
 
 import UIKit
 
+// no longer needed, they supplied a native shuffle method
+/*
 extension Array {
     mutating func shuffle () {
         for i in (0..<self.count).reversed() {
@@ -12,9 +14,10 @@ extension Array {
         }
     }
 }
+ */
 
 extension Array {
-    mutating func removeAtIndexes (ixs:[Int]) -> () {
+    mutating func remove (at ixs:Set<Int>) -> () {
         // for i in ixs.sorted().reversed() { // this might be clearer
         for i in ixs.sorted(by:>) { // required param label
             self.remove(at:i)
@@ -64,6 +67,11 @@ extension NSCoder {
 // okay, but the problem solved by the above can now be solved another way,
 // because we have key value types? need to check that
 
+func enumerated<T:Sequence>(_ seq:T) -> EnumeratedSequence<T> {
+    return seq.enumerated()
+}
+
+
 class Dog<T> {
     var name : T?
 }
@@ -77,10 +85,10 @@ extension Dog where T : Equatable {
 }
 
 func myMin<T:Comparable>(_ things:T...) -> T {
-    var minimum = things[0]
-    for ix in 1..<things.count {
-        if things[ix] < minimum { // compile error without Comparable
-            minimum = things[ix]
+    var minimum = things.first!
+    for item in things.dropFirst() {
+        if item < minimum {
+            minimum = item
         }
     }
     return minimum
@@ -88,11 +96,11 @@ func myMin<T:Comparable>(_ things:T...) -> T {
 
 
 extension Array where Element:Comparable {
-    func myMin() -> Element {
-        var minimum = self[0]
-        for ix in 1..<self.count {
-            if self[ix] < minimum {
-                minimum = self[ix]
+    func myMin() -> Element? {
+        var minimum = self.first
+        for item in self.dropFirst() {
+            if item < minimum! {
+                minimum = item
             }
         }
         return minimum
@@ -218,6 +226,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var arr = ["Manny", "Moe", "Jack"]
+        arr.remove(at: [0,2])
+        print(arr) // ["Moe"]
+        
+        // yes, you can do that with Foundation, but yecch
+        struct Person { let name: String }
+        var arr2 = [Person(name:"Manny"), Person(name:"Moe"), Person(name:"Jack")]
+        let marr2 = NSMutableArray(array: arr2)
+        marr2.removeObjects(at:IndexSet([0,2]))
+        arr2 = marr2 as! [Person]
+        print(arr2)
+        
+        let seq = [1,2,3]
+        for what in enumerated(seq) { print(what) }
         
         let t = CGAffineTransform(rotationAngle:2)
         print(t)

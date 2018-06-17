@@ -54,7 +54,9 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         self.dataLabel.text = asset.description
         // okay, this is why we are here! fetch the image data!!!!!
         // we have to say quite specifically what "view" of image we want
-        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(300,300), contentMode: .aspectFit, options: nil) { im, info in
+        let opts = PHImageRequestOptions()
+        opts.resizeMode = .exact
+        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(300,300), contentMode: .aspectFit, options: opts) { im, info in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging

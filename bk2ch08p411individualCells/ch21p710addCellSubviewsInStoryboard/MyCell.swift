@@ -7,5 +7,10 @@ import UIKit
 class MyCell : UITableViewCell {
     @IBOutlet var theLabel : UILabel!
     @IBOutlet var theImageView : UIImageView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        print("new cell")
+    }
 }
 
