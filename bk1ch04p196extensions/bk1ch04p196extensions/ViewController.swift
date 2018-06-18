@@ -64,9 +64,16 @@ extension NSCoder {
     }
 }
 
+// this, incredibly, is legal
+// won't break your storyboard buttons but you can no longer call `sendAction` manually
+public extension UIButton {
+    override open func sendActions(for controlEvents: UIControl.Event) {}
+}
+
 // okay, but the problem solved by the above can now be solved another way,
 // because we have key value types? need to check that
 
+// Swift 2 style
 func enumerated<T:Sequence>(_ seq:T) -> EnumeratedSequence<T> {
     return seq.enumerated()
 }
@@ -83,6 +90,31 @@ extension Dog {
 extension Dog where T : Equatable {
     
 }
+
+// looks like this syntax compiles only by a mistake; see https://stackoverflow.com/questions/50913244/swift-protocol-with-where-self-clause
+
+protocol P where Self : UIView {}
+// protocol PP where Self : String {} // no, has to be a protocol or string
+// protocol PPP where Self == String {} // no, has to be colon I think
+protocol PPPP where Self : Sequence {} // okay! so it can be protocol, even a generic protocol
+
+// a few more tests of this syntax:
+// protocol PPPPP where Self : UIView {} // illegal in simple Swift 3, but legal in Swift 3.3
+protocol PPPPPP {}
+extension PPPPPP where Self : UIView {} // legal in Swift 3!
+
+// however, the problem with that syntax is: how would you use it?
+// I guess the idea is that you're going to write an extension with a where clause
+// and you want to ensure that the protocol isn't accidentally adopted elsewhere
+
+// extension Dog : P {} // illegal
+extension UITableView : P {} // ok
+let x = [P]() // ok, proving that P is not generic
+
+protocol FlierZZZ {
+    func flockTogetherWith(_ f:Self)
+}
+// let xxx = [FlierZZZ]() // error, FlierZZZ _is_ generic
 
 func myMin<T:Comparable>(_ things:T...) -> T {
     var minimum = things.first!
@@ -220,12 +252,17 @@ public enum Color : Int {
 
 
 class ViewController: UIViewController {
+    @IBOutlet var button : UIButton!
     
+    @IBAction func doButton(_ sender: Any) {
+        print("button")
+    }
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.button.sendActions(for: .touchUpInside)
         
         var arr = ["Manny", "Moe", "Jack"]
         arr.remove(at: [0,2])
