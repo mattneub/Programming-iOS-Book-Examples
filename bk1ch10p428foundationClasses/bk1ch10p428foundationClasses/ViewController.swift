@@ -62,6 +62,13 @@ class ViewController: UIViewController {
                 print("it wasn't found")
             }
         }
+        
+        do {
+            let s = "Hello"
+            let r = (s as NSString).range(of: "ell")
+            let mas = NSMutableAttributedString(string:s)
+            mas.addAttributes([.foregroundColor:UIColor.red], range: r)
+        }
 
         do {
             let s = "hello"
@@ -83,7 +90,7 @@ class ViewController: UIViewController {
         do {
             let s = "MyFile"
             let s2 = (s as NSString).appendingPathExtension("txt")
-            // let s3 = s.stringByAppendingPathExtension("txt") // compile error
+            // let s3 = s.appendingPathExtension("txt") // compile error
 
             print(s2 as Any)
         }
@@ -116,7 +123,7 @@ class ViewController: UIViewController {
         
         do {
             let greg = Calendar(identifier:.gregorian)
-            let comp = DateComponents(calendar: greg, year: 2017, month: 8, day: 10, hour: 15)
+            let comp = DateComponents(calendar: greg, year: 2018, month: 8, day: 10, hour: 15)
             let d = comp.date // Optional wrapping Date
             if let d = d {
                 print(d)
@@ -138,9 +145,9 @@ class ViewController: UIViewController {
         do {
             let greg = Calendar(identifier:.gregorian)
             let d1 = DateComponents(calendar: greg,
-                                    year: 2017, month: 1, day: 1, hour: 0).date!
+                                    year: 2018, month: 1, day: 1, hour: 0).date!
             let d2 = DateComponents(calendar: greg,
-                                    year: 2017, month: 8, day: 10, hour: 15).date!
+                                    year: 2018, month: 8, day: 10, hour: 15).date!
             let di = DateInterval(start: d1, end: d2)
             if di.contains(Date()) { // are we currently between those two dates?
                 print("yep")
@@ -150,7 +157,7 @@ class ViewController: UIViewController {
         do {
             let df = DateFormatter()
             df.dateFormat = "M/d/y"
-            let s = df.string(from: Date()) // 7/31/2017
+            let s = df.string(from: Date()) // 7/31/2018
             print(s)
         }
         
@@ -166,8 +173,9 @@ class ViewController: UIViewController {
         
         do {
             let df = DateFormatter()
+            df.locale = Locale(identifier: "en_US_POSIX")
             df.dateFormat = "M/d/y"
-            let d = df.date(from: "31/7/2017")
+            let d = df.date(from: "31/7/2018")
             print(d as Any)
         }
 
