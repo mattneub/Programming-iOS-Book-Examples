@@ -6,8 +6,13 @@ let which = 1 // 1 or 2
 
 // right way to define a notification name
 
-extension Notification.Name {
-    static let cardTapped = Notification.Name("cardTapped")
+
+class Card {
+    static let tappedNotification = Notification.Name("cardTapped")
+    func singleTap(_: Any) {
+        NotificationCenter.default
+            .post(name: Card.tappedNotification, object: self)
+    }
 }
 
 class ViewController: UIViewController {
@@ -17,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.singleTap(self)
+        Card().singleTap(self)
         
         let mp = MPMusicPlayerController.systemMusicPlayer
         mp.beginGeneratingPlaybackNotifications()
@@ -72,10 +77,6 @@ class ViewController: UIViewController {
         mp.endGeneratingPlaybackNotifications()
     }
     
-    func singleTap(_: Any) {
-        NotificationCenter.default
-            .post(name: .cardTapped, object: self)
-    }
 
 
 

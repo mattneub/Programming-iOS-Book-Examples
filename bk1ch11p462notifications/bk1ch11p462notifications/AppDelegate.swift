@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         NotificationCenter.default.addObserver(self,
             selector: #selector(cardTapped),
-            name: .cardTapped,
+            name: Card.tappedNotification,
             object: nil)
         
         return true
