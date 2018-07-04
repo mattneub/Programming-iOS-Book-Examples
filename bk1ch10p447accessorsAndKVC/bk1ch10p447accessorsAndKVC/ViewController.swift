@@ -137,6 +137,11 @@ class ViewController: UIViewController {
         // let arr2 = myObject.value(forKeyPath:#keyPath(MyClass.theData.name))
         let arr3 = myObject.value(forKeyPath:#keyPath(MyClass.theDogs.name))
         print(arr3 as Any)
+        
+        do {
+            let arr = myObject.theData.map {$0["name"]!}
+            print(arr)
+        }
 
         do {
             let arr = myObject.value(forKey:"pepBoys")!

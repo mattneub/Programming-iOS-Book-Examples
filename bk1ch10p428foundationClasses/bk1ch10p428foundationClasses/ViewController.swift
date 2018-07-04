@@ -7,6 +7,21 @@ class Dog : NSObject {
     init(_ name:String) {self.name = name}
 }
 
+class Dog2 : NSObject { // a dog equatable and hashable on its name
+    var name : String
+    init(_ name:String) {self.name = name}
+    override func isEqual(_ object: Any?) -> Bool {
+        if let otherdog = object as? Dog2 {
+            return otherdog.name == self.name
+        }
+        return false
+    }
+    override var hash: Int {
+        return self.name.hash
+    }
+}
+
+
 
 class ViewController: UIViewController {
     
@@ -302,6 +317,26 @@ class ViewController: UIViewController {
         }
         
         do {
+            let d1 = Dog2("Fido")
+            let d2 = Dog2("Fido")
+            let ok = d1 == d2 // true
+            print(ok)
+        }
+        
+        do {
+            var set1 = Set<Dog>()
+            set1.insert(Dog("Fido"))
+            set1.insert(Dog("Fido"))
+            print(set1.count) // 2, because name equality is not being used
+            
+            var set2 = Set<Dog2>()
+            set2.insert(Dog2("Fido"))
+            set2.insert(Dog2("Fido"))
+            print(set2.count) // 1, with name equality/hashability
+            
+        }
+        
+        do {
             let arr = ["zero", "one", "two", "three", "four", "five",
                        "six", "seven", "eight", "nine", "ten"]
             var ixs = IndexSet()
@@ -353,7 +388,13 @@ class ViewController: UIViewController {
             // does not magically add "1" twice just because its count is 2
         }
         
-        
+        do {
+            let s = "howdy"
+            UserDefaults.standard.set(s, forKey:"ha")
+            let any = UserDefaults.standard.object(forKey:"ha")
+            print(type(of:any!))
+
+        }
         
     }
 
