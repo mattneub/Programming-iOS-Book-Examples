@@ -8,12 +8,15 @@ let which = 1 // 1 or 2
 
 
 class Card {
-    static let tappedNotification = Notification.Name("cardTapped")
     func singleTap(_: Any) {
         NotificationCenter.default
             .post(name: Card.tappedNotification, object: self)
     }
 }
+extension Card {
+    static let tappedNotification = Notification.Name("cardTapped")
+}
+
 
 class ViewController: UIViewController {
     
