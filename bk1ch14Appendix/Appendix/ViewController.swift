@@ -280,17 +280,17 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             
             self.view.autoresizingMask = .flexibleWidth
             self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            
+            // self.view.autoresizingMask = .none
         }
         
         do {
             let lastCharRange = 0
             
             let property = self.lm.propertyForGlyph(at:lastCharRange)
-            let mask1 = property.rawValue
-            let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
-            let ok = mask1 & mask2 != 0 // can't say .contains here
-            // let ok2 = property.contains(.controlCharacter)
+//            let mask1 = property.rawValue
+//            let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
+//            let ok = mask1 & mask2 != 0 // can't say .contains here
+            let ok2 = property.contains(.controlCharacter) // they fixed it!
         }
         
         do {
@@ -596,8 +596,7 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto sampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let prev = previewPhotoSampleBuffer {
-            if let buff = prev.imageBuffer {
-                
+            if let buff = CMSampleBufferGetImageBuffer(prev) {
                 // buff is a CVImageBuffer
                 if let baseAddress = CVPixelBufferGetBaseAddress(buff) {
                     // baseAddress is an UnsafeMutableRawPointer
@@ -606,9 +605,8 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
                     let addr = addrptr.pointee // now we have a UInt8
                     _ = addr
                 }
-
-                
             }
+                
         }
     }
 }

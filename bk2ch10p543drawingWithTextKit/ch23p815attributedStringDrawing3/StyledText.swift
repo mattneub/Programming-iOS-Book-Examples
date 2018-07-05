@@ -106,11 +106,7 @@ class StyledText: UIView {
         func lastCharIsControl () -> Bool {
             let lastCharRange = glyphRange.location + glyphRange.length - 1
             let property = self.lm.propertyForGlyph(at:lastCharRange)
-            // let ok = property.contains[.ControlCharacter]
-            // incredible kerfuffle needed because this is not an Option Set
-            let mask1 = property.rawValue
-            let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
-            return mask1 & mask2 != 0
+            return property.contains(.controlCharacter)
         }
         while lastCharIsControl() {
             glyphRange.length -= 1
