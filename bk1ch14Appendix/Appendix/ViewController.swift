@@ -443,6 +443,14 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         }
         
         do {
+            let b = UIButton()
+            b.addTarget(self, action: Selector("doNewGame:"), for: .touchUpInside)
+            b.addTarget(self, action: "doNewGame:", for: .touchUpInside)
+            b.addTarget(self, action: #selector(doNewGame), for: .touchUpInside)
+
+        }
+        
+        do {
             let sel = #selector(doButton)
             print(sel)
             let sel2 = #selector(makeHash as ([String]) -> ())
@@ -590,6 +598,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         print(#selector(self.say(of:loudly:)))
     }
 
+    @objc func doNewGame(_ sender:Any) {}
 
 }
 
