@@ -19,8 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray*) pepBoysBad;
 
 - (void) combineWithThing: (Thing*) otherThing;
-// generated interface is: public func combine(with otherThing: Thing)
+// generated interface is: open func combine(with otherThing: Thing)
 // thus showing that we get renamification on our own methods
+
+- (void) triumphOverThing: (Thing*) otherThing NS_SWIFT_NAME(triumph(over:));
+// would be open func triumphOverThing(_ otherThing: Thing)
+// we've made it open func triumph(over otherThing: Thing)
 
 - (void) take1Bool: (BOOL) yn;
 - (void) take1Number: (NSNumber*) n;

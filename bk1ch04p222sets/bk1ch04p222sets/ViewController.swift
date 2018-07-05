@@ -151,7 +151,7 @@ class MyTableViewCell : UITableViewCell {
     override func didTransition(to state: UITableViewCell.StateMask) {
         let editing = UITableViewCell.StateMask.showingEditControl.rawValue
         if state.rawValue & editing != 0 {
-            // ... the ShowingEditControlMask bit is set ...
+            // ... the ShowingEditControl bit is set ...
         }
     }
 }
@@ -159,7 +159,7 @@ class MyTableViewCell : UITableViewCell {
 class MyTableViewCell2 : UITableViewCell {
     override func didTransition(to state: UITableViewCell.StateMask) {
         if state.contains(.showingEditControl) {
-            // ... the ShowingEditControlMask bit is set ...
+            // ... the ShowingEditControl bit is set ...
         }
     }
 }

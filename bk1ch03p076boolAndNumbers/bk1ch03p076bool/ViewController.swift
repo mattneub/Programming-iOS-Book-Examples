@@ -234,8 +234,8 @@ extension ViewController {
 class MyTableViewCell : UITableViewCell {
     // how to test a bit in a bitmask
     override func didTransition(to state: UITableViewCell.StateMask) {
-        if state.contains(.showingEditControlMask) {
-            // ... the ShowingEditControlMask bit is set ...
+        if state.contains(.showingEditControl) {
+            // ... the ShowingEditControl bit is set ...
         }
     }
 

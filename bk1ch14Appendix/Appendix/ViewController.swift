@@ -214,7 +214,8 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             // t.take1id(MyClass()) // crash!
             // the crash is not because a MyClass can't cross the bridge...
             // but because my Objective-C code is attempting to look in the box by logging
-            t.take1id2(MyClass()) // solves the problem; we can call `class` on this thing at least
+            t.take1id(MyClass()) // they fixed the crash after I filed a bug
+            // t.take1id2(MyClass()) // solves the problem; we can call `class` on this thing at least
             t.take1id(MyClass2()) // objc
         }
         
@@ -560,6 +561,8 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
 
 
     var myclass = MyClass() // Objective-C can't see this
+    func myFunc(_ m:MyClass) {} // Objective-C can't see this
+    // trying to mark either of those @objc will fail
     func testTimer() {
         self.myclass.startTimer()
     }

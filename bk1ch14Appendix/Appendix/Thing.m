@@ -35,6 +35,11 @@ void setState (State s) {
     
 }
 
+- (void) triumphOverThing: (Thing*) otherThing {
+
+}
+
+
 - (void) take1Bool: (BOOL) yn {
     NSLog(@"%d", yn);
 }
