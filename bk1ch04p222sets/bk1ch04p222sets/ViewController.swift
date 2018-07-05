@@ -19,8 +19,8 @@ struct Dog : Hashable {
     }
     // for hashable, implement hash(into:)
     func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
-        hasher.combine(license)
+        name.hash(into:&hasher)
+        license.hash(into:&hasher)
     }
 }
 
@@ -149,7 +149,7 @@ class ViewController: UIViewController {
 
 class MyTableViewCell : UITableViewCell {
     override func didTransition(to state: UITableViewCell.StateMask) {
-        let editing = UITableViewCell.StateMask.showingEditControlMask.rawValue
+        let editing = UITableViewCell.StateMask.showingEditControl.rawValue
         if state.rawValue & editing != 0 {
             // ... the ShowingEditControlMask bit is set ...
         }
@@ -158,7 +158,7 @@ class MyTableViewCell : UITableViewCell {
 
 class MyTableViewCell2 : UITableViewCell {
     override func didTransition(to state: UITableViewCell.StateMask) {
-        if state.contains(.showingEditControlMask) {
+        if state.contains(.showingEditControl) {
             // ... the ShowingEditControlMask bit is set ...
         }
     }
