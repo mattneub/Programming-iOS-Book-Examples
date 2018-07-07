@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
         let b = UIButton()
         b.setTitle("hey", for: .normal)
-        print(b.title(for:.normal)) // nil
+        print(b.title(for:.normal) as Any) // nil
     }
 }
 

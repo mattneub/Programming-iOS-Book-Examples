@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         out: do {
             // ...
             print("starting")
-            let somethingBadHappened = true
+            var somethingBadHappened : Bool { return true }
             if somethingBadHappened {
                 break out
             }
