@@ -92,6 +92,16 @@ extension NSLayoutConstraint {
     }
 }
 
+// extension NSLayoutConstraint.Priority {}
+
+extension UILayoutPriority {
+    static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
+        let raw = lhs.rawValue + rhs
+        return UILayoutPriority(rawValue:raw)
+    }
+}
+
+
 func lend<T> (_ closure: (T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
