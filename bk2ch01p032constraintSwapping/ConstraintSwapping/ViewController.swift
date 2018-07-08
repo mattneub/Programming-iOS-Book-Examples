@@ -2,6 +2,18 @@
 
 import UIKit
 
+// let's use this as an opportunity to explore when updateConstraints is called
+class LoggingView : UIView {
+    override func updateConstraints() {
+        print("update constraints", self.backgroundColor as Any)
+        super.updateConstraints()
+    }
+    override func layoutSubviews() {
+        print("layout subviews", self.backgroundColor as Any)
+        super.layoutSubviews()
+    }
+}
+
 class ViewController: UIViewController {
     var v2 : UIView!
     var constraintsWith = [NSLayoutConstraint]()
@@ -15,13 +27,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let v1 = UIView()
+        let v1 = LoggingView()
         v1.backgroundColor = .red
         v1.translatesAutoresizingMaskIntoConstraints = false
-        let v2 = UIView()
+        let v2 = LoggingView()
         v2.backgroundColor = .yellow
         v2.translatesAutoresizingMaskIntoConstraints = false
-        let v3 = UIView()
+        let v3 = LoggingView()
         v3.backgroundColor = .blue
         v3.translatesAutoresizingMaskIntoConstraints = false
         
@@ -67,9 +79,14 @@ class ViewController: UIViewController {
             print(c.firstAnchor)
         }
         
+        print("finished viewDidLoad")
+        
     }
 
     @IBAction func doSwap(_ sender: Any) {
+        print("swapping")
+        // does NOT cause `updateConstraints`
+        // so it is not a signal that constraints need recalculation???
         if self.v2.superview != nil {
             self.v2.removeFromSuperview()
             NSLayoutConstraint.deactivate(self.constraintsWith)
@@ -82,5 +99,11 @@ class ViewController: UIViewController {
 
         }
     }
+    /*
+    override func updateViewConstraints() {
+        print("view controller update view contraints")
+        super.updateViewConstraints()
+    }
+ */
 }
 
