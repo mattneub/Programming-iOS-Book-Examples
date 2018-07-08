@@ -40,26 +40,26 @@ class ViewController: UIViewController {
         let c5with = NSLayoutConstraint.constraints(withVisualFormat:"V:[v1]-(20)-[v2(20)]-(20)-[v3(20)]", metrics: nil, views: ["v1":v1, "v2":v2, "v3":v3])
         let c5without = NSLayoutConstraint.constraints(withVisualFormat:"V:[v1]-(20)-[v3(20)]", metrics: nil, views: ["v1":v1, "v3":v3])
         
-        // first set of constraints
+        // apply common constraints
+        
+        NSLayoutConstraint.activate([c1, c3, c4].flatMap{$0})
+        
+        // first set of constraints (for when v2 is present)
 
-        self.constraintsWith.append(contentsOf:c1)
         self.constraintsWith.append(contentsOf:c2)
-        self.constraintsWith.append(contentsOf:c3)
-        self.constraintsWith.append(contentsOf:c4)
         self.constraintsWith.append(contentsOf:c5with)
         
-        // second set of constraints
+        // second set of constraints (for when v2 is absent)
         
-        self.constraintsWithout.append(contentsOf:c1)
-        self.constraintsWithout.append(contentsOf:c3)
-        self.constraintsWithout.append(contentsOf:c4)
         self.constraintsWithout.append(contentsOf:c5without)
+        
 
         // apply first set
 
         NSLayoutConstraint.activate(self.constraintsWith)
         
 
+        
         // ignore, just testing new iOS 10 read-only properties
         do {
             let c = self.constraintsWith[0]
