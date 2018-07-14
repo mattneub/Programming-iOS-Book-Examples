@@ -22,13 +22,16 @@ class MyView : UIView {
     
     override init (frame:CGRect) {
         super.init(frame:frame)
-        self.isOpaque = false
         self.backgroundColor = .red
         // clearRect will cause a black square
         self.backgroundColor = self.backgroundColor!.withAlphaComponent(1)
         // but uncomment the next line: clearRect will cause a clear square!
         // self.backgroundColor = self.backgroundColor!.withAlphaComponent(0.99)
         
+        // also try uncommenting this next line with value true or false;
+        // doing this after setting the background color gives you the last word
+        // self.layer.isOpaque = false
+
         print("Layer opaque: \(self.layer.isOpaque)")
     }
     

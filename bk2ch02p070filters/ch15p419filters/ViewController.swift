@@ -37,7 +37,7 @@ class ViewController : UIViewController {
                 "inputMaskImage":gradimage
             ])
         
-        // two ways to obtain final bitmap; third way, claimed to work, does not
+        // ways to obtain final bitmap
         
         var which : Int { return 1 }
         
@@ -52,14 +52,12 @@ class ViewController : UIViewController {
                 UIImage(ciImage: blendimage).draw(in:moiextent)
             }
         case 3:
-            self.iv.image = UIImage(ciImage: blendimage, scale: 1, orientation: .up) // nope
-            delay(0.1) {
-                self.iv.setNeedsDisplay() // nope
-                self.iv.layer.displayIfNeeded() // nope
-            }
+            // aha: works only on device
+            self.iv.image = UIImage(ciImage: blendimage, scale: 1, orientation: .up)
         default: break
         }
         
+        // you can also render thru a metal view, shown in a different example
     }
     
     
