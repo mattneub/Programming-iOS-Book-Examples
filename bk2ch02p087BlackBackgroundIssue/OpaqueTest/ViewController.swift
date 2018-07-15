@@ -23,23 +23,15 @@ extension CGVector {
     }
 }
 
-// uncomment 1 and 3, with 2 commented out
-// the view turns black
-// but other combinations do not!
-// so only certain types of drawing do this in iOS 12
 
 class MyView : UIView {
     override func draw(_ rect: CGRect) {
         let con = UIGraphicsGetCurrentContext()!
-        con.setFillColor(UIColor.white.cgColor)
-        // con.setFillColor(UIColor.red.cgColor)
-        con.fill(CGRect(0,0,50,50))
+        con.setFillColor(UIColor.blue.cgColor)
+        con.fill(CGRect(0,0,0,0))
+        // run the project again with this next line commented out
         con.setFillColor(UIColor.red.cgColor)
-        con.move(to:CGPoint(0, 0))
-        con.addLine(to:CGPoint(20, 0))
-        con.addLine(to:CGPoint(0, 20))
-        con.fillPath()
-
+        con.fill(CGRect(0,0,0,0))
     }
 }
 
@@ -49,6 +41,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let v = MyView(frame:CGRect(30,30,100,100))
+        v.layer.borderWidth = 1
         self.view.addSubview(v)
     }
 

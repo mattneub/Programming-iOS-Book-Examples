@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 11
+    let which = 1
 
     @IBAction func doButton(_ sender: Any?) {
         let c = self.compassView.layer as! CompassLayer
@@ -15,6 +15,7 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             // proving that cornerRadius is _not_ implicitly animatable
+            CATransaction.setAnimationDuration(2)
             c.masksToBounds = true
             c.cornerRadius = 50
 
