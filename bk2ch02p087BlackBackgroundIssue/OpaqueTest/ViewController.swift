@@ -29,7 +29,7 @@ class MyView : UIView {
         let con = UIGraphicsGetCurrentContext()!
         con.setFillColor(UIColor.blue.cgColor)
         con.fill(CGRect(0,0,0,0))
-        // run the project again with this next line commented out
+        // but the context is transparent if we comment out the next line
         con.setFillColor(UIColor.red.cgColor)
         con.fill(CGRect(0,0,0,0))
     }
