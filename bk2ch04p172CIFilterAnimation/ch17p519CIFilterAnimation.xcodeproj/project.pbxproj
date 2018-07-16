@@ -95,6 +95,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C94DC26F17BADB1A002DC560 = {
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 1000;
 					};
 				};
@@ -227,6 +228,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch17p519CIFilterAnimation/ch17p519CIFilterAnimation-Prefix.pch";
 				INFOPLIST_FILE = "ch17p519CIFilterAnimation/ch17p519CIFilterAnimation-Info.plist";
@@ -245,6 +247,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch17p519CIFilterAnimation/ch17p519CIFilterAnimation-Prefix.pch";
 				INFOPLIST_FILE = "ch17p519CIFilterAnimation/ch17p519CIFilterAnimation-Info.plist";

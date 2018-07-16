@@ -96,8 +96,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             print(p)
             // look for the dynamic item behavior
             let b = self.childBehaviors
-            if let ix = b.index(where:{$0 is UIDynamicItemBehavior}) {
-                let bounce = b[ix] as! UIDynamicItemBehavior
+            if let bounce = (b.compactMap {$0 as? UIDynamicItemBehavior}).first {
                 let v = bounce.angularVelocity(for:item)
                 print(v)
                 if v <= 6 {

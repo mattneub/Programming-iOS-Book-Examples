@@ -55,6 +55,7 @@ extension UIDynamicAnimator {
     // but a collision behavior has fallen into the array, so we crash if we say that
     // in fact, we can't even fetch items(in:) as a Swift array at all
     func views(in rect: CGRect) -> [UIView] {
+        // return self.items(in:rect) as! [UIView]
         let nsitems = self.items(in: rect) as NSArray
         return nsitems.compactMap {$0 as? UIView}
     }
@@ -191,8 +192,7 @@ extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegat
             print(p)
             // look for the dynamic item behavior
             let b = self.anim.behaviors
-        if let ix = b.index(where:{$0 is UIDynamicItemBehavior}) {
-                let bounce = b[ix] as! UIDynamicItemBehavior
+            if let bounce = (b.compactMap {$0 as? UIDynamicItemBehavior}).first {
                 let v = bounce.angularVelocity(for:item)
                 print(v)
                 if v <= 6 {
