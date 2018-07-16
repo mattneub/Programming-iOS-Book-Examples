@@ -58,7 +58,7 @@ class CircleView: UIView, UIPreviewInteractionDelegate {
     private var anim : UIViewPropertyAnimator!
     override init(frame:CGRect) {
         super.init(frame:frame)
-        self.isOpaque = false
+        self.isOpaque = false // in iOS 12, not needed?
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
