@@ -40,27 +40,42 @@ class ViewController: UIViewController {
         self.greenView.backgroundColor = .green
         self.view.addSubview(self.greenView)
     }
+    var changingSize = false
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print("changing size")
+        self.changingSize = true
+    }
     override func viewWillLayoutSubviews() {
-        func greenViewShouldAppear() -> Bool {
-            let tc = self.traitCollection
-            let sz = self.view.bounds.size
-            if tc.horizontalSizeClass == .regular {
-                if sz.width > sz.height {
-                    return true
+        print("layout")
+        if self.changingSize || self.greenView.bounds == .zero {
+            print("doing layout")
+            self.changingSize = false
+            func greenViewShouldAppear() -> Bool {
+                let tc = self.traitCollection
+                let sz = self.view.bounds.size
+                if tc.horizontalSizeClass == .regular {
+                    if sz.width > sz.height {
+                        return true
+                    }
                 }
+                return false
             }
-            return false
-        }
-        if greenViewShouldAppear() {
-            self.greenView.frame = CGRect(
-                0, 0, self.view.bounds.width/3.0, self.view.bounds.height
-            )
-        } else {
-            self.greenView.frame = CGRect(
-                -self.view.bounds.width/3.0, 0, self.view.bounds.width/3.0, self.view.bounds.height
-            )
+            if greenViewShouldAppear() {
+                self.greenView.frame = CGRect(
+                    0, 0,
+                    self.view.bounds.width/3.0, self.view.bounds.height
+                )
+            } else {
+                self.greenView.frame = CGRect(
+                    -self.view.bounds.width/3.0, 0,
+                    self.view.bounds.width/3.0, self.view.bounds.height
+                )
+            }
         }
     }
-
+    @IBAction func doButton(_ sender: Any) {
+        self.view.setNeedsLayout()
+    }
+    
 }
 
