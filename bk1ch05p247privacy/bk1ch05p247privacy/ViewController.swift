@@ -52,9 +52,8 @@ class ViewController: UIViewController {
         debugPrint(d2)
         debugPrint("\(d2)")
         
-        let d3 = Dog3()
-        print(d3) // breakpoint this line and `po d3` to see our custom property names
-
+        dump(Dog3())
+        
         // just making sure the initializer visibility bug is fixed
         let _ = Cat()
         let _ = Cat2()
