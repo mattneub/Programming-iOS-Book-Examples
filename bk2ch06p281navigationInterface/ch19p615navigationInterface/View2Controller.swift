@@ -60,6 +60,20 @@ class View2Controller : UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            print("we are being popped")
+        }
+    }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent:parent) // crucial or you'll break `isMovingFromParent`
+        if parent == nil {
+            print("we are being popped")
+        }
+    }
+    
     // with a back button, we get "pop" for free, both by tapping the button...
     // and interactively by dragging from the left edge
     
