@@ -3,7 +3,8 @@
 import UIKit
 
 class Pep: UIViewController {
-    
+    static let tap = Notification.Name("tap")
+
     let boy : String
     @IBOutlet var name : UILabel!
     @IBOutlet var pic : UIImageView!
@@ -28,7 +29,7 @@ class Pep: UIViewController {
     }
     
     @IBAction func tap (_ sender: UIGestureRecognizer?) {
-        NotificationCenter.default.post(name:.tap, object: sender)
+        NotificationCenter.default.post(name:Pep.tap, object: sender)
     }
 
 

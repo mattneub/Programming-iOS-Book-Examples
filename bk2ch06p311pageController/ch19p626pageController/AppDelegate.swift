@@ -1,10 +1,6 @@
 
 import UIKit
 
-extension Notification.Name {
-    static let tap = Notification.Name("tap")
-}
-
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
@@ -81,7 +77,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
             }
         }
         else { // not needed for .pageCurl
-            NotificationCenter.default.addObserver(forName:.tap, object: nil, queue: .main) { n in
+            NotificationCenter.default.addObserver(forName:Pep.tap, object: nil, queue: .main) { n in
                 let g = n.object as! UIGestureRecognizer
                 let which = g.view!.tag
                 let vc0 = pvc.viewControllers![0]
