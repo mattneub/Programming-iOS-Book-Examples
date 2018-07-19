@@ -123,10 +123,26 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(memoryNotification), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
+    }
+    
+    @objc func memoryNotification(_ n:Notification) {
+        print("did receive memory notification")
     }
     
     @objc func backgrounding(_ n:Notification) {
-        self.saveAndReleaseMyBigData()
+        print("got did enter background notification")
+        DispatchQueue.global().async {
+            var ident = UIBackgroundTaskIdentifier.invalid
+            print("starting background task")
+            ident = UIApplication.shared.beginBackgroundTask {
+                print("ending background task prematurely")
+                UIApplication.shared.endBackgroundTask(ident)
+            }
+            self.saveAndReleaseMyBigData()
+            print("ending background task")
+            UIApplication.shared.endBackgroundTask(ident)
+        }
     }
     
 }
