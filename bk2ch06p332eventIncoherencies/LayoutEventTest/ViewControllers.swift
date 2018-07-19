@@ -3,10 +3,12 @@
 import UIKit
 
 class Base : UIViewController {
-    override func willMove(toParent parent: UIViewController!) {
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent:parent)
         print("\(self) \(#function) \(String(describing: parent))")
     }
-    override func didMove(toParent parent: UIViewController!) {
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent:parent)
         print("\(self) \(#function) \(String(describing: parent))")
     }
     override func viewWillAppear(_ animated: Bool) {

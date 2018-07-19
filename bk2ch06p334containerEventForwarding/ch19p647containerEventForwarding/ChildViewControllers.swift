@@ -12,11 +12,13 @@ class ChildViewController2 : Base {
 }
 
 class Base : UIViewController {
-    override func willMove(toParent parent: UIViewController!) {
+    override func willMove(toParent parent: UIViewController?) {
         print("\(type(of:self)) \(#function) \(String(describing: parent))")
+        super.willMove(toParent:parent)
     }
-    override func didMove(toParent parent: UIViewController!) {
+    override func didMove(toParent parent: UIViewController?) {
         print("\(type(of:self)) \(#function) \(String(describing: parent))")
+        super.didMove(toParent:parent)
     }
     override func viewWillAppear(_ animated: Bool) {
         print("\(type(of:self)) \(#function)")
