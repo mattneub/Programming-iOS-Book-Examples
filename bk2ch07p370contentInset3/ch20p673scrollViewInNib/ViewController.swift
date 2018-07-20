@@ -19,4 +19,7 @@ class ViewController : UIViewController {
     // iOS 10 way:
     // no code for content inset - automaticallyAdjustsScrollViewInsets takes care of it
 
+    // 11 iOS way:
+    // no need for automaticallyAdjustsScrollViewInsets;
+    // it can be off, bounces vertically takes care of it (in storyboard)
 }

@@ -67,11 +67,14 @@ class ViewController : UIViewController {
         }
 
         
-        // this shows how we had to do this before iOS 11; we now get all this "for free"
-        // note that initial contentOffset must be adjusted to compensate for contentInset
         if #available(iOS 11.0, *) {
+            print(sv.contentInsetAdjustmentBehavior.rawValue) // .automatic
             // sv.contentInsetAdjustmentBehavior = .always
+            // to show what _would_ have happened:
+            // sv.contentInsetAdjustmentBehavior = .never
         } else {
+            // this shows how we had to do this before iOS 11; we now get all this "for free"
+            // note that initial contentOffset must be adjusted to compensate for contentInset
             sv.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
             sv.scrollIndicatorInsets = sv.contentInset
             // sv.contentOffset = CGPoint(x:0, y:-20)
