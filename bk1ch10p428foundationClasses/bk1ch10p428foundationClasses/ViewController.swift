@@ -277,10 +277,19 @@ class ViewController: UIViewController {
         do {
             let ud = UserDefaults.standard
             let c = UIColor.blue
-            let cdata = NSKeyedArchiver.archivedData(withRootObject:c)
+            let cdata = try! NSKeyedArchiver.archivedData(withRootObject: c, requiringSecureCoding: true)
             ud.set(cdata, forKey: "myColor")
         }
         
+        do {
+            let ud = UserDefaults.standard
+            if let cdata = ud.object(forKey: "myColor") as? Data {
+                let c = try! NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: cdata)
+                // c is an Optional wrapping a UIColor
+                print(c)
+            }
+        }
+                
         do {
             let m1 = Measurement(value:5, unit: UnitLength.miles)
             let m2 = Measurement(value:6, unit: UnitLength.kilometers)

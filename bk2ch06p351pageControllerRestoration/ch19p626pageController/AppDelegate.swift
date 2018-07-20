@@ -52,10 +52,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didDecodeRestorableStateWith coder: NSCoder) {
-        let boyMaybe = coder.decodeObject(forKey:"boy")
-        guard let boy = boyMaybe as? String else {return}
+        guard let boy = coder.decodeObject(of:NSString.self, forKey:"boy") else {return}
         let pvc = self.window!.rootViewController as! UIPageViewController
-        let pep = Pep(pepBoy: boy)
+        let pep = Pep(pepBoy: boy as String)
         pvc.setViewControllers([pep], direction: .forward, animated: false)
     }
 }

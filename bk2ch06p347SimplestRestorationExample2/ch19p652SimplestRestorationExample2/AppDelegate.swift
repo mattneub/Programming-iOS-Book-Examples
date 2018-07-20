@@ -26,8 +26,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         print("app should restore \(coder)")
         // how to examine the coder
+        print("coder secure?", coder.requiresSecureCoding)
+        // no! well, that's not my fault, now is it??? I didn't make this coder
         let key = UIApplication.stateRestorationUserInterfaceIdiomKey
-        if let idiomraw = coder.decodeObject(forKey: key) as? Int {
+        if let idiomraw = coder.decodeObject(of:NSNumber.self, forKey: key) as? Int {
             if let idiom = UIUserInterfaceIdiom(rawValue:idiomraw) {
                 if idiom == .phone {
                     print("phone")
