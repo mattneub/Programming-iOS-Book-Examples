@@ -226,6 +226,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         let con = CNMutableContact()
         con.givenName = "Dudley"
         con.familyName = "Doright"
+        // con.imageData = UIImage(named:"snidely")!.pngData() // works
         let npvc = CNContactViewController(forNewContact: con)
         npvc.delegate = self
         self.present(UINavigationController(rootViewController: npvc), animated:true)
@@ -236,6 +237,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         con.givenName = "Johnny"
         con.familyName = "Appleseed"
         con.phoneNumbers.append(CNLabeledValue(label: "woods", value: CNPhoneNumber(stringValue: "555-123-4567")))
+        // con.imageData = UIImage(named:"snidely")!.pngData() // works
         let unkvc = CNContactViewController(forUnknownContact: con)
         unkvc.message = "He knows his trees"
         unkvc.contactStore = CNContactStore()
