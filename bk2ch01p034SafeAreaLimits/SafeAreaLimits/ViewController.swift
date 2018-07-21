@@ -4,6 +4,14 @@ import UIKit
 // showing the extremely strange behavior of a view pinned to its superview's safe area
 // (when that superview is not the main view and might move)
 
+class SafeAreaReportingView : UIView {
+    override func safeAreaInsetsDidChange() {
+        // I was hoping this would be reported throughout the animation
+        // but it isn't, so pointless
+        // print("safe area of", self.backgroundColor!, self.safeAreaInsets.top)
+    }
+}
+
 class ViewController: UIViewController {
     @IBOutlet weak var yellowView: UIView!
     @IBOutlet weak var greenView: UIView!
