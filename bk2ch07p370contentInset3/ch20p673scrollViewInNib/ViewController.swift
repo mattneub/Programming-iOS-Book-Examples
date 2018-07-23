@@ -31,5 +31,5 @@ class ViewController : UIViewController {
 
     // 11 iOS way:
     // no need for automaticallyAdjustsScrollViewInsets;
-    // it can be off, bounces vertically takes care of it (in storyboard)
+    // it can be off, alwaysBounceVertical takes care of it (in storyboard)
 }

@@ -49,7 +49,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         let src = SearchResultsController() // will configure later
         let searcher = MySearchController(searchResultsController: src)
         self.searcher = searcher
-        searcher.delegate = self
+        self.searcher.delegate = self
         searcher.searchResultsUpdater = src
         // put the search controller's search bar into the interface
         let b = searcher.searchBar
@@ -57,8 +57,10 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // I'm forced to give up on this example in iOS 11
         // the search bar appears messed up in the search interface
         // however, I demonstrate use of scope button titles in nav bar later
-//        b.scopeButtonTitles = ["Starts", "Contains"]
-//        b.showsScopeBar = false // prevent showing in the table
+        // oooh, news flash, this example works again (starting iOS 11.3?)
+        // so for iOS 12 book the example is back
+        b.scopeButtonTitles = ["Starts", "Contains"]
+        // b.showsScopeBar = false // prevent showing in the table, but not needed
         b.sizeToFit()
         b.delegate = src
         self.tableView.tableHeaderView = b

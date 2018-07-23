@@ -66,6 +66,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // (not used in this example; just showing the interface)
         // WARNING: do NOT call showsScopeBar! it messes things up!
         // (buttons will show during search if there are titles)
+        // bug fixed! some time after iOS 11.0, maybe iOS 11.3? anyway it's okay now
         b.autocapitalizationType = .none
         self.tableView.tableHeaderView = b
         self.tableView.reloadData()

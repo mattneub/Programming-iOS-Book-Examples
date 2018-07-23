@@ -40,7 +40,8 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 150
+        // self.tableView.estimatedRowHeight = 150
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension // new in iOS 11
         self.tableView.allowsSelection = false
         self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
     }

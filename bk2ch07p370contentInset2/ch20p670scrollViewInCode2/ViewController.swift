@@ -86,14 +86,14 @@ class ViewController : UIViewController {
     
     override func viewDidLayoutSubviews() {
         if let sv = self.sv {
-
+            print("did layout!")
 //            let safe = self.view.safeAreaInsets
 //            sv.contentInset = UIEdgeInsetsMake(safe.top, 0, safe.bottom, 0)
 //            sv.scrollIndicatorInsets = self.sv.contentInset
             print("content inset", sv.contentInset)
             print("adjusted content inset", sv.adjustedContentInset)
             print("indicator insets", sv.scrollIndicatorInsets)
-            print("offset", sv.contentOffset)
+            print("content offset", sv.contentOffset)
             print("nav bar height", self.navigationController?.navigationBar.bounds.height as Any)
         }
     }
@@ -105,6 +105,10 @@ extension ViewController : UIScrollViewDelegate {
         print("did scroll, offset", sv.contentOffset)
     }
     func scrollViewDidChangeAdjustedContentInset(_ sv: UIScrollView) {
-        print("did change inset!", sv.adjustedContentInset)
+        print("did change inset!")
+        print("content inset", sv.contentInset)
+        print("adjusted content inset", sv.adjustedContentInset)
+        print("indicator insets", sv.scrollIndicatorInsets)
+        print("content offset", sv.contentOffset)
     }
 }

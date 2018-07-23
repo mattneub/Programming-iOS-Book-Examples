@@ -83,16 +83,23 @@ class RootViewController : UITableViewController {
         // but it isn't; you have to give it an absolute height or you won't see it
         // only reason for using UITableViewHeaderFooterView is content view obeys the safe area?
         
-        let sz = hv.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        hv.bounds.size.height = sz.height // this is what I should NOT have to do
+        var which : Int { return 1 }
+        switch which {
+        case 1:
+            let sz = hv.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+            hv.bounds.size.height = sz.height // this is what I should NOT have to do
+        case 2:
+            // failed experiment
+            hv.bounds.size.height = UITableView.automaticDimension
+        case 3:
+            // failed experiment
+            let c = hv.contentView.heightAnchor.constraint(equalToConstant:200)
+            // c.priority = UILayoutPriority(rawValue:100)
+            c.isActive = true
+        default:break
+        }
         
-        // failed experiment
-//        hv.bounds.size.height = UITableViewAutomaticDimension
         
-        // failed experiment
-//        let c = hv.heightAnchor.constraint(equalToConstant:200)
-//        c.priority = UILayoutPriority(rawValue:100)
-//        c.isActive = true
         
         self.tableView.tableHeaderView = hv
         

@@ -7,7 +7,7 @@ class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
     
-    weak var searchBar : UISearchBar! // up to creator to set this, we need access
+    weak var searchBar : UISearchBar!
     
     init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
@@ -68,21 +68,23 @@ and reload the table.
 */
 
 extension SearchResultsController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print("update search results")
+        self.view.isHidden = false // *
+        self.searchBar = searchController.searchBar
+        self.doUpdate()
+    }
     func doUpdate() {
         let target = self.searchBar.text!
         self.filteredData = self.originalData.filter { s in
             var options = String.CompareOptions.caseInsensitive
-            if self.seg.selectedSegmentIndex == 1 {
+            if self.seg.selectedSegmentIndex == 1 { // 1 means "starts with"
                 options.insert(.anchored)
             }
             let found = s.range(of:target, options: options)
             return (found != nil)
         }
         self.tableView.reloadData()
-    }
-    func updateSearchResults(for searchController: UISearchController) {
-        self.view.isHidden = false // *
-        self.doUpdate()
     }
     @objc func scopeChanged(_ sender : UISegmentedControl) {
         self.doUpdate()
