@@ -97,7 +97,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // cripes, now we don't crash, but the layout is wrong! can these guys never get this implemented???
         // also tried doing this by overriding sizeThatFits in the cell, but with the same wrong layout
         // also tried doing it by overriding preferredAttributes in the cell, same wrong layout
-        // flow.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -171,25 +171,6 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 check2.draw(at:CGPoint(2,0))
             }
 
-//            UIGraphicsBeginImageContextWithOptions(cell.bounds.size, false, 0)
-//            let con = UIGraphicsGetCurrentContext()!
-//            let shadow = NSShadow()
-//            shadow.shadowColor = UIColor.darkGray()
-//            shadow.shadowOffset = CGSize(2,2)
-//            shadow.shadowBlurRadius = 4
-//            let check2 =
-//            AttributedString(string:"\u{2714}", attributes:[
-//                .font: UIFont(name:"ZapfDingbatsITC", size:24)!,
-//                .foregroundColor: UIColor.green(),
-//                .strokeColor: UIColor.red(),
-//                .strokeWidth: -4,
-//                .shadow: shadow
-//                ])
-//            con.scale(x:1.1, y:1)
-//            check2.draw(at:CGPoint(2,0))
-//            let im = UIGraphicsGetImageFromCurrentImageContext()!
-//            UIGraphicsEndImageContext()
-            
             let iv = UIImageView(image:nil, highlightedImage:im)
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
@@ -216,15 +197,14 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
 //    /*
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // note; this approach didn't work on iOS 8...
-        // ...until I introduced the "container" view
-        // systemLayoutSize works on the container view but not on the cell itself in iOS 8
-        // (perhaps because the nib lacks a contentView)
-        // Oooh, fixed (6.1)!
-        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
-        //the "container" workaround is no longer needed
-        //var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        var sz = self.modelCell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+         self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
+        // nope
+        // return UICollectionViewFlowLayout.automaticSize
+
+        // NB this is what I was getting wrong all these years
+        // you have to size the _contentView_
+        // (no more container view trickery)
+        var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         return sz
     }

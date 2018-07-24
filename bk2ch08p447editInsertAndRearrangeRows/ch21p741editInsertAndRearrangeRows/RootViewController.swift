@@ -73,9 +73,6 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         // some cell's text field has finished editing; which cell?
         var v : UIView = textField
         repeat { v = v.superview! } while !(v is UITableViewCell)
-        // another way to say:
-//        var v : UIView
-//        for v = textField; !(v is UITableViewCell); v = v.superview! {}
         let cell = v as! MyCell
         // update data model to match
         let ip = self.tableView.indexPath(for:cell)!
