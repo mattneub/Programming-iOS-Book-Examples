@@ -268,35 +268,10 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         })
     }
     
-    // menu =================
-    
-    // exactly as for table views
-    
-    @nonobjc private let capital = #selector(Cell.capital)
-    @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)
-    
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        let mi = UIMenuItem(title:"Capital", action:capital)
-        UIMenuController.shared.menuItems = [mi]
-        return false // uncomment to do dragging; you can't have both menus and dragging
-        // (because they both use the long press gesture, I presume)
-        return true
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return (action == copy) || (action == capital)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        // in real life, would do something here
-        let state = self.sections[indexPath.section].itemData[indexPath.row]
-        if action == copy {
-            print ("copying \(state)")
-        }
-        else if action == capital {
-            print ("fetching the capital of \(state)")
-        }
-    }
+    // menus moved to next example
+    // you can't have both menus and dragging
+    // (because they both use the long press gesture, I presume)
+
     
     // dragging ===============
     

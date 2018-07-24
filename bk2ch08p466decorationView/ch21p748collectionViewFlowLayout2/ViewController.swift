@@ -34,13 +34,13 @@ extension CGVector {
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    struct Row {
+    struct Item {
         var name : String
         var size : CGSize
     }
     struct Section {
         var sectionName : String
-        var rowData : [Row]
+        var itemData : [Item]
     }
     var sections : [Section]!
 
@@ -63,9 +63,9 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let d2 = d.mapValues{$0.map {Row(name:$0, size:.zero)}}
+        let d2 = d.mapValues{$0.map {Item(name:$0, size:.zero)}}
         self.sections = Array(d2).sorted{$0.key < $1.key}.map {
-            Section(sectionName: $0.key, rowData: $0.value)
+            Section(sectionName: $0.key, itemData: $0.value)
         }
 
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
@@ -108,7 +108,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sections[section].rowData.count
+        return self.sections[section].itemData.count
     }
     
     // headers
@@ -197,7 +197,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
+        cell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -213,12 +213,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let memosize = self.sections[indexPath.section].rowData[indexPath.row].size
+        let memosize = self.sections[indexPath.section].itemData[indexPath.row].size
         if memosize != .zero {
             return memosize
         }
         
-        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
+        self.modelCell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
         // nope
         // return UICollectionViewFlowLayout.automaticSize
         // NB this is what I was getting wrong all these years
@@ -226,7 +226,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // (no more container view trickery)
         var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
-        self.sections[indexPath.section].rowData[indexPath.row].size = sz // memoize
+        self.sections[indexPath.section].itemData[indexPath.row].size = sz // memoize
         return sz
     }
 
@@ -261,8 +261,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // delete data
         var empties : Set<Int> = [] // keep track of what sections get emptied
         for ip in arr.reversed() {
-            self.sections[ip.section].rowData.remove(at:ip.item)
-            if self.sections[ip.section].rowData.count == 0 {
+            self.sections[ip.section].itemData.remove(at:ip.item)
+            if self.sections[ip.section].itemData.count == 0 {
                 empties.insert(ip.section)
             }
         }
@@ -276,6 +276,33 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         })
     }
     
+    // menu =================
+    
+    // exactly as for table views
+    
+    @nonobjc private let capital = #selector(Cell.capital)
+    @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        let mi = UIMenuItem(title:"Capital", action:capital)
+        UIMenuController.shared.menuItems = [mi]
+        return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        return (action == copy) || (action == capital)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        // in real life, would do something here
+        let state = self.sections[indexPath.section].itemData[indexPath.row]
+        if action == copy {
+            print ("copying \(state)")
+        }
+        else if action == capital {
+            print ("fetching the capital of \(state)")
+        }
+    }
 
     
 
