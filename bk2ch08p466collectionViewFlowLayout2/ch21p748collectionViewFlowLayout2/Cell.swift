@@ -4,7 +4,6 @@ import UIKit
 
 class Cell : UICollectionViewCell {
     @IBOutlet var lab : UILabel!
-    @IBOutlet var container : UIView!
     
     @objc func capital(_ sender: Any!) {
         // find my collection view

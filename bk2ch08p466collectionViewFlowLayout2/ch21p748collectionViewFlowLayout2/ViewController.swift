@@ -34,9 +34,13 @@ extension CGVector {
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    struct Row {
+        var name : String
+        var size : CGSize
+    }
     struct Section {
         var sectionName : String
-        var rowData : [String]
+        var rowData : [Row]
     }
     var sections : [Section]!
 
@@ -59,7 +63,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+        let d2 = d.mapValues{$0.map {Row(name:$0, size:.zero)}}
+        self.sections = Array(d2).sorted{$0.key < $1.key}.map {
             Section(sectionName: $0.key, rowData: $0.value)
         }
 
@@ -97,7 +102,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // cripes, now we don't crash, but the layout is wrong! can these guys never get this implemented???
         // also tried doing this by overriding sizeThatFits in the cell, but with the same wrong layout
         // also tried doing it by overriding preferredAttributes in the cell, same wrong layout
-        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        // just uncommenting this line causes solo cells to be centered! insane
+        // flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -175,7 +181,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
+        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -197,15 +203,21 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
 //    /*
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
+        
+        let memosize = self.sections[indexPath.section].rowData[indexPath.row].size
+        if memosize != .zero {
+            return memosize
+        }
+        
+        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
         // nope
         // return UICollectionViewFlowLayout.automaticSize
-
         // NB this is what I was getting wrong all these years
         // you have to size the _contentView_
         // (no more container view trickery)
         var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
+        self.sections[indexPath.section].rowData[indexPath.row].size = sz // memoize
         return sz
     }
 // */
@@ -296,18 +308,18 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         return true
     }
     
+    
     override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
-        // rearrange model
-        if source.section == dest.section { // exclusive access
-            self.sections[source.section].rowData.swapAt(source.item, dest.item)
-        } else {
-            swap(
-                &self.sections[source.section].rowData[source.item],
-                &self.sections[dest.section].rowData[dest.item]
-            )
+        if source.section == dest.section {
+            // rearrange model
+            func move<T>(_ arr:inout Array<T>, from:Int, to:Int) {
+                let el = arr.remove(at: from)
+                arr.insert(el, at: to)
+            }
+            move(&self.sections[source.section].rowData, from:source.item, to:dest.item)
+            // update interface
+            cv.reloadSections(IndexSet(integer:source.section))
         }
-        // reload
-        cv.reloadSections(IndexSet(integer:source.section))
     }
     
     // modify using delegate methods

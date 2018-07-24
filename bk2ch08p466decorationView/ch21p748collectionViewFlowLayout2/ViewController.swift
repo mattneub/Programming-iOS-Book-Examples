@@ -34,9 +34,13 @@ extension CGVector {
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    struct Row {
+        var name : String
+        var size : CGSize
+    }
     struct Section {
         var sectionName : String
-        var rowData : [String]
+        var rowData : [Row]
     }
     var sections : [Section]!
 
@@ -59,7 +63,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+        let d2 = d.mapValues{$0.map {Row(name:$0, size:.zero)}}
+        self.sections = Array(d2).sorted{$0.key < $1.key}.map {
             Section(sectionName: $0.key, rowData: $0.value)
         }
 
@@ -192,7 +197,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
+        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -206,28 +211,25 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         return cell
     }
     
-    // what's the minimum size each cell can be? its constraints will figure it out for us!
-    
-    // NB According to Apple, in iOS 8 I should be able to eliminate this code;
-    // simply turning on estimatedItemSize should do it for me (sizing according to constraints)
-    // but I have not been able to get that feature to work
-    
-//    /*
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // note; this approach didn't work on iOS 8...
-        // ...until I introduced the "container" view
-        // systemLayoutSize works on the container view but not on the cell itself in iOS 8
-        // (perhaps because the nib lacks a contentView)
-        // Oooh, fixed (6.1)!
-        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
-        //the "container" workaround is no longer needed
-        //var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        var sz = self.modelCell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        
+        let memosize = self.sections[indexPath.section].rowData[indexPath.row].size
+        if memosize != .zero {
+            return memosize
+        }
+        
+        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
+        // nope
+        // return UICollectionViewFlowLayout.automaticSize
+        // NB this is what I was getting wrong all these years
+        // you have to size the _contentView_
+        // (no more container view trickery)
+        var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
+        self.sections[indexPath.section].rowData[indexPath.row].size = sz // memoize
         return sz
     }
-// */
- 
+
     
     // selection: nothing to do!
     // we get automatic highlighting of whatever can be highlighted (i.e. our UILabel)
@@ -274,69 +276,6 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         })
     }
     
-    // menu =================
-    
-    // exactly as for table views
-    
-    @nonobjc private let capital = #selector(Cell.capital)
-    @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)
-    
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        let mi = UIMenuItem(title:"Capital", action:capital)
-        UIMenuController.shared.menuItems = [mi]
-        // return false // uncomment to do dragging; you can't have both menus and dragging
-        // (because they both use the long press gesture, I presume)
-        return true
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return (action == copy) || (action == capital)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        // in real life, would do something here
-        let state = self.sections[indexPath.section].rowData[indexPath.row]
-        if action == copy {
-            print ("copying \(state)")
-        }
-        else if action == capital {
-            print ("fetching the capital of \(state)")
-        }
-    }
-    
-    // dragging ===============
-    
-    // on by default; data source merely has to permit
-    
-    // -------- interactive moving, data source methods
-    
-    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
-        // rearrange model
-        if source.section == dest.section { // exclusive access
-            self.sections[source.section].rowData.swapAt(source.item, dest.item)
-        } else {
-            swap(
-                &self.sections[source.section].rowData[source.item],
-                &self.sections[dest.section].rowData[dest.item]
-            )
-        }
-        // reload
-        cv.reloadSections(IndexSet(integer:source.section))
-    }
-    
-    // modify using delegate methods
-    // here, prevent moving outside your own section
-    
-    override func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt orig: IndexPath, toProposedIndexPath prop: IndexPath) -> IndexPath {
-        if orig.section != prop.section {
-            return orig
-        }
-        return prop
-    }
 
     
 
