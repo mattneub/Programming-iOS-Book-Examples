@@ -34,13 +34,13 @@ extension CGVector {
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    struct Row {
+    struct Item {
         var name : String
         var size : CGSize
     }
     struct Section {
         var sectionName : String
-        var rowData : [Row]
+        var itemData : [Item]
     }
     var sections : [Section]!
 
@@ -63,9 +63,9 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let d2 = d.mapValues{$0.map {Row(name:$0, size:.zero)}}
+        let d2 = d.mapValues{$0.map {Item(name:$0, size:.zero)}}
         self.sections = Array(d2).sorted{$0.key < $1.key}.map {
-            Section(sectionName: $0.key, rowData: $0.value)
+            Section(sectionName: $0.key, itemData: $0.value)
         }
 
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
@@ -111,7 +111,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sections[section].rowData.count
+        return self.sections[section].itemData.count
     }
     
     // headers
@@ -181,7 +181,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
+        cell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -204,12 +204,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
 //    /*
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let memosize = self.sections[indexPath.section].rowData[indexPath.row].size
+        let memosize = self.sections[indexPath.section].itemData[indexPath.row].size
         if memosize != .zero {
             return memosize
         }
         
-        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row].name
+        self.modelCell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
         // nope
         // return UICollectionViewFlowLayout.automaticSize
         // NB this is what I was getting wrong all these years
@@ -217,7 +217,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // (no more container view trickery)
         var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
-        self.sections[indexPath.section].rowData[indexPath.row].size = sz // memoize
+        self.sections[indexPath.section].itemData[indexPath.row].size = sz // memoize
         return sz
     }
 // */
@@ -253,8 +253,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // delete data
         var empties : Set<Int> = [] // keep track of what sections get emptied
         for ip in arr.reversed() {
-            self.sections[ip.section].rowData.remove(at:ip.item)
-            if self.sections[ip.section].rowData.count == 0 {
+            self.sections[ip.section].itemData.remove(at:ip.item)
+            if self.sections[ip.section].itemData.count == 0 {
                 empties.insert(ip.section)
             }
         }
@@ -289,7 +289,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         // in real life, would do something here
-        let state = self.sections[indexPath.section].rowData[indexPath.row]
+        let state = self.sections[indexPath.section].itemData[indexPath.row]
         if action == copy {
             print ("copying \(state)")
         }
@@ -304,30 +304,49 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // -------- interactive moving, data source methods
     
+    var origSections : [Section]!
     override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        print("move is starting")
+        self.origSections = self.sections
         return true
     }
     
-    
     override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
+        print("move")
         if source.section == dest.section {
+            // restore sizes
+            self.sections = self.origSections
             // rearrange model
             func move<T>(_ arr:inout Array<T>, from:Int, to:Int) {
                 let el = arr.remove(at: from)
                 arr.insert(el, at: to)
             }
-            move(&self.sections[source.section].rowData, from:source.item, to:dest.item)
-            // update interface
-            cv.reloadSections(IndexSet(integer:source.section))
+            move(&self.sections[source.section].itemData, from:source.item, to:dest.item)
+            // update interface - wait, no need any longer!!!!
+            // cv.reloadSections(IndexSet(integer:source.section))
         }
     }
     
     // modify using delegate methods
     // here, prevent moving outside your own section
     
+    
+    // wait - orig and prop are always the same as each other! what sense does that make????
+    // no, not _always_! have to watch for that case
     override func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt orig: IndexPath, toProposedIndexPath prop: IndexPath) -> IndexPath {
+        print("from", orig, "target", prop)
         if orig.section != prop.section {
             return orig
+        }
+        if orig.item == prop.item {
+            return prop
+        }
+        // they are different, we're crossing a boundary - shift size values!
+        var sizes = self.sections[orig.section].itemData.map{$0.size}
+        let size = sizes.remove(at: orig.item)
+        sizes.insert(size, at:prop.item)
+        for (ix,size) in sizes.enumerated() {
+            self.sections[orig.section].itemData[ix].size = size
         }
         return prop
     }
