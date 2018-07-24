@@ -91,8 +91,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
-        let s = self.numbers[fromIndexPath.row]
-        self.numbers.remove(at:fromIndexPath.row)
+        let s = self.numbers.remove(at:fromIndexPath.row)
         self.numbers.insert(s, at:toIndexPath.row)
         tableView.reloadData() // to get plus and minus buttons to redraw themselves
     }
@@ -151,6 +150,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
             if #available(iOS 11.0, *) {
                 tv.performBatchUpdates({
                     tv.deleteRows(at:[ip], with:.automatic)
+                    // if we omit reload, we get weird constraints errors
                     tv.reloadSections(IndexSet(integer:1), with:.automatic)
                 })
             } else {
