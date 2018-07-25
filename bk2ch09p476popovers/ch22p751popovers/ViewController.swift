@@ -50,6 +50,7 @@ class ViewController : UIViewController {
             pop.delegate = self
             // just playing with appearance; try it with and without
             pop.backgroundColor = .yellow // visible as arrow color
+            // pop.passthroughViews = nil
         }
         nav.navigationBar.barTintColor = .red // works in iOS 8
         //nav.navigationBar.backgroundColor = .red
