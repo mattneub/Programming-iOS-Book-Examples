@@ -52,7 +52,19 @@ class MasterNavigationViewController : UINavigationController {
         return ok
     }
 
+    override func separateSecondaryViewController(for splitViewController: UISplitViewController) -> UIViewController? {
+        let result = super.separateSecondaryViewController(for: splitViewController)
+        print("master NAV", self, "got separate, returning", result as Any)
+        return result
+    }
 
 
+}
 
+class DetailNavigationController : UINavigationController {
+    // this is most just so we have a way of distinguishing this nav controller
+    // but also add logging to show we are never actually release
+    deinit {
+        print("farewell from detail navigation controller")
+    }
 }
