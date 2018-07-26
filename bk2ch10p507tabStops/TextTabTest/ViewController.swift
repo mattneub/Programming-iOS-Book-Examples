@@ -110,7 +110,7 @@ class ViewController : UIViewController {
         self.tv.linkTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange]
         self.tv.linkTextAttributes = [:]
         
-//        print(NSAttachmentCharacter)
+//        print(NSTextAttachment.character)
 //        print(0xFFFC)
         
         self.tv.isSelectable = true
