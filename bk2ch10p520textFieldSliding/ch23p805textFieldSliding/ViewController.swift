@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
         self.fr = nil // * let's reverse these
         tf.resignFirstResponder()
-        return true
+        return false
     }
     
     override var shouldAutorotate : Bool {

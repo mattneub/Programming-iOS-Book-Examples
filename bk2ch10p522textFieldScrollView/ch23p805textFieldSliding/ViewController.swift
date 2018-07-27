@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
         print("return")
         tf.resignFirstResponder()
-        return true
+        return false
     }
     
     enum KeyboardState {

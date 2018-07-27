@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
         self.currentField = nil
         tf.resignFirstResponder()
-        return true
+        return false
     }
     
     @objc func doNextButton(_ sender: Any) {
