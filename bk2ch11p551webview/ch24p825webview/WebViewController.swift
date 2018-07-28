@@ -83,7 +83,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         wv.scrollView.addGestureRecognizer(swipe)
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
+        let act = UIActivityIndicatorView(style:.whiteLarge)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)

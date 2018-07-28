@@ -121,7 +121,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         // part two: obtain PHContentEditingOutput...
         // and apply editing to actual full size image
         
-        let act = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let act = UIActivityIndicatorView(style: .whiteLarge)
         act.backgroundColor = .darkGray
         act.layer.cornerRadius = 3
         act.center = self.view.center

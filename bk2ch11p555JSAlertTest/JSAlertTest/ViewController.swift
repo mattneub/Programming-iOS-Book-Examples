@@ -10,6 +10,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.wv.allowsLinkPreview = true // just in case the storyboard isn't doing it
+        
         self.wv.uiDelegate = self
         
         let s = """
@@ -54,12 +57,14 @@ extension ViewController : WKUIDelegate {
     
     func webView(_ webView: WKWebView, previewingViewControllerForElement elementInfo: WKPreviewElementInfo, defaultActions previewActions: [WKPreviewActionItem]) -> UIViewController? {
         if let url = elementInfo.linkURL {
+            print("peeking")
             let sf = SFSafariViewController(url: url)
             return sf
         }
         return nil
     }
     func webView(_ webView: WKWebView, commitPreviewingViewController pvc: UIViewController) {
+        print("popping")
         self.present(pvc, animated:true)
     }
 }

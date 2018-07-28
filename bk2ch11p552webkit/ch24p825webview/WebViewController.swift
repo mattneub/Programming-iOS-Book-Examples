@@ -159,7 +159,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         wv.allowsBackForwardNavigationGestures = false
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
+        let act = UIActivityIndicatorView(style:.whiteLarge)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)
@@ -207,6 +207,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("view did appear, req: \(self.wv.url as Any)")
+        delay(2) {
+            print("wv scroll view delegate", self.wv.scrollView.delegate as Any)
+        }
 
         if !self.isMovingToParent {
             return // so we don't do this again when a presented view controller is dismissed

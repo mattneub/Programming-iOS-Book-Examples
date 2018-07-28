@@ -31,7 +31,7 @@ class MyTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         if selected {
-            let v = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
+            let v = UIActivityIndicatorView(style:.whiteLarge)
             v.color = .yellow
             DispatchQueue.main.async {
                 v.backgroundColor = UIColor(white:0.2, alpha:0.6)

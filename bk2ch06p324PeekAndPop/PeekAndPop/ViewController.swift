@@ -45,11 +45,12 @@ extension ViewController : UIViewControllerPreviewingDelegate {
         let title = button.title(for: .normal)!
         let pep = Pep(pepBoy: title)
         ctx.sourceRect = button.convert(button.bounds, to:sv)
-        print("returning", pep)
+        print("previewing context returning", pep)
         return pep
     }
     func previewingContext(_ ctx: UIViewControllerPreviewing, commit vc: UIViewController) {
         if let pep = vc as? Pep {
+            print("committing", pep)
             self.transitionContainerTo(pep)
         }
     }

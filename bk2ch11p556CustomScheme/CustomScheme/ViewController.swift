@@ -62,14 +62,30 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // this feature works only if you make the configuration _before_ making the web view
+        
         let config = WKWebViewConfiguration()
         let sh = SchemeHandler()
         sh.sch = self.sch
-        config.setURLSchemeHandler(sh, forURLScheme: self.sch)
+
+        // this feature works only if you complete the configuration _before_ making the web view
+        var before : Bool { return true } // demonstrate that fact
+        
+        switch before {
+        case true:
+            config.setURLSchemeHandler(sh, forURLScheme: self.sch)
+        default:break
+        }
+        
         let wv = WKWebView(frame: CGRect(30,30,200,300), configuration: config)
         self.view.addSubview(wv)
         self.wv = wv
+        
+        switch before {
+        case false:
+            self.wv?.configuration.setURLSchemeHandler(sh, forURLScheme: self.sch)
+            // doesn't work
+        default:break
+        }
 
         let s = """
         <!DOCTYPE html><html><head>
