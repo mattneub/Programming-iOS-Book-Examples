@@ -4,22 +4,21 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textFields : [UITextField]!
     var currentField: UITextField!
-    var accessoryView : UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // configure accessory view
-        let arr = UINib(nibName:"AccessoryView", bundle:nil).instantiate(withOwner:nil)
-        self.accessoryView = (arr[0] as! UIView) // silence warning with parens
-        let b = self.accessoryView.subviews[0] as! UIButton
-        b.addTarget(self, action:#selector(doNextButton), for:.touchUpInside)
-        let b2 = self.accessoryView.subviews[1] as! UIButton
-        b2.addTarget(self, action:#selector(doDone), for:.touchUpInside)
     }
 
     func textFieldDidBeginEditing(_ tf: UITextField) {
         self.currentField = tf // keep track of first responder
-        tf.inputAccessoryView = self.accessoryView
+        let arr = UINib(nibName:"AccessoryView", bundle:nil).instantiate(withOwner:nil)
+        let accessoryView = arr[0] as! UIView
+        let b = accessoryView.subviews[0] as! UIButton
+        b.addTarget(self, action:#selector(doNextButton), for:.touchUpInside)
+        let b2 = accessoryView.subviews[1] as! UIButton
+        b2.addTarget(self, action:#selector(doDone), for:.touchUpInside)
+        tf.inputAccessoryView = accessoryView
         tf.keyboardAppearance = .dark
         tf.keyboardType = .phonePad
     }

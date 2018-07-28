@@ -1,6 +1,8 @@
 
 
 import UIKit
+import NaturalLanguage
+
 func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
@@ -27,6 +29,12 @@ extension CGVector {
         self.init(dx:dx, dy:dy)
     }
 }
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
 
 
 
@@ -106,28 +114,35 @@ class ViewController: UIViewController {
             ix = self.tv.layoutManager.glyphIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
         }
         let charRange = self.tv.layoutManager.characterRange(forGlyphRange: NSMakeRange(ix,0), actualGlyphRange:nil)
-        ix = charRange.location
+        // ix = charRange.location
         
         
         // what word is that?
-        let sch = NSLinguisticTagScheme.tokenType
-        let t = NSLinguisticTagger(tagSchemes:[sch], options:0)
-        t.string = self.tv.text
-        var r : NSRange = NSMakeRange(0,0)
-        let tag = t.tag(at:ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
-        if tag == .word {
-            if let s = self.tv.text {
-                if let range = Range(r, in: s) {
-                    let word = s[range]
-                    print(word)
+        if #available(iOS 12.0, *) {
+            let scheme = NLTagScheme.tokenType
+            let tagger = NLTagger(tagSchemes: [scheme])
+            let s = self.tv.text!
+            tagger.string = s
+            if let index = Range(charRange, in:s)?.lowerBound {
+                let (tag,range) = tagger.tag(at: index, unit: .word, scheme: scheme)
+                if let tag = tag, tag == .word {
+                    print(s[range])
                 }
+                
+                let range2 = NSRange(range, in:s)
+                let lm = self.tv.layoutManager as! MyLayoutManager
+                lm.wordRange = range2
+                lm.invalidateDisplay(forCharacterRange:range2)
+                delay(1) {
+                    lm.wordRange = NSRange(location: NSNotFound, length: 0)
+                    lm.invalidateDisplay(forCharacterRange:range2)
+                }
+                
+                
             }
+
         }
         
-        // NOTE I'm not erasing the existing rectangle
-        let lm = self.tv.layoutManager as! MyLayoutManager
-        lm.wordRange = r
-        lm.invalidateDisplay(forCharacterRange:r)
 
     }
 }
