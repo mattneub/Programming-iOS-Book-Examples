@@ -5,8 +5,8 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var scrollView : UIScrollView!
-    var oldContentInset = UIEdgeInsets()
-    var oldIndicatorInset = UIEdgeInsets()
+    var oldContentInset = UIEdgeInsets.zero
+    var oldIndicatorInset = UIEdgeInsets.zero
     var oldOffset = CGPoint.zero
 
     override func viewDidLoad() {

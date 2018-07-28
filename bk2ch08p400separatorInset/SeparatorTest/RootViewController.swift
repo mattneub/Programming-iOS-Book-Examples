@@ -24,7 +24,7 @@ class RootViewController: UITableViewController {
             print(t.separatorInsetReference.rawValue) // default is .fromCellEdges
             print(t.cellLayoutMarginsFollowReadableWidth)
 
-            self.tableView.separatorInset = UIEdgeInsets()
+            self.tableView.separatorInset = .zero
             // affects both content and separator inset? default is .fromCellEdge
             self.tableView.separatorInsetReference = .fromAutomaticInsets
             
@@ -54,7 +54,7 @@ class RootViewController: UITableViewController {
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
             }
         } else {
-            cell.separatorInset = UIEdgeInsets()
+            cell.separatorInset = .zero
         }
         
         // NO! they fixed this too

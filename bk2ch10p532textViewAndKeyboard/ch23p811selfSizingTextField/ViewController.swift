@@ -12,8 +12,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     var scrollView : UIScrollView! {
         return self.tv
     }
-    var oldContentInset = UIEdgeInsets()
-    var oldIndicatorInset = UIEdgeInsets()
+    var oldContentInset = UIEdgeInsets.zero
+    var oldIndicatorInset = UIEdgeInsets.zero
     var oldOffset = CGPoint.zero
 
     override func viewDidLoad() {
