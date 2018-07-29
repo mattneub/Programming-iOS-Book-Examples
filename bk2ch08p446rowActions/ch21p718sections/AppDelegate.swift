@@ -12,6 +12,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             UINavigationController(rootViewController: RootViewController())
         self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
+        
+        UIImageView.appearance(whenContainedInInstancesOf: [UIButton.self]).tintColor = .yellow
+                
         return true
     }
 }
