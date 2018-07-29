@@ -126,6 +126,7 @@ class ViewController: UIViewController {
             },
             .underlineStyle: NSUnderlineStyle.double.rawValue
         ]
+        // The shadow is broken in iOS 12!
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.normal)
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.selected)
     }
