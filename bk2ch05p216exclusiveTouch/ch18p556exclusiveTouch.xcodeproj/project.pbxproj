@@ -10,6 +10,7 @@
 		320888F01B6EE26400012483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320888EF1B6EE26400012483 /* LaunchScreen.storyboard */; };
 		320888F21B6EE27900012483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320888F11B6EE27900012483 /* AppDelegate.swift */; };
 		32A3865919733EC9009246A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A3865819733EC9009246A5 /* ViewController.swift */; };
+		8147CC19210D4C1300E54311 /* switchback.png in Resources */ = {isa = PBXBuildFile; fileRef = 8147CC18210D4C1300E54311 /* switchback.png */; };
 		C97B8A1917BEA9D90084F81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97B8A1717BEA9D90084F81A /* Main.storyboard */; };
 		C97B8A1E17BEA9D90084F81A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97B8A1D17BEA9D90084F81A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -18,6 +19,7 @@
 		320888EF1B6EE26400012483 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		320888F11B6EE27900012483 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A3865819733EC9009246A5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8147CC18210D4C1300E54311 /* switchback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchback.png; sourceTree = "<group>"; };
 		C97B8A0217BEA9D90084F81A /* ch18p556exclusiveTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch18p556exclusiveTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97B8A0D17BEA9D90084F81A /* ch18p556exclusiveTouch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch18p556exclusiveTouch-Info.plist"; sourceTree = "<group>"; };
 		C97B8A1817BEA9D90084F81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				C97B8A1717BEA9D90084F81A /* Main.storyboard */,
 				32A3865819733EC9009246A5 /* ViewController.swift */,
+				8147CC18210D4C1300E54311 /* switchback.png */,
 				320888F11B6EE27900012483 /* AppDelegate.swift */,
 				C97B8A1D17BEA9D90084F81A /* Assets.xcassets */,
 				320888EF1B6EE26400012483 /* LaunchScreen.storyboard */,
@@ -122,6 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8147CC19210D4C1300E54311 /* switchback.png in Resources */,
 				320888F01B6EE26400012483 /* LaunchScreen.storyboard in Resources */,
 				C97B8A1E17BEA9D90084F81A /* Assets.xcassets in Resources */,
 				C97B8A1917BEA9D90084F81A /* Main.storyboard in Resources */,

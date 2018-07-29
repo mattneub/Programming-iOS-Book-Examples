@@ -35,6 +35,38 @@ class ViewController : UIViewController {
             UIBezierPath(rect: CGRect(x: 0, y: 0, width: 20, height: 20)).fill()
         }
         self.sw.onImage = im // just proving that this still does nothing
+        // also demonstrates a workaround for the off color:
+        // there's a switch-shaped image behind the UISwitch!
+        
+        self.sw.onTintColor = .red
+    }
+    
+    func putColor(_ color: UIColor, behindSwitch sw: UISwitch) {
+        guard sw.superview != nil else {return}
+        let onswitch = UISwitch()
+        onswitch.isOn = true
+        let r = UIGraphicsImageRenderer(bounds:sw.bounds)
+        let im = r.image { ctx in
+            onswitch.layer.render(in: ctx.cgContext)
+            }.withRenderingMode(.alwaysTemplate)
+        let iv = UIImageView(image:im)
+        iv.tintColor = color
+        sw.superview!.insertSubview(iv, belowSubview: sw)
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            iv.topAnchor.constraint(equalTo: sw.topAnchor),
+            iv.bottomAnchor.constraint(equalTo: sw.bottomAnchor),
+            iv.leadingAnchor.constraint(equalTo: sw.leadingAnchor),
+            iv.trailingAnchor.constraint(equalTo: sw.trailingAnchor),
+            ])
+    }
+
+    var didLayout = false
+    override func viewDidLayoutSubviews() {
+        if !didLayout {
+            didLayout = true
+            self.putColor(.yellow, behindSwitch:self.sw)
+        }
     }
 }
 
