@@ -87,6 +87,13 @@ class ViewController : UIViewController {
             self.iv3.image = r.image { _ in
                 mars.draw(at:CGPoint(-sz.width/2.0,0))
             }
+            // return;
+            do {
+                let r = UIGraphicsImageRenderer(bounds:CGRect(sz.width/2.0,0,sz.width/2.0,sz.height))
+                self.iv3.image = r.image { _ in
+                    mars.draw(at:.zero)
+                }
+            }
             
         }
         
