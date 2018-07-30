@@ -240,7 +240,7 @@ class ViewController: UIViewController {
         // we can added that to our app's quick actions
         let subtitle = "In 1 hour..."
         let time = 60
-        let item = UIApplicationShortcutItem(type: "coffee.schedule", localizedTitle: "Coffee Reminder", localizedSubtitle: subtitle, icon: UIApplicationShortcutIcon(templateImageName: "cup"), userInfo: ["time":time as NSSecureCoding])
+        let item = UIApplicationShortcutItem(type: "coffee.schedule", localizedTitle: "Coffee Reminder", localizedSubtitle: subtitle, icon: UIApplicationShortcutIcon(templateImageName: "cup"), userInfo: ["time":time as NSNumber])
         UIApplication.shared.shortcutItems = [item]
         
     }
