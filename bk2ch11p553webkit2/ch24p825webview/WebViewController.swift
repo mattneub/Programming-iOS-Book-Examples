@@ -76,7 +76,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             act.centerXAnchor.constraint(equalTo:wv.centerXAnchor),
             act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
-        obs.insert(wv.observe(\.loading, options: .new) { [unowned self] wv, ch in
+        obs.insert(wv.observe(\.isLoading, options: .new) { [unowned self] wv, ch in
             if let val = ch.newValue {
                 if val {
                     self.activity.startAnimating()

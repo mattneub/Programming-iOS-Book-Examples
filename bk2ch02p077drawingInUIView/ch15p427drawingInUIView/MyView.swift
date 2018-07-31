@@ -29,7 +29,7 @@ class MyView : UIView {
     }
     
     
-    let which = 1
+    let which = 6
     
     override func draw(_ rect: CGRect) {
         switch which {
@@ -246,6 +246,7 @@ class MyView : UIView {
             
             // draw the red triangle, the point of the arrow
             con.saveGState()
+            // this bug still present in beta 5
             do { // work around iOS 12 bug: force context to have some color!
                 con.setFillColor(UIColor.blue.cgColor)
                 con.fill(CGRect(0,0,0,0))

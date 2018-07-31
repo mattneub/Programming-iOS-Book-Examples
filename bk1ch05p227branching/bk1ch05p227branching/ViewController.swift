@@ -200,7 +200,7 @@ class C4 : NSObject {
 class C1 : NSObject {
     let avpvc = AVPlayerViewController()
     func test() {
-        let obs = self.avpvc.observe(\.readyForDisplay, options:[.new]) { (obj, ch) in
+        let obs = self.avpvc.observe(\.isReadyForDisplay, options:[.new]) { (obj, ch) in
             if let ok = ch.newValue, ok {
                 // do work here ...
                 // obs.invalidate() // illegal, but we also get a warning if we don't capture the result

@@ -170,7 +170,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
             ])
         // webkit uses KVO
         // nb leak if we don't watch out for self
-        obs.insert(wv.observe(\.loading, options: .new) { [unowned self] wv, ch in
+        obs.insert(wv.observe(\.isLoading, options: .new) { [unowned self] wv, ch in
             if let val = ch.newValue {
                 if val {
                     print("starting animating")

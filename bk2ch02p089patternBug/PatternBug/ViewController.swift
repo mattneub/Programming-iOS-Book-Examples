@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         let format = UIGraphicsImageRendererFormat.default()
         // uncomment next line if you want to see any color!
         // format.preferredRange = .standard
+        // okay, looks like the bug is fixed in beta 5
         let rOuter = UIGraphicsImageRenderer(size: CGSize(width:100, height:100), format:format)
         let im = rOuter.image {
             ctx in

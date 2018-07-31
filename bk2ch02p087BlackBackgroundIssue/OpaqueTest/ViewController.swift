@@ -30,6 +30,7 @@ class MyView : UIView {
         con.setFillColor(UIColor.blue.cgColor)
         con.fill(CGRect(0,0,0,0))
         // but the context is transparent if we comment out the next line
+        // I regard this as a bug (not fixed in beta 5)
         con.setFillColor(UIColor.red.cgColor)
         con.fill(CGRect(0,0,0,0))
     }
