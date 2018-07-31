@@ -58,10 +58,14 @@ class MyUserNotificationHelper : NSObject {
                 self.doAuthorization()
             case .denied:
                 print("denied, giving up")
-            break // nothing to do, pointless to go on
-            case .authorized, .provisional:
+            // break // nothing to do, pointless to go on
+            case .authorized:
                 self.checkCategories() // prepare create notification
+            case .provisional:
+                // what happens if we now ask for authorization?
+                self.doAuthorization()
             }
+            
         }
     }
     
@@ -69,7 +73,7 @@ class MyUserNotificationHelper : NSObject {
         print("asking for authorization")
         
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { ok, err in
+        center.requestAuthorization(options: [.alert, .sound, /*.provisional,*/ .providesAppNotificationSettings]) { ok, err in
             if let err = err {
                 print(err)
                 return
@@ -219,6 +223,12 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
         
         completionHandler()
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+        print("I should be opening my settings screen now!")
+        // called before we become active
+    }
+
     
 }
 
