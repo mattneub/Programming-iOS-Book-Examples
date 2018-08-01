@@ -24,6 +24,8 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
+			<key>UNNotificationExtensionUserInteractionEnabled</key>
+			<true/>
 			<key>UNNotificationExtensionCategory</key>
 			<string>coffee</string>
 			<key>UNNotificationExtensionInitialContentSizeRatio</key>

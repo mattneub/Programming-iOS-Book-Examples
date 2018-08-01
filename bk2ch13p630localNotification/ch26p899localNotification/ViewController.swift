@@ -27,7 +27,8 @@ extension CGVector {
 }
 
 
-
+// NB this class is _defined_ here, but the instance is created by the app delegate
+// this is especially so that delegate messages will work
 class MyUserNotificationHelper : NSObject {
     let categoryIdentifier = "coffee"
 
@@ -53,17 +54,17 @@ class MyUserNotificationHelper : NSObject {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings {
             settings in
+            let stats = ["not determined", "denied", "authorized", "provisional"]
+            print("checking authorization; it is", stats[settings.authorizationStatus.rawValue])
             switch settings.authorizationStatus {
             case .notDetermined:
                 self.doAuthorization()
             case .denied:
-                print("denied, giving up")
+                // print("denied, giving up")
+                self.checkCategories()
             // break // nothing to do, pointless to go on
-            case .authorized:
+            case .authorized, .provisional:
                 self.checkCategories() // prepare create notification
-            case .provisional:
-                // what happens if we now ask for authorization?
-                self.doAuthorization()
             }
             
         }
@@ -109,26 +110,17 @@ class MyUserNotificationHelper : NSObject {
         // return; // see what it's like if there's no category
         print("configuring category")
         
-        // create actions
-        // options are:
-        // foreground (if not, background)
-        // destructive (if not, normal appearance)
-        // authenticationRequired (if so, cannot just do directly from lock screen)
-        let action1 = UNNotificationAction(identifier: "snooze", title: "Snooze")
-        let action2 = UNNotificationAction(identifier: "reconfigure",
-                                           title: "Reconfigure", options: [.foreground])
-        let action3 = UNTextInputNotificationAction(identifier: "message", title: "Message", options: [], textInputButtonTitle: "Message", textInputPlaceholder: "message")
+        // new in iOS 12: if we have a notification content extension, we don't need
+        // to preconfigure the custom buttons in the category
         
-        // combine actions into category
         // the key option here is customDismissAction
         // allows us to hear about it if user dismisses
         // to put it another way: if we don't have this, we won't hear about it when user dismisses
-        var customDismiss : Bool { return false }
-        let cat = UNNotificationCategory(identifier: self.categoryIdentifier, actions: [action1, action2], intentIdentifiers: [], options: customDismiss ? [.customDismissAction] : [])
+        var customDismiss : Bool { return true }
+        let cat = UNNotificationCategory(identifier: self.categoryIdentifier, actions: [], intentIdentifiers: [], options: customDismiss ? [.customDismissAction] : [])
         let center = UNUserNotificationCenter.current()
         center.setNotificationCategories([cat])
         
-        _ = action3
     }
     
     fileprivate func createNotification() {
@@ -136,6 +128,20 @@ class MyUserNotificationHelper : NSObject {
         
         // need trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        /*
+        print("scheduling at", Date())
+        DispatchQueue.main.asyncAfter(deadline: .now()+130) {
+            print("checking at", Date())
+            UNUserNotificationCenter.current().getPendingNotificationRequests {
+                arr in let arr = arr
+                if let req = arr[0].trigger as? UNTimeIntervalNotificationTrigger {
+                    let fd = req.nextTriggerDate()
+                    print("trigger date", fd as Any)
+                }
+                
+            }
+        }
+ */
         // need content
         let content = UNMutableNotificationContent()
         content.title = "Caffeine!" // title now always appears
@@ -185,7 +191,7 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        print("received notification while active")
+        print("received notification while active", Date())
         
         completionHandler([.sound, .alert]) // go for it, system!
         
@@ -227,6 +233,8 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
         print("I should be opening my settings screen now!")
         // called before we become active
+        let id = "settings"
+        UIApplication.shared.keyWindow?.rootViewController?.performSegue(withIdentifier: id, sender: nil)
     }
 
     
@@ -254,5 +262,7 @@ class ViewController: UIViewController {
         UIApplication.shared.shortcutItems = [item]
         
     }
+    
+    @IBAction func unwind (_ : UIStoryboardSegue) {}
     
 }
