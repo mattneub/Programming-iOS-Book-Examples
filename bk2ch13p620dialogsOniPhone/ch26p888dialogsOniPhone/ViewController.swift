@@ -65,7 +65,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // there is no Return key in the dialog, but we still need to stop a user with a hardware keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.text.map{!$0.isEmpty}!
+        // return textField.text.map{!$0.isEmpty}!
+        return textField.text != ""
     }
     
 
