@@ -124,7 +124,7 @@ class MyUserNotificationHelper : NSObject {
     
     var customDismiss = true
     private func configureCategory() -> [UNNotificationCategory] {
-        return [] // see what it's like if there's no category
+        // return [] // see what it's like if there's no category
         print("configuring category")
         
         // new in iOS 12: if we have a notification content extension, we don't need
@@ -146,7 +146,8 @@ class MyUserNotificationHelper : NSObject {
         let cat2 = UNNotificationCategory(identifier: self.categoryIdentifier, actions: actions, intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "hungadunga", categorySummaryFormat: nil, options: opts)
         print("are those two categories identical?", cat == cat2)
         // so what happens if two categories have the same identifier???
-        return [cat, cat2]
+        // return [cat, cat2]
+        return [cat]
     }
     
     fileprivate func createNotification() {
@@ -175,8 +176,9 @@ class MyUserNotificationHelper : NSObject {
         let content = UNMutableNotificationContent()
         content.title = "Caffeine!" // title now always appears
         // content.subtitle = "whatever" // new
-        content.body = "Time for another cup of coffee!" // + Date().description
+        content.body = "Time for another cup of coffee!" // + " " + Date().description
         content.sound = UNNotificationSound.default
+        content.sound = UNNotificationSound(named: UNNotificationSoundName("test.aif"))
         content.badge = 20
         
         // if we want to see actions, we must add category identifier
@@ -206,8 +208,10 @@ class MyUserNotificationHelper : NSObject {
         // combine them into a request
         // NB if I use the same identifier, each notification removes the pending one with that identifier
         // that makes it hard to test grouping :)
+        var useUUID : Bool { return true }
         let uuid = UUID()
-        let req = UNNotificationRequest(identifier: "coffeeTime" + uuid.uuidString, content: content, trigger: trigger)
+        let id = "coffeeTime" + (useUUID ? uuid.uuidString : "")
+        let req = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(req)
     }
@@ -228,7 +232,8 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
         
         print("received notification while active", Date())
         
-        completionHandler([.sound, .alert]) // go for it, system!
+        // completionHandler([.sound, .alert]) // go for it, system!
+        completionHandler([])
         
         // oooh oooh I accidentally learned something
         // if Do Not Disturb is on, no notifications interrupt
@@ -245,10 +250,17 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
         
         let id = response.actionIdentifier // can be default, dismiss, or one of ours
         print("user action was: \(id)")
+        print("on main thread", Thread.isMainThread)
         
         if id == "snooze" {
-            delay(1) { // because otherwise the image doesn't show
+            var id = UIBackgroundTaskIdentifier.invalid
+            id = UIApplication.shared.beginBackgroundTask {
+                UIApplication.shared.endBackgroundTask(id)
+            }
+            delay(0.1) {
+                print("got snooze, responding")
                 self.createNotification()
+                UIApplication.shared.endBackgroundTask(id)
             }
         }
         
