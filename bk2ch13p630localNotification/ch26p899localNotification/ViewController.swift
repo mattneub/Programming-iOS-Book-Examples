@@ -28,28 +28,35 @@ extension CGVector {
 
 
 // NB this class is _defined_ here, but the instance is created by the app delegate
+// and is stored there as its `notifHelper`
 // this is especially so that delegate messages will work
+
 class MyUserNotificationHelper : NSObject {
     let categoryIdentifier = "coffee"
-
+    
+    var clearAllCategories = false
+    var clearAllNotifications = false
     func kickThingsOff() {
-        // artificially, I'm going to start by clearing out any categories
+        let center = UNUserNotificationCenter.current()
+
+        // artificially, might need to start by clearing out any categories
         // otherwise, it's hard to test, because even after deleting the app...
         // the categories stick around and continue to be used
-        let center = UNUserNotificationCenter.current()
-        center.setNotificationCategories([])
+        if clearAllCategories {
+            center.setNotificationCategories([])
+        }
         
-        // not so artificially, before we do anything else let's clear out all notifications
-        // cool new iOS 10 feature, let's use it
-        center.removeAllDeliveredNotifications()
-        center.removeAllPendingNotificationRequests()
+        // might want to clear out all notifications
+        if clearAllNotifications {
+            center.removeAllDeliveredNotifications()
+            center.removeAllPendingNotificationRequests()
+        }
         
         // start the process
         self.checkAuthorization()
     }
     
     private func checkAuthorization() {
-        print("checking for notification permissions")
         
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings {
@@ -58,23 +65,28 @@ class MyUserNotificationHelper : NSObject {
             print("checking authorization; it is", stats[settings.authorizationStatus.rawValue])
             switch settings.authorizationStatus {
             case .notDetermined:
-                self.doAuthorization()
+                self.doAuthorization() // will checkCategories() if we get it
             case .denied:
                 // print("denied, giving up")
-                self.checkCategories()
-            // break // nothing to do, pointless to go on
+                break // nothing to do, pointless to go on
             case .authorized, .provisional:
-                self.checkCategories() // prepare create notification
+                self.checkCategories() // prepare to create notification
             }
             
         }
     }
     
+    var provisional = false
     private func doAuthorization() {
         print("asking for authorization")
         
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, /*.provisional,*/ .providesAppNotificationSettings]) { ok, err in
+        var opts : UNAuthorizationOptions = [.alert, .sound, .badge, .providesAppNotificationSettings]
+        if provisional {
+            opts.insert(.provisional)
+        }
+        
+        center.requestAuthorization(options: opts) { ok, err in
             if let err = err {
                 print(err)
                 return
@@ -91,11 +103,15 @@ class MyUserNotificationHelper : NSObject {
         print("checking categories")
         
         let center = UNUserNotificationCenter.current()
-        center.getNotificationCategories {
-            cats in
-            if cats.count == 0 {
-                self.configureCategory()
-            }
+        center.getNotificationCategories { cats in
+            var cats = cats
+            print("we have \(cats.count) categories")
+            // this little dance is not really necessary here; just showing the syntax
+            let newcat = self.configureCategory()
+            cats.formUnion(newcat)
+            center.setNotificationCategories(cats)
+            // at last! here we go...
+            // NB I am pretending we emit only one notification! thus we know automatically what to do
             self.createNotification()
         }
     }
@@ -106,28 +122,40 @@ class MyUserNotificationHelper : NSObject {
     // for a banner/alert: there is a "drag" bar and you drag downward
     // in the notification center: you drag left and there is a View button, tap it
     
-    private func configureCategory() {
-        // return; // see what it's like if there's no category
+    var customDismiss = true
+    private func configureCategory() -> [UNNotificationCategory] {
+        return [] // see what it's like if there's no category
         print("configuring category")
         
         // new in iOS 12: if we have a notification content extension, we don't need
-        // to preconfigure the custom buttons in the category
+        // to preconfigure the custom buttons in the category! moved that code into the extension
         
-        // the key option here is customDismissAction
-        // allows us to hear about it if user dismisses
-        // to put it another way: if we don't have this, we won't hear about it when user dismisses
-        var customDismiss : Bool { return true }
-        let cat = UNNotificationCategory(identifier: self.categoryIdentifier, actions: [], intentIdentifiers: [], options: customDismiss ? [.customDismissAction] : [])
-        let center = UNUserNotificationCenter.current()
-        center.setNotificationCategories([cat])
+        let action1 = UNNotificationAction(identifier: "snooze", title: "Snooze")
+        let action2 = UNNotificationAction(identifier: "reconfigure",
+                                           title: "Reconfigure", options: [.foreground])
+        let action3 = UNTextInputNotificationAction(identifier: "message", title: "Message", options: [], textInputButtonTitle: "Message", textInputPlaceholder: "message")
+        var actions = [action1, action2]
+        // but the above is just to test the syntax
+        actions = []
         
+        // if we don't have customDismissAction, we won't hear about it when user dismisses
+        // let cat = UNNotificationCategory(identifier: self.categoryIdentifier, actions: [], intentIdentifiers: [], options: customDismiss ? [.customDismissAction] : [])
+        let opts : UNNotificationCategoryOptions = customDismiss ? [.customDismissAction] : []
+        let summary = "%u more reminders from %@"
+        let cat = UNNotificationCategory(identifier: self.categoryIdentifier, actions: actions, intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: nil, categorySummaryFormat: summary, options: opts)
+        let cat2 = UNNotificationCategory(identifier: self.categoryIdentifier, actions: actions, intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "hungadunga", categorySummaryFormat: nil, options: opts)
+        print("are those two categories identical?", cat == cat2)
+        // so what happens if two categories have the same identifier???
+        return [cat, cat2]
     }
     
     fileprivate func createNotification() {
-        print("creating notification")
+        print("creating notification" + Date().description)
         
         // need trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        // test nextTriggerDate bug
         /*
         print("scheduling at", Date())
         DispatchQueue.main.asyncAfter(deadline: .now()+130) {
@@ -141,16 +169,20 @@ class MyUserNotificationHelper : NSObject {
                 
             }
         }
- */
+        */
+        
         // need content
         let content = UNMutableNotificationContent()
         content.title = "Caffeine!" // title now always appears
         // content.subtitle = "whatever" // new
-        content.body = "Time for another cup of coffee!"
+        content.body = "Time for another cup of coffee!" // + Date().description
         content.sound = UNNotificationSound.default
+        content.badge = 20
         
         // if we want to see actions, we must add category identifier
         content.categoryIdentifier = self.categoryIdentifier
+        
+        content.summaryArgument = "Matt"
         
         // new iOS 10 feature: attachments! AIFF, JPEG, or MPEG
         let url = Bundle.main.url(forResource: "cup2", withExtension: "jpg")!
@@ -172,7 +204,10 @@ class MyUserNotificationHelper : NSObject {
         }
         
         // combine them into a request
-        let req = UNNotificationRequest(identifier: "coffeeNotification", content: content, trigger: trigger)
+        // NB if I use the same identifier, each notification removes the pending one with that identifier
+        // that makes it hard to test grouping :)
+        let uuid = UUID()
+        let req = UNNotificationRequest(identifier: "coffeeTime" + uuid.uuidString, content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(req)
     }
