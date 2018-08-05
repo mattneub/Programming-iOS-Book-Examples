@@ -122,16 +122,17 @@ class ViewController: UIViewController {
         let vidtrack = comp.tracks(withMediaType: .video)[0]
         let sz = vidtrack.naturalSize
         print(sz)
+        let parent = CALayer()
+        parent.frame = CGRect(origin: .zero, size: sz)
+        let child = CALayer()
+        child.frame = parent.bounds
+        parent.addSublayer(child)
+        
         let lay = CATextLayer()
         lay.string = "This is cool!"
         lay.alignmentMode = .center
         lay.foregroundColor = UIColor.black.cgColor
-        lay.frame = CGRect(origin: .zero, size: sz)
-        let parent = CALayer()
-        parent.frame = CGRect(origin: .zero, size: sz)
-        let child = CALayer()
-        child.frame = parent.frame
-        parent.addSublayer(child)
+        lay.frame = child.bounds
         child.addSublayer(lay)
         // did you want fries with that? let's animate the layer
         let ba = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
