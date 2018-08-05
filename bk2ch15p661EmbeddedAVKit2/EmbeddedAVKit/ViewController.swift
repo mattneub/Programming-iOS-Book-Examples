@@ -119,7 +119,8 @@ class ViewController: UIViewController {
                 // just playing, pay no attention
                 let player = vc.player!
                 let item = player.currentItem!
-                print(item.timebase!.rate)
+                // well _this_ seems like a step back from renamification!
+                print(CMTimebaseGetRate(item.timebase!))
             }
         }
         self.obs.insert(ob)

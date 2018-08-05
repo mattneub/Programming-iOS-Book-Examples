@@ -81,6 +81,8 @@ class ViewController: UIViewController {
         av.didMove(toParent:self)
         // just testing the syntax; this feels like a bug
         // av.videoGravity = AVLayerVideoGravity.resizeAspect.rawValue
+        // ooooh, they finally fixed it!
+        // av.videoGravity = .resizeAspect
         // just testing the behavior
         // av.updatesNowPlayingInfoCenter = false
     }
@@ -122,7 +124,8 @@ class ViewController: UIViewController {
                 // just playing, pay no attention
                 let player = vc.player!
                 let item = player.currentItem!
-                print(item.timebase!.rate)
+                // well _this_ seems like a step back from renamification
+                print(CMTimebaseGetRate(item.timebase!))
             }
         }
         self.obs.insert(ob)

@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         anim.toValue = CGPoint(295,5)
         anim.isRemovedOnCompletion = false
         anim.beginTime = AVCoreAnimationBeginTimeAtZero // important trick
-        anim.duration = item.asset.duration.getSeconds()
+        anim.duration = item.asset.duration.seconds
         subLayer.add(anim, forKey:nil)
         
         self.synchLayer = syncLayer
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             preferredTrackID: Int32(kCMPersistentTrackID_Invalid))!
         
         try! comptrack.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:0, preferredTimescale:600))
-        try! comptrack.insertTimeRange(CMTimeRange(start: duration.subtract(CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:5, preferredTimescale:600))
+        try! comptrack.insertTimeRange(CMTimeRange(start: duration - CMTime(seconds:5, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:5, preferredTimescale:600))
         
         let type2 = AVMediaType.audio
         let arr2 = asset1.tracks(withMediaType: type2)
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
         let comptrack2 = comp.addMutableTrack(withMediaType: type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))!
         
         try! comptrack2.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:0, preferredTimescale:600))
-        try! comptrack2.insertTimeRange(CMTimeRange(start: duration.subtract(CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:5, preferredTimescale:600))
+        try! comptrack2.insertTimeRange(CMTimeRange(start: duration - CMTime(seconds:5, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:5, preferredTimescale:600))
         
         
         let type3 = AVMediaType.audio
@@ -158,12 +158,20 @@ class ViewController: UIViewController {
         
         let params = AVMutableAudioMixInputParameters(track:comptrack3)
         params.setVolume(1, at:CMTime(seconds:0, preferredTimescale:600))
-        params.setVolumeRamp(fromStartVolume: 1, toEndVolume:0, timeRange:CMTimeRange(start: CMTime(seconds:7, preferredTimescale:600), duration: CMTime(seconds:3, preferredTimescale:600)))
+        params.setVolumeRamp(fromStartVolume: 1, toEndVolume:0, timeRange:CMTimeRange(start: CMTime(seconds:5, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)))
         let mix = AVMutableAudioMix()
         mix.inputParameters = [params]
         
+        let vidcomp = AVVideoComposition(asset: comp) { req in
+            // req is an AVAsynchronousCIImageFilteringRequest
+            let f = "CISepiaTone"
+            let im = req.sourceImage.applyingFilter(f, parameters: ["inputIntensity":0.95])
+            req.finish(with: im, context: nil)
+        }
+                
         let item = AVPlayerItem(asset:comp)
         item.audioMix = mix
+        item.videoComposition = vidcomp
         
         p.replaceCurrentItem(with: item)
         
