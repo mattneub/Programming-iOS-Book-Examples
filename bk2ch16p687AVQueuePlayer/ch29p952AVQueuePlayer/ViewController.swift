@@ -296,15 +296,16 @@ class ViewController: UIViewController {
                 let dur = asset.duration
                 self.prog.setProgress(Float(time.seconds/dur.seconds), animated: false)
                 self.prog.isHidden = false
+                if self.prog.progress > 0.999 {
+                    if self.qp.items().count <= 1 {
+                        self.label.text = ""
+                        self.prog.isHidden = true
+                        self.qp.removeTimeObserver(self.timeObserver)
+                        self.timeObserver = nil
+                        print("removing observer")
+                    }
+                }
             }
-        } else {
-            // none of this is executed; I need a way of learning when we are completely done
-            // or else I can just forget this feature
-            self.label.text = ""
-            self.prog.isHidden = true
-            self.qp.removeTimeObserver(self.timeObserver)
-            self.timeObserver = nil
-            print("removing observer")
         }
     }
     

@@ -44,13 +44,17 @@ class ViewController: UIViewController, PlayerDelegate {
     
     @IBAction func doLoop (_ sender: Any) {
         self.player.delegate = self
-        let path = Bundle.main.path(forResource:"test", ofType: "aif")!
-        // interrupt background audio if any
-        let ok : Void? = try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-        if ok == nil { print("failed to set session to playback") }
-        try? AVAudioSession.sharedInstance().setActive(true)
-        self.player.looping = true
-        self.player.playFile(atPath:path)
+        DispatchQueue.global(qos:.userInitiated).async {
+            let path = Bundle.main.path(forResource:"test", ofType: "aif")!
+            // interrupt background audio if any
+            let ok : Void? = try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            if ok == nil { print("failed to set session to playback") }
+            try? AVAudioSession.sharedInstance().setActive(true)
+            DispatchQueue.main.async {
+                self.player.looping = true
+                self.player.playFile(atPath:path)
+            }
+        }
     }
     
     @IBAction func doStop (_ sender: Any) {

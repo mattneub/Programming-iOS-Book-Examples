@@ -3,6 +3,12 @@
 import UIKit
 import MediaPlayer
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -196,39 +202,60 @@ class ViewController: UIViewController {
     
     @IBAction func doPlayShortSongs (_ sender: Any!) {
         checkForMusicLibraryAccess {
-            let query = MPMediaQuery.songs()
-            // always need to filter out songs that aren't present
-            let isPresent = MPMediaPropertyPredicate(value:false,
-                forProperty:MPMediaItemPropertyIsCloudItem,
-                comparisonType:.equalTo)
-            query.addFilterPredicate(isPresent)
-            guard let items = query.items else {return} //
-            
-            let shorties = items.filter { //
-                let dur = $0.playbackDuration
-                return dur < 30
-            }
-            
-            guard shorties.count > 0 else {
-                print("no songs that short!")
-                return
-            }
-            print("got \(shorties.count) short songs")
-            let queue = MPMediaItemCollection(items:shorties)
+            // configure notification on main queue
             let player = MPMusicPlayerController.applicationQueuePlayer
-            player.stop()
-            player.setQueue(with:queue)
-            player.shuffleMode = .songs
             player.beginGeneratingPlaybackNotifications()
             NotificationCenter.default.addObserver(self, selector: #selector(self.changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
-            // no need to use this elaborate approach here, probably
-            player.prepareToPlay { err in
-                if err == nil {
-                    player.play()
+            
+            // get off main queue, allow button to unhighlight
+            DispatchQueue.global(qos:.userInitiated).async {
+                
+                let query = MPMediaQuery.songs()
+                // always need to filter out songs that aren't present
+                let isPresent = MPMediaPropertyPredicate(value:false,
+                                                         forProperty:MPMediaItemPropertyIsCloudItem,
+                                                         comparisonType:.equalTo)
+                query.addFilterPredicate(isPresent)
+                guard let items = query.items else {return} //
+                
+                let shorties = items.filter { //
+                    let dur = $0.playbackDuration
+                    return dur < 30
+                }
+                
+                guard shorties.count > 0 else {
+                    print("no songs that short!")
+                    return
+                }
+                print("got \(shorties.count) short songs:")
+                print(shorties.map {$0.title ?? "no title"})
+                let queue = MPMediaItemCollection(items:shorties)
+                
+                // get back on main thread to talk to player
+                
+                DispatchQueue.main.async {
                     
-                    self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
-                    self.timer.tolerance = 0.1
-
+                    print("stopping")
+                    player.stop()
+                    print("setting shuffle mode")
+                    player.shuffleMode = .songs
+                    print("setting the queue")
+                    player.setQueue(with:queue)
+                    // no need to use this elaborate approach here, probably
+                    print("delaying")
+                    delay(0.2) {
+                        print("preparing to play")
+                        player.prepareToPlay { err in
+                            if err == nil {
+                                print("playing")
+                                player.play()
+                                
+                                self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
+                                self.timer.tolerance = 0.1
+                                
+                            }
+                        }
+                    }
                 }
             }
             
@@ -236,6 +263,7 @@ class ViewController: UIViewController {
     }
     
     @objc func changed(_ n:Notification) {
+        print("now playing item changed!")
         defer {
             self.timer?.fire() // looks better if we fire timer now
         }
@@ -243,14 +271,14 @@ class ViewController: UIViewController {
         let player = MPMusicPlayerController.applicationQueuePlayer
         guard let obj = n.object, obj as AnyObject === player else { return } // just playing safe
         guard let title = player.nowPlayingItem?.title else {return}
+        if player.playbackState != .playing {print("stopped"); return}
         let ix = player.indexOfNowPlayingItem
         guard ix != NSNotFound else {return}
         // new, we can get the queue!
         player.perform(queueTransaction: { _ in }) { q,_ in
-            print(q.items.count, q.items.map {$0.title})
+            print(q.items.count, q.items.map {$0.title ?? "no title"})
             self.label.text = "\(ix+1) of \(q.items.count): \(title)"
         }
-        
     }
     
     @objc func timerFired(_: Any) {

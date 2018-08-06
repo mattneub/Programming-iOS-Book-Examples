@@ -48,36 +48,58 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         checkForMusicLibraryAccess {
             
-            let query = MPMediaQuery.songs()
-            let result = query.items
+            let songs = MPMediaQuery.songs()
+            let result = songs.items
             guard let items = result, items.count > 0 else {return}
             let song = items[0]
             
             let player = MPMusicPlayerController.applicationQueuePlayer
+            // let player = MPMusicPlayerController.systemMusicPlayer
             
-            var useCollection : Bool { return false }
+            print("stopping")
+            player.stop()
             
-            if useCollection {
-                let coll = MPMediaItemCollection(items: [song])
-                let q = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: coll)
-                player.stop(); print("stopping")
+            /*
+             setQueue(with query: MPMediaQuery)
+             
+             setQueue(with itemCollection: MPMediaItemCollection)
+             
+             setQueue(with descriptor: MPMusicPlayerQueueDescriptor)
+             
+             also setQueue(with storeIDs: [String]) but that's outside my wheelhouse
+             */
+            
+            // thus there are four possibilities...
+            // and at the moment they all work
+            
+            var useCollection : Bool { return true }
+            var useDescriptor : Bool { return false }
+            
+            let coll = MPMediaItemCollection(items: [song])
+            let predicate = MPMediaPropertyPredicate(
+                value: song.persistentID,
+                forProperty: MPMediaItemPropertyPersistentID)
+            let query = MPMediaQuery(filterPredicates: [predicate])
+            
+            switch (useDescriptor, useCollection) {
+            case (false,false):
                 print("setting queue with item collection")
-                player.setQueue(with: q)
-            } else {
-                let predicate = MPMediaPropertyPredicate(
-                    value: song.persistentID,
-                    forProperty: MPMediaItemPropertyPersistentID)
-                let query = MPMediaQuery(filterPredicates: [predicate])
-                let q = MPMusicPlayerMediaItemQueueDescriptor(query: query)
-                player.stop(); print("stopping")
+                player.setQueue(with: coll)
+            case (false,true):
                 print("setting queue with query")
-                player.setQueue(with: q)
+                player.setQueue(with: query)
+            case (true,true): // descriptor, item collection
+                print("setting queue with descriptor, item collection")
+                let desc = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: coll)
+                player.setQueue(with: desc)
+            case (true,false): // descriptor, query
+                print("setting queue with descriptor, query")
+                let desc = MPMusicPlayerMediaItemQueueDescriptor(query: query)
+                player.setQueue(with: desc)
             }
             
-            // delay between setting queue and starting to play seems to be crucial
             print("inserting delay")
             delay(0.2) {
-                print("calling prepareToPlay")
                 player.prepareToPlay { err in
                     if let err = err {
                         print("printing error")
@@ -85,7 +107,8 @@ class ViewController: UIViewController {
                         return
                     }
                     print("trying to play")
-                    player.play()
+                    // weird: no need to actually say play!
+                    // player.play()
                 }
             }
         }

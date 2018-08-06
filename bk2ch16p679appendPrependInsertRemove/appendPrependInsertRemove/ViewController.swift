@@ -36,12 +36,16 @@ class ViewController: UIViewController {
     // let player = MPMusicPlayerController.systemMusicPlayer
     override func viewDidLoad() {
         super.viewDidLoad()
-        // load up short songs as a base queue
+        self.baseQueue()
+    }
+    
+    // load up short songs as a base queue
+    @IBAction func baseQueue() {
         checkForMusicLibraryAccess {
             let query = MPMediaQuery.songs()
             // always need to filter out songs that aren't present
             let isPresent = MPMediaPropertyPredicate(value:false,
-                               forProperty:MPMediaItemPropertyIsCloudItem,
+                                                     forProperty:MPMediaItemPropertyIsCloudItem,
                                                      comparisonType:.equalTo)
             query.addFilterPredicate(isPresent)
             guard let items = query.items else {return} //
@@ -60,15 +64,19 @@ class ViewController: UIViewController {
             let player = self.player
             player.stop()
             player.setQueue(with:queue)
-            player.prepareToPlay() // causes the queue to take effect
-            //player.play()
-            //player.stop()
+            delay(0.2) {
+                // player.prepareToPlay() // causes the queue to take effect
+                player.prepareToPlay() { err in
+                    
+                }
+            }
         }
+
     }
     
     func createDesc() -> MPMusicPlayerMediaItemQueueDescriptor {
         let query = MPMediaQuery.albums()
-        let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
+        let hasSonata = MPMediaPropertyPredicate(value:"Double",
                                                  forProperty:MPMediaItemPropertyTitle,
                                                  comparisonType:.contains)
         query.addFilterPredicate(hasSonata)
@@ -78,19 +86,15 @@ class ViewController: UIViewController {
         query.addFilterPredicate(isPresent)
         let result = query.items!
         let song = result[0]
-        let predicate = MPMediaPropertyPredicate(
-            value: song.persistentID,
-            forProperty: MPMediaItemPropertyPersistentID)
-        let query2 = MPMediaQuery(filterPredicates: [predicate])
-        let qd = MPMusicPlayerMediaItemQueueDescriptor(query:query2)
-        return qd
+        let coll = MPMediaItemCollection(items: [song])
+        return MPMusicPlayerMediaItemQueueDescriptor(itemCollection: coll)
     }
     
     @IBAction func doAppend(_ sender: Any) {
         checkForMusicLibraryAccess {
             let player = self.player
             player.append(self.createDesc())
-            delay(1) { // can't do this too soon or we "time out"
+            delay(0.2) { // can't do this too soon or we "time out"
                 player.perform(queueTransaction: {q in
                     print(q.items.map{$0.title!})
                 }) {q, err in
@@ -102,12 +106,12 @@ class ViewController: UIViewController {
     }
     
     // allow the player to play one or two songs first;
-    // that way, you see that prepend means insert before currently playing item
+    // that way, you see that prepend means insert after currently playing item
     @IBAction func doPrepend(_ sender: Any) {
         checkForMusicLibraryAccess {
             let player = self.player
             player.prepend(self.createDesc())
-            delay(1) { // can't do this too soon or we "time out"
+            delay(0.2) { // can't do this too soon or we "time out"
                 player.perform(queueTransaction: {q in
                     print(q.items.map{$0.title!})
                 }) {q, err in
@@ -123,10 +127,17 @@ class ViewController: UIViewController {
             let player = self.player
             player.perform(queueTransaction: {q in
                 print("before:", q.items.map{$0.title!})
-                q.insert(qd, after:nil)
+                q.insert(qd, after:q.items.last!) // bug: if `after:` is not nil, nothing happens
             }) {q, err in
+                // well, dammit, there's another bug!
+                // the queue does not reflect the change we just made!
                 if let err = err { print(err) }
                 print("after:", q.items.map{$0.title!})
+                delay(0.2) {
+                    player.perform(queueTransaction: { qq in
+                        print("after after:", qq.items.map{$0.title!})
+                    }) { _,_ in }
+                }
             }
         }
     }
@@ -138,8 +149,14 @@ class ViewController: UIViewController {
                 print("before:", q.items.map{$0.title!})
                 q.remove(q.items[3])
             }) {q, err in
+                // same bug; the change is not reflected correctly
                 if let err = err { print(err) }
                 print("after:", q.items.map{$0.title!})
+                delay(0.2) {
+                    player.perform(queueTransaction: { qq in
+                        print("after after:", qq.items.map{$0.title!})
+                    }) { _,_ in }
+                }
             }
         }
     }
