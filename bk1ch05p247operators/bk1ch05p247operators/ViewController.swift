@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         print(ok)
         
         let arr = [v1,v2]
-        let ix = arr.index(of:v1) // Optional wrapping 0
+        let ix = arr.firstIndex(of:v1) // Optional wrapping 0
         print(ix as Any)
 
         print(2^^2) // 4

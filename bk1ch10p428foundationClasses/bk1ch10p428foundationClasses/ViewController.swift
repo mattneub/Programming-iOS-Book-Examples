@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 
         do {
             let arr = ["hey"] as NSArray
-            let ix = arr.index(of:"ho")
+            let ix = arr.index(of:"ho") // NSArray method, not Swift
             if ix == NSNotFound {
                 print("it wasn't found")
             }
@@ -286,7 +286,7 @@ class ViewController: UIViewController {
             if let cdata = ud.object(forKey: "myColor") as? Data {
                 let c = try! NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: cdata)
                 // c is an Optional wrapping a UIColor
-                print(c)
+                print(c as Any)
             }
         }
                 
@@ -308,7 +308,7 @@ class ViewController: UIViewController {
             let n3 = 3 as NSNumber
             let ok = n2 == 2 // true
             let ok2 = n2 == 2 as NSNumber // true
-            let ix = [n1,n2,n3].index(of:2) // Optional wrapping 1
+            let ix = [n1,n2,n3].firstIndex(of:2) // Optional wrapping 1
             
             // let ok3 = n1 < n2 // compile error
             let ok4 = n1.compare(n2) == .orderedAscending // true

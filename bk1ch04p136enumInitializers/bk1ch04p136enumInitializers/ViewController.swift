@@ -26,7 +26,7 @@ enum Filter : String, CaseIterable {
         set {}
     }
     mutating func advance() {
-        var ix = Filter.allCases.index(of:self)!
+        var ix = Filter.allCases.firstIndex(of:self)!
         ix = (ix + 1) % Filter.allCases.count
         self = Filter.allCases[ix]
     }

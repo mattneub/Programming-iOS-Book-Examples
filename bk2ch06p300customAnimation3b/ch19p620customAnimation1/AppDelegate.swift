@@ -137,8 +137,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
         let tbc = self.window!.rootViewController as! UITabBarController
-        let ix1 = tbc.viewControllers!.index(of:vc1)!
-        let ix2 = tbc.viewControllers!.index(of:vc2)!
+        let ix1 = tbc.viewControllers!.firstIndex(of:vc1)!
+        let ix2 = tbc.viewControllers!.firstIndex(of:vc2)!
         let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r1end = r1start
         r1end.origin.x -= r1end.size.width * dir

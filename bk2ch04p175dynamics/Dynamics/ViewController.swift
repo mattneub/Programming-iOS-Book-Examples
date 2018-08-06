@@ -93,7 +93,7 @@ class ViewController : UIViewController {
                 // let items = self.anim.items(in: self.view.bounds) as! [UIView]
                 // crash because it contains, wrongly, a collision behavior object
                 let items = self.anim.views(in: self.view.bounds)
-                let ix = items.index(of:self.iv)
+                let ix = items.firstIndex(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
@@ -103,7 +103,7 @@ class ViewController : UIViewController {
         case 2:
             grav.action = {
                 let items = self.anim.views(in:self.view.bounds)
-                let ix = items.index(of:self.iv)
+                let ix = items.firstIndex(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
@@ -114,7 +114,7 @@ class ViewController : UIViewController {
         case 3:
             grav.action = {
                 let items = self.anim.views(in:self.view.bounds)
-                let ix = items.index(of:self.iv)
+                let ix = items.firstIndex(of:self.iv)
                 if ix == nil {
                     delay(0) { // * both are released
                         self.anim.removeAllBehaviors()
@@ -128,7 +128,7 @@ class ViewController : UIViewController {
                 [weak grav] in // *
                 if let grav = grav {
                     let items = self.anim.views(in:self.view.bounds)
-                    let ix = items.index(of:self.iv)
+                    let ix = items.firstIndex(of:self.iv)
                     if ix == nil {
                         self.anim.removeBehavior(grav) // * grav is released, iv is not!
                         self.anim.removeAllBehaviors() // probably because of the other behaviors

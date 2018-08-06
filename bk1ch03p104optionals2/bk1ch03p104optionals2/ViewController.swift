@@ -102,12 +102,12 @@ class ViewController: UIViewController {
 
 
         let arr = [1,2,3]
-        let ix = (arr as NSArray).index(of:4)
+        let ix = (arr as NSArray).index(of:4) // NSArray method, not Swift
         print(ix)
         if ix == NSNotFound { print("not found") }
         
         let arr2 = [1,2,3]
-        let ix2 = arr2.index(of:4)
+        let ix2 = arr2.firstIndex(of:4)
         if ix2 == nil { print("not found") }
 
 

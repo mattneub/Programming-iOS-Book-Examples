@@ -63,7 +63,7 @@ class GameBoard : UIView {
     var animateTapResponse = true
     @objc func tapped(_ n:Notification) {
         guard let v = n.object as? Card else {return}
-        if let ix = self.hand.index(of:v) {
+        if let ix = self.hand.firstIndex(of:v) {
             self.hand.remove(at:ix)
         } else {
             self.hand.append(v)

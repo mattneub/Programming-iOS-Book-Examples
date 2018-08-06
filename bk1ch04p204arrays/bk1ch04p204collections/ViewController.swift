@@ -254,15 +254,13 @@ class ViewController: UIViewController {
             let arr = [1,2,3]
             let ok = arr.contains(2) // ***
             let okk = arr.contains {$0 > 3} // false
-            let ix = arr.index(of:2) // *** Optional wrapping 1
-            let which = arr.index(where:{$0>2})
-            let which2 = arr.first(where:{$0>2})
+            let ix = arr.firstIndex(of:2) // *** Optional wrapping 1
+            let which = arr.firstIndex {$0>2}
+            let which2 = arr.first {$0>2}
             
             let aviary = [Bird(name:"Tweety"), Bird(name:"Flappy"), Bird(name:"Lady")]
-            // let ixxxx = aviary.index(of:Bird(name:"Tweety"))
-            // let ix2 = aviary.index {$0.name.count < 5} // index(where:) works here,
-            // but I think for consistency I'd better say "where" explicitly
-            let ix2 = aviary.index(where: {$0.name.count < 5})
+            // let ixxxx = aviary.firstIndex(of:Bird(name:"Tweety"))
+            let ix2 = aviary.firstIndex {$0.name.count < 5}
             print(ix2 as Any)
             
             do {

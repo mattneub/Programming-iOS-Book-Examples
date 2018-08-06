@@ -35,7 +35,7 @@ func say(s:String, times:Int, loudly:Bool) {
 func removeCharacterNot(_ c:Character, from s:String) -> Int {
     var s = s
     var howMany = 0
-    while let ix = s.index(of:c) { // no more characters
+    while let ix = s.firstIndex(of:c) { // no more characters
         s.remove(at:ix)
         howMany += 1
     }
@@ -46,7 +46,7 @@ func removeCharacterNot(_ c:Character, from s:String) -> Int {
 
 func removeCharacter(_ c:Character, from s: inout String) -> Int {
     var howMany = 0
-    while let ix = s.index(of:c) { // no more characters
+    while let ix = s.firstIndex(of:c) { // no more characters
         s.remove(at:ix)
         howMany += 1
     }

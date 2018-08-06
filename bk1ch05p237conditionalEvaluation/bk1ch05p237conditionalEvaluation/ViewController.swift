@@ -119,7 +119,7 @@ class ViewController: UIViewController {
         do {
             let arr = ["Manny", "Moe", "Jack"]
             let target = "Matt"
-            let pos = arr.index(of:target)
+            let pos = arr.firstIndex(of:target)
             let s = pos != nil ? String(pos!) : "NOT FOUND"
             _ = s
         }
@@ -127,7 +127,7 @@ class ViewController: UIViewController {
         do {
             let arr = ["Manny", "Moe", "Jack"]
             let target = "Matt"
-            let s = arr.index(of:target).map {String($0)} ?? "NOT FOUND"
+            let s = arr.firstIndex(of:target).map {String($0)} ?? "NOT FOUND"
             _ = s
         }
 

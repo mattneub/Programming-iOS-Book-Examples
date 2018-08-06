@@ -58,7 +58,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             // let items = anim.items(in: sup.bounds) as! [UIView]
             // crash because it contains, wrongly, a collision behavior object
             let items = anim.views(in: sup.bounds)
-            if items.index(of:self.v) == nil {
+            if items.firstIndex(of:self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
                 print("done")

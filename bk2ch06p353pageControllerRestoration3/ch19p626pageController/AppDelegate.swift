@@ -80,7 +80,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(_ pvc: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! + 1
+        let ix = self.pep.firstIndex(of:boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
@@ -88,7 +88,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     }
     func pageViewController(_ pvc: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! - 1
+        let ix = self.pep.firstIndex(of:boy)! - 1
         if ix < 0 {
             return nil
         }
@@ -103,7 +103,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     func presentationIndex(for pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers![0] as! Pep
         let boy = page.boy
-        return self.pep.index(of:boy)!
+        return self.pep.firstIndex(of:boy)!
     }
     
 }

@@ -28,7 +28,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior {
         grav.action = {
             [unowned self] in
             let items = anim.items(in: sup.bounds) as! [UIView]
-            if items.index(of: self.v) == nil {
+            if items.firstIndex(of: self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
             }
