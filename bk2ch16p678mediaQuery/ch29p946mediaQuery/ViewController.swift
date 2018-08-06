@@ -3,12 +3,6 @@
 import UIKit
 import MediaPlayer
 
-/*
-NB New in iOS 7, MPMediaItem properties can be accessed directly
-But I never got the memo, so I'm behind on this change!
-Thus we can eliminate the use of valueForProperty throughout
-*/
-
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -123,7 +117,7 @@ class ViewController: UIViewController {
         print("wireless active change \(n.userInfo as Any)")
     }
     
-    func dummy() {
+    @objc func dummy() {
         
     }
     
@@ -136,12 +130,16 @@ class ViewController: UIViewController {
                 let query = MPMediaQuery() // just making sure this is legal
                 let result = query.items
                 _ = result
+                // just testing the syntax; this notification name is not yet namespaced
+                NotificationCenter.default.addObserver(self, selector: #selector(self.dummy), name: .MPMediaLibraryDidChange, object: nil)
             }
             let query = MPMediaQuery.albums()
             guard let result = query.collections else {return} //
             // prove we've performed the query, by logging the album titles
             for album in result {
                 print(album.representativeItem!.albumTitle!) //
+                // just showing the syntax
+                _ = album.representativeItem!.value(forProperty: MPMediaItemPropertyTitle)
             }
             return; // testing
             // cloud item values are 0 and 1, meaning false and true
