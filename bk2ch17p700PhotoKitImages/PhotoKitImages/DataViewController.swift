@@ -56,7 +56,8 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         // we have to say quite specifically what "view" of image we want
         let opts = PHImageRequestOptions()
         opts.resizeMode = .exact
-        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(300,300), contentMode: .aspectFit, options: opts) { im, info in
+        opts.version = .current
+        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(600,600), contentMode: .aspectFit, options: opts) { im, info in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging
@@ -103,8 +104,10 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             let evc = EditingViewController(displayImage:CIImage(image:im2)!)
             
             evc.delegate = self
-            if let adj = input.adjustmentData, adj.formatIdentifier == self.myidentifier {
-                if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with: adj.data) as? Double {
+            if let adj = input.adjustmentData,
+                adj.formatIdentifier == self.myidentifier {
+                if let vigNumber = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSNumber.self, from: adj.data),
+                    let vigAmount = vigNumber as? Double {
                     print("got vigAmount", vigAmount)
                     if vigAmount >= 0.0 {
                         evc.initialVignette = vigAmount
@@ -146,7 +149,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // warning: this is time-consuming! (even more than how I was doing it before)
             try! CIContext().writeJPEGRepresentation(of: ci, to: outurl, colorSpace: space)
 
-            let data = NSKeyedArchiver.archivedData(withRootObject: vignette)
+            let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
             output.adjustmentData = PHAdjustmentData(
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
 

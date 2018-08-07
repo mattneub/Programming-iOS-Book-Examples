@@ -125,7 +125,8 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             self.displayImage = CIImage(image:im2)
             if let adj = self.input?.adjustmentData,
                 adj.formatIdentifier == self.myidentifier {
-                if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with:adj.data) as? Double {
+                if let vigNumber = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSNumber.self, from: adj.data),
+                    let vigAmount = vigNumber as? Double {
                     if vigAmount >= 0.0 {
                         self.slider.value = Float(vigAmount)
                         self.seg.isHidden = false
@@ -161,7 +162,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             try! CIContext().writeJPEGRepresentation(
                 of: ci, to: outurl, colorSpace: space)
             
-            let data = NSKeyedArchiver.archivedData(withRootObject:vignette)
+            let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
             output.adjustmentData = PHAdjustmentData(
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
             

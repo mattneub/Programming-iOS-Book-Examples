@@ -37,8 +37,7 @@ class ViewController: UIViewController {
         let opts = PHFetchOptions()
         opts.fetchLimit = 1
         let result = PHAsset.fetchAssets(with: .video, options: opts)
-        guard result.count > 0 else {return}
-        let asset = result[0]
+        guard let asset = result.firstObject else {return}
         PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil) {
             item, info in
             print(item as Any)

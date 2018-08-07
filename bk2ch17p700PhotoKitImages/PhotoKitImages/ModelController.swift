@@ -5,22 +5,24 @@ import Photos
 
 class ModelController: NSObject {
     
-    var recentAlbums : PHFetchResult<PHAssetCollection>!
+    // var recentAlbums : PHFetchResult<PHAssetCollection>!
     var photos : PHFetchResult<PHAsset>!
     
     func tryToGetStarted() {
-        self.recentAlbums = PHAssetCollection.fetchAssetCollections(with:
-            .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-        guard let rec = self.recentAlbums.firstObject else {return}
-        let options = PHFetchOptions() // photos only, please, no HDRs
-        options.fetchLimit = 10 // let's not take all day about it
+        let recentAlbums = PHAssetCollection.fetchAssetCollections(with:
+            .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: nil)
+        guard let rec = recentAlbums.firstObject else {return}
+        let options = PHFetchOptions()
         let pred = NSPredicate(
             format: "mediaType == %d && !((mediaSubtype & %d) == %d)",
             PHAssetMediaType.image.rawValue,
             PHAssetMediaSubtype.photoHDR.rawValue,
             PHAssetMediaSubtype.photoHDR.rawValue)
-        options.predicate = pred
-        self.photos = PHAsset.fetchAssets(in:rec, options: options)
+        options.predicate = pred // photos only, please, no HDRs
+        options.fetchLimit = 10 // let's not take all day about it
+        let photos = PHAsset.fetchAssets(in:rec, options: options)
+        // self.recentAlbums = recentAlbums
+        self.photos = photos
     }
 
     override init() {
