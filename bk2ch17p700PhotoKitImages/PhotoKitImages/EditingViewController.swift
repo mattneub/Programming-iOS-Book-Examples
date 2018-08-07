@@ -21,7 +21,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
     var context : CIContext!
     let displayImage : CIImage
     let vig = VignetteFilter()
-    var initialVignette : Double = 0.85
+    var initialVignette : Double = 0.7
     var canUndo = false
     weak var delegate : EditingViewControllerDelegate?
     

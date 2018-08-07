@@ -27,7 +27,7 @@ class ViewController : UIViewController {
         // first filter
         let grad = CIFilter(name: "CIRadialGradient")!
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * 0.85, forKey:"inputRadius0")
+        grad.setValue(smallerDimension/2.0 * 0.7, forKey:"inputRadius0")
         grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         let gradimage = grad.outputImage!
 
