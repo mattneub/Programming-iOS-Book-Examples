@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         checkForPhotoLibraryAccess {
         
             // horrible Moments interface
-            // let src = UIImagePickerControllerSourceType.savedPhotosAlbum
+            // let src = UIImagePickerController.SourceType.savedPhotosAlbum
             let src = UIImagePickerController.SourceType.photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(src)
                 else { print("alas"); return }
@@ -90,7 +90,6 @@ class ViewController: UIViewController {
             // if we want a popover, on pad, we can do that; just uncomment next line
             picker.modalPresentationStyle = .popover
             self.present(picker, animated: true)
-            // ignore:
             if let pop = picker.popoverPresentationController {
                 let v = sender as! UIView
                 pop.sourceView = v
@@ -251,9 +250,9 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func pickUpMetadata(_ imurl:URL?) {
-        guard let src = CGImageSourceCreateWithURL(imurl! as CFURL, nil) else {return}
-        let result = CGImageSourceCopyPropertiesAtIndex(src,0,nil)! as NSDictionary
-        print(result)
+        let src = CGImageSourceCreateWithURL(imurl! as CFURL, nil)!
+        let d = CGImageSourceCopyPropertiesAtIndex(src,0,nil) as! [AnyHashable:Any]
+        print(d)
 
     }
     

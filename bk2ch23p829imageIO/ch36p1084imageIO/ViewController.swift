@@ -21,8 +21,7 @@ class ViewController: UIViewController {
     @IBAction func doButton (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
-        let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)!
-        let d = result as! [AnyHashable:Any] // :) works because CFString is now AnyHashable
+        let d = CGImageSourceCopyPropertiesAtIndex(src, 0, nil) as! [AnyHashable:Any] // :) works because CFString is now AnyHashable
         print(d)
         // just proving it really is a dictionary
         let width = d[kCGImagePropertyPixelWidth] as! CGFloat
