@@ -71,6 +71,7 @@ class RootViewController: UIViewController {
     }
 }
 
+// just testing syntax, uncomment to test
 /*
 
 extension RootViewController : PHPhotoLibraryChangeObserver {

@@ -38,26 +38,26 @@ class MyMTKView : MTKView {
     override func draw() {
         print("draw!") // called once
 
-        // three problems
-        // first, drawableSize is double-scaled for double-resolution screen...
-        // ...so our image needs to be doubled in size
-        // second, we are drawn into the lower _left_ of the `bounds` we render into
-        // third, if our `bounds` isn't big enough it cuts us off, regardless of origin
+        // getting our CIImage to draw where we want it is a little tricky
+        // in render(to:bounds:), the bounds do not scale the drawing...
+        // plus, it seems we are drawn into the _lower_ left corner of those bounds
         
-        // so I'm using _transforms_ to position the image at the top center
+        // so, I use a scale transform get the scale...
+        // ... and I use the origin of the `bounds` to position the drawing
+        // make sure the bounds size is big enough or it will just be cut off!
         
         let scale = self.layer.contentsScale
-        var im2 = self.image.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
+        let im2 = self.image.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
         let imsz = im2.extent.size
         let x = self.drawableSize.width/2 - imsz.width/2
-        im2 = im2.transformed(by: CGAffineTransform(translationX: x, y: 0))
+        let y = self.drawableSize.height - imsz.height
         
         // minimal dance required in order to draw: render, present, commit
         let buffer = self.queue.makeCommandBuffer()!
         self.context!.render(im2,
                              to: self.currentDrawable!.texture,
                              commandBuffer: buffer,
-                             bounds: CGRect(origin:.zero, size:CGSize(width:self.drawableSize.width,height:imsz.height)),
+                             bounds: CGRect(origin:CGPoint(x:-x,y:-y), size:self.drawableSize),
                              colorSpace: CGColorSpaceCreateDeviceRGB())
         buffer.present(self.currentDrawable!)
         buffer.commit()

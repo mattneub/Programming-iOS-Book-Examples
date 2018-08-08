@@ -2,21 +2,21 @@
 
 import UIKit
 import Photos
-import GLKit
-import OpenGLES
 import MobileCoreServices
 import AVFoundation
 import VignetteFilter
+import MetalKit
 
 protocol EditingViewControllerDelegate : class {
     func finishEditing(vignette:Double)
 }
 
 
-class EditingViewController: UIViewController, GLKViewDelegate {
+class EditingViewController: UIViewController, MTKViewDelegate {
+    
     
     @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var glkview: GLKView!
+    @IBOutlet weak var mtkview: MTKView!
     
     var context : CIContext!
     let displayImage : CIImage
@@ -24,6 +24,9 @@ class EditingViewController: UIViewController, GLKViewDelegate {
     var initialVignette : Double = 0.7
     var canUndo = false
     weak var delegate : EditingViewControllerDelegate?
+    
+    var queue: MTLCommandQueue!
+
     
     init(displayImage:CIImage) {
         self.displayImage = displayImage
@@ -52,32 +55,57 @@ class EditingViewController: UIViewController, GLKViewDelegate {
             self.navigationItem.rightBarButtonItems = [done, undo]
         }
         
-        let eaglcontext = EAGLContext(api:.openGLES2)!
-        self.glkview.context = eaglcontext
-        self.glkview.delegate = self
+        self.mtkview.isOpaque = false // otherwise background is black
+        // must have a "device"
+        guard let device = MTLCreateSystemDefaultDevice() else {
+            print("darn")
+            return
+        }
+        self.mtkview.device = device
         
-        self.context = CIContext(eaglContext: self.glkview.context)
+        // mode: draw on demand
+        self.mtkview.isPaused = true
+        self.mtkview.enableSetNeedsDisplay = true
+        // other stuff
+        self.context = CIContext(mtlDevice: device)
+        self.queue = device.makeCommandQueue()
         
-        self.glkview.display()
+        self.mtkview.delegate = self
+        // self.mtkview.backgroundColor = .black // just testing
+        self.mtkview.setNeedsDisplay()
     }
     
-    func glkView(_ view: GLKView, drawIn rect: CGRect) {
-        glClearColor(1.0, 1.0, 1.0, 1.0)
-        glClear(UInt32(GL_COLOR_BUFFER_BIT))
-        
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    }
+    
+    func draw(in view: MTKView) {
         self.vig.setValue(self.displayImage, forKey: "inputImage")
         let val = Double(self.slider.value)
         self.vig.setValue(val, forKey:"inputPercentage")
-        let output = self.vig.outputImage!
+        var output = self.vig.outputImage!
+        // ok but for testing purposes let's not vignette yette
+        //output = self.displayImage
         
-        var r = self.glkview.bounds
-        r.size.width = CGFloat(self.glkview.drawableWidth)
-        r.size.height = CGFloat(self.glkview.drawableHeight)
-
+        var r = view.bounds
+        r.size = view.drawableSize
+        
         r = AVMakeRect(aspectRatio: output.extent.size, insideRect: r)
+        output = output.transformed(by: CGAffineTransform(scaleX: r.size.width/output.extent.size.width, y: r.size.height/output.extent.size.height))
+        // okay, almost there! but we need to transform up or right to center in the view
+        // wait, I just realized I can do that by offsetting the draw bounds origin
         
-        self.context.draw(output, in: r, from: output.extent)
+        // minimal dance required in order to draw: render, present, commit
+        let buffer = self.queue.makeCommandBuffer()!
+        self.context!.render(output,
+                             to: view.currentDrawable!.texture,
+                             commandBuffer: buffer,
+                             bounds: CGRect(origin:CGPoint(x:-r.origin.x, y:-r.origin.y), size:view.drawableSize),
+                             colorSpace: CGColorSpaceCreateDeviceRGB())
+        buffer.present(view.currentDrawable!)
+        buffer.commit()
+
     }
+
 
     
     @objc func doCancel (_ sender: Any?) {
@@ -101,7 +129,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
     }
 
     @IBAction func doSlider(_ sender: Any?) {
-        self.glkview.display()
+        self.mtkview.setNeedsDisplay()
     }
     
     
