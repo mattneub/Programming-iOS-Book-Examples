@@ -103,6 +103,35 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     if let name = CNContactFormatter.string(from: moi3, style: full) {
                         print("\(name): \(workemails[0])") // Matt Neuburg: matt@tidbits.com
                     }
+                    
+                    // new feature, let's see if I can find myself thru my email
+                    let anemail = emails[0]
+                    let pred2 = CNContact.predicateForContacts(matchingEmailAddress: anemail.value as String)
+                    let moi4 = try CNContactStore().unifiedContacts(matching: pred2, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor])
+                    print(moi4)
+                    
+                    // intriguing: you can find the pieces of a physical address
+                    do {
+                        let pred = CNContact.predicateForContacts(matchingName:"Charlotte")
+                        let c = try CNContactStore().unifiedContacts(matching: pred, keysToFetch: [CNContactPostalAddressesKey as CNKeyDescriptor])[0]
+                        let addr = c.postalAddresses[0]
+                        let form = CNPostalAddressFormatter()
+                        let attr = form.attributedString(from: addr.value, withDefaultAttributes: [:])
+                        let s = attr.string as NSString
+                        let range = NSRange(location: 0, length: s.length)
+                        let key = NSAttributedString.Key(rawValue:CNPostalAddressPropertyAttribute)
+                        attr.enumerateAttributes(in: range, options: []) { result, r, stop in
+                            if let val = result[key] as? String {
+                                if val == "country" {
+                                    // r is the range of the country name
+                                    let country = s.substring(with: r)
+                                    print(country) // New Zealand
+                                    // ...
+                                    stop.pointee = true
+                                }
+                            }
+                        }
+                    }
                 } catch {
                     print(error)
                 }
