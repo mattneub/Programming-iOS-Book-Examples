@@ -32,7 +32,7 @@ extension CGVector {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 1 // 1...10
+    let which = 2 // 1...10
     
     @IBOutlet var map : MKMapView!
     let annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
@@ -56,9 +56,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
         self.map.region = reg
         //  or ...
-//        let pt = MKMapPointForCoordinate(loc)
-//        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
-//        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
+        do {
+            let pt = MKMapPoint(loc)
+            let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
+            _ = MKMapRect(x: pt.x - w/2.0, y: pt.y - w/2.0, width: w, height: w)
+            let p2 = MKMapPoint(loc)
+            _ = pt.distance(to:p2)
+            _ = MKMetersPerMapPointAtLatitude(loc.latitude)
+        }
         
         // try new iOS 11 feature
         self.map.showsCompass = false
@@ -68,7 +73,22 @@ class ViewController: UIViewController, MKMapViewDelegate {
         compass.isHidden = true // prevent annoying initial flash
         self.view.addSubview(compass)
         
+
+        
         if which == 1 {
+            // try snapshot feature
+            delay(2) {
+                let opts = MKMapSnapshotter.Options()
+                opts.region = self.map.region
+                let snap = MKMapSnapshotter(options: opts)
+                snap.start { shot, err in
+                    if let shot = shot {
+                        let im = shot.image
+                        print(im)
+                    }
+                }
+            }
+
             return
         }
         if which < 6 {
@@ -161,6 +181,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annot.title = "This way!"
             self.map.addAnnotation(annot)
         }
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

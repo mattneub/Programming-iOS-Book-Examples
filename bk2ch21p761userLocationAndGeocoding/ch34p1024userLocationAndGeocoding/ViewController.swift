@@ -31,10 +31,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     @IBAction func doButton (_ sender: Any!) {
         let mi = MKMapItem.forCurrentLocation()
         // here, however, it seems that we cannot set the span...?
-        let span = MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
+        let span = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:span)
+            MKLaunchOptionsMapSpanKey: span
         ])
     }
     
@@ -64,6 +64,9 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             if let addy = p.postalAddress {
                 let f = CNPostalAddressFormatter()
                 print(f.string(from: addy))
+                print(addy.street)
+                print(addy.city)
+                print(addy.state)
             }
         }
     }
