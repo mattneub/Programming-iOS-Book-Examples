@@ -9,6 +9,17 @@ extension Array {
     }
 }
 
+// is this any more efficient?
+//extension Array {
+//    mutating func remove(at set:IndexSet) {
+//        let set2 = set.symmetricDifference(IndexSet(self.indices))
+//        self = self.enumerated().reduce(into: []) {acc, pair in
+//            if set2.contains(pair.offset) { acc.append(pair.element) }
+//        }
+//    }
+//}
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)

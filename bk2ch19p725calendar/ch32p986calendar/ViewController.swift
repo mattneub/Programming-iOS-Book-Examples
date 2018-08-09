@@ -140,6 +140,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                     setPositions: nil,
                     end:nil)
                 
+                print(recur)
                 let ev = EKEvent(eventStore:self.database)
                 ev.title = "Mysterious biennial Sunday-in-January morning ritual"
                 ev.addRecurrenceRule(recur)
