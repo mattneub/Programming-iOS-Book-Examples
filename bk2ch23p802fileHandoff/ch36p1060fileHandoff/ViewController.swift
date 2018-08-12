@@ -7,7 +7,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
 
     @IBOutlet var wv : UIWebView!
     var doc : URL?
-    var docs : [URL]?
+    var docs = [URL]()
     let dic = UIDocumentInteractionController()
     let exts : Set<String> = ["pdf", "txt"]
     
@@ -105,11 +105,11 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
                 if self.exts.contains(f.pathExtension) {
                     if QLPreviewController.canPreview(f as QLPreviewItem) {
                         print("adding \(f)")
-                        self.docs!.append(f)
+                        self.docs.append(f)
                     }
                 }
             }
-            guard self.docs!.count > 0 else {
+            guard self.docs.count > 0 else {
                 print("no docs")
                 return
             }
@@ -126,11 +126,11 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     
     
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return self.docs!.count
+        return self.docs.count
     }
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        return self.docs![index] as QLPreviewItem
+        return self.docs[index] as QLPreviewItem
     }
 
 

@@ -101,7 +101,7 @@ class ViewController: UIViewController {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let moi = Person(firstName: "Matt", lastName: "Neuburg")
-            let moidata = NSKeyedArchiver.archivedData(withRootObject: moi)
+            let moidata = try NSKeyedArchiver.archivedData(withRootObject: moi, requiringSecureCoding: true)
             let moifile = docsurl.appendingPathComponent("moi.txt")
             
             let moi2 = Person2(firstName: "Matt", lastName: "Neuburg")
@@ -164,7 +164,7 @@ class ViewController: UIViewController {
             switch which {
             case 1:
                 let persondata = try Data(contentsOf: moifile)
-                let person = NSKeyedUnarchiver.unarchiveObject(with: persondata) as! Person
+                let person = try NSKeyedUnarchiver.unarchivedObject(ofClass: Person.self, from: persondata)!
                 print(person)
             case 2:
                 // ==== the NSFileCoordinator way
@@ -173,7 +173,7 @@ class ViewController: UIViewController {
                 fc.coordinate(with: [intent], queue: .main) { err in
                     do {
                         let persondata = try Data(contentsOf: intent.url)
-                        let person = NSKeyedUnarchiver.unarchiveObject(with: persondata) as! Person
+                        let person = try NSKeyedUnarchiver.unarchivedObject(ofClass: Person.self, from: persondata)!
                         print(person)
                     } catch {
                         print(error)
