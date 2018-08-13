@@ -15,6 +15,22 @@ class PreviewViewController: UITableViewController, QLPreviewingController {
     }
     
     func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {
+        let doc = PeopleDocument(fileURL:url)
+        doc.open { ok in
+            if ok {
+                self.people = doc.people
+                self.tableView.register(
+                    UINib(nibName: "PersonCell", bundle: nil),
+                    forCellReuseIdentifier: "Person")
+                self.tableView.reloadData()
+                handler(nil)
+            } else {
+                handler(NSError(domain: "NoDataDomain", code: -1, userInfo: nil))
+            }
+        }
+        return;
+        
+        // this code was developed for iOS 11 when doc.open was failing, but in iOS 12 it works
         let fc = NSFileCoordinator()
         let intent = NSFileAccessIntent.readingIntent(with: url)
         let queue = OperationQueue()
