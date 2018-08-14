@@ -71,7 +71,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         // include attributes for decoration view
         if let decatts = self.layoutAttributesForDecorationView(
             ofKind:self.titleKind, at: IndexPath(item: 0, section: 0)) {
-                if rect.contains(decatts.frame) {
+                if rect.intersects(decatts.frame) {
                     arr.append(decatts)
                 }
         }
