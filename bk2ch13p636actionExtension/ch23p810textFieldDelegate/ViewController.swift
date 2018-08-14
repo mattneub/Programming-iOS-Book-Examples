@@ -43,12 +43,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 guard let items = items, items.count > 0 else {
                     return
                 }
-                guard let extensionItem = items[0] as? NSExtensionItem,
-                    let provider = extensionItem.attachments?[0] as? NSItemProvider,
-                    provider.hasItemConformingToTypeIdentifier(self.desiredType)
-                    else {
-                        return
-                }
+                guard let extensionItem = items[0] as? NSExtensionItem else {return}
+                guard let provider = extensionItem.attachments?.first else {return}
+                guard provider.hasItemConformingToTypeIdentifier(self.desiredType) else {return}
                 provider.loadItem(forTypeIdentifier: self.desiredType) { item, err in
                     DispatchQueue.main.async {
                         if let s = item as? String {

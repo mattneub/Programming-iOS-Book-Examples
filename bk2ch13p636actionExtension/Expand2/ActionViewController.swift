@@ -30,12 +30,9 @@ class ActionViewController: UIViewController {
         }
         let items = self.extensionContext!.inputItems
         // open the envelopes
-        guard let extensionItem = items[0] as? NSExtensionItem,
-            let provider = extensionItem.attachments?[0] as? NSItemProvider,
-            provider.hasItemConformingToTypeIdentifier(self.desiredType)
-            else {
-                return
-        }
+        guard let extensionItem = items[0] as? NSExtensionItem else {return}
+        guard let provider = extensionItem.attachments?.first else {return}
+        guard provider.hasItemConformingToTypeIdentifier(self.desiredType) else {return}
         provider.loadItem(forTypeIdentifier: desiredType) { item, err in
             DispatchQueue.main.async {
                 if let orig = (item as? String)?.uppercased() {
