@@ -4,20 +4,31 @@ import UIKit
 
 class Dog : NSObject {
     var name : String
-    init(_ name:String) {self.name = name}
+    var license : Int
+    init(name:String, license:Int) {
+        self.name = name
+        self.license = license
+    }
 }
 
 class Dog2 : NSObject { // a dog equatable and hashable on its name
     var name : String
-    init(_ name:String) {self.name = name}
+    var license : Int
+    init(name:String, license:Int) {
+        self.name = name
+        self.license = license
+    }
     override func isEqual(_ object: Any?) -> Bool {
         if let otherdog = object as? Dog2 {
-            return otherdog.name == self.name
+            return otherdog.name == self.name && otherdog.license == self.license
         }
         return false
     }
     override var hash: Int {
-        return self.name.hash
+        var h = Hasher()
+        h.combine(self.name)
+        h.combine(self.license)
+        return h.finalize()
     }
 }
 
@@ -319,29 +330,29 @@ class ViewController: UIViewController {
         }
         
         do {
-            let d1 = Dog("Fido")
-            let d2 = Dog("Fido")
+            let d1 = Dog(name:"Fido", license:1)
+            let d2 = Dog(name:"Fido", license:1)
             let ok = d1 == d2 // false
             print(ok)
         }
         
         do {
-            let d1 = Dog2("Fido")
-            let d2 = Dog2("Fido")
+            let d1 = Dog2(name:"Fido", license:1)
+            let d2 = Dog2(name:"Fido", license:1)
             let ok = d1 == d2 // true
             print(ok)
         }
         
         do {
             var set1 = Set<Dog>()
-            set1.insert(Dog("Fido"))
-            set1.insert(Dog("Fido"))
-            print(set1.count) // 2, because name equality is not being used
+            set1.insert(Dog(name:"Fido", license:1))
+            set1.insert(Dog(name:"Fido", license:1))
+            print(set1.count) // 2, because custom equality/hashability is not being used
             
             var set2 = Set<Dog2>()
-            set2.insert(Dog2("Fido"))
-            set2.insert(Dog2("Fido"))
-            print(set2.count) // 1, with name equality/hashability
+            set2.insert(Dog2(name:"Fido", license:1))
+            set2.insert(Dog2(name:"Fido", license:1))
+            print(set2.count) // 1, with custom equality/hashability
             
         }
         

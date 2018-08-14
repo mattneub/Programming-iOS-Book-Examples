@@ -31,6 +31,7 @@ class MyView : UIView {
         con.fill(CGRect(0,0,0,0))
         // but the context is transparent if we comment out the next line
         // I regard this as a bug (not fixed in beta 5)
+        // okay, this is fixed in beta 6; we get an opaque context in both cases
         con.setFillColor(UIColor.red.cgColor)
         con.fill(CGRect(0,0,0,0))
     }
