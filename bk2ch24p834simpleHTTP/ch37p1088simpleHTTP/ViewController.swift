@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     // -------------------
     
-    // just showing some "return a value" strategies
+    // just showing some "return a value" strategies — this has gone into Appendix C
     // this can never work
     func doSomeNetworking() -> UIImage? {
         let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"

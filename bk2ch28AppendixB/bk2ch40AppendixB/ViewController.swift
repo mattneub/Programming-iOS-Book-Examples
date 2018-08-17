@@ -163,6 +163,15 @@ extension Array {
     }
 }
 
+extension Array {
+    mutating func remove2(at ixs:Set<Int>) {
+        var arr = Swift.Array(self.enumerated())
+        arr.removeAll{ixs.contains($0.offset)}
+        self = arr.map{$0.element}
+    }
+}
+
+
 class Wrapper<T> {
     let p:T
     init(_ p:T){self.p = p}

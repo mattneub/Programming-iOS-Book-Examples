@@ -116,33 +116,25 @@ class ViewController: UIViewController {
         let charRange = self.tv.layoutManager.characterRange(forGlyphRange: NSMakeRange(ix,0), actualGlyphRange:nil)
         // ix = charRange.location
         
-        
         // what word is that?
         if #available(iOS 12.0, *) {
-            let scheme = NLTagScheme.tokenType
-            let tagger = NLTagger(tagSchemes: [scheme])
-            let s = self.tv.text!
-            tagger.string = s
-            if let index = Range(charRange, in:s)?.lowerBound {
-                let (tag,range) = tagger.tag(at: index, unit: .word, scheme: scheme)
-                if let tag = tag, tag == .word {
-                    print(s[range])
-                }
-                
-                let range2 = NSRange(range, in:s)
+            let tokenizer = NLTokenizer(unit: .word)
+            tokenizer.setLanguage(.english)
+            let text = self.tv.text!
+            tokenizer.string = text
+            let range = NSMakeRange(charRange.location, 100)
+            let words = tokenizer.tokens(for: Range(range, in:text)!)
+            if let word = words.first {
+                print(text[word])
+                let range = NSRange(word, in:text)
                 let lm = self.tv.layoutManager as! MyLayoutManager
-                lm.wordRange = range2
-                lm.invalidateDisplay(forCharacterRange:range2)
+                lm.wordRange = range
+                lm.invalidateDisplay(forCharacterRange:range)
                 delay(1) {
                     lm.wordRange = NSRange(location: NSNotFound, length: 0)
-                    lm.invalidateDisplay(forCharacterRange:range2)
+                    lm.invalidateDisplay(forCharacterRange:range)
                 }
-                
-                
             }
-
         }
-        
-
     }
 }
