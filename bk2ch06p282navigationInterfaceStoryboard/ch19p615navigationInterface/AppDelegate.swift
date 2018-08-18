@@ -37,7 +37,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         let im = UIImage(named:"linen.png")
         let sz = CGSize(5,34)
-        let r = UIGraphicsImageRenderer(size:sz)
+        let r = UIGraphicsImageRenderer(size:sz, format:im!.imageRendererFormat)
         let im2 = r.image {
             _ in im!.draw(at:CGPoint(-55,-55))
         }

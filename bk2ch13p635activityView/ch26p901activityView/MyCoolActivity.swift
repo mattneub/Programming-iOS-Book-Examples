@@ -35,7 +35,7 @@ class MyCoolActivity : UIActivity {
         let largerSize = fmax(im.size.height, im.size.width)
         scale /= largerSize
         let sz = CGSize(im.size.width*scale, im.size.height*scale)
-        let r = UIGraphicsImageRenderer(size:sz)
+        let r = UIGraphicsImageRenderer(size:sz, format:im.imageRendererFormat)
         self.image = r.image { _ in
             im.draw(in:CGRect(origin: .zero, size: sz))
         }

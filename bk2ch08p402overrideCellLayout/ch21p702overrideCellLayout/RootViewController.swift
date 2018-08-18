@@ -32,6 +32,7 @@ class RootViewController : UITableViewController {
         self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         self.tableView.rowHeight = 58
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,7 +62,7 @@ class RootViewController : UITableViewController {
         
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
-        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36), format:im.imageRendererFormat)
         let im2 = r.image {
             _ in im.draw(in:CGRect(0,0,36,36))
         }

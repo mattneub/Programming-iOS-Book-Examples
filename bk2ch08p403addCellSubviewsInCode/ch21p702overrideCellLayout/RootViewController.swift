@@ -102,7 +102,7 @@ class RootViewController : UITableViewController {
         let iv = cell.viewWithTag(1) as! UIImageView
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
-        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36), format:im.imageRendererFormat)
         let im2 = r.image {
             _ in im.draw(in:CGRect(0,0,36,36))
         }
