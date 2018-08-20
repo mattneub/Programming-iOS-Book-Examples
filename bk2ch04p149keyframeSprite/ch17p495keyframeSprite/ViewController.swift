@@ -2,6 +2,12 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -25,11 +31,11 @@ class ViewController : UIViewController {
     
     func makeImages () -> [UIImage] {
         var arr = [UIImage]()
-
+        let sprites = UIImage(named: "sprites.png")!
         for i in [0,1,2,1,0] {
-            let r = UIGraphicsImageRenderer(size:CGSize(24,24))
+            let r = UIGraphicsImageRenderer(size:CGSize(24,24), format:sprites.imageRendererFormat)
             arr += [r.image { _ in
-                UIImage(named: "sprites.png")!.draw(at:CGPoint(CGFloat(-(5+i)*24), -4*24))
+                sprites.draw(at:CGPoint(CGFloat(-(5+i)*24), -4*24))
             }]
         }
         return arr
@@ -47,23 +53,29 @@ class ViewController : UIViewController {
     }
     
     @IBAction func doButton(_ sender: Any?) {
+        
+        self.sprite.removeAllAnimations()
+        
+        delay(0.1) { // if you remove all animations you have to do this, I don't know why
 
-        let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.contents))
-        anim.values = self.images.map {$0.cgImage!}
-        anim.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
-        anim.calculationMode = .discrete
-        anim.duration = 1.5
-        anim.repeatCount = .greatestFiniteMagnitude
-        
-        let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.position))
-        anim2.duration = 10
-        anim2.toValue = CGPoint(350,30)
-        
-        let group = CAAnimationGroup()
-        group.animations = [anim, anim2]
-        group.duration = 10
-        
-        self.sprite.add(group, forKey:nil)
+            let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.contents))
+            anim.values = self.images.map {$0.cgImage!}
+            anim.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
+            anim.calculationMode = .discrete
+            anim.duration = 1.5
+            anim.repeatCount = .greatestFiniteMagnitude
+            
+            let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.position))
+            anim2.duration = 10
+            anim2.toValue = CGPoint(350,30)
+            
+            let group = CAAnimationGroup()
+            group.animations = [anim, anim2]
+            group.duration = 10
+            
+            self.sprite.add(group, forKey:nil)
+            
+        }
 
         
     }
