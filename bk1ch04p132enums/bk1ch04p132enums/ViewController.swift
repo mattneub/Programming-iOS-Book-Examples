@@ -80,6 +80,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.testRawRepresentable()
 
         let type = Filter.albums
         let type2 : Filter = .albums
@@ -156,6 +158,23 @@ class ViewController: UIViewController {
             
         }
     
+    }
+    
+    func testRawRepresentable() {
+        // proving that an enum with a raw value is a RawRepresentable
+        enum E {
+            case howdy
+            case farewell
+        }
+        enum E2 : String {
+            case howdy
+            case farewell
+        }
+        func f<T:RawRepresentable>(_ t:T) {
+            print("you passed me a RawRepresentable")
+        }
+        // f(E.howdy) // error
+        f(E2.howdy) // you passed me a RawRepresentable
     }
 
 
