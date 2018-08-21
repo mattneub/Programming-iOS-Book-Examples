@@ -245,6 +245,25 @@ class ViewController: UIViewController {
             testFunctionHolder() // farewell from FunctionHolder
         }
         
+        do {
+            print(9)
+            class FunctionHolder {
+                var function : (() -> ())?
+                deinit {
+                    print("farewell from FunctionHolder")
+                }
+            }
+            func testFunctionHolder() {
+                let fh = FunctionHolder()
+                fh.function = {
+                    [unowned fh] in
+                    print(fh)
+                }
+            }
+            testFunctionHolder() // farewell from FunctionHolder
+        }
+
+        
         self.test()
     }
     

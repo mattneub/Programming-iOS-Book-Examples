@@ -16,6 +16,8 @@ extension Array {
 }
  */
 
+// I don't like this implementation any more
+/*
 extension Array {
     mutating func remove (at ixs:Set<Int>) -> () {
         // for i in ixs.sorted().reversed() { // this might be clearer
@@ -24,6 +26,18 @@ extension Array {
         }
     }
 }
+ */
+
+extension String {
+    func range(_ start:Int, _ count:Int) -> Range<String.Index> {
+        let i = self.index(start >= 0 ?
+            self.startIndex :
+            self.endIndex, offsetBy: start)
+        let j = self.index(i, offsetBy: count)
+        return i..<j
+    }
+}
+
 
 extension CGRect {
     var center : CGPoint {
@@ -264,17 +278,23 @@ class ViewController: UIViewController {
         
         self.button.sendActions(for: .touchUpInside)
         
-        var arr = ["Manny", "Moe", "Jack"]
-        arr.remove(at: [0,2])
-        print(arr) // ["Moe"]
+        let s = "abcdefg"
+        let r1 = s.range(2,2)
+        let r2 = s.range(-3,2)
+        print(s[r1]) // cd
+        print(s[r2]) // ef
+
         
-        // yes, you can do that with Foundation, but yecch
-        struct Person { let name: String }
-        var arr2 = [Person(name:"Manny"), Person(name:"Moe"), Person(name:"Jack")]
-        let marr2 = NSMutableArray(array: arr2)
-        marr2.removeObjects(at:IndexSet([0,2]))
-        arr2 = marr2 as! [Person]
-        print(arr2)
+//        var arr = ["Manny", "Moe", "Jack"]
+//        arr.remove(at: [0,2])
+//        print(arr) // ["Moe"]
+        
+//        struct Person { let name: String }
+//        var arr2 = [Person(name:"Manny"), Person(name:"Moe"), Person(name:"Jack")]
+//        let marr2 = NSMutableArray(array: arr2)
+//        marr2.removeObjects(at:IndexSet([0,2]))
+//        arr2 = marr2 as! [Person]
+//        print(arr2)
         
         let seq = [1,2,3]
         for what in enumerated(seq) { print(what) }
