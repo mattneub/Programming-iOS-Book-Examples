@@ -403,7 +403,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             lay.setValue(p, forKey: "person")
             // ... time passes ...
             if let p2 = lay.value(forKey: "person") as? Person {
-                print(p2.firstName, p.lastName) // Matt Neuburg
+                print(p2.firstName, p2.lastName) // Matt Neuburg
             }
             
             let mc = MyClass()
