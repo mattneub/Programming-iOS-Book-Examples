@@ -2,10 +2,21 @@
 
 import UIKit
 
+class NilTargetedButton : UIButton {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        class Dummy {
+            @objc func buttonPressed(_:Any) {}
+        }
+        self.addTarget(nil, // nil-targeted
+            action: #selector(Dummy.buttonPressed),
+            for: .touchUpInside)
+    }
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var button2: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,9 +25,7 @@ class ViewController: UIViewController {
             action: #selector(buttonPressed),
             for: .touchUpInside)
         
-        self.button2.addTarget(nil, // nil-targeted
-            action: #selector(buttonPressed),
-            for: .touchUpInside)
+        // second button is configured as nil-targeted in class
 
         // third button is configured as nil-targeted in nib
 
