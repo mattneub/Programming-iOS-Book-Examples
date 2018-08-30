@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					3276673219BB6D6E00B6CD5B = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 1000;
 					};
 				};
@@ -236,6 +237,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = BlurAndVibrancy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -247,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = BlurAndVibrancy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

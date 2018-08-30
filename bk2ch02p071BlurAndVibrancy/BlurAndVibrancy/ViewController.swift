@@ -17,6 +17,12 @@ extension CGPoint {
         self.init(x:x, y:y)
     }
 }
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
 
 
 class ViewController: UIViewController {
@@ -37,18 +43,23 @@ class ViewController: UIViewController {
         let blur = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
         blur.frame = self.view.bounds
         blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let vib = UIVisualEffectView(effect: UIVibrancyEffect(
-            blurEffect: blur.effect as! UIBlurEffect))
+        self.view.addSubview(blur)
         let lab = UILabel()
         lab.text = "Hello, world!"
         lab.sizeToFit()
-        vib.frame = lab.frame
-        vib.contentView.addSubview(lab)
-        vib.center = CGPoint(blur.bounds.midX, blur.bounds.midY)
+        let vib = UIVisualEffectView(effect: UIVibrancyEffect(
+            blurEffect: blur.effect as! UIBlurEffect))
+        vib.bounds = lab.bounds
+        vib.center = self.view.bounds.center
         vib.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
-            .flexibleLeftMargin, .flexibleRightMargin]
+                                .flexibleLeftMargin, .flexibleRightMargin]
         blur.contentView.addSubview(vib)
-        self.view.addSubview(blur)
+        vib.contentView.addSubview(lab)
+        
+        //vib.contentView.layer.borderWidth = 1
+//        lab.center.x -= 20
+//        vib.clipsToBounds = false
+//        vib.contentView.clipsToBounds = false
     }
 
 
