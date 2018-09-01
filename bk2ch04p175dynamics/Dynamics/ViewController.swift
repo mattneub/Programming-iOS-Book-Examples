@@ -28,8 +28,6 @@ extension CGVector {
 }
 
 
-
-
 class MyGravityBehavior : UIGravityBehavior {
     deinit {
         print("farewell from grav")
@@ -155,10 +153,9 @@ class ViewController : UIViewController {
         let coll = UICollisionBehavior()
         coll.collisionMode = .boundaries
         coll.collisionDelegate = self
+        let b = self.view.bounds
         coll.addBoundary(withIdentifier:"floor" as NSString,
-            from:CGPoint(0, self.view.bounds.maxY),
-            to:CGPoint(self.view.bounds.maxX,
-                self.view.bounds.maxY))
+            from:CGPoint(b.minX, b.maxY), to:CGPoint(b.maxX, b.maxY))
         self.anim.addBehavior(coll)
         coll.addItem(self.iv)
 

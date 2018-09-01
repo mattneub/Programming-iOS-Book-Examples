@@ -47,6 +47,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         guard let anim = anim else { return }
         
         let sup = self.v.superview!
+        let b = sup.bounds
         
         let grav = UIGravityBehavior()
         grav.action = { [unowned self] in
@@ -55,9 +56,9 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             // because "self" incorporates all the behaviors at once
             // * changed from weak to unowned here
             
-            // let items = anim.items(in: sup.bounds) as! [UIView]
+            // let items = anim.items(in: b) as! [UIView]
             // crash because it contains, wrongly, a collision behavior object
-            let items = anim.views(in: sup.bounds)
+            let items = anim.views(in: b)
             if items.firstIndex(of:self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
@@ -77,8 +78,8 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         coll.collisionMode = .boundaries
         coll.collisionDelegate = self
         coll.addBoundary(withIdentifier:"floor" as NSString,
-                         from:CGPoint(0, sup.bounds.maxY),
-                         to:CGPoint(sup.bounds.maxX, sup.bounds.maxY))
+                         from:CGPoint(b.minX, b.maxY),
+                         to:CGPoint(b.maxX, b.maxY))
         self.addChildBehavior(coll)
         coll.addItem(self.v)
         
