@@ -22,6 +22,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         self.observer = NotificationCenter.default.addObserver(forName:
             AVAudioSession.interruptionNotification, object: nil, queue: nil) {
                 [weak self] n in
+                guard let self = self else { return } // legal in Swift 4.2
                 let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
                 let type = AVAudioSession.InterruptionType(rawValue: why)!
                 switch type {
@@ -33,8 +34,8 @@ class Player : NSObject, AVAudioPlayerDelegate {
                     let opts = AVAudioSession.InterruptionOptions(rawValue: opt)
                     if opts.contains(.shouldResume) {
                         print("should resume")
-                        self?.player.prepareToPlay()
-                        let ok = self?.player.play()
+                        self.player.prepareToPlay()
+                        let ok = self.player.play()
                         print("bp tried to resume play: did I? \(ok as Any)")
                     } else {
                         print("not should resume")
