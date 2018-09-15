@@ -246,7 +246,7 @@ class MyView : UIView {
             
             // draw the red triangle, the point of the arrow
             con.saveGState()
-            // this bug still present in beta 6
+            // this bug still present in beta 6 and GM
             do { // work around iOS 12 bug: force context to have some color!
                 con.setFillColor(UIColor.blue.cgColor)
                 con.fill(CGRect(0,0,0,0))
