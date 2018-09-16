@@ -15,8 +15,8 @@ class ViewController: UIViewController {
 
         let im = UIImage(named:"coin")!
         let sz = im.size
-        let im2 = im.resizableImage(withCapInsets:UIEdgeInsetsMake(
-            sz.height/2, sz.width/2, sz.height/2, sz.width/2),
+        let im2 = im.resizableImage(withCapInsets:UIEdgeInsets(
+            top: sz.height/2, left: sz.width/2, bottom: sz.height/2, right: sz.width/2),
             resizingMode: .stretch)
         self.button.setBackgroundImage(im2, for:.normal)
         self.button.backgroundColor = .clear
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         mas.addAttributes([
             .strokeColor: UIColor.red,
             .strokeWidth: -2,
-            .underlineStyle: NSUnderlineStyle.styleSingle.rawValue
+            .underlineStyle: NSUnderlineStyle.single.rawValue
         ], range: NSMakeRange(4, mas.length-4))
         self.button.setAttributedTitle(mas, for:.normal)
         

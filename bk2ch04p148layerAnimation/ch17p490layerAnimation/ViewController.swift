@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 11
+    let which = 1
 
     @IBAction func doButton(_ sender: Any?) {
         let c = self.compassView.layer as! CompassLayer
@@ -15,6 +15,7 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             // proving that cornerRadius is _not_ implicitly animatable
+            CATransaction.setAnimationDuration(2)
             c.masksToBounds = true
             c.cornerRadius = 50
 
@@ -84,8 +85,7 @@ class ViewController : UIViewController {
             // construct the explicit animation
             let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.05
-            anim.timingFunction = CAMediaTimingFunction(
-                name:kCAMediaTimingFunctionLinear)
+            anim.timingFunction = CAMediaTimingFunction(name:.linear)
             anim.repeatCount = 3
             anim.autoreverses = true
             anim.fromValue = startValue
@@ -97,11 +97,11 @@ class ViewController : UIViewController {
             let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.05
             anim.timingFunction =
-                CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear)
+                CAMediaTimingFunction(name:.linear)
             anim.repeatCount = 3
             anim.autoreverses = true
             anim.isAdditive = true
-            anim.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
+            anim.valueFunction = CAValueFunction(name:.rotateZ)
             anim.fromValue = Float.pi/40
             anim.toValue = -Float.pi/40
             arrow.add(anim, forKey:nil)
@@ -118,7 +118,7 @@ class ViewController : UIViewController {
             anim.fromValue = -rot
             anim.toValue = 0
             anim.isAdditive = true
-            anim.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
+            anim.valueFunction = CAValueFunction(name:.rotateZ)
             arrow.add(anim, forKey:nil)
 
         case 10:
@@ -133,7 +133,7 @@ class ViewController : UIViewController {
             let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
             anim.values = values
             anim.isAdditive = true
-            anim.valueFunction = CAValueFunction(name: kCAValueFunctionRotateZ)
+            anim.valueFunction = CAValueFunction(name:.rotateZ)
             arrow.add(anim, forKey:nil)
 
         case 11:
@@ -152,7 +152,7 @@ class ViewController : UIViewController {
             anim1.timingFunction = clunk
             anim1.fromValue = current
             anim1.toValue = current + rot
-            anim1.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
+            anim1.valueFunction = CAValueFunction(name:.rotateZ)
 
             // second animation (waggle)
             var values = [0.0]
@@ -167,7 +167,7 @@ class ViewController : UIViewController {
             anim2.duration = 0.25
             anim2.isAdditive = true
             anim2.beginTime = anim1.duration - 0.1
-            anim2.valueFunction = CAValueFunction(name: kCAValueFunctionRotateZ)
+            anim2.valueFunction = CAValueFunction(name: .rotateZ)
 
             // group
             let group = CAAnimationGroup()

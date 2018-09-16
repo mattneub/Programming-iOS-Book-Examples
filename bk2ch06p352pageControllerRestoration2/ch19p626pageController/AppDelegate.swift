@@ -6,7 +6,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     let pep = ["Manny", "Moe", "Jack"]
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         self.window = self.window ?? UIWindow()
         
         self.setUpPageViewController()
@@ -58,9 +58,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didDecodeRestorableStateWith coder: NSCoder) {
         print("app delegate decoding...")
-        let pepMaybe = coder.decodeObject(forKey:"pep")
-        print("app delegate decoding \(pepMaybe as Any)")
-        guard let pep = pepMaybe as? Pep else {return}
+        guard let pep = coder.decodeObject(of:Pep.self, forKey:"pep") else {return}
+        print("app delegate decoding \(pep as Any)")
         let pvc = self.window!.rootViewController as! UIPageViewController
         pvc.setViewControllers([pep], direction: .forward, animated: false)
     }
@@ -69,7 +68,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(_ pvc: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! + 1
+        let ix = self.pep.firstIndex(of:boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
@@ -77,7 +76,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     }
     func pageViewController(_ pvc: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! - 1
+        let ix = self.pep.firstIndex(of:boy)! - 1
         if ix < 0 {
             return nil
         }
@@ -92,7 +91,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     func presentationIndex(for pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers![0] as! Pep
         let boy = page.boy
-        return self.pep.index(of:boy)!
+        return self.pep.firstIndex(of:boy)!
     }
     
 }

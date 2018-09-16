@@ -66,8 +66,8 @@ class ViewController: UIViewController {
         checkForPhotoLibraryAccess {
         
             // horrible Moments interface
-            // let src = UIImagePickerControllerSourceType.savedPhotosAlbum
-            let src = UIImagePickerControllerSourceType.photoLibrary
+            let src = UIImagePickerController.SourceType.savedPhotosAlbum
+            // let src = UIImagePickerController.SourceType.photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(src)
                 else { print("alas"); return }
             guard let arr = UIImagePickerController.availableMediaTypes(for:src)
@@ -90,7 +90,6 @@ class ViewController: UIViewController {
             // if we want a popover, on pad, we can do that; just uncomment next line
             picker.modalPresentationStyle = .popover
             self.present(picker, animated: true)
-            // ignore:
             if let pop = picker.popoverPresentationController {
                 let v = sender as! UIView
                 pop.sourceView = v
@@ -117,19 +116,19 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) { //
-        let asset = info[UIImagePickerControllerPHAsset] as? PHAsset
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) { //
+        let asset = info[.phAsset] as? PHAsset
         print(asset as Any)
         print(asset?.playbackStyle.rawValue as Any)
         // types are 0 for unsupported, then image, imageAnimated, livePhoto, video, videoLooping
-        let url = info[UIImagePickerControllerMediaURL] as? URL
+        let url = info[.mediaURL] as? URL
         print("media url:", url as Any)
-        var im = info[UIImagePickerControllerOriginalImage] as? UIImage
-        if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
+        var im = info[.originalImage] as? UIImage
+        if let ed = info[.editedImage] as? UIImage {
             im = ed
         }
-        let live = info[UIImagePickerControllerLivePhoto] as? PHLivePhoto
-        let imurl = info[UIImagePickerControllerImageURL] as? URL
+        let live = info[.livePhoto] as? PHLivePhoto
+        let imurl = info[.imageURL] as? URL
         self.dismiss(animated:true) {
             if let style = asset?.playbackStyle {
                 switch style {
@@ -185,11 +184,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func clearAll() {
-        if self.childViewControllers.count > 0 {
-            let av = self.childViewControllers[0] as! AVPlayerViewController
-            av.willMove(toParentViewController: nil)
+        if self.children.count > 0 {
+            let av = self.children[0] as! AVPlayerViewController
+            av.willMove(toParent: nil)
             av.view.removeFromSuperview()
-            av.removeFromParentViewController()
+            av.removeFromParent()
         }
         self.redView.subviews.forEach { $0.removeFromSuperview() }
     }
@@ -220,11 +219,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         let av = AVPlayerViewController()
         let player = AVPlayer(url:url)
         av.player = player
-        self.addChildViewController(av)
+        self.addChild(av)
         av.view.frame = self.redView.bounds
         av.view.backgroundColor = self.redView.backgroundColor
         self.redView.addSubview(av.view)
-        av.didMove(toParentViewController: self)
+        av.didMove(toParent: self)
         player.play()
     }
     
@@ -234,11 +233,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         let player = AVQueuePlayer(url:url)
         av.player = player
         self.looper = AVPlayerLooper(player: player, templateItem: player.currentItem!)
-        self.addChildViewController(av)
+        self.addChild(av)
         av.view.frame = self.redView.bounds
         av.view.backgroundColor = self.redView.backgroundColor
         self.redView.addSubview(av.view)
-        av.didMove(toParentViewController: self)
+        av.didMove(toParent: self)
         player.play()
     }
     
@@ -251,9 +250,9 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func pickUpMetadata(_ imurl:URL?) {
-        guard let src = CGImageSourceCreateWithURL(imurl! as CFURL, nil) else {return}
-        let result = CGImageSourceCopyPropertiesAtIndex(src,0,nil)! as NSDictionary
-        print(result)
+        let src = CGImageSourceCreateWithURL(imurl! as CFURL, nil)!
+        let d = CGImageSourceCopyPropertiesAtIndex(src,0,nil) as! [AnyHashable:Any]
+        print(d)
 
     }
     

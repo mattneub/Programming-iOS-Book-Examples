@@ -16,7 +16,7 @@ class MyView : UIView {
 class MyCell : UITableViewCell {
     @IBOutlet var v : MyView!
     @IBOutlet var vh : NSLayoutConstraint!
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style:style, reuseIdentifier:reuseIdentifier)
         let v = MyView()
         self.contentView.addSubview(v)
@@ -39,8 +39,9 @@ class TableViewController: UITableViewController {
     let cellID = "Cell"
     
     override func viewDidLoad() {
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 150
+        self.tableView.rowHeight = UITableView.automaticDimension
+        // self.tableView.estimatedRowHeight = 150
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension // new in iOS 11
         self.tableView.allowsSelection = false
         self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
     }

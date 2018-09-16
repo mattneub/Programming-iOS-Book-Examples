@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         out: do {
             // ...
             print("starting")
-            let somethingBadHappened = true
+            var somethingBadHappened : Bool { return true }
             if somethingBadHappened {
                 break out
             }
@@ -315,6 +315,18 @@ class ViewController: UIViewController {
         }
         return "Howdy"
     }
+    
+    func tapField(_ g: Any) {
+        guard let g = g as? UIGestureRecognizer else {return}
+        guard g.view != nil else {return}
+    }
+    
+    func tapField2(_ g: Any) {
+        guard let g = g as? UIGestureRecognizer,
+            g.view != nil else {return}
+    }
+
+
 
 }
 

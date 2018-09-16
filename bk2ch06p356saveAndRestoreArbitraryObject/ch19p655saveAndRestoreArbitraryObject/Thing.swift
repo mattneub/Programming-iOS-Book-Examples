@@ -17,7 +17,9 @@ class Thing : NSObject, UIStateRestoring {
     
     func decodeRestorableState(with coder: NSCoder) {
         print("thing decode")
-        self.word = coder.decodeObject(forKey:"word") as! String
+        if let word = coder.decodeObject(of: NSString.self, forKey:"word") {
+            self.word = word as String
+        }
     }
     
     func applicationFinishedRestoringState() {

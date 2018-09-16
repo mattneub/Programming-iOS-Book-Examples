@@ -3,6 +3,12 @@
 import UIKit
 import MediaPlayer
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
     let status = MPMediaLibrary.authorizationStatus()
     switch status {
@@ -20,7 +26,7 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
         // do nothing
         break
         // just testing the syntax; this is how you get to the settings app
-        let url = URL(string:UIApplicationOpenSettingsURLString)!
+        let url = URL(string:UIApplication.openSettingsURLString)!
         UIApplication.shared.open(url)
     case .denied:
         // do nothing, or beg the user to authorize us in Settings
@@ -31,82 +37,79 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
 
 class ViewController: UIViewController {
     
-    override func remoteControlReceived(with event: UIEvent?) {
-        print("remote!")
-    }
-    
-    override var canBecomeFirstResponder: Bool { return true }
     
     @IBAction func doStop(_ sender: Any) {
         let player = MPMusicPlayerController.applicationQueuePlayer
         player.stop()
     }
     
-    @objc func doPause(_ event:MPRemoteCommandEvent) {
-    }
     
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
         checkForMusicLibraryAccess {
             
-            // proving that control center never sees us as remote target
-            
-            // this doesn't help
-            self.becomeFirstResponder()
-            UIApplication.shared.beginReceivingRemoteControlEvents()
-            
-            // this doesn't help
-            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try? AVAudioSession.sharedInstance().setActive(true)
-            
-            // this doesn't help
-            let scc = MPRemoteCommandCenter.shared()
-            scc.pauseCommand.addTarget(self, action:#selector(self.doPause))
-            
-            // this doesn't help
-            MPMusicPlayerController.systemMusicPlayer.stop()
-
-            // so under what circumstances are we ever the remote target?
-            
-            let query = MPMediaQuery.songs()
-            let result = query.items
+            let songs = MPMediaQuery.songs()
+            let result = songs.items
             guard let items = result, items.count > 0 else {return}
             let song = items[0]
             
-            // this has no effect either
-            let mpic = MPNowPlayingInfoCenter.default()
-            mpic.nowPlayingInfo = [
-                MPMediaItemPropertyArtist: song.artist!,
-                MPMediaItemPropertyTitle: song.title!,
-            ]
-
-            
             let player = MPMusicPlayerController.applicationQueuePlayer
+            // let player = MPMusicPlayerController.systemMusicPlayer
             
-            // proving that MPMusicPlayerMediaItemQueueDescriptor(itemCollection:) is broken
+            print("stopping")
+            player.stop()
             
-            let useCollection = false
+            /*
+             setQueue(with query: MPMediaQuery)
+             
+             setQueue(with itemCollection: MPMediaItemCollection)
+             
+             setQueue(with descriptor: MPMusicPlayerQueueDescriptor)
+             
+             also setQueue(with storeIDs: [String]) but that's outside my wheelhouse
+             */
             
-            if useCollection {
-                let coll = MPMediaItemCollection(items: [song])
-                let q = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: coll)
-                player.setQueue(with: q)
-            } else {
-                let predicate = MPMediaPropertyPredicate(
-                    value: song.persistentID,
-                    forProperty: MPMediaItemPropertyPersistentID)
-                let query = MPMediaQuery(filterPredicates: [predicate])
-                let q = MPMusicPlayerMediaItemQueueDescriptor(query: query)
-                player.setQueue(with: q)
+            // thus there are four possibilities...
+            // and at the moment they all work
+            
+            var useCollection : Bool { return true }
+            var useDescriptor : Bool { return false }
+            
+            let coll = MPMediaItemCollection(items: [song])
+            let predicate = MPMediaPropertyPredicate(
+                value: song.persistentID,
+                forProperty: MPMediaItemPropertyPersistentID)
+            let query = MPMediaQuery(filterPredicates: [predicate])
+            
+            switch (useDescriptor, useCollection) {
+            case (false,false):
+                print("setting queue with item collection")
+                player.setQueue(with: coll)
+            case (false,true):
+                print("setting queue with query")
+                player.setQueue(with: query)
+            case (true,true): // descriptor, item collection
+                print("setting queue with descriptor, item collection")
+                let desc = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: coll)
+                player.setQueue(with: desc)
+            case (true,false): // descriptor, query
+                print("setting queue with descriptor, query")
+                let desc = MPMusicPlayerMediaItemQueueDescriptor(query: query)
+                player.setQueue(with: desc)
             }
             
-            player.prepareToPlay { err in
-                if let err = err {
-                    print(err) // not found (storefront???)
-                    return
+            print("inserting delay")
+            delay(0.2) {
+                player.prepareToPlay { err in
+                    if let err = err {
+                        print("printing error")
+                        print(err)
+                        return
+                    }
+                    print("trying to play")
+                    // weird: no need to actually say play!
+                    // player.play()
                 }
-                print("trying to play")
-                player.play()
             }
         }
     }

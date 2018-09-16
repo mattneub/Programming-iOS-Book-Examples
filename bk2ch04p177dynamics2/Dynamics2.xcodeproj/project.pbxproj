@@ -98,7 +98,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C906E76617B7DDA800AA51E8 = {
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -238,8 +238,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Dynamics2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -255,8 +254,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Dynamics2;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

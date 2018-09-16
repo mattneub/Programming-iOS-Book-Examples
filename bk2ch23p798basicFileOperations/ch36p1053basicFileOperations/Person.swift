@@ -2,7 +2,11 @@
 
 import UIKit
 
-class Person: NSObject, NSCoding {
+// adopt secure coding for iOS 12
+
+class Person: NSObject, NSSecureCoding {
+    static var supportsSecureCoding: Bool { return true }
+    
     var firstName : String
     var lastName : String
     
@@ -23,8 +27,8 @@ class Person: NSObject, NSCoding {
     }
     
     required init(coder: NSCoder) {
-        self.lastName = coder.decodeObject(forKey:"last") as! String
-        self.firstName = coder.decodeObject(forKey:"first") as! String
+        self.lastName = coder.decodeObject(of: NSString.self, forKey:"last")! as String
+        self.firstName = coder.decodeObject(of: NSString.self, forKey:"first")! as String
         // do not call super init(coder:) in this case
         super.init()
     }

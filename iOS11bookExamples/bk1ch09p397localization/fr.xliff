@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Empty Window/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M189t"/>
+    </header>
+    <body/>
+  </file>
+  <file original="Empty Window/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M189t"/>
+    </header>
+    <body>
+      <trans-unit id="YMD-h7-RKH.normalTitle">
+        <source>Hello</source>
+        <target>Bonjour</target>
+        <note>Class = "UIButton"; normalTitle = "Hello"; ObjectID = "YMD-h7-RKH";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Empty Window/Info.plist" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M189t"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName">
+        <source>Empty Window</source>
+        <target>Fenêtre Vide</target>
+      </trans-unit>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+        <target>$(PRODUCT_NAME)</target>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Empty Window/Localizable.strings" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="9.0" build-num="9M189t"/>
+    </header>
+    <body>
+      <trans-unit id="Accept">
+        <source>OK</source>
+        <target>OK</target>
+        <note>Dismiss</note>
+      </trans-unit>
+      <trans-unit id="Greeting">
+        <source>Howdy!</source>
+        <target>Bonjour!</target>
+        <note>Say hello</note>
+      </trans-unit>
+      <trans-unit id="Tapped">
+        <source>You tapped me!</source>
+        <target>Vous m'avez tapé</target>
+        <note>User tapped button</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

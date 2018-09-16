@@ -55,8 +55,8 @@ class MyLayout : UICollectionViewLayout {
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        let ok = newBounds.size.width != self.sz.width
-        //print("should1 \(ok)")
+        let ok = newBounds.size != self.sz
+        // print("should1 \(ok)")
         return ok
     }
     

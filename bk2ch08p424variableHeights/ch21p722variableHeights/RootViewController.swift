@@ -25,11 +25,12 @@ class RootViewController : UITableViewController {
         
         self.tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: self.cellID)
         // both these lines are needed
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         // what's new in iOS 11 is that you don't even have to supply an estimated height!
         // it too can be automatic
         if #available(iOS 11.0, *) {
-            self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
+            self.tableView.estimatedRowHeight = UITableView.automaticDimension
+            // self.tableView.estimatedRowHeight = 40
             print(self.tableView.estimatedRowHeight)
         } else {
             self.tableView.estimatedRowHeight = 40
@@ -62,13 +63,14 @@ class RootViewController : UITableViewController {
     
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        // return 30
-//        return UITableViewAutomaticDimension
+//        print("here")
+//        return UITableView.automaticDimension
 //    }
 //
 //    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 0
 ////        return 100
-//        return UITableViewAutomaticDimension
+//        return UITableView.automaticDimension
 //    }
     
 }

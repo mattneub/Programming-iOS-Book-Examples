@@ -57,8 +57,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         self.edgesForExtendedLayout = [] // none, get accurate offset restoration
     }
 
-    class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
-        let id = identifierComponents.last as! String
+    class func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
+        let id = identifierComponents.last!
         if id == "wvc" {
             print("recreating wvc view controller")
             return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wvc")
@@ -159,7 +159,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         wv.allowsBackForwardNavigationGestures = false
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
+        let act = UIActivityIndicatorView(style:.whiteLarge)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)
@@ -170,7 +170,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
             ])
         // webkit uses KVO
         // nb leak if we don't watch out for self
-        obs.insert(wv.observe(\.loading, options: .new) { [unowned self] wv, ch in
+        obs.insert(wv.observe(\.isLoading, options: .new) { [unowned self] wv, ch in
             if let val = ch.newValue {
                 if val {
                     print("starting animating")
@@ -207,8 +207,11 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("view did appear, req: \(self.wv.url as Any)")
+        delay(2) {
+            print("wv scroll view delegate", self.wv.scrollView.delegate as Any)
+        }
 
-        if !self.isMovingToParentViewController {
+        if !self.isMovingToParent {
             return // so we don't do this again when a presented view controller is dismissed
         }
         

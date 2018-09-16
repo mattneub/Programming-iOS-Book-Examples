@@ -1,5 +1,5 @@
 #import "FMDatabase.h"
-#import "unistd.h"
+#import <unistd.h>
 #import <objc/runtime.h>
 
 #if FMDB_SQLITE_STANDALONE
@@ -261,6 +261,8 @@ NS_ASSUME_NONNULL_END
     while (retry);
     
     _db = nil;
+    _isOpen = false;
+    
     return YES;
 }
 
@@ -388,6 +390,11 @@ static int FMDBDatabaseBusyHandler(void *f, int count) {
 
 
 - (void)setCachedStatement:(FMStatement*)statement forQuery:(NSString*)query {
+    NSParameterAssert(query);
+    if (!query) {
+        NSLog(@"API misuse, -[FMDatabase setCachedStatement:forQuery:] query must not be nil");
+        return;
+    }
     
     query = [query copy]; // in case we got handed in a mutable string...
     [statement setQuery:query];
@@ -1259,6 +1266,7 @@ int FMDBExecuteBulkSQLCallback(void *theBlockAsVoid, int columns, char **values,
     for (NSInteger i = 0; i < columns; i++) {
         NSString *key = [NSString stringWithUTF8String:names[i]];
         id value = values[i] ? [NSString stringWithUTF8String:values[i]] : [NSNull null];
+        value = value ? value : [NSNull null];
         [dictionary setObject:value forKey:key];
     }
     
@@ -1269,7 +1277,7 @@ int FMDBExecuteBulkSQLCallback(void *theBlockAsVoid, int columns, char **values,
     return [self executeStatements:sql withResultBlock:nil];
 }
 
-- (BOOL)executeStatements:(NSString *)sql withResultBlock:(FMDBExecuteStatementsCallbackBlock)block {
+- (BOOL)executeStatements:(NSString *)sql withResultBlock:(__attribute__((noescape)) FMDBExecuteStatementsCallbackBlock)block {
     
     int rc;
     char *errmsg = nil;
@@ -1431,7 +1439,7 @@ static NSString *FMDBEscapeSavePointName(NSString *savepointName) {
 #endif
 }
 
-- (NSError*)inSavePoint:(void (^)(BOOL *rollback))block {
+- (NSError*)inSavePoint:(__attribute__((noescape)) void (^)(BOOL *rollback))block {
 #if SQLITE_VERSION_NUMBER >= 3007000
     static unsigned long savePointIdx = 0;
     

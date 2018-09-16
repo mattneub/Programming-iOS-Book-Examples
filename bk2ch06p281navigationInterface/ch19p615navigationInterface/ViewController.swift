@@ -52,5 +52,14 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
 //        return true
 //    }
 
-    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        print("is moving from", self.isMovingFromParent)
+//    }
+//    
+//    override func didMove(toParent parent: UIViewController?) {
+//        print("did move to", parent == nil)
+//    }
+
+
 }

@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         let im = UIGraphicsImageRenderer(size:sz).image {_ in
             UIImage(named:"linen")!.draw(in:CGRect(origin: .zero, size: sz))
             }.resizableImage(withCapInsets:
-                UIEdgeInsetsMake(0,10,0,10), resizingMode: .stretch)
+                UIEdgeInsets(top: 0,left: 10,bottom: 0,right: 10), resizingMode: .stretch)
         self.seg.setBackgroundImage(im, for:.normal, barMetrics: .default)
         
         // segment images, redraw at final size
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
             ])
         // yay, keys work
         seg.setTitleTextAttributes([
-            NSAttributedStringKey.foregroundColor: UIColor.black
+            .foregroundColor: UIColor.black
         ], for: .normal)
         seg.frame.origin = CGPoint(40,100)
         seg.frame.size.width = 200

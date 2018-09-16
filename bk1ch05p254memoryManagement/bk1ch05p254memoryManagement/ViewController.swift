@@ -28,7 +28,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior {
         grav.action = {
             [unowned self] in
             let items = anim.items(in: sup.bounds) as! [UIView]
-            if items.index(of: self.v) == nil {
+            if items.firstIndex(of: self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
             }
@@ -244,6 +244,25 @@ class ViewController: UIViewController {
             }
             testFunctionHolder() // farewell from FunctionHolder
         }
+        
+        do {
+            print(9)
+            class FunctionHolder {
+                var function : (() -> ())?
+                deinit {
+                    print("farewell from FunctionHolder")
+                }
+            }
+            func testFunctionHolder() {
+                let fh = FunctionHolder()
+                fh.function = {
+                    [unowned fh] in
+                    print(fh)
+                }
+            }
+            testFunctionHolder() // farewell from FunctionHolder
+        }
+
         
         self.test()
     }

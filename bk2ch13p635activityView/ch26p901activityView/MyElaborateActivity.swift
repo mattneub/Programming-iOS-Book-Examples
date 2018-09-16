@@ -13,19 +13,19 @@ class MyElaborateActivity : UIActivity {
         let largerSize = fmax(im.size.height, im.size.width)
         scale /= largerSize
         let sz = CGSize(im.size.width*scale, im.size.height*scale)
-        let r = UIGraphicsImageRenderer(size:sz)
+        let r = UIGraphicsImageRenderer(size:sz, format:im.imageRendererFormat)
         self.image = r.image { _ in
             im.draw(in:CGRect(origin: .zero, size: sz))
         }
         super.init()
     }
     
-    override class var activityCategory : UIActivityCategory {
+    override class var activityCategory : UIActivity.Category {
         return .action // the default
     }
     
-    override var activityType : UIActivityType? {
-        return UIActivityType("com.neuburg.matt.elaborateActivity")
+    override var activityType : UIActivity.ActivityType? {
+        return UIActivity.ActivityType("com.neuburg.matt.elaborateActivity")
     }
     
     override var activityTitle : String? {

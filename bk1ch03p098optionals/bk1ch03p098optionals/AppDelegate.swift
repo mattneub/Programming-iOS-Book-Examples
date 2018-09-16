@@ -10,7 +10,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     typealias RootViewController = ViewController
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
     
         switch which {
         case 1:

@@ -20,10 +20,23 @@ class ViewController: UIViewController {
         _ = what
         
         do {
+            let v = UIView()
+            v.isUserInteractionEnabled = !v.isUserInteractionEnabled
+            v.isUserInteractionEnabled.toggle() // new in Swift 4.2
+        }
+        
+        do {
             print(Int.max)
             print(pow(2,63)-1)
             print(Int.min)
             print(0-pow(2,63))
+        }
+        
+        do {
+            let i : CLong = 1
+            _ = i
+            let d : TimeInterval = 1
+            _ = d
         }
         
         do {
@@ -143,6 +156,12 @@ class ViewController: UIViewController {
         }
         
         do {
+            let d = 6.4
+            let r = d.remainder(dividingBy: 3)
+            print(r)
+        }
+        
+        do {
             let i = -7
             let j = 6
             print(abs(i)) // 7
@@ -151,17 +170,23 @@ class ViewController: UIViewController {
         }
         
         do {
-            let sq = sqrt(2.0)
-            print(sq)
-            let n = 10
-            let i = Int(arc4random())%n
-            print(i)
+//            let sq = sqrt(2.0)
+//            print(sq)
+//            let n = 10
+//            let i = Int(arc4random())%n
+//            print(i)
             
             print(2.squareRoot()) // legal because Swift coerces to Double
             let two = 2
             // print(two.squareRoot())
             print(Double(two).squareRoot())
             print(2.0.squareRoot())
+            
+            let ran = Int.random(in: 1...10)
+            print("random:", ran)
+            
+            let x = sin(2.0)
+            _ = x
         }
         
         do {
@@ -171,6 +196,7 @@ class ViewController: UIViewController {
             //print(Double.abs(d))
             print(d.squareRoot())
             print(dd.rounded())
+            
         }
         
         do {
@@ -199,7 +225,7 @@ extension ViewController {
 extension ViewController {
     func test () {
         // how to make a bitmask
-        let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
+        let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
         
         _ = opts
     }
@@ -207,9 +233,9 @@ extension ViewController {
 
 class MyTableViewCell : UITableViewCell {
     // how to test a bit in a bitmask
-    override func didTransition(to state: UITableViewCellStateMask) {
-        if state.contains(.showingEditControlMask) {
-            // ... the ShowingEditControlMask bit is set ...
+    override func didTransition(to state: UITableViewCell.StateMask) {
+        if state.contains(.showingEditControl) {
+            // ... the ShowingEditControl bit is set ...
         }
     }
 

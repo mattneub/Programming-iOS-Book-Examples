@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         // self.sb.backgroundColor = .red
         
         let lin = UIImage(named:"linen.png")!
-        let linim = lin.resizableImage(withCapInsets:UIEdgeInsetsMake(1,1,1,1), resizingMode:.stretch)
+        let linim = lin.resizableImage(withCapInsets:UIEdgeInsets(top: 1,left: 1,bottom: 1,right: 1), resizingMode:.stretch)
         self.sb.setBackgroundImage(linim, for:.any, barMetrics:.default)
         self.sb.setBackgroundImage(linim, for:.any, barMetrics:.defaultPrompt)
         
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         }
         self.sb.setSearchFieldBackgroundImage(sepim, for:.normal)
         // just to show what it does:
-        self.sb.searchFieldBackgroundPositionAdjustment = UIOffsetMake(0, -10) // up from center
+        self.sb.searchFieldBackgroundPositionAdjustment = UIOffset(horizontal: 0, vertical: -10) // up from center
         
         // how to reach in and grab the text field
         for v in self.sb.subviews[0].subviews {
@@ -116,18 +116,17 @@ class ViewController: UIViewController {
         self.sb.setScopeBarButtonDividerImage(divim,
             forLeftSegmentState:.normal, rightSegmentState:.normal)
 
-        // setScopeBar...Attributes expects string keys
-        // workaround is to convert to string, yecch
-        let atts : [String : Any] = [
-            NSAttributedStringKey.font.rawValue: UIFont(name:"GillSans-Bold", size:16)!,
-            NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-            NSAttributedStringKey.shadow.rawValue: lend {
+        let atts : [NSAttributedString.Key : Any] = [
+            .font: UIFont(name:"GillSans-Bold", size:16)!,
+            .foregroundColor: UIColor.white,
+            .shadow: lend {
                 (shad:NSShadow) in
                 shad.shadowColor = UIColor.gray
                 shad.shadowOffset = CGSize(2,2)
             },
-            NSAttributedStringKey.underlineStyle.rawValue: NSUnderlineStyle.styleDouble.rawValue
+            .underlineStyle: NSUnderlineStyle.double.rawValue
         ]
+        // The shadow is broken in iOS 12!
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.normal)
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.selected)
     }

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
             // for remote control to work, our audio session policy
             // must be Playback or SoloAmbient
             // for background audio to work, it must be Playback
-            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try? AVAudioSession.sharedInstance().setActive(true)
             self.player.forever = true
         }

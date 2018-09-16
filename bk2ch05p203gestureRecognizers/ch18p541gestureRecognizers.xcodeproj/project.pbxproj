@@ -99,7 +99,7 @@
 				TargetAttributes = {
 					C9BE545017BD4896000C941F = {
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -241,8 +241,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -260,8 +259,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

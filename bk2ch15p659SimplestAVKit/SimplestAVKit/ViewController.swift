@@ -21,13 +21,15 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         try? AVAudioSession.sharedInstance().setActive(true)
         
         // sheesh
-        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.barHideOnTapGestureRecognizer.isEnabled = false
+        self.navigationController?.hidesBarsWhenVerticallyCompact = false
     }
+    
 
 
     let which = 1
@@ -80,6 +82,7 @@ class ViewController: UIViewController {
             // if it is, we don't see it at all, and so important functionality is lost
             // moreover, no matter what I do, the resulting interface is very confusing for the user
             // so I'm going to cut discussion of this approach from the book
+            // well, it doesn't seem so bad now, putting the discussion back in
             let av = AVPlayerViewController()
             av.edgesForExtendedLayout = []
             self.navigationController?.navigationBar.isTranslucent = false

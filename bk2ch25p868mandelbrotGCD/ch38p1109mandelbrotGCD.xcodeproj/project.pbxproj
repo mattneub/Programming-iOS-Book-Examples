@@ -100,7 +100,7 @@
 				TargetAttributes = {
 					3247F3231837BBA300A9162F = {
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -246,7 +246,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch38p1109mandelbrotGCD;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -264,7 +264,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch38p1109mandelbrotGCD;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

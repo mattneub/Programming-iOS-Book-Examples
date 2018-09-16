@@ -59,7 +59,7 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for ip in indexPaths {
             let m = self.model[ip.row]
-            guard m.im == nil else { print("nop \(ip)"); return } // we have a picture, nothing to do
+            guard m.im == nil else { print("nop \(ip)"); return } // we have an image, nothing to do
             guard m.task == nil else { print("nop2 \(ip)"); return } // we're already downloading
             print("prefetching for \(ip)")
             let url = URL(string:m.picurl)!
@@ -79,7 +79,7 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         let m = self.model[indexPath.row]
         cell.textLabel!.text = m.text
-        cell.imageView!.image = m.im // picture or nil
+        cell.imageView!.image = m.im // image or nil
         if m.task == nil && m.im == nil {
             self.tableView(tableView, prefetchRowsAt:[indexPath])
         }

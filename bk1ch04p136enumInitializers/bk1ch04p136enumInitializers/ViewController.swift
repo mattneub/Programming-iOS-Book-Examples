@@ -3,17 +3,17 @@
 import UIKit
 import MediaPlayer
 
-enum Filter : String {
+enum Filter : String, CaseIterable {
     case albums = "Albums"
     case playlists = "Playlists"
     case podcasts = "Podcasts"
     case books = "Audiobooks"
-    static var cases : [Filter] = [.albums, .playlists, .podcasts, .books]
-    init?(_ ix:Int) { // let's not encourage init! as I was doing before
-        if !(0...3).contains(ix) { // in real life might say Filter.cases.indices.contains
+    // static let cases : [Filter] = [.albums, .playlists, .podcasts, .books]
+    init?(_ ix:Int) {
+        if !Filter.allCases.indices.contains(ix) {
             return nil
         }
-        self = Filter.cases[ix]
+        self = Filter.allCases[ix]
     }
     init?(_ rawValue:String) {
         self.init(rawValue:rawValue)
@@ -26,9 +26,9 @@ enum Filter : String {
         set {}
     }
     mutating func advance() {
-        var ix = Filter.cases.index(of:self)!
-        ix = (ix + 1) % 4
-        self = Filter.cases[ix]
+        var ix = Filter.allCases.firstIndex(of:self)!
+        ix = (ix + 1) % Filter.allCases.count
+        self = Filter.allCases[ix]
     }
     var query : MPMediaQuery {
         switch self {
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
 
         let type1 = Filter.albums
         let type2 = Filter(rawValue:"Playlists")!
-        let type3 = Filter(2) // .Podcasts, wrapped in a Optional
+        let type3 = Filter(2) // .podcasts, wrapped in a Optional
 
         let type4 = Filter(5) // nil
         

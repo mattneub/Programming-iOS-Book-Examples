@@ -92,6 +92,13 @@ class MyView : UIView {
         p.addLine(to:CGPoint(40,25))
         p.fill()
         
+        // okay, so this aspect of the bug is fixed in beta 5
+//        do { // work around iOS 12 bug: force context to have some color!
+//            con.setFillColor(UIColor.blue.cgColor)
+//            con.fill(CGRect(0,0,0,0))
+//        }
+
+        
 //        let im = UIGraphicsGetImageFromCurrentImageContext()!
 //        UIGraphicsEndImageContext()
 //
@@ -99,7 +106,7 @@ class MyView : UIView {
 //
     }
     
-    let which = 1
+    let which = 3
 
     override func draw(_ rect: CGRect) {
 

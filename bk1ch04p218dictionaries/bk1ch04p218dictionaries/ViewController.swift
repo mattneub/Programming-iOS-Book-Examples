@@ -114,7 +114,7 @@ class ViewController: UIViewController {
             // new approach
             do {
                 var d = [String:Int]()
-                words.forEach {word in d[word, default:0] += 1}
+                words.forEach {d[$0, default:0] += 1}
                 print(d)
             }
             // here's a silly but interesting way to accomplish the same thing:
@@ -303,12 +303,11 @@ class ViewController: UIViewController {
         }
     }
 
-    func anotherWay(n:Notification) {
+    func anotherWay(_ n:Notification) {
         if let prog = n.userInfo?["progress"] as? Double { // chapter 10
             self.progress = prog
         }
     }
-
-
+    
 }
 

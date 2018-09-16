@@ -25,9 +25,13 @@ class Smiler2:NSObject, CALayerDelegate {
 
 class SmilerLayer:CALayer {
     override func draw(in ctx: CGContext) {
+        // self.backgroundColor = UIColor.red.withAlphaComponent(0.5).cgColor
+        self.backgroundColor = UIColor.red.cgColor
+
         UIGraphicsPushContext(ctx)
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
         UIImage(named:"smiley")!.draw(at: .zero)
+        ctx.clear(CGRect(0,0,30,30)) // showing that clear "paints with the bg color"
         UIGraphicsPopContext()
         print("\(#function)")
         print(self.contentsGravity)

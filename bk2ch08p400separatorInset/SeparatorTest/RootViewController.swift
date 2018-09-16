@@ -29,7 +29,7 @@ class RootViewController: UITableViewController {
             self.tableView.separatorInsetReference = .fromAutomaticInsets
             
             // affects content view separately from separator
-            self.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 30, 0, 30)
+            self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
             self.tableView.insetsContentViewsToSafeArea = false
             
             self.tableView.cellLayoutMarginsFollowReadableWidth = true
@@ -51,7 +51,7 @@ class RootViewController: UITableViewController {
         
         if #available(iOS 11.0, *) {
             if indexPath.row % 2 == 0 {
-                cell.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0)
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
             }
         } else {
             cell.separatorInset = .zero

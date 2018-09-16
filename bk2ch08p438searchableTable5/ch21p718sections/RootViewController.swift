@@ -2,7 +2,11 @@
 
 import UIKit
 
+// no room for this one in the book
 // based on https://stackoverflow.com/a/46283774/341994
+
+// there is something skanky about the way this looks in iOS 12 anyway
+// look at the funny movement of the insertion point into the search bar
 
 class SearchContainerVC: UISearchContainerViewController {
     

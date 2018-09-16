@@ -7,7 +7,7 @@ class ViewController: UIViewController {
     var items : [UITabBarItem] = {
         Array(1..<8).map {
             UITabBarItem(
-                tabBarSystemItem:UITabBarSystemItem(rawValue:$0)!, tag:$0)
+                tabBarSystemItem:UITabBarItem.SystemItem(rawValue:$0)!, tag:$0)
         }
     }()
 

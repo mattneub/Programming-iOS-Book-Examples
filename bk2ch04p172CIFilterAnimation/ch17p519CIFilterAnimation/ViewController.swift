@@ -34,7 +34,7 @@ class ViewController : UIViewController {
         DispatchQueue.main.async {
         
             let link = CADisplayLink(target:self, selector:#selector(self.nextFrame))
-            link.add(to:.main, forMode:.defaultRunLoopMode)
+            link.add(to:.main, forMode:.default)
         
         }
         
@@ -63,7 +63,7 @@ class ViewController : UIViewController {
         }
         sender.isPaused = false
         
-        print("here \(self.frame)") // useful for seeing dropped frame rate
+        print("here \(self.frame!)") // useful for seeing dropped frame rate
     }
     
 }

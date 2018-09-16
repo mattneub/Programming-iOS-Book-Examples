@@ -28,8 +28,6 @@ extension CGVector {
 }
 
 
-
-
 class MyGravityBehavior : UIGravityBehavior {
     deinit {
         print("farewell from grav")
@@ -55,6 +53,7 @@ extension UIDynamicAnimator {
     // but a collision behavior has fallen into the array, so we crash if we say that
     // in fact, we can't even fetch items(in:) as a Swift array at all
     func views(in rect: CGRect) -> [UIView] {
+        // return self.items(in:rect) as! [UIView]
         let nsitems = self.items(in: rect) as NSArray
         return nsitems.compactMap {$0 as? UIView}
     }
@@ -92,7 +91,7 @@ class ViewController : UIViewController {
                 // let items = self.anim.items(in: self.view.bounds) as! [UIView]
                 // crash because it contains, wrongly, a collision behavior object
                 let items = self.anim.views(in: self.view.bounds)
-                let ix = items.index(of:self.iv)
+                let ix = items.firstIndex(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
@@ -102,7 +101,7 @@ class ViewController : UIViewController {
         case 2:
             grav.action = {
                 let items = self.anim.views(in:self.view.bounds)
-                let ix = items.index(of:self.iv)
+                let ix = items.firstIndex(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
@@ -113,7 +112,7 @@ class ViewController : UIViewController {
         case 3:
             grav.action = {
                 let items = self.anim.views(in:self.view.bounds)
-                let ix = items.index(of:self.iv)
+                let ix = items.firstIndex(of:self.iv)
                 if ix == nil {
                     delay(0) { // * both are released
                         self.anim.removeAllBehaviors()
@@ -127,7 +126,7 @@ class ViewController : UIViewController {
                 [weak grav] in // *
                 if let grav = grav {
                     let items = self.anim.views(in:self.view.bounds)
-                    let ix = items.index(of:self.iv)
+                    let ix = items.firstIndex(of:self.iv)
                     if ix == nil {
                         self.anim.removeBehavior(grav) // * grav is released, iv is not!
                         self.anim.removeAllBehaviors() // probably because of the other behaviors
@@ -154,10 +153,9 @@ class ViewController : UIViewController {
         let coll = UICollisionBehavior()
         coll.collisionMode = .boundaries
         coll.collisionDelegate = self
+        let b = self.view.bounds
         coll.addBoundary(withIdentifier:"floor" as NSString,
-            from:CGPoint(0, self.view.bounds.maxY),
-            to:CGPoint(self.view.bounds.maxX,
-                self.view.bounds.maxY))
+            from:CGPoint(b.minX, b.maxY), to:CGPoint(b.maxX, b.maxY))
         self.anim.addBehavior(coll)
         coll.addItem(self.iv)
 
@@ -191,8 +189,7 @@ extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegat
             print(p)
             // look for the dynamic item behavior
             let b = self.anim.behaviors
-        if let ix = b.index(where:{$0 is UIDynamicItemBehavior}) {
-                let bounce = b[ix] as! UIDynamicItemBehavior
+            if let bounce = (b.compactMap {$0 as? UIDynamicItemBehavior}).first {
                 let v = bounce.angularVelocity(for:item)
                 print(v)
                 if v <= 6 {

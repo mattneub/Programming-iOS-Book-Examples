@@ -54,7 +54,7 @@ class RootViewController : UITableViewController {
     }
     
     @objc func doEdit(_ sender: Any?) {
-        var which : UIBarButtonSystemItem
+        var which : UIBarButtonItem.SystemItem
         if !self.tableView.isEditing {
             self.tableView.setEditing(true, animated:true)
             which = .done
@@ -132,7 +132,7 @@ class RootViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCellEditingStyle,
+                            commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt ip: IndexPath) {
         // had to split into two batches on iOS 11, filed a bug about that
         switch editingStyle {

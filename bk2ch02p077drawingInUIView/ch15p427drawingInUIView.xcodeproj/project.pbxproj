@@ -98,7 +98,8 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C9E67A4917B023F70062A15F = {
-						LastSwiftMigration = 0900;
+						DevelopmentTeam = W3LHX5RGV2;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -231,6 +232,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch15p427drawingInUIView/ch15p427drawingInUIView-Prefix.pch";
 				INFOPLIST_FILE = "ch15p427drawingInUIView/ch15p427drawingInUIView-Info.plist";
@@ -240,8 +242,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -251,6 +252,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch15p427drawingInUIView/ch15p427drawingInUIView-Prefix.pch";
 				INFOPLIST_FILE = "ch15p427drawingInUIView/ch15p427drawingInUIView-Info.plist";
@@ -259,8 +261,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -92,7 +92,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C940A30E17A97F5B0021BD3F = {
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -214,13 +214,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p382autoresizing/ch14p388constraints-Prefix.pch";
 				INFOPLIST_FILE = "ch14p382autoresizing/ch14p388constraints-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch14p388constraints;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -233,12 +232,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p382autoresizing/ch14p388constraints-Prefix.pch";
 				INFOPLIST_FILE = "ch14p382autoresizing/ch14p388constraints-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch14p388constraints;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

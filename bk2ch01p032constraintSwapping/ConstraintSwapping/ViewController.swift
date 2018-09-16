@@ -2,6 +2,18 @@
 
 import UIKit
 
+// let's use this as an opportunity to explore when updateConstraints is called
+class LoggingView : UIView {
+    override func updateConstraints() {
+        print("update constraints", self.backgroundColor as Any)
+        super.updateConstraints()
+    }
+    override func layoutSubviews() {
+        print("layout subviews", self.backgroundColor as Any)
+        super.layoutSubviews()
+    }
+}
+
 class ViewController: UIViewController {
     var v2 : UIView!
     var constraintsWith = [NSLayoutConstraint]()
@@ -15,13 +27,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let v1 = UIView()
+        let v1 = LoggingView()
         v1.backgroundColor = .red
         v1.translatesAutoresizingMaskIntoConstraints = false
-        let v2 = UIView()
+        let v2 = LoggingView()
         v2.backgroundColor = .yellow
         v2.translatesAutoresizingMaskIntoConstraints = false
-        let v3 = UIView()
+        let v3 = LoggingView()
         v3.backgroundColor = .blue
         v3.translatesAutoresizingMaskIntoConstraints = false
         
@@ -40,26 +52,26 @@ class ViewController: UIViewController {
         let c5with = NSLayoutConstraint.constraints(withVisualFormat:"V:[v1]-(20)-[v2(20)]-(20)-[v3(20)]", metrics: nil, views: ["v1":v1, "v2":v2, "v3":v3])
         let c5without = NSLayoutConstraint.constraints(withVisualFormat:"V:[v1]-(20)-[v3(20)]", metrics: nil, views: ["v1":v1, "v3":v3])
         
-        // first set of constraints
+        // apply common constraints
+        
+        NSLayoutConstraint.activate([c1, c3, c4].flatMap{$0})
+        
+        // first set of constraints (for when v2 is present)
 
-        self.constraintsWith.append(contentsOf:c1)
         self.constraintsWith.append(contentsOf:c2)
-        self.constraintsWith.append(contentsOf:c3)
-        self.constraintsWith.append(contentsOf:c4)
         self.constraintsWith.append(contentsOf:c5with)
         
-        // second set of constraints
+        // second set of constraints (for when v2 is absent)
         
-        self.constraintsWithout.append(contentsOf:c1)
-        self.constraintsWithout.append(contentsOf:c3)
-        self.constraintsWithout.append(contentsOf:c4)
         self.constraintsWithout.append(contentsOf:c5without)
+        
 
         // apply first set
 
         NSLayoutConstraint.activate(self.constraintsWith)
         
 
+        
         // ignore, just testing new iOS 10 read-only properties
         do {
             let c = self.constraintsWith[0]
@@ -67,9 +79,14 @@ class ViewController: UIViewController {
             print(c.firstAnchor)
         }
         
+        print("finished viewDidLoad")
+        
     }
 
     @IBAction func doSwap(_ sender: Any) {
+        print("swapping")
+        // does NOT cause `updateConstraints`
+        // so it is not a signal that constraints need recalculation???
         if self.v2.superview != nil {
             self.v2.removeFromSuperview()
             NSLayoutConstraint.deactivate(self.constraintsWith)
@@ -82,5 +99,11 @@ class ViewController: UIViewController {
 
         }
     }
+    /*
+    override func updateViewConstraints() {
+        print("view controller update view contraints")
+        super.updateViewConstraints()
+    }
+ */
 }
 

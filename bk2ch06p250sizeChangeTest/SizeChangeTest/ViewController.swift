@@ -25,18 +25,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
-            forName: .UIApplicationWillChangeStatusBarOrientation,
+            forName: UIApplication.willChangeStatusBarOrientationNotification,
             object: nil, queue: nil) { n in
                 print("status bar will change orientation from",
                       UIApplication.shared.statusBarOrientation.rawValue,
                       "to",
-                      n.userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as Any)
+                      n.userInfo?[UIApplication.statusBarOrientationUserInfoKey] as Any)
         }
         NotificationCenter.default.addObserver(
-            forName: .UIApplicationDidChangeStatusBarOrientation,
+            forName: UIApplication.didChangeStatusBarOrientationNotification,
             object: nil, queue: nil) { n in
                 print("status bar did change orientation from",
-                      n.userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as Any,
+                      n.userInfo?[UIApplication.statusBarOrientationUserInfoKey] as Any,
                       "to",
                       UIApplication.shared.statusBarOrientation.rawValue)
         }

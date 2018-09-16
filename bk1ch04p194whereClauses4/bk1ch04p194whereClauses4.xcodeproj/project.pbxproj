@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					81A8E5912020C29F008E6A38 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -288,7 +289,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch04p194whereClauses4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -306,7 +307,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch04p194whereClauses4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

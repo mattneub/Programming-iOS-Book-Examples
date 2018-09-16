@@ -3,13 +3,25 @@
 import UIKit
 import UserNotifications
 
+struct Person : Hashable {
+    let firstName: String
+    let lastName: String
+}
+
+// suppose you don't want all members involved in equality / hashability
 struct Dog : Hashable {
     let name : String
     let license : Int
-    static func ==(lhs:Dog, rhs:Dog) -> Bool {
-        return lhs.name == rhs.name
+    let color : UIColor
+    // for equatable, write out == by hand
+    static func ==(lhs:Dog,rhs:Dog) -> Bool {
+        return lhs.name == rhs.name && lhs.license == rhs.license
     }
-    var hashValue: Int { return name.hashValue }
+    // for hashable, implement hash(into:)
+    func hash(into hasher: inout Hasher) {
+        name.hash(into:&hasher)
+        license.hash(into:&hasher)
+    }
 }
 
 class ViewController: UIViewController {
@@ -47,39 +59,52 @@ class ViewController: UIViewController {
         }
         
         do {
-            let opts = UIViewAnimationOptions(rawValue:0b00011000)
+            let opts = UIView.AnimationOptions(rawValue:0b00011000)
             _ = opts
         }
         
         do {
+            let set : Set<Person> = [
+                Person(firstName: "Matt", lastName: "Neuburg"),
+                Person(firstName: "Groucho", lastName: "Marx")
+            ]
+            let ok = set.contains(Person(firstName: "Groucho", lastName: "Marx")) // true
+            print(ok)
+            let h = Person(firstName: "Matt", lastName: "Neuburg").hashValue
+            print(h)
+
+        }
+        
+        do {
             // showing the difference between insert and update
-            var set : Set = [Dog(name:"Fido", license:1)]
-            let d = Dog(name:"Fido", license:2)
-            set.insert(d) // [Dog(name: "Fido", license: 1)]
+            var set : Set = [Dog(name:"Fido", license:1, color: .green)]
+            let d = Dog(name:"Fido", license:1, color: .red)
+            set.insert(d) // green dog
+            print(set.count)
             print(set)
-            set.update(with:d) // [Dog(name: "Fido", license: 2)]
+            set.update(with:d) // red dog
             print(set)
         }
         
         do {
-            let val = UIViewAnimationOptions.autoreverse.rawValue | UIViewAnimationOptions.repeat.rawValue
-            let opts = UIViewAnimationOptions(rawValue: val)
+            let val = UIView.AnimationOptions.autoreverse.rawValue | UIView.AnimationOptions.repeat.rawValue
+            let opts = UIView.AnimationOptions(rawValue: val)
             print(opts)
         }
         
         do {
-            let opts : UIViewAnimationOptions = [UIViewAnimationOptions.autoreverse, UIViewAnimationOptions.repeat]
+            let opts : UIView.AnimationOptions = [UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
             print(opts)
         }
         
         do {
-            var opts = UIViewAnimationOptions.autoreverse
+            var opts = UIView.AnimationOptions.autoreverse
             opts.insert(.repeat) // compiler no longer complains
             print(opts)
         }
         
         do {
-            let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
+            let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
             print(opts)
         }
         
@@ -114,9 +139,7 @@ class ViewController: UIViewController {
         }
         var forbiddenNumbers = Set(recents!)
         let legalNumbers = Set(1...PIXCOUNT).subtracting(forbiddenNumbers)
-        let newNumber = Array(legalNumbers)[
-            Int(arc4random_uniform(UInt32(legalNumbers.count)))
-        ]
+        let newNumber = legalNumbers.randomElement()!
         forbiddenNumbers.insert(newNumber)
         ud.set(Array(forbiddenNumbers), forKey:RECENTS)
     }
@@ -125,18 +148,18 @@ class ViewController: UIViewController {
 }
 
 class MyTableViewCell : UITableViewCell {
-    override func didTransition(to state: UITableViewCellStateMask) {
-        let editing = UITableViewCellStateMask.showingEditControlMask.rawValue
+    override func didTransition(to state: UITableViewCell.StateMask) {
+        let editing = UITableViewCell.StateMask.showingEditControl.rawValue
         if state.rawValue & editing != 0 {
-            // ... the ShowingEditControlMask bit is set ...
+            // ... the ShowingEditControl bit is set ...
         }
     }
 }
 
 class MyTableViewCell2 : UITableViewCell {
-    override func didTransition(to state: UITableViewCellStateMask) {
-        if state.contains(.showingEditControlMask) {
-            // ... the ShowingEditControlMask bit is set ...
+    override func didTransition(to state: UITableViewCell.StateMask) {
+        if state.contains(.showingEditControl) {
+            // ... the ShowingEditControl bit is set ...
         }
     }
 }

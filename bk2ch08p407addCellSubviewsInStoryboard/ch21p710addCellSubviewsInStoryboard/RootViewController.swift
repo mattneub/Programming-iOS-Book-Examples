@@ -33,7 +33,7 @@ class RootViewController : UITableViewController {
         // Don't register anything! But the cell id must match the storyboard
         // self.tableView.register(UINib(nibName:"MyCell", bundle:nil), forCellReuseIdentifier: self.cellID)
         // self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
-        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         // self.tableView.rowHeight = 58 // *
     }
     
@@ -58,7 +58,7 @@ class RootViewController : UITableViewController {
         
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
-        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36), format:im.imageRendererFormat)
         let im2 = r.image {
             _ in im.draw(in:CGRect(0,0,36,36))
         }

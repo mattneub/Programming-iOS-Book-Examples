@@ -62,7 +62,8 @@ class EmptyWindowTests: XCTestCase {
         delay(5) {
             ex.fulfill()
         }
-        let result = XCTWaiter.wait(for: [ex], timeout: 4)
+        let result = XCTWaiter.wait(for: [ex], timeout: 10)
+        // to fail, set timeout to something shorter than 5
         XCTAssert(result == .completed, "result was \(result.rawValue)")
     }
     

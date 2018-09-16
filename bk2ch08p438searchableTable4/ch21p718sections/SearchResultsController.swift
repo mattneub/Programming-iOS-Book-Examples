@@ -9,6 +9,8 @@ class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
     
+    weak var searchBar : UISearchBar!
+    
     init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
         self.originalData = data.map{$0.rowData}.flatMap{$0}
@@ -18,7 +20,7 @@ class SearchResultsController : UITableViewController {
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
-    
+        
     // all boilerplate; note that our data is _filteredData_, which is initially empty
     
     let cellID = "Cell"
@@ -52,12 +54,16 @@ filter the original data in accordance with what's in the search bar,
 and reload the table.
 */
 
-extension SearchResultsController : UISearchResultsUpdating {
-    func doUpdate(searchBar:UISearchBar) {
-        let target = searchBar.text!
+extension SearchResultsController : UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        self.searchBar = searchController.searchBar
+        self.doUpdate()
+    }
+    func doUpdate() {
+        let target = self.searchBar.text!
         self.filteredData = self.originalData.filter { s in
             var options = String.CompareOptions.caseInsensitive
-            if searchBar.selectedScopeButtonIndex == 1 {
+            if self.searchBar.selectedScopeButtonIndex == 0 { // 0 means "starts with"
                 options.insert(.anchored)
             }
             let found = s.range(of:target, options: options)
@@ -65,16 +71,10 @@ extension SearchResultsController : UISearchResultsUpdating {
         }
         self.tableView.reloadData()
     }
-    func updateSearchResults(for searchController: UISearchController) {
-        self.view.isHidden = false // *
-        self.doUpdate(searchBar:searchController.searchBar)
+    func searchBar(_ searchBar: UISearchBar,
+                   selectedScopeButtonIndexDidChange selectedScope: Int) {
+        self.doUpdate()
     }
 }
 
-extension SearchResultsController : UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        print("button")
-        self.doUpdate(searchBar:searchBar)
-    }
-}
 

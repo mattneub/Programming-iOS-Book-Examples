@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // use os_log so we can read from the device console
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         os_log("%{public}@", log: log, #function)
         
 //        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in

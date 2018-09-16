@@ -94,7 +94,7 @@ class RootViewController : UITableViewController {
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
         cell.imageView!.image = im
-        
+                
         return cell
     }
     
@@ -191,9 +191,11 @@ class RootViewController : UITableViewController {
             }
             completion(true)
         }
+        d.backgroundColor = .red
         d.image = UIGraphicsImageRenderer(size:CGSize(30,30)).image { _ in
             UIImage(named:"trash")?.draw(in: CGRect(0,0,30,30))
         }
+        // .withRenderingMode(.alwaysOriginal) // just an experiment; has no effect
         let m = UIContextualAction(style: .normal, title: "Mark") {
             action, view, completion in
             print("Mark") // in real life, do something here

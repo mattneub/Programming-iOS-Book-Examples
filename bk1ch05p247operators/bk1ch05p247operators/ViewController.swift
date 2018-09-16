@@ -39,9 +39,8 @@ extension Int {
 
 infix operator >>> : RangeFormationPrecedence
 func >>><Bound>(maximum: Bound, minimum: Bound)
-    -> ReversedCollection<CountableRange<Bound>>
-    where Bound : Comparable & Strideable { // NB! Integer conformance no longer needed
-        // in fact, Integer no longer exists
+    -> ReversedCollection<Range<Bound>>
+    where Bound : Strideable {
         return (minimum..<maximum).reversed()
 }
 
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
         print(ok)
         
         let arr = [v1,v2]
-        let ix = arr.index(of:v1) // Optional wrapping 0
+        let ix = arr.firstIndex(of:v1) // Optional wrapping 0
         print(ix as Any)
 
         print(2^^2) // 4

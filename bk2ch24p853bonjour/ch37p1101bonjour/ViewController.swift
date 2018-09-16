@@ -44,7 +44,7 @@ class ViewController: UIViewController, NetServiceBrowserDelegate, NetServiceDel
     }
     
     func netServiceBrowser(_ aNetServiceBrowser: NetServiceBrowser, didRemove aNetService: NetService, moreComing: Bool) {
-        if let ix = self.services.index(of:aNetService) {
+        if let ix = self.services.firstIndex(of:aNetService) {
             self.services.remove(at:ix)
             print("removing a service")
             if !moreComing {

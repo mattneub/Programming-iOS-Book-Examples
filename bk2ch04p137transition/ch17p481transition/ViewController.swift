@@ -42,7 +42,7 @@ class ViewController : UIViewController {
     }
     
     func animate() {
-        let opts : UIViewAnimationOptions = .transitionFlipFromLeft
+        let opts : UIView.AnimationOptions = .transitionFlipFromLeft
         UIView.transition(with:self.iv, duration: 0.8, options: opts,
             animations: {
                 self.iv.image = UIImage(named:"Smiley")
@@ -51,8 +51,8 @@ class ViewController : UIViewController {
         // ======
         
         do { // looks a little more compelling if we do a curl up transition
-            let opts : UIViewAnimationOptions = .transitionCurlUp
-            self.v.reverse = !self.v.reverse
+            let opts : UIView.AnimationOptions = .transitionCurlUp
+            self.v.reverse.toggle()
             UIView.transition(with:self.v, duration: 1, options: opts,
                               animations: {
                                 self.v.setNeedsDisplay()
@@ -61,7 +61,7 @@ class ViewController : UIViewController {
         
         // ======
                 
-        let opts2 : UIViewAnimationOptions = [.transitionFlipFromLeft, .allowAnimatedContent]
+        let opts2 : UIView.AnimationOptions = [.transitionFlipFromLeft, .allowAnimatedContent]
         UIView.transition(with:self.outer, duration: 1, options: opts2,
             animations: {
                 var f = self.inner.frame

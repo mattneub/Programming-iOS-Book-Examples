@@ -35,10 +35,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func beRed(_ textField : UITextField) {
         // user's text is always red, underlined
         if var md = textField.typingAttributes {
-            let d : [String:Any] = [
-                NSAttributedStringKey.foregroundColor.rawValue:
+            let d : [NSAttributedString.Key:Any] = [
+                .foregroundColor:
                     UIColor.red,
-                NSAttributedStringKey.underlineStyle.rawValue: NSUnderlineStyle.styleSingle.rawValue
+                .underlineStyle: NSUnderlineStyle.single.rawValue
             ]
             md.merge(d) {_,new in new}
             textField.typingAttributes = md
@@ -75,5 +75,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
 
+    // can prevent automatic dismissal
+    func textFieldShouldReturnNOT(_ textField: UITextField) -> Bool {
+        return false
+    }
 
 }

@@ -40,6 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         alert.addTextField { tf in
             tf.keyboardType = .numberPad // ??? not on iPad
             tf.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
+            tf.delegate = self
         }
         func handler(_ act:UIAlertAction) {
             // it's a closure so we have a reference to the alert
@@ -61,6 +62,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let alert = resp as! UIAlertController
         alert.actions[1].isEnabled = (tf.text != "")
     }
+    
+    // there is no Return key in the dialog, but we still need to stop a user with a hardware keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // return textField.text.map{!$0.isEmpty}!
+        return textField.text != ""
+    }
+    
+
     
     // =====
     

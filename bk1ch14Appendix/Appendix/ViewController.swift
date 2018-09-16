@@ -214,7 +214,8 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             // t.take1id(MyClass()) // crash!
             // the crash is not because a MyClass can't cross the bridge...
             // but because my Objective-C code is attempting to look in the box by logging
-            t.take1id2(MyClass()) // solves the problem; we can call `class` on this thing at least
+            t.take1id(MyClass()) // they fixed the crash after I filed a bug
+            // t.take1id2(MyClass()) // solves the problem; we can call `class` on this thing at least
             t.take1id(MyClass2()) // objc
         }
         
@@ -280,21 +281,22 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             
             self.view.autoresizingMask = .flexibleWidth
             self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            
+            // self.view.autoresizingMask = .none
         }
         
         do {
             let lastCharRange = 0
             
             let property = self.lm.propertyForGlyph(at:lastCharRange)
-            let mask1 = property.rawValue
-            let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
-            let ok = mask1 & mask2 != 0 // can't say .contains here
-            // let ok2 = property.contains(.controlCharacter)
+//            let mask1 = property.rawValue
+//            let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
+//            let ok = mask1 & mask2 != 0 // can't say .contains here
+            let ok2 = property.contains(.controlCharacter) // they fixed it!
         }
         
         do {
-            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            // try? AVAudioSession.sharedInstance().setCategory(.ambient)
+            try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
         }
         
         do {
@@ -401,7 +403,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             lay.setValue(p, forKey: "person")
             // ... time passes ...
             if let p2 = lay.value(forKey: "person") as? Person {
-                print(p2.firstName, p.lastName) // Matt Neuburg
+                print(p2.firstName, p2.lastName) // Matt Neuburg
             }
             
             let mc = MyClass()
@@ -438,6 +440,14 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             let s2 = s.replacingOccurrences(of: "ell", with:"ipp")
             // s2 is now "hippo"
             print(s2)
+        }
+        
+        do {
+            let b = UIButton()
+            b.addTarget(self, action: Selector("doNewGame:"), for: .touchUpInside)
+            b.addTarget(self, action: "doNewGame:", for: .touchUpInside)
+            b.addTarget(self, action: #selector(doNewGame), for: .touchUpInside)
+
         }
         
         do {
@@ -559,6 +569,8 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
 
 
     var myclass = MyClass() // Objective-C can't see this
+    func myFunc(_ m:MyClass) {} // Objective-C can't see this
+    // trying to mark either of those @objc will fail
     func testTimer() {
         self.myclass.startTimer()
     }
@@ -586,6 +598,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         print(#selector(self.say(of:loudly:)))
     }
 
+    @objc func doNewGame(_ sender:Any) {}
 
 }
 
@@ -596,7 +609,6 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto sampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let prev = previewPhotoSampleBuffer {
             if let buff = CMSampleBufferGetImageBuffer(prev) {
-                
                 // buff is a CVImageBuffer
                 if let baseAddress = CVPixelBufferGetBaseAddress(buff) {
                     // baseAddress is an UnsafeMutableRawPointer
@@ -605,9 +617,8 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
                     let addr = addrptr.pointee // now we have a UInt8
                     _ = addr
                 }
-
-                
             }
+                
         }
     }
 }

@@ -29,13 +29,20 @@ import UIKit
 
 // This compiles and runs, but heaven knows if it's right
 
+//UIApplicationMain(
+//    CommandLine.argc,
+//    UnsafeMutableRawPointer(CommandLine.unsafeArgv)
+//        .bindMemory(
+//            to: UnsafeMutablePointer<Int8>?.self,
+//            capacity: Int(CommandLine.argc)),
+//    nil,
+//    NSStringFromClass(AppDelegate.self)
+//)
+
+// Oooooh, this seems to be fixed (using CommandLine instead of Process):
+
 UIApplicationMain(
-    CommandLine.argc,
-    UnsafeMutableRawPointer(CommandLine.unsafeArgv)
-        .bindMemory(
-            to: UnsafeMutablePointer<Int8>.self,
-            capacity: Int(CommandLine.argc)),
-    nil,
-    NSStringFromClass(AppDelegate.self)
+    CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(AppDelegate.self)
 )
+
 

@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode:.default)
         try? AVAudioSession.sharedInstance().setActive(true)
     }
 
@@ -120,8 +120,15 @@ class ViewController: UIViewController {
 extension ViewController : AVPictureInPictureControllerDelegate {
     
     // this is the nuttiest bit of renamification!
-    func picture(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @ escaping (Bool) -> Void) {
+    // ooh, and in Swift 4.2 it has a new name even nuttier
+    func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @ escaping (Bool) -> Void) {
         
     }
+    // old name:
+    /*
+     func picture(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @ escaping (Bool) -> Void) {
+     }
+
+ */
 
 }

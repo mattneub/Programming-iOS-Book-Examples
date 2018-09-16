@@ -53,9 +53,9 @@ class ViewController: UIViewController {
             let av = AVPlayerViewController()
             av.view.frame = CGRect(10,10,300,200)
             av.player = player
-            self.addChildViewController(av)
+            self.addChild(av)
             self.view.addSubview(av.view)
-            av.didMove(toParentViewController: self)
+            av.didMove(toParent: self)
         case 2:
             self.setUpChild()
         default: break
@@ -104,10 +104,10 @@ class ViewController: UIViewController {
         let av = AVPlayerViewController()
         av.view.frame = AVMakeRect(aspectRatio: sz, insideRect: CGRect(10,10,300,200))
         av.player = player
-        self.addChildViewController(av)
+        self.addChild(av)
         av.view.isHidden = true
         self.view.addSubview(av.view)
-        av.didMove(toParentViewController: self)
+        av.didMove(toParent: self)
         
         var ob : NSKeyValueObservation!
         ob = av.observe(\.isReadyForDisplay, options: .new) { vc, ch in
@@ -119,6 +119,7 @@ class ViewController: UIViewController {
                 // just playing, pay no attention
                 let player = vc.player!
                 let item = player.currentItem!
+                // well _this_ seems like a step back from renamification!
                 print(CMTimebaseGetRate(item.timebase!))
             }
         }

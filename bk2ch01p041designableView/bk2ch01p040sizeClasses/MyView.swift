@@ -76,4 +76,22 @@ The representation is not perfect but it's pretty good.
             return Int(self.layer.borderWidth)
         }
     }
+    // what's the earliest we can pick up the value applied from the nib?
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        print("init coder", self.borderWidth) // inspectable value not yet set
+    }
+    override func awakeFromNib() {
+        print("awake1", self.borderWidth)
+        super.awakeFromNib()
+        print("awake2", self.borderWidth)
+    }
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow:newWindow)
+        print("will move to window", self.borderWidth)
+    }
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview:newSuperview)
+        print("will move to superview", self.borderWidth)
+    }
 }

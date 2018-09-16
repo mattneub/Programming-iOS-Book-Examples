@@ -8,6 +8,30 @@ enum MyError {
     case fatal
 }
 
+struct Primes {
+    static var primes = [2]
+    static func appendNextPrime() {
+        next: for i in (primes.last!+1)... {
+            let sqrt = Int(Double(i).squareRoot())
+            for factor in primes.lazy.prefix(while:{$0 <= sqrt}) {
+                if i % factor == 0 {
+                    continue next
+                }
+            }
+            primes.append(i)
+            print("appended a prime")
+            return
+        }
+    }
+    static func nthPrime(_ n:Int) -> Int {
+        print("I was asked for prime", n)
+        while primes.count < n {
+            appendNextPrime()
+        }
+        return primes[n-1]
+    }
+}
+
 class ViewController: UIViewController {
     
     var movenda = [1,2,3]
@@ -247,34 +271,6 @@ class ViewController: UIViewController {
         }
 
         
-        // this _entire_ construct is deprecated in Swift 2.2, to be removed in Swift 3
-        /*
-        do {
-            var i : Int
-            for i = 1; i < 6; i++ {
-                print(i)
-            }
-        }
-        
-        do {
-            for var i = 1; i < 6; i++ {
-                print(i)
-            }
-        }
- 
-        do {
-            let tvc = UITableViewCell()
-            let subview1 = UIView()
-            let subview2 = UITextField()
-            tvc.addSubview(subview1)
-            subview1.addSubview(subview2)
-            let textField = subview2
-
-            var v : UIView
-            for v = textField; !(v is UITableViewCell); v = v.superview! {}
-            print(v)
-        }
-        */
         
         // this is my one example where the loss of C-style for loops is really a pity
         // it was great being able to do two things in the prep line
@@ -333,6 +329,12 @@ class ViewController: UIViewController {
                     break outer
                 }
             }
+        }
+        
+        do {
+            _ = Primes.nthPrime(5)
+            _ = Primes.nthPrime(3) // no new primes generated
+            _ = Primes.nthPrime(7) //
         }
         
         do { // new in 2.0, you can break to an "if" or "do"

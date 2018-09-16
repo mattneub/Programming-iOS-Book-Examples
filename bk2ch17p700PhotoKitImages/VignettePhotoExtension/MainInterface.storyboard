@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,20 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RwB-xV-Zyw">
+                                <rect key="frame" x="14" y="28" width="292" height="31"/>
                                 <connections>
                                     <action selector="doSlider:" destination="ObA-dk-sSI" eventType="valueChanged" id="p4S-h8-7uV"/>
                                 </connections>
                             </slider>
-                            <glkView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" enableSetNeedsDisplay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKG-x4-oHv">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="EXv-tP-e0w"/>
-                                    <constraint firstAttribute="height" constant="240" id="Rsw-OO-r48"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="ObA-dk-sSI" id="BGb-qw-Nx7"/>
-                                </connections>
-                            </glkView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Zn-f7-6ft">
+                                <rect key="frame" x="93.5" y="328" width="133" height="29"/>
                                 <segments>
                                     <segment title="Vignette"/>
                                     <segment title="Remove"/>
@@ -42,34 +37,36 @@
                                     <action selector="doSegmentedControl:" destination="ObA-dk-sSI" eventType="valueChanged" id="IFo-d7-tz0"/>
                                 </connections>
                             </segmentedControl>
+                            <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="n1T-ds-Q3n">
+                                <rect key="frame" x="40" y="78" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="PeN-b2-dnZ"/>
+                                    <constraint firstAttribute="height" constant="240" id="zHR-Rs-XlF"/>
+                                </constraints>
+                            </mtkView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RwB-xV-Zyw" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leadingMargin" id="DUc-2S-fy2"/>
-                            <constraint firstItem="xKG-x4-oHv" firstAttribute="top" secondItem="RwB-xV-Zyw" secondAttribute="bottom" constant="20" id="DYD-oK-cZj"/>
-                            <constraint firstItem="4Zn-f7-6ft" firstAttribute="top" secondItem="xKG-x4-oHv" secondAttribute="bottom" constant="26" id="LZx-6c-hxT"/>
-                            <constraint firstAttribute="centerX" secondItem="4Zn-f7-6ft" secondAttribute="centerX" constant="-0.5" id="bpO-qh-uxW"/>
+                            <constraint firstAttribute="centerX" secondItem="4Zn-f7-6ft" secondAttribute="centerX" id="bpO-qh-uxW"/>
                             <constraint firstItem="RwB-xV-Zyw" firstAttribute="trailing" secondItem="zMn-AG-sqS" secondAttribute="trailingMargin" id="cja-au-PWf"/>
-                            <constraint firstAttribute="centerX" secondItem="xKG-x4-oHv" secondAttribute="centerX" id="gHM-OL-g8x"/>
+                            <constraint firstItem="n1T-ds-Q3n" firstAttribute="top" secondItem="RwB-xV-Zyw" secondAttribute="bottom" constant="20" id="hWq-Fg-OEz"/>
+                            <constraint firstItem="4Zn-f7-6ft" firstAttribute="top" secondItem="n1T-ds-Q3n" secondAttribute="bottom" constant="10" id="iDN-14-GUo"/>
                             <constraint firstItem="RwB-xV-Zyw" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" constant="8" id="pBW-ef-i7H"/>
+                            <constraint firstItem="n1T-ds-Q3n" firstAttribute="centerX" secondItem="zMn-AG-sqS" secondAttribute="centerX" id="z5Q-qc-XY6"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                     <connections>
-                        <outlet property="glkview" destination="xKG-x4-oHv" id="3ez-ru-YaL"/>
+                        <outlet property="mtkview" destination="n1T-ds-Q3n" id="Acr-Ym-2v4"/>
                         <outlet property="seg" destination="4Zn-f7-6ft" id="QUc-2u-WXk"/>
                         <outlet property="slider" destination="RwB-xV-Zyw" id="3md-Yx-Ort"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326" y="-128"/>
+            <point key="canvasLocation" x="521.60000000000002" y="-115.14242878560721"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

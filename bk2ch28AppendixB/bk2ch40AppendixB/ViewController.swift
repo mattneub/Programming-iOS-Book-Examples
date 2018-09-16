@@ -92,6 +92,16 @@ extension NSLayoutConstraint {
     }
 }
 
+// extension NSLayoutConstraint.Priority {}
+
+extension UILayoutPriority {
+    static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
+        let raw = lhs.rawValue + rhs
+        return UILayoutPriority(rawValue:raw)
+    }
+}
+
+
 func lend<T> (_ closure: (T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
@@ -118,13 +128,13 @@ extension UIView {
     class func animate(times:Int,
                        duration dur: TimeInterval,
                        delay del: TimeInterval,
-                       options opts: UIViewAnimationOptions,
+                       options opts: UIView.AnimationOptions,
                        animations anim: @escaping () -> Void,
                        completion comp: ((Bool) -> Void)?) {
         func helper(_ t:Int,
                     _ dur: TimeInterval,
                     _ del: TimeInterval,
-                    _ opt: UIViewAnimationOptions,
+                    _ opt: UIView.AnimationOptions,
                     _ anim: @escaping () -> Void,
                     _ com: ((Bool) -> Void)?) {
             UIView.animate(withDuration: dur,
@@ -152,6 +162,15 @@ extension Array {
         }
     }
 }
+
+extension Array {
+    mutating func remove2(at ixs:Set<Int>) {
+        var arr = Swift.Array(self.enumerated())
+        arr.removeAll{ixs.contains($0.offset)}
+        self = arr.map{$0.element}
+    }
+}
+
 
 class Wrapper<T> {
     let p:T
@@ -220,7 +239,7 @@ class ViewController: UIViewController {
         }
 
         
-        let opts = UIViewAnimationOptions.autoreverse
+        let opts = UIView.AnimationOptions.autoreverse
         let xorig = self.v.center.x
         UIView.animate(times:3, duration:1, delay:0, options:opts, animations:{
             self.v.center.x += 100

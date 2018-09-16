@@ -32,7 +32,7 @@ extension CGVector {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 1 // 1...10
+    let which = 2 // 1...10
     
     @IBOutlet var map : MKMapView!
     let annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
@@ -50,15 +50,20 @@ class ViewController: UIViewController, MKMapViewDelegate {
         self.map.tintColor = .green
         
         let loc = CLLocationCoordinate2DMake(34.927752,-120.217608)
-        let span = MKCoordinateSpanMake(0.015, 0.015)
-        let reg = MKCoordinateRegionMake(loc, span)
+        let span = MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
+        let reg = MKCoordinateRegion(center: loc, span: span)
         // or ...
         // let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
         self.map.region = reg
         //  or ...
-//        let pt = MKMapPointForCoordinate(loc)
-//        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
-//        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
+        do {
+            let pt = MKMapPoint(loc)
+            let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
+            _ = MKMapRect(x: pt.x - w/2.0, y: pt.y - w/2.0, width: w, height: w)
+            let p2 = MKMapPoint(loc)
+            _ = pt.distance(to:p2)
+            _ = MKMetersPerMapPointAtLatitude(loc.latitude)
+        }
         
         // try new iOS 11 feature
         self.map.showsCompass = false
@@ -68,7 +73,22 @@ class ViewController: UIViewController, MKMapViewDelegate {
         compass.isHidden = true // prevent annoying initial flash
         self.view.addSubview(compass)
         
+
+        
         if which == 1 {
+            // try snapshot feature
+            delay(2) {
+                let opts = MKMapSnapshotter.Options()
+                opts.region = self.map.region
+                let snap = MKMapSnapshotter(options: opts)
+                snap.start { shot, err in
+                    if let shot = shot {
+                        let im = shot.image
+                        print(im)
+                    }
+                }
+            }
+
             return
         }
         if which < 6 {
@@ -98,29 +118,29 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if which == 8 {
             let lat = self.annloc.latitude
             let metersPerPoint = MKMetersPerMapPointAtLatitude(lat)
-            var c = MKMapPointForCoordinate(self.annloc)
+            var c = MKMapPoint(self.annloc)
             c.x += 150/metersPerPoint
             c.y -= 50/metersPerPoint
-            var p1 = MKMapPointMake(c.x, c.y)
+            var p1 = MKMapPoint(x: c.x, y: c.y)
             p1.y -= 100/metersPerPoint
-            var p2 = MKMapPointMake(c.x, c.y)
+            var p2 = MKMapPoint(x: c.x, y: c.y)
             p2.x += 100/metersPerPoint
-            var p3 = MKMapPointMake(c.x, c.y)
+            var p3 = MKMapPoint(x: c.x, y: c.y)
             p3.x += 300/metersPerPoint
             p3.y -= 400/metersPerPoint
             var points = [p1, p2, p3]
             let tri = MKPolygon(points:&points, count:3)
-            self.map.add(tri)
+            self.map.addOverlay(tri)
         }
         if which == 9 {
             // start with our position and derive a nice unit for drawing
             let lat = self.annloc.latitude
             let metersPerPoint = MKMetersPerMapPointAtLatitude(lat)
-            let c = MKMapPointForCoordinate(self.annloc)
+            let c = MKMapPoint(self.annloc)
             let unit = CGFloat(75.0/metersPerPoint)
             // size and position the overlay bounds on the earth
             let sz = CGSize(4*unit, 4*unit)
-            let mr = MKMapRectMake(c.x + 2*Double(unit), c.y - 4.5*Double(unit), Double(sz.width), Double(sz.height))
+            let mr = MKMapRect(x: c.x + 2*Double(unit), y: c.y - 4.5*Double(unit), width: Double(sz.width), height: Double(sz.height))
             // describe the arrow as a CGPath
             let p = CGMutablePath()
             let start = CGPoint(0, unit*1.5)
@@ -141,26 +161,27 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let over = MyPathOverlay(rect:mr)
             over.path = UIBezierPath(cgPath:p)
             // add the overlay to the map
-            self.map.add(over)
+            self.map.addOverlay(over)
             // print(self.map.overlays)
         }
         if which == 10 {
             
             let lat = self.annloc.latitude
             let metersPerPoint = MKMetersPerMapPointAtLatitude(lat)
-            let c = MKMapPointForCoordinate(self.annloc)
+            let c = MKMapPoint(self.annloc)
             let unit = 75.0/metersPerPoint
             // size and position the overlay bounds on the earth
             let sz = CGSize(4*CGFloat(unit), 4*CGFloat(unit))
-            let mr = MKMapRectMake(c.x + 2*unit, c.y - 4.5*unit, Double(sz.width), Double(sz.height))
+            let mr = MKMapRect(x: c.x + 2*unit, y: c.y - 4.5*unit, width: Double(sz.width), height: Double(sz.height))
             let over = MyPathOverlay(rect:mr)
-            self.map.add(over, level:.aboveRoads)
+            self.map.addOverlay(over, level:.aboveRoads)
             
             let annot = MKPointAnnotation()
             annot.coordinate = over.coordinate
             annot.title = "This way!"
             self.map.addAnnotation(annot)
         }
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -294,7 +315,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     // this is no longer needed! my views are draggable as long as `isDraggable` is true
-    func mapViewNOT(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+    private func mapViewNOT(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
         print("here")
         switch newState {
         case .starting:

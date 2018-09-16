@@ -37,11 +37,11 @@ class MyMandelbrotView : UIView {
     func drawThatPuppy () {
         // self.makeBitmapContext(CGSize.zero) // test "wrong thread" assertion
         // to test backgrounding, increase MANDELBROT_STEPS and suspend while calculating
-        var bti : UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+        var bti : UIBackgroundTaskIdentifier = .invalid
         bti = UIApplication.shared.beginBackgroundTask {
             UIApplication.shared.endBackgroundTask(bti)
         }
-        guard bti != UIBackgroundTaskInvalid else { return }
+        guard bti != .invalid else { return }
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
         let bounds = self.bounds
         self.draw_queue.async {

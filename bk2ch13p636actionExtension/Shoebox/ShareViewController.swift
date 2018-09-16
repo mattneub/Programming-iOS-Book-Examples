@@ -28,7 +28,7 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
     
         let s = self.contentText // and do something with it
         
-        self.extensionContext?.completeRequest(returningItems:[])
+        self.extensionContext?.completeRequest(returningItems:nil)
         
         if let s = s {
             NSLog("post was: %@", s as NSObject)

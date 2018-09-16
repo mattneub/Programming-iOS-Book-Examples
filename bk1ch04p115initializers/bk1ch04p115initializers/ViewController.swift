@@ -234,7 +234,24 @@ class ViewController: UIViewController {
         _ = name
         _ = im
 
-
+        // strategy for late initialization while simulating "let"
+        do {
+            class C {
+                var p : String! {
+                    didSet {
+                        if oldValue != nil {
+                            p = oldValue
+                        }
+                    }
+                }
+            }
+            
+            let c = C()
+            c.p = "howdy"
+            print(c.p)
+            c.p = "farewell"
+            print(c.p)
+        }
 
         
     }

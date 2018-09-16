@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIViewControllerRestoration {
         self.present(vc2, animated: true)
     }
     
-    static func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
+    static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
         let vc2 = ViewController2()
         vc2.restorationIdentifier = "vc2"
         vc2.restorationClass = self

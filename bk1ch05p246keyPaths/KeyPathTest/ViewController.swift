@@ -41,6 +41,9 @@ class ViewController: UIViewController {
             print(whatname)
             
             prop = \Person.lastName
+            
+            // no, don't be silly
+            // prop = \Person2.lastName
 
             let whatname2 = p[keyPath:prop]
             print(whatname2)

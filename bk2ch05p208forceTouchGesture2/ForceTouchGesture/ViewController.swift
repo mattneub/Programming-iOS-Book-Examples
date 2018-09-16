@@ -22,9 +22,6 @@ extension CGVector {
     }
 }
 
-extension Notification.Name {
-    static let pop = Notification.Name("pop")
-}
 
 class ViewController: UIViewController {
 
@@ -32,7 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let circle = CircleView(frame:CGRect(100,100,100,100))
         self.view.addSubview(circle)
-        NotificationCenter.default.addObserver(forName: .pop, object: nil, queue: .main) {
+        NotificationCenter.default.addObserver(forName: CircleView.pop, object: nil, queue: .main) {
             n in
             let minW = 50 as UInt32
             let maxW = 150 as UInt32
@@ -56,9 +53,10 @@ class ViewController: UIViewController {
 class CircleView: UIView, UIPreviewInteractionDelegate {
     private var _prev : UIPreviewInteraction!
     private var anim : UIViewPropertyAnimator!
+    static let pop = Notification.Name("pop")
     override init(frame:CGRect) {
         super.init(frame:frame)
-        self.isOpaque = false
+        self.isOpaque = false // in iOS 12, not needed?
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -93,7 +91,7 @@ class CircleView: UIView, UIPreviewInteractionDelegate {
         if ended {
             self.anim.stopAnimation(false)
             self.anim.finishAnimation(at: .end)
-            NotificationCenter.default.post(name: .pop, object: nil)
+            NotificationCenter.default.post(name: CircleView.pop, object: nil)
             self.removeFromSuperview()
         }
     }

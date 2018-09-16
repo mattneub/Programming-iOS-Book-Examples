@@ -8,6 +8,9 @@ class MyMandelbrotOperation : Operation {
     private let zoom : CGFloat
     private(set) var bitmapContext : CGContext! = nil
     
+    static let mandelOpFinished = Notification.Name("mandelOpFinished")
+
+    
     init(center c:CGPoint, bounds b:CGRect, zoom z:CGFloat) {
         self.center = c
         self.bounds = b
@@ -69,7 +72,7 @@ class MyMandelbrotOperation : Operation {
         self.makeBitmapContext(size:self.bounds.size)
         self.draw(center: self.center, bounds: self.bounds, zoom: self.zoom)
         if !self.isCancelled {
-            NotificationCenter.default.post(name: .mandelOpFinished, object: self)
+            NotificationCenter.default.post(name: MyMandelbrotOperation.mandelOpFinished, object: self)
         }
     }
 

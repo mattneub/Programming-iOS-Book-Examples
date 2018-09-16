@@ -50,6 +50,7 @@ class ViewController : UIViewController {
             pop.delegate = self
             // just playing with appearance; try it with and without
             pop.backgroundColor = .yellow // visible as arrow color
+            // pop.passthroughViews = nil
         }
         nav.navigationBar.barTintColor = .red // works in iOS 8
         //nav.navigationBar.backgroundColor = .red
@@ -94,7 +95,7 @@ class ViewController : UIViewController {
             pop.sourceRect = v.bounds
             pop.delegate = self
             // not working here either
-            pop.popoverLayoutMargins = UIEdgeInsetsMake(100,100,100,100)
+            pop.popoverLayoutMargins = UIEdgeInsets(top: 100,left: 100,bottom: 100,right: 100)
             // new in iOS 9
             pop.canOverlapSourceViewRect = true // default is false
             
@@ -137,7 +138,7 @@ class ViewController : UIViewController {
             // we can force the popover further from the edge of the screen
             // silly example: just a little extra space at this popover's right
             // but it isn't working; this may be an iOS 8/9 bug
-            pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
+            pop.popoverLayoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
             pop.delegate = self
         }
 

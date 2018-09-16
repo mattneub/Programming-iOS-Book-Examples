@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             v2.topAnchor.constraint(equalTo: v1.topAnchor, constant: 10),
             // cannot omit multiplier! I regard that as a bug
-            v2.leadingAnchor.constraintEqualToSystemSpacingAfter(v1.trailingAnchor, multiplier: 1),
+            v2.leadingAnchor.constraint(equalToSystemSpacingAfter: v1.trailingAnchor, multiplier: 1),
             v2.widthAnchor.constraint(equalToConstant: 70),
             v2.heightAnchor.constraint(equalToConstant: 70),
         ])
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         let off = v1.leadingAnchor.anchorWithOffset(to: v2.trailingAnchor)
         self.view.addSubview(v3)
         NSLayoutConstraint.activate([
-            v3.topAnchor.constraintEqualToSystemSpacingBelow(v2.bottomAnchor, multiplier: 1),
+            v3.topAnchor.constraint(equalToSystemSpacingBelow: v2.bottomAnchor, multiplier: 1),
             v3.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 20),
             v3.widthAnchor.constraint(equalTo: off),
             v3.heightAnchor.constraint(equalToConstant: 70),

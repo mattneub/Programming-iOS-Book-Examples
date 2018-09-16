@@ -21,7 +21,7 @@ class ViewController : Base {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.swappers.append(self.childViewControllers[0])
+        self.swappers.append(self.children[0])
         self.swappers.append(self.storyboard!.instantiateViewController(withIdentifier: "child2"))
     }
     
@@ -111,9 +111,9 @@ On flip we expect to see (ignoring parent messages):
         tovc.view.frame = fromvc.view.superview!.bounds
         
         // must have both as children before we can transition between them
-        self.addChildViewController(tovc) // "will" called for us
+        self.addChild(tovc) // "will" called for us
         // when we call remove, we must call "will" (with nil) beforehand
-        fromvc.willMove(toParentViewController: nil)
+        fromvc.willMove(toParent: nil)
         
         switch which {
         case 1: // normal
@@ -126,8 +126,8 @@ On flip we expect to see (ignoring parent messages):
                                 _ in
                                 // finally, finish up
                                 // note: when we call add, we must call "did" afterwards
-                                tovc.didMove(toParentViewController: self)
-                                fromvc.removeFromParentViewController() // "did" called for us
+                                tovc.didMove(toParent: self)
+                                fromvc.removeFromParent() // "did" called for us
             })
         case 2: // manual forwarding of appearance messages
             fromvc.beginAppearanceTransition(false, animated:true) // *
@@ -145,8 +145,8 @@ On flip we expect to see (ignoring parent messages):
                     fromvc.endAppearanceTransition() // *
                     
                     // when we call add, we must call "did" afterwards
-                    tovc.didMove(toParentViewController: self)
-                    fromvc.removeFromParentViewController() // "did" called for us
+                    tovc.didMove(toParent: self)
+                    fromvc.removeFromParent() // "did" called for us
             }
         default: break
         }

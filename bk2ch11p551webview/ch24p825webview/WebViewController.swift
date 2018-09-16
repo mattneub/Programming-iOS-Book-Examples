@@ -29,7 +29,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         fatalError("NSCoding not supported")
     }
     
-    class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
         return self.init(nibName:nil, bundle:nil)
     }
     
@@ -83,7 +83,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         wv.scrollView.addGestureRecognizer(swipe)
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
+        let act = UIActivityIndicatorView(style:.whiteLarge)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)
@@ -207,7 +207,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         self.activity.stopAnimating()
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith r: URLRequest, navigationType nt: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith r: URLRequest, navigationType nt: UIWebView.NavigationType) -> Bool {
         if let scheme = r.url?.scheme, scheme == "play" {
             print("user would like to hear the podcast")
             return false

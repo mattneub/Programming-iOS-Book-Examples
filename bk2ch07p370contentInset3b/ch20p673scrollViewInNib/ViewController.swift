@@ -43,6 +43,13 @@ class ViewController : UIViewController {
         }
     }
     
+    @IBAction func doTopButton(_ sender: Any) {
+        // to scroll to top, this is _not_ what to say!
+        // self.sv.contentOffset.y = 0
+        // you need to take into account the content inset
+        self.sv.contentOffset.y = -self.sv.adjustedContentInset.top
+    }
+    
     // iOS 11 way:
     // automaticallyAdjustsScrollViewInsets is OFF in the nib!
     // instead, we use the scroll view's own behavior

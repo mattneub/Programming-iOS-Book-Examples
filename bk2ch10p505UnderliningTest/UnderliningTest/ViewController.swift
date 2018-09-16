@@ -20,10 +20,9 @@ class ViewController: UIViewController {
 //            .underlineStyle: NSUnderlineStyle.StyleSingle.rawValue
 //            ], range: NSMakeRange(4, mas.length-4))
     
-        // showing that it is necessary to use freaking bitwise-or to form this bitmask still
-        let under = NSUnderlineStyle.styleThick.rawValue | NSUnderlineStyle.patternDash.rawValue
+        let under : NSUnderlineStyle = [.thick, .patternDash]
         mas.addAttributes([
-            .underlineStyle: under
+            .underlineStyle: under.rawValue
             ], range: NSMakeRange(4, mas.length-4))
 
         

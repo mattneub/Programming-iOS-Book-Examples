@@ -1,6 +1,8 @@
 
 
 import UIKit
+import NaturalLanguage
+
 func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
@@ -27,6 +29,12 @@ extension CGVector {
         self.init(dx:dx, dy:dy)
     }
 }
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
 
 
 
@@ -67,7 +75,7 @@ class ViewController: UIViewController {
         self.tv.attributedText = mas
         self.tv.isScrollEnabled = true
         self.tv.backgroundColor = .yellow
-        self.tv.textContainerInset = UIEdgeInsetsMake(20,20,20,20)
+        self.tv.textContainerInset = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
         self.tv.isSelectable = false
         self.tv.isEditable = false
                 
@@ -106,28 +114,27 @@ class ViewController: UIViewController {
             ix = self.tv.layoutManager.glyphIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
         }
         let charRange = self.tv.layoutManager.characterRange(forGlyphRange: NSMakeRange(ix,0), actualGlyphRange:nil)
-        ix = charRange.location
-        
+        // ix = charRange.location
         
         // what word is that?
-        let sch = NSLinguisticTagScheme.tokenType
-        let t = NSLinguisticTagger(tagSchemes:[sch], options:0)
-        t.string = self.tv.text
-        var r : NSRange = NSMakeRange(0,0)
-        let tag = t.tag(at:ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
-        if tag == .word {
-            if let s = self.tv.text {
-                if let range = Range(r, in: s) {
-                    let word = s[range]
-                    print(word)
+        if #available(iOS 12.0, *) {
+            let tokenizer = NLTokenizer(unit: .word)
+            tokenizer.setLanguage(.english)
+            let text = self.tv.text!
+            tokenizer.string = text
+            let range = NSMakeRange(charRange.location, 100)
+            let words = tokenizer.tokens(for: Range(range, in:text)!)
+            if let word = words.first {
+                print(text[word])
+                let range = NSRange(word, in:text)
+                let lm = self.tv.layoutManager as! MyLayoutManager
+                lm.wordRange = range
+                lm.invalidateDisplay(forCharacterRange:range)
+                delay(1) {
+                    lm.wordRange = NSRange(location: NSNotFound, length: 0)
+                    lm.invalidateDisplay(forCharacterRange:range)
                 }
             }
         }
-        
-        // NOTE I'm not erasing the existing rectangle
-        let lm = self.tv.layoutManager as! MyLayoutManager
-        lm.wordRange = r
-        lm.invalidateDisplay(forCharacterRange:r)
-
     }
 }

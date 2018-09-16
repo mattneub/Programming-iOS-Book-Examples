@@ -2,6 +2,8 @@
 
 import UIKit
 
+// no longer needed, they supplied a native shuffle method
+/*
 extension Array {
     mutating func shuffle () {
         for i in (0..<self.count).reversed() {
@@ -12,15 +14,30 @@ extension Array {
         }
     }
 }
+ */
 
+// I don't like this implementation any more
+/*
 extension Array {
-    mutating func removeAtIndexes (ixs:[Int]) -> () {
+    mutating func remove (at ixs:Set<Int>) -> () {
         // for i in ixs.sorted().reversed() { // this might be clearer
         for i in ixs.sorted(by:>) { // required param label
             self.remove(at:i)
         }
     }
 }
+ */
+
+extension String {
+    func range(_ start:Int, _ count:Int) -> Range<String.Index> {
+        let i = self.index(start >= 0 ?
+            self.startIndex :
+            self.endIndex, offsetBy: start)
+        let j = self.index(i, offsetBy: count)
+        return i..<j
+    }
+}
+
 
 extension CGRect {
     var center : CGPoint {
@@ -61,8 +78,20 @@ extension NSCoder {
     }
 }
 
+// this, incredibly, is legal
+// won't break your storyboard buttons but you can no longer call `sendAction` manually
+public extension UIButton {
+    override open func sendActions(for controlEvents: UIControl.Event) {}
+}
+
 // okay, but the problem solved by the above can now be solved another way,
 // because we have key value types? need to check that
+
+// Swift 2 style
+func enumerated<T:Sequence>(_ seq:T) -> EnumeratedSequence<T> {
+    return seq.enumerated()
+}
+
 
 class Dog<T> {
     var name : T?
@@ -76,11 +105,36 @@ extension Dog where T : Equatable {
     
 }
 
+// looks like this syntax compiles only by a mistake; see https://stackoverflow.com/questions/50913244/swift-protocol-with-where-self-clause
+
+protocol P where Self : UIView {}
+// protocol PP where Self : String {} // no, has to be a protocol or string
+// protocol PPP where Self == String {} // no, has to be colon I think
+protocol PPPP where Self : Sequence {} // okay! so it can be protocol, even a generic protocol
+
+// a few more tests of this syntax:
+// protocol PPPPP where Self : UIView {} // illegal in simple Swift 3, but legal in Swift 3.3
+protocol PPPPPP {}
+extension PPPPPP where Self : UIView {} // legal in Swift 3!
+
+// however, the problem with that syntax is: how would you use it?
+// I guess the idea is that you're going to write an extension with a where clause
+// and you want to ensure that the protocol isn't accidentally adopted elsewhere
+
+// extension Dog : P {} // illegal
+extension UITableView : P {} // ok
+let x = [P]() // ok, proving that P is not generic
+
+protocol FlierZZZ {
+    func flockTogetherWith(_ f:Self)
+}
+// let xxx = [FlierZZZ]() // error, FlierZZZ _is_ generic
+
 func myMin<T:Comparable>(_ things:T...) -> T {
-    var minimum = things[0]
-    for ix in 1..<things.count {
-        if things[ix] < minimum { // compile error without Comparable
-            minimum = things[ix]
+    var minimum = things.first!
+    for item in things.dropFirst() {
+        if item < minimum {
+            minimum = item
         }
     }
     return minimum
@@ -88,11 +142,11 @@ func myMin<T:Comparable>(_ things:T...) -> T {
 
 
 extension Array where Element:Comparable {
-    func myMin() -> Element {
-        var minimum = self[0]
-        for ix in 1..<self.count {
-            if self[ix] < minimum {
-                minimum = self[ix]
+    func myMin() -> Element? {
+        var minimum = self.first
+        for item in self.dropFirst() {
+            if item < minimum! {
+                minimum = item
             }
         }
         return minimum
@@ -212,12 +266,38 @@ public enum Color : Int {
 
 
 class ViewController: UIViewController {
+    @IBOutlet var button : UIButton!
     
+    @IBAction func doButton(_ sender: Any) {
+        print("button")
+    }
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.button.sendActions(for: .touchUpInside)
+        
+        let s = "abcdefg"
+        let r1 = s.range(2,2)
+        let r2 = s.range(-3,2)
+        print(s[r1]) // cd
+        print(s[r2]) // ef
+
+        
+//        var arr = ["Manny", "Moe", "Jack"]
+//        arr.remove(at: [0,2])
+//        print(arr) // ["Moe"]
+        
+//        struct Person { let name: String }
+//        var arr2 = [Person(name:"Manny"), Person(name:"Moe"), Person(name:"Jack")]
+//        let marr2 = NSMutableArray(array: arr2)
+//        marr2.removeObjects(at:IndexSet([0,2]))
+//        arr2 = marr2 as! [Person]
+//        print(arr2)
+        
+        let seq = [1,2,3]
+        for what in enumerated(seq) { print(what) }
         
         let t = CGAffineTransform(rotationAngle:2)
         print(t)
@@ -291,9 +371,9 @@ class ViewController: UIViewController {
         }
         
         let m = [4,1,5,7,2].myMin() // 1
-        print(m)
+        print(m as Any)
         // let dd = [Digit(number:12), Digit(number:42)].min() // compile error
-        print([4,1,5].myMin())
+        print([4,1,5].myMin() as Any)
         
         
     }

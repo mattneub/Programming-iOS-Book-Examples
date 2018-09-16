@@ -31,10 +31,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     @IBAction func doButton (_ sender: Any!) {
         let mi = MKMapItem.forCurrentLocation()
         // here, however, it seems that we cannot set the span...?
-        let span = MKCoordinateSpanMake(0.0005, 0.0005)
+        let span = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:span)
+            MKLaunchOptionsMapSpanKey: span
         ])
     }
     
@@ -64,6 +64,9 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             if let addy = p.postalAddress {
                 let f = CNPostalAddressFormatter()
                 print(f.string(from: addy))
+                print(addy.street)
+                print(addy.city)
+                print(addy.state)
             }
         }
     }
@@ -84,7 +87,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             self.map.removeAnnotations(self.map.annotations)
             self.map.addAnnotation(mp)
             self.map.setRegion(
-                MKCoordinateRegionMakeWithDistance(mp.coordinate, 1000, 1000),
+                MKCoordinateRegion(center: mp.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000),
                 animated: true)
         }
     }
@@ -94,9 +97,9 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             print("I don't know where you are now")
             return
         }
-        let req = MKLocalSearchRequest()
+        let req = MKLocalSearch.Request()
         req.naturalLanguageQuery = "Thai restaurant"
-        req.region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(1,1))
+        req.region = MKCoordinateRegion(center: loc.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 1,longitudeDelta: 1))
         let search = MKLocalSearch(request:req)
         search.start { response, error in
             guard let response = response else {
@@ -107,7 +110,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             let mi = response.mapItems[0] // I'm feeling lucky
             let place = mi.placemark
             let loc = place.location!.coordinate
-            let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
+            let reg = MKCoordinateRegion(center: loc, latitudinalMeters: 1200, longitudinalMeters: 1200)
             self.map.setRegion(reg, animated:true)
             let ann = MKPointAnnotation()
             ann.title = mi.name
@@ -124,7 +127,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             print("I don't know where you are now")
             return
         }
-        let req = MKLocalSearchRequest()
+        let req = MKLocalSearch.Request()
         req.naturalLanguageQuery = "Thai restaurant"
         req.region = self.map.region
         let search = MKLocalSearch(request:req)
@@ -135,7 +138,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             }
             print("Got restaurant address")
             let mi = response.mapItems[0] // I'm still feeling lucky
-            let req = MKDirectionsRequest()
+            let req = MKDirections.Request()
             req.source = MKMapItem.forCurrentLocation()
             req.destination = mi
             let dir = MKDirections(request:req)
@@ -147,7 +150,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                 print("got directions")
                 let route = response.routes[0] // I'm feeling insanely lucky
                 let poly = route.polyline
-                self.map.add(poly)
+                self.map.addOverlay(poly)
                 for step in route.steps {
                     print("After \(step.distance) metres: \(step.instructions)")
                 }
@@ -176,7 +179,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         return nil // default
     }
     
-    func mapViewNOT(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+    private func mapViewNOT(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         userLocation.title = "You are lost!"
     }
     

@@ -27,7 +27,7 @@ extension CGVector {
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
         self.window!.tintColor = .orange // gag... Just proving this is inherited
         
@@ -39,7 +39,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         let im = UIImage(named:"linen.png")!
         let sz = CGSize(5,34)
-        let r = UIGraphicsImageRenderer(size:sz)
+        let r = UIGraphicsImageRenderer(size:sz, format:im.imageRendererFormat)
         let im2 = r.image {
             _ in
             im.draw(at:CGPoint(-55,-55))

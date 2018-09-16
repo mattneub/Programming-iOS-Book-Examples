@@ -11,9 +11,9 @@ class ContainerViewController : UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     
-    override func addChildViewController(_ childController: UIViewController) {
-        super.addChildViewController(childController)
-        if let svc = self.childViewControllers[0] as? UISplitViewController {
+    override func addChild(_ childController: UIViewController) {
+        super.addChild(childController)
+        if let svc = self.children[0] as? UISplitViewController {
             svc.delegate = self // need to do this as early as humanly possible
         }
     }
@@ -28,7 +28,7 @@ class ContainerViewController : UIViewController {
         if !self.didInitialSetup {
             self.didInitialSetup = true
             self.view.backgroundColor = .green
-            let svc = self.childViewControllers[0] as! UISplitViewController
+            let svc = self.children[0] as! UISplitViewController
             svc.preferredDisplayMode = .allVisible
             // if not collapsed, always side by side
             // if you insert the display mode button, it gives the option to hide the master column
@@ -42,7 +42,7 @@ class ContainerViewController : UIViewController {
                 let traits = UITraitCollection(traitsFrom: [
                     UITraitCollection(horizontalSizeClass: .regular)
                     ])
-                self.setOverrideTraitCollection(traits, forChildViewController: svc)
+                self.setOverrideTraitCollection(traits, forChild: svc)
             }
 
         }
@@ -52,16 +52,16 @@ class ContainerViewController : UIViewController {
     // don't override traits on launch (so, portrait, collapsed)
     // but do override just in case we rotate to landscape
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let svc = self.childViewControllers[0] as! UISplitViewController
+        let svc = self.children[0] as! UISplitViewController
         if which == 2 {
             if size.width > size.height {
                 // landscape
                 let traits = UITraitCollection(traitsFrom: [
                     UITraitCollection(horizontalSizeClass: .regular)
                     ])
-                self.setOverrideTraitCollection(traits, forChildViewController: svc)
+                self.setOverrideTraitCollection(traits, forChild: svc)
             } else {
-                self.setOverrideTraitCollection(nil, forChildViewController: svc)
+                self.setOverrideTraitCollection(nil, forChild: svc)
             }
         }
         super.viewWillTransition(to: size, with: coordinator)

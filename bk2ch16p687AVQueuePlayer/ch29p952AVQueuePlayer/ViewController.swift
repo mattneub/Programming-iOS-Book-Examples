@@ -110,10 +110,10 @@ class ViewController: UIViewController {
     func reset() {
         self.curplayer?.pause()
         self.curplayer = nil
-        if self.childViewControllers.count > 0 {
-            let vc = self.childViewControllers[0]
-            vc.willMove(toParentViewController: nil)
-            vc.removeFromParentViewController()
+        if self.children.count > 0 {
+            let vc = self.children[0]
+            vc.willMove(toParent: nil)
+            vc.removeFromParent()
         }
         let scc = MPRemoteCommandCenter.shared()
         scc.togglePlayPauseCommand.removeTarget(nil)
@@ -182,8 +182,8 @@ class ViewController: UIViewController {
                 // don't let it steal our remote events
                 vc.updatesNowPlayingInfoCenter = false
                 vc.player = p
-                self.addChildViewController(vc)
-                vc.didMove(toParentViewController: self)
+                self.addChild(vc)
+                vc.didMove(toParent: self)
                 p.play()
                 self.curplayer = p
                 
@@ -296,15 +296,16 @@ class ViewController: UIViewController {
                 let dur = asset.duration
                 self.prog.setProgress(Float(time.seconds/dur.seconds), animated: false)
                 self.prog.isHidden = false
+                if self.prog.progress > 0.999 {
+                    if self.qp.items().count <= 1 {
+                        self.label.text = ""
+                        self.prog.isHidden = true
+                        self.qp.removeTimeObserver(self.timeObserver)
+                        self.timeObserver = nil
+                        print("removing observer")
+                    }
+                }
             }
-        } else {
-            // none of this is executed; I need a way of learning when we are completely done
-            // or else I can just forget this feature
-            self.label.text = ""
-            self.prog.isHidden = true
-            self.qp.removeTimeObserver(self.timeObserver)
-            self.timeObserver = nil
-            print("removing observer")
         }
     }
     

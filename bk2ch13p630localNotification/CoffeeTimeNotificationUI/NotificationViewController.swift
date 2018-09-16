@@ -58,5 +58,27 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         }
         self.title = "Time for a cup of coffee!" // works if overrides default title is YES
         self.view.setNeedsLayout() // seems to help things along
+        
+        // new iOS 12 feature: live content button management
+        // create actions
+        // options are:
+        // foreground (if not, background)
+        // destructive (if not, normal appearance)
+        // authenticationRequired (if so, cannot just do directly from lock screen)
+        let action1 = UNNotificationAction(identifier: "snooze", title: "Snooze")
+        let action2 = UNNotificationAction(identifier: "reconfigure",
+                                           title: "Reconfigure", options: [.foreground])
+        let action3 = UNTextInputNotificationAction(identifier: "message", title: "Message", options: [], textInputButtonTitle: "Message", textInputPlaceholder: "message")
+        self.extensionContext?.notificationActions = [action1, action2]
+        _ = action3
+        
+        // interactive view
+        let t = UITapGestureRecognizer(target: self, action: #selector(tap))
+        self.view.addGestureRecognizer(t)
+    }
+    
+    @objc func tap (_ : UIGestureRecognizer) {
+        //self.extensionContext?.performNotificationDefaultAction()
+        self.extensionContext?.dismissNotificationContentExtension()
     }
 }

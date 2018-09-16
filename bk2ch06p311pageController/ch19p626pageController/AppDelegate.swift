@@ -1,16 +1,12 @@
 
 import UIKit
 
-extension Notification.Name {
-    static let tap = Notification.Name("tap")
-}
-
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     let pep : [String] = ["Manny", "Moe", "Jack"]
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         self.window = self.window ?? UIWindow()
         
         self.setUpPageViewController()
@@ -44,7 +40,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(_ pvc: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! + 1
+        let ix = self.pep.firstIndex(of:boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
@@ -52,7 +48,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     }
     func pageViewController(_ pvc: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! - 1
+        let ix = self.pep.firstIndex(of:boy)! - 1
         if ix < 0 {
             return nil
         }
@@ -67,7 +63,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     func presentationIndex(for pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers![0] as! Pep
         let boy = page.boy
-        return self.pep.index(of:boy)!
+        return self.pep.firstIndex(of:boy)!
     }
     
     // =======
@@ -81,13 +77,13 @@ extension AppDelegate : UIPageViewControllerDataSource {
             }
         }
         else { // not needed for .pageCurl
-            NotificationCenter.default.addObserver(forName:.tap, object: nil, queue: .main) { n in
+            NotificationCenter.default.addObserver(forName:Pep.tap, object: nil, queue: .main) { n in
                 let g = n.object as! UIGestureRecognizer
                 let which = g.view!.tag
                 let vc0 = pvc.viewControllers![0]
                 guard let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBefore: vc0) : self.pageViewController(pvc, viewControllerAfter: vc0))
                     else {return}
-                let dir : UIPageViewControllerNavigationDirection = which == 0 ? .reverse : .forward
+                let dir : UIPageViewController.NavigationDirection = which == 0 ? .reverse : .forward
                 UIApplication.shared.beginIgnoringInteractionEvents()
                 pvc.setViewControllers([vc], direction: dir, animated: true) {
                     _ in

@@ -20,20 +20,14 @@ extension CGPoint {
 
 class MyView : UIView {
     
-    init() {
-        super.init(frame:CGRect.zero)
-        self.isOpaque = false
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.isOpaque = false
-    }
-    
     override init(frame: CGRect) {
         super.init(frame:frame)
         self.isOpaque = false
     }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     let which = 6
     
@@ -252,6 +246,11 @@ class MyView : UIView {
             
             // draw the red triangle, the point of the arrow
             con.saveGState()
+            // this bug still present in beta 6 and GM
+            do { // work around iOS 12 bug: force context to have some color!
+                con.setFillColor(UIColor.blue.cgColor)
+                con.fill(CGRect(0,0,0,0))
+            }
             let sp2 = CGColorSpace(patternBaseSpace:nil)!
             con.setFillColorSpace(sp2)
             // hooray for Swift 2.0!

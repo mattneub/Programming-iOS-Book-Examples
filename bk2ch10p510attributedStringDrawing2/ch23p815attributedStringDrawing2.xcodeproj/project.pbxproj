@@ -99,7 +99,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C9A50D64180F835200F5B6CE = {
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -245,7 +245,7 @@
 				PRODUCT_NAME = ch23p815attributedStringDrawing2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -263,7 +263,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch23p815attributedStringDrawing2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

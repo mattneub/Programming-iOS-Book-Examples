@@ -57,24 +57,22 @@ class ViewController: UIViewController {
             opts.sortDescriptors = [desc]
             let result = PHCollectionList.fetchCollectionLists(with:
                 .momentList, subtype: .momentListYear, options: opts)
-            for ix in 0..<result.count {
-                let list = result[ix]
+            let lists = result.objects(at: IndexSet(0..<result.count))
+            for list in lists {
                 let f = DateFormatter()
                 f.dateFormat = "yyyy"
                 print(f.string(from:list.startDate!))
                 // return; // uncomment for first example, years alone
                 if list.collectionListType == .momentList {
                     let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
-                    for ix in 0 ..< result.count {
-                        let coll = result[ix]
+                    let colls = result.objects(at: IndexSet(0..<result.count))
+                    for (ix,coll) in colls.enumerated() {
                         if ix == 0 {
                             print("======= \(result.count) clusters")
                         }
                         f.dateFormat = ("yyyy-MM-dd")
-                        print("""
-                            starting \(f.string(from:coll.startDate!)): \
-                            \(coll.estimatedAssetCount)
-                            """)
+                        let count = coll.estimatedAssetCount
+                        print("starting \(f.string(from:coll.startDate!)):", count)
                     }
                 }
                 print("\n")
@@ -82,7 +80,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var which : Int { return 0 } // or 1
+    var which : Int { return 1 }
     var subtype : PHAssetCollectionSubtype {
         switch which {
         case 0: return .albumSyncedAlbum
@@ -97,12 +95,11 @@ class ViewController: UIViewController {
             
             let result = PHAssetCollection.fetchAssetCollections(with:
                 .album, subtype: self.subtype, options: nil)
-            for ix in 0 ..< result.count {
-                let album = result[ix]
-                print("""
-                    \(album.localizedTitle as Any): \
-                    approximately \(album.estimatedAssetCount) photos
-                    """)
+            let albums = result.objects(at: IndexSet(0..<result.count))
+            for album in albums {
+                let count = album.estimatedAssetCount
+                print("\(album.localizedTitle!):",
+                    "approximately \(count) photos")
             }
             
         }
@@ -116,13 +113,13 @@ class ViewController: UIViewController {
             guard result.count > 0 else { print("no albums"); return }
             let alert = UIAlertController(title: "Pick an album:", message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            for ix in 0 ..< result.count {
-                let album = result[ix]
+            let albums = result.objects(at: IndexSet(0..<result.count))
+            for album in albums {
                 alert.addAction(UIAlertAction(title: album.localizedTitle, style: .default) {
                     (_:UIAlertAction!) in
                     let result = PHAsset.fetchAssets(in:album, options: nil)
-                    for ix in 0 ..< result.count {
-                        let asset = result[ix]
+                    let assets = result.objects(at: IndexSet(0..<result.count))
+                    for asset in assets {
                         print(asset.localIdentifier)
                     }
                 })
@@ -142,13 +139,6 @@ class ViewController: UIViewController {
     @IBAction func doButton4(_ sender: Any) {
         
         checkForPhotoLibraryAccess {
-
-            // modification of the library
-            // all modifications operate through their own "changeRequest" class
-            // so, for example, to create or delete a PHAssetCollection,
-            // or to alter what assets it contains,
-            // we need a PHAssetCollectionChangeRequest
-            // we can use this only inside a PHPhotoLibrary `performChanges` block
             
             var which : Int {return 2}
             
@@ -171,7 +161,6 @@ class ViewController: UIViewController {
                     let cr = Req.creationRequestForAssetCollection(withTitle:t)
                     ph = cr.placeholderForCreatedAssetCollection
                 }) { ok, err in
-                    // completion may take some considerable time (asynchronous)
                     print("created TestAlbum: \(ok)")
                     if ok, let ph = ph {
                         print("and its id is \(ph.localIdentifier)")
@@ -228,11 +217,10 @@ class ViewController: UIViewController {
                 typealias Req = PHAssetCollectionChangeRequest
                 let cr = Req(for: alb2)
                 cr?.addAssets([asset1] as NSArray)
-                }, completionHandler: {
-                    // completion may take some considerable time (asynchronous)
-                    (ok:Bool, err:Error?) in
-                    print("added it: \(ok)")
-            })
+            })  {
+                (ok:Bool, err:Error?) in
+                print("added it: \(ok)")
+            }
             
         }
     }

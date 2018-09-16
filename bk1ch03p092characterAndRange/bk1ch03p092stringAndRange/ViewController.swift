@@ -94,10 +94,13 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let firstL = s.index(of:"l")
+            let firstL = s.firstIndex(of:"l")
             print(firstL as Any) // Optional(2), meaning the third character
-            let lastL = String(s.reversed()).index(of:"l")
+            let lastL = String(s.reversed()).firstIndex(of:"l")
             print(lastL as Any)
+            // haha, but we no longer need that trick
+            let lastL2 = s.lastIndex(of:"l")
+            print(lastL2 as Any)
         }
         
         do {
@@ -108,19 +111,10 @@ class ViewController: UIViewController {
             // ...the compiler thinks this is `index(ofAccessibilityElement:)` and you get a weird answer
         }
         
-        // workaround
-        /*
+        // but the new firstIndex doesn't have that problem
         do {
             let s = "hello"
-            let firstSmall = s.characters.index {$0 < "f"}
-            print(firstSmall as Any)
-        }
- */
-        
-        // another workaround
-        do {
-            let s = "hello"
-            let firstSmall = s.index(where: {$0 < "f"})
+            let firstSmall = s.firstIndex {$0 < "f"}
             print(firstSmall as Any)
         }
         
@@ -200,7 +194,7 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let s2 = s.dropFirst()
-            let last = s2.index(of:"o")
+            let last = s2.firstIndex(of:"o")
             print(last as Any) // 4, not 3
         }
         
@@ -282,8 +276,10 @@ class ViewController: UIViewController {
             // let r3 = Range(r)
             _ = r
             let r2 = ix1..<ix2
-            let r3 = Range(r2) // no problem
-            _ = r3
+            //let r3 = Range(r2) // no problem
+            // okay, now it _IS_ a problem
+            // but we don't actually need to do it because it's already a Range
+            //_ = r3
         }
         
         

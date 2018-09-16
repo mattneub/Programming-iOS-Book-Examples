@@ -105,8 +105,8 @@ class AssetTester : NSObject {
     }
     func asset() -> AVAsset? {
         var theAsset : AVAsset!
-        self.assetQueue.sync {
-            theAsset = self.getAssetInternal().copy() as! AVAsset
+        self.assetQueue.sync { // parentheses to silence overzealous warning
+            theAsset = (self.getAssetInternal().copy() as! AVAsset)
         }
         return theAsset
     }

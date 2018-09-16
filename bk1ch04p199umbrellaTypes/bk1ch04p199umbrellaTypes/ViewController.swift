@@ -131,11 +131,14 @@ class ViewController: UIViewController {
         }
         
         do {
-            // common ways to encounter an AnyObject (wrapped in an Optional)
+            // these are all now Any (wrapped in an Optional)
             let any1 = UserDefaults.standard.object(forKey: "myObject")
             let any2 = self.view.value(forKey:"backgroundColor")
-            let c = NSKeyedUnarchiver(forReadingWith: Data())
+            let data = try! NSKeyedArchiver.archivedData(withRootObject: "howdy", requiringSecureCoding: true)
+            let c = try! NSKeyedUnarchiver(forReadingFrom: data)
             let any3 = c.decodeObject(forKey:"myKey")
+            
+            // however, we should call decodeObject(of:forKey:) which specifies class up front
 
             _ = any1
             _ = any2
@@ -149,8 +152,6 @@ class ViewController: UIViewController {
             let s = UserDefaults.standard.string(forKey:"Test")
             print(s as Any)
         }
-        
-        // not ready for prime time??? see https://github.com/apple/swift-evolution/blob/master/proposals/0167-swift-encoders.md
         
         /*
         do {

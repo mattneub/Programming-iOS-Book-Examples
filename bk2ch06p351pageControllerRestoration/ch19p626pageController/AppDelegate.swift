@@ -7,7 +7,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     let pep = ["Manny", "Moe", "Jack"]
 
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         self.window = self.window ?? UIWindow()
         
         self.setUpPageViewController()
@@ -52,10 +52,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didDecodeRestorableStateWith coder: NSCoder) {
-        let boyMaybe = coder.decodeObject(forKey:"boy")
-        guard let boy = boyMaybe as? String else {return}
+        guard let boy = coder.decodeObject(of:NSString.self, forKey:"boy") else {return}
         let pvc = self.window!.rootViewController as! UIPageViewController
-        let pep = Pep(pepBoy: boy)
+        let pep = Pep(pepBoy: boy as String)
         pvc.setViewControllers([pep], direction: .forward, animated: false)
     }
 }
@@ -63,7 +62,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(_ pvc: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! + 1
+        let ix = self.pep.firstIndex(of:boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
@@ -71,7 +70,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     }
     func pageViewController(_ pvc: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
-        let ix = self.pep.index(of:boy)! - 1
+        let ix = self.pep.firstIndex(of:boy)! - 1
         if ix < 0 {
             return nil
         }
@@ -86,7 +85,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     func presentationIndex(for pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers![0] as! Pep
         let boy = page.boy
-        return self.pep.index(of:boy)!
+        return self.pep.firstIndex(of:boy)!
     }
     
 }

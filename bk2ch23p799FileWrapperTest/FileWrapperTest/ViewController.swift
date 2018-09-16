@@ -5,12 +5,12 @@ import UIKit
 class ViewController: UIViewController {
     @IBAction func doCreate(_ sender: Any) {
         let fm = FileManager.default
-        let docurl = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let docurl = try! fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         let d = FileWrapper(directoryWithFileWrappers: [:])
         let imnames = ["manny.jpg", "moe.jpg", "jack.jpg"]
         for imname in imnames {
             let im = UIImage(named:imname)!
-            let imfw = FileWrapper(regularFileWithContents: UIImageJPEGRepresentation(im, 1)!)
+            let imfw = FileWrapper(regularFileWithContents: im.jpegData(compressionQuality: 1)!)
             imfw.preferredFilename = imname
             d.addFileWrapper(imfw)
         }
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     @IBAction func doRead(_ sender: Any) {
         let fm = FileManager.default
-        let docurl = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let docurl = try! fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         let fwurl = docurl.appendingPathComponent("myFileWrapper")
         do {
             let d = try FileWrapper(url: fwurl)

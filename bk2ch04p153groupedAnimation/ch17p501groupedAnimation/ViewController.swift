@@ -26,7 +26,7 @@ class ViewController : UIViewController {
         self.v = UIView(frame:CGRect(254,28,56,38))
         self.view.addSubview(self.v)
         self.v.layer.contents = UIImage(named:"boat.gif")!.cgImage
-        self.v.layer.contentsGravity = kCAGravityResizeAspectFill
+        self.v.layer.contentsGravity = .resizeAspectFill
     }
     
     @IBAction func doButton (_ sender: Any?) {
@@ -51,13 +51,13 @@ class ViewController : UIViewController {
         }
         let anim1 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.position))
         anim1.path = path
-        anim1.calculationMode = kCAAnimationPaced
+        anim1.calculationMode = .paced
         
         let revs = [0.0, .pi, 0.0, .pi]
         let anim2 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
         anim2.values = revs
-        anim2.valueFunction = CAValueFunction(name:kCAValueFunctionRotateY)
-        anim2.calculationMode = kCAAnimationDiscrete
+        anim2.valueFunction = CAValueFunction(name:.rotateY)
+        anim2.calculationMode = .discrete
 
         let pitches = [0.0, .pi/60.0, 0.0, -.pi/60.0, 0.0]
         let anim3 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
@@ -65,7 +65,7 @@ class ViewController : UIViewController {
         anim3.repeatCount = .greatestFiniteMagnitude
         anim3.duration = 0.5
         anim3.isAdditive = true
-        anim3.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
+        anim3.valueFunction = CAValueFunction(name:.rotateZ)
 
         let group = CAAnimationGroup()
         group.animations = [anim1, anim2, anim3]

@@ -54,7 +54,10 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         self.dataLabel.text = asset.description
         // okay, this is why we are here! fetch the image data!!!!!
         // we have to say quite specifically what "view" of image we want
-        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(300,300), contentMode: .aspectFit, options: nil) { im, info in
+        let opts = PHImageRequestOptions()
+        opts.resizeMode = .exact
+        opts.version = .current
+        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(600,600), contentMode: .aspectFit, options: opts) { im, info in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging
@@ -91,18 +94,22 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // ...using the input's displaySizeImage and adjustmentData
             
             let im = input.displaySizeImage!
-            let sz = CGSize(im.size.width/4.0, im.size.height/4.0)
-            let r = UIGraphicsImageRenderer(size:sz)
-            let im2 = r.image { _ in
-                // perhaps no need for this, but the image they give us is much larger than we need
-                im.draw(in:CGRect(origin: .zero, size: sz))
-            }
+
+            // for reasons that are totally unclear to me, this line doesn't work here...
+            // (portrait images come out in landscape)
+            // but it _does_ work in the photo editing extension (PhotoEditingViewController)
+            // let evc = EditingViewController(displayImage:CIImage(image:im, options:[.applyOrientationProperty:true])!)
+            let or = input.fullSizeImageOrientation
+            let evc = EditingViewController(displayImage:CIImage(image: im)!.oriented(forExifOrientation:or))
             
-            let evc = EditingViewController(displayImage:CIImage(image:im2)!)
+            // oddly, I didn't have to do that before because I was drawing the image into an image graphics context
+            // and using that — and that reoriented it!
             
             evc.delegate = self
-            if let adj = input.adjustmentData, adj.formatIdentifier == self.myidentifier {
-                if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with: adj.data) as? Double {
+            if let adj = input.adjustmentData,
+                adj.formatIdentifier == self.myidentifier {
+                if let vigNumber = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSNumber.self, from: adj.data),
+                    let vigAmount = vigNumber as? Double {
                     print("got vigAmount", vigAmount)
                     if vigAmount >= 0.0 {
                         evc.initialVignette = vigAmount
@@ -119,7 +126,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         // part two: obtain PHContentEditingOutput...
         // and apply editing to actual full size image
         
-        let act = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let act = UIActivityIndicatorView(style: .whiteLarge)
         act.backgroundColor = .darkGray
         act.layer.cornerRadius = 3
         act.center = self.view.center
@@ -129,10 +136,11 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
 
             let inurl = self.input.fullSizeImageURL!
-            let inorient = self.input.fullSizeImageOrientation
             let output = PHContentEditingOutput(contentEditingInput:self.input)
             let outurl = output.renderedContentURL
-            var ci = CIImage(contentsOf: inurl)!.oriented(forExifOrientation: inorient)
+            // okay, I now believe this next line is crucial for picking up orientation correctly
+            // if we don't do that, we can't save back into the library
+            var ci = CIImage(contentsOf: inurl, options: [.applyOrientationProperty:true])!
             let space = ci.colorSpace!
             if vignette >= 0.0 {
                 let vig = VignetteFilter()
@@ -144,28 +152,36 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // warning: this is time-consuming! (even more than how I was doing it before)
             try! CIContext().writeJPEGRepresentation(of: ci, to: outurl, colorSpace: space)
 
-            let data = NSKeyedArchiver.archivedData(withRootObject: vignette)
+            let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
             output.adjustmentData = PHAdjustmentData(
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
 
             // now we must tell the photo library to pick up the edited image
-            PHPhotoLibrary.shared().performChanges({
-                print("finishing", self.asset)
-                typealias Req = PHAssetChangeRequest
-                let req = Req(for: self.asset)
-                req.contentEditingOutput = output
-            }) { ok, err in
-                DispatchQueue.main.async {
-                    act.removeFromSuperview()
-                    print("in completion handler")
-                    // at the last minute, the user will get a special "modify?" dialog
-                    // if the user refuses, we will receive "false"
-                    if ok {
-                        // in our case, since are already displaying this photo...
-                        // ...we should now reload it
-                        self.setUpInterface()
-                    } else {
-                        print("phasset change request error: \(err as Any)")
+            // all this main-queue-plus-delay stuff seems to be genuinely necessary
+            DispatchQueue.main.async {
+                PHPhotoLibrary.shared().performChanges({
+                    print("finishing", self.asset)
+                    typealias Req = PHAssetChangeRequest
+                    let req = Req(for: self.asset)
+                    req.contentEditingOutput = output
+                }) { ok, err in
+                    DispatchQueue.main.async {
+                        print("in completion handler")
+                        // at the last minute, the user will get a special "modify?" dialog
+                        // if the user refuses, we will receive "false"
+                        if ok {
+                            // in our case, since are already displaying this photo...
+                            // ...we should now reload it
+                            // but for some reason I'm having trouble talking to the library, add delay
+                            // needs to be quite lengthy! surely this is not a correct solution...????
+                            delay(0.5) {
+                                act.removeFromSuperview()
+                                self.setUpInterface()
+                            }
+                        } else {
+                            act.removeFromSuperview()
+                            print("phasset change request error: \(err as Any)")
+                        }
                     }
                 }
             }

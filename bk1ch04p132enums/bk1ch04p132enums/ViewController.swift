@@ -67,6 +67,11 @@ enum MyError2 {
     case fatal(n:Int, s:String)
 }
 
+enum MyError3 : Equatable {
+    case number(Int)
+    case message(String)
+    case fatal
+}
 
 
 class ViewController: UIViewController {
@@ -75,6 +80,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.testRawRepresentable()
 
         let type = Filter.albums
         let type2 : Filter = .albums
@@ -138,14 +145,36 @@ class ViewController: UIViewController {
             let ok2 = opt == Optional.none
             print(ok2)
             let err = MyError.fatal
-            // let ok = err == MyError.fatal
+            // let ok3 = err == MyError.fatal
             if case .fatal = err { // this is how you have to do it
                 print("yep, it's fatal")
             }
             _ = err
+            // but hold my beer and watch this!
+            let err2 = MyError3.fatal
+            let ok4 = err2 == MyError3.fatal // legal because we declared the thing Equatable
+            _ = ok4
+            
             
         }
     
+    }
+    
+    func testRawRepresentable() {
+        // proving that an enum with a raw value is a RawRepresentable
+        enum E {
+            case howdy
+            case farewell
+        }
+        enum E2 : String {
+            case howdy
+            case farewell
+        }
+        func f<T:RawRepresentable>(_ t:T) {
+            print("you passed me a RawRepresentable")
+        }
+        // f(E.howdy) // error
+        f(E2.howdy) // you passed me a RawRepresentable
     }
 
 

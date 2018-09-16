@@ -100,7 +100,7 @@
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = W3LHX5RGV2;
 						DevelopmentTeamName = "Matt Neuburg";
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -259,7 +259,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch12p490autoreleasepool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SUPPRESS_WARNINGS = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -273,7 +273,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch12p490autoreleasepool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SUPPRESS_WARNINGS = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

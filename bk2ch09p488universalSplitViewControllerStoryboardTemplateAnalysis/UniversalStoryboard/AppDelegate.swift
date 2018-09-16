@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // basically, this is pure template code
     // I have neatened it up, shortened some names, and commented on it (and added logging)
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         // Override point for customization after application launch.
         let svc = self.window!.rootViewController as! UISplitViewController
         // place button in detail controller's nav bar
@@ -70,13 +70,13 @@ extension AppDelegate: UISplitViewControllerDelegate {
     }
     
 
-    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewController.DisplayMode {
         print("mode?")
         return .automatic
     }
     
     
-    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewControllerDisplayMode) {
+    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
         print("changing to mode: \(displayMode.rawValue)")
     }
     

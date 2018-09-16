@@ -18,7 +18,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         fatalError("NSCoding not supported")
     }
 
-    class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
         return self.init(nibName:nil, bundle:nil)
     }
     
@@ -67,7 +67,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         wv.allowsBackForwardNavigationGestures = true
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
+        let act = UIActivityIndicatorView(style:.whiteLarge)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)
@@ -76,7 +76,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             act.centerXAnchor.constraint(equalTo:wv.centerXAnchor),
             act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
-        obs.insert(wv.observe(\.loading, options: .new) { [unowned self] wv, ch in
+        obs.insert(wv.observe(\.isLoading, options: .new) { [unowned self] wv, ch in
             if let val = ch.newValue {
                 if val {
                     self.activity.startAnimating()

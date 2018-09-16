@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     func configureView() {
         print("detail view configureView")
         print("detailItem: \(self.detailItem as Any)")
-        print("label: \(self.detailDescriptionLabel)")
+        print("label: \(self.detailDescriptionLabel as Any)")
         // problem is that when user taps a date in the master view...
         // an entirely new detail view controller is created
         // thus its viewDidLoad is called, and configureView is called...

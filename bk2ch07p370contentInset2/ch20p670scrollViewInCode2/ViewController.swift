@@ -39,12 +39,16 @@ class ViewController : UIViewController {
         let sv = UIScrollView()
         self.sv = sv
         
+        // work around initial content placement bug
+        sv.alwaysBounceVertical = true
+        
         sv.backgroundColor = .white
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         NSLayoutConstraint.activate([
             sv.topAnchor.constraint(equalTo:self.view.topAnchor),
-            sv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor),
+            sv.bottomAnchor.constraint(
+                equalTo:self.view.safeAreaLayoutGuide.bottomAnchor),
             sv.leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
             sv.trailingAnchor.constraint(equalTo:self.view.trailingAnchor),
         ])
@@ -74,12 +78,6 @@ class ViewController : UIViewController {
         
         sv.delegate = self
         
-        // without this or view controller "auto", we start off scrolled incorrectly
-        sv.contentInsetAdjustmentBehavior = .always
-        // this doesn't help
-        // sv.scrollRectToVisible(CGRect(0,-100,1,1), animated: false)
-
-        
         // experimenting
         // sv.contentInset = UIEdgeInsetsMake(30,0,0,0)
     }
@@ -88,20 +86,15 @@ class ViewController : UIViewController {
     
     override func viewDidLayoutSubviews() {
         if let sv = self.sv {
-
+            print("did layout!")
 //            let safe = self.view.safeAreaInsets
 //            sv.contentInset = UIEdgeInsetsMake(safe.top, 0, safe.bottom, 0)
 //            sv.scrollIndicatorInsets = self.sv.contentInset
             print("content inset", sv.contentInset)
             print("adjusted content inset", sv.adjustedContentInset)
             print("indicator insets", sv.scrollIndicatorInsets)
-            print("offset", sv.contentOffset)
+            print("content offset", sv.contentOffset)
             print("nav bar height", self.navigationController?.navigationBar.bounds.height as Any)
-            // new in iOS 11: content inset is zero...
-            // but we show properly anyway! scroll view obeys the safe area automatically
-            // and the adjustedContentInset shows this
-            // interestingly this works even though we didn't set the behavior to .always
-            // is that because it works correctly for top bar but not for status bar alone?
         }
     }
     
@@ -112,6 +105,10 @@ extension ViewController : UIScrollViewDelegate {
         print("did scroll, offset", sv.contentOffset)
     }
     func scrollViewDidChangeAdjustedContentInset(_ sv: UIScrollView) {
-        print("did change inset!", sv.adjustedContentInset)
+        print("did change inset!")
+        print("content inset", sv.contentInset)
+        print("adjusted content inset", sv.adjustedContentInset)
+        print("indicator insets", sv.scrollIndicatorInsets)
+        print("content offset", sv.contentOffset)
     }
 }

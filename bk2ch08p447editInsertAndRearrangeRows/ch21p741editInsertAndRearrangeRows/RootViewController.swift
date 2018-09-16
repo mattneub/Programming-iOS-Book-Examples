@@ -46,7 +46,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if indexPath.section == 1 {
             let ct = self.tableView(tableView, numberOfRowsInSection:indexPath.section)
             if ct-1 == indexPath.row {
@@ -73,9 +73,6 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         // some cell's text field has finished editing; which cell?
         var v : UIView = textField
         repeat { v = v.superview! } while !(v is UITableViewCell)
-        // another way to say:
-//        var v : UIView
-//        for v = textField; !(v is UITableViewCell); v = v.superview! {}
         let cell = v as! MyCell
         // update data model to match
         let ip = self.tableView.indexPath(for:cell)!
@@ -94,8 +91,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
-        let s = self.numbers[fromIndexPath.row]
-        self.numbers.remove(at:fromIndexPath.row)
+        let s = self.numbers.remove(at:fromIndexPath.row)
         self.numbers.insert(s, at:toIndexPath.row)
         tableView.reloadData() // to get plus and minus buttons to redraw themselves
     }
@@ -115,7 +111,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return false
     }
     
-    override func tableView(_ tv: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
+    override func tableView(_ tv: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt ip: IndexPath) {
         tv.endEditing(true) // user can click minus/plus while still editing
         // so we must force saving to the model
         if editingStyle == .insert {
@@ -154,6 +150,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
             if #available(iOS 11.0, *) {
                 tv.performBatchUpdates({
                     tv.deleteRows(at:[ip], with:.automatic)
+                    // if we omit reload, we get weird constraints errors
                     tv.reloadSections(IndexSet(integer:1), with:.automatic)
                 })
             } else {

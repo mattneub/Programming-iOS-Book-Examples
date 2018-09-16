@@ -53,6 +53,14 @@ class ViewController: UIViewController {
             }
         }
         
+        // hey, it turns out these have names
+        do {
+            let s = "hello"
+            for t in s.enumerated() {
+                print("character \(t.offset) is \(t.element)")
+            }
+        }
+        
         
         do {
             var pair = (1, "Two")

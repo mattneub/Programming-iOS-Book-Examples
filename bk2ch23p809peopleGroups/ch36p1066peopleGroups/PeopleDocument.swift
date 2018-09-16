@@ -53,11 +53,16 @@ class PeopleDocument: UIDocument {
     }
     
     // ??? I don't see that this does anything perceptible
-    override func fileAttributesToWrite(to url: URL, for saveOperation: UIDocumentSaveOperation) throws -> [AnyHashable : Any] {
-        let icon = UIImage(named:"smiley.jpg")!
+    // okay, but we need to try again, there may have been a bug in how was renamified...
+    // ...and so I may have been forced to configure the returned dictionary incorrectly
+    
+    override func fileAttributesToWrite(to url: URL, for saveOperation: UIDocument.SaveOperation) throws -> [AnyHashable : Any] {
+        let icon = UIImage(named:"smiley.jpg")! // yup, it's working now!
         let sz = CGSize(1024,1024)
-        let im = UIGraphicsImageRenderer(size:sz).image {_ in
-            icon.draw(at: CGPoint((sz.width-icon.size.width)/2, (sz.height-icon.size.height)/2))
+        let im = UIGraphicsImageRenderer(size:sz, format:icon.imageRendererFormat).image {_ in
+            icon.draw(at: CGPoint(
+                (sz.width - icon.size.width)/2,
+                (sz.height - icon.size.height)/2))
         }
         var d = try super.fileAttributesToWrite(to: url, for: saveOperation)
         let key1 = URLResourceKey.thumbnailDictionaryKey

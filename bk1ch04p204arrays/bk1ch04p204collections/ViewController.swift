@@ -175,6 +175,8 @@ class ViewController: UIViewController {
 
             let slice = arr[1..<2]
             _ = slice
+            
+            // _ = arr[-1] // amazing that this compiles
         }
         
         do {
@@ -252,15 +254,13 @@ class ViewController: UIViewController {
             let arr = [1,2,3]
             let ok = arr.contains(2) // ***
             let okk = arr.contains {$0 > 3} // false
-            let ix = arr.index(of:2) // *** Optional wrapping 1
-            let which = arr.index(where:{$0>2})
-            let which2 = arr.first(where:{$0>2})
+            let ix = arr.firstIndex(of:2) // *** Optional wrapping 1
+            let which = arr.firstIndex {$0>2}
+            let which2 = arr.first {$0>2}
             
             let aviary = [Bird(name:"Tweety"), Bird(name:"Flappy"), Bird(name:"Lady")]
-            // let ixxxx = aviary.index(of:Bird(name:"Tweety"))
-            // let ix2 = aviary.index {$0.name.count < 5} // index(where:) works here,
-            // but I think for consistency I'd better say "where" explicitly
-            let ix2 = aviary.index(where: {$0.name.count < 5})
+            // let ixxxx = aviary.firstIndex(of:Bird(name:"Tweety"))
+            let ix2 = aviary.firstIndex {$0.name.count < 5}
             print(ix2 as Any)
             
             do {
@@ -401,13 +401,35 @@ class ViewController: UIViewController {
         for (ix,pepboy) in pepboys.enumerated() { // ***
             print("Pep boy \(ix) is \(pepboy)") // Pep boy 0 is Manny, etc.
         }
+        pepboys.forEach {print($0)} // prints Manny, then Moe, then Jack
+        pepboys.enumerated().forEach {
+            print("Pep boy \($0.offset) is \($0.element)")
+        }
+        
+        _ = [1,2,3,4].randomElement()!
+
+        let ok = pepboys.allSatisfy {$0.hasPrefix("M")} // false
+        print(ok)
+        
+        let ok2 = pepboys.allSatisfy {$0.hasPrefix("M") || $0.hasPrefix("J")} // true
+        print(ok2)
+
+        
+        
         let arr = [1,2,3]
         let arr2 = arr.map {$0 * 2} // [2,4,6]
         let arr3 = arr.map {Double($0)} // [1.0, 2.0, 3.0]
-        pepboys.forEach {print($0)} // prints Manny, then Moe, then Jack
-        pepboys.enumerated().forEach {print("Pep boy \($0.0) is \($0.1)")}
         // pepboys.map(print) // no longer compiles
         let arr4 = pepboys.filter{$0.hasPrefix("M")} // ["Manny", "Moe"]
+        
+        do {
+            var pepboys = ["Manny", "Jack", "Moe"]
+            pepboys.removeAll{$0.hasPrefix("M")} // pepboys is now ["Jack"]
+            print(pepboys)
+            pepboys = ["Manny", "Jack", "Moe"]
+            let pepboys2 = pepboys.filter{!$0.hasPrefix("M")}
+            print(pepboys2)
+        }
         
         do {
             let pepboys = ["Manny", "Jack", "Moe"]
@@ -482,6 +504,15 @@ class ViewController: UIViewController {
             }
             print(slices)
         }
+        
+        do {
+            let nums = [1,3,2,4,5]
+            let result = nums.reduce(into: [[],[]]) { temp, i in
+                temp[i%2].append(i)
+            }
+            print(result)
+            // result is now [[2, 4], [1, 3, 5]]
+        }
 
         do {
             let sec = 0
@@ -528,6 +559,12 @@ class ViewController: UIViewController {
             print(arr2)
             
             // let arrr : [AnyObject] = ["howdy"] // illegal
+        }
+        
+        do { // better example
+            let arr = ["1", "hey", "2", "ho"]
+            let arr2 = arr.compactMap{Int($0)} // [1, 2]
+            print(arr2)
         }
         
         do {

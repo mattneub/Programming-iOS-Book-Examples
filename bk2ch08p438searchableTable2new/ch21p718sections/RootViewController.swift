@@ -63,7 +63,6 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         b.sizeToFit() // crucial, trust me on this one
         b.autocapitalizationType = .none
         self.tableView.tableHeaderView = b
-        src.searchBar = b // *
         self.tableView.reloadData()
         self.tableView.scrollToRow(at:
             IndexPath(row: 0, section: 0),

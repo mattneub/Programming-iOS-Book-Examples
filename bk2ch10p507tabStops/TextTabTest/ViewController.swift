@@ -88,9 +88,9 @@ class ViewController : UIViewController {
         
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "LINK", attributes: [
-            NSAttributedStringKey.link : URL(string: "https://www.apple.com")!,
-            NSAttributedStringKey.foregroundColor : UIColor.green,
-            NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue
+            .link : URL(string: "https://www.apple.com")!,
+            .foregroundColor : UIColor.green,
+            .underlineStyle : NSUnderlineStyle.single.rawValue
         ]))
         // aha! son of a gun, I finally figured this out!
         // you have to set the overall `linkTextAttributes` to an empty dictionary
@@ -107,10 +107,10 @@ class ViewController : UIViewController {
         
         // this works but it applies to all links
         print(self.tv.linkTextAttributes)
-        self.tv.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue : UIColor.orange]
+        self.tv.linkTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange]
         self.tv.linkTextAttributes = [:]
         
-//        print(NSAttachmentCharacter)
+//        print(NSTextAttachment.character)
 //        print(0xFFFC)
         
         self.tv.isSelectable = true
@@ -120,9 +120,9 @@ class ViewController : UIViewController {
         do {
             let mas = NSMutableAttributedString()
             mas.append(NSAttributedString(string: "LINKNOT", attributes: [
-                NSAttributedStringKey.link : URL(string: "https://www.apple.com")!,
-                NSAttributedStringKey.foregroundColor : UIColor.green,
-                NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue
+                .link : URL(string: "https://www.apple.com")!,
+                .foregroundColor : UIColor.green,
+                .underlineStyle : NSUnderlineStyle.single.rawValue
             ]))
             let lab = UILabel()
             lab.attributedText = mas
@@ -154,9 +154,21 @@ class ViewController : UIViewController {
     
 }
 
+extension UITextItemInteraction : CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .invokeDefaultAction: return "invokeDefaultAction"
+        case .presentActions: return "presentActions"
+        case .preview: return "preview"
+        }
+    }
+    
+    
+}
+
 extension ViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
-        print("attachment", interaction.rawValue)
+        print("attachment", interaction)
         if interaction == .preview {return false}
         return true
     }
@@ -164,7 +176,7 @@ extension ViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith url: Foundation.URL, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
         print("URL", url)
         print((textView.text as NSString).substring(with:characterRange))
-        print(interaction.rawValue)
+        print(interaction)
         return true
     }
 }

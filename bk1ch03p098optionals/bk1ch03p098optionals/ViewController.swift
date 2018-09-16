@@ -106,6 +106,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
             _ = mainview
         }
 
+        do {
+            func f() {
+                let s : String! = "howdy" // compiler doesn't complain
+                _ = s
+            }
+        }
 
         // shut the compiler up
         // _ = stringMaybe

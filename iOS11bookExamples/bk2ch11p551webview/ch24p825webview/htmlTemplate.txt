@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <!-- meta name="viewport" content="width = device-width" -->
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <!-- scale images down to fit, magic incantation -->
+	<style type="text/css">
+      p.inflow_image {
+        text-align:center;
+      }
+      div.indented_image {
+        text-align:center;
+        margin-left:0;
+      }
+	  img {
+		max-width:<maximagewidth>; 
+		height:auto;
+	  }
+	</style>
+  <title>no title</title>
+</head>
+<body style="font-size:<fontsize>px; font-family:Georgia; margin:1px <margin>px">
+  <!-- title, which is a link to original story at our site -->
+  <div style="margin-top: 0px; margin-bottom: 15px">
+    <h3><a href="<guid>"><ourtitle></a></h3>
+  </div>
+  <!-- playbutton or nothing; author and date -->
+  <div style="width:100%%">
+    <span style="float:left; display:block; vertical-align:middle"><playbutton></span>
+    <span style="float:right; margin-bottom: 15px; display:block; text-align:right; font-size:80%%;">
+      By <author><br><date>
+    </span>
+  </div>
+  <!-- body, from feed -->
+  <div style="clear:both; margin:30px 0px;">
+    <content>
+  </div>
+</body>
+</html>

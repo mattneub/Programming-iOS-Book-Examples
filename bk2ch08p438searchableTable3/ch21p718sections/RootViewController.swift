@@ -157,7 +157,7 @@ extension RootViewController : UISearchResultsUpdating {
         if target == "" {
             self.sections = self.originalSections
         } else {
-            self.sections = self.originalSections.reduce(into:[]) {acc, sec in
+            self.sections = self.originalSections.reduce(into:[Section]()) {acc, sec in
                 let rowData = sec.rowData.filter {
                     $0.range(of:target, options: .caseInsensitive) != nil
                 }

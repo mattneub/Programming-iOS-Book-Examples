@@ -85,7 +85,7 @@ class ViewController: UIViewController {
                    width:r.width/scale,
                    height:r.height/scale)
 
-        let rend = UIGraphicsImageRenderer(size:cropRect.size)
+        let rend = UIGraphicsImageRenderer(size:cropRect.size, format:self.iv.image!.imageRendererFormat)
         let croppedIm = rend.image { _ in
             self.iv.image!.draw(at: CGPoint(x:-cropRect.origin.x,
                                             y:-cropRect.origin.y))

@@ -8,7 +8,7 @@ class MasterViewController: UITableViewController {
     
     let cellID = "Cell"
     
-    override init(style: UITableViewStyle) {
+    override init(style: UITableView.Style) {
         super.init(style:style)
         self.edgesForExtendedLayout = .all
         self.extendedLayoutIncludesOpaqueBars = true
@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         
-        print(self.splitViewController?.childViewControllers as Any)
+        print(self.splitViewController?.children as Any)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,7 +61,7 @@ class MasterViewController: UITableViewController {
         // logging to show that I'm right to describe the detail view controller as "jettisoned".
         // it is not _released_, but that's an internal implementation detail:
         // the split view controller keeps it in its `__preservedDetailController` property
-        print(self.splitViewController?.childViewControllers as Any)
+        print(self.splitViewController?.children as Any)
         
     }
     

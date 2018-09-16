@@ -34,9 +34,13 @@ extension CGVector {
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    struct Item {
+        var name : String
+        var size : CGSize
+    }
     struct Section {
         var sectionName : String
-        var rowData : [String]
+        var itemData : [Item]
     }
     var sections : [Section]!
 
@@ -59,8 +63,9 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
-            Section(sectionName: $0.key, rowData: $0.value)
+        let d2 = d.mapValues{$0.map {Item(name:$0, size:.zero)}}
+        self.sections = Array(d2).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, itemData: $0.value)
         }
 
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
@@ -76,7 +81,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier: self.cellID)
         // register headers
         self.collectionView!.register(UICollectionReusableView.self,
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
+            forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: self.headerID)
         
         self.navigationItem.title = "States"
@@ -89,7 +94,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     func setUpFlowLayout(_ flow:UICollectionViewFlowLayout) {
         flow.headerReferenceSize = CGSize(50,50) // larger - we will place label within this
-        flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10) // looks nicer
+        flow.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10) // looks nicer
         
         // flow.sectionHeadersPinToVisibleBounds = true // try cool new iOS 9 feature
         
@@ -97,7 +102,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // cripes, now we don't crash, but the layout is wrong! can these guys never get this implemented???
         // also tried doing this by overriding sizeThatFits in the cell, but with the same wrong layout
         // also tried doing it by overriding preferredAttributes in the cell, same wrong layout
-        // flow.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+        // just uncommenting this line causes solo cells to be centered! insane
+        // flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -105,7 +111,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sections[section].rowData.count
+        return self.sections[section].itemData.count
     }
     
     // headers
@@ -113,8 +119,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
-        if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
+        if kind == UICollectionView.elementKindSectionHeader {
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -171,30 +177,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 check2.draw(at:CGPoint(2,0))
             }
 
-//            UIGraphicsBeginImageContextWithOptions(cell.bounds.size, false, 0)
-//            let con = UIGraphicsGetCurrentContext()!
-//            let shadow = NSShadow()
-//            shadow.shadowColor = UIColor.darkGray()
-//            shadow.shadowOffset = CGSize(2,2)
-//            shadow.shadowBlurRadius = 4
-//            let check2 =
-//            AttributedString(string:"\u{2714}", attributes:[
-//                .font: UIFont(name:"ZapfDingbatsITC", size:24)!,
-//                .foregroundColor: UIColor.green(),
-//                .strokeColor: UIColor.red(),
-//                .strokeWidth: -4,
-//                .shadow: shadow
-//                ])
-//            con.scale(x:1.1, y:1)
-//            check2.draw(at:CGPoint(2,0))
-//            let im = UIGraphicsGetImageFromCurrentImageContext()!
-//            UIGraphicsEndImageContext()
-            
             let iv = UIImageView(image:nil, highlightedImage:im)
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
+        cell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -216,16 +203,21 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
 //    /*
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // note; this approach didn't work on iOS 8...
-        // ...until I introduced the "container" view
-        // systemLayoutSize works on the container view but not on the cell itself in iOS 8
-        // (perhaps because the nib lacks a contentView)
-        // Oooh, fixed (6.1)!
-        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
-        //the "container" workaround is no longer needed
-        //var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        var sz = self.modelCell.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        
+        let memosize = self.sections[indexPath.section].itemData[indexPath.row].size
+        if memosize != .zero {
+            return memosize
+        }
+        
+        self.modelCell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
+        // nope
+        // return UICollectionViewFlowLayout.automaticSize
+        // NB this is what I was getting wrong all these years
+        // you have to size the _contentView_
+        // (no more container view trickery)
+        var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
+        self.sections[indexPath.section].itemData[indexPath.row].size = sz // memoize
         return sz
     }
 // */
@@ -261,8 +253,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // delete data
         var empties : Set<Int> = [] // keep track of what sections get emptied
         for ip in arr.reversed() {
-            self.sections[ip.section].rowData.remove(at:ip.item)
-            if self.sections[ip.section].rowData.count == 0 {
+            self.sections[ip.section].itemData.remove(at:ip.item)
+            if self.sections[ip.section].itemData.count == 0 {
                 empties.insert(ip.section)
             }
         }
@@ -276,35 +268,10 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         })
     }
     
-    // menu =================
-    
-    // exactly as for table views
-    
-    @nonobjc private let capital = #selector(Cell.capital)
-    @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)
-    
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        let mi = UIMenuItem(title:"Capital", action:capital)
-        UIMenuController.shared.menuItems = [mi]
-        return false // uncomment to do dragging; you can't have both menus and dragging
-        // (because they both use the long press gesture, I presume)
-        return true
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return (action == copy) || (action == capital)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        // in real life, would do something here
-        let state = self.sections[indexPath.section].rowData[indexPath.row]
-        if action == copy {
-            print ("copying \(state)")
-        }
-        else if action == capital {
-            print ("fetching the capital of \(state)")
-        }
-    }
+    // menus moved to next example
+    // you can't have both menus and dragging
+    // (because they both use the long press gesture, I presume)
+
     
     // dragging ===============
     
@@ -312,30 +279,49 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // -------- interactive moving, data source methods
     
+    var origSections : [Section]!
     override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        print("move is starting")
+        self.origSections = self.sections
         return true
     }
     
     override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
-        // rearrange model
-        if source.section == dest.section { // exclusive access
-            self.sections[source.section].rowData.swapAt(source.item, dest.item)
-        } else {
-            swap(
-                &self.sections[source.section].rowData[source.item],
-                &self.sections[dest.section].rowData[dest.item]
-            )
+        print("move")
+        if source.section == dest.section {
+            // restore sizes
+            self.sections = self.origSections
+            // rearrange model
+            func move<T>(_ arr:inout Array<T>, from:Int, to:Int) {
+                let el = arr.remove(at: from)
+                arr.insert(el, at: to)
+            }
+            move(&self.sections[source.section].itemData, from:source.item, to:dest.item)
+            // update interface - wait, no need any longer!!!!
+            // cv.reloadSections(IndexSet(integer:source.section))
         }
-        // reload
-        cv.reloadSections(IndexSet(integer:source.section))
     }
     
     // modify using delegate methods
     // here, prevent moving outside your own section
     
+    
+    // wait - orig and prop are always the same as each other! what sense does that make????
+    // no, not _always_! have to watch for that case
     override func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt orig: IndexPath, toProposedIndexPath prop: IndexPath) -> IndexPath {
+        print("from", orig, "target", prop)
         if orig.section != prop.section {
             return orig
+        }
+        if orig.item == prop.item {
+            return prop
+        }
+        // they are different, we're crossing a boundary - shift size values!
+        var sizes = self.sections[orig.section].itemData.map{$0.size}
+        let size = sizes.remove(at: orig.item)
+        sizes.insert(size, at:prop.item)
+        for (ix,size) in sizes.enumerated() {
+            self.sections[orig.section].itemData[ix].size = size
         }
         return prop
     }

@@ -56,7 +56,7 @@ func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
         alert.addAction(UIAlertAction(
         title: "OK", style: .default) {
             _ in
-            let url = URL(string:UIApplicationOpenSettingsURLString)!
+            let url = URL(string:UIApplication.openSettingsURLString)!
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
@@ -92,7 +92,7 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
         alert.addAction(UIAlertAction(
         title: "OK", style: .default) {
             _ in
-            let url = URL(string:UIApplicationOpenSettingsURLString)!
+            let url = URL(string:UIApplication.openSettingsURLString)!
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
@@ -117,7 +117,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     func reallyTake() {
-        let src = UIImagePickerControllerSourceType.camera
+        let src = UIImagePickerController.SourceType.camera
         guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
         
         var which : Int {return 4} // 1, 2, 3, 4
@@ -146,23 +146,23 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : Any]) {
-            print(info[UIImagePickerControllerPHAsset] as Any)
-            let url = info[UIImagePickerControllerMediaURL] as? URL
-            var im = info[UIImagePickerControllerOriginalImage] as? UIImage
-            if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            print(info[.phAsset] as Any)
+            let url = info[.mediaURL] as? URL
+            var im = info[.originalImage] as? UIImage
+            if let ed = info[.editedImage] as? UIImage {
                 im = ed
             }
-            if let live = info[UIImagePickerControllerLivePhoto] {
+            if let live = info[.livePhoto] {
                 print("I got a live photo!") // nope
                 _ = live
             }
-            let imurl = info[UIImagePickerControllerImageURL] as? URL
+            let imurl = info[.imageURL] as? URL
             print(imurl as Any)
-            let m = info[UIImagePickerControllerMediaMetadata] as? NSDictionary
+            let m = info[.mediaMetadata] as? NSDictionary
             print(m as Any)
             self.dismiss(animated:true) {
-                let mediatype = info[UIImagePickerControllerMediaType]
+                let mediatype = info[.mediaType]
                 guard let type = mediatype as? NSString else {return}
                 switch type as CFString {
                 case kUTTypeImage:
@@ -181,7 +181,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                     // apply metadata info here, as desired
                                 })
                             case 1: // add image while folding in the metadata
-                                let jpeg = UIImageJPEGRepresentation(im!, 1)!
+                                let jpeg = im!.jpegData(compressionQuality: 1)!
                                 let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!
                                 let data = NSMutableData()
                                 let uti = CGImageSourceGetType(src)!
@@ -208,11 +208,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     func clearAll() {
-        if self.childViewControllers.count > 0 {
-            let av = self.childViewControllers[0] as! AVPlayerViewController
-            av.willMove(toParentViewController: nil)
+        if self.children.count > 0 {
+            let av = self.children[0] as! AVPlayerViewController
+            av.willMove(toParent: nil)
             av.view.removeFromSuperview()
-            av.removeFromParentViewController()
+            av.removeFromParent()
         }
         self.redView.subviews.forEach { $0.removeFromSuperview() }
     }
@@ -230,11 +230,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let av = AVPlayerViewController()
         let player = AVPlayer(url:url)
         av.player = player
-        self.addChildViewController(av)
+        self.addChild(av)
         av.view.frame = self.redView.bounds
         av.view.backgroundColor = self.redView.backgroundColor
         self.redView.addSubview(av.view)
-        av.didMove(toParentViewController: self)
+        av.didMove(toParent: self)
     }
     
     func tap (g:UIGestureRecognizer) {

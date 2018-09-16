@@ -96,7 +96,7 @@
 				TargetAttributes = {
 					C9C89B20182A9AAE0073DA93 = {
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -242,8 +242,7 @@
 				PRODUCT_MODULE_NAME = MyReminderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -262,8 +261,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = MyReminderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -42,6 +42,7 @@ class FirstViewController : UIViewController {
         super.viewWillDisappear(animated)
         print("\(self) " + #function)
         
+        // proving there's no transition coordinator; I regard this as a bug
         guard let tc = self.transitionCoordinator else {print("no tc"); return}
         guard tc.initiallyInteractive else {return}
         tc.notifyWhenInteractionChanges { // "changes" instead of "ends"

@@ -24,6 +24,8 @@ class NotMyView : UIView {
         if ss != nil {
             // ...
         }
+        // for NSCoding types, better to talk like this
+        let sss = aDecoder.decodeObject(of: NSString.self, forKey: Archive.color.rawValue)
         // ...
         _ = s
     }

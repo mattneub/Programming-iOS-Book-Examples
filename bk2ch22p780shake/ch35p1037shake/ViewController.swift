@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.becomeFirstResponder()
     }
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if self.isFirstResponder {
             print("hey, you shook me!")
             let alert = UIAlertController(title: "Hey", message: "You shook me!", preferredStyle: .alert)

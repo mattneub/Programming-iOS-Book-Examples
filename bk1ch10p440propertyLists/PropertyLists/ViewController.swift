@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         let fm = FileManager.default
         let temp = fm.temporaryDirectory
         let f = temp.appendingPathComponent("pep.plist")
-        (arr as NSArray).write(to: f, atomically: true)
+        try! (arr as NSArray).write(to: f)
         // now let's see what we wrote
         let s = try! String.init(contentsOf: f)
         print(s)

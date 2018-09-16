@@ -5,22 +5,28 @@ import Photos
 
 class ModelController: NSObject {
     
-    var recentAlbums : PHFetchResult<PHAssetCollection>!
+    // uncomment only for sake of book code, not used in real "app"
+    // goes with `.smartAlbumRecentlyAdded`
+    // var recentAlbums : PHFetchResult<PHAssetCollection>!
     var photos : PHFetchResult<PHAsset>!
     
     func tryToGetStarted() {
-        self.recentAlbums = PHAssetCollection.fetchAssetCollections(with:
+        let recentAlbums = PHAssetCollection.fetchAssetCollections(with:
             .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-        guard let rec = self.recentAlbums.firstObject else {return}
-        let options = PHFetchOptions() // photos only, please, no HDRs
-        options.fetchLimit = 10 // let's not take all day about it
+        guard let rec = recentAlbums.firstObject else {return}
+        let options = PHFetchOptions()
         let pred = NSPredicate(
             format: "mediaType == %d && !((mediaSubtype & %d) == %d)",
             PHAssetMediaType.image.rawValue,
             PHAssetMediaSubtype.photoHDR.rawValue,
             PHAssetMediaSubtype.photoHDR.rawValue)
-        options.predicate = pred
-        self.photos = PHAsset.fetchAssets(in:rec, options: options)
+        options.predicate = pred // photos only, please, no HDRs
+        let sortDesc = NSSortDescriptor(key: #keyPath(PHAsset.creationDate), ascending: false)
+        options.sortDescriptors = [sortDesc] // most recent [note that sort is applied before fetching?]
+        options.fetchLimit = 10 // let's not take all day about it
+        let photos = PHAsset.fetchAssets(in:rec, options: options)
+        // self.recentAlbums = recentAlbums
+        self.photos = photos
     }
 
     override init() {

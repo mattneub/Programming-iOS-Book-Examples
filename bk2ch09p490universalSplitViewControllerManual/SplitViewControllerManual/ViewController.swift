@@ -16,9 +16,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let svc = UISplitViewController()
         svc.viewControllers = [PrimaryViewController(), SecondaryViewController()]
-        self.addChildViewController(svc)
+        self.addChild(svc)
         self.view.addSubview(svc.view)
-        svc.didMove(toParentViewController: self)
+        svc.didMove(toParent: self)
         
         svc.presentsWithGesture = false
         svc.preferredDisplayMode = .primaryHidden
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
         if action == #selector(showHide) {
-            let svc = self.childViewControllers[0] as! UISplitViewController
+            let svc = self.children[0] as! UISplitViewController
             let primary = svc.viewControllers[0] 
             if primary.canPerformAction(action, withSender: sender) {
                 return primary

@@ -50,7 +50,7 @@ class ViewController : UIViewController {
         
         do {
             
-            var whichh : Int { return 0 }
+            var whichh : Int { return 1 }
 
             switch whichh {
             case 0:

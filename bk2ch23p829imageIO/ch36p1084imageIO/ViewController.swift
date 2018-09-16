@@ -20,9 +20,11 @@ class ViewController: UIViewController {
     
     @IBAction func doButton (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
-        let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
-        let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)!
-        let d = result as! [AnyHashable:Any] // :) works because CFString is now AnyHashable
+        let opts : [AnyHashable:Any] = [
+            kCGImageSourceShouldCache : false
+        ]
+        let src = CGImageSourceCreateWithURL(url as CFURL, opts as CFDictionary)!
+        let d = CGImageSourceCopyPropertiesAtIndex(src, 0, opts as CFDictionary) as! [AnyHashable:Any] // :) works because CFString is now AnyHashable
         print(d)
         // just proving it really is a dictionary
         let width = d[kCGImagePropertyPixelWidth] as! CGFloat
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
         
         // another way; no one in his right mind would do this, though
         do {
-            let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)!
+            let result = CGImageSourceCopyPropertiesAtIndex(src, 0, opts as CFDictionary)!
             let key = kCGImagePropertyPixelWidth // CFString
             let p1 = Unmanaged.passUnretained(key).toOpaque() // UnsafeMutableRawPointer
             let p2 = CFDictionaryGetValue(result, p1) // UnsafeRawPointer
@@ -44,16 +46,20 @@ class ViewController: UIViewController {
 
     @IBAction func doButton2 (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
-        let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
+        var opts : [AnyHashable:Any] = [
+            kCGImageSourceShouldCache : false
+        ]
+        let src = CGImageSourceCreateWithURL(url as CFURL, opts as CFDictionary)!
         let scale = UIScreen.main.scale
         let w = self.iv.bounds.width * scale
-        let d : [AnyHashable:Any] = [
+        opts = [
             kCGImageSourceShouldAllowFloat : true,
             kCGImageSourceCreateThumbnailWithTransform : true,
             kCGImageSourceCreateThumbnailFromImageAlways : true,
+            kCGImageSourceShouldCacheImmediately : true,
             kCGImageSourceThumbnailMaxPixelSize : w
         ]
-        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)!
+        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, opts as CFDictionary)!
         let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
         self.iv.image = im
         print(im)
@@ -62,7 +68,10 @@ class ViewController: UIViewController {
 
     @IBAction func doButton3 (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
-        let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
+        let opts : [AnyHashable:Any] = [
+            kCGImageSourceShouldCache : false
+        ]
+        let src = CGImageSourceCreateWithURL(url as CFURL, opts as CFDictionary)!
         let fm = FileManager.default
         let suppurl = try! fm.url(for:.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let tiff = suppurl.appendingPathComponent("mytiff.tiff")
@@ -71,6 +80,7 @@ class ViewController: UIViewController {
         let ok = CGImageDestinationFinalize(dest)
         if ok {
             print("tiff image written to disk")
+            print(tiff)
         } else {
             print("something went wrong")
         }

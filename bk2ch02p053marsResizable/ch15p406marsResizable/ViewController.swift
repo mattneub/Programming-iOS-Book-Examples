@@ -14,32 +14,35 @@ class ViewController : UIViewController {
         let mars = UIImage(named:"Mars")!
         var marsTiled = UIImage()
         
+        // this line crashes the compiler for some reason
+        // let test = UIEdgeInsets.zero
+        
         switch which {
         case 1:
-            marsTiled = mars.resizableImage(withCapInsets:.zero, resizingMode: .tile)
+            marsTiled = mars.resizableImage(withCapInsets: .zero, resizingMode: .tile)
         case 2:
             marsTiled = mars.resizableImage(withCapInsets:
-                UIEdgeInsetsMake(
-                    mars.size.height / 4.0,
-                    mars.size.width / 4.0,
-                    mars.size.height / 4.0,
-                    mars.size.width / 4.0
+                UIEdgeInsets(
+                    top: mars.size.height / 4.0,
+                    left: mars.size.width / 4.0,
+                    bottom: mars.size.height / 4.0,
+                    right: mars.size.width / 4.0
                 ), resizingMode: .tile)
         case 3:
             marsTiled = mars.resizableImage(withCapInsets:
-                UIEdgeInsetsMake(
-                    mars.size.height / 4.0,
-                    mars.size.width / 4.0,
-                    mars.size.height / 4.0,
-                    mars.size.width / 4.0
+                UIEdgeInsets(
+                    top: mars.size.height / 4.0,
+                    left: mars.size.width / 4.0,
+                    bottom: mars.size.height / 4.0,
+                    right: mars.size.width / 4.0
                 ), resizingMode: .stretch)
         case 4:
             marsTiled = mars.resizableImage(withCapInsets:
-                UIEdgeInsetsMake(
-                    mars.size.height / 2.0 - 1,
-                    mars.size.width / 2.0 - 1,
-                    mars.size.height / 2.0 - 1,
-                    mars.size.width / 2.0 - 1
+                UIEdgeInsets(
+                    top: mars.size.height / 2.0 - 1,
+                    left: mars.size.width / 2.0 - 1,
+                    bottom: mars.size.height / 2.0 - 1,
+                    right: mars.size.width / 2.0 - 1
                 ), resizingMode: .stretch)
         default: break
         }

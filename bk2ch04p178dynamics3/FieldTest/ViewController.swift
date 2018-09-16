@@ -27,6 +27,12 @@ extension CGVector {
         self.init(dx:dx, dy:dy)
     }
 }
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(x:self.midX, y:self.midY)
+    }
+}
+
 
 
 
@@ -78,7 +84,7 @@ class ViewController: UIViewController {
             self.view.addSubview(v2)
             
             let a = UIAttachmentBehavior.slidingAttachment(with:v, attachedTo: v2, attachmentAnchor: CGPoint(125,25), axisOfTranslation: CGVector(0,1))
-            a.attachmentRange = UIFloatRangeMake(-200,200)
+            a.attachmentRange = UIFloatRange(minimum: -200,maximum: 200)
             self.anim.addBehavior(a)
             
             delay(2) {
@@ -90,7 +96,7 @@ class ViewController: UIViewController {
         case 2:
             let b = MyDelayedFieldBehavior.dragField(delay:0.95)
             b.region = UIRegion(size: self.view.bounds.size)
-            b.position = CGPoint(self.view.bounds.midX, self.view.bounds.midY)
+            b.position = self.view.bounds.center
             b.addItem(v)
             self.anim.addBehavior(b)
             

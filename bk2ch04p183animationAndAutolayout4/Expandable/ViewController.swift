@@ -11,7 +11,7 @@ class ViewController : UIViewController {
     var long = false
     
     @IBAction func toggleContents(_ sender: Any!) {
-        self.long = !self.long
+        self.long.toggle()
         self.randomLabel.text = self.texts[self.long ? 1 : 0]
         UIView.animate(withDuration:1) {
             self.view.layoutIfNeeded()
@@ -19,7 +19,7 @@ class ViewController : UIViewController {
     }
     
     @IBAction func toggleButtonSelector (_ sender: Any!) {
-        self.collapsed = !self.collapsed
+        self.collapsed.toggle()
         if self.collapsed {
             self.sectionHeightConstraint.constant = 10
             self.sectionHeightConstraint.priority = UILayoutPriority(rawValue: 999)

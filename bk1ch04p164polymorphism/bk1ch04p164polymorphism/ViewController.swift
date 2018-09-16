@@ -148,8 +148,12 @@ class ViewController: UIViewController {
         do {
             let ud = UserDefaults.standard
             ud.set(Date(), forKey:"now")
-            let d = ud.object(forKey:"now") as! Date
-            print(d)
+            // let d = ud.object(forKey:"now") as! Date
+            let d = ud.object(forKey:"now")
+            if d is Date {
+                let d = d as! Date
+                print(d)
+            }
         }
         
         do {

@@ -132,6 +132,7 @@ class MyTableViewController: UITableViewController {
                     let accel = accdatum.acceleration
                     let t = accdatum.timestamp
                     // do something with data here
+                    _ = (accel,t)
                 }
             }
         }

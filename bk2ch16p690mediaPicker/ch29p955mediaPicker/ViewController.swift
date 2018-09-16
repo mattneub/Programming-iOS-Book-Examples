@@ -3,6 +3,12 @@
 import UIKit
 import MediaPlayer
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -76,8 +82,11 @@ extension ViewController : MPMediaPickerControllerDelegate {
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         print("did pick")
         let player = MPMusicPlayerController.applicationMusicPlayer
+        player.stop()
         player.setQueue(with:mediaItemCollection)
-        player.play()
+        delay(0.2) {
+            player.play()
+        }
         self.dismiss(animated:true)
     }
     

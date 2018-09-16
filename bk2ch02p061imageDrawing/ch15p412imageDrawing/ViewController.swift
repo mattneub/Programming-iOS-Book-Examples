@@ -44,7 +44,7 @@ class ViewController : UIViewController {
 //            let im = UIGraphicsGetImageFromCurrentImageContext()!
 //            UIGraphicsEndImageContext()
             
-            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*2, sz.height))
+            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*2, sz.height), format:mars.imageRendererFormat)
             self.iv1.image = r.image { _ in
                 mars.draw(at:CGPoint(0,0))
                 mars.draw(at:CGPoint(sz.width,0))
@@ -64,7 +64,7 @@ class ViewController : UIViewController {
 //            let im = UIGraphicsGetImageFromCurrentImageContext()!
 //            UIGraphicsEndImageContext()
             
-            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*2, sz.height*2))
+            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*2, sz.height*2), format:mars.imageRendererFormat)
             self.iv2.image = r.image { _ in
                 mars.draw(in:CGRect(0,0,sz.width*2,sz.height*2))
                 mars.draw(in:CGRect(sz.width/2.0, sz.height/2.0, sz.width, sz.height), blendMode: .multiply, alpha: 1.0)
@@ -83,9 +83,16 @@ class ViewController : UIViewController {
 //            let im = UIGraphicsGetImageFromCurrentImageContext()!
 //            UIGraphicsEndImageContext()
             
-            let r = UIGraphicsImageRenderer(size:CGSize(sz.width/2.0, sz.height))
+            let r = UIGraphicsImageRenderer(size:CGSize(sz.width/2.0, sz.height), format:mars.imageRendererFormat)
             self.iv3.image = r.image { _ in
                 mars.draw(at:CGPoint(-sz.width/2.0,0))
+            }
+            // return;
+            do {
+                let r = UIGraphicsImageRenderer(bounds:CGRect(sz.width/2.0,0,sz.width/2.0,sz.height), format:mars.imageRendererFormat)
+                self.iv3.image = r.image { _ in
+                    mars.draw(at:.zero)
+                }
             }
             
         }
@@ -112,7 +119,7 @@ class ViewController : UIViewController {
 //            UIGraphicsEndImageContext()
 //            // no memory management
             
-            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height))
+            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height), format:mars.imageRendererFormat)
             self.iv4.image = r.image { ctx in
                 let con = ctx.cgContext
                 con.draw(marsLeft, in:CGRect(0,0,sz.width/2.0,sz.height))
@@ -145,7 +152,7 @@ class ViewController : UIViewController {
 //            UIGraphicsEndImageContext()
 //            // no memory management
             
-            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height))
+            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height), format:mars.imageRendererFormat)
             self.iv5.image = r.image {
                 ctx in
                 let con = ctx.cgContext
@@ -181,7 +188,7 @@ class ViewController : UIViewController {
 //            UIGraphicsEndImageContext()
 //            // no memory management
             
-            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height))
+            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height), format:mars.imageRendererFormat)
 
             self.iv6.image = r.image {
                 ctx in
@@ -218,7 +225,7 @@ class ViewController : UIViewController {
 //            UIGraphicsEndImageContext()
 //            // no memory management
             
-            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height))
+            let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height), format:mars.imageRendererFormat)
 
             self.iv7.image = r.image {
                 _ in

@@ -3,11 +3,10 @@
 import UIKit
 import Photos
 import PhotosUI
-import GLKit
-import OpenGLES
 import MobileCoreServices
 import AVFoundation
 import VignetteFilter
+import MetalKit
 
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
@@ -32,42 +31,112 @@ extension CGVector {
 
 
 
-class PhotoEditingViewController: UIViewController, PHContentEditingController, GLKViewDelegate {
+class PhotoEditingViewController: UIViewController, PHContentEditingController, MTKViewDelegate {
     
-    @IBOutlet weak var glkview: GLKView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var seg: UISegmentedControl!
+    @IBOutlet weak var mtkview: MTKView!
 
     var input: PHContentEditingInput?
     
     let myidentifier = "com.neuburg.matt.PhotoKitImages.vignette"
     var displayImage : CIImage?
-    var context : CIContext?
+    var context : CIContext!
     let vig = VignetteFilter()
+    var queue: MTLCommandQueue!
+
 
     
     @IBAction func doSlider(_ sender: Any) {
-        self.glkview.display()
+        self.mtkview.setNeedsDisplay()
     }
     @IBAction func doSegmentedControl(_ sender: Any) {
-        self.glkview.display()
+        self.mtkview.setNeedsDisplay()
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let eaglcontext = EAGLContext(api:.openGLES2)!
-        self.glkview.context = eaglcontext
-        self.glkview.delegate = self
-        
-        self.context = CIContext(eaglContext: self.glkview.context)
         
         self.seg.isHidden = true
         self.seg.selectedSegmentIndex = 0
         
         self.title = "Vignette" // doesn't work, and I have not found a way to set the title
+        
+        self.mtkview.isOpaque = false // otherwise background is black
+        // must have a "device"
+        guard let device = MTLCreateSystemDefaultDevice() else {
+            print("darn")
+            return
+        }
+        self.mtkview.device = device
+        
+        // mode: draw on demand
+        self.mtkview.isPaused = true
+        self.mtkview.enableSetNeedsDisplay = true
+        // other stuff
+        self.context = CIContext(mtlDevice: device)
+        self.queue = device.makeCommandQueue()
+        
+        self.mtkview.delegate = self
+        // self.mtkview.backgroundColor = .black // just testing
+        self.mtkview.setNeedsDisplay()
+
+    }
+    
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    }
+    
+    func draw(in view: MTKView) {
+        
+        /*
+         if self.seg.selectedSegmentIndex == 0 {
+         
+         self.vig.setValue(output, forKey: "inputImage")
+         let val = Double(self.slider.value)
+         self.vig.setValue(val, forKey:"inputPercentage")
+         output = self.vig.outputImage!
+         if !self.seg.isHidden {
+         output = output.oriented(forExifOrientation: orient)
+         }
+         
+         } else {
+         output = output.oriented(forExifOrientation: orient)
+         }
+
+ */
+        guard self.displayImage != nil else {return}
+        
+        self.vig.setValue(self.displayImage, forKey: "inputImage")
+        let val = Double(self.slider.value)
+        self.vig.setValue(val, forKey:"inputPercentage")
+        var output = self.vig.outputImage!
+        // but if removing, show unvignetted image
+        if !self.seg.isHidden && self.seg.selectedSegmentIndex == 1 {
+            output = self.displayImage!
+        }
+        
+        var r = view.bounds
+        r.size = view.drawableSize
+        
+        r = AVMakeRect(aspectRatio: output.extent.size, insideRect: r)
+        output = output.transformed(by: CGAffineTransform(scaleX: r.size.width/output.extent.size.width, y: r.size.height/output.extent.size.height))
+        // okay, almost there! but we need to transform up or right to center in the view
+        // wait, I just realized I can do that by offsetting the draw bounds origin
+        
+        // minimal dance required in order to draw: render, present, commit
+        let buffer = self.queue.makeCommandBuffer()!
+        self.context!.render(output,
+                             to: view.currentDrawable!.texture,
+                             commandBuffer: buffer,
+                             bounds: CGRect(origin:CGPoint(x:-r.origin.x, y:-r.origin.y), size:view.drawableSize),
+                             colorSpace: CGColorSpaceCreateDeviceRGB())
+        buffer.present(view.currentDrawable!)
+        buffer.commit()
+        
     }
 
+/*
     func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(1.0, 1.0, 1.0, 1.0)
         glClear(UInt32(GL_COLOR_BUFFER_BIT))
@@ -101,6 +170,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         }
         
     }
+ */
 
     func canHandle(_ adjustmentData: PHAdjustmentData) -> Bool {
         return adjustmentData.formatIdentifier == myidentifier
@@ -114,18 +184,12 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         
         self.input = contentEditingInput
         if let im = self.input?.displaySizeImage {
-            let scale = max(im.size.width/self.glkview.bounds.width, im.size.height/self.glkview.bounds.height)
-            let sz = CGSize(im.size.width/scale, im.size.height/scale)
-            let r = UIGraphicsImageRenderer(size:sz)
-            let im2 = r.image { _ in
-                // perhaps no need for this, but the image they give us is much larger than we need
-                im.draw(in:CGRect(origin: .zero, size: sz))
-            }
 
-            self.displayImage = CIImage(image:im2)
+            self.displayImage = CIImage(image:im, options: [.applyOrientationProperty:true])!
             if let adj = self.input?.adjustmentData,
                 adj.formatIdentifier == self.myidentifier {
-                if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with:adj.data) as? Double {
+                if let vigNumber = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSNumber.self, from: adj.data),
+                    let vigAmount = vigNumber as? Double {
                     if vigAmount >= 0.0 {
                         self.slider.value = Float(vigAmount)
                         self.seg.isHidden = false
@@ -135,7 +199,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 }
             }
         }
-        self.glkview.display()
+        self.mtkview.setNeedsDisplay()
 
     }
     
@@ -146,10 +210,11 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         DispatchQueue.global(qos:.default).async {
             let vignette = self.seg.selectedSegmentIndex == 0 ? Double(self.slider.value) : -1.0
             let inurl = self.input!.fullSizeImageURL!
-            let inorient = self.input!.fullSizeImageOrientation
+            // let inorient = self.input!.fullSizeImageOrientation
             let output = PHContentEditingOutput(contentEditingInput:self.input!)
             let outurl = output.renderedContentURL
-            var ci = CIImage(contentsOf: inurl)!.oriented(forExifOrientation: inorient)
+            // var ci = CIImage(contentsOf: inurl)!.oriented(forExifOrientation: inorient)
+            var ci = CIImage(contentsOf: inurl, options: [.applyOrientationProperty:true])!
             let space = ci.colorSpace!
             
             if vignette >= 0.0 {
@@ -161,7 +226,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             try! CIContext().writeJPEGRepresentation(
                 of: ci, to: outurl, colorSpace: space)
             
-            let data = NSKeyedArchiver.archivedData(withRootObject:vignette)
+            let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
             output.adjustmentData = PHAdjustmentData(
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
             

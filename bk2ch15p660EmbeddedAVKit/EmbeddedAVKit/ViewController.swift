@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode:.default)
         try? AVAudioSession.sharedInstance().setActive(true)
     }
     
@@ -76,11 +76,13 @@ class ViewController: UIViewController {
         let av = AVPlayerViewController()
         av.player = player
         av.view.frame = CGRect(10,10,300,200)
-        self.addChildViewController(av)
+        self.addChild(av)
         self.view.addSubview(av.view)
-        av.didMove(toParentViewController:self)
+        av.didMove(toParent:self)
         // just testing the syntax; this feels like a bug
         // av.videoGravity = AVLayerVideoGravity.resizeAspect.rawValue
+        // ooooh, they finally fixed it!
+        // av.videoGravity = .resizeAspect
         // just testing the behavior
         // av.updatesNowPlayingInfoCenter = false
     }
@@ -98,9 +100,9 @@ class ViewController: UIViewController {
         av.player = player
         av.view.frame = CGRect(10, 10, 300, 200)
         av.view.isHidden = true // looks nicer if we don't show until ready
-        self.addChildViewController(av)
+        self.addChild(av)
         self.view.addSubview(av.view)
-        av.didMove(toParentViewController:self)
+        av.didMove(toParent:self)
         
         /*
         // just experimenting
@@ -122,6 +124,7 @@ class ViewController: UIViewController {
                 // just playing, pay no attention
                 let player = vc.player!
                 let item = player.currentItem!
+                // well _this_ seems like a step back from renamification
                 print(CMTimebaseGetRate(item.timebase!))
             }
         }

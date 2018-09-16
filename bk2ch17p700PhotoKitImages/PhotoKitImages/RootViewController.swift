@@ -64,13 +64,14 @@ class RootViewController: UIViewController {
         self.pvc!.dataSource = nil
         self.tryToAddInitialPage() // if succeeds, will set data source for real
         
-        self.addChildViewController(self.pvc!)
+        self.addChild(self.pvc!)
         self.view.addSubview(self.pvc!.view)
         self.pvc!.view.frame = self.view.bounds
-        self.pvc!.didMove(toParentViewController: self)
+        self.pvc!.didMove(toParent: self)
     }
 }
 
+// just testing syntax, uncomment to test
 /*
 
 extension RootViewController : PHPhotoLibraryChangeObserver {

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         
-        UIApplication.shared.beginReceivingRemoteControlEvents()
+        // UIApplication.shared.beginReceivingRemoteControlEvents()
         
         super.viewDidAppear(animated)
         
@@ -42,7 +42,8 @@ class ViewController: UIViewController {
         
         
         print(r)
-        NSLog("%@", NSStringFromCGRect(r))
+        // new name of CGRectFromString
+        NSLog("%@", NSCoder.string(for: r))
 
         
         // new availability checking in Xcode 7
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
         }
         
         if #available(iOS 8.0, *) {
-            let s = UIApplicationOpenSettingsURLString
+            let s = UIApplication.openSettingsURLString
             print(s)
         } else {
         }

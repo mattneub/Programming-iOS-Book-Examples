@@ -22,7 +22,7 @@ class Pep: UIViewController {
         let group = UIPreviewActionGroup(title: "Colorize", style: .default, actions: [col1, col2, col3])
         // example of selected style
         let favKey = "favoritePepBoy"
-        let style : UIPreviewActionStyle =
+        let style : UIPreviewAction.Style =
             self.boy == UserDefaults.standard.string(forKey:favKey) ? .selected : .default
         let fav = UIPreviewAction(title: "Favorite", style: style) {
             action, vc in

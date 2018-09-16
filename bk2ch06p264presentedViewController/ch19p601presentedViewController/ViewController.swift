@@ -15,7 +15,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.data = "This is very important data!"
         svc.delegate = self
         
-        var which : Int { return 3 }
+        var which : Int { return 2 }
         switch which {
         case 1: break // showing that .CoverVertical is the default
         case 2: svc.modalTransitionStyle = .coverVertical
@@ -23,7 +23,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         case 4: svc.modalTransitionStyle = .partialCurl
             // partial curl is not partial in iOS 8/9/10/11; bug?
             // thus, the "click to dismiss" feature makes no sense
-            // user taps background and presented vc just dismisses? weird; bug?
+            // user taps background and presented vc just dismisses
+            // see workaround in other view controller
         case 5:
             svc.modalTransitionStyle = .flipHorizontal
             self.view.window!.backgroundColor = UIColor.green // prove window shows thru
@@ -33,7 +34,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
         print(self.traitCollection)
         
-        var which2 : Int { return 5 }
+        var which2 : Int { return 3 }
         switch which2 {
         case 1: break // showing that .FullScreen is the default
         case 2: svc.modalPresentationStyle = .fullScreen

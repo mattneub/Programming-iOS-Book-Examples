@@ -5,8 +5,8 @@ import UIKit
 class SearchResultsController : UITableViewController {
     var originalData = [String]()
     var filteredData = [String]()
-    weak var searchController : UISearchController?
-        
+    weak var searchBar : UISearchBar!
+    
     func take(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
         self.originalData = data.map{$0.rowData}.flatMap{$0}
@@ -40,16 +40,17 @@ class SearchResultsController : UITableViewController {
     }
 }
 
-extension SearchResultsController : UISearchResultsUpdating {
+extension SearchResultsController : UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         print("update")
-        self.searchController = searchController // keep a weak ref just in case
-        let sb = searchController.searchBar
-        let target = sb.text!
+        self.searchBar = searchController.searchBar
+        self.doUpdate()
+    }
+    func doUpdate() {
+        let target = self.searchBar.text!
         self.filteredData = self.originalData.filter { s in
             var options = String.CompareOptions.caseInsensitive
-            // we now have scope buttons; 0 means "starts with"
-            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+            if self.searchBar.selectedScopeButtonIndex == 0 { // 0 means "starts with"
                 options.insert(.anchored)
             }
             let found = s.range(of:target, options: options)
@@ -57,11 +58,8 @@ extension SearchResultsController : UISearchResultsUpdating {
         }
         self.tableView.reloadData()
     }
-}
-
-extension SearchResultsController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         print("button")
-        self.updateSearchResults(for:self.searchController!)
+        self.doUpdate()
     }
 }

@@ -26,10 +26,13 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         self.extensionContext = context
         let items = self.extensionContext!.inputItems
         // open the envelopes
-        guard let extensionItem = items[0] as? NSExtensionItem,
-            let provider = extensionItem.attachments?[0] as? NSItemProvider,
-            provider.hasItemConformingToTypeIdentifier(self.desiredType)
-            else { self.process(item:nil); return }
+        // okay, something very odd has changed in Xcode 10 beta 6
+        // the _docs_ still say that attachments is an [Any]?
+        // but the _headers_ (and the compiler) now think it is an [NSItemProvider]?
+        // keep an eye on this
+        guard let extensionItem = items[0] as? NSExtensionItem else {return}
+        guard let provider = extensionItem.attachments?.first else {return}
+        guard provider.hasItemConformingToTypeIdentifier(self.desiredType) else {return}
         provider.loadItem(forTypeIdentifier: self.desiredType) {
             item, err in
             DispatchQueue.main.async {

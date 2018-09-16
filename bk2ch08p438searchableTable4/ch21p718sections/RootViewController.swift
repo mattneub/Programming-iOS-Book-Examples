@@ -3,8 +3,9 @@
 import UIKit
 
 class MySearchController : UISearchController {
+    // failed experiment
 //    override var prefersStatusBarHidden : Bool {
-//        return true
+//        return false
 //    }
     
     // failed experiment
@@ -32,9 +33,9 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     var searcher : UISearchController!
     
     // looks better _with_ the status bar
-//    override var prefersStatusBarHidden : Bool {
-//        return true
-//    }
+    override var prefersStatusBarHidden : Bool {
+        return false
+    }
     
     let cellID = "Cell"
 	let headerID = "Header"
@@ -88,7 +89,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 // self.navigationItem.hidesSearchBarWhenScrolling = false
 
                 self.navigationItem.searchController = searcher
-                searcher.hidesNavigationBarDuringPresentation = true // crucial, it seems
+                // searcher.hidesNavigationBarDuringPresentation = true
                 // hmm, but if we decide to hide the status bar, above needs to be false
                 // otherwise the search bar slams into the top of the screen
                 // searcher.hidesNavigationBarDuringPresentation = false
@@ -103,7 +104,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 let b = searcher.searchBar
                 // hey, check this out
                 b.scopeButtonTitles = ["Contains", "Starts With"]
-                b.showsScopeBar = false
+                // b.showsScopeBar = false // unnecessary
                 b.delegate = src
                 b.autocapitalizationType = .none
             } else {

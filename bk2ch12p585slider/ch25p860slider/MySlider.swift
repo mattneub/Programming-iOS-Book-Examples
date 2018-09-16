@@ -31,7 +31,7 @@ class MySlider: UISlider {
         
         
         let coinEnd = UIImage(named:"coin2.png")!.resizableImage(withCapInsets:
-            UIEdgeInsetsMake(0,7,0,7), resizingMode: .stretch)
+            UIEdgeInsets(top: 0,left: 7,bottom: 0,right: 7), resizingMode: .stretch)
         
         
         self.setMinimumTrackImage(coinEnd, for:.normal)

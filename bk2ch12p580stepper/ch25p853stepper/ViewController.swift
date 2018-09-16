@@ -56,19 +56,19 @@ class ViewController: UIViewController {
         
         let imdis = UIImage(named: "pic2.png")!
             .resizableImage(withCapInsets:
-                UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.stretch)
+                UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1), resizingMode:.stretch)
         self.stepper.setBackgroundImage(imdis, for:.disabled)
         
         let imnorm = UIImage(named: "pic1.png")!
             .resizableImage(withCapInsets:
-                UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.stretch)
+                UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1), resizingMode:.stretch)
         self.stepper.setBackgroundImage(imnorm, for:.normal)
         
         let tint = imageOfSize(CGSize(3,3)) {
             self.stepper.tintColor.setFill()
             UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,3,3))
         }.resizableImage(withCapInsets:
-            UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.stretch)
+            UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1), resizingMode:.stretch)
         self.stepper.setDividerImage(tint, forLeftSegmentState:.normal, rightSegmentState:.normal)
         self.stepper.setDividerImage(tint, forLeftSegmentState:.highlighted, rightSegmentState:.normal)
         self.stepper.setDividerImage(tint, forLeftSegmentState:.normal, rightSegmentState:.highlighted)

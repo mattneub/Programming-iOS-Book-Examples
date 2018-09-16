@@ -11,9 +11,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardChange), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     func textFieldDidBeginEditing(_ tf: UITextField) {
@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
         self.fr = nil // * let's reverse these
         tf.resignFirstResponder()
-        return true
+        return false
     }
     
     override var shouldAutorotate : Bool {
@@ -34,10 +34,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardShow(_ n:Notification) {
         print("show!")
         let d = n.userInfo!
-        if let local = d[UIKeyboardIsLocalUserInfoKey] {
+        if let local = d[UIResponder.keyboardIsLocalUserInfoKey] {
             print(local)
         }
-        var r = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        var r = d[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         r = self.slidingView.convert(r, from:nil)
         let h = self.slidingView.bounds.intersection(r).height
         if let f = self.fr?.frame {
@@ -52,12 +52,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardHide(_ n:Notification) {
         print("hide!")
         let d = n.userInfo!
-        if let local = d[UIKeyboardIsLocalUserInfoKey] {
+        if let local = d[UIResponder.keyboardIsLocalUserInfoKey] {
             print(local)
         }
         do { // work around bug, may be fixed by now
-            let beginning = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
-            let ending = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+            let beginning = d[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+            let ending = d[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
             if beginning == ending {print("bail!"); return}
         }
         self.topConstraint.constant = 0
@@ -70,17 +70,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardChange(_ n: Notification) {
         print("change!")
         let d = n.userInfo!
-        if let local = d[UIKeyboardIsLocalUserInfoKey] {
+        if let local = d[UIResponder.keyboardIsLocalUserInfoKey] {
             print(local)
         }
         do { // just in case
-            let beginning = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
-            let ending = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+            let beginning = d[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+            let ending = d[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
             if beginning == ending {print("bail!"); return}
         }
         // interesting only if top of frame is more than zero in both cases
-        let rold = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
-        let rnew = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        let rold = d[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+        let rnew = d[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         guard rold.minY > 0 && rnew.minY > 0 else { print("boring"); return }
         let r = self.slidingView.convert(rnew, from:nil)
         let h = self.slidingView.bounds.intersection(r).height

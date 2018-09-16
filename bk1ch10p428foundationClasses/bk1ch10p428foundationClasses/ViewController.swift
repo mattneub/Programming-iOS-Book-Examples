@@ -4,8 +4,34 @@ import UIKit
 
 class Dog : NSObject {
     var name : String
-    init(_ name:String) {self.name = name}
+    var license : Int
+    init(name:String, license:Int) {
+        self.name = name
+        self.license = license
+    }
 }
+
+class Dog2 : NSObject { // a dog equatable and hashable on its name
+    var name : String
+    var license : Int
+    init(name:String, license:Int) {
+        self.name = name
+        self.license = license
+    }
+    override func isEqual(_ object: Any?) -> Bool {
+        if let otherdog = object as? Dog2 {
+            return otherdog.name == self.name && otherdog.license == self.license
+        }
+        return false
+    }
+    override var hash: Int {
+        var h = Hasher()
+        h.combine(self.name)
+        h.combine(self.license)
+        return h.finalize()
+    }
+}
+
 
 
 class ViewController: UIViewController {
@@ -27,7 +53,7 @@ class ViewController: UIViewController {
 
         do {
             let arr = ["hey"] as NSArray
-            let ix = arr.index(of:"ho")
+            let ix = arr.index(of:"ho") // NSArray method, not Swift
             if ix == NSNotFound {
                 print("it wasn't found")
             }
@@ -62,6 +88,13 @@ class ViewController: UIViewController {
                 print("it wasn't found")
             }
         }
+        
+        do {
+            let s = "Hello"
+            let r = (s as NSString).range(of: "ell")
+            let mas = NSMutableAttributedString(string:s)
+            mas.addAttributes([.foregroundColor:UIColor.red], range: r)
+        }
 
         do {
             let s = "hello"
@@ -83,7 +116,7 @@ class ViewController: UIViewController {
         do {
             let s = "MyFile"
             let s2 = (s as NSString).appendingPathExtension("txt")
-            // let s3 = s.stringByAppendingPathExtension("txt") // compile error
+            // let s3 = s.appendingPathExtension("txt") // compile error
 
             print(s2 as Any)
         }
@@ -116,7 +149,7 @@ class ViewController: UIViewController {
         
         do {
             let greg = Calendar(identifier:.gregorian)
-            let comp = DateComponents(calendar: greg, year: 2017, month: 8, day: 10, hour: 15)
+            let comp = DateComponents(calendar: greg, year: 2018, month: 8, day: 10, hour: 15)
             let d = comp.date // Optional wrapping Date
             if let d = d {
                 print(d)
@@ -138,9 +171,9 @@ class ViewController: UIViewController {
         do {
             let greg = Calendar(identifier:.gregorian)
             let d1 = DateComponents(calendar: greg,
-                                    year: 2017, month: 1, day: 1, hour: 0).date!
+                                    year: 2018, month: 1, day: 1, hour: 0).date!
             let d2 = DateComponents(calendar: greg,
-                                    year: 2017, month: 8, day: 10, hour: 15).date!
+                                    year: 2018, month: 8, day: 10, hour: 15).date!
             let di = DateInterval(start: d1, end: d2)
             if di.contains(Date()) { // are we currently between those two dates?
                 print("yep")
@@ -150,7 +183,7 @@ class ViewController: UIViewController {
         do {
             let df = DateFormatter()
             df.dateFormat = "M/d/y"
-            let s = df.string(from: Date()) // 7/31/2017
+            let s = df.string(from: Date()) // 7/31/2018
             print(s)
         }
         
@@ -166,8 +199,9 @@ class ViewController: UIViewController {
         
         do {
             let df = DateFormatter()
+            df.locale = Locale(identifier: "en_US_POSIX")
             df.dateFormat = "M/d/y"
-            let d = df.date(from: "31/7/2017")
+            let d = df.date(from: "31/7/2018")
             print(d as Any)
         }
 
@@ -254,10 +288,19 @@ class ViewController: UIViewController {
         do {
             let ud = UserDefaults.standard
             let c = UIColor.blue
-            let cdata = NSKeyedArchiver.archivedData(withRootObject:c)
+            let cdata = try! NSKeyedArchiver.archivedData(withRootObject: c, requiringSecureCoding: true)
             ud.set(cdata, forKey: "myColor")
         }
         
+        do {
+            let ud = UserDefaults.standard
+            if let cdata = ud.object(forKey: "myColor") as? Data {
+                let c = try! NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: cdata)
+                // c is an Optional wrapping a UIColor
+                print(c as Any)
+            }
+        }
+                
         do {
             let m1 = Measurement(value:5, unit: UnitLength.miles)
             let m2 = Measurement(value:6, unit: UnitLength.kilometers)
@@ -276,7 +319,7 @@ class ViewController: UIViewController {
             let n3 = 3 as NSNumber
             let ok = n2 == 2 // true
             let ok2 = n2 == 2 as NSNumber // true
-            let ix = [n1,n2,n3].index(of:2) // Optional wrapping 1
+            let ix = [n1,n2,n3].firstIndex(of:2) // Optional wrapping 1
             
             // let ok3 = n1 < n2 // compile error
             let ok4 = n1.compare(n2) == .orderedAscending // true
@@ -287,10 +330,30 @@ class ViewController: UIViewController {
         }
         
         do {
-            let d1 = Dog("Fido")
-            let d2 = Dog("Fido")
+            let d1 = Dog(name:"Fido", license:1)
+            let d2 = Dog(name:"Fido", license:1)
             let ok = d1 == d2 // false
             print(ok)
+        }
+        
+        do {
+            let d1 = Dog2(name:"Fido", license:1)
+            let d2 = Dog2(name:"Fido", license:1)
+            let ok = d1 == d2 // true
+            print(ok)
+        }
+        
+        do {
+            var set1 = Set<Dog>()
+            set1.insert(Dog(name:"Fido", license:1))
+            set1.insert(Dog(name:"Fido", license:1))
+            print(set1.count) // 2, because custom equality/hashability is not being used
+            
+            var set2 = Set<Dog2>()
+            set2.insert(Dog2(name:"Fido", license:1))
+            set2.insert(Dog2(name:"Fido", license:1))
+            print(set2.count) // 1, with custom equality/hashability
+            
         }
         
         do {
@@ -345,7 +408,13 @@ class ViewController: UIViewController {
             // does not magically add "1" twice just because its count is 2
         }
         
-        
+        do {
+            let s = "howdy"
+            UserDefaults.standard.set(s, forKey:"ha")
+            let any = UserDefaults.standard.object(forKey:"ha")
+            print(type(of:any!))
+
+        }
         
     }
 

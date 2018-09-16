@@ -96,7 +96,7 @@
 				TargetAttributes = {
 					322244141AE00E97005515B6 = {
 						CreatedOnToolsVersion = 6.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -251,7 +251,7 @@
 				INFOPLIST_FILE = bk2ch10p513selfSizingLabel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -262,7 +262,7 @@
 				INFOPLIST_FILE = bk2ch10p513selfSizingLabel3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

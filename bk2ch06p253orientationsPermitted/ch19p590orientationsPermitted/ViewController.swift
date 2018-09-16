@@ -14,7 +14,7 @@ class ViewController : UIViewController {
         
         print(UIDevice.current.orientation.rawValue)
         
-        let result = UIDeviceOrientationIsLandscape(UIDevice.current.orientation)
+        let result = UIDevice.current.orientation.isLandscape
         print(result)
         
         print("supported") // called 7 times at launch! WTF?

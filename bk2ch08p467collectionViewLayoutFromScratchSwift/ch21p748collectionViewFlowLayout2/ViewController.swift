@@ -32,9 +32,13 @@ extension CGVector {
 
 class ViewController : UICollectionViewController {
     
+    struct Item {
+        var name : String
+        var size : CGSize
+    }
     struct Section {
         var sectionName : String
-        var rowData : [String]
+        var itemData : [Item]
     }
     var sections : [Section]!
 
@@ -53,8 +57,9 @@ class ViewController : UICollectionViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
-            Section(sectionName: $0.key, rowData: $0.value)
+        let d2 = d.mapValues{$0.map {Item(name:$0, size:.zero)}}
+        self.sections = Array(d2).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, itemData: $0.value)
         }
 
         self.navigationItem.title = "States"
@@ -67,7 +72,7 @@ class ViewController : UICollectionViewController {
         self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:self.cellID)
         // register headers (for the other view controller!)
         self.collectionView!.register(UICollectionReusableView.self,
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
+            forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: self.headerID)
 
         // no supplementary views or anything
@@ -79,7 +84,7 @@ class ViewController : UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sections[section].rowData.count
+        return self.sections[section].itemData.count
     }
 
     
@@ -88,8 +93,8 @@ class ViewController : UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
-        if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath)
+        if kind == UICollectionView.elementKindSectionHeader {
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath)
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -171,7 +176,7 @@ class ViewController : UICollectionViewController {
 //            iv.isUserInteractionEnabled = false
 //            cell.addSubview(iv)
         }
-        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
+        cell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -192,12 +197,22 @@ class ViewController : UICollectionViewController {
 }
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
-        var sz = self.modelCell.container.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-        sz.width = sz.width.rounded(.up); sz.height = sz.height.rounded(.up)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let memosize = self.sections[indexPath.section].itemData[indexPath.row].size
+        if memosize != .zero {
+            return memosize
+        }
+        
+        self.modelCell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
+        // nope
+        // return UICollectionViewFlowLayout.automaticSize
+        // NB this is what I was getting wrong all these years
+        // you have to size the _contentView_
+        // (no more container view trickery)
+        var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        sz.width = ceil(sz.width); sz.height = ceil(sz.height)
+        self.sections[indexPath.section].itemData[indexPath.row].size = sz // memoize
         return sz
     }
 }

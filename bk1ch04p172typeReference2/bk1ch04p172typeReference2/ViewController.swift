@@ -26,14 +26,6 @@ func dogMakerAndNamer(_ whattype:Dog.Type) -> Dog {
     return d
 }
 
-func typeTester(_ d:Dog, _ whattype:Dog.Type) {
-    // if type(of:d) is whattype {} // compile error, undeclared type
-    if type(of:d) === whattype {
-        print("yep")
-    } else {
-        print("nope")
-    }
-}
 
 // just for completeness, this is how you solve the "return Self" problem for the global function
 // but we aren't ready for that until we discuss generics
@@ -57,6 +49,9 @@ class ViewController: UIViewController {
         let d = dogMakerAndNamer(Dog.self) // d is a Dog named Fido
         let d2 = dogMakerAndNamer(NoisyDog.self) // d2 is a NoisyDog named Fido - but typed as Dog
         
+        // contradiction: the compiler stops us up front
+        // let d3 : NoisyDog = dogMakerAndNamer(Dog.self)
+        
         do { // d2 is typed by inference as a NoisyDog
             let d = dogMakerAndNamer2(Dog.self) // d is a Dog named Fido
             print(d, d.name)
@@ -70,10 +65,6 @@ class ViewController: UIViewController {
         let ddd = Dog.makeAndName2() // d is a Dog named Fido
         let ddd2 = NoisyDog.makeAndName2() // d2 is a NoisyDog named Fido, typed as NoisyDog
         
-        typeTester(Dog(name:"fido"), NoisyDog.self)
-        typeTester(Dog(name:"fido"), Dog.self)
-        typeTester(NoisyDog(name:"fido"), NoisyDog.self)
-        typeTester(NoisyDog(name:"fido"), Dog.self)
 
 
         do {

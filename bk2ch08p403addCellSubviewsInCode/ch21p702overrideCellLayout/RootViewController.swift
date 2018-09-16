@@ -31,7 +31,7 @@ class RootViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
-        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         // self.tableView.rowHeight = 58 // *
         // row height is set in nib, and we do NOT opt out of Automatic in iOS 11
 //        if #available(iOS 11.0, *) {
@@ -102,7 +102,7 @@ class RootViewController : UITableViewController {
         let iv = cell.viewWithTag(1) as! UIImageView
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
-        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36), format:im.imageRendererFormat)
         let im2 = r.image {
             _ in im.draw(in:CGRect(0,0,36,36))
         }

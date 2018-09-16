@@ -49,7 +49,7 @@ class ViewController : UIViewController {
 
         switch which {
         case 1:
-            let opt = UIViewAnimationOptions.allowUserInteraction
+            let opt = UIView.AnimationOptions.allowUserInteraction
             UIView.animate(withDuration:10, delay: 0, options: opt,
                 animations: {
                     self.button.center = goal

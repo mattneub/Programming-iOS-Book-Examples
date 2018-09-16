@@ -63,7 +63,7 @@
 		327D195B199520E500C0EF59 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81BC63A91D8C204400F82C82 /* cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cup.jpg; sourceTree = "<group>"; };
 		C97D409E1822A25A002DFE75 /* bk2ch13p631todayExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch13p631todayExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C97D40A91822A25A002DFE75 /* bk2ch13p631todayExtension-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bk2ch13p631todayExtension-Info.plist"; sourceTree = "<group>"; };
+		C97D40A91822A25A002DFE75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97D40B41822A25A002DFE75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C97D40B91822A25A002DFE75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +103,7 @@
 		C97D40951822A259002DFE75 = {
 			isa = PBXGroup;
 			children = (
-				C97D40A71822A25A002DFE75 /* ch26p899localNotification */,
+				C97D40A71822A25A002DFE75 /* TestTodayExtension */,
 				323FD2CD1996BD5200C0A682 /* CoffeeTimeTodayExtension */,
 				C97D409F1822A25A002DFE75 /* Products */,
 			);
@@ -118,7 +118,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C97D40A71822A25A002DFE75 /* ch26p899localNotification */ = {
+		C97D40A71822A25A002DFE75 /* TestTodayExtension */ = {
 			isa = PBXGroup;
 			children = (
 				327D195B199520E500C0EF59 /* AppDelegate.swift */,
@@ -126,9 +126,9 @@
 				327D19591995202600C0EF59 /* ViewController.swift */,
 				3219EB1F1BB0E01B0037939C /* LaunchScreen.storyboard */,
 				C97D40B91822A25A002DFE75 /* Assets.xcassets */,
-				C97D40A91822A25A002DFE75 /* bk2ch13p631todayExtension-Info.plist */,
+				C97D40A91822A25A002DFE75 /* Info.plist */,
 			);
-			path = ch26p899localNotification;
+			path = TestTodayExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,11 +184,11 @@
 					323FD2C91996BD5200C0A682 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 					};
 					C97D409D1822A25A002DFE75 = {
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -296,8 +296,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -313,8 +312,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -399,13 +397,12 @@
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p899localNotification/CoffeeTime-Prefix.pch";
-				INFOPLIST_FILE = "ch26p899localNotification/bk2ch13p631todayExtension-Info.plist";
+				INFOPLIST_FILE = TestTodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = bk2ch13p631todayExtension;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -419,12 +416,11 @@
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p899localNotification/CoffeeTime-Prefix.pch";
-				INFOPLIST_FILE = "ch26p899localNotification/bk2ch13p631todayExtension-Info.plist";
+				INFOPLIST_FILE = TestTodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = bk2ch13p631todayExtension;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

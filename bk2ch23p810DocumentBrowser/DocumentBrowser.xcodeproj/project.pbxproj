@@ -10,6 +10,7 @@
 		8125B5AF1FB212810093A170 /* smiley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8125B5AE1FB212810093A170 /* smiley.jpg */; };
 		81536DE91FB211DF00FDBC59 /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */; };
 		81536DED1FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8196D9D621207BB200954798 /* smiley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8196D9D521207BB200954798 /* smiley.jpg */; };
 		8199432B1FAE356B001EAFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199432A1FAE356B001EAFCD /* AppDelegate.swift */; };
 		8199432D1FAE356B001EAFCD /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199432C1FAE356B001EAFCD /* DocumentBrowserViewController.swift */; };
 		819943311FAE356B001EAFCD /* PeopleDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819943301FAE356B001EAFCD /* PeopleDocument.swift */; };
@@ -52,6 +53,7 @@
 		81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PeopleGroup2Thumbnail.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
 		81536DEA1FB211DF00FDBC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8196D9D521207BB200954798 /* smiley.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = smiley.jpg; path = PeopleGroup2Thumbnail/smiley.jpg; sourceTree = SOURCE_ROOT; };
 		819943271FAE356B001EAFCD /* DocumentBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocumentBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8199432A1FAE356B001EAFCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8199432C1FAE356B001EAFCD /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				8199432A1FAE356B001EAFCD /* AppDelegate.swift */,
 				8199432C1FAE356B001EAFCD /* DocumentBrowserViewController.swift */,
 				819943301FAE356B001EAFCD /* PeopleDocument.swift */,
+				8196D9D521207BB200954798 /* smiley.jpg */,
 				819943441FAE3685001EAFCD /* PeopleLister.swift */,
 				819943451FAE3685001EAFCD /* PeopleLister.xib */,
 				819943401FAE3648001EAFCD /* Person.swift */,
@@ -183,10 +186,12 @@
 				TargetAttributes = {
 					81536DE51FB211DF00FDBC59 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					819943261FAE356B001EAFCD = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -227,6 +232,7 @@
 				819943491FAE4D04001EAFCD /* newdoc.pplgrp2 in Resources */,
 				819943361FAE356B001EAFCD /* Assets.xcassets in Resources */,
 				819943471FAE3685001EAFCD /* PeopleLister.xib in Resources */,
+				8196D9D621207BB200954798 /* smiley.jpg in Resources */,
 				819943431FAE3648001EAFCD /* PersonCell.xib in Resources */,
 				819943341FAE356B001EAFCD /* Main.storyboard in Resources */,
 			);
@@ -295,7 +301,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.DocumentBrowser.PeopleGroup2Thumbnail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -310,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.DocumentBrowser.PeopleGroup2Thumbnail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -433,7 +439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.DocumentBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -449,7 +455,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.DocumentBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

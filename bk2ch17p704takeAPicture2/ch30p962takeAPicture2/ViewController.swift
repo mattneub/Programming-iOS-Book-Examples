@@ -54,7 +54,7 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
         alert.addAction(UIAlertAction(
         title: "OK", style: .default) {
             _ in
-            let url = URL(string:UIApplicationOpenSettingsURLString)!
+            let url = URL(string:UIApplication.openSettingsURLString)!
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
@@ -78,7 +78,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
     func reallyTake() {
-        let src = UIImagePickerControllerSourceType.camera
+        let src = UIImagePickerController.SourceType.camera
         guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
 
         guard UIImagePickerController.availableMediaTypes(for:src) != nil else {return}
@@ -104,8 +104,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.dismiss(animated:true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            guard let im = info[UIImagePickerControllerOriginalImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            guard let im = info[.originalImage] as? UIImage
                 else {return}
             let svc = SecondViewController(image:im)
             picker.pushViewController(svc, animated: true)

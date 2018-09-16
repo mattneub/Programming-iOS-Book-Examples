@@ -16,7 +16,8 @@ class ViewController : UIViewController {
         lab2.sizeToFit()
         UIView.transition(
             from:self.lab, to: lab2,
-            duration: 0.8, options: .transitionFlipFromLeft) {
+            // duration: 0.8, options: .transitionFlipFromLeft) {
+            duration: 0.8, options: .transitionCrossDissolve) {
                 _ in
                 self.lab = lab2
         }
