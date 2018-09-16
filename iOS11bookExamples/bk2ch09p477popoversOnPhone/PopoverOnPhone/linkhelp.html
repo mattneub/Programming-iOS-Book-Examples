@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Untitled</title>
+</head>
+<body style="font:15pt Georgia">
+
+<p>This game reconstructs MacLinkSame, a popular PPC Mac OS X application by Zheng Xiaoping, released in 2004 and no longer supported, nor even, as far as I can tell, available.</p>
+
+<p>The basic rules (which turn out to be based on the traditional Shisen-Sho) are simple. All you have to do is spot a pair of tiles bearing the same picture, such that the <b>centers</b> of the tiles can be connected by a path consisting of <b>one, two, or three</b> straight line segments, where (1) all line segments in the path are <b>horizontal or vertical</b>, and (2) <b>no segment of the path crosses any other tile</b>. Select both tiles to remove them from the board.</p>
+
+<p>Proceed in this way to clear the board, one pair of tiles at a time. There are nine stages to the game, differing in how the pieces slide to occupy the empty spaces left by removed tiles; so to finish the game and earn a final score, you must clear the board nine times. You can configure a game to consist of fewer stages, but you must finish all those stages in order to receive a score; quitting the game in the middle kills it (state is deliberately not saved).</p>
+
+<p>My scoring system is a little different from the original MacLinkSame. MacLinkSame imposed a timer on each stage; if you didn&#8217;t clear the board before time ran out, the game ended prematurely. I don&#8217;t like the severity of this race-the-clock feature; I want you to be able to finish the game every time. On the other hand, I still want to reward alacrity and punish sloth. So my scoring system works like this:</p>
+
+<ul>
+	<li><p>You get 1 point for removing a pair of tiles.</p></li>
+
+	<li><p>You get bonus points for making pair-removals in quick succession - under ten seconds, and the faster the better. Thus it can be in your interest to pause a bit and plan ahead, so that you can make several rapid moves in a row. (You&#8217;ll find that you collect bonus points naturally in any case at the very beginning and the very end of a stage, when pairs are most obvious and fast moves are easy.) But do not pause too long, because...</p></li>
+
+	<li><p>To encourage you not to fall asleep at the wheel, there is an invisible &#8220;shot clock&#8221;: you <i>lose</i> 1 point for every 10 seconds of inactivity. This loss is emphasized by showing the score in red. Turning off the device&#8217;s screen pauses the countdown.</p></li>
+
+	<li><p>If you are at a stand, you may ask for a <b>hint</b>. A legal path appears on the screen until you dismiss it by tapping. But you <i>lose 10 points</i> for doing this. This loss can in fact be worth it; if the hint causes you to spot multiple paths, you can quickly make up for it with bonus points</p></li>
+
+	<li><p>Alternatively, you can ask for the pieces to be <b>reshuffled</b>. The pieces presently on the board are gathered up, reshuffled, and replaced into the same locations. This can make pairs easier to spot, but you <i>lose 20 points</i>. Again, you may be able to make up the loss by a couple of rapid moves after the shuffle. You never <i>need</i> to reshuffle, however, since the board is reshuffled automatically if a configuration is ever reached where there are no legal paths.</p></li>
+</ul>
+
+<p>Unlike the original MacLinkSame, there is no limit to the number of shuffles or hints you can request per stage; the loss of points is, I think, sufficient to discourage you from using these features too frequently.</p>
+
+<p>If you dislike the time pressure, you can turn off scoring by switching from Timed mode to Practice mode. Since Practice mode is completely leisurely, you can quit LinkSame in Practice mode and the position will be restored when you relaunch. (The position is not restored if you quit LinkSame in Timed mode, because you could use this to rest for days between a burst of moves, which is hardly a fair way to race the clock.) Every new game starts in Timed mode; to switch from Practice mode to Timed mode, simply begin a new game.</p>
+
+
+</body>
+</html>
