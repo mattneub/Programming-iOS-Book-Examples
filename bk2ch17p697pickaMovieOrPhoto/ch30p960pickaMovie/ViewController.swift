@@ -66,8 +66,8 @@ class ViewController: UIViewController {
         checkForPhotoLibraryAccess {
         
             // horrible Moments interface
-            // let src = UIImagePickerController.SourceType.savedPhotosAlbum
-            let src = UIImagePickerController.SourceType.photoLibrary
+            let src = UIImagePickerController.SourceType.savedPhotosAlbum
+            // let src = UIImagePickerController.SourceType.photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(src)
                 else { print("alas"); return }
             guard let arr = UIImagePickerController.availableMediaTypes(for:src)

@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     
     func createDesc() -> MPMusicPlayerMediaItemQueueDescriptor {
         let query = MPMediaQuery.albums()
-        let hasSonata = MPMediaPropertyPredicate(value:"Double",
+        let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
                                                  forProperty:MPMediaItemPropertyTitle,
                                                  comparisonType:.contains)
         query.addFilterPredicate(hasSonata)

@@ -6,6 +6,8 @@ import MetalKit
 // metal view subclass that does nothing but render a CIImage once
 // this is really all a kind of boilerplate
 
+// NB this will compile only if the destination is a _device_
+
 class MyMTKView : MTKView {
     var context : CIContext?
     var queue: MTLCommandQueue!

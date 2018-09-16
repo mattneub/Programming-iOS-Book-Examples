@@ -22,6 +22,12 @@ extension CGVector {
         self.init(dx:dx, dy:dy)
     }
 }
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
 
 
 
@@ -38,9 +44,7 @@ class MyTableViewCell: UITableViewCell {
             }
             v.layer.cornerRadius = 10
             v.frame = v.frame.insetBy(dx: -10, dy: -10)
-            let cf = self.contentView.convert(self.bounds, from:self)
-            v.center = CGPoint(cf.midX, cf.midY);
-            v.frame = v.frame.integral // ?
+            v.center = self.contentView.convert(self.bounds.center, from: self)
             v.tag = 1001
             self.contentView.addSubview(v)
             v.startAnimating()

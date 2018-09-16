@@ -156,22 +156,6 @@ class MyUserNotificationHelper : NSObject {
         // need trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         
-        // test nextTriggerDate bug
-        /*
-        print("scheduling at", Date())
-        DispatchQueue.main.asyncAfter(deadline: .now()+130) {
-            print("checking at", Date())
-            UNUserNotificationCenter.current().getPendingNotificationRequests {
-                arr in let arr = arr
-                if let req = arr[0].trigger as? UNTimeIntervalNotificationTrigger {
-                    let fd = req.nextTriggerDate()
-                    print("trigger date", fd as Any)
-                }
-                
-            }
-        }
-        */
-        
         // need content
         let content = UNMutableNotificationContent()
         content.title = "Caffeine!" // title now always appears
@@ -214,6 +198,21 @@ class MyUserNotificationHelper : NSObject {
         let req = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(req)
+        
+        // test nextTriggerDate bug
+        print("scheduling at", Date())
+        DispatchQueue.main.asyncAfter(deadline: .now()+5) {
+            print("checking at", Date())
+            UNUserNotificationCenter.current().getPendingNotificationRequests {
+                arr in let arr = arr
+                guard arr.count > 0 else { print("no pending requests"); return }
+                if let req = arr[0].trigger as? UNTimeIntervalNotificationTrigger {
+                    let fd = req.nextTriggerDate()
+                    print("trigger date", fd as Any)
+                }
+            }
+        }
+
     }
 }
 

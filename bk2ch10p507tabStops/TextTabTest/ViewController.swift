@@ -154,9 +154,21 @@ class ViewController : UIViewController {
     
 }
 
+extension UITextItemInteraction : CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .invokeDefaultAction: return "invokeDefaultAction"
+        case .presentActions: return "presentActions"
+        case .preview: return "preview"
+        }
+    }
+    
+    
+}
+
 extension ViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
-        print("attachment", interaction.rawValue)
+        print("attachment", interaction)
         if interaction == .preview {return false}
         return true
     }
@@ -164,7 +176,7 @@ extension ViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith url: Foundation.URL, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
         print("URL", url)
         print((textView.text as NSString).substring(with:characterRange))
-        print(interaction.rawValue)
+        print(interaction)
         return true
     }
 }
