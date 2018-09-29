@@ -133,11 +133,8 @@ class ViewController: UIViewController {
     let PIXCOUNT = 20
     func test() {
         let ud = UserDefaults.standard
-        var recents = ud.object(forKey:RECENTS) as? [Int]
-        if recents == nil {
-            recents = []
-        }
-        var forbiddenNumbers = Set(recents!)
+        let recents = ud.object(forKey: RECENTS) as? [Int] ?? []
+        var forbiddenNumbers = Set(recents)
         let legalNumbers = Set(1...PIXCOUNT).subtracting(forbiddenNumbers)
         let newNumber = legalNumbers.randomElement()!
         forbiddenNumbers.insert(newNumber)
