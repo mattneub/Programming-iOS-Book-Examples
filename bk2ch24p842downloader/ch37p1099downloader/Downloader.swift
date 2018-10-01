@@ -58,7 +58,20 @@ class Downloader: NSObject {
         }
         func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
             print("removing completion for task \(task.taskIdentifier)")
+            // if error != nil { self.handlers[task.taskIdentifier]?(nil) } // for book, one line grace
+            let ch = self.handlers[task.taskIdentifier]
             self.handlers[task.taskIdentifier] = nil
+            // whoa, this is a flaw in the book and example code too; need to return nil if we get error
+            if let error = error {
+                print("error?", error)
+                if isMain {
+                    ch?(nil)
+                } else {
+                    DispatchQueue.main.sync {
+                        ch?(nil)
+                    }
+                }
+            }
         }
         deinit {
             print("farewell from Delegate", self.handlers.count)
