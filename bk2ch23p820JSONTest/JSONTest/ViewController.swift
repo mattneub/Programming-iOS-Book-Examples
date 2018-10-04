@@ -32,9 +32,9 @@ struct Outer : Decodable {
         }
     }
     init(from decoder: Decoder) throws {
-        let con = try! decoder.container(keyedBy: CK.self)
-        self.categoryName = try! con.decode(String.self, forKey:CK(stringValue:"categoryName")!)
-        self.unknown = try! con.decode([Inner].self, forKey: CK(stringValue:self.categoryName)!)
+        let con = try decoder.container(keyedBy: CK.self)
+        self.categoryName = try con.decode(String.self, forKey:CK(stringValue:"categoryName")!)
+        self.unknown = try con.decode([Inner].self, forKey: CK(stringValue:self.categoryName)!)
     }
 }
 
