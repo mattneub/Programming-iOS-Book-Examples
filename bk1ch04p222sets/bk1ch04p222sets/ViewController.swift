@@ -87,6 +87,17 @@ class ViewController: UIViewController {
         }
         
         do {
+            // accidentally omitted from the book: showing the use of insert result
+            // typical usage: unique array in order
+            var arr = ["Mannie", "Mannie", "Moe", "Jack", "Jack", "Moe", "Mannie"]
+            do {
+                var temp = Set<String>()
+                arr = arr.filter { temp.insert($0).inserted }
+            }
+            print(arr) // ["Mannie", "Moe", "Jack"]
+        }
+        
+        do {
             let val = UIView.AnimationOptions.autoreverse.rawValue | UIView.AnimationOptions.repeat.rawValue
             let opts = UIView.AnimationOptions(rawValue: val)
             print(opts)
