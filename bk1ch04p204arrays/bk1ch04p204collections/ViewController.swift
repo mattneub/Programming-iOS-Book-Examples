@@ -489,6 +489,7 @@ class ViewController: UIViewController {
         
         do {
             // implementation of each_slice
+            // but see Martin R's https://stackoverflow.com/a/27985246/341994, might be better
             let arr = [1,2,3,4,5,6,7,8,9]
             let clump = 2
             let slices : [[Int]] = arr.reduce(into:[]) {
