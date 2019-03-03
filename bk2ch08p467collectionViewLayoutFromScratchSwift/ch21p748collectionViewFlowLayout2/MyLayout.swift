@@ -9,8 +9,7 @@ class MyLayout : UICollectionViewLayout {
     // absolute rock-bottom layout from scratch, shows minimal responsibilities
     
     override func prepare() {
-        
-        //print("prepare1")
+        print("prepare1")
         let sections = self.collectionView!.numberOfSections
         
         /*
@@ -23,7 +22,7 @@ class MyLayout : UICollectionViewLayout {
         // work out cell size based on bounds size
         let sz = self.collectionView!.bounds.size
         let width = sz.width
-        let shortside = (width/50.0).rounded(.down)
+        let shortside = (width/100).rounded(.down)
         let side = width/shortside
         
         // generate attributes for all cells
@@ -54,9 +53,13 @@ class MyLayout : UICollectionViewLayout {
         return self.sz
     }
     
+    var oldBoundsSize = CGSize.zero
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        let ok = newBounds.size != self.sz
-        // print("should1 \(ok)")
+        let ok = newBounds.size != self.oldBoundsSize
+        // print("should1", ok, newBounds, self.sz)
+        if ok {
+            self.oldBoundsSize = newBounds.size
+        }
         return ok
     }
     
@@ -74,5 +77,8 @@ class MyLayout : UICollectionViewLayout {
         return Array(self.atts.values)
     }
     
+    deinit {
+        print("farewell from layout")
+    }
 
 }
