@@ -129,16 +129,24 @@ class ViewController: UIViewController {
             let result2 = i.flatMap {_ in "hello"} // String?
             let result3 = i.map {_ in Optional("hello") } // String??
             let result4 = i.flatMap {_ in Optional("hello") } // String?
+            _ = result1
+            _ = result2
+            _ = result3
+            _ = result4
+
         }
         
         do {
             let s : String? = "howdy"
             let s2 = s.map {$0.uppercased()}
+            _ = s2
+
         }
         
         do {
             let s : String? = "1"
             let i = s.flatMap {Int($0)}
+            _ = i
         }
     
     }

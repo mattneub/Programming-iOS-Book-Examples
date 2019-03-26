@@ -40,7 +40,7 @@ func f(_ x: CustomStringConvertible & CustomDebugStringConvertible) {
     
 }
 
-protocol MyViewProtocol : class {
+protocol MyViewProtocol : AnyObject {
     func doSomethingCool()
 }
 

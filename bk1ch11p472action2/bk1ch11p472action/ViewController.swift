@@ -43,7 +43,7 @@ class ViewController: UIViewController {
 
     @IBAction func showResponderChain(_ sender: UIResponder) {
         var r : UIResponder! = sender
-        repeat { print(r, "\n"); r = r.next } while r != nil
+        repeat { print(r as Any, "\n"); r = r.next } while r != nil
     }
     
     @IBAction func unwind(_ sender: UIStoryboardSegue) {}

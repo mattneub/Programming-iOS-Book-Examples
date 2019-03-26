@@ -17,7 +17,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
     @IBAction func doPrint(_ sender: Any) {
         print("this is a test, print")
-        print(self.view)
+        print(self.view as Any)
         print(self.bigmessage)
     }
     @IBAction func doNSLog(_ sender: Any) {

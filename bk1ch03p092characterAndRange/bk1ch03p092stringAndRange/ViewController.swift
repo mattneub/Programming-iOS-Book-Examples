@@ -280,6 +280,7 @@ class ViewController: UIViewController {
             // okay, now it _IS_ a problem
             // but we don't actually need to do it because it's already a Range
             //_ = r3
+            _ = r2
         }
         
         

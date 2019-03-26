@@ -8,7 +8,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 }
 
 
-protocol FlipsideViewControllerDelegate : class {
+protocol FlipsideViewControllerDelegate : AnyObject {
     func flipsideViewControllerDidFinish(_ controller:FlipsideViewController)
 }
 

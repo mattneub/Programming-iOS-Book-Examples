@@ -2,7 +2,7 @@
 
 import UIKit
 
-protocol ColorPickerDelegate : class {
+protocol ColorPickerDelegate : AnyObject {
     // color == nil on cancel
     func colorPicker (_ picker:ColorPickerController,
         didSetColorNamed theName:String?,

@@ -2,7 +2,7 @@
 
 import UIKit
 
-protocol FlipsideViewControllerDelegate : class {
+protocol FlipsideViewControllerDelegate : AnyObject {
     func flipsideViewControllerDidFinish(_ controller:FlipsideViewController)
 }
 

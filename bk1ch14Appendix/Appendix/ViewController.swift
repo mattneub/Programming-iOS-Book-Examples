@@ -444,6 +444,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         
         do {
             let b = UIButton()
+            // I don't understand the warnings in the next two lines; bug?
             b.addTarget(self, action: Selector("doNewGame:"), for: .touchUpInside)
             b.addTarget(self, action: "doNewGame:", for: .touchUpInside)
             b.addTarget(self, action: #selector(doNewGame), for: .touchUpInside)
@@ -598,7 +599,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         print(#selector(self.say(of:loudly:)))
     }
 
-    @objc func doNewGame(_ sender:Any) {}
+    @objc func doNewGame(_ sender:Any) { print("do new game") }
 
 }
 

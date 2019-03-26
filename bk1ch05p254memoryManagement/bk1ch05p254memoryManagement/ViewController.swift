@@ -45,7 +45,7 @@ class SecondViewController : UIViewController {
     // ...
     weak var delegate2 : (NSObject & SecondViewControllerDelegate2)?
 }
-protocol SecondViewControllerDelegate : class {
+protocol SecondViewControllerDelegate : AnyObject {
     func accept(data:Any!)
 }
 

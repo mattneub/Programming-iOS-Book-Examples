@@ -59,8 +59,8 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for ip in indexPaths {
             let m = self.model[ip.row]
-            guard m.im == nil else { print("nop \(ip)"); return } // we have an image, nothing to do
-            guard m.task == nil else { print("nop2 \(ip)"); return } // we're already downloading
+            guard m.im == nil else { print("nop \(ip)"); continue } // we have an image, nothing to do
+            guard m.task == nil else { print("nop2 \(ip)"); continue } // we're already downloading
             print("prefetching for \(ip)")
             let url = URL(string:m.picurl)!
             m.task = self.downloader.download(url:url) { url in

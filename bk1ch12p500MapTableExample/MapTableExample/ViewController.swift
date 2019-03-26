@@ -19,7 +19,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 // Not in book, but I do mention these classes in a note
 
 
-protocol SomeDelegate: class {
+protocol SomeDelegate: AnyObject {
     func someFunction()
 }
 

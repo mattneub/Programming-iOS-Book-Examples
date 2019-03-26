@@ -248,9 +248,9 @@ class ViewController: UIViewController {
             
             let c = C()
             c.p = "howdy"
-            print(c.p)
+            print(c.p as Any)
             c.p = "farewell"
-            print(c.p)
+            print(c.p as Any)
         }
 
         

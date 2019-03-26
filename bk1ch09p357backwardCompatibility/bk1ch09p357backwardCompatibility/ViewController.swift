@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         
         super.viewDidAppear(animated)
         
-        print(self.view)
+        print(self.view as Any)
         NSLog("the view: %@", self.view)
         
         print("howdy")
