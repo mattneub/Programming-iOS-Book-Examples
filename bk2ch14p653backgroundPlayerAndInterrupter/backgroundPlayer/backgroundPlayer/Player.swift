@@ -4,7 +4,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-protocol PlayerDelegate : class {
+protocol PlayerDelegate : AnyObject {
     func soundFinished(_ sender: Any)
 }
 

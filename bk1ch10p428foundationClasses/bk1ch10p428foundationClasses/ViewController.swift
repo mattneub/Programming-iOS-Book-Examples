@@ -132,7 +132,7 @@ class ViewController: UIViewController {
         do {
             var s = "hello world, go to hell"
             let r = try! NSRegularExpression(
-                pattern: "\\bhell\\b",
+                pattern: #"\bhell\b"#,
                 options: .caseInsensitive)
             s = r.stringByReplacingMatches(
                 in: s,

@@ -2,7 +2,7 @@
 
 import UIKit
 
-protocol SizeDelegate : class {
+protocol SizeDelegate : AnyObject {
     var selectedText : String {get set}
 }
 

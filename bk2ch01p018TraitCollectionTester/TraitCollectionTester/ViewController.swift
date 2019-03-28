@@ -9,6 +9,8 @@ extension UIUserInterfaceSizeClass : CustomStringConvertible {
             case .unspecified: return "unspecified"
             case .regular: return "regular"
             case .compact: return "compact"
+            @unknown default: // new in Swift 5 have to cover this
+                fatalError()
             }
         }()
     }

@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         lab1.text = "Hello"
         self.view.addSubview(lab1)
         self.lab1 = lab1
-        print(button, button.translatesAutoresizingMaskIntoConstraints, terminator:"\n\n")
+        print(button as Any, button.translatesAutoresizingMaskIntoConstraints, terminator:"\n\n")
         print(lab1, lab1.translatesAutoresizingMaskIntoConstraints, terminator:"\n\n")
         
         let lab2 = UILabel()

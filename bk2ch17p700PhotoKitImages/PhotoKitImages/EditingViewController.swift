@@ -7,7 +7,7 @@ import AVFoundation
 import VignetteFilter
 import MetalKit
 
-protocol EditingViewControllerDelegate : class {
+protocol EditingViewControllerDelegate : AnyObject {
     func finishEditing(vignette:Double)
 }
 

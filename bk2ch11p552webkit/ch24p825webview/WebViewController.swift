@@ -256,7 +256,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
             s = s.replacingOccurrences(of:"<guid>", with:"http://tidbits.com/article/12228")
             s = s.replacingOccurrences(of:"<ourtitle>", with:"Lion Details Revealed with Shipping Date and Price")
             // note way to set up messaging from web page's javascript to us
-            s = s.replacingOccurrences(of:"<playbutton>", with:"<img src=\"listen.png\" onclick=\"window.webkit.messageHandlers.playbutton.postMessage('play')\">")
+            s = s.replacingOccurrences(of:"<playbutton>", with:#"<img src="listen.png" onclick="window.webkit.messageHandlers.playbutton.postMessage('play')">"#)
             s = s.replacingOccurrences(of:"<author>", with:"TidBITS Staff")
             s = s.replacingOccurrences(of:"<date>", with:"Mon, 06 Jun 2011 13:00:39 PDT")
             s = s.replacingOccurrences(of:"<content>", with:ss)

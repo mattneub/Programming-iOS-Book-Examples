@@ -3,7 +3,7 @@
 import UIKit
 
 
-protocol SecondViewControllerDelegate : class {
+protocol SecondViewControllerDelegate : AnyObject {
     func accept(data:Any!)
 }
 

@@ -117,7 +117,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             return
         }
         
-        var which : Int {return 10}
+        var which : Int {return 1}
         switch which {
         case 1:
             let path = Bundle.main.path(forResource: "htmlbody", ofType:"txt")!
@@ -132,7 +132,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             s = s.replacingOccurrences(of:"<margin>", with:"10")
             s = s.replacingOccurrences(of:"<guid>", with:"http://tidbits.com/article/12228")
             s = s.replacingOccurrences(of:"<ourtitle>", with:"Lion Details Revealed with Shipping Date and Price")
-            s = s.replacingOccurrences(of:"<playbutton>", with:"<img src=\"listen.png\" onclick=\"document.location='play:me'\">")
+            s = s.replacingOccurrences(of:"<playbutton>", with:#"<img src="listen.png" onclick="document.location='play:me'">"#)
             s = s.replacingOccurrences(of:"<author>", with:"TidBITS Staff")
             s = s.replacingOccurrences(of:"<date>", with:"Mon, 06 Jun 2011 13:00:39 PDT")
             s = s.replacingOccurrences(of:"<content>", with:ss)
