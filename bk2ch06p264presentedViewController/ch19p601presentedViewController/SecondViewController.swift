@@ -10,7 +10,7 @@ Standard architecture for handing info from vc to presented vc...
 */
 
 protocol SecondViewControllerDelegate : AnyObject {
-    func accept(data:Any!)
+    func accept(data:Any)
 }
 
 class SecondViewController : UIViewController {
@@ -19,7 +19,7 @@ class SecondViewController : UIViewController {
     
     weak var delegate : SecondViewControllerDelegate?
     
-    @IBAction func doDismiss(_ sender: Any?) {
+    @IBAction func doDismiss(_ sender: Any) {
         print("dismiss button")
         // logging to show relationships
         print(self.presentingViewController!)

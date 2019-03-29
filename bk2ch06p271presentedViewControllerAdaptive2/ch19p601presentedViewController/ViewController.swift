@@ -61,14 +61,14 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
     }
     
-    func accept(data:Any!) {
+    func accept(data:Any) {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
-    override func dismiss(animated: Bool, completion: (() -> Void)!) {
+    override func dismiss(animated: Bool, completion: (() -> Void)?) {
         super.dismiss(animated:animated, completion: completion)
     }
     

@@ -18,7 +18,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         self.present(svc, animated:true)
     }
     
-    func accept(data:Any!) {
+    func accept(data:Any) {
         // do something with data here
         
         // prove that you received data
@@ -30,7 +30,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         print("vc did disappear")
     }
     
-    override func dismiss(animated: Bool, completion: (() -> Void)!) {
+    override func dismiss(animated: Bool, completion: (() -> Void)?) {
         print("here") // prove that this is called by clicking on curl
         super.dismiss(animated:animated, completion: completion)
     }

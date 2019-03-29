@@ -18,11 +18,11 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         }
     }
     
-    func accept(data:Any!) {
+    func accept(data:Any) {
         // do something with data here
         
         // prove that you received data
-        print(data)
+        print(data as Any)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -30,7 +30,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         print("vc did disappear")
     }
     
-    override func dismiss(animated: Bool, completion: (() -> Void)!) {
+    override func dismiss(animated: Bool, completion: (() -> Void)?) {
         print("here") // prove that this is called by clicking on curl
         super.dismiss(animated:animated, completion: completion)
     }

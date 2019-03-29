@@ -4,7 +4,7 @@ import UIKit
 
 
 protocol SecondViewControllerDelegate : AnyObject {
-    func accept(data:Any!)
+    func accept(data:Any)
 }
 
 class SecondViewController : UIViewController {

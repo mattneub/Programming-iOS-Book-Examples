@@ -15,7 +15,7 @@ class MyView : UIView {
         // self.v.removeGestureRecognizer(t)
     }
     
-    @objc func tap(_ g:UIGestureRecognizer!) {
+    @objc func tap(_ g:UIGestureRecognizer) {
         print("tap! (gesture recognizer)")
     }
         

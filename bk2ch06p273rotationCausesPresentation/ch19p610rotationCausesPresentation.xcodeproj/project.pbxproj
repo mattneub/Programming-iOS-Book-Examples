@@ -145,6 +145,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -282,6 +283,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p610rotationCausesPresentation/ch19p610rotationCausesPresentation-Prefix.pch";
 				INFOPLIST_FILE = "ch19p610rotationCausesPresentation/ch19p610rotationCausesPresentation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -295,6 +297,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p610rotationCausesPresentation/ch19p610rotationCausesPresentation-Prefix.pch";
 				INFOPLIST_FILE = "ch19p610rotationCausesPresentation/ch19p610rotationCausesPresentation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -319,6 +322,7 @@
 				C925A48117C9447F004E5E68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("did load", self.view, self.children)
+        print("did load", self.view as Any, self.children)
         print("child's view:", self.children[0].viewIfLoaded as Any)
         print("child's view's superview:", self.children[0].viewIfLoaded?.superview as Any)
         // NSLog(@"%d", [self.childViewControllers[0] isViewLoaded]);
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("did appear", self.view, self.children)
+        print("did appear", self.view as Any, self.children)
     }
 
 }
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 class ChildViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("child did load", self.view, self.children)
+        print("child did load", self.view as Any, self.children)
         // NSLog(@"%d", [self.childViewControllers[0] isViewLoaded]);
         
     }

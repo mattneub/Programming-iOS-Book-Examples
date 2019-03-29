@@ -20,7 +20,7 @@ class ViewController : UIViewController {
             return olddata as Data
         }
         // ... recreate data here ...
-        let newdata = Data(bytes:[1,2,3,4]) // recreated data
+        let newdata = Data([1,2,3,4]) // recreated data
         self._cache.setObject(newdata as NSData, forKey: key)
         return newdata
     }
@@ -34,7 +34,7 @@ class ViewController : UIViewController {
             return result
         } else {
             // ... recreate data here ...
-            let data = Data(bytes:[6,7,8,9]) // recreated data
+            let data = Data([6,7,8,9]) // recreated data
             self._purgeable = NSPurgeableData(data:data)
             self._purgeable.endContentAccess() // must call "end"!
             return data

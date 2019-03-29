@@ -40,11 +40,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         // return super.supportedInterfaceOrientations
         return .landscape
     }
-    
-//    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
-//        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
-//    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationController.delegate = self

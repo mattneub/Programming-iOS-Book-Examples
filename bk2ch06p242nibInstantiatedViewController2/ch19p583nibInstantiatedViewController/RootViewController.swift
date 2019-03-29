@@ -6,7 +6,7 @@ class RootViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.view)
+        print(self.view as Any)
     }
     
 }
