@@ -97,13 +97,13 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func doButton (_ sender: Any!) {
+    @IBAction func doButton (_ sender: Any) {
         let rate = self.player.rate
         self.player.rate = rate < 0.01 ? 1 : 0
     }
 
     
-    @IBAction func restart (_ sender: Any!) {
+    @IBAction func restart (_ sender: Any) {
         let item = self.player.currentItem! //
         item.seek(to:CMTime(seconds:0, preferredTimescale:600))
     }

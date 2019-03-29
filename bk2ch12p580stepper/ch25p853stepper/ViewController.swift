@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     @IBOutlet var stepper : UIStepper!
     @IBOutlet var prog : UIProgressView!
     
-    @IBAction func doStep(_ sender: Any!) {
+    @IBAction func doStep(_ sender: Any) {
         let step = sender as! UIStepper
         self.prog.setProgress(Float(step.value / (step.maximumValue - step.minimumValue)), animated:true)
     }

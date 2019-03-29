@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         return MyReminderApp.database
     }
     
-    @IBAction func doNewReminder (_ sender: Any!) {
+    @IBAction func doNewReminder (_ sender: Any) {
         
         checkForReminderAccess {
             

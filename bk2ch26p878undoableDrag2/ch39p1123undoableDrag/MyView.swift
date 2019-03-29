@@ -73,7 +73,7 @@ class MyView : UIView {
         }
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any!) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(undo) {
             return self.undoer.canUndo
         }

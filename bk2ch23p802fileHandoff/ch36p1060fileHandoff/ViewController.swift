@@ -76,7 +76,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         }
     }
     
-    @IBAction func doPreview (_ sender: Any!) {
+    @IBAction func doPreview (_ sender: Any) {
         var url = self.doc
         if url == nil {
             url = self.locateDoc()
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         return self
     }
     
-    @IBAction func doPreviewMultipleUsingQuickLook (_ sender: Any!) {
+    @IBAction func doPreviewMultipleUsingQuickLook (_ sender: Any) {
         self.docs = [URL]()
         do {
             let fm = FileManager.default

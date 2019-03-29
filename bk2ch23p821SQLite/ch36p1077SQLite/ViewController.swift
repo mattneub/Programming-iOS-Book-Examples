@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func doButton (_ sender: Any!) {
+    @IBAction func doButton (_ sender: Any) {
         
         do {
             let fm = FileManager.default
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 
     }
     
-    @IBAction func doButton2 (_ sender: Any!) {
+    @IBAction func doButton2 (_ sender: Any) {
         let db = FMDatabase(path:self.dbpath)
         db.open()
         if let rs = try? db.executeQuery("select * from people", values:nil) {

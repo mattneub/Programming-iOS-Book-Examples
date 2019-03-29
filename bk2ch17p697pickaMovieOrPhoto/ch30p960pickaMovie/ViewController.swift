@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
-    @IBAction func doPick (_ sender: Any!) {
+    @IBAction func doPick (_ sender: Any) {
         
         // according to the video, in iOS 11 no authorization is required,
         // because everything is happening out-of-process

@@ -37,14 +37,6 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
     
     // delegate of flag's pan gesture recognizer
     
-    // perhaps this was a bug? I can't reproduce the problem any more
-
-//    func gestureRecognizer(g: UIGestureRecognizer!, shouldBeRequiredToFailByGestureRecognizer og: UIGestureRecognizer!) -> Bool {
-//        println(g)
-//        println(og)
-//        return true // keep our flag gesture recognizer first
-//        // trying to avoid weird behavior where sometimes pan gesture fails
-//    }
     
     @IBAction func swiped (_ g: UISwipeGestureRecognizer) {
         let sv = self.sv!

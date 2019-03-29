@@ -72,7 +72,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
 
     
-    @IBAction func doTake (_ sender: Any!) {
+    @IBAction func doTake (_ sender: Any) {
         checkForMovieCaptureAccess(andThen: self.reallyTake)
     }
     

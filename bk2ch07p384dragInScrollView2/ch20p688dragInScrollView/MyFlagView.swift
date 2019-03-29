@@ -27,7 +27,7 @@ extension CGVector {
 
 class MyFlagView : UIImageView {
     // use our hit test from chapter 5 so that user must tap actual flag drawing
-    override func hitTest(_ point: CGPoint, with event: UIEvent!) -> UIView? {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let inside = self.point(inside: point, with:event)
         if !inside { return nil }
         

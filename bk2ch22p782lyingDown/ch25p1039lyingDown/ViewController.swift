@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         (oldX, oldY, oldZ, state) = (0,0,0,.unknown)
     }
     
-    @IBAction func doButton (_ sender: Any!) {
+    @IBAction func doButton (_ sender: Any) {
         if self.motman.isAccelerometerActive {
             self.stopAccelerometer()
             return
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func pollAccel (_: Any!) {
+    @objc func pollAccel (_: Any) {
         guard let data = self.motman.accelerometerData else {return}
         self.receive(acceleration:data)
     }

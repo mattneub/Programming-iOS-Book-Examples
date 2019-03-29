@@ -140,7 +140,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     }
 
     
-    @IBAction func doCreateSnidely (_ sender: Any!) {
+    @IBAction func doCreateSnidely (_ sender: Any) {
         checkForContactsAccess {
             DispatchQueue.global(qos: .userInitiated).async {
                 do {
@@ -161,7 +161,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         }
     }
 
-    @IBAction func doPeoplePicker (_ sender: Any!) {
+    @IBAction func doPeoplePicker (_ sender: Any) {
         // checkForContactsAccess {
 
         let picker = CNContactPickerViewController()
@@ -189,7 +189,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     }
 
 
-    @IBAction func doViewPerson (_ sender: Any!) {
+    @IBAction func doViewPerson (_ sender: Any) {
         // let's do an experiment:
         // if we have authorization, get the contact from the database
         // if we don't, get it from user defaults
@@ -251,7 +251,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         return false
     }
 
-    @IBAction func doNewPerson (_ sender: Any!) {
+    @IBAction func doNewPerson (_ sender: Any) {
         let con = CNMutableContact()
         con.givenName = "Dudley"
         con.familyName = "Doright"
@@ -261,7 +261,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         self.present(UINavigationController(rootViewController: npvc), animated:true)
     }
     
-    @IBAction func doUnknownPerson (_ sender: Any!) {
+    @IBAction func doUnknownPerson (_ sender: Any) {
         let con = CNMutableContact()
         con.givenName = "Johnny"
         con.familyName = "Appleseed"

@@ -127,7 +127,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func doAllAlbumTitles (_ sender: Any!) {
+    @IBAction func doAllAlbumTitles (_ sender: Any) {
 //        checkForMusicLibraryAccess()
 //        checkForMusicLibraryAccess(andThen:self.dummy)
         checkForMusicLibraryAccess {
@@ -157,7 +157,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doBeethovenAlbumTitles (_ sender: Any!) {
+    @IBAction func doBeethovenAlbumTitles (_ sender: Any) {
         checkForMusicLibraryAccess {
             let query = MPMediaQuery.albums()
             let hasBeethoven = MPMediaPropertyPredicate(value:"Beethoven",
@@ -171,7 +171,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doSonataAlbumsOnDevice (_ sender: Any!) {
+    @IBAction func doSonataAlbumsOnDevice (_ sender: Any) {
         checkForMusicLibraryAccess {
             let query = MPMediaQuery.albums()
             let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
@@ -200,7 +200,7 @@ class ViewController: UIViewController {
         player.stop()
     }
     
-    @IBAction func doPlayShortSongs (_ sender: Any!) {
+    @IBAction func doPlayShortSongs (_ sender: Any) {
         checkForMusicLibraryAccess {
             // configure notification on main queue
             let player = MPMusicPlayerController.applicationQueuePlayer

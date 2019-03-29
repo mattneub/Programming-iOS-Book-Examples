@@ -7,7 +7,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var talker = AVSpeechSynthesizer()
 
-    @IBAction func talk (_ sender: Any!) {
+    @IBAction func talk (_ sender: Any) {
         var utter = AVSpeechUtterance(string:"Polly, want a cracker?")
         skip: do {
             break skip

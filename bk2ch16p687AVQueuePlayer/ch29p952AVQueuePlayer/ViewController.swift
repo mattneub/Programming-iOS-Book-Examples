@@ -134,7 +134,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doPlayOneSongAVAudioPlayer (_ sender: Any!) {
+    @IBAction func doPlayOneSongAVAudioPlayer (_ sender: Any) {
         self.reset()
         checkForMusicLibraryAccess {
             let (url, title) = self.oneSong()
@@ -151,7 +151,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doPlayOneSongAVPlayer (_ sender: Any!) {
+    @IBAction func doPlayOneSongAVPlayer (_ sender: Any) {
         self.reset()
         checkForMusicLibraryAccess {
             self.curplayer?.pause()
@@ -198,7 +198,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doPlayShortSongs (_ sender: Any!) {
+    @IBAction func doPlayShortSongs (_ sender: Any) {
         self.reset()
         checkForMusicLibraryAccess(andThen: self.reallyPlayShortSongs)
     }

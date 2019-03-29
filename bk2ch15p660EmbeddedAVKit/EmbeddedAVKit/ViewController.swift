@@ -143,7 +143,7 @@ class ViewController: UIViewController {
 // seems to work only on device, not simulator
 
 extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
-    @IBAction func doEditorButton (_ sender: Any!) {
+    @IBAction func doEditorButton (_ sender: Any) {
         let path = Bundle.main.path(forResource:"ElMirage", ofType: "mp4")!
         let can = UIVideoEditorController.canEditVideo(atPath:path)
         if !can {

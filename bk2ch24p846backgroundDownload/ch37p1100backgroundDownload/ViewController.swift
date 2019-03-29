@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         self.grabPicture()
     }
         
-    @IBAction func doStart (_ sender: Any!) {
+    @IBAction func doStart (_ sender: Any) {
         self.prog.progress = 0
         self.iv.image = nil
         let del = UIApplication.shared.delegate as! AppDelegate

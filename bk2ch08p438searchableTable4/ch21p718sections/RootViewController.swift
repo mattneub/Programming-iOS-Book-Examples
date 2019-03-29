@@ -149,13 +149,6 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         return cell
     }
     
-    /*
-    
-    override func tableView(_ tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
-    return self.sectionNames[section]
-    }
-    
-    */
     // this is more "interesting"
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
@@ -195,11 +188,6 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         
     }
     
-    /*
-    override func tableView(_ tableView: UITableView!, willDisplayHeaderView view: UIView!, forSection section: Int) {
-    println(view) // prove we are reusing header views
-    }
-    */
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sections.map{$0.sectionName}

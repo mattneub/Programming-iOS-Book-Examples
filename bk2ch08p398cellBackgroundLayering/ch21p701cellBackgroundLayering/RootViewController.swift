@@ -76,15 +76,5 @@ class RootViewController : UITableViewController {
         return cell
     }
     
-    /*
-    
-    override func tableView(_ tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
-        println(cell.backgroundColor) // no need to set it here in iOS 7...
-        // ...the color set in cellForRow has held
-        println(cell.textLabel.backgroundColor) // no need to set label background color to clear...
-        // ...it is not being rejiggered
-    }
-
-*/
 
 }

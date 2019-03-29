@@ -6,7 +6,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var iv : UIImageView!
     
-    @IBAction func doSimpleHTTP (_ sender: Any!) {
+    @IBAction func doSimpleHTTP (_ sender: Any) {
         self.iv.image = nil
         let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = URL(string:s)!

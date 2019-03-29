@@ -28,7 +28,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         
     }
     
-    @IBAction func doButton (_ sender: Any!) {
+    @IBAction func doButton (_ sender: Any) {
         let mi = MKMapItem.forCurrentLocation()
         // here, however, it seems that we cannot set the span...?
         let span = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
@@ -38,7 +38,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         ])
     }
     
-    @IBAction func doButton2 (_ sender: Any!) {
+    @IBAction func doButton2 (_ sender: Any) {
         // new in iOS 8, can't simply switch this on
         // must request authorization first
         // and this request will be ignored without a corresponding reason in the Info.plist
@@ -49,7 +49,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         // (the thing I was doing before, adjusting the map region manually, was just wrong)
     }
 
-    @IBAction func reportAddress (_ sender: Any!) {
+    @IBAction func reportAddress (_ sender: Any) {
         guard let loc = self.map.userLocation.location else {
             print("I don't know where you are now")
             return
@@ -92,7 +92,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         }
     }
     
-    @IBAction func thaiFoodNearMapLocation (_ sender: Any!) {
+    @IBAction func thaiFoodNearMapLocation (_ sender: Any) {
         guard let loc = self.map.userLocation.location else {
             print("I don't know where you are now")
             return
@@ -120,7 +120,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         }
     }
     
-    @IBAction func directionsToThaiFood (_ sender: Any!) {
+    @IBAction func directionsToThaiFood (_ sender: Any) {
         let userLoc = self.map.userLocation
         let loc = userLoc.location
         if loc == nil {

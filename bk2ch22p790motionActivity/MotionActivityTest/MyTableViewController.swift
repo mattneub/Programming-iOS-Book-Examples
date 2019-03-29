@@ -47,7 +47,7 @@ class MyTableViewController: UITableViewController {
         }
     }
     
-    @objc func doStart(_ sender: Any!) {
+    @objc func doStart(_ sender: Any) {
         self.checkAuthorization(andThen: self.reallyStart)
     }
     

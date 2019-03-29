@@ -80,7 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let deferInterval : TimeInterval = 15*60
     
-    @IBAction func doFindMe (_ sender: Any!) {
+    @IBAction func doFindMe (_ sender: Any) {
         self.managerHolder.checkForLocationAccess {
             if self.trying { return }
             self.trying = true

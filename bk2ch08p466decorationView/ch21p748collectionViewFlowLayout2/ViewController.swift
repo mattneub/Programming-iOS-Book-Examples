@@ -238,7 +238,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // =======================
     
     // can just change layouts on the fly! with built-in animation!!!
-    @objc func doSwitch(_ sender: Any!) { // button
+    @objc func doSwitch(_ sender: Any) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
         let oldLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         var newLayout = self.collectionViewLayout as! UICollectionViewFlowLayout

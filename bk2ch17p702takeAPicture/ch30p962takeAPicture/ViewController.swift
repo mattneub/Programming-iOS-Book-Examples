@@ -108,7 +108,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var redView: UIView!
     weak var picker : UIImagePickerController?
         
-    @IBAction func doTake (_ sender: Any!) {
+    @IBAction func doTake (_ sender: Any) {
         checkForMovieCaptureAccess(andThen: self.micCheck)
     }
     

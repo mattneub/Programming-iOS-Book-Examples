@@ -117,7 +117,7 @@ class ViewController: UIViewController {
     // exactly as before; the AVPlayerViewController's player's item's asset...
     // can be a mutable composition
     
-    @IBAction func doButton2 (_ sender: Any!) {
+    @IBAction func doButton2 (_ sender: Any) {
         
         let vc = self.children[0] as! AVPlayerViewController
         let p = vc.player! //

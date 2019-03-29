@@ -9,7 +9,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let locman = CLLocationManager()
     var updating = false
     
-    @IBAction func doStart (_ sender: Any!) {
+    @IBAction func doStart (_ sender: Any) {
         guard CLLocationManager.headingAvailable() else {return} // no hardware
         if self.updating {return}
         if self.locman.delegate == nil {self.locman.delegate = self}
@@ -25,7 +25,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locman.startUpdatingHeading()
     }
     
-    @IBAction func doStop (_ sender: Any!) {
+    @IBAction func doStop (_ sender: Any) {
         self.locman.stopUpdatingHeading()
         self.lab.text = ""
         self.updating = false

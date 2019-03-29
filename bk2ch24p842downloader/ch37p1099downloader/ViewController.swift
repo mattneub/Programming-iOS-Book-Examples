@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         return Downloader(configuration:config)
     }()
     
-    @IBAction func doDownload (_ sender: Any!) {
+    @IBAction func doDownload (_ sender: Any) {
         self.iv.image = nil
         let s = "https://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
         let url = URL(string:s)!

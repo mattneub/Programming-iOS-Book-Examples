@@ -118,13 +118,6 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         return cell
     }
     
-    /*
-    
-    override func tableView(_ tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
-    return self.sectionNames[section]
-    }
-    
-    */
     // this is more "interesting"
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID)!

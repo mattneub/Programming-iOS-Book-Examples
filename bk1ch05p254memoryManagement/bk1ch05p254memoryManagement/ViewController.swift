@@ -4,10 +4,10 @@ import UIKit
 import WebKit
 
 class HelpViewController: UIViewController {
-    weak var wv : UIWebView?
+    weak var wv : WKWebView?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let wv = UIWebView(frame:self.view.bounds)
+        let wv = WKWebView(frame:self.view.bounds)
         // ... further configuration of wv here ...
         self.view.addSubview(wv)
         self.wv = wv
@@ -46,11 +46,11 @@ class SecondViewController : UIViewController {
     weak var delegate2 : (NSObject & SecondViewControllerDelegate2)?
 }
 protocol SecondViewControllerDelegate : AnyObject {
-    func accept(data:Any!)
+    func accept(data:Any)
 }
 
 protocol SecondViewControllerDelegate2 {
-    func accept(data:Any!)
+    func accept(data:Any)
 }
 
 extension UIColor {

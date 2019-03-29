@@ -48,7 +48,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         return MyCalendarApp.database
     }
     
-    @IBAction func createCalendar (_ sender: Any!) {
+    @IBAction func createCalendar (_ sender: Any) {
         checkForEventAccess {
             do {
                 // obtain local source
@@ -75,7 +75,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         return cals.filter {$0.title == name}.first
     }
     
-    @IBAction func createSimpleEvent (_ sender: Any!) {
+    @IBAction func createSimpleEvent (_ sender: Any) {
         
         checkForEventAccess {
             
@@ -116,7 +116,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         }
     }
 
-    @IBAction func createRecurringEvent (_ sender: Any!) {
+    @IBAction func createRecurringEvent (_ sender: Any) {
         
         checkForEventAccess {
             
@@ -167,7 +167,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
     }
     
-    @IBAction func searchByRange (_ sender: Any!) {
+    @IBAction func searchByRange (_ sender: Any) {
         
         checkForEventAccess {
         
@@ -210,7 +210,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     
     var napEvent : EKEvent!
 
-    @IBAction func showEventUI (_ sender: Any!) {
+    @IBAction func showEventUI (_ sender: Any) {
         checkForEventAccess {
         
             if self.napid == nil {
@@ -250,7 +250,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
     // ========
     
-    @IBAction func editEvent (_ sender: Any!) {
+    @IBAction func editEvent (_ sender: Any) {
         checkForEventAccess {
         
             let evc = EKEventEditViewController()
@@ -280,7 +280,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
     // ===============
 
-    @IBAction func deleteCalendar (_ sender: Any!) {
+    @IBAction func deleteCalendar (_ sender: Any) {
         checkForEventAccess {
         
             let choo = EKCalendarChooser(

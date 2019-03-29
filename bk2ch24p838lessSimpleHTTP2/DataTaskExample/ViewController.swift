@@ -15,7 +15,7 @@ class ViewController: UIViewController, URLSessionDataDelegate {
         return session
         }()
     
-    @IBAction func doHTTP (_ sender: Any!) {
+    @IBAction func doHTTP (_ sender: Any) {
         if self.task != nil {
             return
         }

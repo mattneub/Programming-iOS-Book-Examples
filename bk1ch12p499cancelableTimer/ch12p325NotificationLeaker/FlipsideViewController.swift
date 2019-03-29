@@ -27,7 +27,7 @@ class FlipsideViewController: UIViewController {
         print("timer fired")
     }
     
-    @IBAction func done (_ sender: Any!) {
+    @IBAction func done (_ sender: Any) {
         print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }

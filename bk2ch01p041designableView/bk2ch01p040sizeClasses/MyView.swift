@@ -61,7 +61,7 @@ The representation is not perfect but it's pretty good.
         self.addSubview(lab) // yep: change the inspectable `name` in IB, and the label changes
     }
     
-    override func willMove(toSuperview newSuperview: UIView!) {
+    override func willMove(toSuperview newSuperview: UIView?) {
         self.configure()
     }
     

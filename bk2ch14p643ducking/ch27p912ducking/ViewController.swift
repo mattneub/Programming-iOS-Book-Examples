@@ -14,7 +14,7 @@ class ViewController: UIViewController, PlayerDelegate {
     // if you set audio background mode in Info.plist,
     // then Looping even plays when we are in the background
 
-    @IBAction func doDuck (_ sender: Any!) {
+    @IBAction func doDuck (_ sender: Any) {
         self.player.delegate = self
         // let path = Bundle.main.path(forResource:"test", ofType: "aif")!
         // proving that flac now works

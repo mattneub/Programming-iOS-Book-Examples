@@ -144,7 +144,7 @@ class ViewController: UIViewController {
     
     
     
-    @IBAction func moveMyButton (_ sender:Any!) {
+    @IBAction func moveMyButton (_ sender:UIButton) {
         func whatToAnimate() { // self.myButton is a button in the interface
             self.myButton.frame.origin.y += 20
         }

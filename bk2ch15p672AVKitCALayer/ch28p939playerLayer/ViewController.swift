@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     
     // warning, test only on device, doesn't work properly in simulator
 
-    @IBAction func doButton2 (_ sender: Any!) {
+    @IBAction func doButton2 (_ sender: Any) {
         
         let vc = self.children[0] as! AVPlayerViewController
         let p = vc.player! //

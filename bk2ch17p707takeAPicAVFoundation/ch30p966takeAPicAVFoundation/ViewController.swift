@@ -142,7 +142,7 @@ class ViewController: UIViewController {
 
     let previewRect = CGRect(10,30,300,300)
         
-    @IBAction func doStart (_ sender: Any!) {
+    @IBAction func doStart (_ sender: Any) {
         checkForMovieCaptureAccess(andThen:self.micCheck)
     }
     
@@ -187,7 +187,7 @@ class ViewController: UIViewController {
         self.sess.startRunning()
     }
     
-    @IBAction func doSnap (_ sender: Any!) {
+    @IBAction func doSnap (_ sender: Any) {
         guard self.sess != nil && self.sess.isRunning else {
             return
         }

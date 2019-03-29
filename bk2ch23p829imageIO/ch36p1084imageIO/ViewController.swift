@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var iv : UIImageView!
     
-    @IBAction func doButton (_ sender: Any!) {
+    @IBAction func doButton (_ sender: Any) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let opts : [AnyHashable:Any] = [
             kCGImageSourceShouldCache : false
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func doButton2 (_ sender: Any!) {
+    @IBAction func doButton2 (_ sender: Any) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         var opts : [AnyHashable:Any] = [
             kCGImageSourceShouldCache : false
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         print(im.size)
     }
 
-    @IBAction func doButton3 (_ sender: Any!) {
+    @IBAction func doButton3 (_ sender: Any) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let opts : [AnyHashable:Any] = [
             kCGImageSourceShouldCache : false

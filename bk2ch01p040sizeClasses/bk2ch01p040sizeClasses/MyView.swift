@@ -39,7 +39,7 @@ class MyView: UIView {
         ])
     }
     
-    override func willMove(toSuperview newSuperview: UIView!) {
+    override func willMove(toSuperview newSuperview: UIView?) {
         self.configure()
     }
     

@@ -18,7 +18,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
 
     var ob : NSKeyValueObservation!
     
-    @IBAction func doElaborateHTTP (_ sender: Any!) {
+    @IBAction func doElaborateHTTP (_ sender: Any) {
         if self.task != nil {
             return
         }

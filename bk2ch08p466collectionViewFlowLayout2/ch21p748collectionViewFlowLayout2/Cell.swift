@@ -5,7 +5,7 @@ import UIKit
 class Cell : UICollectionViewCell {
     @IBOutlet var lab : UILabel!
     
-    @objc func capital(_ sender: Any!) {
+    @objc func capital(_ sender: Any) {
         // find my collection view
         var v : UIView = self
         repeat { v = v.superview! } while !(v is UICollectionView)

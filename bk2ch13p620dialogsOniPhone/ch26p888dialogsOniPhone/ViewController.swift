@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // no delegate needed merely to catch which button was tapped;
         // a UIAlertAction has a handler
         // here's a general handler (though none is needed if you want to ignore)
-        func handler(_ act:UIAlertAction!) {
+        func handler(_ act:UIAlertAction) {
             print("User tapped \(act.title as Any)")
         }
         // illustrating the three button styles

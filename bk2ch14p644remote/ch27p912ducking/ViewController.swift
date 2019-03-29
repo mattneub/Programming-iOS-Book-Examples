@@ -7,7 +7,7 @@ import MediaPlayer
 class ViewController: UIViewController {
     var player = Player()
     
-    @IBAction func doButton (_ sender: Any!) {
+    @IBAction func doButton (_ sender: Any) {
         let path = Bundle.main.path(forResource:"test", ofType: "aif")!
         if (sender as! UIButton).currentTitle == "Forever" {
             // for remote control to work, our audio session policy

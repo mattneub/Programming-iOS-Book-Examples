@@ -12,12 +12,12 @@ class ViewController: UIViewController {
 //        self.query.startQuery()
     }
 
-    @IBAction func doButton1 (_ sender: Any!) {
+    @IBAction func doButton1 (_ sender: Any) {
         let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
         print(docs)
     }
     
-    @IBAction func doButton2 (_ sender: Any!) {
+    @IBAction func doButton2 (_ sender: Any) {
         do {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func doButton3 (_ sender: Any!) {
+    @IBAction func doButton3 (_ sender: Any) {
         do {
             let fm = FileManager.default
             let suppurl = try fm.url(for:.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func doButton4 (_ sender: Any!) {
+    @IBAction func doButton4 (_ sender: Any) {
         do {
             let foldername = "MyFolder"
             let fm = FileManager.default
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func doButton5 (_ sender: Any!) {
+    @IBAction func doButton5 (_ sender: Any) {
         do {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doButton7 (_ sender: Any!) {
+    @IBAction func doButton7 (_ sender: Any) {
         do {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     
     let which = 1
     
-    @IBAction func doButton8 (_ sender: Any!) {
+    @IBAction func doButton8 (_ sender: Any) {
         do {
             let arr = ["Manny", "Moe", "Jack"]
             let temp = FileManager.default.temporaryDirectory
@@ -156,7 +156,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doButton9 (_ sender: Any!) {
+    @IBAction func doButton9 (_ sender: Any) {
         do {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)

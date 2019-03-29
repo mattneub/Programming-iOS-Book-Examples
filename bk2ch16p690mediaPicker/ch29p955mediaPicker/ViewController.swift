@@ -54,7 +54,7 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
 
 class ViewController: UIViewController {
     
-    @IBAction func doGo (_ sender: Any!) {
+    @IBAction func doGo (_ sender: Any) {
         self.presentPicker(sender)
     }
     
