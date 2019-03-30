@@ -28,14 +28,11 @@ class ViewController : UIViewController {
     }
     
     func doDynamicType() {
-        var fbody : UIFont!
-        var femphasis : UIFont!
         
         let body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:.body)
         let emphasis = body.withSymbolicTraits(.traitItalic)!
-        fbody = UIFont(descriptor: body, size: 0)
-        femphasis = UIFont(descriptor: emphasis, size: 0)
-        print(fbody)
+        let fbody = UIFont(descriptor: body, size: 0)
+        let femphasis = UIFont(descriptor: emphasis, size: 0)
         
         let s = self.lab.text!
         let mas = NSMutableAttributedString(string: s, attributes: [.font:fbody])

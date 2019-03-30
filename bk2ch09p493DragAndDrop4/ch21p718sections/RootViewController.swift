@@ -165,7 +165,8 @@ extension RootViewController : UITableViewDragDelegate {
         let di = UIDragItem(itemProvider: ip)
         return [di]
     }
-    func tableViewNOT(_ tableView: UITableView, dragPreviewParametersForRowAt indexPath: IndexPath) -> UIDragPreviewParameters? {
+    /*
+    func tableView(_ tableView: UITableView, dragPreviewParametersForRowAt indexPath: IndexPath) -> UIDragPreviewParameters? {
         let params = UIDragPreviewParameters()
         if let cell = tableView.cellForRow(at: indexPath) {
             if let rect = cell.textLabel?.bounds {
@@ -175,4 +176,5 @@ extension RootViewController : UITableViewDragDelegate {
         }
         return params
     }
+ */
 }

@@ -106,7 +106,7 @@ class ViewController : UIViewController {
         self.tv.attributedText = mas
         
         // this works but it applies to all links
-        print(self.tv.linkTextAttributes)
+        print(self.tv.linkTextAttributes as Any)
         self.tv.linkTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange]
         self.tv.linkTextAttributes = [:]
         
@@ -160,6 +160,8 @@ extension UITextItemInteraction : CustomStringConvertible {
         case .invokeDefaultAction: return "invokeDefaultAction"
         case .presentActions: return "presentActions"
         case .preview: return "preview"
+        @unknown default:
+            fatalError()
         }
     }
     

@@ -7,6 +7,7 @@ class MyPopoverSegue: UIStoryboardSegue {
         let dest = self.destination
         if let pop = dest.popoverPresentationController {
             // pop.delegate = self
+            _ = pop
         }
         super.perform()
         CATransaction.setCompletionBlock {

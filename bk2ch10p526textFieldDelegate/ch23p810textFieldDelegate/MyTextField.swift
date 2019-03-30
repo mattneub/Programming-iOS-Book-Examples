@@ -57,6 +57,8 @@ class MyTextField: UITextField {
             // ... alter s here ...
             // s = s + "surprise!"
             pb.string = s
+            
+            s = pb.string! // shut the compiler up
         }
     }
 }

@@ -76,8 +76,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     // can prevent automatic dismissal
-    func textFieldShouldReturnNOT(_ textField: UITextField) -> Bool {
+    /*
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return false
     }
-
+*/
 }

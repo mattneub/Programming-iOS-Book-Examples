@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
         if let detail: AnyObject = self.detailItem {
             if let label = self.detailDescriptionLabel {
                 print(self.detailItem as Any)
-                print(self.detailDescriptionLabel)
+                print(self.detailDescriptionLabel as Any)
                 label.text = detail.description
             }
         }

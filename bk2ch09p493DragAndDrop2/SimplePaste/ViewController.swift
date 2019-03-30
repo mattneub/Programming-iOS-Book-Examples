@@ -120,9 +120,11 @@ extension ViewController : UIDropInteractionDelegate {
         return UITargetedDragPreview(view: v, parameters: UIDragPreviewParameters(), target: targ)
     }
     // front door
-    func dropInteractionNOT(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+    /*
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
         return session.canLoadObjects(ofClass: UIColor.self)
     }
+ */
     // hallway
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
         let op : UIDropOperation = session.canLoadObjects(ofClass: UIColor.self) ? .copy : .cancel

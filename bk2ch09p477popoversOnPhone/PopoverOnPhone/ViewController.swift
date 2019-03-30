@@ -1,6 +1,7 @@
 
 
 import UIKit
+import WebKit
 
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
@@ -28,7 +29,7 @@ class MyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let wv = UIWebView()
+        let wv = WKWebView()
         wv.backgroundColor = .white
         self.view.addSubview(wv)
         wv.frame = self.view.bounds

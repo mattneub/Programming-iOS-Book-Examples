@@ -83,8 +83,9 @@ class ViewController: UIViewController {
         
         self.tv.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         self.tv.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        let d : [String:UIView] = ["tv":self.tv]
         NSLayoutConstraint.constraints(withVisualFormat:"H:|-(10)-[tv]-(10)-|",
-                                       metrics:nil, views:["tv":self.tv]).forEach{$0.isActive = true}
+                                       metrics:nil, views:d).forEach{$0.isActive = true}
 
     }
     
