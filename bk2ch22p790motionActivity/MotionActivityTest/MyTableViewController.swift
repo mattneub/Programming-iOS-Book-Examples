@@ -44,6 +44,7 @@ class MyTableViewController: UITableViewController {
         case .authorized: f?()
         case .restricted: break // do nothing
         case .denied: break // could beg for authorization here
+        @unknown default: fatalError()
         }
     }
     

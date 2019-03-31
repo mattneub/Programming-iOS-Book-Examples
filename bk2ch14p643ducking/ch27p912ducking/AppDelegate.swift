@@ -43,6 +43,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                     } else {
                         print("not should resume")
                     }
+                @unknown default: fatalError()
                 }
         }
         
@@ -57,6 +58,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                     print("silence hint begin:\n\(n.userInfo!)")
                 case .end:
                     print("silence hint end:\n\(n.userInfo!)")
+                @unknown default: fatalError()
                 }
         }
         

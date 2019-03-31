@@ -58,6 +58,7 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
+    @unknown default: fatalError()
     }
 }
 

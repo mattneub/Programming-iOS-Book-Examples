@@ -74,6 +74,7 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
     case .denied:
         // do nothing, or beg the user to authorize us in Settings
         break
+    @unknown default: fatalError()
     }
 }
 
@@ -236,7 +237,7 @@ class ViewController: UIViewController {
         self.total = self.items.count
         
         if self.timeObserver != nil && self.qp != nil {
-            self.qp.removeTimeObserver(self.timeObserver)
+            self.qp.removeTimeObserver(self.timeObserver as Any)
         }
         
         let seed = min(3,self.items.count)
@@ -300,7 +301,7 @@ class ViewController: UIViewController {
                     if self.qp.items().count <= 1 {
                         self.label.text = ""
                         self.prog.isHidden = true
-                        self.qp.removeTimeObserver(self.timeObserver)
+                        self.qp.removeTimeObserver(self.timeObserver as Any)
                         self.timeObserver = nil
                         print("removing observer")
                     }

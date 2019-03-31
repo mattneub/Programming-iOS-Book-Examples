@@ -29,6 +29,7 @@ func checkForContactsAccess(andThen f:(()->())? = nil) {
         // do nothing, or beg the user to authorize us in Settings
         print("denied")
         break
+    @unknown default: fatalError()
     }
 }
 
@@ -210,7 +211,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                         return
                     }
                     snide = snide1
-                    let d = NSKeyedArchiver.archivedData(withRootObject: snide)
+                    let d = try NSKeyedArchiver.archivedData(withRootObject: snide!, requiringSecureCoding: true)
                     let ud = UserDefaults.standard
                     ud.set(d, forKey:"snide")
                 } catch {
@@ -221,7 +222,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 print("getting from defaults")
                 let ud = UserDefaults.standard
                 if let d = ud.object(forKey: "snide") as? Data {
-                    if let snide1 = NSKeyedUnarchiver.unarchiveObject(with: d) as? CNContact {
+                    if let snide1 = try? NSKeyedUnarchiver.unarchivedObject(ofClass: CNContact.self, from: d) {
                         snide = snide1
                     }
                 }

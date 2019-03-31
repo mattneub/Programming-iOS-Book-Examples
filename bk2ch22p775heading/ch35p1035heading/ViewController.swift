@@ -25,7 +25,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locman.startUpdatingHeading()
     }
     
-    @IBAction func doStop (_ sender: Any) {
+    @IBAction func doStop (_ sender: Any?) {
         self.locman.stopUpdatingHeading()
         self.lab.text = ""
         self.updating = false

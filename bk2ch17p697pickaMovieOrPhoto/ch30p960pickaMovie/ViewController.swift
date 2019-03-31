@@ -31,6 +31,7 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     case .denied:
         // do nothing, or beg the user to authorize us in Settings
         break
+    @unknown default: fatalError()
     }
 }
 
@@ -157,6 +158,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                         self.showLoopingMovie(url:url!)
                     }
                 case .unsupported: break
+                @unknown default: fatalError()
                 }
             }
             // old code from when only three types of result were possible

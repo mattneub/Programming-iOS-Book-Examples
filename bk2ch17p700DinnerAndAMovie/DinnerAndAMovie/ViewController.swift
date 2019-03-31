@@ -23,6 +23,7 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     case .denied:
         // do nothing, or beg the user to authorize us in Settings
         break
+    @unknown default: fatalError()
     }
 }
 

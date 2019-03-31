@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // update interface if needed
                 // resume playback?
                 print("interruption ended")
+            @unknown default: fatalError()
             }
         }
 

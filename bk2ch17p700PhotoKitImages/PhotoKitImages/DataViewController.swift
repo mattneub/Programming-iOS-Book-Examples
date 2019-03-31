@@ -160,7 +160,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // all this main-queue-plus-delay stuff seems to be genuinely necessary
             DispatchQueue.main.async {
                 PHPhotoLibrary.shared().performChanges({
-                    print("finishing", self.asset)
+                    print("finishing", self.asset as Any)
                     typealias Req = PHAssetChangeRequest
                     let req = Req(for: self.asset)
                     req.contentEditingOutput = output

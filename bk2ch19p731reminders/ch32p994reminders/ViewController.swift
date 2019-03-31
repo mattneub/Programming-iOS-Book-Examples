@@ -30,6 +30,7 @@ func checkForReminderAccess(andThen f:(()->())? = nil) {
         // do nothing, or beg the user to authorize us in Settings
         print("denied")
         break
+    @unknown default: fatalError()
     }
 }
 

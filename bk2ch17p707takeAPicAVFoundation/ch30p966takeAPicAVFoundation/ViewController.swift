@@ -46,6 +46,7 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     case .denied:
         // do nothing, or beg the user to authorize us in Settings
         break
+    @unknown default: fatalError()
     }
 }
 
@@ -80,6 +81,7 @@ func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
+    @unknown default: fatalError()
     }
 }
 
@@ -116,6 +118,7 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
             UIApplication.shared.open(url)
         })
         UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
+    @unknown default: fatalError()
     }
 }
 

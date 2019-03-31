@@ -105,7 +105,9 @@ class ViewController: UIViewController {
     
     @IBAction func restart (_ sender: Any) {
         let item = self.player.currentItem! //
-        item.seek(to:CMTime(seconds:0, preferredTimescale:600))
+
+        let time: CMTime = CMTime(seconds:0, preferredTimescale:600)
+        item.seek(to:time, completionHandler:nil)
     }
 
     @IBAction func doPicInPic(_ sender: Any) {
