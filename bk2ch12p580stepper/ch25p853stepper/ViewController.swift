@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         let imlefttint = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 .font: UIFont(name:"GillSans-Bold", size:30)!,
-                .foregroundColor: self.stepper.tintColor,
+                .foregroundColor: self.stepper.tintColor!,
                 .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center
@@ -138,7 +138,7 @@ class ViewController: UIViewController {
         let imrighttint = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 .font: UIFont(name:"GillSans-Bold", size:30)!,
-                .foregroundColor: self.stepper.tintColor,
+                .foregroundColor: self.stepper.tintColor!,
                 .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center

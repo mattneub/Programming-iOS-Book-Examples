@@ -88,6 +88,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             delay(1) {
                 print(self.view.bounds.height)
             }
+        @unknown default:
+            fatalError()
         }
     }
     

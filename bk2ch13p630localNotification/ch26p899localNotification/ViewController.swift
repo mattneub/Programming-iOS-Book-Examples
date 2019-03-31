@@ -71,6 +71,8 @@ class MyUserNotificationHelper : NSObject {
                 break // nothing to do, pointless to go on
             case .authorized, .provisional:
                 self.checkCategories() // prepare to create notification
+            @unknown default:
+                fatalError()
             }
             
         }
