@@ -2,10 +2,11 @@
 
 import UIKit
 import QuickLook
+import WebKit
 
 class ViewController: UIViewController, UIDocumentInteractionControllerDelegate, QLPreviewControllerDataSource {
 
-    @IBOutlet var wv : UIWebView!
+    @IBOutlet var wv : WKWebView!
     var doc : URL?
     var docs = [URL]()
     let dic = UIDocumentInteractionController()
@@ -15,7 +16,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         print("displayDoc: \(url)")
         self.doc = url
         let req = URLRequest(url: url)
-        self.wv.loadRequest(req)
+        self.wv.load(req)
     }
     
     func locateDoc () -> URL? {
