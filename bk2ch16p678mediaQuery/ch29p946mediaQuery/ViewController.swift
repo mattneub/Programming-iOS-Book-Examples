@@ -148,7 +148,7 @@ class ViewController: UIViewController {
                 // just showing the syntax
                 _ = album.representativeItem!.value(forProperty: MPMediaItemPropertyTitle)
             }
-            return; // testing
+            return // testing
             // cloud item values are 0 and 1, meaning false and true
             for album in result {
                 for song in album.items { //

@@ -70,7 +70,7 @@ class ViewController: UIViewController {
             // print(v.window!.layoutMargins)
         }
         
-        // return;
+        // return
         
         let greenView = MyView()
         greenView.backgroundColor = .green

@@ -28,7 +28,7 @@ class PreviewViewController: UITableViewController, QLPreviewingController {
                 handler(NSError(domain: "NoDataDomain", code: -1, userInfo: nil))
             }
         }
-        return;
+        return
         
         // this code was developed for iOS 11 when doc.open was failing, but in iOS 12 it works
         let fc = NSFileCoordinator()

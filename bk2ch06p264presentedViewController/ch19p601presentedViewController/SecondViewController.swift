@@ -29,10 +29,10 @@ class SecondViewController : UIViewController {
         
         
         // just proving it works
-        // self.dismiss(animated:true)
-        // vc.dismiss(animated:true)
-        // return;
-        
+//        self.dismiss(animated:true)
+//        vc.dismiss(animated:true)
+//        return;
+            
         self.presentingViewController?.dismiss(animated:true)
     }
     

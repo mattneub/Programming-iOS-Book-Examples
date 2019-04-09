@@ -50,7 +50,7 @@ class ViewController: UIViewController {
             alert.isSpringLoaded = true
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
-            return;
+            return
             */
             
             let vc = self.storyboard!.instantiateInitialViewController() as! ViewController

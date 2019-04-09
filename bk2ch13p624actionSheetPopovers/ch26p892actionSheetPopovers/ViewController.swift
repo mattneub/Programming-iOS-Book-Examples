@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         // "UIPopoverPresentationController should have a non-nil sourceView or barButtonItem set before the presentation occurs"
         // so the runtime knows that on iPad this should be a popover, and has arranged it already
         // all we have to do is fulfill our usual popover responsibilities
-        // return;
+        // return
         if let pop = alert.popoverPresentationController {
             let b = sender as! UIBarButtonItem
             pop.barButtonItem = b

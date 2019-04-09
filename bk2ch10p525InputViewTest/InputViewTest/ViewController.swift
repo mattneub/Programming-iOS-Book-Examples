@@ -119,7 +119,7 @@ extension MyPickerViewController : UIPickerViewDelegate, UIPickerViewDataSource 
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.currentPep = self.pep[row]
-        return; // interesting experiment but I think I'll enter it on dismissal
+        return // interesting experiment but I think I'll enter it on dismissal
         let doc = self.textDocumentProxy
         if let s = doc.documentContextAfterInput {
             doc.adjustTextPosition(byCharacterOffset: s.count)

@@ -147,7 +147,7 @@ class ViewController: UIViewController {
             }.withRenderingMode(.alwaysOriginal)
         self.stepper.setIncrementImage(imrighttint, for:.highlighted)
 
-        return; // interesting effect: remove overlay entirely if disabled
+        return // interesting effect: remove overlay entirely if disabled
         
         let emptyim = imageOfSize(CGSize(45,29)) {}
         

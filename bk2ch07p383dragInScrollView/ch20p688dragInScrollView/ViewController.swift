@@ -27,7 +27,7 @@ class ViewController : UIViewController {
             v.center.y += delta.y
             p.setTranslation(.zero, in: v.superview)
 //            if p.state == .began {break}
-//            return; // uncomment to prevent autoscroll
+//            return // uncomment to prevent autoscroll
             // autoscroll
             let sv = self.sv!
             let loc = p.location(in:sv)

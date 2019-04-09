@@ -41,7 +41,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     @objc func configureAppearance() {
-        return; // comment out to see bug connected with nav bar background image
+        return // comment out to see bug connected with nav bar background image
         // the bug is that the safe area stops working correctly
         // okay, fixed the bug! the secret is to mess with the initializers of the view controllers, q.v.
         let im = UIGraphicsImageRenderer(size:CGSize(20,20)).image { _ in

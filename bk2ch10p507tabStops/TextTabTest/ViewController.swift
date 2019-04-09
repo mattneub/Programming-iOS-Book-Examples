@@ -66,7 +66,7 @@ class ViewController : UIViewController {
             ])
         self.tv.attributedText = mas
         
-        // return;
+        // return
         
         let onions = self.thumbnailOfImage(name:"onion", extension:"jpg")
         let peppers = self.thumbnailOfImage(name:"peppers", extension:"jpg")

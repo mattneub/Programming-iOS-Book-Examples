@@ -63,7 +63,7 @@ class ViewController: UIViewController {
                 let f = DateFormatter()
                 f.dateFormat = "yyyy"
                 print(f.string(from:list.startDate!))
-                // return; // uncomment for first example, years alone
+                // return // uncomment for first example, years alone
                 if list.collectionListType == .momentList {
                     let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
                     let colls = result.objects(at: IndexSet(0..<result.count))

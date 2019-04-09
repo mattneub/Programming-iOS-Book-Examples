@@ -86,7 +86,7 @@ class ViewController: UIViewController {
     
     deinit {
         print("deinit")
-        // return; // uncomment to test the crash
+        // return // uncomment to test the crash
         let scc = MPRemoteCommandCenter.shared()
         switch which {
         case 0:

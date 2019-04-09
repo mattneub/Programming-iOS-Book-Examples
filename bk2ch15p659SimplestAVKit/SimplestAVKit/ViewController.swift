@@ -45,7 +45,7 @@ class ViewController: UIViewController {
             self.present(av, animated: true) {
                 // av.view.backgroundColor = .green
                 // let iv = UIImageView(image:UIImage(named:"smiley")!)
-                return;
+                return
                 // new in iOS 11, content overlay view is sized to its contents
                 // so if you want it to fill the view, you must constrain it to do so
                 let iv = UIView()

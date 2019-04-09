@@ -54,7 +54,7 @@ The representation is not perfect but it's pretty good.
         // IB-only preparations can go here
         // typically this will involve supplying stub data
         self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
-        return;
+        return
         let lab = UILabel()
         lab.text = self.name
         lab.sizeToFit()

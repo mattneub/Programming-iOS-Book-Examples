@@ -23,11 +23,6 @@ extension CGVector {
 }
 
 
-// for comparison purposes
-//        let alert = UIAlertController(title: "Howdy", message: "This is a test", preferredStyle: .Alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .Cancel))
-//        self.present(alert, animated:true)
-//        return;
 
 
 class ViewController : UIViewController {

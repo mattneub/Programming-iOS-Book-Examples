@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         // this is such a huge bug that it makes popover segues useless!
         // uncomment next two lines to see the difference
 //        self.performSegue(withIdentifier: "pop", sender: sender)
-//        return;
+//        return
         let vc2 = self.storyboard!.instantiateViewController(withIdentifier: "vc2")
         vc2.modalPresentationStyle = .popover
         self.present(vc2, animated: true)
