@@ -40,6 +40,8 @@ class Player : NSObject, AVAudioPlayerDelegate {
                     } else {
                         print("not should resume")
                     }
+                @unknown default:
+                    fatalError()
                 }
         }
     }
@@ -82,8 +84,8 @@ class Player : NSObject, AVAudioPlayerDelegate {
     
     deinit {
         print("bp player dealloc")
-        if self.observer != nil {
-            NotificationCenter.default.removeObserver(self.observer)
+        if let ob = self.observer {
+            NotificationCenter.default.removeObserver(ob)
         }
         self.player?.delegate = nil
     }
