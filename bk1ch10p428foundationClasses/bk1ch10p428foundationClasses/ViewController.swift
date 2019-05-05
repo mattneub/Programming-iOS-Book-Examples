@@ -136,7 +136,7 @@ class ViewController: UIViewController {
                 options: .caseInsensitive)
             s = r.stringByReplacingMatches(
                 in: s,
-                range: NSRange(s.startIndex..<s.endIndex, in:s),
+                range: NSRange(s.startIndex..., in:s),
                 withTemplate: "heaven")
             // I loooove being able to omit the options: parameter!
             print(s)

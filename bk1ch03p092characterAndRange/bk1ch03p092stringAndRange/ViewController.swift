@@ -318,6 +318,26 @@ class ViewController: UIViewController {
         }
         
         do {
+            let s = "string"
+            let s1 = s[s.startIndex..<s.endIndex]
+            let s2 = s[..<s.endIndex] // PartialRangeUpTo
+            let s3 = s[...s.index(before: s.endIndex)] // PartialRangeUpThrough
+            let s4 = s[s.startIndex...] // PartialRangeFrom
+            // and there is no startIndex..<
+            _ = (s1,s2,s3,s4)
+        }
+        
+        do {
+            let s = "string"
+            let range = s.startIndex..<s.endIndex
+            let range2 = ..<s.endIndex
+            let range3 = ...s.index(before: s.endIndex)
+            let range4 = s.startIndex...
+            let ok = range == range2.relative(to:s) // true, and so on
+            _ = (range,range2,range3,range4,ok)
+        }
+        
+        do {
             var s = "hello"
             let ix = s.startIndex
             let r = s.index(ix, offsetBy:1)...s.index(ix, offsetBy:3)
