@@ -16,7 +16,18 @@ var now2 : String { // showing you can omit "get" if there is no "set"
     return Date().description
 }
 
-
+@propertyWrapper struct Facade {
+    private var _p : String
+    init(_ initialValue:String = "") {self._p = initialValue}
+    var value : String {
+        get {
+            return self._p
+        }
+        set {
+            self._p = newValue
+        }
+    }
+}
 
 class ViewController: UIViewController {
     
@@ -35,6 +46,10 @@ class ViewController: UIViewController {
             self._p = newValue
         }
     }
+    
+    // Swift 5.1, can sluff the above off into a property wrapper
+    @Facade()
+    var p2 : String
     
     // observer
     var s = "whatever" {
