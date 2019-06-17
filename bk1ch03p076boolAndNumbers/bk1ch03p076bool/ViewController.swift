@@ -20,6 +20,26 @@ class ViewController: UIViewController {
         _ = what
         
         do {
+            // only "true" and "false" can be coerced from String to Bool
+            let b = false
+            let s = String(b)
+            print(b)
+            // proving it's not just literals
+            let b2 = Bool(s)
+            print(b2)
+            print(Bool("FALSE"))
+            print(Bool("true"))
+            print(Bool("howdy"))
+            // this is an oddity, works only with literal
+            let b3 = Bool.init(0)
+            print(b3)
+            // that's because we are actually passing through NSNumber
+            let i = 1
+            let b4 = Bool(i as NSNumber)
+            print(b4)
+        }
+        
+        do {
             let v = UIView()
             v.isUserInteractionEnabled = !v.isUserInteractionEnabled
             v.isUserInteractionEnabled.toggle() // new in Swift 4.2
@@ -43,7 +63,7 @@ class ViewController: UIViewController {
             print(Int8.max)
             // let i : Int8 = 128
             let i : Int16 = 128
-            // let ii = Int8(i)
+            // let _ = Int8(i) // crash
             let ii = Int8(exactly:i)
             print(ii as Any)
             _ = ii
@@ -53,6 +73,18 @@ class ViewController: UIViewController {
             let i : Int16 = 128
             let ii = Int8(clamping:i)
             print(ii)
+            _ = ii
+        }
+        
+        do {
+            let i : Int16 = 128 // 0b10000000
+            print(i)
+            print(Int16(0b10000000))
+            let ii = Int8(truncatingIfNeeded:i) // -128
+            print(ii)
+            print(Int8(~0b1111111))
+            print(Int8(bitPattern: 0b10000000)) // how to write a 2s complement binary number
+            print(Int8.min)
             _ = ii
         }
         

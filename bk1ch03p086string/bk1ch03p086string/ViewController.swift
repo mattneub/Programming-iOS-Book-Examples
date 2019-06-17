@@ -2,10 +2,84 @@
 
 import UIKit
 
+extension Int { // ruthlessly plagiarised :)
+    func toRoman() -> String? {
+        guard self > 0 else { return nil }
+        let rom = ["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"]
+        let ar = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
+        var result = ""
+        var cur = self
+        for (c, num) in zip(rom, ar) {
+            let div = cur / num
+            if (div > 0) {
+                for _ in 0..<div { result += c }
+                cur -= num * div
+            }
+        }
+        return result
+    }
+}
+
+// simple example of an expressible by string literal
+struct Vowelless : ExpressibleByStringLiteral {
+    let value : String
+    init(stringLiteral value: String) {
+        self.value = value.filter { !"aeiou".contains($0) }
+    }
+}
+
+/* // not ready to write this
+ 
+extension Vowelless : ExpressibleByStringInterpolation {
+    init(stringInterpolation:String) {
+        
+    }
+}
+*/
+
+extension DefaultStringInterpolation {
+    mutating func appendInterpolation(_ s: String, uppercased: Bool) {
+        if uppercased {
+            self.appendInterpolation(s.uppercased())
+        } else {
+            self.appendInterpolation(s)
+        }
+    }
+    mutating func appendInterpolation(_ i: Int, roman: Bool) {
+        if roman {
+            if let r = i.toRoman() {
+                self.appendInterpolation(r)
+                return
+            }
+        }
+        self.appendInterpolation(i)
+    }
+}
+
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do { // using a trivial expressible by string literal
+            let v : Vowelless = "hello world"
+            print(v.value)
+        }
+        
+        do {
+            // let pattern = "\\b\\d\\d\\b"
+            let pattern = #"\b\d\d\b"# // new in Swift 5
+            let regex = try! NSRegularExpression(pattern: pattern, options: [])
+            let s = """
+            here is a number 24 let's see what happens
+            """
+            let range = regex.rangeOfFirstMatch(
+                in: s, options: [],
+                range: NSRange(s.startIndex..<s.endIndex, in: s))
+            print((s as NSString).substring(with: range))
+        }
         
         func f() {
             // literal multiline strings new in Swift 4
@@ -47,6 +121,19 @@ class ViewController: UIViewController {
             let n = 5
             let s = "You have \(m + n) widgets."
             print(s)
+        }
+        
+        do {
+            // silly example of custom interpolation
+            let adjective = "great"
+            let s = "This is a \(adjective, uppercased:true) feature"
+            print(s)
+            // another silly example, I like this one better
+            let n = 5
+            print("You have \(n) widgets")
+            print("You have \(n, roman:true) widgets")
+            print("You have \(n, roman:false) widgets")
+            print("You have \(-3, roman:true) widgets")
         }
         
         do {

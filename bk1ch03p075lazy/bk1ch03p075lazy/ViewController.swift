@@ -18,6 +18,36 @@ class MyView : UIView {
     }
 }
 
+class Helper {
+    unowned var vc : UIViewController
+    init(_ vc:UIViewController) {
+        self.vc = vc
+    }
+}
+
+class Helper2 {
+    weak var vc : UIViewController?
+}
+
+// not entirely satisfactory solution to the lack of lazy let
+@propertyWrapper struct Once<T> {
+    private var _p : T? = nil
+    var value : T {
+        get {
+            if _p == nil {
+                fatalError("not initialized")
+            }
+            return self._p!
+        }
+        set {
+            if _p != nil {
+                fatalError("cannot assign")
+            }
+            self._p = newValue
+        }
+    }
+}
+
 
 class ViewController: UIViewController {
     
@@ -31,6 +61,14 @@ class ViewController: UIViewController {
         return p
     }()
     
+    lazy var helperr = Helper(self)
+    @Once var helper : Helper
+    
+    lazy var helper2 : Helper2 = {
+        let h = Helper2()
+        h.vc = self
+        return h
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +79,10 @@ class ViewController: UIViewController {
         let anim2 = MyDynamicAnimator(collectionViewLayout:layout)
         _ = anim2
         
+        self.helper = Helper(self)
+        print("did one", self.helper)
+        self.helper = Helper(self)
+        print("did two", self.helper)
         
 
     }

@@ -141,6 +141,17 @@ class ViewController: UIViewController {
         // the tests below are much more extensive than anything I discuss in the book
 
         do {
+            func doThis(_ f : () -> ()) {
+                f()
+            }
+            let d = Dog()
+            let barkFunction = d.bark
+            doThis(barkFunction) // woof
+            d.whatThisDogSays = "arf" // *
+            doThis(barkFunction) // arf
+        }
+        
+        do {
         
             // Dog is a class instance
             

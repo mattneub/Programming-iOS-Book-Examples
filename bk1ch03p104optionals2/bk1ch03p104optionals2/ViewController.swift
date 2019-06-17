@@ -145,8 +145,10 @@ class ViewController: UIViewController {
         
         do {
             let s : String? = "1"
-            let i = s.flatMap {Int($0)}
+            let i = s.flatMap {Int($0)} // Int?
             _ = i
+            let ii = s.map {Int($0)} // Int??
+            _ = ii
         }
     
     }
