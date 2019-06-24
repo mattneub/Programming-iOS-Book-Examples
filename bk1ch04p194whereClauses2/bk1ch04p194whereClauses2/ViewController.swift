@@ -24,6 +24,8 @@ class Dog {
 }
 class NoisyDog : Dog {
 }
+struct Cat {}
+enum Bug {}
 struct Pig : Flier {
     typealias Other = Dog
 }

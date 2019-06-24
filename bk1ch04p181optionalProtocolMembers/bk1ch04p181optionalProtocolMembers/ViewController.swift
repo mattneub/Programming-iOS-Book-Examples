@@ -86,8 +86,10 @@ class ViewController: UIViewController {
         let s2 = f.sing2?()
         print(s2 as Any)
 
-//        var f2 : Flier = Bird()
-//        f2.song2 = "woof" // compile error
+        var f2 : Flier = Bird()
+        // f2.song2 = "woof" // compile error "f2 is immutable", blatantly false
+        f2[keyPath: \.song2] = "woof" // workaround from Jordan Rose
+        print(f2.song2 as Any)
         
         do {
             let i : Flier = Insect()

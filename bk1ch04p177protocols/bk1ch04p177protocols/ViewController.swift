@@ -44,8 +44,25 @@ protocol MyViewProtocol : AnyObject {
     func doSomethingCool()
 }
 
+protocol MyViewProtocol2 : UIView {
+    func doSomethingReallyCool()
+}
+
+protocol MyOtherProtocol where Self: UIView {}
+protocol MyOtherProtocol2 where Self: AnyObject {} // same as class
+protocol MyOtherProtocol3: class {} // still legal
+
 class MyView : UIView, MyViewProtocol {
     func doSomethingCool() {}
+}
+
+class MyView2 : UIView, MyViewProtocol2 {
+    func doSomethingReallyCool() {}
+}
+
+class MyNonView : NSObject, MyViewProtocol /*, MyViewProtocol2 */ {
+    func doSomethingCool() {}
+    func doSomethingReallyCool() {}
 }
 
 extension UIButton : MyViewProtocol {
@@ -55,9 +72,13 @@ extension UIButton : MyViewProtocol {
 class ViewController: UIViewController {
     
     var delegate : (UIView & MyViewProtocol)?
+    var delegate2 : MyViewProtocol2?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate2?.doSomethingReallyCool() // it's a MyViewProtocol2
+        self.delegate2?.backgroundColor = .red // it's a UIView ex hypothesi
 
         let b = Bird()
         tellToFly(b)

@@ -49,9 +49,9 @@ class ViewController: UIViewController {
                 // d.beQuiet() // compile error
                 (d as! NoisyDog).beQuiet()
                 // or:
-                let d2 = d as! NoisyDog
-                d2.beQuiet()
-                d2.beQuiet()
+                let d = d as! NoisyDog
+                d.beQuiet()
+                d.beQuiet()
             }
             let nd: NoisyDog = NoisyDog()
             tellToHush(nd)
@@ -61,8 +61,8 @@ class ViewController: UIViewController {
             func tellToHush(_ d:Dog) {
                 // (d as! NoisyDog).beQuiet() // compiles, but prepare to crash...!
                 if d is NoisyDog {
-                    let d2 = d as! NoisyDog
-                    d2.beQuiet()
+                    let d = d as! NoisyDog
+                    d.beQuiet()
                 }
                 let noisyMaybe = d as? NoisyDog // an Optional wrapping a NoisyDog
                 if noisyMaybe != nil {
@@ -79,8 +79,8 @@ class ViewController: UIViewController {
             func tellToHush(_ d:Dog) {
                 (d as! NoisyDog).beQuiet()
                 if d is NoisyDog {
-                    let d2 = d as! NoisyDog
-                    d2.beQuiet()
+                    let d = d as! NoisyDog
+                    d.beQuiet()
                 }
                 let noisyMaybe = d as? NoisyDog // an Optional wrapping a NoisyDog
                 if noisyMaybe != nil {

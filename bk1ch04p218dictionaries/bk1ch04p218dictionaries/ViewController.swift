@@ -1,6 +1,13 @@
 
 
 import UIKit
+import Combine
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
 
 class Dog {}
 class NoisyDog : Dog {}
@@ -24,6 +31,15 @@ struct Dog2 : Equatable {
 class ViewController: UIViewController {
     
     var progress = 0.0
+    
+    var progress2 = 0.0 {
+        didSet {
+            print("progress2", progress2)
+        }
+    }
+    let pub = NotificationCenter.default.publisher(for: Notification.Name("testCombine"))
+        .compactMap {$0.userInfo?["progress"] as? Double}
+    lazy var sub = self.pub.assign(to: \.progress2, on: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -257,6 +273,16 @@ class ViewController: UIViewController {
         
         // testing what Itai Ferber says about not crossing the bridge
         nc.post(name:test, object: self, userInfo: ["progress":Dog2.init(name: "Fido")])
+        
+        // new in iOS 13: let's use Combine framework instead!
+        // we had to declare our subscriber `lazy`, so first let's bring it to life by touching it
+        _ = self.sub
+        delay(2) {
+            nc.post(name:Notification.Name("testCombine"), object:self, userInfo: ["progresss":3.0])
+            nc.post(name:Notification.Name("testCombine"), object:self, userInfo: ["progresss":"oops"])
+            nc.post(name:Notification.Name("testCombine"), object:self, userInfo: ["progress":10.0])
+        }
+
 
         // but this next example should prove unnecessary, I'm pretty sure; we can now append directly
         
@@ -277,6 +303,7 @@ class ViewController: UIViewController {
             d1.addEntries(from:d2)
             print(d1)
         }
+        
 
     }
     

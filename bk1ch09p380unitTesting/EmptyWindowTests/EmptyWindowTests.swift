@@ -24,7 +24,7 @@ class EmptyWindowTests: XCTestCase {
     override func setUp() {
         print("setting up")
         super.setUp()
-        let b = Bundle(for:type(of: self)) // just testing
+        let b = Bundle(for:Self.self) // just testing
         print(b)
         self.addTeardownBlock {
             print("new tear down 2")

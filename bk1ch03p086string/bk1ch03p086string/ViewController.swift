@@ -20,23 +20,6 @@ extension Int { // ruthlessly plagiarised :)
     }
 }
 
-// simple example of an expressible by string literal
-struct Vowelless : ExpressibleByStringLiteral {
-    let value : String
-    init(stringLiteral value: String) {
-        self.value = value.filter { !"aeiou".contains($0) }
-    }
-}
-
-/* // not ready to write this
- 
-extension Vowelless : ExpressibleByStringInterpolation {
-    init(stringInterpolation:String) {
-        
-    }
-}
-*/
-
 extension DefaultStringInterpolation {
     mutating func appendInterpolation(_ s: String, uppercased: Bool) {
         if uppercased {
@@ -57,6 +40,57 @@ extension DefaultStringInterpolation {
 }
 
 
+// simple example of an expressible by string literal
+struct Vowelless : ExpressibleByStringLiteral, CustomStringConvertible {
+    let value : String
+    init(stringLiteral value: String) {
+        self.value = value.filter { !"aeiou".contains($0) }
+    }
+    var description: String { value }
+}
+
+// example of expressible by string interpolation
+// need to figure out whether I'm doing this quite right...
+// see also https://nshipster.com/expressiblebystringinterpolation/
+struct Romanizer : ExpressibleByStringLiteral, CustomStringConvertible {
+    let value : String
+    init(stringLiteral value: String) {
+        self.value = value
+    }
+    var description: String { value }
+}
+extension Romanizer : ExpressibleByStringInterpolation {
+    init(stringInterpolation: Interp) {
+        self.init(stringLiteral: stringInterpolation.value)
+    }
+    struct Interp: StringInterpolationProtocol {
+        var value: String = ""
+        init(literalCapacity: Int, interpolationCount: Int) {
+            self.value.reserveCapacity(literalCapacity)
+        }
+        mutating func appendLiteral(_ literal: String) {
+            self.value.append(literal)
+        }
+        // mop up general cases
+        mutating func appendInterpolation<T:LosslessStringConvertible>(_ s:T) {
+            self.value.append(String(s))
+        }
+        // up that point is the minimum needed for string-like interpolation
+        // now we add our special cases
+        mutating func appendInterpolation(_ i: Int, roman: Bool) {
+            if roman {
+                if let r = i.toRoman() {
+                    self.appendInterpolation(r)
+                    return
+                }
+            }
+            self.appendInterpolation(i)
+        }
+    }
+}
+
+
+
 
 class ViewController: UIViewController {
 
@@ -69,6 +103,17 @@ class ViewController: UIViewController {
         }
         
         do {
+            var r : Romanizer = "this is a test"
+            print(r)
+            r = "this is a \("great") test I tell you \(5) times"
+            print(r)
+            r = "this is a \("great") test I tell you \(-5, roman:true) times"
+            print(r)
+            r = "this is a \("great") test I tell you \(5, roman:true) times"
+            print(r)
+        }
+        
+        do {
             // let pattern = "\\b\\d\\d\\b"
             let pattern = #"\b\d\d\b"# // new in Swift 5
             let regex = try! NSRegularExpression(pattern: pattern, options: [])
@@ -77,7 +122,7 @@ class ViewController: UIViewController {
             """
             let range = regex.rangeOfFirstMatch(
                 in: s, options: [],
-                range: NSRange(s.startIndex..<s.endIndex, in: s))
+                range: NSRange(s.startIndex..., in: s))
             print((s as NSString).substring(with: range))
         }
         

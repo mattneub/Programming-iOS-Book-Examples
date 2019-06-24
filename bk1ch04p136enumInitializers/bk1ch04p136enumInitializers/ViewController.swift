@@ -26,9 +26,10 @@ enum Filter : String, CaseIterable {
         set {}
     }
     mutating func advance() {
-        var ix = Filter.allCases.firstIndex(of:self)!
-        ix = (ix + 1) % Filter.allCases.count
-        self = Filter.allCases[ix]
+        let cases = Self.allCases
+        var ix = cases.firstIndex(of:self)!
+        ix = (ix + 1) % cases.count
+        self = cases[ix]
     }
     var query : MPMediaQuery {
         switch self {
@@ -66,7 +67,27 @@ enum Shape {
     }
 }
 
+@propertyWrapper struct Test {
+    var value : String {
+        get { "howdy" }
+        set {}
+    }
+}
 
+enum E {
+    case one
+    case two
+    @Test static var s : String // ok
+    // @Test var s : String // nope
+}
+
+enum Silly {
+    case one
+    var sillyProperty : String {
+        get { "Howdy" }
+        set {} // do nothing
+    }
+}
 
 class ViewController: UIViewController {
 
@@ -96,6 +117,9 @@ class ViewController: UIViewController {
         _ = type3
         _ = type4
         _ = type5
+        
+        var silly = Silly.one
+        silly.sillyProperty = "silly"
     }
 
 

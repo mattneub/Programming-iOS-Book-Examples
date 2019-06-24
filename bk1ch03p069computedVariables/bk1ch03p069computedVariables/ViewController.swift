@@ -2,6 +2,7 @@
 
 import UIKit
 import MediaPlayer
+import SwiftUI
 
 var now : String {
     get {
@@ -92,12 +93,16 @@ class ViewController: UIViewController {
     
     @Clamped(min:-7, max:7) var ppp : Int
     @Clamped() var pppp : Int {
-        didSet { // proving they are allowed to have observers
+        didSet { // proving they are allowed to have observers (but not always: see @State)
             print("did")
         }
         willSet {
             print("will")
         }
+    }
+    
+    @State var ppppp : Int = 0 {
+        didSet {} // doesn't crash, so why does it crash in a real SwiftUI project?
     }
     
     // observer

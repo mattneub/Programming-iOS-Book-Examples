@@ -35,7 +35,7 @@ struct Greeting {
     static let friendly = "hello there"
     static let hostile = "go away"
     static var ambivalent : String {
-        return self.friendly + " but " + self.hostile
+        self.friendly + " but " + self.hostile
     }
     static func beFriendly() {
         print(self.friendly)

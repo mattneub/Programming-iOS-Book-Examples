@@ -8,10 +8,35 @@ class Dog {
     func bark() {
         print(type(of:self).whatDogsSay)
     }
+    func bark2() {
+        print(Self.whatDogsSay) // new, legal in Swift 5.1
+    }
+    func describeYourself() {
+        let t1 = type(of:self)
+        print(t1)
+        // print(Self) // illegal
+        // so you can use Self only as a message recipient
+        // but therefore this is legal:
+        let t2 = Self.self
+        print(t2)
+    }
+    func dogTypeExpecter(_ whattype:Dog.Type) {
+        _ = whattype == Dog.self // legal
+        _ = whattype is Dog.Type // legal but silly
+        _ = Self.self == Dog.self // legal
+        _ = Self.self is Dog.Type // legal but silly
+    }
 }
 class NoisyDog : Dog {
     override class var whatDogsSay : String {
         return "woof woof woof"
+    }
+}
+
+struct S {
+    static let greeting = "Hello"
+    func greet() {
+        print(Self.greeting) // legal too, so it isn't just classes or anything
     }
 }
 
@@ -52,11 +77,21 @@ class ViewController: UIViewController {
 
         let d = Dog()
         d.bark()
+        d.bark2()
         let nd = NoisyDog()
         nd.bark() // woof woof woof
+        nd.bark2() // woof woof woof, using Self, hooray!
         print(nd)
-        print(type(of:nd))
+        print(type(of:nd)) // still need type(of:) to examine an object's type _externally_
+        // print(nd.Self) // not legal; this syntax was part of Erica's original proposal but it was not accepted
+        
+        do {
+            let d : Dog = NoisyDog()
+            print(type(of:d))
+        }
     
+        nd.describeYourself() // NoisyDog, both ways
+        
         // dogTypeExpecter(Dog) // oooh, compiler now warns // now an error! beta 3
         dogTypeExpecter(Dog.self) // true
         // dogTypeExpecter(NoisyDog) // ditto // now an error! beta 3

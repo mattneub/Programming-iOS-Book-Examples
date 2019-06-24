@@ -11,9 +11,7 @@ enum Archive : String {
 
 
 class MyView : UIView {
-    override class var layerClass : AnyClass {
-        return CATiledLayer.self
-    }
+    override class var layerClass : AnyClass { CATiledLayer.self }
 }
 
 class NotMyView : UIView {

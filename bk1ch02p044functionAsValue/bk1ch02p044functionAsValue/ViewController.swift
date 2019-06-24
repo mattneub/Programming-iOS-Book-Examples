@@ -110,6 +110,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(myButton)
+        
         func whatToDo() {
             print("I did it")
         }

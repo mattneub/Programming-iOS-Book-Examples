@@ -88,15 +88,23 @@ class ViewController: UIViewController {
             if err1 == err2 {
                 print("yep")
             }
-        }
-        
-        do {
-            let err1 = MyError.fatal
-            let err2 = MyError.fatal
-            if err1 == err2 {
+
+            let err3 = MyError.fatal
+            let err4 = MyError.fatal
+            if err3 == err4 {
                 print("yep")
             }
+            
+            if err1 == err3 {
+                print("huh?")
+            }
         }
+        
+        struct Dog{}
+        enum MyDogCarrier : Equatable {
+            // case dog(Dog) // error because Dog is not equatable
+        }
+        
 
 
 

@@ -12,6 +12,9 @@ struct Bird : Flier {
     func flockTogetherWith(_ f:Bird) {}
 }
 
+protocol ViewProtocol where Self : UIView {}
+extension UIView : ViewProtocol {}
+
 protocol Flier2 {
     associatedtype Other
     func flockTogetherWith(_ f:Self.Other) // just showing that this is legal
@@ -32,6 +35,7 @@ func takeAndReturnSameThing<T> (_ t:T) -> T {
     if T.self is String.Type {
         print("hey, it's a string")
     }
+    print(T.self)
     return t
 }
 
@@ -226,6 +230,9 @@ func flockTwoTogether6<T1:Flier6, T2:Flier6>(f1:T1, _ f2:T2) {
 
 
 class ViewController: UIViewController {
+    
+    // let flier : Flier = Bird() // illegal; use of Self makes Flier generic
+    let flierbis : ViewProtocol = UIView() // legal, so this is not that use of Self
     
     override func viewDidLoad() {
         super.viewDidLoad()

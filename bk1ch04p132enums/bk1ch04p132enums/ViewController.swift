@@ -73,6 +73,15 @@ enum MyError3 : Equatable {
     case fatal
 }
 
+enum Testing {
+    case one
+    case two(testing:String) // legal
+    func f() {
+        // typealias oneElementTuple = (testing:String) // but single-element labeled tuples are now illegal
+        // so what _is_ "(testing:String)" now?
+    }
+}
+
 
 class ViewController: UIViewController {
     var err2 : MyError2 = .fatal(n:-12, s:"Oh the horror") // labels required

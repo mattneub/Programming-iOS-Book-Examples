@@ -370,6 +370,9 @@ class ViewController: UIViewController {
             var s = "hello"
             s.append(contentsOf: Array(" world")) // "hello world"
             s.append(contentsOf: ["!" as Character, "?" as Character])
+            
+            s.append(contentsOf: (1...3).map{Character(String($0))})
+            // s.append(contentsOf: (1...3)) // nope
         }
  
         

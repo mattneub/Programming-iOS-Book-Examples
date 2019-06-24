@@ -87,6 +87,15 @@ class ViewController: UIViewController {
         }
         
         do {
+            var set : Set = [Dog(name:"Fido", license:1, color: .green)]
+            let d = Dog(name:"Fido", license:1, color: .green)
+            print(set.insert(d))
+            let d2 = Dog(name:"Fido", license:1, color: .red)
+            print(set.insert(d2))
+            print(d2)
+        }
+        
+        do {
             // accidentally omitted from the book: showing the use of insert result
             // typical usage: unique array in order
             var arr = ["Mannie", "Mannie", "Moe", "Jack", "Jack", "Moe", "Mannie"]
@@ -95,6 +104,15 @@ class ViewController: UIViewController {
                 arr = arr.filter { temp.insert($0).inserted }
             }
             print(arr) // ["Mannie", "Moe", "Jack"]
+        }
+        
+        // or without do
+        
+        do {
+            let arr = ["Mannie", "Mannie", "Moe", "Jack", "Jack", "Moe", "Mannie"]
+            var temp = Set<String>()
+            let arr2 = arr.filter { temp.insert($0).inserted }
+            print(arr2) // ["Mannie", "Moe", "Jack"]
         }
         
         do {

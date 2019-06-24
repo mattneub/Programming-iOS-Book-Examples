@@ -232,9 +232,33 @@ class ViewController: UIViewController {
         }
         
         do {
-            let d1 = 0.3333333333333
+            let d1 = 0.33333333333333
             let d2 = 1.0/3.0
             print(Int(abs(d1-d2) / Double.ulpOfOne))
+            
+            print(d1)
+            print(d2)
+            print(d1 == d2)
+            
+            let eq = d1 >= d2.nextDown && d1 <= d2.nextUp
+            print(eq)
+            
+            let f = 0.1
+            var sum = 0.0
+            for _ in 0..<10 { sum += f }
+            let product = f * 10
+            print(sum, product)
+            print(sum == product)
+            let eq2 = sum >= product.nextDown && sum <= product.nextUp
+            print(eq2)
+            
+            let r1 = sum * 10000
+            let r2 = product * 10000
+            print(r1, r2)
+            let eq3 = r1 >= r2.nextDown && r1 <= r2.nextUp
+            print(eq3)
+
+
         }
 
 

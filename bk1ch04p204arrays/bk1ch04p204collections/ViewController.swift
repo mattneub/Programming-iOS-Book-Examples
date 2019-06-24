@@ -145,7 +145,9 @@ class ViewController: UIViewController {
             let d1 = nd1 as Dog
             let nd2 = NoisyDog()
             let d2 = nd2 as Dog
-            if [d1,d2] == [nd1,nd2] { // they are equal!
+            let arr1 = [d1,d2] // [Dog]
+            let arr2 = [nd1,nd2] // [NoisyDog]
+            if arr1 == arr2 { // they are equal!
                 print("equal")
             }
         }
@@ -205,6 +207,7 @@ class ViewController: UIViewController {
             print(arr.last as Any)
             let slice = arr[arr.count-2...arr.count-1] // [2,3]
             let slice2 = arr.suffix(2) // [2,3]
+            let val = arr.suffix(2).first // where another language might say arr[-2]
             let slice3 = arr.suffix(10) // [1,2,3] with no penalty
             let slice4 = arr.prefix(2)
             print(slice3)
@@ -241,7 +244,7 @@ class ViewController: UIViewController {
             }
  
             
-            _ = (slice, slice2, slice3, slice4)
+            _ = (slice, slice2, slice3, slice4, val)
         }
         
         do {
@@ -386,6 +389,13 @@ class ViewController: UIViewController {
             let arr2 = arr.split {$0 % 2 == 0} // split at evens: [[1], [3], [5]]
             print(arr2)
             _ = arr2
+        }
+        
+        do {
+            let arr = [1,2,3,4]
+            let arr2 = [1,2,4]
+            let diff = arr.difference(from: arr2)
+            print(diff)
         }
         
         do {

@@ -80,10 +80,10 @@ struct Greeting {
     // static let ambivalent2a = self.friendly + " but " + self.hostile // compile error
     static let ambivalent2 = Greeting.friendly + " but " + Greeting.hostile
     static var ambivalent3 : String {
-        return self.friendly + " but " + self.hostile // legal!
+        self.friendly + " but " + self.hostile // legal!
     }
 //    static var ambivalent4 : String = {
-//        return self.friendly + " but " + self.hostile // compile error
+//        self.friendly + " but " + self.hostile // compile error
 //        }()
 
 }

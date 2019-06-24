@@ -2,6 +2,24 @@
 
 import UIKit
 
+@propertyWrapper struct DeferredConstant<T> {
+    private var _value: T? = nil
+    var value: T {
+        get {
+            if _value == nil {
+                fatalError("not yet initialized")
+            }
+            print(type(of:_value)) // double-wrapped, but no downside that I can see
+            return _value!
+        }
+        set {
+            if _value == nil {
+                _value = newValue
+            }
+        }
+    }
+}
+
 class Dog {
     var noise : String?
     func speak() -> String? {
@@ -44,11 +62,19 @@ var opt : String? = "howdy"
 
 class ViewController: UIViewController {
     
-    @IBOutlet var myButton: UIButton!
-
+    @IBOutlet @DeferredConstant var myButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(self.myButton as Any)
+        self.myButton.setTitle("Tap Me", for: .normal)
+        
+        // this will fail silently
+        self.myButton = UIButton()
+        print(self.myButton.title(for: .normal) as Any)
+        
+        print("actual button", type(of:self.myButton))
         
         // type substitution works only one way
         doThis(optionalStringMaker)
@@ -149,8 +175,14 @@ class ViewController: UIViewController {
             _ = i
             let ii = s.map {Int($0)} // Int??
             _ = ii
+            let s2 : String? = nil
+            let iii = s2.flatMap {Int($0)}
+            print(iii as Any)
         }
     
+    }
+    @IBAction func doButton(_ sender: Any) {
+        print("button tap")
     }
     
 }
