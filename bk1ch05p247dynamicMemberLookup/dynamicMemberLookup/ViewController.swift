@@ -3,14 +3,21 @@
 import UIKit
 
 @dynamicMemberLookup
-struct Flock {
+@dynamicCallable
+class Flock {
     var d = [String:String]()
     subscript(dynamicMember s:String) -> String? {
-        get {
-            return d[s]
-        }
-        set {
-            d[s] = newValue
+        get { d[s] }
+        set { d[s] = newValue }
+    }
+    func dynamicallyCall(withArguments args: [String]) {}
+    func dynamicallyCall(withKeywordArguments kvs:KeyValuePairs<String, String>) {
+        if kvs.count == 1 {
+            if let (key,val) = kvs.first {
+                if key == "remove" {
+                    d[val] = nil
+                }
+            }
         }
     }
 }
@@ -54,13 +61,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var flock = Flock()
+        let flock = Flock()
         flock.chicken = "peep"
         flock.partridge = "covey"
+        print(flock.d)
         if let s = flock.partridge {
             print(s) // covey
         }
-
+        flock(remove:"partridge")
+        flock(hello:"there")
+        flock(remove:"partridge", "in a pear tree")
+        print(flock.partridge as Any)
+        print(flock.d)
+        flock("hello")
+        print(flock.d)
         
         let v = UIView()
         

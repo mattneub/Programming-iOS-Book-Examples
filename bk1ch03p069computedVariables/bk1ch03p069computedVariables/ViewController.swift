@@ -2,7 +2,6 @@
 
 import UIKit
 import MediaPlayer
-import SwiftUI
 
 var now : String {
     get {
@@ -22,10 +21,11 @@ var now3 : String {
 }
 
 // warning, I expect some property wrapper feature names to change in the next iteration
-@propertyWrapper struct Facade {
-    private var _p : String
-    init(_ initialValue:String = "") {self._p = initialValue}
-    var value : String {
+@propertyWrapper struct Facade<T> {
+    private var _p : T
+    init(initialValue:T) {self._p = initialValue}
+    init(_ val:T) {self._p = val}
+    var value : T {
         get {
             return self._p
         }
@@ -35,18 +35,19 @@ var now3 : String {
     }
 }
 
-@propertyWrapper struct Clamped {
-    private var _i : Int = 0
-    private let min : Int
-    private let max : Int
-    init(min:Int = 0, max:Int = 10) {
+@propertyWrapper struct Clamped<T:Comparable> {
+    private var _i : T
+    private let min : T
+    private let max : T
+    init(_ initial : T, min:T, max:T) {
+        self._i = initial
         self.min = min
         self.max = max
     }
     var delegateValue : String { // causes $name to yield "yoho" instead of struct instance
         return "yoho"
     }
-    var value : Int {
+    var value : T {
         get {
             self._i
         }
@@ -67,7 +68,7 @@ class ViewController: UIViewController {
     
     // typical "facade" structure
     private var _p : String = ""
-    var p : String {
+    var pFacade : String {
         get {
             self._p
         }
@@ -77,8 +78,7 @@ class ViewController: UIViewController {
     }
     
     // Swift 5.1, can sluff the above off into a property wrapper
-    @Facade()
-    var p2 : String
+    @Facade("test") var p : String
     
     // more "practical" facade, a clamped setter
     private var _pp : Int = 0
@@ -91,18 +91,13 @@ class ViewController: UIViewController {
         }
     }
     
-    @Clamped(min:-7, max:7) var ppp : Int
-    @Clamped() var pppp : Int {
+    @Clamped(0, min:-7, max:7) var clamped : Int {
         didSet { // proving they are allowed to have observers (but not always: see @State)
             print("did")
         }
         willSet {
             print("will")
         }
-    }
-    
-    @State var ppppp : Int = 0 {
-        didSet {} // doesn't crash, so why does it crash in a real SwiftUI project?
     }
     
     // observer
@@ -119,9 +114,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.p2 = "hi"
-        print(self.p2)
-        print("dollar", $p2) // the struct
+        print(self.p)
+        self.p = "howdy"
+        print(self.p)
+        print("dollar", $p) // the struct
+        
 
         self.pp = 5
         print(self.pp)
@@ -130,23 +127,17 @@ class ViewController: UIViewController {
         self.pp = -10
         print(self.pp)
         
-        self.ppp = 5
-        print(self.ppp)
-        self.ppp = 20
-        print(self.ppp)
-        self.ppp = -10
-        print(self.ppp)
+        self.clamped = 5
+        print(self.clamped)
+        self.clamped = 20
+        print(self.clamped)
+        self.clamped = -10
+        print(self.clamped)
         
-        print("dollar", $ppp)
+        print("dollar", $clamped)
+        // $clamped = Clamped(0, min:-6, max:6)
+        print("dollar dollar", $__delegate_storage_$_clamped)
         
-        self.pppp = 5
-        print(self.pppp)
-        self.pppp = 20
-        print(self.pppp)
-        self.pppp = -10
-        print(self.pppp)
-        
-        print("dollar", $pppp)
 
 
     

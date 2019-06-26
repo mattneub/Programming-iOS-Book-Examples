@@ -316,6 +316,41 @@ class ViewController: UIViewController {
         }
         
         do {
+            var s : Set = [1,2,3,4,5]
+            for i in s {
+                if i % 2 == 0 {
+                    s.remove(i) // safe, s is copied before the loop starts
+                }
+            }
+            print(s)
+        }
+        
+        do {
+            struct Dog {
+                var name : String
+                init(_ n:String) {
+                    self.name = n
+                }
+            }
+            var dogs : [Dog] = [Dog("rover"), Dog("fido")]
+            for var dog in dogs { // some day maybe can say inout here
+                dog.name = dog.name.uppercased()
+            }
+            print(dogs.map{$0.name})
+            for ix in dogs.indices { // this is a standard workaround
+                dogs[ix].name = dogs[ix].name.uppercased()
+            }
+            print(dogs.map{$0.name})
+            // of course can work around it like this, but so ugly and often not what you wanted to say
+            dogs = dogs.map {dog in
+                var dog = dog
+                dog.name = dog.name.lowercased()
+                return dog
+            }
+            print(dogs.map{$0.name})
+        }
+        
+        do {
             for i in 1...5 {
                 for j in 1...5 {
                     print("\(i), \(j);")

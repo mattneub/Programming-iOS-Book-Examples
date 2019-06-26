@@ -12,6 +12,7 @@
 		32A5A8511AFA6FA30035587B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A5A84F1AFA6FA30035587B /* Main.storyboard */; };
 		32A5A8531AFA6FA30035587B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A5A8521AFA6FA30035587B /* Assets.xcassets */; };
 		32A5A8561AFA6FA30035587B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A5A8541AFA6FA30035587B /* LaunchScreen.xib */; };
+		816A37B422C26194009BF109 /* Thing.m in Sources */ = {isa = PBXBuildFile; fileRef = 816A37B322C26194009BF109 /* Thing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		32A5A8501AFA6FA30035587B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32A5A8521AFA6FA30035587B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32A5A8551AFA6FA30035587B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		816A37B122C26194009BF109 /* bk1ch05p230switch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk1ch05p230switch-Bridging-Header.h"; sourceTree = "<group>"; };
+		816A37B222C26194009BF109 /* Thing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Thing.h; sourceTree = "<group>"; };
+		816A37B322C26194009BF109 /* Thing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Thing.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,13 @@
 			children = (
 				32A5A84B1AFA6FA30035587B /* AppDelegate.swift */,
 				32A5A84D1AFA6FA30035587B /* ViewController.swift */,
+				816A37B222C26194009BF109 /* Thing.h */,
+				816A37B322C26194009BF109 /* Thing.m */,
 				32A5A84F1AFA6FA30035587B /* Main.storyboard */,
 				32A5A8521AFA6FA30035587B /* Assets.xcassets */,
 				32A5A8541AFA6FA30035587B /* LaunchScreen.xib */,
 				32A5A84A1AFA6FA30035587B /* Info.plist */,
+				816A37B122C26194009BF109 /* bk1ch05p230switch-Bridging-Header.h */,
 			);
 			path = bk1ch05p230switch;
 			sourceTree = "<group>";
@@ -96,7 +103,7 @@
 				TargetAttributes = {
 					32A5A8451AFA6FA30035587B = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -137,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816A37B422C26194009BF109 /* Thing.m in Sources */,
 				32A5A84E1AFA6FA30035587B /* ViewController.swift in Sources */,
 				32A5A84C1AFA6FA30035587B /* AppDelegate.swift in Sources */,
 			);
@@ -200,7 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -238,7 +246,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -249,9 +257,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch05p230switch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch05p230switch/bk1ch05p230switch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -260,9 +271,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch05p230switch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch05p230switch/bk1ch05p230switch-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

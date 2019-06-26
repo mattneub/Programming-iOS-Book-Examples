@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     // the problem
     func doSomeNetworking(completion:@escaping (Data) -> ()) {
-        URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, resp, err in
+        URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, _, err in
             if let data = data {
                 completion(data)
             }
@@ -37,6 +37,14 @@ class ViewController: UIViewController {
         }
     }
     
+    // the old solution
+    func doSomeNetworkingNOT(completion:@escaping (Data?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, _, err in
+            completion(data, err)
+        }
+    }
+
+    
     // the solution: the form of the completion handler _is_ up to us, so...
     func doSomeNetworking2(completion:@escaping (Result<Data,Error>) -> ()) {
         URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, resp, err in
@@ -46,14 +54,13 @@ class ViewController: UIViewController {
             if let err = err {
                 completion(.failure(err))
             }
-            fatalError("something incomprehensible happened")
         }
     }
     
     // a better way to write this is to take advantage of the fact
     // that a `let` can be initialized in a subsequent line
     func doSomeNetworking3(completion:@escaping (Result<Data,Error>) -> ()) {
-        URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, resp, err in
+        URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, _, err in
             let result : Result<Data,Error>
             if let data = data {
                 result = .success(data)
@@ -61,7 +68,7 @@ class ViewController: UIViewController {
             else if let err = err {
                 result = .failure(err)
             } else {
-                fatalError("something incomprehensible happened")
+                fatalError("something incomprehensible happened") // shut the compiler up
             }
             completion(result)
         }
@@ -70,7 +77,7 @@ class ViewController: UIViewController {
     // but there is an even cooler way: we can just write the whole thing out
     // as a throwing expression and stuff it into the Result!
     func doSomeNetworking4(completion:@escaping (Result<Data,Error>) -> ()) {
-        URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, resp, err in
+        URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, _, err in
             let result = Result<Data,Error> {
                 if let err = err {
                     throw err
@@ -104,7 +111,6 @@ class ViewController: UIViewController {
             } catch {
                 print(error)
             }
-            
         }
     }
 

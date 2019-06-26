@@ -140,6 +140,16 @@ class ViewController: UIViewController {
                 print(d)
             }
         }
+        
+        do {
+            let pairs : KeyValuePairs = ["CA": "California", "NY": "New York"]
+            print(pairs.count)
+            print(pairs[0]) // (key: "CA", value: "California")
+            if let pair = pairs.first(where: {$0.key == "NY"}) {
+                let val = pair.value
+                print(val)
+            }
+        }
 
         do {
             let dog1 : Dog = NoisyDog()

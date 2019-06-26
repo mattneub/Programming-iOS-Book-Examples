@@ -96,7 +96,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            // accidentally omitted from the book: showing the use of insert result
+            // showing the use of insert result
             // typical usage: unique array in order
             var arr = ["Mannie", "Mannie", "Moe", "Jack", "Jack", "Moe", "Mannie"]
             do {
@@ -109,10 +109,10 @@ class ViewController: UIViewController {
         // or without do
         
         do {
-            let arr = ["Mannie", "Mannie", "Moe", "Jack", "Jack", "Moe", "Mannie"]
+            var arr = ["Mannie", "Mannie", "Moe", "Jack", "Jack", "Moe", "Mannie"]
             var temp = Set<String>()
-            let arr2 = arr.filter { temp.insert($0).inserted }
-            print(arr2) // ["Mannie", "Moe", "Jack"]
+            arr = arr.filter { temp.insert($0).inserted }
+            print(arr) // ["Mannie", "Moe", "Jack"]
         }
         
         do {

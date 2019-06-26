@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             let whatname = p[keyPath:prop]
             print(whatname)
             
-            prop = \Person.lastName
+            prop = \.lastName
             
             // no, don't be silly
             // prop = \Person2.lastName

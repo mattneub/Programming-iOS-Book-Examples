@@ -52,6 +52,9 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
     
     var err = MyError.number(-6)
     
+    var urlerr = URLError.NetworkUnavailableReason.cellular
+    var test = TestEnum.one
+    
     var pep = "Groucho"
 
     override func viewDidLoad() {
@@ -122,9 +125,9 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         
         switch i {
         case let j where j < 0:
-            print("i is negative")
+            print("i is negative, namely \(j)")
         case let j where j > 0:
-            print("i is positive")
+            print("i is positive, namely \(j)")
         case 0:
             print("i is 0")
         default:break
@@ -203,6 +206,20 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         case .books:
             print("Books")
         }
+        
+        switch urlerr {
+        case URLError.NetworkUnavailableReason.cellular: break
+        case URLError.NetworkUnavailableReason.expensive: break
+        case URLError.NetworkUnavailableReason.constrained: break
+        @unknown default: break
+        }
+        
+        switch test {
+        case .one : break
+        case .two : break
+        @unknown default : break
+        }
+
 
         switch err {
         case .number(let theNumber):

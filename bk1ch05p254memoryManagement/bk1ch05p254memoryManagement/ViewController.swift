@@ -262,6 +262,43 @@ class ViewController: UIViewController {
             }
             testFunctionHolder() // farewell from FunctionHolder
         }
+        
+        do {
+            print(10)
+            class FunctionHolder {
+                var function : (() -> ())?
+                deinit {
+                    print("farewell from FunctionHolder")
+                }
+            }
+            func testFunctionHolder() {
+                let fh = FunctionHolder()
+                func printFH() {
+                    print(fh)
+                }
+                fh.function = printFH
+            }
+            testFunctionHolder() // nothing in console
+        }
+        
+        do {
+            print(11)
+            class FunctionHolder {
+                var function : (() -> ())?
+                deinit {
+                    print("farewell from FunctionHolder")
+                }
+            }
+            func testFunctionHolder() {
+                let fh = FunctionHolder()
+                func printFH(_ what:FunctionHolder) {
+                    print(what)
+                }
+                fh.function = { [unowned fh] in printFH(fh) }
+            }
+            testFunctionHolder() // farewell from FunctionHolder
+        }
+
 
         
         self.test()
@@ -293,6 +330,14 @@ class ViewController: UIViewController {
         var p2 = Person(firstName: "Matt")
         change(&p, &p2.firstName) // change &p2 to &p and we are stopped
         print(p)
+        
+        var i = 0
+        func tweak(_ ii:inout Int) {
+            // ii += 1
+            // i -= 1 // uncomment me to crash: can't hold an inout to i and change it directly too
+            // print(i) // uncomment me to crash too! you don't even have to modify i directly
+        }
+        tweak(&i)
         
         var x = 0
         // x.assignResultOf { x + 1 }
