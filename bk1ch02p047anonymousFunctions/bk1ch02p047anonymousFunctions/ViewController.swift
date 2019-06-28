@@ -79,8 +79,27 @@ class ViewController: UIViewController {
         
         let arr4 = arr.map {$0*2} // it doesn't get any Swiftier than this
         print(arr4)
-
         
+        // however, you can't use trailing closures directly before curly braces
+        
+//        for i in arr.map {$0*2} { // Trailing closure requires parentheses for disambiguation in this context
+//            print(i)
+//        }
+
+        for i in (arr.map {$0*2}) {
+            print(i)
+        }
+        
+        _ = arr.map{$0*2}.first == 4
+        
+//        if arr.map {$0*2}.first == 4 { // spew of meaningless error messages
+//            print("yup")
+//        }
+
+        if (arr.map {$0*2}.first) == 4 {
+            print("yup")
+        }
+
     }
 
     @IBAction func doButton(_ sender: Any) {

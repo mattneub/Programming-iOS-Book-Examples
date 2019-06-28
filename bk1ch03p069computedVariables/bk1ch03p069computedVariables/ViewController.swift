@@ -44,9 +44,10 @@ var now3 : String {
         self.min = min
         self.max = max
     }
-    var delegateValue : String { // causes $name to yield "yoho" instead of struct instance
-        return "yoho"
-    }
+//    var delegateValue : String { // causes $name to yield "yoho" instead of struct instance
+//        return "yoho"
+//    }
+    let delegateValue = "yoho"
     var value : T {
         get {
             self._i

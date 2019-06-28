@@ -110,6 +110,23 @@ class ViewController: UIViewController {
         }
         
         do {
+            let tvc = UITableViewCell()
+            let subview1 = UIView()
+            let subview2 = UITextField()
+            tvc.addSubview(subview1)
+            subview1.addSubview(subview2)
+            let textField = subview2
+            // ok but I've decided I hate that while loop, let's be cooler
+            let chain = sequence(first:textField as UIView) {$0.superview}
+            if let cell = (chain.first{$0 is UITableViewCell}) as? UITableViewCell {
+                print("got it \(cell)")
+            } else {
+                print("nope")
+            }
+            // ugly but preserves laziness
+        }
+        
+        do {
             let arr : [MyError] = [
                 .message("ouch"), .message("yipes"), .number(10),
                 .number(-1), .fatal
