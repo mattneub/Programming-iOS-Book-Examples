@@ -66,7 +66,7 @@ struct Pair {
     let y : Int
 }
 
-class Womble : NSObject { // Objective-C sees this automatically
+class WombleNSObject : NSObject { // Objective-C sees this automatically
     override init() {
         super.init()
     }
@@ -92,10 +92,13 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
     var myOptionalInt : Int? // Objective-C cannot be made to see this
     
     var myClass = MyClass() // Objective-C cannot be made to see this
-    
+        
     @objc var myThing = Thing() // Objective-C can see this only if marked with @objc
+    var myThing2 = Thing()
     
-    @objc var myWomble = Womble() // Objective-C can see this only if marked with @objc
+    @objc var myWomble = WombleNSObject() // Objective-C can see this only if marked with @objc
+    var myWomble2 = WombleNSObject()
+    @objc private var myWomble3 = WombleNSObject()
     
     var protovar = "howdy" // Objective-C can see this because it fulfills an @objc protocol
     
@@ -123,7 +126,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
     func testVisibility2(what:MyClass) {}
     
     let lm = NSLayoutManager()
-    
+        
     override func viewDidLoad() { // Objective-C can see this because it's an override of an Objective-C method
         super.viewDidLoad()
         

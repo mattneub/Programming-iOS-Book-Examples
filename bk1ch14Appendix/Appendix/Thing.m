@@ -27,7 +27,7 @@ void setState (State s) {
 }
 
 - (void) justTesting {
-    Womble* womble = [[Womble alloc] init];
+    WombleNSObject* womble = [[WombleNSObject alloc] init];
     womble = womble; // silence compiler
 }
 

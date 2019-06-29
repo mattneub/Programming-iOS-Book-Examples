@@ -12,6 +12,8 @@ void setState (State s);
 
 @interface Thing : NSObject
 
+- (NSString*) baadMethod: (NSString*) s;
+
 NS_ASSUME_NONNULL_BEGIN
 - (NSString*) badMethod: (NSString*) s;
 - (nullable NSString*) goodMethod: (NSString*) s;
@@ -22,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 // generated interface is: open func combine(with otherThing: Thing)
 // thus showing that we get renamification on our own methods
 
+- (void) triiumphOverThing: (Thing*) otherThing;
 - (void) triumphOverThing: (Thing*) otherThing NS_SWIFT_NAME(triumph(over:));
 // would be open func triumphOverThing(_ otherThing: Thing)
 // we've made it open func triumph(over otherThing: Thing)

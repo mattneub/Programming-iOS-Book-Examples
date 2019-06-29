@@ -53,6 +53,17 @@ extension UIView {
     }
 }
 
+struct Dog {
+    let name : String
+    func bark() { print("woof") }
+}
+@dynamicMemberLookup
+struct Kennel {
+    let dog : Dog
+    subscript(dynamicMember kp:KeyPath<Dog,String>) -> String {
+        self.dog[keyPath:kp]
+    }
+}
 
 
 class ViewController: UIViewController {
@@ -88,6 +99,11 @@ class ViewController: UIViewController {
         print(v.trans)
         v.trans = true
         print(v.trans)
+        
+        let k = Kennel(dog: Dog(name:"Fido"))
+        let name = k.name
+        print(name)
+        let name2 = k.wigglywoggly // doesn't compile
     }
 
 

@@ -219,6 +219,21 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         case .two : break
         @unknown default : break
         }
+        
+        do {
+            _ = try JSONDecoder().decode(String.self, from: Data())
+        } catch let err as DecodingError { // a Swift enum
+            switch err {
+            case .typeMismatch(_, _):
+                break
+            case .valueNotFound(_, _):
+                break
+            case .keyNotFound(_, _):
+                break
+            case .dataCorrupted(_):
+                break
+            } // compiler warns, need unknown default
+        } catch {}
 
 
         switch err {
@@ -228,6 +243,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
             print("It is a .Message: \(theMessage)")
         case .fatal:
             print("It is a .Fatal")
+        default: break // default will never be executed
         }
 
         switch err {

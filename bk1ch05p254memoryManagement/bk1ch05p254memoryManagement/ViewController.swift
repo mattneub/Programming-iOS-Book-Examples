@@ -324,6 +324,11 @@ class ViewController: UIViewController {
         }
         print(components)
         
+        do { // don't do this?
+            let ptr = UnsafeMutablePointer(&components)
+            ptr[0] = 1
+        }
+        
         // another example
         func change(_ p:inout Person, _ s:inout String) {}
         var p = Person(firstName: "Matt")
