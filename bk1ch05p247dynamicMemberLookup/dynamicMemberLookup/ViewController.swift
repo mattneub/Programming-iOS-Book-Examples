@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         let k = Kennel(dog: Dog(name:"Fido"))
         let name = k.name
         print(name)
-        let name2 = k.wigglywoggly // doesn't compile
+        // let name2 = k.wigglywoggly // doesn't compile
     }
 
 

@@ -26,10 +26,10 @@ class ViewController: UIViewController {
             print(b)
             // proving it's not just literals
             let b2 = Bool(s)
-            print(b2)
-            print(Bool("FALSE"))
-            print(Bool("true"))
-            print(Bool("howdy"))
+            print(b2 as Any)
+            print(Bool("FALSE") as Any)
+            print(Bool("true") as Any)
+            print(Bool("howdy") as Any)
             // this is an oddity, works only with literal
             let b3 = Bool.init(0)
             print(b3)
@@ -102,11 +102,11 @@ class ViewController: UIViewController {
             _ = ii
         }
         
-        if 3e2 == 300 {
+        if Int(3e2) == 300 {
             print("yep")
         }
 
-        if 0x10p2 == 64 {
+        if Double(0x10p2) == 64 {
             print("yep")
         }
         
