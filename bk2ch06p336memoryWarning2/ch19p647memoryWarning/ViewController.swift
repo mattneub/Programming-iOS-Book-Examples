@@ -11,7 +11,7 @@ struct DiskBacked {
     private var _myBigData : Data? = nil
     private let filename : String
     init(filename:String) { self.filename = filename }
-    var value : Data? {
+    var wrappedValue : Data? {
         set (newdata) {
             self._myBigData = newdata
         }
@@ -73,7 +73,7 @@ class ViewController : UIViewController {
         
     // this is the actual example
     @DiskBacked(filename:"myBigData")
-    var myBigData : Data
+    var myBigData : Data?
     
     override func awakeFromNib() {
         super.awakeFromNib()

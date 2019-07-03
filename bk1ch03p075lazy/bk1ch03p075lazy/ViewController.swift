@@ -32,7 +32,7 @@ class Helper2 {
 // not entirely satisfactory solution to the lack of lazy let
 @propertyWrapper struct Once<T> {
     private var _p : T? = nil
-    var value : T {
+    var wrappedValue : T {
         get {
             if _p == nil {
                 fatalError("not initialized")

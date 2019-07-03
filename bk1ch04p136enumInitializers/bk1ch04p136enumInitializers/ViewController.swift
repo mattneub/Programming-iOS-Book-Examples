@@ -68,7 +68,7 @@ enum Shape {
 }
 
 @propertyWrapper struct Test {
-    var value : String {
+    var wrappedValue : String {
         get { "howdy" }
         set {}
     }

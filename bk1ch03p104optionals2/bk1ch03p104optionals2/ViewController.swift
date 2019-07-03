@@ -4,7 +4,7 @@ import UIKit
 
 @propertyWrapper struct DeferredConstant<T> {
     private var _value: T? = nil
-    var value: T {
+    var wrappedValue: T {
         get {
             if _value == nil {
                 fatalError("not yet initialized")

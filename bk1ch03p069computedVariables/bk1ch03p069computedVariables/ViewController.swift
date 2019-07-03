@@ -25,7 +25,7 @@ var now3 : String {
     private var _p : T
     init(initialValue:T) {self._p = initialValue}
     init(_ val:T) {self._p = val}
-    var value : T {
+    var wrappedValue : T {
         get {
             return self._p
         }
@@ -47,8 +47,8 @@ var now3 : String {
 //    var delegateValue : String { // causes $name to yield "yoho" instead of struct instance
 //        return "yoho"
 //    }
-    let delegateValue = "yoho"
-    var value : T {
+    let wrapperValue = "yoho"
+    var wrappedValue : T {
         get {
             self._i
         }
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
         
         print("dollar", $clamped)
         // $clamped = Clamped(0, min:-6, max:6)
-        print("dollar dollar", $__delegate_storage_$_clamped)
+        print("dollar dollar", $$clamped)
         
 
 
