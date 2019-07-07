@@ -47,8 +47,8 @@
 		814A1AB01D109C1F008F3FF6 /* EmptyWindowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmptyWindowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		814A1AB21D109C1F008F3FF6 /* EmptyWindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWindowTests.swift; sourceTree = "<group>"; };
 		814A1AB41D109C1F008F3FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8185E5BE22D0EED2004AD7E2 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
-		8185E5BF22D0EFD2004AD7E2 /* EmptyWindow.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyWindow.xctestplan; sourceTree = "<group>"; };
+		8185E5BE22D0EED2004AD7E2 /* TestPlan2.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan2.xctestplan; sourceTree = "<group>"; };
+		8185E5BF22D0EFD2004AD7E2 /* TestPlan1.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan1.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +79,8 @@
 		32080BE71AFE632800DB7A17 = {
 			isa = PBXGroup;
 			children = (
-				8185E5BE22D0EED2004AD7E2 /* TestPlan.xctestplan */,
-				8185E5BF22D0EFD2004AD7E2 /* EmptyWindow.xctestplan */,
+				8185E5BE22D0EED2004AD7E2 /* TestPlan2.xctestplan */,
+				8185E5BF22D0EFD2004AD7E2 /* TestPlan1.xctestplan */,
 				32080BF21AFE632800DB7A17 /* bk1ch09p380unitTesting */,
 				814A1AA31D109B13008F3FF6 /* EmptyWindowUITests */,
 				814A1AB11D109C1F008F3FF6 /* EmptyWindowTests */,

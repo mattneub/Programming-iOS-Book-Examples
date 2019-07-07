@@ -23,7 +23,12 @@ class EmptyWindowUITests: XCTestCase {
     func testExample() {
         
         let app = XCUIApplication()
-        app.buttons["Howdy"].tap()
+        let screenshot = XCUIApplication().windows.firstMatch.screenshot()
+        let attachment = XCTAttachment(screenshot: screenshot)
+        attachment.lifetime = .keepAlways
+        attachment.name = "OpeningScreen"
+        self.add(attachment)
+        app.buttons["GreetingButton"].tap()
         app.alerts["Howdy!"].buttons["OK"].tap()
         
     }

@@ -1,6 +1,6 @@
-/* (No Comment) */
+/* Bundle display name */
 "CFBundleDisplayName" = "Fenêtre Vide";
 
-/* (No Comment) */
+/* Bundle name */
 "CFBundleName" = "$(PRODUCT_NAME)";
 

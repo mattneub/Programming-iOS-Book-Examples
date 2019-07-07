@@ -1,7 +1,13 @@
 {
   "configurations" : [
     {
-      "name" : "EmptyWindowConfig",
+      "name" : "TestPlan1Config1",
+      "options" : {
+
+      }
+    },
+    {
+      "name" : "TestPlan1Config2",
       "options" : {
 
       }
