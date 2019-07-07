@@ -21,9 +21,12 @@ class ViewController: UIViewController {
         let device = self.traitCollection.userInterfaceIdiom == .pad ? "iPad" : "iPhone"
         print(device)
         
+        let r = self.view.frame
+        
         var d = Dog()
         var dd = d // breakpoint here and hover over d
         print(dd)
+        print(r)
         
         
     }

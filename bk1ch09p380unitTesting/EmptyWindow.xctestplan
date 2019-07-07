@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "name" : "EmptyWindowConfig",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "commandLineArgumentEntries" : [
+
+    ]
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:bk1ch09p380unitTesting.xcodeproj",
+        "identifier" : "814A1AA11D109B13008F3FF6",
+        "name" : "EmptyWindowUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:bk1ch09p380unitTesting.xcodeproj",
+        "identifier" : "814A1AAF1D109C1F008F3FF6",
+        "name" : "EmptyWindowTests"
+      }
+    }
+  ],
+  "version" : 1
+}

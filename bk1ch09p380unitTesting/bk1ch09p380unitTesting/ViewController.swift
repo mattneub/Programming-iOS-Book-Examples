@@ -17,6 +17,9 @@ class ViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
 }
 

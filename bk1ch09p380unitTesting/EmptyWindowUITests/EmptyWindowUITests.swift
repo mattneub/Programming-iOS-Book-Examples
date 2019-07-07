@@ -26,10 +26,6 @@ class EmptyWindowUITests: XCTestCase {
         app.buttons["Howdy"].tap()
         app.alerts["Howdy!"].buttons["OK"].tap()
         
-        
-        
-        
-        
     }
     
 }
