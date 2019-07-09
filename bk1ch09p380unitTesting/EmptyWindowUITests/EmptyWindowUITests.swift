@@ -23,7 +23,7 @@ class EmptyWindowUITests: XCTestCase {
     func testExample() {
         
         let app = XCUIApplication()
-        let screenshot = XCUIApplication().windows.firstMatch.screenshot()
+        let screenshot = XCUIApplication().screenshot()
         let attachment = XCTAttachment(screenshot: screenshot)
         attachment.lifetime = .keepAlways
         attachment.name = "OpeningScreen"

@@ -17,6 +17,9 @@
     "codeCoverage" : false,
     "commandLineArgumentEntries" : [
 
+    ],
+    "environmentVariableEntries" : [
+
     ]
   },
   "testTargets" : [
