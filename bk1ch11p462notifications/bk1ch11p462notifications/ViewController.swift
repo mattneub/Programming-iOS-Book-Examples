@@ -10,7 +10,7 @@ let which = 1 // 1 or 2
 class Card {
     func singleTap(_: Any) {
         NotificationCenter.default
-            .post(name: Card.tappedNotification, object: self)
+            .post(name: Self.tappedNotification, object: self)
     }
 }
 extension Card {

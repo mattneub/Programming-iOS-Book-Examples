@@ -9,7 +9,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 
 // observed object must derive from NSObject
-class MyClass1 : NSObject {
+class Observed : NSObject {
     // absolutely crucial to say "dynamic" or this won't work (and now objc too)
     @objc dynamic var value : Bool = false
     deinit {
@@ -19,7 +19,7 @@ class MyClass1 : NSObject {
 
 // the observer no longer has to derive from NSObject, or even be a class instance!
 // that's because it isn't the observer; the real observer is the NSKeyValueObservation object
-class MyClass2 {
+class Observer {
     
 // failed experiment
     
@@ -30,7 +30,7 @@ class MyClass2 {
     
     var obs = Set<NSKeyValueObservation>()
     
-    func registerWith(_ mc:MyClass1) {
+    func registerWith(_ mc:Observed) {
         let opts : NSKeyValueObservingOptions = [.old, .new]
         let ob = mc.observe(\.value, options: opts) { obj, change in
             // obj is the observed object
@@ -62,8 +62,8 @@ private var con = "ObserveValue"
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
-    var objectA : MyClass1!
-    var objectB : MyClass2!
+    var observed : Observed!
+    var observer : Observer!
     var window : UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
@@ -75,15 +75,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         
         
-        objectA = MyClass1()
-        objectB = MyClass2()
+        observed = Observed()
+        observer = Observer()
         // step one: registration
-        let kp = \MyClass1.value
-        // objectB.registerWith(objectA, keyPath:kp)
-        objectB.registerWith(objectA)
+        let kp = \Observed.value
+        observer.registerWith(observed)
         
         // step two: make a change in a KVO compatible way
-        objectA.value = true
+        observed.value = true
         
         // look ma, no memory management! no unregistration!
         // I can safely destroy one or both objects, in either order
@@ -93,40 +92,40 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         switch which {
         case 0:
             // A then B
-            objectA = nil
-            objectB = nil
+            observed = nil
+            observer = nil
             // but that _will_ crash in iOS 10 or before!
         case 1:
             // B then A, with observed change
-            objectB = nil
+            observer = nil
             // ha ha! when objectB goes out of existence, so does the observer!
             // thus the observation stops
-            objectA.value = false
-            objectA = nil
+            observed.value = false
+            observed = nil
             // but that last line will crash in iOS 10 if the notification function mentions self
             // and even in iOS 11, objectB is leaking if the notification function mentions self
             // solution is to use unowned self in the notification function
         case 2:
             // premature deregistration 1
-            objectB.obs.removeAll()
-            objectA.value = false
+            observer.obs.removeAll()
+            observed.value = false
         case 3:
             // premature deregistration 2
-            objectB.obs.forEach {$0.invalidate()}
-            objectA.value = false
+            observer.obs.forEach {$0.invalidate()}
+            observed.value = false
         case 4:
             // let's artificially keep the observer alive and see what happens
-            let obs = objectB.obs
-            objectB = nil
+            let obs = observer.obs
+            observer = nil
             delay(1) {
                 let obs2 = obs // ensure life
-                self.objectA.value = false
+                self.observed.value = false
                 _ = obs2
             }
             // crash because of the unowned self, as expected
         default:
             // just proving that this would have worked if we had done nothing
-            objectA.value = false
+            observed.value = false
         }
         
         return true
