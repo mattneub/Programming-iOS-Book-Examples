@@ -32,7 +32,18 @@ class Dog2 : NSObject { // a dog equatable and hashable on its name
     }
 }
 
-
+// illegal: you can get autosynthesis of Equatable because it's _already_ Equatable
+// and anyhow you can't get autosynthesis for classes
+/*
+class Dog3 : NSObject, Equatable {
+    var name : String
+    var license : Int
+    init(name:String, license:Int) {
+        self.name = name
+        self.license = license
+    }
+}
+ */
 
 class ViewController: UIViewController {
     
@@ -149,7 +160,7 @@ class ViewController: UIViewController {
         
         do {
             let greg = Calendar(identifier:.gregorian)
-            let comp = DateComponents(calendar: greg, year: 2018, month: 8, day: 10, hour: 15)
+            let comp = DateComponents(calendar: greg, year: 2019, month: 8, day: 10, hour: 15)
             let d = comp.date // Optional wrapping Date
             if let d = d {
                 print(d)
@@ -171,9 +182,9 @@ class ViewController: UIViewController {
         do {
             let greg = Calendar(identifier:.gregorian)
             let d1 = DateComponents(calendar: greg,
-                                    year: 2018, month: 1, day: 1, hour: 0).date!
+                                    year: 2019, month: 1, day: 1, hour: 0).date!
             let d2 = DateComponents(calendar: greg,
-                                    year: 2018, month: 8, day: 10, hour: 15).date!
+                                    year: 2019, month: 8, day: 10, hour: 15).date!
             let di = DateInterval(start: d1, end: d2)
             if di.contains(Date()) { // are we currently between those two dates?
                 print("yep")
@@ -183,7 +194,7 @@ class ViewController: UIViewController {
         do {
             let df = DateFormatter()
             df.dateFormat = "M/d/y"
-            let s = df.string(from: Date()) // 7/31/2018
+            let s = df.string(from: Date()) // 7/31/2019
             print(s)
         }
         
@@ -201,7 +212,7 @@ class ViewController: UIViewController {
             let df = DateFormatter()
             df.locale = Locale(identifier: "en_US_POSIX")
             df.dateFormat = "M/d/y"
-            let d = df.date(from: "31/7/2018")
+            let d = df.date(from: "14/7/2019")
             print(d as Any)
         }
 
