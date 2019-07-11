@@ -8,6 +8,7 @@ class Dog : NSObject {
 
 class DogOwner : NSObject {
     @objc var dogs = [Dog]()
+    @objc var dog : Dog?
 }
 
 //@objc protocol Named {
@@ -124,11 +125,31 @@ class ViewController: UIViewController {
         // no way; cannot substitute Swift keypath for a string
         // d.setValue("Rover", forKey:\Dog.name)
         // can of course use Swift
-        d[keyPath:\Dog.name] = "Rover"
+        d[keyPath:\.name] = "Rover"
         print(d.name)
+        
+        let kp = String(describing:\Dog.name)
+        print(kp)
+        
+        let bgcolor = self[keyPath:\.view.backgroundColor]
+        print("background color:", bgcolor as Any)
+        
+        // this doesn't work
+        // let path = #keyPath(CALayer.transform.rotation)
+        
+        let layer = CALayer()
+        layer.setValue("testing", forKey:"testing")
+        let result = layer.value(forKey:"testing")
+        print(result as Any) // testing
+        // but you can't do that with #keyPath
+        // layer[keyPath:\.testing] = "testing"
+        
 
         let c = self.value(forKey:"hue") as? UIColor // "someone called the getter"
-        print(c as Any) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
+        print("hue:", c as Any) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
+        
+        let c2 = self[keyPath:\.color] // _not_ \.hue
+        print("color:", c2 as Any)
         
         let myObject = MyClass()
         let arr = myObject.value(forKeyPath:"theData.name") as! [String]
@@ -165,9 +186,20 @@ class ViewController: UIViewController {
         let names = owner.value(forKeyPath:#keyPath(DogOwner.dogs.name)) as! [String] // ["Fido", "Rover"]
         let dog1name = dog1.value(forKey:#keyPath(Dog.name)) as! String
         
-
         print(names)
         print(dog1name)
+        
+        do {
+            let owner = DogOwner()
+            let dog = Dog()
+            dog.name = "Fido"
+            owner.dog = dog
+            if let name = owner.value(forKeyPath:"dog.name") as? String {
+                print("keypath for dog name:", name)
+            }
+        }
+        
+
     }
 
 
