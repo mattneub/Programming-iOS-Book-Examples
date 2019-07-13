@@ -30,9 +30,9 @@ class Observer {
     
     var obs = Set<NSKeyValueObservation>()
     
-    func registerWith(_ mc:Observed) {
+    func registerWith(_ observed:Observed) {
         let opts : NSKeyValueObservingOptions = [.old, .new]
-        let ob = mc.observe(\.value, options: opts) { obj, change in
+        let ob = observed.observe(\.value, options: opts) { obj, change in
             // obj is the observed object
             // change is an NSKeyValueObservedChange
             if let oldValue = change.oldValue {
