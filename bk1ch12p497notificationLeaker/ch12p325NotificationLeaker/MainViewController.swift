@@ -1,4 +1,7 @@
 import UIKit
+import CoreLocation
+import AVFoundation
+import MediaPlayer
 
 class MainViewController: UIViewController, FlipsideViewControllerDelegate {
 

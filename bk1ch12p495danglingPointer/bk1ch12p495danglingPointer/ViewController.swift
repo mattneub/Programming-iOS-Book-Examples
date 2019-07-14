@@ -1,22 +1,26 @@
 
 
 import UIKit
-import CoreLocation
+
+// @property (nullable, assign) id<NSCacheDelegate> delegate;
+
 
 // to test, first reset simulator's content and settings
 
-class MyDelegate : NSObject, CLLocationManagerDelegate {
-    
+class MyDelegate : NSObject, NSCacheDelegate {
+    func cache(_ cache: NSCache<AnyObject, AnyObject>, willEvictObject obj: Any) {
+        print("okay")
+    }
 }
 
 class ViewController: UIViewController {
     
-    var locman : CLLocationManager!
+    var cache = NSCache<NSString,NSData>()
     var del : MyDelegate! = MyDelegate()
 
     @IBAction func doButton1(_ sender: Any) {
-        self.locman = CLLocationManager()
-        self.locman.delegate = self.del
+        self.cache.delegate = self.del
+        self.cache.setObject(NSData(), forKey: "test")
     }
     
     let crash = true
@@ -24,9 +28,7 @@ class ViewController: UIViewController {
     @IBAction func doButton2(_ sender: Any) {
         if crash {
             self.del = nil
-        }
-        if let loc = self.locman {
-            loc.requestAlwaysAuthorization()
+            self.cache.removeAllObjects()
         }
     }
 
