@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                 object: nil)
             
         case 2:
-            
+            // warning: this is a serious potential memory leak
             let ob = NotificationCenter.default
                 .addObserver(forName:
                     .MPMusicPlayerControllerNowPlayingItemDidChange,
