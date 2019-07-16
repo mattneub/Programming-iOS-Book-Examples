@@ -8,13 +8,11 @@ struct ContentView : View {
         self.isHello ? "Hello" : "Goodbye"
     }
     var body: some View {
-        HStack {
+        VStack {
             Text(self.greeting + " World")
             Spacer()
-            Button("Tap Me") {
-                self.isHello.toggle()
-            }
-        }.frame(width: 200)
+            Toggle("Friendly", isOn: $isHello)
+        }.frame(width: 150, height: 100)
             .padding(20)
             .background(Color.yellow)
     }
