@@ -4,7 +4,7 @@ import Combine
 
 class ViewController: UIViewController {
     
-
+    @Published var pub = "testing"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +30,10 @@ class ViewController: UIViewController {
         subscription.cancel()
         
         pass.send("done") // silence
+
+        _ = $pub.sink { print($0) }
+        _ = $pub.sink { print($0) }
+        pub = "yoho"
 
     }
 
