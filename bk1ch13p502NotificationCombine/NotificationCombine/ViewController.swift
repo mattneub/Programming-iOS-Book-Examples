@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     let cardTappedCardNamePublisher = NotificationCenter.default.publisher(for: Card.tapped)
         .compactMap {$0.object as? Card}
-        .publisher(for: \.name)
+        .map {$0.name}
     //.eraseToAnyPublisher()
     lazy var switchOnPublisher = mySwitch.publisher
     //.eraseToAnyPublisher()
