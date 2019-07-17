@@ -4,14 +4,14 @@ import SwiftUI
 import Combine
 
 class Defaults : BindableObject {
-    var didChange = PassthroughSubject<Void, Never>()
+    var willChange = PassthroughSubject<Void, Never>()
     var username : String {
         get {
             UserDefaults.standard.string(forKey: "name") ?? ""
         }
         set {
+            self.willChange.send()
             UserDefaults.standard.set(newValue, forKey: "name")
-            self.didChange.send()
         }
     }
 }

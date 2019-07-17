@@ -8,15 +8,15 @@ struct ContentView : View {
     var greeting : String {
         self.isHello ? "Hello" : "Goodbye"
     }
+    @State var showSheet = false
     var body: some View {
         VStack {
-            PresentationLink(
-                "Show Message",
-                destination: Greeting(
-                    greeting:self.greeting,
-                    username:self.$defaults.username
-                )
-            )
+            Button("Show Message") {
+                self.showSheet.toggle()
+            }.sheet(isPresented: $showSheet) {
+                Greeting(greeting: self.greeting,
+                         username: self.$defaults.username)
+            }
             Spacer()
             Text(self.defaults.username.isEmpty ? "" : greeting + ", " + self.defaults.username)
             Spacer()

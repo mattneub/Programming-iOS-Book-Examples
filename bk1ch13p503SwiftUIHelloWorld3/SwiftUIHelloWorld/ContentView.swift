@@ -7,10 +7,14 @@ struct ContentView : View {
     var greeting : String {
         self.isHello ? "Hello" : "Goodbye"
     }
+    @State var showSheet = false
     var body: some View {
         VStack {
-            PresentationLink("Show Message",
-                             destination: Greeting1(greeting:self.greeting))
+            Button("Show Message") {
+                self.showSheet.toggle()
+            }.sheet(isPresented: $showSheet) {
+                Greeting1(greeting: self.greeting)
+            }
             Spacer()
             Toggle("Friendly", isOn: $isHello)
         }.frame(width: 150, height: 100)
@@ -26,14 +30,16 @@ struct Greeting1 : View {
     }
 }
 
+// how to give a presented view a Done button
+
 struct Greeting2 : View {
-    @Environment(\.isPresented) private var isPresented
     let greeting : String
+    @Binding var isPresented : Bool
     var body: some View {
         VStack {
             Text(greeting + " World")
             Spacer().frame(height:30)
-            Button("Done", action: {self.isPresented?.value = false})
+            Button("Done", action: {self.isPresented = false})
         }.padding(20)
             .background(Color.green)
     }
