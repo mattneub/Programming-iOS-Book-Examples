@@ -3,6 +3,8 @@
 import UIKit
 import MediaPlayer
 
+@Facade var testing = 0 // legal
+
 var now : String {
     get {
         return Date().description
@@ -39,8 +41,8 @@ var now3 : String {
     private var _i : T
     private let min : T
     private let max : T
-    init(_ initial : T, min:T, max:T) {
-        self._i = initial
+    init(initialValue: T, min:T, max:T) {
+        self._i = initialValue
         self.min = min
         self.max = max
     }
@@ -92,14 +94,9 @@ class ViewController: UIViewController {
         }
     }
     
-    @Clamped(0, min:-7, max:7) var clamped : Int {
-        didSet { // proving they are allowed to have observers (but not always: see @State)
-            print("did")
-        }
-        willSet {
-            print("will")
-        }
-    }
+    @Clamped(min:-7, max:7) var clamped : Int = 0
+    
+    @Clamped(initialValue:0, min:-7, max:7) var anotherWay : Int
     
     // observer
     var s = "whatever" {
@@ -136,7 +133,7 @@ class ViewController: UIViewController {
         print(self.clamped)
         
         print("underscore", _clamped) // the Clamped struct
-        _clamped = Clamped(0, min:-6, max:6)
+        _clamped = Clamped(initialValue:0, min:-6, max:6)
         self.clamped = 7
         print(self.clamped)
         print("dollar", $clamped) // yoho, the projected value
@@ -149,6 +146,8 @@ class ViewController: UIViewController {
         
         self.s = "Hello"
         self.s = "Bonjour"
+        
+        // @Clamped var test = 4 // not yet, dude
 
     
     
