@@ -47,7 +47,7 @@ var now3 : String {
 //    var delegateValue : String { // causes $name to yield "yoho" instead of struct instance
 //        return "yoho"
 //    }
-    let wrapperValue = "yoho"
+    let projectedValue = "yoho"
     var wrappedValue : T {
         get {
             self._i
@@ -68,13 +68,13 @@ class ViewController: UIViewController {
 
     
     // typical "facade" structure
-    private var _p : String = ""
+    private var __p : String = ""
     var pFacade : String {
         get {
-            self._p
+            self.__p
         }
         set {
-            self._p = newValue
+            self.__p = newValue
         }
     }
     
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         print(self.p)
         self.p = "howdy"
         print(self.p)
-        print("dollar", $p) // the struct
+        print("underscore", _p) // the struct
         
 
         self.pp = 5
@@ -135,9 +135,11 @@ class ViewController: UIViewController {
         self.clamped = -10
         print(self.clamped)
         
-        print("dollar", $clamped)
-        // $clamped = Clamped(0, min:-6, max:6)
-        print("dollar dollar", $$clamped)
+        print("underscore", _clamped) // the Clamped struct
+        _clamped = Clamped(0, min:-6, max:6)
+        self.clamped = 7
+        print(self.clamped)
+        print("dollar", $clamped) // yoho, the projected value
         
 
 
