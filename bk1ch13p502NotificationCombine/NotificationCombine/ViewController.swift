@@ -19,12 +19,13 @@ class Card : UIView {
 class MySwitch : UISwitch {
     required init?(coder: NSCoder) {
         super.init(coder:coder)
+        self.isOnPublisher = self.isOn
         self.addTarget(self, action: #selector(didChangeOn), for: .valueChanged)
     }
+    @Published var isOnPublisher = false
     @objc func didChangeOn() {
-        self.publisher.send(self.isOn)
+        self.isOnPublisher = self.isOn
     }
-    lazy var publisher = CurrentValueSubject<Bool,Never>(self.isOn)
 }
 
 class ViewController: UIViewController {
@@ -35,14 +36,16 @@ class ViewController: UIViewController {
         .compactMap {$0.object as? Card}
         .map {$0.name}
     //.eraseToAnyPublisher()
-    lazy var switchOnPublisher = mySwitch.publisher
+    // lazy var switchOnPublisher = mySwitch.$isOnPublisher
     //.eraseToAnyPublisher()
+    // lazy var pub = self.mySwitch.publisher(for: \.isOn) // KVO
     lazy var combination =
-        Publishers.CombineLatest(cardTappedCardNamePublisher, switchOnPublisher)
-            .scan((nil,true)) { $0.1 != $1.1 ? (nil,$1.1) : $1 }
-            .filter { $0.1 }
-            .compactMap { $0.0 }
-            //.eraseToAnyPublisher()
+        Publishers.CombineLatest(
+            self.cardTappedCardNamePublisher, self.mySwitch.$isOnPublisher)
+                .scan((nil,true)) { $0.1 != $1.1 ? (nil,$1.1) : $1 }
+                .filter { $0.1 }
+                .compactMap { $0.0 }
+                //.eraseToAnyPublisher()
     
     var which = 3
     override func viewDidLoad() {
@@ -57,7 +60,7 @@ class ViewController: UIViewController {
             }
             _ = sink
         case 2:
-            let sink = self.switchOnPublisher.sink {
+            let sink = self.mySwitch.$isOnPublisher.sink {
                 print($0)
             }
             _ = sink
