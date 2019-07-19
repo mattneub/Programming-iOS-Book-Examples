@@ -62,11 +62,11 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         let app = UIApplication.shared
-        let window = app.keyWindow
+        let window = app.windows.first
         let vc = window?.rootViewController
         print(vc as Any)
         
-        let vc2 = UIApplication.shared.keyWindow?.rootViewController
+        let vc2 = UIApplication.shared.windows.first?.rootViewController
         print(vc2 as Any)
 
 
