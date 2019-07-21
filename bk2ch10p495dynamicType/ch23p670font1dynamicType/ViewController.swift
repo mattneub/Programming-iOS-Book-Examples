@@ -41,6 +41,8 @@ class ViewController : UIViewController {
         
     }
     
+    #warning("call super")
+    
     override func traitCollectionDidChange(_ oldtc: UITraitCollection?) {
         let newsize = self.traitCollection.preferredContentSizeCategory
         let oldsize = oldtc?.preferredContentSizeCategory

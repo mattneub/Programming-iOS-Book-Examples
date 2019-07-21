@@ -58,6 +58,7 @@ class MyView: UIView {
         print("\(self)\n\(#function)\n")
     }
     
+    #warning("call super")
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         // super.traitCollectionDidChange(previousTraitCollection)
         print("\(self)\n\(#function)\n")

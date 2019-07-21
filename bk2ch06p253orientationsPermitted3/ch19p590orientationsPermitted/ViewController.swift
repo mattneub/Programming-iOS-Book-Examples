@@ -2,6 +2,8 @@
 import UIKit
 
 class ViewController : UIViewController {
+
+#warning("call super")
     
     // all three are now contributing to the story:
     // the plist, the app delegate, and the view controller

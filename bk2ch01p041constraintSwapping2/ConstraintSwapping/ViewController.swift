@@ -59,6 +59,7 @@ class ViewController: UIViewController {
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         let prev = previousTraitCollection
         let tc = self.traitCollection
         if prev == nil && tc.verticalSizeClass == .compact {

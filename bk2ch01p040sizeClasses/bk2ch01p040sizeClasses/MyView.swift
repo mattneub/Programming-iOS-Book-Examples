@@ -54,6 +54,7 @@ class MyView: UIView {
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         print("did change")
         self.setNeedsUpdateConstraints()
     }

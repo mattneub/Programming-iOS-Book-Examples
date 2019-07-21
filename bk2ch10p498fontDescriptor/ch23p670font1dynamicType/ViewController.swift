@@ -19,6 +19,8 @@ class ViewController : UIViewController {
         print(f2)
     }
     
+    #warning("call super")
+    
     override func traitCollectionDidChange(_ ptc: UITraitCollection?) {
         let tc = self.traitCollection
         if ptc == nil ||

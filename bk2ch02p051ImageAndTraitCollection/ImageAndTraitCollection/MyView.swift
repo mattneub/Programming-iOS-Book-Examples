@@ -6,7 +6,8 @@ class MyView: UIView {
     
     var image : UIImage!
     
-    override func traitCollectionDidChange(_: UITraitCollection?) {
+    override func traitCollectionDidChange(_ prevtc: UITraitCollection?) {
+        super.traitCollectionDidChange(prevtc)
         self.setNeedsDisplay() // causes draw(_:) to be called
     }
     

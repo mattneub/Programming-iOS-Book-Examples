@@ -9,6 +9,7 @@ class ViewController: UIViewController {
     
     // iPad interface is different; fix on launch
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         print("trait collection did change")
         let tc = self.traitCollection
         print(tc)

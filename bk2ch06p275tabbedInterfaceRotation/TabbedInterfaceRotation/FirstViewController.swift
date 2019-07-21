@@ -27,6 +27,8 @@ class FirstViewController: UIViewController {
 
     }
     
+    #warning("call super")
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         print("horiz", self.traitCollection.horizontalSizeClass)
         print("vert", self.traitCollection.verticalSizeClass)

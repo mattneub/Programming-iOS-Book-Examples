@@ -77,6 +77,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillTransition(to: size, with: coordinator)
     }
     
+    #warning("call super")
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         print("trait collection did change to \(self.traitCollection)")
     }

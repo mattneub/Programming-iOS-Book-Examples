@@ -3,6 +3,8 @@
 import UIKit
 
 class ViewController : UIViewController {
+
+ 	#warning("call super")
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .all
