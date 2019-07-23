@@ -9,14 +9,6 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-extension UILayoutPriority {
-    static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
-        let raw = lhs.rawValue + rhs
-        return UILayoutPriority(rawValue:raw)
-    }
-}
-
-
 class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {

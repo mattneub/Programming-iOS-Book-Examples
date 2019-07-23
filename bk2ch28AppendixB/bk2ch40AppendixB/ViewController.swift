@@ -62,45 +62,53 @@ func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     return d
 }
 
-extension NSLayoutConstraint {
-    class func reportAmbiguity (_ v:UIView?) {
-        var v = v
-        if v == nil {
-            v = UIApplication.shared.keyWindow
+@objc extension UIView {
+    func reportAmbiguity(filtering:Bool = false) {
+        let has = self.hasAmbiguousLayout
+        if has || !filtering {
+            print(self, has)
         }
-        for vv in v!.subviews {
-            print("\(vv) \(vv.hasAmbiguousLayout)")
-            if vv.subviews.count > 0 {
-                self.reportAmbiguity(vv)
-            }
-        }
-    }
-    class func listConstraints (_ v:UIView?) {
-        var v = v
-        if v == nil {
-            v = UIApplication.shared.keyWindow
-        }
-        for vv in v!.subviews {
-            let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
-            let arr2 = vv.constraintsAffectingLayout(for:.vertical)
-            let s = String(format: "\n\n%@\nH: %@\nV:%@", vv, arr1, arr2)
-            print(s)
-            if vv.subviews.count > 0 {
-                self.listConstraints(vv)
-            }
+        for sub in self.subviews {
+            sub.reportAmbiguity(filtering:filtering)
         }
     }
 }
 
-// extension NSLayoutConstraint.Priority {}
+@objc extension UIView {
+    func listConstraints(recursing:Bool = true, up:Bool = false, filtering:Bool = false) {
+        let arr1 = self.constraintsAffectingLayout(for:.horizontal)
+        let arr2 = self.constraintsAffectingLayout(for:.vertical)
+        var arr = arr1 + arr2
+        if filtering {
+            arr = arr.filter{
+                $0.firstItem as? UIView == self ||
+                    $0.secondItem as? UIView == self }
+        }
+        if !arr.isEmpty {
+            print(self); arr.forEach { print($0) }; print()
+        }
+        guard recursing else { return }
+        if !up { // down
+            for sub in self.subviews {
+                sub.listConstraints(up:up)
+            }
+        } else { // up
+            self.superview?.listConstraints(up:up)
+        }
+    }
+}
 
+
+// extension NSLayoutConstraint.Priority {}
+// no longer needed
+/*
 extension UILayoutPriority {
     static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
         let raw = lhs.rawValue + rhs
         return UILayoutPriority(rawValue:raw)
     }
 }
-
+*/
 
 func lend<T> (_ closure: (T)->()) -> T where T:NSObject {
     let orig = T()

@@ -58,9 +58,9 @@ class MyView: UIView {
         print("\(self)\n\(#function)\n")
     }
     
-    #warning("call super")
+    //#warning("call super")
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        // super.traitCollectionDidChange(previousTraitCollection)
+        super.traitCollectionDidChange(previousTraitCollection)
         print("\(self)\n\(#function)\n")
 //        let prev : UITraitCollection? = previousTraitCollection
 //        if prev == nil {

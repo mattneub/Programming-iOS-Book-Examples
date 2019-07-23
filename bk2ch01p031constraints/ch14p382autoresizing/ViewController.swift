@@ -2,7 +2,42 @@
 
 import UIKit
 
-@objc(ViewController)
+@objc extension UIView {
+    func reportAmbiguity(filtering:Bool = false) {
+        let has = self.hasAmbiguousLayout
+        if has || !filtering {
+            print(self, has)
+        }
+        for sub in self.subviews {
+            sub.reportAmbiguity(filtering:filtering)
+        }
+    }
+}
+
+@objc extension UIView {
+    func listConstraints(recursing:Bool = true, up:Bool = false, filtering:Bool = false) {
+        let arr1 = self.constraintsAffectingLayout(for:.horizontal)
+        let arr2 = self.constraintsAffectingLayout(for:.vertical)
+        var arr = arr1 + arr2
+        if filtering {
+            arr = arr.filter{
+                $0.firstItem as? UIView == self ||
+                    $0.secondItem as? UIView == self }
+        }
+        if !arr.isEmpty {
+            print(self); arr.forEach { print($0) }; print()
+        }
+        guard recursing else { return }
+        if !up { // down
+            for sub in self.subviews {
+                sub.listConstraints(up:up)
+            }
+        } else { // up
+            self.superview?.listConstraints(up:up)
+        }
+    }
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -124,8 +159,8 @@ class ViewController: UIViewController {
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "H:[v3(20)]|", metrics: nil, views: d),
                 // comment me out to form an ambiguity
-                NSLayoutConstraint.constraints(withVisualFormat:
-                    "V:[v3(20)]|", metrics: nil, views: d),
+//                NSLayoutConstraint.constraints(withVisualFormat:
+//                    "V:[v3(20)]|", metrics: nil, views: d),
                 // uncomment me to form a conflict
 //                NSLayoutConstraint.constraints(withVisualFormat:
 //                    "V:[v3(10)]|", metrics: nil, views: d),
@@ -136,6 +171,9 @@ class ViewController: UIViewController {
         delay(2) {
             v1.bounds.size.width += 40
             v1.bounds.size.height -= 50
+            self.view.reportAmbiguity(filtering: true)
+            print()
+            v1.listConstraints(up:true)
         }
         
 

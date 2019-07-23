@@ -13,35 +13,6 @@ func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     return d
 }
 
-extension NSLayoutConstraint {
-    class func reportAmbiguity (_ v:UIView?) {
-        var v = v
-        if v == nil {
-            v = UIApplication.shared.keyWindow
-        }
-        for vv in v!.subviews {
-            print("\(vv) \(vv.hasAmbiguousLayout)")
-            if vv.subviews.count > 0 {
-                self.reportAmbiguity(vv)
-            }
-        }
-    }
-    class func listConstraints (_ v:UIView?) {
-        var v = v
-        if v == nil {
-            v = UIApplication.shared.keyWindow
-        }
-        for vv in v!.subviews {
-            let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
-            let arr2 = vv.constraintsAffectingLayout(for:.vertical)
-            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
-            if vv.subviews.count > 0 {
-                self.listConstraints(vv)
-            }
-        }
-    }
-}
-
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)

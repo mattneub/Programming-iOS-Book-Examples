@@ -9,32 +9,13 @@ func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     return d
 }
 
-// I think this will prove useful
-extension UILayoutPriority {
-    static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
-        let raw = lhs.rawValue + rhs
-        return UILayoutPriority(rawValue:raw)
+// idea from https://stackoverflow.com/a/57102973/341994
+extension NSLayoutConstraint {
+    func activate(withIdentifier id: String) {
+        (self.identifier, self.isActive) = (id,true)
     }
 }
 
-// these are taken from https://stackoverflow.com/a/47163386/341994
-// nice idea, but I don't think they solve any real problem,
-// since I don't mind saying `rawValue:` to set priority
-/*
-extension UILayoutPriority: ExpressibleByFloatLiteral {
-    public typealias FloatLiteralType = Float
-    public init(floatLiteral value: Float) {
-        self.init(value)
-    }
-}
-
-extension UILayoutPriority: ExpressibleByIntegerLiteral {
-    public typealias IntegerLiteralType = Int
-    public init(integerLiteral value: Int) {
-        self.init(Float(value))
-    }
-}
-*/
 
 class ViewController : UIViewController {
     
@@ -77,7 +58,7 @@ class ViewController : UIViewController {
         // one way to solve: different compression resistance priorities
         
         let p = self.lab2.contentCompressionResistancePriority(for:.horizontal)
-        self.lab1.setContentCompressionResistancePriority(p+1, for: .horizontal) // * see extension
+        self.lab1.setContentCompressionResistancePriority(p+1, for: .horizontal)
         print(self.lab1.contentCompressionResistancePriority(for: .horizontal))
         print(self.lab2.contentCompressionResistancePriority(for: .horizontal))
         print(self.lab1.contentHuggingPriority(for: .horizontal))
@@ -100,7 +81,10 @@ class ViewController : UIViewController {
             ].flatMap{$0})
         
         let con = button.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
-        con.priority = UILayoutPriority(rawValue:700) // try commenting this out to see the difference in behavior
+        // no longer need to say rawValue
+        con.priority = UILayoutPriority(700) // try commenting this out to see the difference in behavior
+        // no longer need an extension to add to a priority
+        let ppppp = con.priority + 8
         NSLayoutConstraint.activate([con])
 
 

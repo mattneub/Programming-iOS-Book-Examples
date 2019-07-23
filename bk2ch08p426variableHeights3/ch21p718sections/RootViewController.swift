@@ -94,7 +94,7 @@ class RootViewController : UITableViewController {
         case 3:
             // failed experiment
             let c = hv.contentView.heightAnchor.constraint(equalToConstant:200)
-            // c.priority = UILayoutPriority(rawValue:100)
+            // c.priority = UILayoutPriority(100)
             c.isActive = true
         default:break
         }
