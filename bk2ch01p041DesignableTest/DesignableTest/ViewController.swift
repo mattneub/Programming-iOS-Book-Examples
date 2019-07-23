@@ -32,8 +32,7 @@ class MyView : UIView {
         lab.text = self.name
         lab.sizeToFit()
         self.addSubview(lab) // yep: change the inspectable `name` in IB, and the label changes
-        // but why doesn't this work?
-        // constraints not available in this method?
+        lab.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         lab.centerXAnchor.constraint(equalTo:self.centerXAnchor),
         lab.centerYAnchor.constraint(equalTo:self.centerYAnchor)
