@@ -7,7 +7,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var which : Int {return 9}
+        var which : Int {return 5}
         
         switch which {
         case 1:
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
             
             let r = CGAffineTransform(rotationAngle:45 * .pi/180)
             let t = CGAffineTransform(translationX:100, y:0)
-            v2.transform = t.concatenating(r) // not r.concat(t)
+            v2.transform = t.concatenating(r) // not r.concatenating(t)
             
         case 6:
             let v1 = UIView(frame:CGRect(20, 111, 132, 194))

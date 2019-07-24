@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         v2.translatesAutoresizingMaskIntoConstraints = false
         v3.translatesAutoresizingMaskIntoConstraints = false
         
-        var which : Int {return 3}
+        var which : Int {return 1}
         switch which {
         case 1:
             // the old way, and this is the last time I'm going to show this
