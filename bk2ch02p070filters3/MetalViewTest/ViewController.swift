@@ -10,8 +10,8 @@ import MetalKit
 
 class MyMTKView : MTKView {
     var context : CIContext?
-    var queue: MTLCommandQueue!
-    var image: CIImage! { // you set it, we draw it
+    var queue: MTLCommandQueue?
+    var image: CIImage? { // you set it, we draw it
         didSet {
             self.setNeedsDisplay()
         }
@@ -40,6 +40,11 @@ class MyMTKView : MTKView {
     
     override func draw() {
         print("draw!") // called once
+        guard let image = self.image,
+            let texture = self.currentDrawable?.texture,
+            let buffer = self.queue?.makeCommandBuffer()
+            else { return }
+
 
         // getting our CIImage to draw where we want it is a little tricky
         // in render(to:bounds:), the bounds do not scale the drawing...
@@ -50,19 +55,19 @@ class MyMTKView : MTKView {
         // make sure the bounds size is big enough or it will just be cut off!
         
         let scale = self.layer.contentsScale
-        let im2 = self.image.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
+        let im2 = image.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
         let imsz = im2.extent.size
         let x = self.drawableSize.width/2 - imsz.width/2
         let y = self.drawableSize.height - imsz.height
         
         // minimal dance required in order to draw: render, present, commit
-        let buffer = self.queue.makeCommandBuffer()!
         self.context!.render(im2,
-                             to: self.currentDrawable!.texture,
+                             to: texture,
                              commandBuffer: buffer,
                              bounds: CGRect(origin:CGPoint(x:-x,y:-y), size:self.drawableSize),
                              colorSpace: CGColorSpaceCreateDeviceRGB())
-        buffer.present(self.currentDrawable!)
+        guard let drawable = self.currentDrawable else { return }
+        buffer.present(drawable)
         buffer.commit()
 
     }

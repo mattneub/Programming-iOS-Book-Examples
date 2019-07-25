@@ -23,15 +23,15 @@ class ViewController : UIViewController {
         let center = CIVector(x: moiextent.midX, y: moiextent.midY)
         // let center2 = CGPoint(x: moiextent.midX, y: moiextent.midY)
         
-        let smallerDimension = min(moiextent.width, moiextent.height)
-        let largerDimension = max(moiextent.width, moiextent.height)
+        let smaller = min(moiextent.width, moiextent.height)
+        let larger = max(moiextent.width, moiextent.height)
         
         // first filter
         let grad = CIFilter.radialGradient()
         grad.setValue(center, forKey: "inputCenter") // setting .center didn't work
         // grad.center = center2
-        grad.radius0 = Float(smallerDimension)/2.0 * 0.7
-        grad.radius1 = Float(largerDimension)/2.0
+        grad.radius0 = Float(smaller)/2.0 * 0.7
+        grad.radius1 = Float(larger)/2.0
         let gradimage = grad.outputImage!
 
 
@@ -43,7 +43,7 @@ class ViewController : UIViewController {
 
         // ways to obtain final bitmap
         
-        var which : Int { return 1 }
+        var which : Int { return 2 }
         
         switch which {
         case 1:
