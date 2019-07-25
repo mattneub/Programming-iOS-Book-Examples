@@ -26,6 +26,7 @@ class MyMTKView : MTKView {
             return
         }
         self.device = device
+        self.framebufferOnly = false // no idea why not needed before
         // mode: draw on demand
         self.isPaused = true
         self.enableSetNeedsDisplay = true

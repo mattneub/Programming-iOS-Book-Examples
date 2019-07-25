@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreImage.CIFilterBuiltins
 
 class MyVignetteFilter : CIFilter {
     @objc var inputImage : CIImage?
@@ -20,20 +21,26 @@ class MyVignetteFilter : CIFilter {
         
         let extent = inputImage.extent
         
-        let grad = CIFilter(name: "CIRadialGradient")!
-        let center = CIVector(x: extent.width/2.0, y: extent.height/2.0)
+        let center = CIVector(x: extent.midX, y: extent.midY)
+        // let center2 = CGPoint(x: extent.midX, y: extent.midY)
         
         let smallerDimension = min(extent.width, extent.height)
         let largerDimension = max(extent.width, extent.height)
         
-        grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * (inputPercentage as! CGFloat), forKey:"inputRadius0")
-        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
-        
-        let blend = CIFilter(name: "CIBlendWithMask")!
-        blend.setValue(inputImage, forKey: "inputImage")
-        blend.setValue(grad.outputImage, forKey: "inputMaskImage")
-                
+        // first filter
+        let grad = CIFilter.radialGradient()
+        grad.setValue(center, forKey: "inputCenter") // setting .center didn't work
+        // grad.center = center2
+        grad.radius0 = Float(smallerDimension)/2.0 * inputPercentage.floatValue
+        grad.radius1 = Float(largerDimension)/2.0
+        let gradimage = grad.outputImage!
+
+
+        // second filter
+        let blend = CIFilter.blendWithMask()
+        blend.inputImage = self.inputImage
+        blend.maskImage = gradimage
+
         return blend.outputImage
     }
 }
