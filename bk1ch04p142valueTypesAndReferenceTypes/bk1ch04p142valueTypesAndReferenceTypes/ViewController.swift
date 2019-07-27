@@ -2,8 +2,6 @@
 
 import UIKit
 
-func otherFunction(_ f: /*@escaping*/ ()->()) { // uncomment escaping and we won't compile
-}
 
 struct Digit {
     var number : Int
@@ -19,8 +17,10 @@ struct Digit {
         self.number = n // compile error
     }
 */
+    func otherFunction(_ f: /*@escaping*/ ()->()) { // uncomment escaping and we won't compile
+    }
     mutating func callAnotherFunction() {
-        otherFunction {
+        self.otherFunction {
             self.changeNumberTo(345)
         }
     }
