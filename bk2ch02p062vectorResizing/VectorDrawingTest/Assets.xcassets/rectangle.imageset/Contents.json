@@ -2,7 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "rectangle.pdf",
+      "filename" : "rectangle.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "rectangle-1.pdf",
       "scale" : "1x"
     },
     {

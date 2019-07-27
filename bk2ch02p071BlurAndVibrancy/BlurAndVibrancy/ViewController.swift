@@ -31,30 +31,33 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let v1 = UIView(frame:CGRect(113, 111, 132, 194))
-        v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
+        v1.backgroundColor = .systemRed
         let v2 = UIView(frame:CGRect(41, 56, 132, 194))
-        v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+        v2.backgroundColor = .systemGreen
         let v3 = UIView(frame:CGRect(43, 197, 160, 230))
-        v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        v3.backgroundColor = .systemBlue
         self.view.addSubview(v1)
         v1.addSubview(v2)
         self.view.addSubview(v3)
 
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
-        blur.frame = self.view.bounds
-        blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(blur)
+        let blurEffect = UIBlurEffect(style: .systemThinMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = self.view.bounds
+        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(blurView)
+        let vibEffect = UIVibrancyEffect(
+            blurEffect: blurEffect, style: .label)
+        let vibView = UIVisualEffectView(effect:vibEffect)
         let lab = UILabel()
         lab.text = "Hello, world!"
         lab.sizeToFit()
-        let vib = UIVisualEffectView(effect: UIVibrancyEffect(
-            blurEffect: blur.effect as! UIBlurEffect))
-        vib.bounds = lab.bounds
-        vib.center = self.view.bounds.center
-        vib.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
-                                .flexibleLeftMargin, .flexibleRightMargin]
-        blur.contentView.addSubview(vib)
-        vib.contentView.addSubview(lab)
+        vibView.bounds = lab.bounds
+        vibView.center = self.view.bounds.center
+        vibView.autoresizingMask =
+            [.flexibleTopMargin, .flexibleBottomMargin,
+            .flexibleLeftMargin, .flexibleRightMargin]
+        blurView.contentView.addSubview(vibView)
+        vibView.contentView.addSubview(lab)
         
         //vib.contentView.layer.borderWidth = 1
 //        lab.center.x -= 20

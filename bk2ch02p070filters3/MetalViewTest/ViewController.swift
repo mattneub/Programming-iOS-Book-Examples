@@ -7,6 +7,7 @@ import MetalKit
 // this is really all a kind of boilerplate
 
 // NB this will compile only if the destination is a _device_
+// okay in iOS 11 it compiles for simulator, and on Catalina it runs on simulator but draws upside down!
 
 class MyMTKView : MTKView {
     var context : CIContext?

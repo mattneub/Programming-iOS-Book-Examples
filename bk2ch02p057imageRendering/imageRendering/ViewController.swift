@@ -15,6 +15,21 @@ class ViewController : UIViewController {
         let im = UIImage(named:"Smiley")!.withRenderingMode(.alwaysTemplate)
         self.b.setBackgroundImage(im, for: .normal)
         
+        done: do {
+            // profoundly weird
+            let im2 = im.withTintColor(.green) // no
+            self.b.setBackgroundImage(im2, for: .normal)
+            self.b.tintColor = .yellow // yes
+            let im3 = im2.withRenderingMode(.alwaysOriginal)
+            self.b.setBackgroundImage(im3, for: .normal) // yes, green!
+            // let's try it more directly:
+            var im = UIImage(named:"Smiley")!.withTintColor(.purple) // yes, purple
+            im = UIImage(named:"Smiley")!.withTintColor(.purple, renderingMode: .automatic) // yes, purple
+            im = UIImage(named:"Smiley")!.withTintColor(.purple, renderingMode: .alwaysOriginal) // yes, purple, so the rendering mode is ignored
+            im = UIImage(named:"Smiley")!.withTintColor(.purple, renderingMode: .alwaysTemplate) // yellow, from the context, so the assigned tint color is ignored
+            self.b.setBackgroundImage(im, for:.normal)
+        }
+        
         let im2 = UIImage(named:"smiley2")!.withRenderingMode(.alwaysOriginal)
         self.tbi.image = im2
         
