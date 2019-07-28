@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    var which = 1
+    var which = 0
 
     @IBAction func doButton(_ sender: Any) {
         let lay = CALayer()
@@ -57,10 +57,10 @@ class ViewController: UIViewController {
             // ...unless you flush the transaction in between
             suplay.addSublayer(lay)
             CATransaction.flush() // comment out to see the problem
-            CATransaction.begin()
+            //CATransaction.begin()
             CATransaction.setAnimationDuration(2)
             lay.bounds.size = CGSize(100,100)
-            CATransaction.commit()
+            //CATransaction.commit()
         case 1:
             // but you _can_ add a sublayer and then animate it explicitly
             suplay.addSublayer(lay)

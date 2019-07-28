@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 14
+        let which = 15
         
         delay(3) {
             print(0)
@@ -254,6 +254,20 @@ class ViewController: UIViewController {
                         self.v.center.x = xorig
                 })
             case 14:
+                // new iOS 13 solution, though actually it seems to read back into iOS 12
+                let xorig = self.v.center.x
+                UIView.animate(withDuration:1, animations: {
+                    UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+                        self.v.center.x += 100
+                    })
+                }, completion: {
+                    _ in
+                    print("done")
+                    self.v.center.x = xorig
+                })
+                // cute I guess, but I don't see how it help with the problem of a
+                // UIViewPropertyAnimator doing autoreversing repeating animation
+            case 15:
                 // something like an autoreversing repeating animation
                 // made with a property animator
                 var right = true
@@ -276,7 +290,7 @@ class ViewController: UIViewController {
                     anim.startAnimation()
                 }
                 goOneWay()
-            case 15:
+            case 16:
                 print(self.v.center)
                 let anim = UIViewPropertyAnimator(duration: 2, curve: .easeInOut) {
                     self.v.center.y += 100
@@ -288,7 +302,7 @@ class ViewController: UIViewController {
                     _ in print(self.v.center)
                 }
                 anim.startAnimation()
-            case 16:
+            case 17:
                 print(self.v.center)
                 let yorig = self.v.center.y
                 let anim = UIViewPropertyAnimator(duration: 2, curve: .easeInOut) {
