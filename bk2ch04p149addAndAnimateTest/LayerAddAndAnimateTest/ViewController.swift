@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    var which = 0
+    var which = 1
 
     @IBAction func doButton(_ sender: Any) {
         let lay = CALayer()
@@ -67,15 +67,12 @@ class ViewController: UIViewController {
             let oldbounds = lay.bounds
             var newbounds = oldbounds
             newbounds.size = CGSize(100,100)
+            lay.bounds = newbounds // fine
             let ba = CABasicAnimation(keyPath: #keyPath(CALayer.bounds))
             ba.duration = 2
             ba.fromValue = oldbounds
             ba.toValue = newbounds
             lay.add(ba, forKey:nil)
-            // but note the order here: this is important
-            // I wonder if I should change my other examples to be like this?
-            CATransaction.setDisableActions(true)
-            lay.bounds = newbounds
         default:break
         }
     }

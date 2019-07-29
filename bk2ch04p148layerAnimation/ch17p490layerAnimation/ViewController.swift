@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 1
+    let which = 11
 
     @IBAction func doButton(_ sender: Any?) {
         let c = self.compassView.layer as! CompassLayer
@@ -56,6 +56,8 @@ class ViewController : UIViewController {
             let startValue = arrow.transform
             let endValue = CATransform3DRotate(startValue, .pi/4.0, 0, 0, 1)
             // change the layer, without implicit animation
+            // but actually this next line can be omitted, I guess because...
+            // ... the explicit animation will take over the transform
             CATransaction.setDisableActions(true)
             arrow.transform = endValue
             // construct the explicit animation
@@ -69,7 +71,8 @@ class ViewController : UIViewController {
             arrow.add(anim, forKey:nil)
             
         case 6:
-            CATransaction.setDisableActions(true)
+            // actually this next line can be omitted
+            // CATransaction.setDisableActions(true)
             arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
             let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.8
@@ -108,6 +111,7 @@ class ViewController : UIViewController {
             
         case 9:
             let rot = CGFloat.pi/4.0
+            // see, but in this case we do need this
             CATransaction.setDisableActions(true)
             arrow.transform = CATransform3DRotate(arrow.transform, rot, 0, 0, 1)
             // construct animation additively
@@ -141,6 +145,7 @@ class ViewController : UIViewController {
             
             // capture current value, set final value
             let rot = .pi/4.0
+            // can omit this
             CATransaction.setDisableActions(true)
             let current = arrow.value(forKeyPath:"transform.rotation.z") as! Double
             arrow.setValue(current + rot, forKeyPath:"transform.rotation.z")

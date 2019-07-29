@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreImage.CIFilterBuiltins
 
 
 class ViewController : UIViewController {
@@ -16,14 +17,16 @@ class ViewController : UIViewController {
         let moi = CIImage(image:UIImage(named:"moi")!)!
         self.moiextent = moi.extent
         
-        let col = CIFilter(name:"CIConstantColorGenerator")!
-        let cicol = CIColor(color:.red)
-        col.setValue(cicol, forKey:"inputColor")
-        let colorimage = col.value(forKey:"outputImage") as! CIImage
+        let colorimage = CIImage(color: CIColor(color:.red)).clamped(to: moi.extent)
         
-        let tran = CIFilter(name:"CIFlashTransition")!
-        tran.setValue(colorimage, forKey:"inputImage")
-        tran.setValue(moi, forKey:"inputTargetImage")
+//        let col = CIFilter(name:"CIConstantColorGenerator")!
+//        let cicol = CIColor(color:.red)
+//        col.setValue(cicol, forKey:"inputColor")
+//        let colorimage = col.value(forKey:"outputImage") as! CIImage
+        
+        let tran = CIFilter.flashTransition()
+        tran.inputImage = colorimage
+        tran.targetImage = moi
         let center = CIVector(x:self.moiextent.width/2.0, y:self.moiextent.height/2.0)
         tran.setValue(center, forKey:"inputCenter")
         

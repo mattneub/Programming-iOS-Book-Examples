@@ -49,6 +49,9 @@ class ViewController : UIViewController {
                 control1: CGPoint(pos.x, pos.y+30),
                 control2: CGPoint(next.x, next.y-30))
         }
+        // can probably omit this
+        CATransaction.setDisableActions(true)
+        self.v.layer.position = next
         let anim1 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.position))
         anim1.path = path
         anim1.calculationMode = .paced
@@ -71,8 +74,6 @@ class ViewController : UIViewController {
         group.animations = [anim1, anim2, anim3]
         group.duration = 8
         self.v.layer.add(group, forKey:nil)
-        CATransaction.setDisableActions(true)
-        self.v.layer.position = next
 
     }
 }

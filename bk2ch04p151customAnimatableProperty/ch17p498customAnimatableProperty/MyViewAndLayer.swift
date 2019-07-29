@@ -27,6 +27,12 @@ class MyLayer : CALayer {
         con.fill(r)
         con.setLineWidth(self.thickness)
         con.stroke(r)
+        
+        // example of how we can view animation as timed interpolated values
+        print(Date().timeIntervalSince(start))
+        print(thickness)
+        print("====")
+
     }
     
 }

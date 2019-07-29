@@ -70,7 +70,7 @@ class ViewController : UIViewController {
         self.layer = layer
     }
     
-    let which = 10 // 1...10
+    let which = 8 // 1...10
     
     @IBAction func doButton(_ sender: Any?) {
         let layer = self.layer!
@@ -200,7 +200,7 @@ extension ViewController : CALayerDelegate, CAAnimationDelegate {
         }
         
         // on layer addition (addSublayer this layer), "pop" into view
-        if key == kCAOnOrderIn {
+        if key == "onOrderIn" {
             let anim1 = CABasicAnimation(keyPath:#keyPath(CALayer.opacity))
             anim1.fromValue = 0.0
             anim1.toValue = layer.opacity

@@ -2,6 +2,11 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
 
 class ViewController: UIViewController {
     
@@ -39,6 +44,11 @@ class ViewController: UIViewController {
         shape.add(ba, forKey:#keyPath(CAShapeLayer.path))
         
         self.shape = shape
+        
+        delay(2) {
+            let anim = self.shape.animation(forKey: #keyPath(CAShapeLayer.path))
+            print(anim?.speed as Any) // okay so this doesn't actually change
+        }
         
     }
     
