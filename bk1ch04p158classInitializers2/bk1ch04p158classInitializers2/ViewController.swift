@@ -11,7 +11,7 @@ class LabelBarButtonItem: UIBarButtonItem {
         self.customView = label
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
 
     // without _this_ override, ViewController won't compile:
 
-    required init(coder aDecoder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

@@ -60,8 +60,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         return self.managerHolder.locman
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         self.managerHolder.delegate = self
     }
     @IBOutlet weak var tv: UITextView!

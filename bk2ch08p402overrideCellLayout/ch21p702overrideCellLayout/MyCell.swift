@@ -7,8 +7,8 @@ class MyCell : UITableViewCell {
         super.init(style:.default, reuseIdentifier: reuseIdentifier)
         // change .default to another built-in style if desired
     }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
     }
     
     override func layoutSubviews() {

@@ -56,7 +56,7 @@ class CircleView: UIView, UIPreviewInteractionDelegate {
         super.init(frame:frame)
         self.isOpaque = false // in iOS 12, not needed?
     }
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override func draw(_ rect: CGRect) {

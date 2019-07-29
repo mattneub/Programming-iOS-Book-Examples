@@ -31,8 +31,8 @@ extension CGVector {
 
 class Card : UIButton {
     static let tappedNotification = Notification.Name("tapped")
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         self.addTarget(self, action: #selector(tapped), for: .touchUpInside)
     }
     @objc func tapped(_ sender:UIGestureRecognizer) {
@@ -49,8 +49,8 @@ class GameBoard : UIView {
         }
     }
     var cardOriginalPositions = [Card:CGPoint]()
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(tapped),

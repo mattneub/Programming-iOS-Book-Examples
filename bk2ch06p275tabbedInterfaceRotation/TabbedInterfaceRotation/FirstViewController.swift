@@ -16,8 +16,8 @@ class FirstViewController: UIViewController {
     
     // run on 5s or similar to see issues with smaller image
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         // this doesn't work; in landscape, the selected image isn't used
         // I regard this as a major bug
         self.tabBarItem.selectedImage = UIImage(named: "smiley")!

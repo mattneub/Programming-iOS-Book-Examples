@@ -52,6 +52,7 @@ extension UIDynamicAnimator {
     // we should be able to say let items = anim.items(in: sup.bounds) as! UIView
     // but a collision behavior has fallen into the array, so we crash if we say that
     // in fact, we can't even fetch items(in:) as a Swift array at all
+    // still not fixed in iOS 13
     func views(in rect: CGRect) -> [UIView] {
         // return self.items(in:rect) as! [UIView]
         let nsitems = self.items(in: rect) as NSArray

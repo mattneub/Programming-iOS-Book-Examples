@@ -88,7 +88,7 @@ class MaskView : UIView {
         super.init(frame:frame)
         self.layer.needsDisplayOnBoundsChange = true
     }
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override func drawRect(r: CGRect) {

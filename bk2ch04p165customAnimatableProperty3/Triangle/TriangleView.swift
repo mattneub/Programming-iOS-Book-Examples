@@ -48,8 +48,8 @@ class TriangleView: UIView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         let lay = self.layer as! TriangleLayer
         lay.v1x = 0
         lay.v1y = 100

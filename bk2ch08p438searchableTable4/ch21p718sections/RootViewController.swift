@@ -18,7 +18,7 @@ class MySearchController : UISearchController {
 //        super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
 //    }
 //
-//    required init?(coder aDecoder: NSCoder) {
+//    required init?(coder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
 //    }
 }

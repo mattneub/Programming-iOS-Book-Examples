@@ -5,7 +5,7 @@ import UIKit
 class MyTableViewController: UITableViewController {
     
     let greeting : String
-    required init(coder aDecoder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     init(greeting:String) {

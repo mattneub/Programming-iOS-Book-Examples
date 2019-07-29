@@ -10,8 +10,8 @@ import UIKit
 class MyTextField: UITextField {
     
     // make self-dismissing; can do this without code, but just testing
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         self.addTarget(
             nil, action:#selector(Dummy.dummy), for:.editingDidEndOnExit)
     }

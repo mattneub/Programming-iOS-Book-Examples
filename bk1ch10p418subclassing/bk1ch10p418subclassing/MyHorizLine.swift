@@ -4,8 +4,8 @@ import UIKit
 
 class MyHorizLine: UIView {
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         self.backgroundColor = .clear
     }
     override func draw(_ rect: CGRect) {

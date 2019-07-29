@@ -8,8 +8,8 @@ class MyTiledView : UIView {
     
     let drawQueue = DispatchQueue(label: "drawQueue")
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         let lay = self.layer as! CATiledLayer
         let scale = lay.contentsScale
         lay.tileSize = CGSize(208*scale,238*scale)

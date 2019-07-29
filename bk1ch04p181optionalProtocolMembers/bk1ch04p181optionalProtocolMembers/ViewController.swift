@@ -60,15 +60,15 @@ class ViewController: UIViewController {
         super.init(nibName: "ViewController", bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         // fatalError("init(coder:) has not been implemented")
-        super.init(coder:aDecoder)
+        super.init(coder:coder)
     }
     
     
     // inappropriate here, but a legal alternative:
     
-//    required convenience init(coder aDecoder: NSCoder) {
+//    required convenience init(coder: NSCoder) {
 //        self.init()
 //    }
 

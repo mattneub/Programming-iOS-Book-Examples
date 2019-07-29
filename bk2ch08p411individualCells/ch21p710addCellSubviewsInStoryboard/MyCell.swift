@@ -8,8 +8,8 @@ class MyCell : UITableViewCell {
     @IBOutlet var theLabel : UILabel!
     @IBOutlet var theImageView : UIImageView!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         print("new cell")
     }
 }

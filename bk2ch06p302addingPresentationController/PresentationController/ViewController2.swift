@@ -12,8 +12,8 @@ class ViewController2: UIViewController {
     
     // important: viewDidLoad() is too late for this sort of thing
     // must be done before presentation even has a chance to start
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         // NB if we want to modify the _animation_, we need to set the transitioningDelegate
         self.transitioningDelegate = self
         // if we want to modify the _presentation_, we need to set the style to custom

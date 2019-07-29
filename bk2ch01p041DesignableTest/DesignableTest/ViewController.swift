@@ -74,8 +74,8 @@ class MyView : UIView {
         }
     }
     // what's the earliest we can pick up the value applied from the nib?
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder:aDecoder)
+//    required init?(coder: NSCoder) {
+//        super.init(coder:coder)
 //        print("init coder", self.borderWidth) // inspectable value not yet set
 //    }
 //    override func awakeFromNib() {

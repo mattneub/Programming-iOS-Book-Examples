@@ -13,7 +13,7 @@ class MyTitleView : UICollectionReusableView {
         lab.font = UIFont(name: "GillSans-Bold", size: 40)
         self.lab = lab
     }
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override func apply(_ atts: UICollectionViewLayoutAttributes) {
@@ -41,7 +41,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         self.register(MyTitleView.self, forDecorationViewOfKind:self.titleKind)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

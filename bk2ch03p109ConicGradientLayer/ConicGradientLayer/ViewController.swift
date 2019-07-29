@@ -4,8 +4,8 @@ import UIKit
 
 class MyGradientView : UIView {
     override class var layerClass : AnyClass { return CAGradientLayer.self }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         let lay = self.layer as! CAGradientLayer
         lay.type = .conic
         lay.startPoint = CGPoint(x:0.5,y:0.5)

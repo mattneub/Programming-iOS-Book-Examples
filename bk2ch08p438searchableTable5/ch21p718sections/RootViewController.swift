@@ -31,7 +31,7 @@ class SearchContainerVC: UISearchContainerViewController {
         self.view.backgroundColor = .white // ugly otherwise
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
