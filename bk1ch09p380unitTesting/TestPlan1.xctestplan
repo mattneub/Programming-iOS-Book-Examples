@@ -1,12 +1,14 @@
 {
   "configurations" : [
     {
+      "id" : "19E9D39D-16B2-4A94-9C4D-75E8F068954C",
       "name" : "TestPlan1Config1",
       "options" : {
 
       }
     },
     {
+      "id" : "73D1D63A-19F3-429E-9C03-4E1DE230F38C",
       "name" : "TestPlan1Config2",
       "options" : {
 

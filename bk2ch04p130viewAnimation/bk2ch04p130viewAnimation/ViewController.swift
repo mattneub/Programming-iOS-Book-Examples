@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 15
+        let which = 3
         
         delay(3) {
             print(0)
@@ -95,9 +95,10 @@ class ViewController: UIViewController {
                         print("paused on completion")
                         // paused on completion; must stop before release
                         // it is a runtime error to release a paused animator
-                        anim.stopAnimation(false)
+                        anim.stopAnimation(true)
                         // as soon as you stop, the animations are removed from the layer
                         print(self.v.layer.animationKeys() as Any)
+                        // return; // runtime will clean up if you said "true"
                         // if you said stopAnimation(false), you must say finishAnimation
                         // otherwise it's a runtime error
                         // but if you said stopAnimation(true), doesn't matter
