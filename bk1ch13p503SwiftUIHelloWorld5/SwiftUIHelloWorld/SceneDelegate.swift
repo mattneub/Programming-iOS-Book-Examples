@@ -3,14 +3,14 @@ import UIKit
 import SwiftUI
 import Combine
 
-class Defaults : BindableObject {
-    var willChange = PassthroughSubject<Void, Never>()
+class Defaults : ObservableObject {
+    let objectWillChange = ObservableObjectPublisher()
     var username : String {
         get {
             UserDefaults.standard.string(forKey: "name") ?? ""
         }
         set {
-            self.willChange.send()
+            self.objectWillChange.send()
             UserDefaults.standard.set(newValue, forKey: "name")
         }
     }

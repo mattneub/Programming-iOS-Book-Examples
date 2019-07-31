@@ -3,14 +3,14 @@
 import SwiftUI
 import Combine
 
-class Defaults : BindableObject {
-    var willChange = PassthroughSubject<Void, Never>()
+class Defaults : ObservableObject {
+    let objectWillChange = ObservableObjectPublisher()
     var username : String {
         get {
             UserDefaults.standard.string(forKey: "name") ?? ""
         }
         set {
-            self.willChange.send()
+            self.objectWillChange.send()
             UserDefaults.standard.set(newValue, forKey: "name")
         }
     }
@@ -18,7 +18,7 @@ class Defaults : BindableObject {
 
 struct ContentView : View {
     @State var isHello = true
-    @ObjectBinding var defaults = Defaults()
+    @ObservedObject var defaults = Defaults()
     var greeting : String {
         self.isHello ? "Hello" : "Goodbye"
     }
@@ -49,7 +49,7 @@ struct Greeting : View {
             Text(greeting + ", " + username)
             TextField("Your Name", text:$username)
                 .frame(width:200)
-                .textFieldStyle(.roundedBorder)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
         }.padding(20)
             .background(Color.green)
     }

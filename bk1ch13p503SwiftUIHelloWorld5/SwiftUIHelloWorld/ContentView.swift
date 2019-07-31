@@ -35,7 +35,7 @@ struct Greeting : View {
             Text(greeting + ", " + username)
             TextField("Your Name", text:$username)
                 .frame(width:200)
-                .textFieldStyle(.roundedBorder)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
         }.padding(20)
             .background(Color.green)
     }

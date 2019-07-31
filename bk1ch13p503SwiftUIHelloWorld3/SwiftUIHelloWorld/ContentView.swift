@@ -38,7 +38,6 @@ struct Greeting : View {
 struct Greeting2 : View {
     let greeting : String
     @Binding var isPresented : Bool
-    @Environment(\.isPresented) var modal // unused now, not working
     var body: some View {
         VStack {
             Text(greeting + " World")
