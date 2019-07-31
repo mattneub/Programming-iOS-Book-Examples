@@ -3,7 +3,7 @@
 import UIKit
 import MediaPlayer
 
-@Facade var testing = 0 // legal
+// @Facade var testing = 0 // legal // nope, not any more
 
 var now : String {
     get {
@@ -25,7 +25,7 @@ var now3 : String {
 // warning, I expect some property wrapper feature names to change in the next iteration
 @propertyWrapper struct Facade<T> {
     private var _p : T
-    init(initialValue:T) {self._p = initialValue}
+    init(wrappedValue:T) {self._p = wrappedValue}
     init(_ val:T) {self._p = val}
     var wrappedValue : T {
         get {
@@ -41,8 +41,8 @@ var now3 : String {
     private var _i : T
     private let min : T
     private let max : T
-    init(initialValue: T, min:T, max:T) {
-        self._i = initialValue
+    init(wrappedValue: T, min:T, max:T) {
+        self._i = wrappedValue
         self.min = min
         self.max = max
     }
@@ -96,7 +96,7 @@ class ViewController: UIViewController {
     
     @Clamped(min:-7, max:7) var clamped : Int = 0
     
-    @Clamped(initialValue:0, min:-7, max:7) var anotherWay : Int
+    @Clamped(wrappedValue:0, min:-7, max:7) var anotherWay : Int
     
     // observer
     var s = "whatever" {
@@ -133,8 +133,10 @@ class ViewController: UIViewController {
         print(self.clamped)
         
         print("underscore", _clamped) // the Clamped struct
-        _clamped = Clamped(initialValue:0, min:-6, max:6)
+        _clamped = Clamped(wrappedValue:1, min:-6, max:6)
+        print("underscore again", _clamped)
         self.clamped = 7
+        print("underscore again again", _clamped)
         print(self.clamped)
         print("dollar", $clamped) // yoho, the projected value
         
