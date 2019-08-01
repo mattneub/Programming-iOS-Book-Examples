@@ -81,9 +81,7 @@ class ViewController : UIViewController {
         case .ended, .cancelled:
             // how far are we from the goal relative to original distance?
             func pyth(_ pt1:CGPoint, _ pt2:CGPoint) -> CGFloat {
-                let x = pt1.x - pt2.x
-                let y = pt1.y - pt2.y
-                return sqrt(x*x + y*y)
+                return hypot(pt1.x - pt2.x, pt1.y - pt2.y)
             }
             let origd = pyth(self.oldButtonCenter, self.goal)
             let curd = pyth(v.center, self.goal)
