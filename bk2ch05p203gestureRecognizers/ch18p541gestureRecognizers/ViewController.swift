@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         // tests to prove that a multi-edge edge g.r. doesn't work at all
         
         let e = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edge))
-        e.edges = [.bottom, .left]
+        e.edges = [.right, .left]
         // self.view.addGestureRecognizer(e)
         
         let e2 = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edge2))
