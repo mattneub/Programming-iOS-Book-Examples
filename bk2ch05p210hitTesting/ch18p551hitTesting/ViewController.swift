@@ -6,7 +6,25 @@ class ViewController : UIViewController {
         print("button tap!")
     }
     
+    @available(iOS 13.0, *)
+    func checkStatusBar() {
+        // just making sure this works even if we don't support window scenes
+        if let sc = self.view.window?.windowScene {
+            if let sbman = sc.statusBarManager {
+                print(sbman.statusBarFrame)
+                // 0 default and 1 light, 3 is the new forced dark content
+                // ok but it looks like we will never _report_ as 0!
+                // we report as 1 or 3, kind of weird though I see the point
+                print(sbman.statusBarStyle.rawValue)
+                print(sbman.isStatusBarHidden)
+            }
+        }
+    }
+    
     @IBAction func tapped(_ g:UITapGestureRecognizer) {
+        if #available(iOS 13.0, *) {
+            self.checkStatusBar()
+        }
         let p = g.location(ofTouch:0, in: g.view)
         let v = g.view?.hitTest(p, with: nil)
         if let v = v as? UIImageView {
