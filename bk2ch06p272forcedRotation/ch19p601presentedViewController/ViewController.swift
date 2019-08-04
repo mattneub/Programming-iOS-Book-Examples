@@ -9,7 +9,12 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.data = "This is very important data!"
         svc.delegate = self
 //        svc.view.alpha = 0.5
-//        svc.modalPresentationStyle = .overFullScreen
+        // in iOS 13, we must ask for fullScreen or overFullScreen
+        // if we want forced rotation;
+        // otherwise we get the sheet which doesn't force it
+        // in my opinion overFullScreen looks better
+        svc.modalPresentationStyle = .overFullScreen
+//        svc.modalPresentationStyle = .fullScreen
 //        svc.modalPresentationStyle = .formSheet
         self.present(svc, animated:true)
         

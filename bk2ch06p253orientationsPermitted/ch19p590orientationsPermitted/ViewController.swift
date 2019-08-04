@@ -10,7 +10,7 @@ class ViewController : UIViewController {
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         
-        print(UIApplication.shared.statusBarOrientation.rawValue)
+        print(self.view.window?.windowScene?.interfaceOrientation.rawValue as Any)
         
         print(UIDevice.current.orientation.rawValue)
         
@@ -18,6 +18,7 @@ class ViewController : UIViewController {
         print(result)
         
         print("supported") // called 7 times at launch! WTF?
+        // okay now it's 12 times, I guess that's better LOL
         
         // wait! now, .all means .all!
         return .all

@@ -123,6 +123,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
  aha. Well, it depends. If the device is held in landscape, just like other landscape cases
  
  but if the device is held in portrait, launch into portrait and rotate, it's like iOS 10:
+ NB iOS 13 still looks like this except no trait collection did change either
  
  viewDidLoad
  viewDidLoad reports (320.0, 568.0)

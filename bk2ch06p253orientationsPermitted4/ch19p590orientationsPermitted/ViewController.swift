@@ -31,7 +31,9 @@ class ViewController : UIViewController {
         if orientation != .unknown {
             // print("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8
-            print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
+            // print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
+            // and that's deprecated in iOS 13
+            print("window scene", self.view.window?.windowScene?.interfaceOrientation as Any)
         }
         // return super.supportedInterfaceOrientations()
         return .all // this includes upside down if info.plist includes it
@@ -44,8 +46,8 @@ class ViewController : UIViewController {
         
         if orientation != .unknown {
             // print("self \(self.interfaceOrientation.rawValue)")
-            // but the above is deprecated in iOS 8
-            print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
+            // print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
+            print("window scene", self.view.window?.windowScene?.interfaceOrientation as Any)
         }
         // return true
         return self.shouldRotate
@@ -86,11 +88,14 @@ class ViewController : UIViewController {
         print("window bounds: \(self.view.window!.bounds)")
         print("window transform: \(self.view.window!.transform)")
         print("view transform: \(self.view.transform)")
+        let t1 = coordinator.targetTransform
         coordinator.animate(alongsideTransition:{
             _ in
             print("transitioning size change to \(size)")
             // assuming we originally launched into portrait...
             // arrow keeps pointing to physical top of device
+            let t2 = coordinator.targetTransform
+            print("same", t1 == t2)
             self.v.transform = coordinator.targetTransform.inverted().concatenating(self.v.transform)
             }, completion: {
                 _ in

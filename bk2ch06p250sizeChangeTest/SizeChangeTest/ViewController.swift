@@ -24,52 +24,43 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.willChangeStatusBarOrientationNotification,
-            object: nil, queue: nil) { n in
-                print("status bar will change orientation from",
-                      UIApplication.shared.statusBarOrientation.rawValue,
-                      "to",
-                      n.userInfo?[UIApplication.statusBarOrientationUserInfoKey] as Any)
-        }
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.didChangeStatusBarOrientationNotification,
-            object: nil, queue: nil) { n in
-                print("status bar did change orientation from",
-                      n.userInfo?[UIApplication.statusBarOrientationUserInfoKey] as Any,
-                      "to",
-                      UIApplication.shared.statusBarOrientation.rawValue)
-        }
-        
+        print(#function, self)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to:size, with: coordinator)
-        print("size will transition")
+        print(#function, self)
         print(size)
+        super.viewWillTransition(to:size, with: coordinator)
+        let sborBefore = self.view.window?.windowScene?.interfaceOrientation
+        print(sborBefore?.rawValue as Any)
+        coordinator.animate(alongsideTransition: nil) { _ in
+            let sborAfter = self.view.window?.windowScene?.interfaceOrientation
+            print(sborAfter?.rawValue as Any)
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        print(#function, self)
         super.traitCollectionDidChange(previousTraitCollection)
-        print("trait collection changed")
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        print(#function, self)
+        print(newCollection)
         super.willTransition(to:newCollection, with: coordinator)
-        print("trait collection will transition")
     }
     
     override func updateViewConstraints() {
+        print(#function, self)
         super.updateViewConstraints()
-        print("update view constraints")
     }
     
     override func viewWillLayoutSubviews() {
-        print("will layout")
+        print(#function, self)
     }
     
     override func viewDidLayoutSubviews() {
-        print("did layout")
+        print(#function, self)
     }
     
     

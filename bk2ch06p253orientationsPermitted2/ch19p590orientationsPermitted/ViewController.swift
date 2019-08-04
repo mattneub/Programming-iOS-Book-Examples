@@ -5,6 +5,7 @@ import UIKit
 class ViewController : UIViewController {
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        print("supported in the view controller")
         return .all
     }
     
