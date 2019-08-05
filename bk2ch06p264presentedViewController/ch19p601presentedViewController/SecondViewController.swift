@@ -44,6 +44,7 @@ class SecondViewController : UIViewController {
         print(self.traitCollection)
         
         // workaround for curl bug
+        // return;
         if let grs = self.view.gestureRecognizers {
             for g in grs {
                 if NSStringFromClass(type(of:g)).hasSuffix("CurlUpTapGestureRecognizer") {
