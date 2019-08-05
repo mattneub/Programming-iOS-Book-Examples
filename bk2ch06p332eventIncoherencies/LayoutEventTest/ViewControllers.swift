@@ -45,10 +45,9 @@ class Base : UIViewController {
         super.willTransition(to: newCollection, with: coordinator)
         print("\(self) \(#function)")
     }
-    
-    #warning("call super")
-    
+        
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         print("\(self) \(#function)")
     }
 }
