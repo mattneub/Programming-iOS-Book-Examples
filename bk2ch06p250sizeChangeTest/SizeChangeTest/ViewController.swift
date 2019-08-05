@@ -10,6 +10,13 @@ import UIKit
 // I find this rather odd, but I suppose it's because this is not a transition coordinator situation
 // (i.e. rotation)
 
+// also the whole launch sequence is weird
+// in iOS 12 and before,
+// `willTransition(to:with:)` is _not_ called, but `traitCollectionDidChange(_:)` _is_ called
+// in iOS 13, it's the other way round:
+// `willTransition(to:with:)` _is_ called, but `traitCollectionDidChange(_:)` is _not_ called
+// I find that bizarre either way, frankly
+
 class ViewController: UIViewController {
     
     @IBAction func doButton(_ sender: Any) {
@@ -31,11 +38,21 @@ class ViewController: UIViewController {
         print(#function, self)
         print(size)
         super.viewWillTransition(to:size, with: coordinator)
-        let sborBefore = self.view.window?.windowScene?.interfaceOrientation
-        print(sborBefore?.rawValue as Any)
+        if #available(iOS 13.0, *) {
+            let sborBefore = self.view.window?.windowScene?.interfaceOrientation
+            print(sborBefore?.rawValue as Any)
+        } else {
+            let sborBefore = UIApplication.shared.statusBarOrientation
+            print(sborBefore.rawValue as Any)
+        }
         coordinator.animate(alongsideTransition: nil) { _ in
-            let sborAfter = self.view.window?.windowScene?.interfaceOrientation
-            print(sborAfter?.rawValue as Any)
+            if #available(iOS 13.0, *) {
+                let sborAfter = self.view.window?.windowScene?.interfaceOrientation
+                print(sborAfter?.rawValue as Any)
+            } else {
+                let sborAfter = UIApplication.shared.statusBarOrientation
+                print(sborAfter.rawValue as Any)
+            }
         }
     }
     
