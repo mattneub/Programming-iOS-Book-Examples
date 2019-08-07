@@ -29,6 +29,8 @@ class SecondViewController : UIViewController {
             self.delegate?.accept(data:"Even more important data!")
         }
     }
+        
+    override var prefersStatusBarHidden: Bool { true }
     
     /* 
     ability of presented view controller to force app rotation
@@ -45,6 +47,7 @@ class SecondViewController : UIViewController {
     }
     
     override var preferredInterfaceOrientationForPresentation : UIInterfaceOrientation {
+        print("second preferred")
         return .landscapeLeft
     }
     

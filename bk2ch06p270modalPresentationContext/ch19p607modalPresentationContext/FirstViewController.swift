@@ -8,26 +8,23 @@ class FirstViewController : UIViewController {
     @IBAction func doPresent(_ sender: Any?) {
         switch which {
         case 1:
-            let vc = ExtraViewController(nibName: nil, bundle: nil)
-            vc.modalTransitionStyle = .flipHorizontal
+            let vc = ExtraViewController()
             self.present(vc, animated: true)
             
         case 2:
-            // in iOS 8/9, this works on iPhone as well as iPad!
+            // in iOS 8+, this works on iPhone as well as iPad!
             // presented vc appears over first vc *inside* tabbed interface
-            let vc = ExtraViewController(nibName: nil, bundle: nil)
-            vc.modalTransitionStyle = .flipHorizontal
+            let vc = ExtraViewController()
             self.definesPresentationContext = true
             vc.modalPresentationStyle = .currentContext
             self.present(vc, animated: true)
 
         case 3:
-            let vc = ExtraViewController(nibName: nil, bundle: nil)
-            vc.modalTransitionStyle = .flipHorizontal
+            let vc = ExtraViewController()
             self.definesPresentationContext = true
             // comment out next line to see the difference
             self.providesPresentationContextTransitionStyle = true
-            self.modalTransitionStyle = .coverVertical
+            self.modalTransitionStyle = .flipHorizontal
             vc.modalPresentationStyle = .currentContext
             
             vc.modalPresentationCapturesStatusBarAppearance = true
@@ -53,7 +50,7 @@ start in First view, tap button to present
 switch to Second view
 switch back to First view, tap button to dismiss
 black view, that's the bug
-still there in iOS 9! (still there in iOS 11)
+still there in iOS 9! (still there in iOS 11) (still there in iOS 13)
 The following code stops the user from doing that, and so avoids the bug
 */
 

@@ -10,6 +10,7 @@ class SecondViewController : UIViewController {
         return .landscape // called, but pointless
     }
     
+    // consulted automatically
     override var prefersStatusBarHidden : Bool {
         return false
     }

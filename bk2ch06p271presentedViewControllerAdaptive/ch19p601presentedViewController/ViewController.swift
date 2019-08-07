@@ -7,15 +7,21 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     @IBAction func doPresent(_ sender: Any?) {
         
         
-        let svc = SecondViewController(nibName: nil, bundle: nil)
+        let svc = SecondViewController()
         svc.data = "This is very important data!"
         svc.delegate = self
         
-        svc.modalPresentationStyle = .pageSheet
+        // gosh, in iOS what if I don't say that?
+        // .pageSheet is the default, so do we still adapt?
+        // yes we do!
+        // svc.modalPresentationStyle = .pageSheet
 
         svc.presentationController!.delegate = self // *
+        // must be _before_ `present`
         
         self.present(svc, animated:true)
+        
+
     }
     
     func accept(data:Any) {
@@ -44,13 +50,15 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
         print("adapt!")
         if traitCollection.horizontalSizeClass == .compact {
             return .overFullScreen
-            return .none // try this for a weird result
+            // removed the case where you return .none here...
+            // ...as it's no longer interesting in iOS 13
         }
+        // return .formSheet // useful on iPad perhaps
         return .none // don't adapt
     }
     
     func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle: UIModalPresentationStyle) -> UIViewController? {
-        let newvc = ThirdViewController(nibName: nil, bundle: nil)
+        let newvc = ThirdViewController()
         newvc.data = "This is very important data!"
         newvc.delegate = self
 
@@ -60,7 +68,14 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
     
     func presentationController(_ presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
         print("will present with style: \(style.rawValue)")
+        transitionCoordinator?.animate(alongsideTransition: nil) { tc in
+            let actualStyle = tc.presentationStyle
+            print("did present with style: \(actualStyle.rawValue)")
+        }
     }
+    
+    // hmm, weird, looks like pageSheet on landscape big phone still _is_ pageSheet
+    // just _looks_ like overFullScreen
     
 
 

@@ -8,7 +8,6 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         super.viewDidLoad()
         print(self.modalPresentationStyle.rawValue)
     }
-    
 
     @IBAction func doPresent(_ sender: Any?) {
         
@@ -16,7 +15,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         print(self.presentingViewController as Any)
         print(self.presentedViewController as Any)
         
-        let svc = SecondViewController(nibName: nil, bundle: nil)
+        let svc = SecondViewController()
         svc.data = "This is very important data!"
         svc.delegate = self
         
@@ -41,23 +40,22 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
         print(self.traitCollection)
         
-        var which2 : Int { return 6 }
+        var which2 : Int { return 5 }
         switch which2 {
-        case 1: break // showing that .fullScreen is the default
+        case -1: break // showing that .fullScreen is the default
             // but not in iOS 13! if you don't specify anything,
             // you get .automatic, which resolves to .pageSheet
             // except in compact vertical
-        case 2: svc.modalPresentationStyle = .fullScreen
-        case 3: svc.modalPresentationStyle = .pageSheet
-        case 4: svc.modalPresentationStyle = .formSheet
+        case 0: svc.modalPresentationStyle = .fullScreen
+        case 1: svc.modalPresentationStyle = .pageSheet
+        case 2: svc.modalPresentationStyle = .formSheet
         case 5:
             svc.modalPresentationStyle = .overFullScreen
-            svc.view.alpha = 0.5 // just to prove that it's working
+            // svc.view.alpha = 0.5 // just to prove that it's working
         case 6:
             if #available(iOS 13.0, *) {
                 svc.modalPresentationStyle = .automatic
                 // svc.isModalInPresentation = true
-                svc.presentationController?.delegate = self
             }
         default: break
         }
@@ -81,6 +79,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
             print(svc.modalPresentationStyle.rawValue)
         }
         // self.showViewController(svc, sender:self) // ooops! we're in a nav interface, uses that :)
+        
+        svc.presentationController?.delegate = self // proving this works even after presentation
     }
     
     func accept(data:Any) {

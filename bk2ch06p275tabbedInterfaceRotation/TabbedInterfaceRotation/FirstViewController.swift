@@ -14,7 +14,7 @@ class FirstViewController: UIViewController {
 
     // see storyboard for image configuration
     
-    // run on 5s or similar to see issues with smaller image
+    // run on 6s or similar to see issues with smaller image
     
     required init?(coder: NSCoder) {
         super.init(coder:coder)

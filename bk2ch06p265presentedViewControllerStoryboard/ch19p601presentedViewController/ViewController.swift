@@ -9,13 +9,29 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     // and "presentViewController" will be called for us
     // thus we need another place to configure
     
-    
+    // old way; this will _still_ be called even if segue action is called
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "present" { // it will be
-            let svc = segue.destination as! SecondViewController
+        if #available(iOS 13.0, *) {
+            return
+        } else {
+            if segue.identifier == "present" { // it will be
+                let svc = segue.destination as! SecondViewController
+                svc.data = "This is very important data!"
+                svc.delegate = self
+            }
+        }
+    }
+    
+    // new in iOS 13
+    // we are still not told the class; that is now in fact up to us
+    // which makes this architecture more like the no-storyboard architecture
+    @IBSegueAction func presentSecondViewController(_ coder:NSCoder, sender:Any?, ident:String?) -> UIViewController? {
+        if let svc = SecondViewController(coder:coder) {
             svc.data = "This is very important data!"
             svc.delegate = self
+            return svc
         }
+        return nil
     }
     
     func accept(data:Any) {

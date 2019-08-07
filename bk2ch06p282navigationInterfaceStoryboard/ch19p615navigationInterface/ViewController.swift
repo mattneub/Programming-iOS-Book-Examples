@@ -28,7 +28,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     // instantiation, navigation now performed through storyboard setup
     /*
     func navigate() {
-        let v2c = View2Controller(nibName: nil, bundle: nil)
+        let v2c = View2Controller()
         self.navigationController.pushViewController(v2c, animated: true)
     }
 */

@@ -6,6 +6,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     @IBAction func doPresent(_ sender: Any?) {
         let svc = SecondViewController(nibName:"SecondViewController", bundle:nil)
+//        svc.modalPresentationCapturesStatusBarAppearance = true
         svc.data = "This is very important data!"
         svc.delegate = self
 //        svc.view.alpha = 0.5
@@ -13,9 +14,11 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         // if we want forced rotation;
         // otherwise we get the sheet which doesn't force it
         // in my opinion overFullScreen looks better
+        // but you don't get preferredInterfaceOrientationForPresentation
+        // so there's a bug somewhere here
         svc.modalPresentationStyle = .overFullScreen
-//        svc.modalPresentationStyle = .fullScreen
-//        svc.modalPresentationStyle = .formSheet
+        svc.modalPresentationStyle = .fullScreen
+//        svc.modalPresentationStyle = .pageSheet
         self.present(svc, animated:true)
         
     }

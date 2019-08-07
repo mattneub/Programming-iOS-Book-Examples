@@ -7,7 +7,7 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = self
+        // self.tabBarController?.delegate = self
     }
     
     // tab bar delegate gets to dictate orientations...
@@ -17,7 +17,8 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
         print(self, terminator: "")
         print(" ", terminator: "")
         print(#function)
-        return .portrait    }
+        return .portrait
+    }
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         print(self, terminator: "")
@@ -26,6 +27,7 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
         return .landscape // called, but pointless
     }
     
+    // consulted automatically
     override var prefersStatusBarHidden : Bool {
         return true
     }
