@@ -18,9 +18,8 @@ class ViewController2: UIViewController {
         self.transitioningDelegate = self
         // if we want to modify the _presentation_, we need to set the style to custom
         // customize presentation only on iPhone
-        // how will we find out which it is? we have no traitCollection yet...
-        // I know, let's ask the window
-        if UIApplication.shared.keyWindow!.traitCollection.userInterfaceIdiom == .phone {
+        // in iOS 13 we have a trait collection on creation
+        if self.traitCollection.userInterfaceIdiom == .phone {
             self.modalPresentationStyle = .custom
         }
     }
@@ -63,6 +62,14 @@ extension MyPresentationController {
         con.insertSubview(shadow, at: 0)
         // deal with what happens on rotation
         shadow.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        // can play tricks with the presenting view just like phone sheet
+        if let tc = self.presentingViewController.transitionCoordinator {
+            tc.animate(alongsideTransition: { _ in
+                if self.traitCollection.userInterfaceIdiom == .phone {
+                    self.presentingViewController.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                }
+            })
+        }
     }
 }
 
@@ -72,11 +79,12 @@ extension MyPresentationController {
     override func dismissalTransitionWillBegin() {
         let con = self.containerView!
         let shadow = con.subviews[0]
-        let tc = self.presentedViewController.transitionCoordinator!
-        tc.animate(alongsideTransition: {
-            _ in
-            shadow.alpha = 0
+        if let tc = self.presentedViewController.transitionCoordinator {
+            tc.animate(alongsideTransition: { _ in
+                shadow.alpha = 0
+                self.presentingViewController.view.transform = .identity
             })
+        }
     }
 }
 

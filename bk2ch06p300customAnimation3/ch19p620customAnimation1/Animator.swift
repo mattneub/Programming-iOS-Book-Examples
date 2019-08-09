@@ -2,10 +2,16 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class Animator : NSObject {
     var anim : UIViewImplicitlyAnimating?
     unowned var tbc : UITabBarController
-    var context : UIViewControllerContextTransitioning? // * phasing out misuse of IUO
+    weak var context : UIViewControllerContextTransitioning?
     var interacting = false
     init(tabBarController tbc: UITabBarController) {
         self.tbc = tbc
@@ -177,8 +183,11 @@ extension Animator : UIViewControllerAnimatedTransitioning {
         print("animation ended")
         // reset everything
         self.interacting = false
-        self.context = nil
         self.anim = nil
+        delay(1) {
+            // prove the context goes out of existence in good order
+            print(self.context as ANY)
+        }
     }
 }
 

@@ -40,7 +40,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         let app = UINavigationBarAppearance()
         app.backgroundColor = UIColor.systemRed // will be white otherwise, I think
         // note that this causes the nav bar color in the storyboard to stop working
-        // if we want translucency, we now refer to blur effect directly
+        // if we want translucency, we now refer to blur effect directly (and/or use materials)
         app.backgroundColor = app.backgroundColor?.withAlphaComponent(0.7)
         app.backgroundEffect = UIBlurEffect(style: .light)
         

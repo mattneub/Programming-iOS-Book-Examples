@@ -40,7 +40,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
         print(self.traitCollection)
         
-        var which2 : Int { return 5 }
+        var which2 : Int { return -1 }
         switch which2 {
         case -1: break // showing that .fullScreen is the default
             // but not in iOS 13! if you don't specify anything,
@@ -124,16 +124,23 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
 */
 
 extension ViewController : UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+    func presentationControllerDidAttemptToDismiss(_ pc: UIPresentationController) {
         print("hey, stop that")
     }
-    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+    func presentationControllerShouldDismiss(_ pc: UIPresentationController) -> Bool {
         return true
     }
-    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+    func presentationControllerWillDismiss(_ pc: UIPresentationController) {
         print("will")
+        if let tc = pc.presentedViewController.transitionCoordinator {
+            tc.animate(alongsideTransition: {_ in
+                for v in pc.presentedViewController.view.subviews {
+                    v.alpha = 0
+                }
+            })
+        }
     }
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+    func presentationControllerDidDismiss(_ pc: UIPresentationController) {
         print("did")
     }
 
