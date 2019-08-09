@@ -8,8 +8,8 @@ class MyNavigationController: UINavigationController {
 //        return .lightContent
 //    }
     
-//    override var childViewControllerForStatusBarStyle : UIViewController? {
-//        return self.topViewController
-//    }
+    override var childForStatusBarStyle : UIViewController? {
+        return self.topViewController
+    }
 
 }

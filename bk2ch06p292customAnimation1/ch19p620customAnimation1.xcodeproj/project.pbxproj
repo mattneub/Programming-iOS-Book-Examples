@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		325AF04719780CC800E056AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325AF04619780CC800E056AF /* AppDelegate.swift */; };
 		32F99CA91B78F8480056D3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F99CA81B78F8480056D3FD /* LaunchScreen.storyboard */; };
+		8127F8CE22FCC62B0031BEA6 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8127F8CD22FCC62B0031BEA6 /* Animator.swift */; };
 		C9E1781D17CCDECE00D6513D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E1781B17CCDECE00D6513D /* Main.storyboard */; };
 		C9E1782517CCDECE00D6513D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E1782417CCDECE00D6513D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,6 +17,7 @@
 /* Begin PBXFileReference section */
 		325AF04619780CC800E056AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32F99CA81B78F8480056D3FD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8127F8CD22FCC62B0031BEA6 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		C9E1780617CCDECE00D6513D /* ch19p620customAnimation1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p620customAnimation1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E1781117CCDECE00D6513D /* ch19p620customAnimation1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p620customAnimation1-Info.plist"; sourceTree = "<group>"; };
 		C9E1781C17CCDECE00D6513D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				325AF04619780CC800E056AF /* AppDelegate.swift */,
+				8127F8CD22FCC62B0031BEA6 /* Animator.swift */,
 				C9E1781B17CCDECE00D6513D /* Main.storyboard */,
 				C9E1782417CCDECE00D6513D /* Assets.xcassets */,
 				32F99CA81B78F8480056D3FD /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8127F8CE22FCC62B0031BEA6 /* Animator.swift in Sources */,
 				325AF04719780CC800E056AF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +271,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p620customAnimation1/ch19p620customAnimation1-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
@@ -285,6 +290,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p620customAnimation1/ch19p620customAnimation1-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";

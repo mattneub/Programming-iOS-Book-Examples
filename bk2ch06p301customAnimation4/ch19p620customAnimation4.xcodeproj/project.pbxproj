@@ -11,6 +11,7 @@
 		321F836B19785D8F00C732ED /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F836A19785D8F00C732ED /* MasterViewController.swift */; };
 		321F836D19785E8400C732ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F836C19785E8400C732ED /* DetailViewController.swift */; };
 		32F99CAF1B7900700056D3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F99CAE1B7900700056D3FD /* LaunchScreen.storyboard */; };
+		8127F8D222FCFB3B0031BEA6 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8127F8D122FCFB3B0031BEA6 /* Animator.swift */; };
 		C9EC5BF317D92CC7002FA303 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9EC5BF117D92CC7002FA303 /* Main.storyboard */; };
 		C9EC5BFB17D92CC7002FA303 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EC5BFA17D92CC7002FA303 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -20,6 +21,7 @@
 		321F836A19785D8F00C732ED /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		321F836C19785E8400C732ED /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		32F99CAE1B7900700056D3FD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8127F8D122FCFB3B0031BEA6 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		C9EC5BDC17D92CC7002FA303 /* ch19p620customAnimation4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p620customAnimation4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EC5BE717D92CC7002FA303 /* ch19p620customAnimation4-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p620customAnimation4-Info.plist"; sourceTree = "<group>"; };
 		C9EC5BF217D92CC7002FA303 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				321F836819785B1C00C732ED /* AppDelegate.swift */,
+				8127F8D122FCFB3B0031BEA6 /* Animator.swift */,
 				C9EC5BF117D92CC7002FA303 /* Main.storyboard */,
 				321F836A19785D8F00C732ED /* MasterViewController.swift */,
 				321F836C19785E8400C732ED /* DetailViewController.swift */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8127F8D222FCFB3B0031BEA6 /* Animator.swift in Sources */,
 				321F836B19785D8F00C732ED /* MasterViewController.swift in Sources */,
 				321F836919785B1C00C732ED /* AppDelegate.swift in Sources */,
 				321F836D19785E8400C732ED /* DetailViewController.swift in Sources */,

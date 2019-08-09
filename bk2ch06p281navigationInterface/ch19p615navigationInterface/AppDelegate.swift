@@ -37,10 +37,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         return true;
         
-        let im = UIImage(named:"linen.png")!
+        var im = UIImage(named:"linen.png")!
         let sz = CGSize(5,34)
         let r = UIGraphicsImageRenderer(size:sz, format:im.imageRendererFormat)
-        let im2 = r.image {
+        im = r.image {
             _ in
             im.draw(at:CGPoint(-55,-55))
         }
@@ -50,12 +50,25 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 //        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
 //        UIGraphicsEndImageContext()
         
-        let im3 = im2.resizableImage(withCapInsets:UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0), resizingMode:.tile)
-        UIBarButtonItem.appearance().setBackgroundImage(im3, for:.normal, barMetrics:.default)
+        im = im.resizableImage(withCapInsets:UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0), resizingMode:.tile)
+        // UIBarButtonItem.appearance().setBackgroundImage(im, for:.normal, barMetrics:.default)
         
         
         // if the back button is assigned a background image, the chevron is removed entirely
         // UIBarButtonItem.appearance().setBackButtonBackgroundImage(im3, for: .normal, barMetrics: .default)
+        
+        // but not in iOS under the new appearance classes! have to code defensively:
+        
+        let app = UIBarButtonItemAppearance()
+        app.normal.backgroundImage = im
+        let navbarapp = UINavigationBarAppearance()
+        navbarapp.configureWithOpaqueBackground()
+        navbarapp.buttonAppearance = app
+        let back = UIBarButtonItemAppearance()
+        back.normal.backgroundImage = UIImage() // prevent back button item
+        navbarapp.backButtonAppearance = back
+        UINavigationBar.appearance().standardAppearance = navbarapp
+
 
         // also, note that if the back button is assigned a background image,
         // it is not vertically resized

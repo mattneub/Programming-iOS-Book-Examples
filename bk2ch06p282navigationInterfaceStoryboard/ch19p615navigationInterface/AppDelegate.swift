@@ -31,28 +31,27 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.window!.tintColor = .orange // gag... Just proving this is inherited
         
-        // nav bar is configured (horribly) in the storyboard
-        
-        // and now for some even more disgusting decoration
-        
-        let im = UIImage(named:"linen.png")
+        var im = UIImage(named:"linen.png")!
         let sz = CGSize(5,34)
-        let r = UIGraphicsImageRenderer(size:sz, format:im!.imageRendererFormat)
-        let im2 = r.image {
-            _ in im!.draw(at:CGPoint(-55,-55))
+        let r = UIGraphicsImageRenderer(size:sz, format:im.imageRendererFormat)
+        im = r.image {
+            _ in im.draw(at:CGPoint(-55,-55))
         }
 
-//        UIGraphicsBeginImageContextWithOptions(sz, false, 0)
-//        im!.draw(at:CGPoint(-55,-55))
-//        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
+        im = im.resizableImage(withCapInsets:UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0), resizingMode:.tile)
+        // UIBarButtonItem.appearance().setBackgroundImage(im3, for:.normal, barMetrics:.default)
+        // do that with the new UIBarButtonItemAppearance
         
-        let im3 = im2.resizableImage(withCapInsets:UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0), resizingMode:.tile)
-        UIBarButtonItem.appearance().setBackgroundImage(im3, for:.normal, barMetrics:.default)
-        
-        
-        // if the back button is assigned a background image, the chevron is removed entirely
-        // UIBarButtonItem.appearance().setBackButtonBackgroundImage(im3, forState: .Normal, barMetrics: .Default)
+        let app = UIBarButtonItemAppearance()
+        app.normal.backgroundImage = im
+        let navbarapp = UINavigationBarAppearance()
+        navbarapp.configureWithOpaqueBackground()
+        navbarapp.buttonAppearance = app
+        let back = UIBarButtonItemAppearance()
+        back.normal.backgroundImage = UIImage() // prevent back button item
+        navbarapp.backButtonAppearance = back
+        UINavigationBar.appearance().standardAppearance = navbarapp
+                
 
         // also, note that if the back button is assigned a background image,
         // it is not vertically resized

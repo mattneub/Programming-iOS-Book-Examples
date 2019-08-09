@@ -7,7 +7,6 @@ class View2Controller : UIViewController {
     required init?(coder: NSCoder) {
         super.init(coder:coder)
         self.title = "Second"
-        // whoa, check this out: the image comes right out of the asset catalog as a template image!
         let b = UIBarButtonItem(image: UIImage(named:"files"), style: .plain, target: nil, action: nil)
         // can have both left bar buttons and back bar button
         self.navigationItem.leftBarButtonItem = b

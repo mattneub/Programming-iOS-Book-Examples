@@ -2,13 +2,14 @@
 
 import UIKit
 
-/*
-Logging to prove that on a partial gesture (with cancellation),
-viewWillAppear (1st) and viewWillDisappear(2nd) are called...
-...without the corresponding "did"
-*/
-
 class FirstViewController : UIViewController {
+    
+    /*
+    Logging to prove that on a partial gesture (with cancellation),
+    viewWillAppear (1st) and viewWillDisappear(2nd) are called...
+    ...without the corresponding "did"
+    */
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController : UIViewController, UINavigationControllerDelegate {
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -31,22 +31,40 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.delegate = self
-        // uncomment to get white status bar text
-        // self.navigationController!.navigationBar.barStyle = .Black
-        // uncomment to hide navigation bar
-        // self.navigationController!.setNavigationBarHidden(true, animated: false)
         
         // large titles
         self.navigationController!.navigationBar.prefersLargeTitles = true
+        
+        // new in iOS 13, when we have a large title, the navigation bar is completely transparent by default
+        // if you don't like that, set background color for the scroll edge appearance
+        let app = UINavigationBarAppearance()
+        app.backgroundColor = UIColor.systemRed // will be white otherwise, I think
+        // note that this causes the nav bar color in the storyboard to stop working
+        // if we want translucency, we now refer to blur effect directly
+        app.backgroundColor = app.backgroundColor?.withAlphaComponent(0.7)
+        app.backgroundEffect = UIBlurEffect(style: .light)
+        
+        
+        self.navigationController!.navigationBar.standardAppearance = app
+        self.navigationController!.navigationBar.scrollEdgeAppearance = app
+        
+        // uncomment to get white status bar text
+        // but this stops working if you use the new iOS 13 appearance stuff
+        self.navigationController!.navigationBar.barStyle = .black
+        // however, in iOS 13 you also get automatic status bar style based on user interface mode (light/dark)
+        
+        // uncomment to hide navigation bar
+        // self.navigationController!.setNavigationBarHidden(true, animated: false)
+
     }
     
     func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return .portrait
     }
     
-//    override var preferredStatusBarStyle : UIStatusBarStyle {
-//        return .lightContent
-//    }
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
     
 //    override var prefersStatusBarHidden : Bool {
 //        return true

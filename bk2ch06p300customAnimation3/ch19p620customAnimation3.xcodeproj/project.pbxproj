@@ -10,6 +10,7 @@
 		321F836519784D0200C732ED /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F836419784D0200C732ED /* ViewControllers.swift */; };
 		321F836719784D0D00C732ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F836619784D0D00C732ED /* AppDelegate.swift */; };
 		32F99CAD1B78FB5F0056D3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F99CAC1B78FB5F0056D3FD /* LaunchScreen.storyboard */; };
+		8127F8D022FCCDA40031BEA6 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8127F8CF22FCCDA40031BEA6 /* Animator.swift */; };
 		C9E1781D17CCDECE00D6513D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E1781B17CCDECE00D6513D /* Main.storyboard */; };
 		C9E1782517CCDECE00D6513D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E1782417CCDECE00D6513D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -18,6 +19,7 @@
 		321F836419784D0200C732ED /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		321F836619784D0D00C732ED /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32F99CAC1B78FB5F0056D3FD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8127F8CF22FCCDA40031BEA6 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		C9E1780617CCDECE00D6513D /* ch19p620customAnimation3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p620customAnimation3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E1781117CCDECE00D6513D /* ch19p620customAnimation3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p620customAnimation3-Info.plist"; sourceTree = "<group>"; };
 		C9E1781C17CCDECE00D6513D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				321F836619784D0D00C732ED /* AppDelegate.swift */,
+				8127F8CF22FCCDA40031BEA6 /* Animator.swift */,
 				C9E1781B17CCDECE00D6513D /* Main.storyboard */,
 				321F836419784D0200C732ED /* ViewControllers.swift */,
 				C9E1782417CCDECE00D6513D /* Assets.xcassets */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8127F8D022FCCDA40031BEA6 /* Animator.swift in Sources */,
 				321F836719784D0D00C732ED /* AppDelegate.swift in Sources */,
 				321F836519784D0200C732ED /* ViewControllers.swift in Sources */,
 			);

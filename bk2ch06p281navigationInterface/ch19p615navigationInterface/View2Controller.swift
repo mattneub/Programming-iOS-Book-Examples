@@ -13,7 +13,7 @@ class View2Controller : UIViewController {
         self.navigationItem.leftItemsSupplementBackButton = true
         
         let b2 = UIBarButtonItem(title: "Haha", style: .plain, target: self, action: #selector(goAnother))
-        b2.setBackgroundImage(nil, for: .normal, barMetrics: .default)
+        //b2.setBackgroundImage(nil, for: .normal, barMetrics: .default)
         self.navigationItem.rightBarButtonItem = b2
         
         let iv = UIImageView()
@@ -55,7 +55,13 @@ class View2Controller : UIViewController {
     }
     
     @objc func goAnother(_:Any) {
-        let vc = UIViewController()
+        class View3Controller : UIViewController {
+            override func viewDidLoad() {
+                super.viewDidLoad()
+                self.view.backgroundColor = .blue
+            }
+        }
+        let vc = View3Controller()
         vc.navigationItem.title = "Third"
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -77,15 +83,6 @@ class View2Controller : UIViewController {
     // with a back button, we get "pop" for free, both by tapping the button...
     // and interactively by dragging from the left edge
     
-    // this looks like a bug: we are not getting light content
-    
-//    override var preferredStatusBarStyle : UIStatusBarStyle {
-//        return .LightContent
-//    }
-    
-//    override var prefersStatusBarHidden : Bool {
-//        return false
-//    }
 
     
 }

@@ -2,27 +2,26 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
-    var window : UIWindow?
-    var context : UIViewControllerContextTransitioning?
+class Animator : NSObject {
+    var anim : UIViewImplicitlyAnimating?
+    unowned var tbc : UITabBarController
+    var context : UIViewControllerContextTransitioning? // * phasing out misuse of IUO
     var interacting = false
-    
-    var anim : UIViewImplicitlyAnimating? // cannot be weak, vanishes before end of gesture
-    
-    var prev : UIPreviewInteraction! // *
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
-        
-        let tbc = self.window!.rootViewController as! UITabBarController
-        tbc.delegate = self
-        
-        let prev = UIPreviewInteraction(view: tbc.tabBar)
-        prev.delegate = self
-        self.prev = prev
-        
-        return true
+    init(tabBarController tbc: UITabBarController) {
+        self.tbc = tbc
+        super.init()
+        let sep = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
+        sep.edges = UIRectEdge.right
+        tbc.view.addGestureRecognizer(sep)
+        sep.delegate = self
+        let sep2 = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
+        sep2.edges = UIRectEdge.left
+        tbc.view.addGestureRecognizer(sep2)
+        sep2.delegate = self
     }
+}
+
+extension Animator: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         print("animation controller")
@@ -33,80 +32,73 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         print("interaction controller")
         return self.interacting ? self : nil
     }
-    
 }
 
-extension AppDelegate : UIPreviewInteractionDelegate {
-    func previewInteractionShouldBegin(_ previewInteraction: UIPreviewInteraction) -> Bool {
-        let tbc = self.window!.rootViewController as! UITabBarController
-        let loc = previewInteraction.location(in:tbc.tabBar)
-        if loc.x > tbc.view!.bounds.midX {
-            if tbc.selectedIndex < tbc.viewControllers!.count - 1 {
-                self.interacting = true
-                tbc.selectedIndex = tbc.selectedIndex + 1
-                tbc.tabBar.isUserInteractionEnabled = false
-                print("preview true")
-                return true
+extension Animator : UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(_ g: UIGestureRecognizer) -> Bool {
+        let ix = self.tbc.selectedIndex
+        return
+            (g as! UIScreenEdgePanGestureRecognizer).edges == .right ?
+                ix < self.tbc.viewControllers!.count - 1 : ix > 0
+    }
+    
+    @objc func pan(_ g:UIScreenEdgePanGestureRecognizer) {
+        
+        switch g.state {
+        case .began:
+            self.interacting = true
+            if g.edges == .right {
+                self.tbc.selectedIndex = self.tbc.selectedIndex + 1
+            } else {
+                self.tbc.selectedIndex = self.tbc.selectedIndex - 1
             }
-        } else {
-            if tbc.selectedIndex > 0 {
-                self.interacting = true
-                tbc.selectedIndex = tbc.selectedIndex - 1
-                tbc.tabBar.isUserInteractionEnabled = false
-                print("preview true")
-                return true
-            }
-        }
-        return false
-    }
-    
-    func previewInteraction(_ previewInteraction: UIPreviewInteraction, didUpdatePreviewTransition transitionProgress: CGFloat, ended: Bool) {
-        var percent = transitionProgress
-        // clamp so that we cannot reach either 0 or 1...
-        // because we don't want to end the animation by setting its fractionComplete
-        if percent < 0.05 {percent = 0.05}
-        if percent > 0.95 {percent = 0.95}
-        print(percent)
-        self.anim?.fractionComplete = percent
-        self.context?.updateInteractiveTransition(percent)
-    }
-    
-    func previewInteraction(_ previewInteraction: UIPreviewInteraction, didUpdateCommitTransition transitionProgress: CGFloat, ended: Bool) {
-        if ended {
-            self.anim?.pauseAnimation()
-            self.anim?.stopAnimation(false)
-            self.anim?.finishAnimation(at: .end)
-            let tbc = self.window!.rootViewController as! UITabBarController
-            tbc.tabBar.isUserInteractionEnabled = true
-        }
-    }
-    
-    func previewInteractionDidCancel(_ previewInteraction: UIPreviewInteraction) {
-        if let anim = self.anim as? UIViewPropertyAnimator {
+        case .changed:
+            let v = g.view!
+            let delta = g.translation(in:v)
+            let percent = abs(delta.x/v.bounds.size.width)
+            self.anim?.fractionComplete = percent
+            self.context?.updateInteractiveTransition(percent)
+        case .ended:
+            
+            // this is the money shot!
+            // with a property animator, the whole notion of "hurry home" is easy -
+            // including "hurry back to start"
+            
+            let anim = self.anim as! UIViewPropertyAnimator
             anim.pauseAnimation()
-            anim.isReversed = true
+
+            if anim.fractionComplete < 0.5 {
+                anim.isReversed = true
+            }
             anim.continueAnimation(
                 withTimingParameters:
                 UICubicTimingParameters(animationCurve:.linear),
                 durationFactor: 0.2)
-            let tbc = self.window!.rootViewController as! UITabBarController
-            tbc.tabBar.isUserInteractionEnabled = true
+
+        case .cancelled:
+            
+            self.anim?.pauseAnimation()
+            self.anim?.stopAnimation(false)
+            self.anim?.finishAnimation(at: .start)
+            
+        default: break
         }
     }
-
 }
 
-extension AppDelegate : UIViewControllerInteractiveTransitioning {
+extension Animator : UIViewControllerInteractiveTransitioning {
     
     // called if we are interactive
     // (because we now have no percent driver)
     func startInteractiveTransition(_ ctx: UIViewControllerContextTransitioning){
         print("startInteractiveTransition")
-        // store transition context so the gesture recognizer can get at it
-        self.context = ctx
         
         // store the animator so the gesture recognizer can get at it
         self.anim = self.interruptibleAnimator(using: ctx)
+        
+        // store transition context so the gesture recognizer can get at it
+        self.context = ctx
         
         // I don't like having to store them both
         // I could make this look neater with a "helper object"
@@ -115,7 +107,7 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
     }
 }
 
-extension AppDelegate : UIViewControllerAnimatedTransitioning {
+extension Animator : UIViewControllerAnimatedTransitioning {
     
     func interruptibleAnimator(using ctx: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         print("interruptibleAnimator")
@@ -138,9 +130,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
-        let tbc = self.window!.rootViewController as! UITabBarController
-        let ix1 = tbc.viewControllers!.firstIndex(of:vc1)!
-        let ix2 = tbc.viewControllers!.firstIndex(of:vc2)!
+        let ix1 = self.tbc.viewControllers!.firstIndex(of:vc1)!
+        let ix2 = self.tbc.viewControllers!.firstIndex(of:vc2)!
         let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r1end = r1start
         r1end.origin.x -= r1end.size.width * dir
@@ -153,7 +144,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
             v1.frame = r1end
             v2.frame = r2end
         }
-        anim.addCompletion { finish in 
+        anim.addCompletion { finish in
             if finish == .end {
                 ctx.finishInteractiveTransition()
                 ctx.completeTransition(true)
@@ -190,3 +181,4 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         self.anim = nil
     }
 }
+
