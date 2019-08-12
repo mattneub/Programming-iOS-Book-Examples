@@ -40,8 +40,8 @@ class ViewController1: UIViewController {
         super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
-    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
-        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, sender: sender)
         print("\(type(of:self)) \(#function) \(action) \(result)")
         return result
     }
@@ -81,8 +81,8 @@ class ViewController2: UIViewController {
         super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
-    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
-        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, sender: sender)
         print("\(type(of:self)) \(#function) \(action) \(result)")
         return result
     }
@@ -122,8 +122,8 @@ class ViewController3: UIViewController {
         super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
-    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
-        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, sender: sender)
         print("\(type(of:self)) \(#function) \(action) \(result)")
         return result
     }
@@ -152,6 +152,11 @@ class ViewController3: UIViewController {
 
 class ViewController4: UIViewController {
     
+    @IBSegueAction func segueAction(coder:NSCoder, sender:Any, ident:String) -> UIViewController? {
+        print("action") // never called!
+        return nil
+    }
+    
     override func allowedChildrenForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
         let result = super.allowedChildrenForUnwinding(from: source)
         print("\(type(of:self)) \(#function) \(result)")
@@ -163,8 +168,8 @@ class ViewController4: UIViewController {
         super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
-    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
-        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, sender: sender)
         print("\(type(of:self)) \(#function) \(action) \(result)")
         return result
     }

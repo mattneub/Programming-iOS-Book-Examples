@@ -2,7 +2,7 @@
 
 import UIKit
 
-class ViewController : UIViewController, SecondViewControllerDelegate {
+class ViewController : UIViewController, SecondViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
     
     // the segue in the storyboard is drawn directly from the button...
     // so SecondViewController will be instantiated for us...
@@ -11,7 +11,9 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     // old way; this will _still_ be called even if segue action is called
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare")
         if #available(iOS 13.0, *) {
+            print("returning from prepare without doing anything")
             return
         } else {
             if segue.identifier == "present" { // it will be
@@ -26,9 +28,11 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     // we are still not told the class; that is now in fact up to us
     // which makes this architecture more like the no-storyboard architecture
     @IBSegueAction func presentSecondViewController(_ coder:NSCoder, sender:Any?, ident:String?) -> UIViewController? {
-        if let svc = SecondViewController(coder:coder) {
-            svc.data = "This is very important data!"
+        print("segue action", sender as Any, ident as Any, separator:"\n")
+        // let vc = ViewController(coder:coder) // crash; class must be right
+        if let svc = SecondViewController(coder:coder, data:"This is very important data!") {
             svc.delegate = self
+            svc.presentationController?.delegate = self
             return svc
         }
         return nil
@@ -51,5 +55,13 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         super.dismiss(animated:animated, completion: completion)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("vc will appear")
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        print("dismiss")
+    }
     
 }

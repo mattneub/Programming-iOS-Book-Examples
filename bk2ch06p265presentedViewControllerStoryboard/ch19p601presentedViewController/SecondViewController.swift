@@ -15,9 +15,18 @@ protocol SecondViewControllerDelegate : AnyObject {
 
 class SecondViewController : UIViewController {
     
-    var data : Any?
+    var data : Any
     
     weak var delegate : SecondViewControllerDelegate?
+    
+    init?(coder:NSCoder, data:Any) {
+        self.data = data
+        super.init(coder:coder)
+    }
+    required init?(coder: NSCoder) {
+        self.data = ""
+        super.init(coder:coder)
+    }
     
     
     // could alternatively use an "unwind" segue here
