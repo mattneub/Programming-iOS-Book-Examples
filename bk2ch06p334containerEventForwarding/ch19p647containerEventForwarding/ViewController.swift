@@ -6,7 +6,7 @@ class ViewController : Base {
     var cur : Int = 0
     var swappers = [UIViewController]()
     
-    let which = 2 // 1 means automatic appearance forwarding, 2 means manual, try both
+    let which = 1 // 1 means automatic appearance forwarding, 2 means manual, try both
     // you will see that the messages to the child are the same either way,
     // thus proving we're doing manual forwarding correctly
     

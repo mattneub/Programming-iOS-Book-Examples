@@ -14,8 +14,8 @@ class MyNavController : UINavigationController {
         super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
-    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
-        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, sender: sender)
         print("\(type(of:self)) \(#function) \(action) \(result)")
         return result
     }

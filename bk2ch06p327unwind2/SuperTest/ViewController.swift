@@ -57,8 +57,8 @@ class ViewController : UIViewController {
         super.unwind(for: unwindSegue, towards: subsequentVC)
     }
     
-    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
-        var result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+        var result = super.canPerformUnwindSegueAction(action, from: fromViewController, sender: sender)
         
         // uncomment this to do a grand unwind to root
         result = self.description == "View Controller 1"

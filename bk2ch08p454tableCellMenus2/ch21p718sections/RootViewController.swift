@@ -104,6 +104,8 @@ class RootViewController : UITableViewController {
     
     // menu handling ==========
     
+    #warning("needs to be replaced by context menu stuff in iOS 13")
+    
     let copy = #selector(UIResponderStandardEditActions.copy)
     let abbrev = #selector(MyCell.abbrev)
     override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {

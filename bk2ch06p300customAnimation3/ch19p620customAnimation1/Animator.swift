@@ -186,7 +186,7 @@ extension Animator : UIViewControllerAnimatedTransitioning {
         self.anim = nil
         delay(1) {
             // prove the context goes out of existence in good order
-            print(self.context as ANY)
+            print(self.context as Any)
         }
     }
 }

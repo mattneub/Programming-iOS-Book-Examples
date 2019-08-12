@@ -20,6 +20,7 @@ class ViewController : UIViewController {
             return olddata as Data
         }
         // ... recreate data here ...
+        print("recreating data for cache")
         let newdata = Data([1,2,3,4]) // recreated data
         self._cache.setObject(newdata as NSData, forKey: key)
         return newdata
@@ -34,6 +35,7 @@ class ViewController : UIViewController {
             return result
         } else {
             // ... recreate data here ...
+            print("recreating data for purgeable")
             let data = Data([6,7,8,9]) // recreated data
             self._purgeable = NSPurgeableData(data:data)
             self._purgeable.endContentAccess() // must call "end"!
@@ -45,9 +47,7 @@ class ViewController : UIViewController {
     private let fnam = "myBigData"
     private var _myBigData : Data! = nil
     var myBigData : Data! {
-        set (newdata) {
-            self._myBigData = newdata
-        }
+        set (newdata) { self._myBigData = newdata }
         get {
             if _myBigData == nil {
                 let fm = FileManager.default
@@ -122,7 +122,11 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        if #available(iOS 13.0, *) {
+            NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIScene.didEnterBackgroundNotification, object: nil)
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(memoryNotification), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
     }
     

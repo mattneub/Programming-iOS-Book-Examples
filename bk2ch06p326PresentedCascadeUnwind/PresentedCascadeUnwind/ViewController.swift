@@ -152,11 +152,6 @@ class ViewController3: UIViewController {
 
 class ViewController4: UIViewController {
     
-    @IBSegueAction func segueAction(coder:NSCoder, sender:Any, ident:String) -> UIViewController? {
-        print("action") // never called!
-        return nil
-    }
-    
     override func allowedChildrenForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
         let result = super.allowedChildrenForUnwinding(from: source)
         print("\(type(of:self)) \(#function) \(result)")
