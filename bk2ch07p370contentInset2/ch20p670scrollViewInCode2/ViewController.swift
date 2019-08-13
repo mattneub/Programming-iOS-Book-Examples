@@ -36,13 +36,21 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Title"
+        // try with and without large titles
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         let sv = UIScrollView()
         self.sv = sv
-        
+                
+        // next line is just to test
+        sv.contentInsetAdjustmentBehavior = .scrollableAxes
         // work around initial content placement bug
-        sv.alwaysBounceVertical = true
+        // not necessary? I can't get the bug to happen,
+        // regardless of the behavior setting
+        // sv.alwaysBounceVertical = true
         
-        sv.backgroundColor = .white
+        // sv.backgroundColor = .white
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         NSLayoutConstraint.activate([
@@ -110,5 +118,8 @@ extension ViewController : UIScrollViewDelegate {
         print("adjusted content inset", sv.adjustedContentInset)
         print("indicator insets", sv.scrollIndicatorInsets)
         print("content offset", sv.contentOffset)
+        print("behavior", sv.contentInsetAdjustmentBehavior.rawValue)
+        // deprecated, just checking
+        print("view controller automatic", self.automaticallyAdjustsScrollViewInsets)
     }
 }

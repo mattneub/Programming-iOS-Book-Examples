@@ -18,8 +18,8 @@
 		32A41C4D197D253D0039206F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32E22A551B83A52800B67F35 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32E22A571B83A53B00B67F35 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C957334A17DE1944005E6B5A /* ch20p670scrollViewInCode2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p670scrollViewInCode2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C957335517DE1944005E6B5A /* ch20p670scrollViewInCode2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p670scrollViewInCode2-Info.plist"; sourceTree = "<group>"; };
+		C957334A17DE1944005E6B5A /* ch20p670scrollViewInCode2c.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p670scrollViewInCode2c.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C957335517DE1944005E6B5A /* ch20p670scrollViewInCode2c-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p670scrollViewInCode2c-Info.plist"; sourceTree = "<group>"; };
 		C957336017DE1944005E6B5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C957336517DE1944005E6B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,7 +46,7 @@
 		C957334B17DE1944005E6B5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C957334A17DE1944005E6B5A /* ch20p670scrollViewInCode2.app */,
+				C957334A17DE1944005E6B5A /* ch20p670scrollViewInCode2c.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,7 +59,7 @@
 				32E22A571B83A53B00B67F35 /* AppDelegate.swift */,
 				C957336517DE1944005E6B5A /* Assets.xcassets */,
 				32E22A551B83A52800B67F35 /* LaunchScreen.storyboard */,
-				C957335517DE1944005E6B5A /* ch20p670scrollViewInCode2-Info.plist */,
+				C957335517DE1944005E6B5A /* ch20p670scrollViewInCode2c-Info.plist */,
 			);
 			path = ch20p670scrollViewInCode2;
 			sourceTree = "<group>";
@@ -67,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C957334917DE1944005E6B5A /* ch20p670scrollViewInCode2 */ = {
+		C957334917DE1944005E6B5A /* ch20p670scrollViewInCode2c */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C957337C17DE1944005E6B5A /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode2" */;
+			buildConfigurationList = C957337C17DE1944005E6B5A /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode2c" */;
 			buildPhases = (
 				C957334617DE1944005E6B5A /* Sources */,
 				C957334717DE1944005E6B5A /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = ch20p670scrollViewInCode2;
+			name = ch20p670scrollViewInCode2c;
 			productName = ch20p670scrollViewInCode2;
-			productReference = C957334A17DE1944005E6B5A /* ch20p670scrollViewInCode2.app */;
+			productReference = C957334A17DE1944005E6B5A /* ch20p670scrollViewInCode2c.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -91,7 +91,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C957334917DE1944005E6B5A = {
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C957334517DE1944005E6B5A /* Build configuration list for PBXProject "ch20p670scrollViewInCode2" */;
+			buildConfigurationList = C957334517DE1944005E6B5A /* Build configuration list for PBXProject "ch20p670scrollViewInCode2c" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C957334917DE1944005E6B5A /* ch20p670scrollViewInCode2 */,
+				C957334917DE1944005E6B5A /* ch20p670scrollViewInCode2c */,
 			);
 		};
 /* End PBXProject section */
@@ -159,28 +159,44 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -196,22 +212,37 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -219,6 +250,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -230,10 +262,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p670scrollViewInCode2/ch20p670scrollViewInCode2-Prefix.pch";
-				INFOPLIST_FILE = "ch20p670scrollViewInCode2/ch20p670scrollViewInCode2-Info.plist";
+				INFOPLIST_FILE = "ch20p670scrollViewInCode2/ch20p670scrollViewInCode2c-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -248,10 +281,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p670scrollViewInCode2/ch20p670scrollViewInCode2-Prefix.pch";
-				INFOPLIST_FILE = "ch20p670scrollViewInCode2/ch20p670scrollViewInCode2-Info.plist";
+				INFOPLIST_FILE = "ch20p670scrollViewInCode2/ch20p670scrollViewInCode2c-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
@@ -261,7 +295,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C957334517DE1944005E6B5A /* Build configuration list for PBXProject "ch20p670scrollViewInCode2" */ = {
+		C957334517DE1944005E6B5A /* Build configuration list for PBXProject "ch20p670scrollViewInCode2c" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C957337A17DE1944005E6B5A /* Debug */,
@@ -270,7 +304,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C957337C17DE1944005E6B5A /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode2" */ = {
+		C957337C17DE1944005E6B5A /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode2c" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C957337D17DE1944005E6B5A /* Debug */,

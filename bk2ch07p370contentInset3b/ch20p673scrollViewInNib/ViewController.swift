@@ -39,7 +39,8 @@ class ViewController : UIViewController {
             // we don't need this...
             // self.sv.contentInsetAdjustmentBehavior = .always
             // but we do need to work around incorrect initial scroll
-            self.sv.scrollRectToVisible(CGRect(0,0,1,1), animated: false)
+            // self.sv.scrollRectToVisible(CGRect(0,0,1,1), animated: false)
+            // okay but in iOS 13 I can't get any bug, so not needed
         }
     }
     

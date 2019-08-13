@@ -69,10 +69,14 @@ class TiledView : UIView {
     override func draw(_ r: CGRect) {
         NSLog("%@", "outside sync: \(r)")
 
-        self.drawQueue.sync { // work around nasty thread issue...
-            // we are called twice simultaneously on two different background threads!
-            // logging to prove we have in fact worked around it
+        // self.drawQueue.sync { // work around nasty thread issue...
+        // we are called twice simultaneously on two different background threads!
+        // logging to prove we have in fact worked around it
+        // okay but I'm not seeing that issue in iOS 13! there's just one thread
+        // this is probably a consequence of the improved simulator
+        do {
             NSLog("%@", "starting drawRect: \(r)")
+            print("main thread?", Thread.isMainThread)
             
             let tile = r
             let x = Int(tile.origin.x/TILESIZE)
