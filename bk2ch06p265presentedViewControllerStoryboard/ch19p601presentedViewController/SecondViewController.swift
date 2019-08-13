@@ -19,9 +19,9 @@ class SecondViewController : UIViewController {
     
     weak var delegate : SecondViewControllerDelegate?
     
-    init?(coder:NSCoder, data:Any) {
+    init(coder:NSCoder, data:Any) {
         self.data = data
-        super.init(coder:coder)
+        super.init(coder:coder)!
     }
     required init?(coder: NSCoder) {
         self.data = ""

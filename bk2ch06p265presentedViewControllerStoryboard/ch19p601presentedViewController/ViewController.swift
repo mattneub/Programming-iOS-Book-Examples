@@ -27,15 +27,14 @@ class ViewController : UIViewController, SecondViewControllerDelegate, UIAdaptiv
     // new in iOS 13
     // we are still not told the class; that is now in fact up to us
     // which makes this architecture more like the no-storyboard architecture
-    @IBSegueAction func presentSecondViewController(_ coder:NSCoder, sender:Any?, ident:String?) -> UIViewController? {
-        print("segue action", sender as Any, ident as Any, separator:"\n")
+    @IBSegueAction func config(coder:NSCoder) -> SecondViewController? {
+        // second and third parameters, if present, must be Any? and String?
         // let vc = ViewController(coder:coder) // crash; class must be right
-        if let svc = SecondViewController(coder:coder, data:"This is very important data!") {
-            svc.delegate = self
-            svc.presentationController?.delegate = self
-            return svc
-        }
-        return nil
+        let svc = SecondViewController(coder:coder, data:"This is very important data!")
+        print("created second view controller")
+        svc.delegate = self
+        svc.presentationController?.delegate = self
+        return svc
     }
     
     func accept(data:Any) {
