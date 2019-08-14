@@ -28,8 +28,11 @@ class MyTiledView : UIView {
 //        NSLog("%@", NSStringFromCGAffineTransform(UIGraphicsGetCurrentContext()!.ctm));
 //        NSLog("%@", NSStringFromCGRect(UIGraphicsGetCurrentContext()!.boundingBoxOfClipPath));
         
-        self.drawQueue.sync { // work around nasty thread issue...
-            // we are called twice simultaneously on two different background threads!
+        // self.drawQueue.sync { // work around nasty thread issue...
+        // we are called twice simultaneously on two different background threads!
+        // but it looks like that issue is gone
+        // we may be called back on a background thread, but not twice at once
+        do {
             
             // gather needed info on main thread
             // alas, I was always doing this wrong before; now thread checker has caught me!
@@ -40,6 +43,7 @@ class MyTiledView : UIView {
             // NSLog("oldSize %@", NSStringFromCGSize(oldSize))
             // NSLog("rect.size %@", NSStringFromCGSize(rect.size))
             if !oldSize.equalTo(rect.size) {
+                print(Thread.isMainThread)
                 // NSLog("%@", "not equal, making new size")
                 // make a new size
                 self.currentSize = rect.size
