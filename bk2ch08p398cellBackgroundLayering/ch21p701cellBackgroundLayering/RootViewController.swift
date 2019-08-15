@@ -72,6 +72,10 @@ class RootViewController : UITableViewController {
             
         }
         cell.textLabel!.text = "Hello there! \(indexPath.row)"
+        // try this:
+        cell.textLabel!.backgroundColor = .blue
+        // in iOS 12 and before the blue goes away when you select the cell
+        // in iOS 13 it doesn't, and so the selected background view is obscured
         
         return cell
     }
