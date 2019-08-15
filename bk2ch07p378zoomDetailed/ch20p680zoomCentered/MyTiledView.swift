@@ -22,6 +22,8 @@ class MyTiledView : UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        print("draw")
+        
 //        NSLog("rect %@", NSStringFromCGRect(rect));
 //        NSLog("bounds %@", NSStringFromCGRect(self.bounds));
 //        NSLog("contents scale %f", self.layer.contentsScale);
@@ -40,11 +42,11 @@ class MyTiledView : UIView {
                 return (self.layer as! CATiledLayer, self.bounds)
             }
             let oldSize = self.currentSize
-            // NSLog("oldSize %@", NSStringFromCGSize(oldSize))
-            // NSLog("rect.size %@", NSStringFromCGSize(rect.size))
+            NSLog("oldSize %@", NSCoder.string(for: oldSize))
+            NSLog("rect.size %@", NSCoder.string(for: rect.size))
             if !oldSize.equalTo(rect.size) {
                 print(Thread.isMainThread)
-                // NSLog("%@", "not equal, making new size")
+                NSLog("%@", "not equal, making new size")
                 // make a new size
                 self.currentSize = rect.size
                 // make a new image

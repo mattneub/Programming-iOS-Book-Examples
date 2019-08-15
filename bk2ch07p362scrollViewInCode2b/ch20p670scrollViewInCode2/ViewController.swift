@@ -22,7 +22,8 @@ class ViewController : UIViewController {
         // we have to force content inset adjustment
         // otherwise, it isn't set up in time
         sv.contentInsetAdjustmentBehavior = .always
-        sv.backgroundColor = .white
+        sv.indicatorStyle = .default
+        sv.backgroundColor = .systemBackground
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         NSLayoutConstraint.activate([
