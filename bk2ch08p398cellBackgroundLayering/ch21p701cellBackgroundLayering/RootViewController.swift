@@ -68,14 +68,17 @@ class RootViewController : UITableViewController {
 //            cell.accessoryView = b
             
 //             cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:12.0)
+            
+            // try this:
+            // cell.textLabel!.backgroundColor = .blue
+            // in iOS 12 and before the blue goes away when you select the cell
+            // in iOS 13 it doesn't, and so the selected background view is obscured
+
 
             
         }
         cell.textLabel!.text = "Hello there! \(indexPath.row)"
-        // try this:
-        cell.textLabel!.backgroundColor = .blue
-        // in iOS 12 and before the blue goes away when you select the cell
-        // in iOS 13 it doesn't, and so the selected background view is obscured
+        
         
         return cell
     }
