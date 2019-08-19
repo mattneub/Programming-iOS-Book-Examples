@@ -60,11 +60,7 @@ class RootViewController: UITableViewController {
         
         // self.edgesForExtendedLayout = []
         self.edgesForExtendedLayout = .all
-        if #available(iOS 11.0, *) {
-            self.tableView.contentInsetAdjustmentBehavior = .always
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = true
-        }
+        self.tableView.contentInsetAdjustmentBehavior = .always
         
         self.tableView.tintColor = .red
         // proving that the refresh control is unaffected
@@ -106,18 +102,12 @@ class RootViewController: UITableViewController {
         // another weird thing; it fails the second time, because after the first time...
         // the refresh control seems to take on a zero height!
         // okay, made it work by forcing the refresh control back to its real size
+        // not fixed in iOS 13
         
-        if #available(iOS 11.0, *) {
-            self.refreshControl!.sizeToFit()
-            let top = self.tableView.adjustedContentInset.top
-            let y = self.refreshControl!.frame.maxY + top
-            self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
-        } else {
-            self.refreshControl!.sizeToFit()
-            let top = self.tableView.contentInset.top
-            let y = self.refreshControl!.frame.maxY + top
-            self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
-        }
+        self.refreshControl!.sizeToFit()
+        let top = self.tableView.adjustedContentInset.top
+        let y = self.refreshControl!.frame.maxY + top
+        self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
 
         self.refreshControl!.beginRefreshing()
         self.doRefresh(self.refreshControl!)
