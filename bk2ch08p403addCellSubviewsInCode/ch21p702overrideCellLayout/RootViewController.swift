@@ -32,11 +32,26 @@ class RootViewController : UITableViewController {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        self.tableView.cellLayoutMarginsFollowReadableWidth = true // for iPad
+        self.tableView.insetsContentViewsToSafeArea = false
+        let pad = self.traitCollection.userInterfaceIdiom == .pad
+        self.tableView.separatorInsetReference = pad ? .fromAutomaticInsets : .fromCellEdges
         // self.tableView.rowHeight = 58 // *
         // row height is set in nib, and we do NOT opt out of Automatic in iOS 11
 //        if #available(iOS 11.0, *) {
 //            self.tableView.contentInsetAdjustmentBehavior = .never
 //        }
+    }
+    
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+        print(self.view.layoutMargins)
+        print(self.view.safeAreaInsets)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        // print(self.tableView.layoutMargins) // 16 vs 70 on iPhone X etc.
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,10 +97,16 @@ class RootViewController : UITableViewController {
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                 metrics:nil, views:d))
-            // horizontal margins
-            con.append(contentsOf:
-                NSLayoutConstraint.constraints(withVisualFormat:"H:|-15-[lab]-15-[iv]-15-|",
-                metrics:nil, views:d))
+            // horizontal margins: use margins, for iPad and readable width
+            con.append(
+                lab.leadingAnchor.constraint(equalTo:
+                    cell.contentView.layoutMarginsGuide.leadingAnchor))
+            con.append(
+                lab.trailingAnchor.constraint(equalTo:
+                    iv.leadingAnchor, constant:-16))
+            con.append(
+                iv.trailingAnchor.constraint(equalTo:
+                    cell.contentView.layoutMarginsGuide.trailingAnchor))
             NSLayoutConstraint.activate(con)
             
             
@@ -109,8 +130,7 @@ class RootViewController : UITableViewController {
         
         iv.image = im2
         iv.contentMode = .center
-        
-        
+                
         return cell
     }
     

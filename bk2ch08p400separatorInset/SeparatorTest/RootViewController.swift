@@ -27,15 +27,16 @@ class RootViewController: UITableViewController {
         print(t.cellLayoutMarginsFollowReadableWidth)
 
         self.tableView.separatorInset = .zero
-        // affects both content and separator inset? default is .fromCellEdge
-        // self.tableView.separatorInsetReference = .fromAutomaticInsets
+        // affects both content and separator inset? default is .fromCellEdges
+        self.tableView.separatorInsetReference = .fromAutomaticInsets
+        print("cell edge?", self.tableView.separatorInsetReference == .fromCellEdges)
         
         // affects content view separately from separator
         // also affects built in label separately from content view
-        self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        // self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         self.tableView.insetsContentViewsToSafeArea = false
         
-        self.tableView.cellLayoutMarginsFollowReadableWidth = true
+        self.tableView.cellLayoutMarginsFollowReadableWidth = false
         
         self.tableView.separatorColor = .blue
 
