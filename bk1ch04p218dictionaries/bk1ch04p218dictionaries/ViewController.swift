@@ -235,6 +235,12 @@ class ViewController: UIViewController {
         }
         
         do {
+            let d = ["CA": "California", "NY": "New York", "RJ": ""]
+            let d2 = d.compactMapValues{$0.last}
+            print(d2) // ["CA": "a", "NY": "k"]
+        }
+        
+        do {
             let d1 = ["CA": "California", "NY": "New York"]
             let d2 = ["MD": "Maryland", "NY": "New York"]
             let d3 = d1.merging(d2){orig, _ in orig}

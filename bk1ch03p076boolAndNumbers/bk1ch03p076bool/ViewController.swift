@@ -188,6 +188,18 @@ class ViewController: UIViewController {
         }
         
         do {
+            for i in 1...5 {
+                if i % 2 == 0 {
+                    print(i, "is even")
+                }
+                if i.isMultiple(of: 2) { // new in Swift 5
+                    print(i, "is even")
+                }
+                print(i.quotientAndRemainder(dividingBy: 2))
+            }
+        }
+        
+        do {
             let d = 6.4
             let r = d.remainder(dividingBy: 3)
             print(r)
