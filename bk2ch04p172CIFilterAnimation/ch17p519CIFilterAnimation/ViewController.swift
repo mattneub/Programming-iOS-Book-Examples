@@ -20,8 +20,8 @@ class ViewController : UIViewController {
         let tran = CIFilter.flashTransition()
         tran.inputImage = CIImage(color: CIColor(color:.red))
         tran.targetImage = moi
-        let center = CIVector(x:self.moiextent.width/2.0, y:self.moiextent.height/2.0)
-        tran.setValue(center, forKey:"inputCenter")
+        let center = CGPoint(x:self.moiextent.midX, y:self.moiextent.midY)
+        tran.center = center
         
         self.tran = tran
         self.timestamp = 0.0 // signal that we are starting

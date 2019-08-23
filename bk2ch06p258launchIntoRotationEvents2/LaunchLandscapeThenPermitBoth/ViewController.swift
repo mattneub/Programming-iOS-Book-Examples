@@ -60,10 +60,9 @@ class ViewController: UIViewController {
         print("willTransition size", size)
         super.viewWillTransition(to: size, with: coordinator)
     }
-    
-    #warning("call super")
-    
+        
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         print("trait collection did change")
     }
     

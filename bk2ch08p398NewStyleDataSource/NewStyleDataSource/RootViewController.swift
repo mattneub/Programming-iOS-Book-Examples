@@ -19,7 +19,7 @@ class RootViewController: UITableViewController {
             cell.textLabel!.text = "Hello there! \(id)"
             return cell
         }
-        let snap = NSDiffableDataSourceSnapshot<Section,Int>()
+        var snap = NSDiffableDataSourceSnapshot<Section,Int>()
         snap.appendSections([.only])
         snap.appendItems(Array(0..<20))
         ds.apply(snap, animatingDifferences: false)

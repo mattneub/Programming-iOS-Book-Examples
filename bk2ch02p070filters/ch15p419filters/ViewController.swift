@@ -20,16 +20,14 @@ class ViewController : UIViewController {
         let moici = CIImage(image:moi)!
         let moiextent = moici.extent
         
-        let center = CIVector(x: moiextent.midX, y: moiextent.midY)
-        // let center2 = CGPoint(x: moiextent.midX, y: moiextent.midY)
+        let center = CGPoint(x: moiextent.midX, y: moiextent.midY)
         
         let smaller = min(moiextent.width, moiextent.height)
         let larger = max(moiextent.width, moiextent.height)
         
         // first filter
         let grad = CIFilter.radialGradient()
-        grad.setValue(center, forKey: "inputCenter") // setting .center didn't work
-        // grad.center = center2
+        grad.center = center
         grad.radius0 = Float(smaller)/2.0 * 0.7
         grad.radius1 = Float(larger)/2.0
         let gradimage = grad.outputImage!

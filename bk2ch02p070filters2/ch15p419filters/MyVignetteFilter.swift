@@ -21,16 +21,14 @@ class MyVignetteFilter : CIFilter {
         
         let extent = inputImage.extent
         
-        let center = CIVector(x: extent.midX, y: extent.midY)
-        // let center2 = CGPoint(x: extent.midX, y: extent.midY)
+        let center = CGPoint(x: extent.midX, y: extent.midY)
         
         let smaller = min(extent.width, extent.height)
         let larger = max(extent.width, extent.height)
         
         // first filter
         let grad = CIFilter.radialGradient()
-        grad.setValue(center, forKey: "inputCenter") // setting .center didn't work
-        // grad.center = center2
+        grad.center = center
         grad.radius0 = Float(smaller)/2.0 * inputPercentage.floatValue
         grad.radius1 = Float(larger)/2.0
         let gradimage = grad.outputImage!
