@@ -52,7 +52,7 @@ class RootViewController: UITableViewController {
             Pep(name: "Moe", imageName: "moe.jpg"),
             Pep(name: "Jack", imageName: "jack.jpg")
         ]
-        let snap = NSDiffableDataSourceSnapshot<Int,Pep>()
+        var snap = NSDiffableDataSourceSnapshot<Int,Pep>()
         snap.appendSections([0])
         snap.appendItems(pep)
         self.datasource.apply(snap, animatingDifferences: false)

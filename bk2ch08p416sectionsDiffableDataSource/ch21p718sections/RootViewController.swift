@@ -9,11 +9,12 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 // failed experiment; I guess we can never get that to work
 // so we can never get section index titles using the new architecture????? I've filed a bug
+// oooh started working Xcode 13 beta 6
 class MyDataSource : UITableViewDiffableDataSource<String,String> {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "A"
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.snapshot().sectionIdentifiers[section]
     }
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.snapshot().sectionIdentifiers
     }
 }
@@ -53,7 +54,7 @@ class RootViewController : UITableViewController {
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
         let sections = Array(d).sorted{$0.key < $1.key} // *
         
-        let snap = NSDiffableDataSourceSnapshot<String,String>()
+        var snap = NSDiffableDataSourceSnapshot<String,String>() // whoa, now struct?
         for section in sections {
             snap.appendSections([section.0])
             snap.appendItems(section.1)
@@ -93,7 +94,8 @@ class RootViewController : UITableViewController {
     }
 
     // this is more "interesting"
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableViewNOT(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    // override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID)!
         h.tintColor = .red
         if h.viewWithTag(1) == nil {
