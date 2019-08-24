@@ -26,15 +26,12 @@ class RootViewController : UITableViewController {
         self.tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: self.cellID)
         // both these lines are needed
         self.tableView.rowHeight = UITableView.automaticDimension
+//        self.tableView.rowHeight = 60
         // what's new in iOS 11 is that you don't even have to supply an estimated height!
         // it too can be automatic
-        if #available(iOS 11.0, *) {
-            self.tableView.estimatedRowHeight = UITableView.automaticDimension
-            // self.tableView.estimatedRowHeight = 40
-            print(self.tableView.estimatedRowHeight)
-        } else {
-            self.tableView.estimatedRowHeight = 40
-        }
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+//        self.tableView.estimatedRowHeight = 60
+        print(self.tableView.estimatedRowHeight)
         // basically, if the estimated height is zero, you have opted _out_ of variable height
     }
     
@@ -43,6 +40,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(self.trivia.count, "rows")
         return self.trivia.count
     }
     
@@ -61,15 +59,15 @@ class RootViewController : UITableViewController {
         return indexPath
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        // return 30
-//        print("here")
-//        return UITableView.automaticDimension
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        print("heightForRow", indexPath.row)
+//        return 60
+        return UITableView.automaticDimension
+    }
 //
 //    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 0
-////        return 100
+//     //   return 0
+//        return 100
 //        return UITableView.automaticDimension
 //    }
     

@@ -11,9 +11,9 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 // so we can never get section index titles using the new architecture????? I've filed a bug
 // oooh started working Xcode 13 beta 6
 class MyDataSource : UITableViewDiffableDataSource<String,String> {
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.snapshot().sectionIdentifiers[section]
-    }
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return self.snapshot().sectionIdentifiers[section]
+//    }
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.snapshot().sectionIdentifiers
     }
@@ -94,8 +94,8 @@ class RootViewController : UITableViewController {
     }
 
     // this is more "interesting"
-    func tableViewNOT(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    // override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    // func tableViewNOT(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID)!
         h.tintColor = .red
         if h.viewWithTag(1) == nil {
