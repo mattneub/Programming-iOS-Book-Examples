@@ -56,7 +56,13 @@ class RootViewController: UITableViewController {
         let v = UIView()
         v.backgroundColor = .yellow
         self.tableView.backgroundView = v
+        // but don't really do this as it punches a hole in the navigation bar
+        // when there are large titles!
         self.tableView.refreshControl?.backgroundColor = .green
+        // but without _some_ background color the attributed title doesn't show
+        // when you do a manual scroll-and-refresh!
+        self.tableView.refreshControl?.backgroundColor = .yellow
+
         
         // self.edgesForExtendedLayout = []
         self.edgesForExtendedLayout = .all
@@ -65,6 +71,22 @@ class RootViewController: UITableViewController {
         self.tableView.tintColor = .red
         // proving that the refresh control is unaffected
         // self.tableView.refreshControl?.tintColor = .yellow
+        
+        // test orientation bug
+        // seems to be fixed
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        // adding this stuff really screws up the look of the thing
+//        let navbarapp = UINavigationBarAppearance()
+//        navbarapp.configureWithOpaqueBackground()
+//        self.navigationController?.navigationBar.standardAppearance = navbarapp
+//        self.navigationController?.navigationBar.scrollEdgeAppearance = navbarapp
+        
+        // test attributed title
+        let att = NSAttributedString(string: "This is a test", attributes: [
+            .font: UIFont(name: "Georgia", size: 13)!,
+            .foregroundColor: UIColor.blue
+        ])
+        self.tableView.refreshControl!.attributedTitle = att
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

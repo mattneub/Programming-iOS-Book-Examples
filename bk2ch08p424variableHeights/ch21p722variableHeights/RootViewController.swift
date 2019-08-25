@@ -15,8 +15,17 @@ class RootViewController : UITableViewController {
     
     let cellID = "Cell"
     
+    @objc func doRefresh(_ sender:Any) {
+        self.tableView.reloadData()
+        // interesting, I thought this would cause that nasty jump
+        // but I can't seem to elicit it; is it fixed?
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let bbi = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(doRefresh))
+        self.navigationItem.rightBarButtonItem = bbi
         
         let url = Bundle.main.url(forResource:"trivia", withExtension: "txt")
         let s = try! String(contentsOf:url!)
