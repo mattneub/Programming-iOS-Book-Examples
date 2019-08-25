@@ -34,14 +34,14 @@ class ViewController: UIViewController {
                 // because the type of the completion handler of `dataTask(with:)` is not up to us
                 _ = err
             }
-        }
+        }.resume()
     }
     
     // the old solution
     func doSomeNetworkingNOT(completion:@escaping (Data?, Error?) -> ()) {
         URLSession.shared.dataTask(with: URL(string:"https://www.apple.com")!) { data, _, err in
             completion(data, err)
-        }
+        }.resume()
     }
 
     
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             if let err = err {
                 completion(.failure(err))
             }
-        }
+        }.resume()
     }
     
     // a better way to write this is to take advantage of the fact
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
                 fatalError("something incomprehensible happened") // shut the compiler up
             }
             completion(result)
-        }
+        }.resume()
     }
     
     // but there is an even cooler way: we can just write the whole thing out
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
                 return data!
             }
             completion(result)
-        }
+        }.resume()
     }
 
     // now then: how would you _call_ doSomeNetworking?
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
                 return MyError.somethingWentWrong(err.localizedDescription)
             }
             completion(transformedResult)
-        }
+        }.resume()
     }
 
     // or we can use `Result(catching:)` as in example 4
@@ -155,7 +155,7 @@ class ViewController: UIViewController {
                 return MyError.somethingWentWrong(err.localizedDescription)
             }
             completion(transformedResult)
-        }
+        }.resume()
     }
 
 

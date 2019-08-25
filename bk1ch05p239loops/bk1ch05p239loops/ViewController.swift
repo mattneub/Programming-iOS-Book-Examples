@@ -13,13 +13,13 @@ struct Primes {
     static func appendNextPrime() {
         next: for i in (primes.last!+1)... {
             let sqrt = Int(Double(i).squareRoot())
-            for factor in primes.lazy.prefix(while:{$0 <= sqrt}) {
-                if i % factor == 0 {
+            for prime in primes.lazy.prefix(while:{$0 <= sqrt}) {
+                if i.isMultiple(of: prime) {
                     continue next
                 }
             }
             primes.append(i)
-            print("appended a prime")
+            print("appended a prime", primes)
             return
         }
     }
@@ -28,6 +28,7 @@ struct Primes {
         while primes.count < n {
             appendNextPrime()
         }
+        print("returning", primes[n])
         return primes[n-1]
     }
 }
@@ -205,7 +206,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            for i in 0...10 where i % 2 == 0 { // new in Swift 2.0
+            for i in 0...10 where i.isMultiple(of:2) {
                 print(i)
             }
         }
@@ -217,7 +218,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let range = (0...10).reversed().filter{$0 % 2 == 0}
+            let range = (0...10).reversed().filter{$0.isMultiple(of:2)}
             for i in range {
                 print(i) // 10, 8, 6, 4, 2, 0
             }
@@ -335,7 +336,7 @@ class ViewController: UIViewController {
         do {
             var s : Set = [1,2,3,4,5]
             for i in s {
-                if i % 2 == 0 {
+                if i.isMultiple(of:2) {
                     s.remove(i) // safe, s is copied before the loop starts
                 }
             }
