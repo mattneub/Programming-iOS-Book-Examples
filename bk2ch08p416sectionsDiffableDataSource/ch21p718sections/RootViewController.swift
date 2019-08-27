@@ -17,6 +17,10 @@ class MyDataSource : UITableViewDiffableDataSource<String,String> {
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.snapshot().sectionIdentifiers
     }
+    // still doesn't actually do anything unless we also do this, sheesh this is idiotic
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return self.snapshot().sectionIdentifiers.firstIndex(of: title) ?? 0
+    }
 }
 
 class RootViewController : UITableViewController {

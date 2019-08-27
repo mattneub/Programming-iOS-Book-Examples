@@ -6,15 +6,62 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+extension NSDiffableDataSourceSnapshot {
+    mutating func deleteItemsAndEmptySections(_ items : [ItemIdentifierType]) {
+        self.deleteItems(items)
+        let empties = self.sectionIdentifiers.filter {
+            self.numberOfItems(inSection: $0) == 0
+        }
+        self.deleteSections(empties)
+    }
+}
+
+class MyDataSource : UITableViewDiffableDataSource<String,String> {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return self.snapshot().sectionIdentifiers
+    }
+    // need this or the index does nothing when tapped
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return self.snapshot().sectionIdentifiers.firstIndex(of: title) ?? 0
+    }
+    // need this or we can't move into edit mode
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    // swipe to delete
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else {return}
+        if let id = self.itemIdentifier(for: indexPath) {
+            var snap = self.snapshot()
+            snap.deleteItemsAndEmptySections([id])
+            self.apply(snap)
+        }
+    }
+    // movability, hmm rather clumsy this
+    override func tableView(_ tableView: UITableView, canMoveRowAt ip: IndexPath) -> Bool {
+        let id = self.itemIdentifier(for: ip)!
+        let snap = self.snapshot()
+        let sec = snap.sectionIdentifier(containingItem: id)!
+        let ct = snap.numberOfItems(inSection: sec)
+        return ct > 1
+    }
+
+    override func tableView(_ tableView: UITableView, moveRowAt srcip: IndexPath, to destip: IndexPath) {
+        let src = self.itemIdentifier(for: srcip)!
+        let dest = self.itemIdentifier(for: destip)!
+        var snap = self.snapshot()
+        // really a pity we have to do this before/after stuff
+        if snap.indexOfItem(src)! > snap.indexOfItem(dest)! {
+            snap.moveItem(src, beforeItem:dest)
+        } else {
+            snap.moveItem(src, afterItem:dest)
+        }
+        self.apply(snap, animatingDifferences: false)
+    }
+}
 
 class RootViewController : UITableViewController {
     
-    struct Section {
-        var sectionName : String
-        var rowData : [String]
-    }
-    var sections : [Section]!
-
     override var prefersStatusBarHidden : Bool {
         return true
     }
@@ -22,16 +69,40 @@ class RootViewController : UITableViewController {
     let cellID = "Cell"
 	let headerID = "Header"
     
+    lazy var datasource = MyDataSource(tableView:self.tableView) {
+        tv, ip, s in
+        let cell = tv.dequeueReusableCell(withIdentifier: self.cellID, for: ip)
+        cell.textLabel!.text = s
+        
+        var stateName = s
+        stateName = stateName.lowercased()
+        stateName = stateName.replacingOccurrences(of:" ", with:"")
+        stateName = "flag_\(stateName).gif"
+        let im = UIImage(named: stateName)
+        cell.imageView!.image = im
+        
+        return cell
+    }
+    
     override func viewDidLoad() {
         let s = try! String(
             contentsOfFile: Bundle.main.path(
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
-            Section(sectionName: $0.key, rowData: $0.value)
+//        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+//            Section(sectionName: $0.key, rowData: $0.value)
+//        }
+        let sections = Array(d).sorted{$0.key < $1.key}
+        var snap = NSDiffableDataSourceSnapshot<String,String>()
+        for section in sections {
+            snap.appendSections([section.0])
+            // no need to say this
+            // snap.appendItems(section.1, toSection:section.0)
+            snap.appendItems(section.1)
         }
-
+        self.datasource.apply(snap, animatingDifferences: false)
+        
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.headerID)
         
@@ -39,15 +110,7 @@ class RootViewController : UITableViewController {
         self.tableView.sectionIndexBackgroundColor = .red
         self.tableView.sectionIndexTrackingBackgroundColor = .blue
         
-        var which : Int { return 1 } // 0 for manual, 1 for built-in edit button
-        switch which {
-        case 0:
-            let b = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(doEdit))
-            self.navigationItem.rightBarButtonItem = b
-        case 1:
-            self.navigationItem.rightBarButtonItem = self.editButtonItem // badda-bing, badda-boom
-        default:break
-        }
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         // oddly, this is legal
 //        self.tableView.allowsSelection = false
@@ -59,6 +122,9 @@ class RootViewController : UITableViewController {
         // they have to _both_ be true to do that
         self.tableView.allowsSelectionDuringEditing = true
         self.tableView.allowsMultipleSelectionDuringEditing = true
+        
+        // *
+        self.datasource.defaultRowAnimation = .left // makes all the deletions look better
     }
     
     override func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
@@ -85,20 +151,12 @@ class RootViewController : UITableViewController {
     }
     
     @objc func doDeleteSelected(_ sender:Any) {
+        // this is why we are here!
         guard let sel = self.tableView.indexPathsForSelectedRows else {return}
-        self.tableView.performBatchUpdates({
-            for ip in sel.sorted().reversed() {
-                self.sections[ip.section].rowData.remove(at:ip.row)
-            }
-            self.tableView.deleteRows(at:sel, with: .automatic)
-            let secs = self.sections.indices.filter {
-                self.sections[$0].rowData.count == 0
-            }
-            for sec in secs.reversed() {
-                self.sections.remove(at:sec)
-            }
-            self.tableView.deleteSections(IndexSet(secs), with: .fade)
-        })
+        let rowids = sel.map {self.datasource.itemIdentifier(for: $0)}.compactMap {$0}
+        var snap = self.datasource.snapshot()
+        snap.deleteItemsAndEmptySections(rowids)
+        self.datasource.apply(snap)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -106,42 +164,6 @@ class RootViewController : UITableViewController {
         if !self.isEditing {
             self.navigationItem.leftBarButtonItem = nil
         }
-    }
-    
-    @objc func doEdit(_ sender: Any?) {
-        var which : UIBarButtonItem.SystemItem
-        if !self.tableView.isEditing {
-            self.tableView.setEditing(true, animated:true)
-            which = .done
-        } else {
-            self.tableView.setEditing(false, animated:true)
-            which = .edit
-        }
-        let b = UIBarButtonItem(barButtonSystemItem: which, target: self, action: #selector(doEdit))
-        self.navigationItem.rightBarButtonItem = b
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sections[section].rowData.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
-        let s = self.sections[indexPath.section].rowData[indexPath.row]
-        cell.textLabel!.text = s
-        
-        var stateName = s
-        stateName = stateName.lowercased()
-        stateName = stateName.replacingOccurrences(of:" ", with:"")
-        stateName = "flag_\(stateName).gif"
-        let im = UIImage(named: stateName)
-        cell.imageView!.image = im
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
@@ -177,65 +199,26 @@ class RootViewController : UITableViewController {
                 ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sections[section].sectionName
+        // *
+        lab.text = self.datasource.snapshot().sectionIdentifiers[section]
         return h
     }
-    
-    
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sections.map{$0.sectionName}
-    }
-
-    override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCell.EditingStyle,
-                            forRowAt ip: IndexPath) {
-        // had to split into two batches on iOS 11, filed a bug about that
-        // okay seems to be fixed in iOS 13, collapsing the code into one thing
-        // (but try this in iOS 12, you'll see the problem)
-        switch editingStyle {
-        case .delete:
-            tableView.performBatchUpdates({
-                self.sections[ip.section].rowData.remove(at:ip.row)
-                tableView.deleteRows(at:[ip], with: .automatic)
-                if self.sections[ip.section].rowData.count == 0 {
-                    self.sections.remove(at:ip.section)
-                    tableView.deleteSections(
-                        IndexSet(integer: ip.section), with:.fade)
-                }
-            })
-        default: break
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // if indexPath.row == 0 { return false }
-        return true
-    }
-    
+            
+    /*
+        
     // prevent swipe-to-edit
     
 //    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
 //            return tableView.isEditing ? .delete : .none
 //    }
-    
-    override func tableView(_ tableView: UITableView, canMoveRowAt ip: IndexPath) -> Bool {
-        return self.sections[ip.section].rowData.count > 1
-    }
+     
+     */
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt srcip: IndexPath, toProposedIndexPath destip: IndexPath) -> IndexPath {
         if destip.section != srcip.section {
             return srcip
         }
         return destip
-    }
-    
-    override func tableView(_ tableView: UITableView, moveRowAt srcip: IndexPath, to destip: IndexPath) {
-        var rows = self.sections[srcip.section].rowData
-        print(rows)
-        let data = rows.remove(at: srcip.row)
-        rows.insert(data, at: destip.row)
-        print(rows)
-        self.sections[srcip.section].rowData = rows
     }
     
 }
