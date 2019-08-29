@@ -140,14 +140,7 @@ class RootViewController : UITableViewController {
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sections.map{$0.sectionName}
     }
-
-    // removed; we're doing row actions / swipe actions
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
-//    }
     
-    // new iOS 11 feature: at last, we get parity with Mail! here's how:
-    
-    @available(iOS 11.0, *)
     override func tableView(_ tv: UITableView, leadingSwipeActionsConfigurationForRowAt ip: IndexPath) -> UISwipeActionsConfiguration? {
         // styles are .normal and .destructive
         let m = UIContextualAction(style: .normal, title: "Mark") {
@@ -171,31 +164,31 @@ class RootViewController : UITableViewController {
         return config
     }
     
-    @available(iOS 11.0, *)
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt ip: IndexPath) -> UISwipeActionsConfiguration? {
         let d = UIContextualAction(style: .normal, title: nil) {
             action, view, completion in
             // exactly the same as delete case of tableView:commit
             print("Delete in swipe action")
-            self.sections[ip.section].rowData.remove(at:ip.row)
             tableView.performBatchUpdates({
+                self.sections[ip.section].rowData.remove(at:ip.row)
                 tableView.deleteRows(at:[ip], with: .automatic)
-            }) {_ in
                 if self.sections[ip.section].rowData.count == 0 {
                     self.sections.remove(at:ip.section)
-                    tableView.performBatchUpdates ({
-                        tableView.deleteSections(
-                            IndexSet(integer: ip.section), with:.fade)
-                    })
+                    tableView.deleteSections(
+                        IndexSet(integer: ip.section), with:.fade)
                 }
-            }
+            })
             completion(true)
         }
         d.backgroundColor = .red
-        d.image = UIGraphicsImageRenderer(size:CGSize(30,30)).image { _ in
-            UIImage(named:"trash")?.draw(in: CGRect(0,0,30,30))
+        var trash = UIImage(named:"trash")!
+        trash = trash.withRenderingMode(.alwaysTemplate)
+        if #available(iOS 13.0, *) {
+            trash = trash.withTintColor(.yellow) // works fine
         }
-        // .withRenderingMode(.alwaysOriginal) // just an experiment; has no effect
+        d.image = UIGraphicsImageRenderer(size:CGSize(30,30)).image { _ in
+            trash.draw(in: CGRect(0,0,30,30))
+        }
         let m = UIContextualAction(style: .normal, title: "Mark") {
             action, view, completion in
             print("Mark") // in real life, do something here
@@ -206,33 +199,6 @@ class RootViewController : UITableViewController {
         let config = UISwipeActionsConfiguration(actions: [d,m])
         config.performsFirstActionWithFullSwipe = false // default is true
         return config
-    }
-    
-    // this is still effective in iOS 11
-    override func tableView(_ tv: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let act = UITableViewRowAction(style: .normal, title: "Mark") {
-            action, ip in
-            print("Mark") // in real life, do something here
-            tv.cellForRow(at: ip)?.isEditing = false  // how do I close it up?
-        }
-        act.backgroundColor = .blue
-        let act2 = UITableViewRowAction(style: .default, title: "Delete") {
-            action, ip in
-            print("Delete in row action")
-            tv.beginUpdates()
-            self.sections[ip.section].rowData.remove(at:ip.row)
-            tv.deleteRows(at:[ip], with:.left)
-            if self.sections[ip.section].rowData.count == 0 {
-                self.sections.remove(at:ip.section)
-                tv.deleteSections(
-                    IndexSet(integer: ip.section), with:.right)
-            }
-            tv.endUpdates()
-        }
-        if #available(iOS 11.0, *) {
-            return [act2] // so that we still have a working Delete button in Edit mode
-        }
-        return [act2, act]
     }
     
     

@@ -181,7 +181,6 @@ class RootViewController : UITableViewController {
         return h
     }
     
-    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sections.map{$0.sectionName}
     }
@@ -230,12 +229,10 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt srcip: IndexPath, to destip: IndexPath) {
-        var rows = self.sections[srcip.section].rowData
-        print(rows)
-        let data = rows.remove(at: srcip.row)
-        rows.insert(data, at: destip.row)
-        print(rows)
-        self.sections[srcip.section].rowData = rows
+        let sec = srcip.section
+        let srcrow = srcip.row
+        let destrow = destip.row
+        self.sections[sec].rowData.swapAt(srcrow, destrow)
     }
     
 }

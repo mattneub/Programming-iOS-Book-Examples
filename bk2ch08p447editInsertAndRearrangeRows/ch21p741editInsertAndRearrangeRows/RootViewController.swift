@@ -71,15 +71,18 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         // some cell's text field has finished editing; which cell?
-        var v : UIView = textField
-        repeat { v = v.superview! } while !(v is UITableViewCell)
-        let cell = v as! MyCell
-        // update data model to match
-        let ip = self.tableView.indexPath(for:cell)!
-        if ip.section == 1 {
-            self.numbers[ip.row] = cell.textField.text!
-        } else if ip.section == 0 {
-            self.name = cell.textField.text!
+        var v : UIView? = textField
+        repeat { v = v?.superview } while !(v is UITableViewCell)
+        if let cell = v as? MyCell {
+            // update data model to match
+            if let ip = self.tableView.indexPath(for:cell) {
+                let s = cell.textField.text ?? ""
+                switch ip.section {
+                case 0: self.name = s
+                case 1: self.numbers[ip.row] = s
+                default: break
+                }
+            }
         }
     }
     

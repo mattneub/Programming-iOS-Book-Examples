@@ -7,7 +7,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 }
 
 extension NSDiffableDataSourceSnapshot {
-    mutating func deleteItemsAndEmptySections(_ items : [ItemIdentifierType]) {
+    mutating func deleteWithSections(_ items : [ItemIdentifierType]) {
         self.deleteItems(items)
         let empties = self.sectionIdentifiers.filter {
             self.numberOfItems(inSection: $0) == 0
@@ -17,12 +17,14 @@ extension NSDiffableDataSourceSnapshot {
 }
 
 class MyDataSource : UITableViewDiffableDataSource<String,String> {
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.snapshot().sectionIdentifiers
+    override func sectionIndexTitles(for tv: UITableView) -> [String]? {
+        let snap = self.snapshot()
+        return snap.sectionIdentifiers
     }
     // need this or the index does nothing when tapped
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return self.snapshot().sectionIdentifiers.firstIndex(of: title) ?? 0
+        let snap = self.snapshot()
+        return snap.indexOfSection(title) ?? 0
     }
     // need this or we can't move into edit mode
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -33,7 +35,7 @@ class MyDataSource : UITableViewDiffableDataSource<String,String> {
         guard editingStyle == .delete else {return}
         if let id = self.itemIdentifier(for: indexPath) {
             var snap = self.snapshot()
-            snap.deleteItemsAndEmptySections([id])
+            snap.deleteWithSections([id])
             self.apply(snap)
         }
     }
@@ -155,7 +157,7 @@ class RootViewController : UITableViewController {
         guard let sel = self.tableView.indexPathsForSelectedRows else {return}
         let rowids = sel.map {self.datasource.itemIdentifier(for: $0)}.compactMap {$0}
         var snap = self.datasource.snapshot()
-        snap.deleteItemsAndEmptySections(rowids)
+        snap.deleteWithSections(rowids)
         self.datasource.apply(snap)
     }
     
