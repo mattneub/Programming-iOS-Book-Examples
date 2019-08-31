@@ -68,6 +68,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             IndexPath(row: 0, section: 0),
             at:.top, animated:false)
         // that's all! The rest is in SearchResultsController
+        searcher.showsSearchResultsController = true
+        // so that table appears from the start, new in iOS 13
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

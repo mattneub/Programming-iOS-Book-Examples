@@ -34,7 +34,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     
     // looks better _with_ the status bar
     override var prefersStatusBarHidden : Bool {
-        return false
+        return true
     }
     
     let cellID = "Cell"
@@ -86,14 +86,13 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 // use new "stretchable" navigation bar
                 
                 // if true (default), user doesn't see search bar unless pulls down
-                // self.navigationItem.hidesSearchBarWhenScrolling = false
+                self.navigationItem.hidesSearchBarWhenScrolling = false
 
                 self.navigationItem.searchController = searcher
-                // searcher.hidesNavigationBarDuringPresentation = true
-                // hmm, but if we decide to hide the status bar, above needs to be false
-                // otherwise the search bar slams into the top of the screen
-                // searcher.hidesNavigationBarDuringPresentation = false
+                // try true and false, I think true looks a lot better!
+                // searcher.hidesNavigationBarDuringPresentation = true // default
                 self.definesPresentationContext = true // this doesn't seem to matter
+                // and in iOS 13 it is automatic anyway
                 self.navigationItem.title = "States" // looks better to have a title
                 // try with and without this
                 self.navigationController!.navigationBar.prefersLargeTitles = true
@@ -105,7 +104,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 // hey, check this out
                 b.scopeButtonTitles = ["Contains", "Starts With"]
                 // b.showsScopeBar = false // unnecessary
-                b.delegate = src
+                // b.delegate = src // new in iOS 13: unnecessary!
                 b.autocapitalizationType = .none
             } else {
                 fatalError("don't do this except in iOS 11")

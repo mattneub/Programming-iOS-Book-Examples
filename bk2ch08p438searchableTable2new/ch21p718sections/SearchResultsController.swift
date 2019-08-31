@@ -6,9 +6,7 @@ import Swift
 class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
-    
-    weak var searchBar : UISearchBar!
-    
+        
     init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
         self.originalData = data.map{$0.rowData}.flatMap{$0}
@@ -37,11 +35,11 @@ class SearchResultsController : UITableViewController {
         self.tableView.tableHeaderView = self.seg
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.view.isHidden = false
-        print("appear")
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.view.isHidden = false
+//        print("appear")
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -56,6 +54,8 @@ class SearchResultsController : UITableViewController {
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }
+    
+    var latestSearchText : String?
 }
 
 /*
@@ -70,12 +70,16 @@ and reload the table.
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         print("update search results")
-        self.view.isHidden = false // *
-        self.searchBar = searchController.searchBar
+//        self.view.isHidden = false // *
+        self.latestSearchText = searchController.searchBar.text
+        self.doUpdate()
+    }
+    @objc func scopeChanged(_ sender : UISegmentedControl) {
         self.doUpdate()
     }
     func doUpdate() {
-        let target = self.searchBar.text!
+        guard self.latestSearchText != nil else {return}
+        let target = self.latestSearchText!
         self.filteredData = self.originalData.filter { s in
             var options = String.CompareOptions.caseInsensitive
             if self.seg.selectedSegmentIndex == 1 { // 1 means "starts with"
@@ -85,9 +89,6 @@ extension SearchResultsController : UISearchResultsUpdating {
             return (found != nil)
         }
         self.tableView.reloadData()
-    }
-    @objc func scopeChanged(_ sender : UISegmentedControl) {
-        self.doUpdate()
     }
 }
 

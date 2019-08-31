@@ -8,6 +8,8 @@ import UIKit
 // there is something skanky about the way this looks in iOS 12 anyway
 // look at the funny movement of the insertion point into the search bar
 
+// totally broken in iOS 13 anyway, no updates received from search bar!
+
 class SearchContainerVC: UISearchContainerViewController {
     
     init(data:[RootViewController.Section]) {
@@ -17,7 +19,7 @@ class SearchContainerVC: UISearchContainerViewController {
         
         searcher.searchResultsUpdater = src
         searcher.hidesNavigationBarDuringPresentation = false
-        
+                
         self.navigationItem.searchController = searcher
         
         let b = searcher.searchBar
@@ -76,6 +78,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     @objc func doSearch(_ sender : Any) {
         let vc = SearchContainerVC(data:self.sections)
         let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
     

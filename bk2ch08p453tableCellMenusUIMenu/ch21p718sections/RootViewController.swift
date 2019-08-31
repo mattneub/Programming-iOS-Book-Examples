@@ -122,18 +122,15 @@ class RootViewController : UITableViewController {
     }
  */
     
-    // I don't see how else to carry index path info in the configuration...
-    class MyConfig : UIContextMenuConfiguration {
-        var indexPath : IndexPath?
-        var isImage = false
-    }
     override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt ip: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
         let cell = tableView.cellForRow(at: ip)!
         let pt2 = cell.convert(point, from: tableView)
         let copyImage = cell.imageView!.frame.contains(pt2)
+        
+        let d : NSDictionary = ["isImage":copyImage, "indexPath":ip]
 
-        let config = MyConfig(identifier: "com.neuburg.copyConfig" as NSString, previewProvider: nil) { elements -> UIMenu? in
+        let config = UIContextMenuConfiguration(identifier:d, previewProvider: nil) { _ in
             let action = UIAction(title: "Copy") { _ in
                 let state = self.sections[ip.section].rowData[ip.row]
                 if copyImage {
@@ -142,33 +139,32 @@ class RootViewController : UITableViewController {
                     UIPasteboard.general.string = state
                 }
             }
-            let id = UIMenu.Identifier(rawValue: "com.neuburg.copy")
-            let menu = UIMenu(title: "", image: nil, identifier: id, options: [], children: [action])
+            let menu = UIMenu(title: "", children: [action])
             return menu
         }
-        config.indexPath = ip
-        config.isImage = copyImage
         return config
     }
-    
-    override func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-        if let config = configuration as? MyConfig {
-            if let ip = config.indexPath, config.isImage {
-                let cell = tableView.cellForRow(at: ip)!
-                return UITargetedPreview(view:cell.imageView!)
-            }
-        }
-        return nil
-    }
-    
-    override func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-        if let config = configuration as? MyConfig {
-            if let ip = config.indexPath, config.isImage {
-                let cell = tableView.cellForRow(at: ip)!
-                return UITargetedPreview(view:cell.imageView!)
-            }
-        }
-        return nil
 
+    override func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration config: UIContextMenuConfiguration) -> UITargetedPreview? {
+        if let d = config.identifier as? [String:Any] {
+            if let ip = d["indexPath"] as? IndexPath,
+                let ok = d["isImage"] as? Bool, ok {
+                    let cell = tableView.cellForRow(at: ip)!
+                    return UITargetedPreview(view:cell.imageView!)
+            }
+        }
+        return nil
     }
+    
+    override func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration config: UIContextMenuConfiguration) -> UITargetedPreview? {
+        if let d = config.identifier as? [String:Any] {
+            if let ip = d["indexPath"] as? IndexPath,
+                let ok = d["isImage"] as? Bool, ok {
+                    let cell = tableView.cellForRow(at: ip)!
+                    return UITargetedPreview(view:cell.imageView!)
+            }
+        }
+        return nil
+    }
+
 }

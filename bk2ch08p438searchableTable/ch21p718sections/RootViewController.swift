@@ -60,13 +60,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         searcher.searchResultsUpdater = src
         // put the search controller's search bar into the interface
         let b = searcher.searchBar
-        b.sizeToFit() // crucial, trust me on this one
+        // b.sizeToFit() // crucial, trust me on this one
+        // no longer needed?
         // okay, something has gone wrong in iOS 11: uncommenting the next line gives a mess
-        // b.scopeButtonTitles = ["Hey", "Ho"] // shows during search only; uncomment to see
+//        b.scopeButtonTitles = ["Hey", "Ho"] // shows during search only; uncomment to see
+//        searcher.automaticallyShowsScopeBar = false
         // (not used in this example; just showing the interface)
         // WARNING: do NOT call showsScopeBar! it messes things up!
         // (buttons will show during search if there are titles)
         // bug fixed! some time after iOS 11.0, maybe iOS 11.3? anyway it's okay now
+        // no, in iOS 13 it's even worse
         b.autocapitalizationType = .none
         self.tableView.tableHeaderView = b
         self.tableView.reloadData()

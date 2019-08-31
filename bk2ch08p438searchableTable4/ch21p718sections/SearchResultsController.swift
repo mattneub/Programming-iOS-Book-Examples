@@ -9,7 +9,6 @@ class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
     
-    weak var searchBar : UISearchBar!
     
     init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
@@ -56,24 +55,19 @@ and reload the table.
 
 extension SearchResultsController : UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        self.searchBar = searchController.searchBar
-        self.doUpdate()
-    }
-    func doUpdate() {
-        let target = self.searchBar.text!
-        self.filteredData = self.originalData.filter { s in
-            var options = String.CompareOptions.caseInsensitive
-            if self.searchBar.selectedScopeButtonIndex == 0 { // 0 means "starts with"
-                options.insert(.anchored)
+        if let target = searchController.searchBar.text {
+            // new in iOS 13 we get called when the scope changes
+            let selectedIndex = searchController.searchBar.selectedScopeButtonIndex
+            self.filteredData = self.originalData.filter { s in
+                var options = String.CompareOptions.caseInsensitive
+                if selectedIndex == 1 { // 1 means "starts with"
+                    options.insert(.anchored)
+                }
+                let found = s.range(of:target, options: options)
+                return (found != nil)
             }
-            let found = s.range(of:target, options: options)
-            return (found != nil)
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
-    }
-    func searchBar(_ searchBar: UISearchBar,
-                   selectedScopeButtonIndexDidChange selectedScope: Int) {
-        self.doUpdate()
     }
 }
 

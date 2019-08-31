@@ -59,6 +59,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // however, I demonstrate use of scope button titles in nav bar later
         // oooh, news flash, this example works again (starting iOS 11.3?)
         // so for iOS 12 book the example is back
+        // ok so for iOS 13 it's totally broken again! sheesh
+        // frame is wrong, jumps, doesn't accept typing any more
         b.scopeButtonTitles = ["Starts", "Contains"]
         // b.showsScopeBar = false // prevent showing in the table, but not needed
         b.sizeToFit()

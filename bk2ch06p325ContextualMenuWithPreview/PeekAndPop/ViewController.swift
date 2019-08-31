@@ -15,6 +15,14 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ inter: UIContextMenuInteraction, configurationForMenuAtLocation loc: CGPoint) -> UIContextMenuConfiguration? {
         guard let button = inter.view?.hitTest(loc, with: nil) as? UIButton else {return nil}
         let boy = button.currentTitle!
+        let favKey = "favoritePepBoy"
+        let fav = UserDefaults.standard.string(forKey:favKey)
+        let star = boy == fav ? "star.fill" : "star"
+        let im = UIImage(systemName: star)
+        let favorite = UIAction(title: "Favorite", image: im) { _ in
+            print(boy, "is now your favorite")
+            UserDefaults.standard.set(boy, forKey:favKey)
+        }
         let red = UIAction(title: "Red") {action in
             print ("coloring", boy, action.title.lowercased())
         }
@@ -24,23 +32,16 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
         let blue = UIAction(title: "Blue") {action in
             print ("coloring", boy, action.title.lowercased())
         }
-        let color = UIMenu(title: "Colorize", image: nil, children: [red,green,blue])
-        let favKey = "favoritePepBoy"
-        let fav = UserDefaults.standard.string(forKey:favKey)
-        let star = boy == fav ? "star.fill" : "star"
-        let im = UIImage(systemName: star)
-        let favorite = UIAction(title: "Favorite", image: im) { _ in
-            print(boy, "is now your favorite")
-            UserDefaults.standard.set(boy, forKey:favKey)
-        }
+        let color = UIMenu(title: "Colorize", children: [red,green,blue])
         let config = UIContextMenuConfiguration(identifier: button.tag as NSNumber, previewProvider: {
+            // return nil
             let pep = Pep(pepBoy: boy)
             pep.preferredContentSize = CGSize(width: 240, height: 300)
             return pep
         })
         { _  in
-            let main = UIMenu(title: "", children: [color, favorite])
-            return main
+            // return nil
+            return UIMenu(title: "", children: [favorite, color])
         }
         return config
     }
@@ -51,15 +52,16 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addCompletion {
-            if let vc = animator.previewViewController as? Pep {
+        print("preview action")
+        if let vc = animator.previewViewController as? Pep {
+            animator.preferredCommitStyle = .pop
+            animator.addCompletion {
                 self.transitionContainerTo(vc)
                 // self.present(vc, animated: true)
             }
         }
     }
     
-
     @IBAction func doShowBoy(_ sender : UIButton) {
         let title = sender.title(for: .normal)!
         let pep = Pep(pepBoy: title)

@@ -12,9 +12,13 @@ This is the rock-bottom simplest implementation I could think of:
 a default table with the search results in each cell's textLabel.
 */
 
+// nice animation if you use a diffable data source!
+
 class SearchResultsController : UITableViewController {
     var originalData : [String]
-    var filteredData = [String]()
+//    var filteredData = [String]()
+    
+    var datasource : UITableViewDiffableDataSource<Int,String>!
     
     init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
@@ -33,21 +37,26 @@ class SearchResultsController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
+        self.datasource = UITableViewDiffableDataSource<Int,String>(tableView: self.tableView) { tv, ip, s in
+            let cell = tv.dequeueReusableCell(withIdentifier: self.cellID, for: ip)
+            cell.textLabel!.text = s
+            return cell
+        }
     }
+        
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return self.filteredData.count
+//    }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.filteredData.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
-        cell.textLabel!.text = self.filteredData[indexPath.row]
-        return cell
-    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
+//        cell.textLabel!.text = self.filteredData[indexPath.row]
+//        return cell
+//    }
 }
 
 /*
@@ -64,11 +73,13 @@ extension SearchResultsController : UISearchResultsUpdating {
         print("here")
         let sb = searchController.searchBar
         let target = sb.text!
-        self.filteredData = self.originalData.filter { s in
+        var snap = NSDiffableDataSourceSnapshot<Int,String>()
+        snap.appendSections([0])
+        snap.appendItems(self.originalData.filter { s in
             let found = s.range(of:target, options: .caseInsensitive)
             return (found != nil)
-        }
-        self.tableView.reloadData()
+        })
+        self.datasource.apply(snap)
     }
 }
 
