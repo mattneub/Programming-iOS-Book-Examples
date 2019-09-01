@@ -56,6 +56,10 @@ class ViewController : UICollectionViewController {
         // ...you won't see any headers
         let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         flow.headerReferenceSize = CGSize(30,30)
+        // still not working, layout is wrong
+        // flow.estimatedItemSize = CGSize(30,100)
+//        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        flow.itemSize = UICollectionViewFlowLayout.automaticSize
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -91,11 +95,17 @@ class ViewController : UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) 
         if cell.contentView.subviews.count == 0 {
-            cell.contentView.addSubview(UILabel(frame:CGRect(0,0,30,30)))
+            let lab = UILabel(frame:CGRect(0,0,30,30))
+            cell.contentView.addSubview(lab)
+//            lab.topAnchor.constraint(equalTo: cell.contentView.topAnchor).isActive = true
+//            lab.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor).isActive = true
+//            lab.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor).isActive = true
+//            lab.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor).isActive = true
         }
         let lab = cell.contentView.subviews[0] as! UILabel
         lab.text = self.sections[indexPath.section].rowData[indexPath.row] // "item" synonym for "row"
         lab.sizeToFit()
+        // cell.contentView.backgroundColor = .yellow
         return cell
 
     }

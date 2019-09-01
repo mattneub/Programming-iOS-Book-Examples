@@ -32,7 +32,37 @@ extension CGVector {
 
 
 
+
+
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    static let header = "Header"
+    
+    private func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(100),
+                                             heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .absolute(30))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                         subitems: [item])
+        group.interItemSpacing = .fixed(15)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 5
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 15, trailing: 10)
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                     heightDimension: .estimated(40))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: Self.header, alignment: .top)
+        header.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
+        section.boundarySupplementaryItems = [header]
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+
     
     struct Item {
         var name : String
@@ -81,30 +111,31 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier: self.cellID)
         // register headers
         self.collectionView!.register(UICollectionReusableView.self,
-            forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
+                                      forSupplementaryViewOfKind:Self.header,
             withReuseIdentifier: self.headerID)
-        
+        self.collectionView!.register(UICollectionReusableView.self,
+                                      forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: self.headerID)
+
         self.navigationItem.title = "States"
         
-        // if you don't do something about header size...
-        // ...you won't see any headers
-        let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
-        self.setUpFlowLayout(flow)
+        self.collectionView.collectionViewLayout = self.createLayout()
     }
+    
     
     func setUpFlowLayout(_ flow:UICollectionViewFlowLayout) {
         flow.headerReferenceSize = CGSize(50,50) // larger - we will place label within this
         flow.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10) // looks nicer
         flow.itemSize = CGSize(100,30)
         
-        // flow.sectionHeadersPinToVisibleBounds = true // try cool new iOS 9 feature
+//         flow.sectionHeadersPinToVisibleBounds = true // try cool new iOS 9 feature
         
-        // uncomment to crash
-        // cripes, now we don't crash, but the layout is wrong! can these guys never get this implemented???
-        // also tried doing this by overriding sizeThatFits in the cell, but with the same wrong layout
-        // also tried doing it by overriding preferredAttributes in the cell, same wrong layout
-        // just uncommenting this line causes solo cells to be centered! insane
-        // flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//         uncomment to crash
+//         cripes, now we don't crash, but the layout is wrong! can these guys never get this implemented???
+//         also tried doing this by overriding sizeThatFits in the cell, but with the same wrong layout
+//         also tried doing it by overriding preferredAttributes in the cell, same wrong layout
+//         just uncommenting this line causes solo cells to be centered! insane
+//         flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -117,33 +148,42 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // headers
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    override func collectionView(_ cv: UICollectionView, viewForSupplementaryElementOfKind kind: String, at ip: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
-        if kind == UICollectionView.elementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
-            if v.subviews.count == 0 {
-                let lab = UILabel() // we will size it later
-                v.addSubview(lab)
-                lab.textAlignment = .center
-                // look nicer
-                lab.font = UIFont(name:"Georgia-Bold", size:22)
-                lab.backgroundColor = .lightGray
-                lab.layer.cornerRadius = 8
-                lab.layer.borderWidth = 2
-                lab.layer.masksToBounds = true // has to be added for iOS 8 label
-                lab.layer.borderColor = UIColor.black.cgColor
-                lab.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    NSLayoutConstraint.constraints(withVisualFormat:"H:|-10-[lab(35)]",
-                        metrics:nil, views:["lab":lab]),
-                    NSLayoutConstraint.constraints(withVisualFormat:"V:[lab(30)]-5-|",
-                    metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+        v = cv.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.headerID, for: ip)
+        if v.subviews.count == 0 {
+            let lab = UILabel() // we will size it later
+            v.addSubview(lab)
+            lab.textAlignment = .center
+            // look nicer
+            lab.font = UIFont(name:"Georgia-Bold", size:22)
+            lab.backgroundColor = .lightGray
+            lab.layer.cornerRadius = 8
+            lab.layer.borderWidth = 2
+            lab.layer.masksToBounds = true // has to be added for iOS 8 label
+            lab.layer.borderColor = UIColor.black.cgColor
+            lab.translatesAutoresizingMaskIntoConstraints = false
+            var cons = [
+                lab.widthAnchor.constraint(equalToConstant: 30),
+                lab.heightAnchor.constraint(equalToConstant: 30),
+                lab.topAnchor.constraint(equalTo: v.topAnchor, constant:10),
+                lab.leadingAnchor.constraint(equalTo: v.leadingAnchor),
+                lab.bottomAnchor.constraint(equalTo: v.bottomAnchor),
+            ]
+            if kind == UICollectionView.elementKindSectionHeader {
+                cons = [
+                    lab.widthAnchor.constraint(equalToConstant: 30),
+                    lab.heightAnchor.constraint(equalToConstant: 30),
+                    lab.topAnchor.constraint(equalTo: v.topAnchor, constant:10),
+                    lab.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant:10),
+                    lab.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant:-10),
+                ]
             }
-            let lab = v.subviews[0] as! UILabel
-            lab.text = self.sections[indexPath.section].sectionName
+            NSLayoutConstraint.activate(cons)
         }
+        let lab = v.subviews[0] as! UILabel
+        lab.text = self.sections[ip.section].sectionName
         return v
     }
     
@@ -233,12 +273,15 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // can just change layouts on the fly! with built-in animation!!!
     @objc func doSwitch(_ sender: Any) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
-        let oldLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
-        var newLayout = self.collectionViewLayout as! UICollectionViewFlowLayout
-        if newLayout == oldLayout {
-            newLayout = MyFlowLayout()
-        }
-        self.setUpFlowLayout(newLayout)
+        let newLayout : UICollectionViewLayout = {
+            let oldLayout = self.collectionView!.collectionViewLayout
+            if oldLayout is MyFlowLayout {
+                return self.createLayout()
+            }
+            let layout = MyFlowLayout()
+            self.setUpFlowLayout(layout)
+            return layout
+        }()
         self.collectionView!.setCollectionViewLayout(newLayout, animated:true)
     }
     
@@ -327,6 +370,42 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         return prop
     }
 
+}
+
+
+
+class MyFlowLayout : UICollectionViewFlowLayout {
+    // how to left-justify every "line" of the layout
+    // looks much nicer, in my humble opinion
     
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let arr = super.layoutAttributesForElements(in: rect)!
+        return arr.map { atts in
+            var atts = atts
+            if atts.representedElementCategory == .cell {
+                let ip = atts.indexPath
+                atts = self.layoutAttributesForItem(at:ip)!
+            }
+            return atts
+        }
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        var atts = super.layoutAttributesForItem(at:indexPath)!
+        if indexPath.item == 0 {
+            return atts // degenerate case 1
+        }
+        if atts.frame.origin.x - 1 <= self.sectionInset.left {
+            return atts // degenerate case 2
+        }
+        let ipPv = IndexPath(item:indexPath.row-1, section:indexPath.section)
+        let fPv = self.layoutAttributesForItem(at:ipPv)!.frame
+        let rightPv = fPv.origin.x + fPv.size.width + self.minimumInteritemSpacing
+        atts = atts.copy() as! UICollectionViewLayoutAttributes
+        atts.frame.origin.x = rightPv
+        return atts
+    }
 
 }
+

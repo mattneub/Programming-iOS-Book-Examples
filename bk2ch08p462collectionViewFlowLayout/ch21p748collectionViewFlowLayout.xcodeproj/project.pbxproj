@@ -10,6 +10,7 @@
 		3256645D1B8651AA004576BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3256645C1B8651AA004576BB /* LaunchScreen.storyboard */; };
 		3256645F1B8651C3004576BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256645E1B8651C3004576BB /* AppDelegate.swift */; };
 		32DB4DC01982BE6F00CDA842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DB4DBF1982BE6F00CDA842 /* ViewController.swift */; };
+		9EEB29AD231B63D5000C90DB /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EEB29AC231B63D5000C90DB /* Cell.xib */; };
 		C9F1DD8C1803104000AE4AE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD8A1803104000AE4AE5 /* Main.storyboard */; };
 		C9F1DD911803104000AE4AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD901803104000AE4AE5 /* Assets.xcassets */; };
 		C9F1DDAE180311DF00AE4AE5 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DDAD180311DF00AE4AE5 /* states.txt */; };
@@ -19,6 +20,7 @@
 		3256645C1B8651AA004576BB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3256645E1B8651C3004576BB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32DB4DBF1982BE6F00CDA842 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9EEB29AC231B63D5000C90DB /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 		C9F1DD751803104000AE4AE5 /* ch21p748collectionViewFlowLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p748collectionViewFlowLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F1DD801803104000AE4AE5 /* ch21p748collectionViewFlowLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p748collectionViewFlowLayout-Info.plist"; sourceTree = "<group>"; };
 		C9F1DD8B1803104000AE4AE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				C9F1DD8A1803104000AE4AE5 /* Main.storyboard */,
 				3256645E1B8651C3004576BB /* AppDelegate.swift */,
 				32DB4DBF1982BE6F00CDA842 /* ViewController.swift */,
+				9EEB29AC231B63D5000C90DB /* Cell.xib */,
 				C9F1DDAD180311DF00AE4AE5 /* states.txt */,
 				C9F1DD901803104000AE4AE5 /* Assets.xcassets */,
 				3256645C1B8651AA004576BB /* LaunchScreen.storyboard */,
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9F1DDAE180311DF00AE4AE5 /* states.txt in Resources */,
+				9EEB29AD231B63D5000C90DB /* Cell.xib in Resources */,
 				3256645D1B8651AA004576BB /* LaunchScreen.storyboard in Resources */,
 				C9F1DD911803104000AE4AE5 /* Assets.xcassets in Resources */,
 				C9F1DD8C1803104000AE4AE5 /* Main.storyboard in Resources */,

@@ -78,7 +78,7 @@ class ViewController : UICollectionViewController {
             cell.backgroundView = v
             
             let v2 = UIView(frame:cell.bounds)
-            v2.backgroundColor = UIColor(white:0.2, alpha:0.1)
+            v2.backgroundColor = UIColor(white:0.2, alpha:0.2)
             cell.selectedBackgroundView = v2
             
             let lab = UILabel()
