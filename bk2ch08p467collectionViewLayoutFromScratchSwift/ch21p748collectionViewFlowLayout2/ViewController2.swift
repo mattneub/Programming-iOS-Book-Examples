@@ -17,11 +17,11 @@ class ViewController2 : UICollectionViewController {
             flow.headerReferenceSize = CGSize(50,50)
             flow.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
         }
-        self.collectionView!.reloadData()
+        self.collectionView.reloadData()
     }
     
     @objc func doFlush (_ sender: Any) {
-        if let layout = self.collectionView!.collectionViewLayout as? MyFlowLayout {
+        if let layout = self.collectionView.collectionViewLayout as? MyFlowLayout {
             layout.flush()
         }
     }
@@ -33,24 +33,24 @@ class ViewController2 : UICollectionViewController {
         super.viewWillAppear(animated)
         // return;
         //print(self, #function)
-        //print("layout is \(self.collectionView!.collectionViewLayout)")
-        //print("data source is \(self.collectionView!.dataSource)")
-        //print("delegate is \(self.collectionView!.delegate)")
+        //print("layout is \(self.collectionView.collectionViewLayout)")
+        //print("data source is \(self.collectionView.dataSource)")
+        //print("delegate is \(self.collectionView.delegate)")
     }
     
     override func viewDidAppear(_ animated: Bool)  {
         super.viewDidAppear(animated)
 //        print(self, #function)
-//        print("layout is \(self.collectionView!.collectionViewLayout)")
-//        print("data source is \(self.collectionView!.dataSource)")
-//        print("delegate is \(self.collectionView!.delegate)")
-        let oldDelegate = self.collectionView!.delegate
+//        print("layout is \(self.collectionView.collectionViewLayout)")
+//        print("data source is \(self.collectionView.dataSource)")
+//        print("delegate is \(self.collectionView.delegate)")
+        let oldDelegate = self.collectionView.delegate
         DispatchQueue.main.async {
 //            print("right after")
-//            print("layout is \(self.collectionView!.collectionViewLayout)")
-//            print("data source is \(self.collectionView!.dataSource)")
-//            print("delegate is \(self.collectionView!.delegate)")
-            self.collectionView!.delegate = oldDelegate
+//            print("layout is \(self.collectionView.collectionViewLayout)")
+//            print("data source is \(self.collectionView.dataSource)")
+//            print("delegate is \(self.collectionView.delegate)")
+            self.collectionView.delegate = oldDelegate
         }
     }
 }

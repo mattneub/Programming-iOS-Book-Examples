@@ -1,14 +1,6 @@
 
 import UIKit
 
-extension Array {
-    mutating func remove(at ixs:Set<Int>) -> () {
-        for i in Array<Int>(ixs).sorted(by:>) {
-            self.remove(at:i)
-        }
-    }
-}
-
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -31,6 +23,15 @@ extension CGVector {
 }
 
 
+extension NSDiffableDataSourceSnapshot {
+    mutating func deleteWithSections(_ items : [ItemIdentifierType]) {
+        self.deleteItems(items)
+        let empties = self.sectionIdentifiers.filter {
+            self.numberOfItems(inSection: $0) == 0
+        }
+        self.deleteSections(empties)
+    }
+}
 
 
 
@@ -63,23 +64,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         return layout
     }
 
-    
-    struct Item {
-        var name : String
-        var size : CGSize
-    }
-    struct Section {
-        var sectionName : String
-        var itemData : [Item]
-    }
-    var sections : [Section]!
-
-    lazy var modelCell : Cell = { // load lazily from nib
-        () -> Cell in
-        let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil)
-        return arr[0] as! Cell
-        }()
-    
+        
     override var prefersStatusBarHidden : Bool {
         return true
     }
@@ -87,16 +72,43 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     let cellID = "Cell"
 	let headerID = "Header"
     
+    // UICollectionViewDiffableDataSource is pickier than table view diffable
+    // must register stuff before applying data
+    // and if there are supplementary views, must have a supplementary view provider!
+    lazy var datasource = UICollectionViewDiffableDataSource<String,String>(collectionView: self.collectionView) { cv, ip, s in
+        return self.makeCell(cv, ip, s)
+    }
+    
     override func viewDidLoad() {
+        // register _before_ there is data
+        self.collectionView.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier: self.cellID)
+        self.collectionView.register(UICollectionReusableView.self,
+                                      forSupplementaryViewOfKind:Self.header,
+            withReuseIdentifier: self.headerID)
+        self.collectionView.register(UICollectionReusableView.self,
+                                      forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: self.headerID)
+        
+        // create supp view provider _before_ there is data
+        self.datasource.supplementaryViewProvider = { cv, kind, ip in
+            var v : UICollectionReusableView! = nil
+            return self.makeHeader(cv, kind, ip)
+        }
+        
+        // ok, _now_ make the data!
         let s = try! String(
             contentsOfFile: Bundle.main.path(
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let d2 = d.mapValues{$0.map {Item(name:$0, size:.zero)}}
-        self.sections = Array(d2).sorted{$0.key < $1.key}.map {
-            Section(sectionName: $0.key, itemData: $0.value)
+        let sections = Array(d).sorted{$0.key < $1.key} // *
+        
+        var snap = NSDiffableDataSourceSnapshot<String,String>() // whoa, now struct?
+        for section in sections {
+            snap.appendSections([section.0])
+            snap.appendItems(section.1)
         }
+        self.datasource.apply(snap, animatingDifferences: false)
 
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
         self.navigationItem.leftBarButtonItem = b
@@ -104,19 +116,9 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         let b2 = UIBarButtonItem(title:"Delete", style:.plain, target:self, action:#selector(doDelete(_:)))
         self.navigationItem.rightBarButtonItem = b2
         
-        self.collectionView!.backgroundColor = .white
-        self.collectionView!.allowsMultipleSelection = true
+        self.collectionView.backgroundColor = .white
+        self.collectionView.allowsMultipleSelection = true
         
-        // register cell, comes from a nib even though we are using a storyboard
-        self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier: self.cellID)
-        // register headers
-        self.collectionView!.register(UICollectionReusableView.self,
-                                      forSupplementaryViewOfKind:Self.header,
-            withReuseIdentifier: self.headerID)
-        self.collectionView!.register(UICollectionReusableView.self,
-                                      forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: self.headerID)
-
         self.navigationItem.title = "States"
         
         self.collectionView.collectionViewLayout = self.createLayout()
@@ -138,17 +140,10 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
 //         flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
     }
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.sections.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sections[section].itemData.count
-    }
     
     // headers
     
-    override func collectionView(_ cv: UICollectionView, viewForSupplementaryElementOfKind kind: String, at ip: IndexPath) -> UICollectionReusableView {
+    func makeHeader(_ cv: UICollectionView, _ kind: String, _ ip: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
         v = cv.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.headerID, for: ip)
@@ -183,15 +178,17 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             NSLayoutConstraint.activate(cons)
         }
         let lab = v.subviews[0] as! UILabel
-        lab.text = self.sections[ip.section].sectionName
+        // lab.text = self.sections[ip.section].sectionName
+        // becomes:
+        lab.text = self.datasource.snapshot().sectionIdentifiers[ip.section]
         return v
     }
     
     // cells
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func makeCell(_ cv: UICollectionView, _ ip: IndexPath, _ s: String) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) as! Cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: ip) as! Cell
         if cell.lab.text == "Label" { // new cell
             cell.layer.cornerRadius = 8
             cell.layer.borderWidth = 2
@@ -222,7 +219,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.sections[indexPath.section].itemData[indexPath.row].name
+        cell.lab.text = s
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -274,7 +271,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     @objc func doSwitch(_ sender: Any) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
         let newLayout : UICollectionViewLayout = {
-            let oldLayout = self.collectionView!.collectionViewLayout
+            let oldLayout = self.collectionView.collectionViewLayout
             if oldLayout is MyFlowLayout {
                 return self.createLayout()
             }
@@ -282,7 +279,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             self.setUpFlowLayout(layout)
             return layout
         }()
-        self.collectionView!.setCollectionViewLayout(newLayout, animated:true)
+        self.collectionView.setCollectionViewLayout(newLayout, animated:true)
     }
     
     // =======================
@@ -290,8 +287,14 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // deletion, really quite similar to a table view
     
     @IBAction func doDelete(_ sender: Any) { // button, delete selected cells
-        guard var arr = self.collectionView!.indexPathsForSelectedItems,
-            arr.count > 0 else {return}
+        guard let sel = self.collectionView.indexPathsForSelectedItems,
+            sel.count > 0 else {return}
+        let rowids = sel.map {self.datasource.itemIdentifier(for: $0)}.compactMap {$0}
+        var snap = self.datasource.snapshot()
+        snap.deleteWithSections(rowids)
+        self.datasource.apply(snap)
+
+        /*
         // sort
         arr.sort()
         // delete data
@@ -303,25 +306,44 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             }
         }
         // request the deletion from the view; notice the slick automatic animation
-        self.collectionView!.performBatchUpdates({
-            self.collectionView!.deleteItems(at:arr)
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
                 self.sections.remove(at:empties) // see utility function at top of file
-                self.collectionView!.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
+                self.collectionView.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
         })
+ */
     }
     
-    // menus moved to next example
-    // you can't have both menus and dragging
-    // (because they both use the long press gesture, I presume)
-
+    // works but doesn't play very well with selection because we select first
+    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier:nil, previewProvider: nil) { _ in
+            let action = UIAction(title: "Copy") { _ in
+                if let state = self.datasource.itemIdentifier(for: indexPath) {
+                    UIPasteboard.general.string = state
+                    print("copied", state)
+                }
+            }
+            let menu = UIMenu(title: "", children: [action])
+            return menu
+        }
+        return config
+    }
+    
+    // now THIS is cool
+    // note there's no editing mode involved, we just select
+    override func collectionView(_ collectionView: UICollectionView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
     // dragging ===============
     
     // on by default; data source merely has to permit
     
     // -------- interactive moving, data source methods
+    
+    /*
     
     var origSections : [Section]!
     override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
@@ -369,7 +391,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         }
         return prop
     }
-
+*/
 }
 
 

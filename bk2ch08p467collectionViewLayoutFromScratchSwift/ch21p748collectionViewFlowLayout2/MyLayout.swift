@@ -15,7 +15,7 @@ class MyLayout : UICollectionViewLayout {
         /*
         // how many items are there in total?
         let total = Array(0 ..< sections).map {
-            self.collectionView!.numberOfItemsInSection($0)
+            self.collectionView.numberOfItemsInSection($0)
             }.reduce(0, combine: +)
         */
         
@@ -67,7 +67,7 @@ class MyLayout : UICollectionViewLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         
         //print("atts1")
-        //print("layout is \(self.collectionView!.collectionViewLayout)")
+        //print("layout is \(self.collectionView.collectionViewLayout)")
 
         return self.atts[indexPath]
     }

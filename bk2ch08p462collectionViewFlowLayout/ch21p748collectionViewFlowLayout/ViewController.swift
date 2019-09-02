@@ -51,10 +51,10 @@ class ViewController : UICollectionViewController {
         
         self.navigationItem.title = "States"
         
-        self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID)
+        self.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerID)
         // if you don't do something about header size...
         // ...you won't see any headers
-        let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        let flow = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flow.headerReferenceSize = CGSize(30,30)
         // still not working, layout is wrong
         // flow.estimatedItemSize = CGSize(30,100)
@@ -128,3 +128,16 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
 // that duplication is exactly what iOS 8 is supposed to fix with _automatic_ variable cell size
 // but I can't get that to work (see next example for my workaround using constraints)
 
+// hey how long has this been going on????
+// okay I can implement them but I don't see any index!
+// looks like this is listed for iOS but actually only implemented on tvOS
+extension ViewController {
+    override func indexTitles(for collectionView: UICollectionView) -> [String]? {
+        return self.sections.map {$0.sectionName}
+    }
+    override func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
+        let sectionNames = self.sections.map {$0.sectionName}
+        let ix = sectionNames.firstIndex(of: title)!
+        return IndexPath(item: 0, section: ix)
+    }
+}

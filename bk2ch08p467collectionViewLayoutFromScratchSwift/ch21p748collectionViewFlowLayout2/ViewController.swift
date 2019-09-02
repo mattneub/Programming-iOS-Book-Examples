@@ -65,13 +65,13 @@ class ViewController : UICollectionViewController {
         self.navigationItem.title = "States"
         let bb = UIBarButtonItem(title:"Push", style:.plain, target:self, action:#selector(doPush))
         self.navigationItem.rightBarButtonItem = bb
-        self.collectionView!.backgroundColor = .white
-        self.collectionView!.allowsMultipleSelection = true
+        self.collectionView.backgroundColor = .white
+        self.collectionView.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard
-        self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:self.cellID)
+        self.collectionView.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:self.cellID)
         // register headers (for the other view controller!)
-        self.collectionView!.register(UICollectionReusableView.self,
+        self.collectionView.register(UICollectionReusableView.self,
             forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: self.headerID)
 

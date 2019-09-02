@@ -19,7 +19,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         //print("attsforelements2")
-        //print("layout is \(self.collectionView!.collectionViewLayout)")
+        //print("layout is \(self.collectionView.collectionViewLayout)")
         var arr = super.layoutAttributesForElements(in: rect)!
         
         // in the book, omit this part and change var to let above
@@ -65,7 +65,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         //print("attsforitem2")
-        //print("layout is \(self.collectionView!.collectionViewLayout)")
+        //print("layout is \(self.collectionView.collectionViewLayout)")
 
         var atts = super.layoutAttributesForItem(at: indexPath)!
         //print(atts.size)

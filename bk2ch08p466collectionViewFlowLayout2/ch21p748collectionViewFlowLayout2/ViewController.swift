@@ -74,13 +74,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         let b2 = UIBarButtonItem(title:"Delete", style:.plain, target:self, action:#selector(doDelete(_:)))
         self.navigationItem.rightBarButtonItem = b2
         
-        self.collectionView!.backgroundColor = .white
-        self.collectionView!.allowsMultipleSelection = true
+        self.collectionView.backgroundColor = .white
+        self.collectionView.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard
-        self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier: self.cellID)
+        self.collectionView.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier: self.cellID)
         // register headers
-        self.collectionView!.register(UICollectionReusableView.self,
+        self.collectionView.register(UICollectionReusableView.self,
             forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: self.headerID)
         
@@ -88,7 +88,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         // if you don't do something about header size...
         // ...you won't see any headers
-        let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        let flow = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         self.setUpFlowLayout(flow)
     }
     
@@ -233,13 +233,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // can just change layouts on the fly! with built-in animation!!!
     @objc func doSwitch(_ sender: Any) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
-        let oldLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        let oldLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         var newLayout = self.collectionViewLayout as! UICollectionViewFlowLayout
         if newLayout == oldLayout {
             newLayout = MyFlowLayout()
         }
         self.setUpFlowLayout(newLayout)
-        self.collectionView!.setCollectionViewLayout(newLayout, animated:true)
+        self.collectionView.setCollectionViewLayout(newLayout, animated:true)
     }
     
     // =======================
@@ -247,7 +247,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // deletion, really quite similar to a table view
     
     @IBAction func doDelete(_ sender: Any) { // button, delete selected cells
-        guard var arr = self.collectionView!.indexPathsForSelectedItems,
+        guard var arr = self.collectionView.indexPathsForSelectedItems,
             arr.count > 0 else {return}
         // sort
         arr.sort()
@@ -260,11 +260,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             }
         }
         // request the deletion from the view; notice the slick automatic animation
-        self.collectionView!.performBatchUpdates({
-            self.collectionView!.deleteItems(at:arr)
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
                 self.sections.remove(at:empties) // see utility function at top of file
-                self.collectionView!.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
+                self.collectionView.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
         })
     }
