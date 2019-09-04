@@ -82,6 +82,8 @@ class RootViewController: UITableViewController {
         
         // self.navigationItem.largeTitleDisplayMode = .never
         
+        // NB ok to register cell _after_ supplying data to data source
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         
     }
     

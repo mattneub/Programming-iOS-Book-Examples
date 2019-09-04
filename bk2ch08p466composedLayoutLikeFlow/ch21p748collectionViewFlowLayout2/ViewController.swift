@@ -22,6 +22,15 @@ extension CGVector {
     }
 }
 
+class Deco : UICollectionReusableView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 extension NSDiffableDataSourceSnapshot {
     mutating func deleteWithSections(_ items : [ItemIdentifierType]) {
@@ -33,7 +42,24 @@ extension NSDiffableDataSourceSnapshot {
     }
 }
 
-
+class MyDiffable : UICollectionViewDiffableDataSource<String,String> {
+    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return collectionView.collectionViewLayout is MyFlowLayout
+    }
+    
+    override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
+        print("move")
+        let srcid = self.itemIdentifier(for: source)!
+        let destid = self.itemIdentifier(for: dest)!
+        var snap = self.snapshot()
+        if dest.item > source.item {
+            snap.moveItem(srcid, afterItem: destid)
+        } else {
+            snap.moveItem(srcid, beforeItem: destid)
+        }
+        self.apply(snap, animatingDifferences:false)
+    }
+}
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -59,6 +85,10 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: Self.header, alignment: .top)
         header.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
         section.boundarySupplementaryItems = [header]
+        
+        let deco = NSCollectionLayoutDecorationItem.background(elementKind: "background")
+        deco.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        section.decorationItems = [deco]
 
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
@@ -75,7 +105,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // UICollectionViewDiffableDataSource is pickier than table view diffable
     // must register stuff before applying data
     // and if there are supplementary views, must have a supplementary view provider!
-    lazy var datasource = UICollectionViewDiffableDataSource<String,String>(collectionView: self.collectionView) { cv, ip, s in
+    lazy var datasource = MyDiffable(collectionView: self.collectionView) { cv, ip, s in
         return self.makeCell(cv, ip, s)
     }
     
@@ -91,7 +121,6 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         // create supp view provider _before_ there is data
         self.datasource.supplementaryViewProvider = { cv, kind, ip in
-            var v : UICollectionReusableView! = nil
             return self.makeHeader(cv, kind, ip)
         }
         
@@ -121,7 +150,9 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         self.navigationItem.title = "States"
         
-        self.collectionView.collectionViewLayout = self.createLayout()
+        let layout = self.createLayout()
+        layout.register(Deco.self, forDecorationViewOfKind: "background")
+        self.collectionView.collectionViewLayout = layout
     }
     
     
@@ -289,9 +320,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     @IBAction func doDelete(_ sender: Any) { // button, delete selected cells
         guard let sel = self.collectionView.indexPathsForSelectedItems,
             sel.count > 0 else {return}
-        let rowids = sel.map {self.datasource.itemIdentifier(for: $0)}.compactMap {$0}
+        let itemids = sel.map {
+            self.datasource.itemIdentifier(for: $0)
+        }.compactMap {$0}
         var snap = self.datasource.snapshot()
-        snap.deleteWithSections(rowids)
+        snap.deleteWithSections(itemids)
         self.datasource.apply(snap)
 
         /*
@@ -316,11 +349,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
  */
     }
     
-    // works but doesn't play very well with selection because we select first
+    // works but doesn't play very well with selection because we highlight first
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return nil // for dragging
         let config = UIContextMenuConfiguration(identifier:nil, previewProvider: nil) { _ in
             let action = UIAction(title: "Copy") { _ in
-                if let state = self.datasource.itemIdentifier(for: indexPath) {
+                let d = self.datasource
+                if let state = d.itemIdentifier(for: indexPath) {
                     UIPasteboard.general.string = state
                     print("copied", state)
                 }
@@ -337,61 +372,53 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         return true
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        print("did highlight")
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        print("did unhighlight")
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("did select")
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("did deselect")
+    }
+    
     // dragging ===============
     
     // on by default; data source merely has to permit
     
     // -------- interactive moving, data source methods
-    
-    /*
-    
-    var origSections : [Section]!
-    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        print("move is starting")
-        self.origSections = self.sections
-        return true
-    }
-    
-    override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
-        print("move")
-        if source.section == dest.section {
-            // restore sizes
-            self.sections = self.origSections
-            // rearrange model
-            func move<T>(_ arr:inout Array<T>, from:Int, to:Int) {
-                let el = arr.remove(at: from)
-                arr.insert(el, at: to)
-            }
-            move(&self.sections[source.section].itemData, from:source.item, to:dest.item)
-            // update interface - wait, no need any longer!!!!
-            // cv.reloadSections(IndexSet(integer:source.section))
-        }
-    }
-    
+            
     // modify using delegate methods
     // here, prevent moving outside your own section
     
     
     // wait - orig and prop are always the same as each other! what sense does that make????
     // no, not _always_! have to watch for that case
+
     override func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt orig: IndexPath, toProposedIndexPath prop: IndexPath) -> IndexPath {
         print("from", orig, "target", prop)
         if orig.section != prop.section {
             return orig
         }
-        if orig.item == prop.item {
-            return prop
-        }
-        // they are different, we're crossing a boundary - shift size values!
-        var sizes = self.sections[orig.section].itemData.map{$0.size}
-        let size = sizes.remove(at: orig.item)
-        sizes.insert(size, at:prop.item)
-        for (ix,size) in sizes.enumerated() {
-            self.sections[orig.section].itemData[ix].size = size
-        }
         return prop
+//        if orig.item == prop.item {
+//            return prop
+//        }
+        // they are different, we're crossing a boundary - shift size values!
+//        var sizes = self.sections[orig.section].itemData.map{$0.size}
+//        let size = sizes.remove(at: orig.item)
+//        sizes.insert(size, at:prop.item)
+//        for (ix,size) in sizes.enumerated() {
+//            self.sections[orig.section].itemData[ix].size = size
+//        }
+//        return prop
     }
-*/
 }
 
 
