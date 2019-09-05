@@ -53,11 +53,11 @@ filter the original data in accordance with what's in the search bar,
 and reload the table.
 */
 
-extension SearchResultsController : UISearchResultsUpdating, UISearchBarDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-        if let target = searchController.searchBar.text {
+extension SearchResultsController : UISearchResultsUpdating {
+    func updateSearchResults(for sc: UISearchController) {
+        if let target = sc.searchBar.text {
             // new in iOS 13 we get called when the scope changes
-            let selectedIndex = searchController.searchBar.selectedScopeButtonIndex
+            let selectedIndex = sc.searchBar.selectedScopeButtonIndex
             self.filteredData = self.originalData.filter { s in
                 var options = String.CompareOptions.caseInsensitive
                 if selectedIndex == 1 { // 1 means "starts with"
