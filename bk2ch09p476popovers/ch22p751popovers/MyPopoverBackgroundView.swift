@@ -58,9 +58,8 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
             withCapInsets:UIEdgeInsets(top: caph, left: capw, bottom: caph, right: capw),
             resizingMode:.tile)
         
-        let klass = type(of:self)
-        let arrowHeight = klass.arrowHeight()
-        let arrowBase = klass.arrowBase()
+        let arrowHeight = Self.arrowHeight()
+        let arrowBase = Self.arrowBase()
 
         // draw the arrow
         // I'm just going to make a triangle filled with our linen background...

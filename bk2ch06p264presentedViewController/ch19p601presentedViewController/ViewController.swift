@@ -77,6 +77,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         self.present(svc, animated:true) {
             print(svc.view.gestureRecognizers as Any)
             print(svc.modalPresentationStyle.rawValue)
+            print(svc.presentationController?.adaptivePresentationStyle.rawValue)
         }
         // self.showViewController(svc, sender:self) // ooops! we're in a nav interface, uses that :)
         

@@ -54,13 +54,18 @@ class ViewController: UIViewController {
             pres.delegate = self // comment out to see what the defaults are
         }
 
-        self.present(vc, animated: true)
+        self.present(vc, animated: true) {
+            print(vc.modalPresentationStyle.rawValue)
+            // "popover" regardless of how we adapt; it is not the _style_ that changes
+        }
         
         if let pop = vc.popoverPresentationController {
             print(pop)
             pop.sourceView = (sender as! UIView)
             pop.sourceRect = (sender as! UIView).bounds
             pop.backgroundColor = .white
+            print(pop.presentationStyle.rawValue, pop.adaptivePresentationStyle.rawValue)
+            // but the _adaptive_ style can change: by default on iphone it is formsheet
         }
         
         // that alone is completely sufficient, on iOS 8, for iPad and iPhone!

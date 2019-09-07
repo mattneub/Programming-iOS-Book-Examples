@@ -16,9 +16,15 @@ class ViewController : UIViewController {
     // ...and to configure/modify it,
     // you use the popover presentation controller and act as its delegate
     
+    @objc func doTap() {
+        print("tap on background")
+    }
+    
     @IBAction func doPopover1(_ sender: Any?) {
         let vc = Popover1View1()
-        // vc.isModalInPopover = true
+        if #available(iOS 13.0, *) {
+            // vc.isModalInPresentation = true
+        }
         let nav = UINavigationController(rootViewController: vc)
         let b = UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
             action: #selector(cancelPop1))
@@ -41,15 +47,24 @@ class ViewController : UIViewController {
             // by setting passthroughViews to nil, you must do it after presentation is complete
             // I find this annoying; why does the toolbar default to being active?
             nav.popoverPresentationController?.passthroughViews = nil
+            return; // just experimenting to prove passthru works when isModal
+            nav.popoverPresentationController?.passthroughViews = [self.view]
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.doTap))
+            if self.view.gestureRecognizers?.count ?? 0 == 0 {
+                print("adding g.r.")
+                self.view.addGestureRecognizer(tap)
+            }
         }
         
         // where's the configuration for the popover controller?
         // we can do it _after_ presentation
         if let pop = nav.popoverPresentationController { // self-contained; no need to retain or track!
+            // return; // uncomment to crash; you MUST supply a source
             pop.barButtonItem = sender as? UIBarButtonItem // who arrow points to
             pop.delegate = self
             // just playing with appearance; try it with and without
             pop.backgroundColor = .yellow // visible as arrow color
+            // hmm, no, it is getting its red from the bar
             // pop.passthroughViews = nil
         }
         nav.navigationBar.barTintColor = .red // works in iOS 8
@@ -94,8 +109,8 @@ class ViewController : UIViewController {
             pop.sourceView = v
             pop.sourceRect = v.bounds
             pop.delegate = self
-            // not working here either
-            pop.popoverLayoutMargins = UIEdgeInsets(top: 100,left: 100,bottom: 100,right: 100)
+            // working in iOS 13!!!!!!!!!!!!!!!
+            // pop.popoverLayoutMargins = UIEdgeInsets(top: 100,left: 100,bottom: 100,right: 100)
             // new in iOS 9
             pop.canOverlapSourceViewRect = true // default is false
             
@@ -138,8 +153,10 @@ class ViewController : UIViewController {
             // we can force the popover further from the edge of the screen
             // silly example: just a little extra space at this popover's right
             // but it isn't working; this may be an iOS 8/9 bug
-            pop.popoverLayoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
+            // fixed in iOS 13!!!!!!!!
+            pop.popoverLayoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 60)
             pop.delegate = self
+
         }
 
     }
@@ -215,14 +232,39 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
             // this is a popover where the user can make changes but then cancel them
             // thus we need to preserve the current values in case we have to revert (cancel) later
             self.oldChoice = UserDefaults.standard.integer(forKey:"choice")
+            // pop.passthroughViews = nil
         }
+        
+        // trick to bring back the "dimming view"
+        // https://stackoverflow.com/a/48587226/341994
+        // pop.containerView?.backgroundColor = UIColor(white: 0, alpha: 0.2)
+
+    }
+    
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        print("new should")
+        return true
+    }
+    
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        print("will")
     }
     
     func popoverPresentationControllerDidDismissPopover(_ pop: UIPopoverPresentationController) {
+        print("old did")
         if pop.presentedViewController is UINavigationController {
             // user cancelled, restore defaults
             UserDefaults.standard.set(self.oldChoice, forKey: "choice")
         }
+    }
+    
+    func presentationControllerDidDismiss(_ pc: UIPresentationController) {
+        print("new did")
+        if pc.presentedViewController is UINavigationController {
+            // user cancelled, restore defaults
+            UserDefaults.standard.set(self.oldChoice, forKey: "choice")
+        }
+
     }
     
     func popoverPresentationController(_ popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverTo rect: UnsafeMutablePointer<CGRect>, in view: AutoreleasingUnsafeMutablePointer<UIView>) {
