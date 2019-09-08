@@ -13,7 +13,7 @@ class MyPopoverSegue: UIStoryboardSegue {
         CATransaction.setCompletionBlock {
             let dest = self.destination
             if let pop = dest.popoverPresentationController {
-                pop.passthroughViews = nil
+                pop.passthroughViews = nil // oooo
             }
         }
     }

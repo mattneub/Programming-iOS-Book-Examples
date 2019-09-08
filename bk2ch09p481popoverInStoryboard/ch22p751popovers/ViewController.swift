@@ -14,17 +14,22 @@ class ViewController : UIViewController, UIToolbarDelegate {
         return .topAttached
     }
     
+    @IBAction func doItem(_ sender: Any) {
+        print("tap")
+    }
+    
     @IBAction func unwind (_ sender:UIStoryboardSegue) {
         if sender.identifier == "cancel" {
             UserDefaults.standard.set(self.oldChoice, forKey: "choice")
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(segue)
         if segue.identifier == "MyPopover" {
             let dest = segue.destination
             if let pop = dest.popoverPresentationController {
+                print("here")
                 pop.delegate = self
                 delay(0.1) {
                     pop.passthroughViews = nil
@@ -46,11 +51,13 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         }
         return .none
     }
-    
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+                print("did dismiss")
         UserDefaults.standard.set(self.oldChoice, forKey: "choice")
-    }
 
+    }
+    
 }
 
 

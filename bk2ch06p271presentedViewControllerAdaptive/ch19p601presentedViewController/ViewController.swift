@@ -48,7 +48,7 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         print("adapt!")
-        if traitCollection.horizontalSizeClass == .compact {
+        if traitCollection.horizontalSizeClass == .compact || traitCollection.verticalSizeClass == .compact {
             return .overFullScreen
             // removed the case where you return .none here...
             // ...as it's no longer interesting in iOS 13

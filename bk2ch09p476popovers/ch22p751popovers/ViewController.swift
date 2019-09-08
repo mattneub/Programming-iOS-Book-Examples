@@ -164,7 +164,7 @@ class ViewController : UIViewController {
     @objc func tapped (_ sender: Any) {
         print("tap")
         let vc = UIViewController()
-        vc.modalPresentationStyle = .currentContext // oooh
+        vc.modalPresentationStyle = .currentContext // oooh, looks way cool
         vc.view.frame = CGRect(0,0,300,300)
         vc.view.backgroundColor = .white
         vc.preferredContentSize = vc.view.bounds.size
@@ -241,10 +241,6 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
 
     }
     
-    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
-        print("new should")
-        return true
-    }
     
     func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
         print("will")
@@ -282,6 +278,12 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         _ pop: UIPopoverPresentationController) -> Bool {
             return pop.presentedViewController.presentedViewController == nil
     }
+    
+    func presentationControllerShouldDismiss(_ pc: UIPresentationController) -> Bool {
+        print("new should")
+        return pc.presentedViewController.presentedViewController == nil
+    }
+
 
 
 }

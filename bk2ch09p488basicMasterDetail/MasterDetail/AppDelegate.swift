@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 
 @UIApplicationMain
@@ -72,3 +73,50 @@ extension AppDelegate : UISplitViewControllerDelegate {
         return .automatic
     }
 }
+
+@available(iOS 13.0, *)
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDelegate {
+    
+    var window: UIWindow?
+    var detailChosen = false
+
+        
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let scene = scene as! UIWindowScene
+        self.window = UIWindow(windowScene: scene)
+        
+        let svc = UISplitViewController()
+        svc.delegate = self
+        let master = MasterViewController(style:.plain)
+        master.title = "Pep"
+        let nav1 = UINavigationController(rootViewController:master)
+        let detail = DetailViewController()
+        let nav2 = UINavigationController(rootViewController:detail)
+        svc.viewControllers = [nav1, nav2]
+        self.window!.rootViewController = svc
+        let b = svc.displayModeButtonItem
+        detail.navigationItem.leftBarButtonItem = b
+        detail.navigationItem.leftItemsSupplementBackButton = true
+
+        self.window!.rootViewController = svc
+        self.window!.makeKeyAndVisible()
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name("detailChosen"), object: nil, queue: nil) { _ in
+            print("detail chosen")
+            self.detailChosen = true
+        }
+    }
+    
+    func splitViewController(_ svc: UISplitViewController, collapseSecondary vc2: UIViewController, onto vc1: UIViewController) -> Bool {
+        print("collapsing")
+        if let nav = vc2 as? UINavigationController,
+            nav.topViewController is DetailViewController,
+            self.detailChosen {
+            print("returning false")
+                return false
+        }
+        return true
+    }
+
+}
+

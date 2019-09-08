@@ -20,6 +20,7 @@ class MasterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("master view did load")
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         
         print(self.splitViewController?.children as Any)
@@ -49,9 +50,21 @@ class MasterViewController: UITableViewController {
         let nav = UINavigationController(rootViewController: detail)
         self.showDetailViewController(nav, sender: self)
         
-        if let del = self.splitViewController?.delegate as? AppDelegate {
-            del.didChooseDetail = true
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"detailChosen"), object: self)
+        
+        // nice touch, from TidBITS News app
+        if let svc = self.splitViewController {
+            if !svc.isCollapsed {
+                if svc.displayMode == .primaryOverlay {
+                    UIView.animate(withDuration: 0.3, animations: {
+                        svc.preferredDisplayMode = .primaryHidden
+                    }) { _ in
+                        svc.preferredDisplayMode = .automatic
+                    }
+                }
+            }
         }
+
     }
     
     // ====

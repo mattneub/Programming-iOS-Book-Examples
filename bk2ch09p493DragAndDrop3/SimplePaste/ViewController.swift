@@ -28,7 +28,7 @@ extension Person : NSItemProviderWriting {
     
     func loadData(withTypeIdentifier typeid: String, forItemProviderCompletionHandler ch: @escaping (Data?, Error?) -> Void) -> Progress? {
         switch typeid {
-        case type(of:self).personUTI:
+        case Self.personUTI:
             do {
                 ch(try PropertyListEncoder().encode(self), nil)
             } catch {

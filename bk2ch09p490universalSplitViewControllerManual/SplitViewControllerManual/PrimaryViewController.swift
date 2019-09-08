@@ -104,6 +104,12 @@ extension UIViewController {
 
 extension PrimaryViewController {
     
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        print("can perform?", action)
+        // if action == #selector(showHide) {return false}
+        return super.canPerformAction(action, withSender:sender)
+    }
+    
     override func showHide(_ sender: Any?) {
         print("showHide")
         // how to show/hide ourselves depends on the state of the split view controller

@@ -63,6 +63,7 @@ class ViewController: UIViewController {
             print(pop)
             pop.sourceView = (sender as! UIView)
             pop.sourceRect = (sender as! UIView).bounds
+            pop.permittedArrowDirections = .down
             pop.backgroundColor = .white
             print(pop.presentationStyle.rawValue, pop.adaptivePresentationStyle.rawValue)
             // but the _adaptive_ style can change: by default on iphone it is formsheet
@@ -85,26 +86,24 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     // no need to call this any longer, though you can if you want to
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        if traitCollection.horizontalSizeClass == .compact {
+        // return .automatic
+//        if traitCollection.horizontalSizeClass == .compact {
             // return .none // permitted not to adapt even on iPhone
             // return .formSheet // can also cover partially on iPhone
-            return .fullScreen
-        }
+//            return .fullScreen
+//        }
         // return .fullScreen // permitted to adapt even on iPad
         // return .formSheet // can adapt to anything
         return .none
     }
     
+    // called only if the adaptive presentation style is not .none
     func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        // we actually get the chance to swap out the v.c. for another!
-        if style != .popover {
             let vc = controller.presentedViewController
             let nav = UINavigationController(rootViewController: vc)
             let b = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissHelp))
             vc.navigationItem.rightBarButtonItem = b
             return nav
-        }
-        return nil
     }
     
     @objc func dismissHelp(_ sender: Any) {

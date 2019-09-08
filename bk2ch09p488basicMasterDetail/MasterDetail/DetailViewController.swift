@@ -48,6 +48,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("detail view did load")
         self.view.backgroundColor = .white
         let lab = UILabel()
         lab.translatesAutoresizingMaskIntoConstraints = false
