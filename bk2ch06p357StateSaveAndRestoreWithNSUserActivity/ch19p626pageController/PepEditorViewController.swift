@@ -30,14 +30,16 @@ class PepEditorViewController: UIViewController {
             self.favoriteSwitch.isOn = fav
         }
         
-        // destroy restoration info when done
-        self.restorationInfo = nil
         
     }
     
+    
+    // boilerplate
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.userActivity = self.view.window?.windowScene?.userActivity
+        self.restorationInfo = nil
+
     }
         
     override func updateUserActivityState(_ activity: NSUserActivity) {

@@ -30,6 +30,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nm9-Tn-QkY"/>
                     </view>
+                    <connections>
+                        <segue destination="obY-8S-6aE" kind="presentation" identifier="EditThisPepBoyNoAnimation" destinationCreationSelector="showPep:" animates="NO" id="Ifp-ug-3G3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tr-AP-WVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,4 +84,7 @@
             <point key="canvasLocation" x="517.60000000000002" y="-9.4452773613193415"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ifp-ug-3G3"/>
+    </inferredMetricsTieBreakers>
 </document>

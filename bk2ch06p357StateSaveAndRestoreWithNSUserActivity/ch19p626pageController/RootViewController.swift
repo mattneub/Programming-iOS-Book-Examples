@@ -39,7 +39,6 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
         
         let info = self.restorationInfo
         print("info", info as Any)
-        
         var page = Pep(pepBoy: self.pep[0])
         let key = Self.currentPepBoyRestorationKey
         if let boy = info?[key] as? String {
@@ -51,23 +50,25 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
         
         self.pageViewController = pvc
         
-        // need time to get into the window before presenting next v.c.
-        // but no matter what, must destroy restoration info at the end
-        let key2 = PepEditorViewController.editingRestorationKey
-        if let editing = info?[key2] as? Bool, editing {
-            delay(0.1) {
-                self.performSegue(withIdentifier: "editThisPepBoy", sender: self)
-                self.restorationInfo = nil
-            }
-        } else {
-            self.restorationInfo = nil
-        }
-
     }
     
+    // this is the earliest we have a window, so it's the earliest we can present
+    // if we are restoring the editing window
+    override func viewWillLayoutSubviews() {
+        let key = PepEditorViewController.editingRestorationKey
+        let info = self.restorationInfo
+        if let editing = info?[key] as? Bool, editing {
+            print("trying to restore editing window")
+            self.performSegue(withIdentifier: "EditThisPepBoyNoAnimation", sender: self)
+        }
+    }
+    
+    // boilerplate, all v.c.'s must do this:
+    // share the global restoration activity, delete any leftover local restoration info
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.userActivity = self.view.window?.windowScene?.userActivity
+        self.restorationInfo = nil
     }
             
     // called automatically because we share this activity with the scene
@@ -115,7 +116,7 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
         let page = self.pageViewController.viewControllers![0] as! Pep
         let boy = page.boy
         pepvc?.pepName = boy
-        pepvc?.restorationInfo = self.restorationInfo
+        pepvc?.restorationInfo = self.restorationInfo // we are responsible for this
         return pepvc
     }
     
