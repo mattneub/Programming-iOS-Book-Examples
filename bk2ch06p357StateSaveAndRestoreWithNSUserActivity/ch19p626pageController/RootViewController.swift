@@ -54,7 +54,10 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
     
     // this is the earliest we have a window, so it's the earliest we can present
     // if we are restoring the editing window
+    var didFirstWillLayout = false
     override func viewWillLayoutSubviews() {
+        if didFirstWillLayout { return }
+        didFirstWillLayout = true
         let key = PepEditorViewController.editingRestorationKey
         let info = self.restorationInfo
         if let editing = info?[key] as? Bool, editing {
