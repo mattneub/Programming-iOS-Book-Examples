@@ -11,7 +11,7 @@ class MyWindow : UIWindow {
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow? = MyWindow() {
+    var window: UIWindow? {
         didSet {
             print("window")
         }
@@ -23,7 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = scene as? UIWindowScene else { return }
+        // this doesn't work; if you do it, you have to go the whole way
+        // and create the entire interface I think
+        //self.window = UIWindow(windowScene: scene)
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {

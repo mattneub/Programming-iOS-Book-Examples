@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7OY-7o-LNB">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="Zg4-LO-0O8">
+            <objects>
+                <viewController id="7OY-7o-LNB" customClass="RootViewController" customModule="MultipleWindows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lz5-rF-DOA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-of-4En">
+                                <rect key="frame" x="127.5" y="45" width="120" height="30"/>
+                                <state key="normal" title="Edit This Pep Boy"/>
+                                <connections>
+                                    <segue destination="obY-8S-6aE" kind="presentation" identifier="ShowPep" destinationCreationSelector="showPep:" id="sbl-ZH-0Go"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fN2-of-4En" firstAttribute="centerX" secondItem="nm9-Tn-QkY" secondAttribute="centerX" id="bp7-uw-lmn"/>
+                            <constraint firstItem="fN2-of-4En" firstAttribute="top" secondItem="nm9-Tn-QkY" secondAttribute="top" constant="45" id="skS-rk-Bgh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nm9-Tn-QkY"/>
+                    </view>
+                    <connections>
+                        <segue destination="obY-8S-6aE" kind="presentation" identifier="EditThisPepBoyNoAnimation" destinationCreationSelector="showPep:" animates="NO" id="nvs-Bh-Nf0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tr-AP-WVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-178" y="-11"/>
+        </scene>
+        <!--Pep Editor View Controller-->
+        <scene sceneID="5Pq-ZG-cYC">
+            <objects>
+                <viewController storyboardIdentifier="pepEditor" id="obY-8S-6aE" customClass="PepEditorViewController" customModule="MultipleWindows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yte-ic-sXz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9B-K4-Sfw">
+                                <rect key="frame" x="67.5" y="220" width="240" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="2gr-9j-YFk"/>
+                                    <constraint firstAttribute="height" constant="207" id="SLN-zF-Zjy"/>
+                                </constraints>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITf-Hw-J0k">
+                                <rect key="frame" x="142.5" y="441" width="90" height="30"/>
+                                <state key="normal" title="New Window"/>
+                                <connections>
+                                    <action selector="doNewWindow:" destination="obY-8S-6aE" eventType="touchUpInside" id="Wxc-Rg-sry"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dma-FH-Lhb">
+                                <rect key="frame" x="163" y="153" width="51" height="31"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="t9B-K4-Sfw" firstAttribute="top" secondItem="Dma-FH-Lhb" secondAttribute="bottom" constant="36" id="93J-3v-r0j"/>
+                            <constraint firstItem="t9B-K4-Sfw" firstAttribute="centerX" secondItem="RSD-be-VDe" secondAttribute="centerX" id="UeA-pa-0i7"/>
+                            <constraint firstItem="ITf-Hw-J0k" firstAttribute="top" secondItem="t9B-K4-Sfw" secondAttribute="bottom" constant="14" id="bdz-4Q-1Hp"/>
+                            <constraint firstItem="ITf-Hw-J0k" firstAttribute="centerX" secondItem="RSD-be-VDe" secondAttribute="centerX" id="dgZ-mv-oui"/>
+                            <constraint firstItem="Dma-FH-Lhb" firstAttribute="centerX" secondItem="RSD-be-VDe" secondAttribute="centerX" id="f3q-Qk-2mm"/>
+                            <constraint firstItem="t9B-K4-Sfw" firstAttribute="centerY" secondItem="RSD-be-VDe" secondAttribute="centerY" id="iVI-Nj-IlM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RSD-be-VDe"/>
+                    </view>
+                    <connections>
+                        <outlet property="favoriteSwitch" destination="Dma-FH-Lhb" id="5wB-Lq-VS7"/>
+                        <outlet property="newWindowButton" destination="ITf-Hw-J0k" id="biN-tw-BuE"/>
+                        <outlet property="pepContainer" destination="t9B-K4-Sfw" id="gmN-vz-Sa2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p9I-4Z-kPR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="517.60000000000002" y="-9.4452773613193415"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nvs-Bh-Nf0"/>
+    </inferredMetricsTieBreakers>
+</document>

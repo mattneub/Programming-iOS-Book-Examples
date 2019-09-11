@@ -14,14 +14,14 @@ class ViewController: UIViewController {
         
         let sink = pass.sink { print($0) }
         pass.send("howdy")
-        // sink.cancel()
+        sink.cancel() // done with this sink
         
-        _ = curr.sink { print($0) } // causes initial value to be sent
+        let sink2 = curr.sink { print($0) } // causes initial value to be sent
         curr.send("allo allo") // one way
         curr.value = ("au revoir") // another way, but I doubt you're supposed to do that
         
         let ps2 = PassthroughSubject<String,Never>()
-        _ = ps2.sink{ print($0) }
+        let sink3 = ps2.sink{ print($0) }
         // must capture the result or we won't operate
         let subscription = pass.subscribe(ps2)
         pass.send("mannie")
@@ -31,10 +31,11 @@ class ViewController: UIViewController {
         
         pass.send("done") // silence
 
-        _ = $pub.sink { print($0) }
-        _ = $pub.sink { print($0) }
+        let sink4 = $pub.sink { print($0) }
+        let sink5 = $pub.sink { print($0) }
         pub = "yoho"
 
+        _ = (sink, sink2, sink3, sink4, sink5)
     }
 
 

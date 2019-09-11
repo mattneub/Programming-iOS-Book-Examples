@@ -48,6 +48,7 @@ class ViewController: UIViewController {
                 //.eraseToAnyPublisher()
     
     var which = 3
+    var sink : AnyCancellable?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,17 +59,17 @@ class ViewController: UIViewController {
             let sink = self.cardTappedCardNamePublisher.sink {
                 print($0)
             }
-            _ = sink
+            self.sink = sink
         case 2:
             let sink = self.mySwitch.$isOnPublisher.sink {
                 print($0)
             }
-            _ = sink
+            self.sink = sink
         case 3:
             let sink = self.combination.sink {
                 print($0)
             }
-            _ = sink
+            self.sink = sink
         default:break
         }
         
