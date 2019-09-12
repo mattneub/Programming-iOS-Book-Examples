@@ -154,8 +154,8 @@
             filePath = "AppLaunch/SceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "window"
             landmarkType = "24">
          </BreakpointContent>
@@ -186,8 +186,8 @@
             filePath = "AppLaunch/SceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "sceneDidBecomeActive(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,8 +218,8 @@
             filePath = "AppLaunch/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "application(_:configurationForConnecting:options:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,10 +250,33 @@
             filePath = "AppLaunch/SceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "scene(_:willConnectTo:options:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "709434CA-3DE3-4495-AEB1-CABA072E7E54"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "-[UIView didAddSubview:]"
+            moduleName = "">
+            <Locations>
+               <Location
+                  uuid = "709434CA-3DE3-4495-AEB1-CABA072E7E54 - 51c61876de4c41a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UIView(Hierarchy) didAddSubview:]"
+                  moduleName = "UIKitCore"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

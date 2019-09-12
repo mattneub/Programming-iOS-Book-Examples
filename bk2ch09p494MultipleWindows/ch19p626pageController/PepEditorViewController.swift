@@ -44,7 +44,10 @@ class PepEditorViewController: UIViewController {
         super.viewDidAppear(animated)
         self.userActivity = self.view.window?.windowScene?.userActivity
         self.restorationInfo = nil
-
+        // testing
+//        let k = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+//        print(k as Any)
+//        print(self.view.window as Any)
     }
 
     override func updateUserActivityState(_ activity: NSUserActivity) {
@@ -66,12 +69,16 @@ class PepEditorViewController: UIViewController {
         guard let b = sender as? UIButton else {return}
         if b.currentTitle != "Close" {
             // new
+//            let sess = UIApplication.shared.windows.first {
+//                $0.rootViewController is Self
+//                }?.windowScene?.session
             let opts = UIScene.ActivationRequestOptions()
             opts.requestingScene = self.view.window?.windowScene
             let act = NSUserActivity(activityType: Self.newEditorActivityType)
             let key = Self.whichPepBoyWeAreEditing
-            act.addUserInfoEntries(from: [key:self.pepName])
+            act.userInfo = [key:self.pepName]
             UIApplication.shared.requestSceneSessionActivation(
+                // sess ?? nil, // prevent new window if already editing
                 nil,
                 userActivity: act,
                 options: opts,

@@ -8,11 +8,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         print("will connect", session.persistentIdentifier, window as Any)
+        print("scene title", scene.title as Any)
         guard let scene = (scene as? UIWindowScene) else { return }
         
         scene.userActivity =
             session.stateRestorationActivity ??
-            NSUserActivity(activityType: "com.neuburg.multiplewindows.restoration")
+            NSUserActivity(activityType: "com.neuburg.mw.restoration")
         
         // look for conditions under which we are an independent pep editor
         // either we've just been told to make a new editor...
@@ -34,6 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         // if either of those is true, make an independent editor and stop
         if !pepName.isEmpty {
+            scene.title = "Editing"
             let s = scene.session.configuration.storyboard!
             let peped = s.instantiateViewController(identifier: "pepEditor") as! PepEditorViewController
             peped.pepName = pepName

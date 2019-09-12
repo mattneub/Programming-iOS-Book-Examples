@@ -30,8 +30,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // can do here what we would do in Info.plist
     // NB to test, be sure to kill all sessions first! otherwise not a cold launch
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        print("scene config")
-        let config = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        print("scene config", options)
+        // let config = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        let config = UISceneConfiguration(name: "Default Configuration", sessionRole: .windowApplication)
         config.delegateClass = SceneDelegate.self
         config.storyboard = UIStoryboard(name: "Main", bundle: nil)
         return config

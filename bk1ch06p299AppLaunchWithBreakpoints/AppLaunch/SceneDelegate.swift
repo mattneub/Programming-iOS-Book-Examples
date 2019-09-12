@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = scene as? UIWindowScene else { return }
         // this doesn't work; if you do it, you have to go the whole way
         // and create the entire interface I think
-        //self.window = UIWindow(windowScene: scene)
+        // self.window = UIWindow(windowScene: scene)
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {

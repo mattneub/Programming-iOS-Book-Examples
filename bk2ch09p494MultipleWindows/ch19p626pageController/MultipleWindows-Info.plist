@@ -39,7 +39,7 @@
 			<array>
 				<dict>
 					<key>Class Name NOT</key>
-					<string></string>
+					<string>Dummy</string>
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneConfigurationName</key>
