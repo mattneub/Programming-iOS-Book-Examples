@@ -31,6 +31,8 @@ class MyViewController: UIViewController {
         
         let wv = WKWebView()
         wv.backgroundColor = .white
+        wv.backgroundColor = .clear
+        self.view.backgroundColor = .white
         self.view.addSubview(wv)
         wv.frame = self.view.bounds
         wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -38,6 +40,11 @@ class MyViewController: UIViewController {
         let s = try! String(contentsOfFile: f!)
         wv.loadHTMLString(s, baseURL: nil)
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("horizontal", self.traitCollection.horizontalSizeClass == .compact ? "compact" : "regular")
     }
 }
 
@@ -64,7 +71,9 @@ class ViewController: UIViewController {
             pop.sourceView = (sender as! UIView)
             pop.sourceRect = (sender as! UIView).bounds
             pop.permittedArrowDirections = .down
-            pop.backgroundColor = .white
+//            pop.backgroundColor = .white
+            // no effect in iOS 13; in iOS 12 the arrow would turn blue
+            pop.backgroundColor = .blue
             print(pop.presentationStyle.rawValue, pop.adaptivePresentationStyle.rawValue)
             // but the _adaptive_ style can change: by default on iphone it is formsheet
         }

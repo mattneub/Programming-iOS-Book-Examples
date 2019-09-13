@@ -39,7 +39,7 @@ class MasterViewController: UITableViewController {
         cell.textLabel!.text = model[indexPath.row]
         return cell
     }
-    
+    static let detailChosen = Notification.Name(rawValue:"detailChosen")
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()
         detail.boy = model[indexPath.row]
@@ -50,7 +50,7 @@ class MasterViewController: UITableViewController {
         let nav = UINavigationController(rootViewController: detail)
         self.showDetailViewController(nav, sender: self)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"detailChosen"), object: self)
+        NotificationCenter.default.post(name:Self.detailChosen, object: self)
         
         // nice touch, from TidBITS News app
         if let svc = self.splitViewController {

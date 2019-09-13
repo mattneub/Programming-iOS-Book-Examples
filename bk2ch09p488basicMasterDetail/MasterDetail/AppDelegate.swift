@@ -101,7 +101,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
         self.window!.rootViewController = svc
         self.window!.makeKeyAndVisible()
         
-        NotificationCenter.default.addObserver(forName: Notification.Name("detailChosen"), object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: MasterViewController.detailChosen, object: nil, queue: nil) { _ in
             print("detail chosen")
             self.detailChosen = true
         }
