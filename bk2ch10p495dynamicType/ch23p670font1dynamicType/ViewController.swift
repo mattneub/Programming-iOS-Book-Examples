@@ -31,6 +31,8 @@ class ViewController : UIViewController {
 
         
         // and presto, it is now dynamic! wow!!!!!
+        // ok weird, I get inconsistent results
+        // I've made a movie to prove it does work sometimes
         
         // similarly for a button...
         // adjustsFontForContentSizeCategory applies only to UILabel, UITextField, UITextView
@@ -41,14 +43,23 @@ class ViewController : UIViewController {
         
     }
     
-    #warning("call super")
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.lab2.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: self.lab2.font)
+        self.lab2.adjustsFontForContentSizeCategory = true
+
+    }
+        
     override func traitCollectionDidChange(_ oldtc: UITraitCollection?) {
+
         let newsize = self.traitCollection.preferredContentSizeCategory
         let oldsize = oldtc?.preferredContentSizeCategory
         if newsize != oldsize {
             print("changed size!", newsize)
         }
+        
+        super.traitCollectionDidChange(oldtc)
+
     }
     
     

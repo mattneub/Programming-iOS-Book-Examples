@@ -30,8 +30,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         // ...or we're restoring an independent editor
         if let pep = scene.userActivity?.userInfo?[key] as? String {
-            print("I have a whichPepBoyWeAreEditing key")
-            pepName = pep
+            let idkey = PepEditorViewController.sessionid
+            if let id = scene.userActivity?.userInfo?[idkey] as? String {
+                print("I have a whichPepBoyWeAreEditing key")
+                if id == session.persistentIdentifier {
+                    print("and I have an identifier match")
+                    pepName = pep
+                }
+            }
         }
         // if either of those is true, make an independent editor and stop
         if !pepName.isEmpty {

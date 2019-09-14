@@ -17,6 +17,7 @@ class PepEditorViewController: UIViewController {
     static let isFavoriteRestorationKey = "favorite"
     static let whichPepBoyWeAreEditing = "whichPepEditing"
     static let newEditorActivityType = "com.neuburg.multiplewindows.pepEdit"
+    static let sessionid = "sessionid"
 
     override func viewDidLoad() {
         
@@ -52,7 +53,8 @@ class PepEditorViewController: UIViewController {
 
     override func updateUserActivityState(_ activity: NSUserActivity) {
         super.updateUserActivityState(activity)
-        print(self.view.window?.windowScene?.session.persistentIdentifier as Any)
+        let id = self.view.window?.windowScene?.session.persistentIdentifier
+        print(id as Any)
         print("pep editor update user activity state")
         let key = Self.editingRestorationKey
         activity.addUserInfoEntries(from: [key:true])
@@ -61,6 +63,8 @@ class PepEditorViewController: UIViewController {
         if self.presentingViewController == nil {
             let key3 = Self.whichPepBoyWeAreEditing
             activity.addUserInfoEntries(from: [key3:self.pepName])
+            let key4 = Self.sessionid
+            activity.addUserInfoEntries(from: [key4:id!])
         }
         print(activity.userInfo as Any)
     }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,23 +22,32 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A wild and crazy label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDx-Rm-Fvd">
-                                <rect key="frame" x="20" y="68" width="166" height="21"/>
+                                <rect key="frame" x="20" y="48" width="166" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A sane and tepid label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt9-EY-H1f">
-                                <rect key="frame" x="20" y="111" width="225" height="22"/>
+                                <rect key="frame" x="20" y="91" width="225" height="22"/>
                                 <fontDescription key="fontDescription" name="SourceCodePro-Regular" family="Source Code Pro" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxE-lu-XCt">
+                                <rect key="frame" x="23" y="617" width="41" height="30"/>
+                                <state key="normal" title="Install"/>
+                                <connections>
+                                    <action selector="doInstall:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="om5-Bm-4WE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PxE-lu-XCt" firstAttribute="leading" secondItem="IIz-Uo-LLB" secondAttribute="leading" constant="23" id="2My-uH-sFi"/>
                             <constraint firstItem="yDx-Rm-Fvd" firstAttribute="leading" secondItem="IIz-Uo-LLB" secondAttribute="leading" constant="20" id="dA6-hH-PLT"/>
                             <constraint firstItem="Rt9-EY-H1f" firstAttribute="top" secondItem="yDx-Rm-Fvd" secondAttribute="bottom" constant="22" id="j5T-a0-pwb"/>
                             <constraint firstItem="yDx-Rm-Fvd" firstAttribute="top" secondItem="IIz-Uo-LLB" secondAttribute="top" constant="48" id="uSI-QZ-Ag0"/>
+                            <constraint firstItem="IIz-Uo-LLB" firstAttribute="bottom" secondItem="PxE-lu-XCt" secondAttribute="bottom" constant="20" id="us1-TG-2V2"/>
                             <constraint firstItem="Rt9-EY-H1f" firstAttribute="leading" secondItem="IIz-Uo-LLB" secondAttribute="leading" constant="20" id="x0x-Pd-H7H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IIz-Uo-LLB"/>

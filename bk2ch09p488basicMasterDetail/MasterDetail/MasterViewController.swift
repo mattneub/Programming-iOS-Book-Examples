@@ -39,7 +39,7 @@ class MasterViewController: UITableViewController {
         cell.textLabel!.text = model[indexPath.row]
         return cell
     }
-    static let detailChosen = Notification.Name(rawValue:"detailChosen")
+    static let detailChosen = Notification.Name("detailChosen")
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()
         detail.boy = model[indexPath.row]

@@ -72,6 +72,12 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
     // called automatically because we share this activity with the scene
     // however, at that point any user info in the old activity has been removed!
     override func updateUserActivityState(_ activity: NSUserActivity) {
+//        var id : UIBackgroundTaskIdentifier = .invalid
+//        id = UIApplication.shared.beginBackgroundTask {
+//            UIApplication.shared.endBackgroundTask(id)
+//        }
+//        defer { UIApplication.shared.endBackgroundTask(id) }
+
         super.updateUserActivityState(activity)
         let page = self.pageViewController.viewControllers![0] as! Pep
         let boy = page.boy

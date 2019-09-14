@@ -17,21 +17,27 @@ class ViewController : UIViewController {
         print(desc)
         print(desc2 as Any)
         print(f2)
+        self.doDynamicType()
     }
-    
-    #warning("call super")
-    
+        
     override func traitCollectionDidChange(_ ptc: UITraitCollection?) {
+        super.traitCollectionDidChange(ptc)
         let tc = self.traitCollection
         if ptc == nil ||
         ptc!.preferredContentSizeCategory != tc.preferredContentSizeCategory {
-            self.doDynamicType()
+            // self.doDynamicType()
+            // no need, it's already dynamic
         }
     }
     
     func doDynamicType() {
         
-        let body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:.body)
+        var body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:.body)
+        if #available(iOS 13.0, *) {
+            if let desc = body.withDesign(.serif) { // weehoo
+                body = desc
+            }
+        }
         let emphasis = body.withSymbolicTraits(.traitItalic)!
         let fbody = UIFont(descriptor: body, size: 0)
         let femphasis = UIFont(descriptor: emphasis, size: 0)

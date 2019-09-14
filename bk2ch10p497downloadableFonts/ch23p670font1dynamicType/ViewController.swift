@@ -1,6 +1,7 @@
 
 
 import UIKit
+import CoreText
 
 class ViewController : UIViewController {
     
@@ -59,4 +60,13 @@ class ViewController : UIViewController {
             })
     }
     
+    @IBAction func doInstall(_ sender: Any) {
+        if let url = Bundle.main.url(forResource: "SourceCodePro-Regular", withExtension: "ttf") {
+            print("trying")
+            CTFontManagerRegisterFontURLs([url] as CFArray, .persistent, true) { errs, ok in
+                print(ok)
+                return true
+            }
+        }
+    }
 }

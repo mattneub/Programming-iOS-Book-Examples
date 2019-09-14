@@ -108,5 +108,26 @@ class ViewController : UIViewController {
     }
     
     
+    @IBAction func doFont(_ sender: Any) {
+        let config = UIFontPickerViewController.Configuration()
+        // config.displayUsingSystemFont = true
+        // config.includeFaces = true
+        // config.filteredTraits = [.classSansSerif]
+        let picker = UIFontPickerViewController(configuration: config)
+        picker.delegate = self
+        self.present(picker, animated:true)
+    }
     
+}
+
+extension ViewController : UIFontPickerViewControllerDelegate {
+    func fontPickerViewControllerDidCancel(_ vc: UIFontPickerViewController) {
+        print("cancel")
+    }
+
+    
+    func fontPickerViewControllerDidPickFont(_ vc: UIFontPickerViewController) {
+        print(vc.selectedFontDescriptor)
+        // automatically dismisses
+    }
 }

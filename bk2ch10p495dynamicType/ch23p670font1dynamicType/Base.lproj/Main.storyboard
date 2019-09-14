@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A wild and crazy label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDx-Rm-Fvd">
-                                <rect key="frame" x="20" y="68" width="173" height="20.5"/>
+                                <rect key="frame" x="20" y="48" width="173" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -38,14 +34,28 @@
                                 <state key="normal" title="Button"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An even wilder and crazier label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yno-WP-NaF">
-                                <rect key="frame" x="20" y="105.5" width="240" height="20"/>
+                                <rect key="frame" x="20" y="81.5" width="240" height="20"/>
                                 <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="exclamationmark.triangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0jZ-5j-6fE">
+                                <rect key="frame" x="20" y="120" width="26" height="23"/>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large">
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                </preferredSymbolConfiguration>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A wild and crazy label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elX-Gb-7pM">
+                                <rect key="frame" x="54" y="121.5" width="173" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="0jZ-5j-6fE" firstAttribute="leading" secondItem="KEa-jI-etG" secondAttribute="leading" constant="20" id="Ag6-ke-Cfn"/>
                             <constraint firstItem="KEa-jI-etG" firstAttribute="bottom" secondItem="bdx-Xp-Hca" secondAttribute="bottom" constant="20" id="CJm-8Q-gqQ"/>
                             <constraint firstItem="Yno-WP-NaF" firstAttribute="firstBaseline" secondItem="yDx-Rm-Fvd" secondAttribute="baseline" multiplier="1.2" constant="20" symbolType="layoutAnchor" id="CuD-U1-Mq7"/>
                             <constraint firstItem="KEa-jI-etG" firstAttribute="trailing" secondItem="bdx-Xp-Hca" secondAttribute="trailing" constant="20" id="EVP-P9-Nug"/>
@@ -53,7 +63,10 @@
                             <constraint firstItem="yDx-Rm-Fvd" firstAttribute="leading" secondItem="KEa-jI-etG" secondAttribute="leading" constant="20" id="dA6-hH-PLT"/>
                             <constraint firstItem="bdx-Xp-Hca" firstAttribute="top" secondItem="Qcx-Jx-5P2" secondAttribute="bottom" constant="52" id="drd-bB-rbz"/>
                             <constraint firstItem="KEa-jI-etG" firstAttribute="trailing" secondItem="Qcx-Jx-5P2" secondAttribute="trailing" constant="96" id="fpq-BR-zuF"/>
+                            <constraint firstItem="0jZ-5j-6fE" firstAttribute="top" secondItem="Yno-WP-NaF" secondAttribute="bottom" constant="20.5" id="gsN-0E-mmC"/>
                             <constraint firstItem="yDx-Rm-Fvd" firstAttribute="top" secondItem="KEa-jI-etG" secondAttribute="top" constant="48" id="uSI-QZ-Ag0"/>
+                            <constraint firstItem="elX-Gb-7pM" firstAttribute="leading" secondItem="0jZ-5j-6fE" secondAttribute="trailing" constant="8" symbolic="YES" id="vJh-dl-Spr"/>
+                            <constraint firstItem="elX-Gb-7pM" firstAttribute="centerY" secondItem="0jZ-5j-6fE" secondAttribute="centerY" id="yJ3-OJ-She"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KEa-jI-etG"/>
                     </view>
@@ -68,4 +81,7 @@
             <point key="canvasLocation" x="40" y="26.986506746626688"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="exclamationmark.triangle.fill" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

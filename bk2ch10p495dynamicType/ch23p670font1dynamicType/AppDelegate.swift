@@ -13,9 +13,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         // to be honest, I'd rather see it this way
         
+        print("=======")
+        
         UIFont.familyNames.sorted().forEach { name in
             print(name, UIFont.fontNames(forFamilyName:name))
         }
+        
+        print("=======")
 
 
         // what explains the empty families? they are aliases
