@@ -2,5 +2,5 @@
 "CFBundleDisplayName" = "Fenêtre Vide";
 
 /* Bundle name */
-"CFBundleName" = "$(PRODUCT_NAME)";
+"CFBundleName" = "Empty Window";
 

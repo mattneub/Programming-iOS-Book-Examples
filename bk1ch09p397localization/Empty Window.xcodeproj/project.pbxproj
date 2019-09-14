@@ -12,8 +12,8 @@
 		818047551F2E5DF20096D446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818047531F2E5DF20096D446 /* Main.storyboard */; };
 		818047571F2E5DF20096D446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 818047561F2E5DF20096D446 /* Assets.xcassets */; };
 		8180475A1F2E5DF20096D446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818047581F2E5DF20096D446 /* LaunchScreen.storyboard */; };
-		818047651F2E60350096D446 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 818047671F2E60350096D446 /* InfoPlist.strings */; };
-		8180476A1F2E60350096D446 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8180476C1F2E60350096D446 /* Localizable.strings */; };
+		9E6E00A0232DA3DF008B8DE3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E6E009E232DA3DF008B8DE3 /* Localizable.strings */; };
+		9E6E00A3232DA3DF008B8DE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E6E00A1232DA3DF008B8DE3 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		8180475B1F2E5DF20096D446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		818047611F2E5ED40096D446 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		818047621F2E5ED40096D446 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		818047661F2E60350096D446 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8180476B1F2E60350096D446 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9E6E009F232DA3DF008B8DE3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9E6E00A2232DA3DF008B8DE3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +60,14 @@
 		8180474E1F2E5DF20096D446 /* Empty Window */ = {
 			isa = PBXGroup;
 			children = (
-				8180476C1F2E60350096D446 /* Localizable.strings */,
-				818047671F2E60350096D446 /* InfoPlist.strings */,
 				8180474F1F2E5DF20096D446 /* AppDelegate.swift */,
 				818047511F2E5DF20096D446 /* ViewController.swift */,
 				818047531F2E5DF20096D446 /* Main.storyboard */,
 				818047561F2E5DF20096D446 /* Assets.xcassets */,
 				818047581F2E5DF20096D446 /* LaunchScreen.storyboard */,
 				8180475B1F2E5DF20096D446 /* Info.plist */,
+				9E6E00A1232DA3DF008B8DE3 /* InfoPlist.strings */,
+				9E6E009E232DA3DF008B8DE3 /* Localizable.strings */,
 			);
 			path = "Empty Window";
 			sourceTree = "<group>";
@@ -132,11 +132,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8180476A1F2E60350096D446 /* Localizable.strings in Resources */,
 				8180475A1F2E5DF20096D446 /* LaunchScreen.storyboard in Resources */,
-				818047651F2E60350096D446 /* InfoPlist.strings in Resources */,
+				9E6E00A0232DA3DF008B8DE3 /* Localizable.strings in Resources */,
 				818047571F2E5DF20096D446 /* Assets.xcassets in Resources */,
 				818047551F2E5DF20096D446 /* Main.storyboard in Resources */,
+				9E6E00A3232DA3DF008B8DE3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,20 +173,20 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		818047671F2E60350096D446 /* InfoPlist.strings */ = {
+		9E6E009E232DA3DF008B8DE3 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				818047661F2E60350096D446 /* fr */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8180476C1F2E60350096D446 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8180476B1F2E60350096D446 /* fr */,
+				9E6E009F232DA3DF008B8DE3 /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9E6E00A1232DA3DF008B8DE3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E6E00A2232DA3DF008B8DE3 /* fr */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
