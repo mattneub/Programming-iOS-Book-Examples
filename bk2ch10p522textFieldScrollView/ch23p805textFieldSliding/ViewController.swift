@@ -35,6 +35,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        print(textField.selectedTextRange)
+    }
+    
     enum KeyboardState {
         case unknown
         case entering
@@ -58,6 +62,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 ks = .exiting
             }
         }
+        print(ks == .entering ? "entering" : ks == .exiting ? "exiting" : "unknown")
         return (ks, newRect)
     }
 
@@ -74,7 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset
         if let rnew = rnew {
-            let h = rnew.intersection(self.scrollView.bounds).height
+            let h = rnew.intersection(self.scrollView.bounds).height + 6 // ?
             self.scrollView.contentInset.bottom = h
             self.scrollView.scrollIndicatorInsets.bottom = h
         }

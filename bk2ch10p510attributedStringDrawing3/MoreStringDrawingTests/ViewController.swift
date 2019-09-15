@@ -44,10 +44,11 @@ class ViewController: UIViewController {
         print(con.totalBounds) // same answer
         
         // testing minimumScaleFactor; we never get an actual scale factor other than 1
-        
+        // and it visibly does nothing
+        var y = 50 as CGFloat
         do {
             for w in [240,230,220] {
-                let s2 = NSMutableAttributedString(string:"Little poltergeists make up the principle form")
+                let s2 = NSMutableAttributedString(string:"Little poltergeists make up", attributes:[.font:UIFont.systemFont(ofSize: 20)])
                 let p = lend {
                     (p:NSMutableParagraphStyle) in
                     p.allowsDefaultTighteningForTruncation = false
@@ -57,6 +58,15 @@ class ViewController: UIViewController {
                 con.minimumScaleFactor = 0.5
                 s2.boundingRect(with:CGSize(CGFloat(w),10000), options: [.usesLineFragmentOrigin], context: con)
                 print(w, con.totalBounds, con.actualScaleFactor)
+                
+                let r = UIGraphicsImageRenderer(bounds:con.totalBounds)
+                let im = r.image {_ in
+                    s2.draw(with: con.totalBounds, options: [.usesLineFragmentOrigin], context: con)
+                }
+                let iv = UIImageView(image: im)
+                iv.frame.origin.y = y
+                y += con.totalBounds.height + 30
+                self.view.addSubview(iv)
             }
         }
         
@@ -73,6 +83,16 @@ class ViewController: UIViewController {
                 con.minimumScaleFactor = 0.5
                 s2.boundingRect(with:CGSize(CGFloat(w),10000), options: [.usesLineFragmentOrigin, .truncatesLastVisibleLine], context: con)
                 print(w, con.totalBounds, con.actualScaleFactor)
+                
+                let r = UIGraphicsImageRenderer(bounds:con.totalBounds)
+                let im = r.image {_ in
+                    s2.draw(with: con.totalBounds, options: [.usesLineFragmentOrigin], context: con)
+                }
+                let iv = UIImageView(image: im)
+                iv.frame.origin.y = y
+                y += con.totalBounds.height + 30
+                self.view.addSubview(iv)
+
             }
         }
 

@@ -63,7 +63,8 @@ class ViewController : UIViewController {
     @IBAction func doInstall(_ sender: Any) {
         if let url = Bundle.main.url(forResource: "SourceCodePro-Regular", withExtension: "ttf") {
             print("trying")
-            CTFontManagerRegisterFontURLs([url] as CFArray, .persistent, true) { errs, ok in
+            let urls = [url] as CFArray
+            CTFontManagerRegisterFontURLs(urls, .persistent, true) { errs, ok in
                 print(ok)
                 return true
             }

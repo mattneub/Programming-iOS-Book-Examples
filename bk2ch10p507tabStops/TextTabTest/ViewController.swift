@@ -45,8 +45,9 @@ class ViewController : UIViewController {
         let s = "Onions\t$2.34\nPeppers\t$15.2\n"
         let mas = NSMutableAttributedString(string:s, attributes:[
             .font:UIFont(name:"GillSans", size:15)!,
-            // .foregroundColor:UIColor.red,
+            //.foregroundColor:UIColor.red,
             // hmm, causes images to go opaque red
+            .foregroundColor:UIColor.label,
             .paragraphStyle:lend {
                 (p:NSMutableParagraphStyle) in
                 let terms = NSTextTab.columnTerminators(for:Locale.current)
@@ -73,17 +74,18 @@ class ViewController : UIViewController {
         let onions = self.thumbnailOfImage(name:"onion", extension:"jpg")
         let peppers = self.thumbnailOfImage(name:"peppers", extension:"jpg")
         
-        let onionatt = NSTextAttachment(image: onions)
-        // onionatt.image = onions
+        let onionatt = NSTextAttachment()
+        onionatt.image = onions
         onionatt.bounds = CGRect(0,-5,onions.size.width,onions.size.height)
         let onionattchar = NSAttributedString(attachment:onionatt)
         
-        let pepperatt = NSTextAttachment(image: peppers)
-        // pepperatt.image = peppers
+        let pepperatt = NSTextAttachment()
+        pepperatt.image = peppers
         pepperatt.bounds = CGRect(0,-1,peppers.size.width,peppers.size.height)
         let pepperattchar = NSAttributedString(attachment:pepperatt)
         
-        let checkim = UIImage(systemName:"checkmark.circle")!
+        let checkim = UIImage(systemName:"checkmark.circle")!.withRenderingMode(.alwaysOriginal)
+        // if you don't ask for always original, you don't get automatic tinting
         let check = NSTextAttachment(image:checkim)
         let checkchar = NSAttributedString(attachment:check)
         

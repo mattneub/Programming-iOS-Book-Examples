@@ -44,7 +44,7 @@ class ViewController : UIViewController {
         self.lab1.allowsDefaultTighteningForTruncation = tighten
         self.lab2.allowsDefaultTighteningForTruncation = tighten
         
-        let s = "Little poltergeists make up the principal form of material manifestation."
+        let s = "Little poltergeists make up the principal form of material manifestation and that's for sure."
         self.lab1.text = s
         self.lab1.font = f
         self.lab1.textAlignment = align

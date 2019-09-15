@@ -2,7 +2,7 @@
 import UIKit
 
 extension NSAttributedString.Key {
-    static let myDate = NSAttributedString.Key(rawValue:"myDate")
+    static let myDate = NSAttributedString.Key("myDate")
 }
 
 class ViewController: UIViewController {
