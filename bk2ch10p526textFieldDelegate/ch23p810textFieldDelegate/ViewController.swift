@@ -29,6 +29,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let mi = UIMenuItem(title:"Expand", action:#selector(MyTextField.expand))
         let mc = UIMenuController.shared
         mc.menuItems = [mi]
+        
+        // self.tf.textDragInteraction?.isEnabled = false
+        // so it is enabled by default even on iPhone now?
 
     }
     

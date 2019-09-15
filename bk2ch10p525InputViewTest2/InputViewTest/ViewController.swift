@@ -28,7 +28,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 import UIKit
 
-class MyDoneButtonViewController : UIInputViewController {
+class MyDoneButtonVC : UIInputViewController {
     weak var delegate : UIViewController?
     override func viewDidLoad() {
         
@@ -71,7 +71,7 @@ class MyDoneButtonViewController : UIInputViewController {
 
 }
 
-class MyPickerViewController : UIInputViewController {
+class MyPickerVC : UIInputViewController {
     var currentPep = "Manny"
     var pep = ["Manny", "Moe", "Jack"]
 
@@ -107,7 +107,7 @@ class MyPickerViewController : UIInputViewController {
     
 }
 
-extension MyPickerViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+extension MyPickerVC : UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -150,8 +150,8 @@ class MyTextField : UITextField {
 
 class ViewController: UIViewController {
     @IBOutlet weak var lab: UILabel!
-    let pvc = MyPickerViewController()
-    let mdbvc = MyDoneButtonViewController()
+    let pvc = MyPickerVC()
+    let mdbvc = MyDoneButtonVC()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mdbvc.delegate = self // for dismissal

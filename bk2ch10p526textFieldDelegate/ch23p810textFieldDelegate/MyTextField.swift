@@ -59,6 +59,7 @@ class MyTextField: UITextField {
             pb.string = s
             
             s = pb.string! // shut the compiler up
+            print("copied", s)
         }
     }
 }

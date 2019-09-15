@@ -87,6 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardHide(_ n:Notification) {
         let d = n.userInfo!
+        print("hide")
         let (state, _) = keyboardState(for:d, in:self.scrollView)
         if state == .exiting {
             print("really hiding")
