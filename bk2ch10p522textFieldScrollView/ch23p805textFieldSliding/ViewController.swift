@@ -11,9 +11,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // content view's width and height constraints in storyboard are placeholders
         let contentView = self.scrollView.subviews[0]
@@ -21,6 +18,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             contentView.widthAnchor.constraint(equalTo:self.scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalTo:self.scrollView.heightAnchor),
         ])
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardChange), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+
         
         self.scrollView.keyboardDismissMode = .interactive
         
@@ -36,7 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        print(textField.selectedTextRange)
+        print(textField.selectedTextRange as Any)
     }
     
     enum KeyboardState {
@@ -67,6 +69,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc func keyboardShow(_ n:Notification) {
+        print("show")
+        guard self.traitCollection.userInterfaceIdiom == .phone else {return}
         let d = n.userInfo!
         let (state, rnew) = keyboardState(for:d, in:self.scrollView)
         if state == .entering {
@@ -86,8 +90,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardHide(_ n:Notification) {
-        let d = n.userInfo!
         print("hide")
+        guard self.traitCollection.userInterfaceIdiom == .phone else {return}
+        let d = n.userInfo!
         let (state, _) = keyboardState(for:d, in:self.scrollView)
         if state == .exiting {
             print("really hiding")
@@ -98,6 +103,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    
+    @objc func keyboardChange(_ n:Notification) {
+        print("keyboard change")
+    }
+
     
 }

@@ -45,9 +45,8 @@ class ViewController : UIViewController {
         let s = "Onions\t$2.34\nPeppers\t$15.2\n"
         let mas = NSMutableAttributedString(string:s, attributes:[
             .font:UIFont(name:"GillSans", size:15)!,
-            //.foregroundColor:UIColor.red,
-            // hmm, causes images to go opaque red
-            .foregroundColor:UIColor.label,
+            .foregroundColor:UIColor.red,
+            //.foregroundColor:UIColor.label,
             .paragraphStyle:lend {
                 (p:NSMutableParagraphStyle) in
                 let terms = NSTextTab.columnTerminators(for:Locale.current)
@@ -106,6 +105,7 @@ class ViewController : UIViewController {
         // aha! son of a gun, I finally figured this out!
         // you have to set the overall `linkTextAttributes` to an empty dictionary
         
+        // note that self.tv.linkTextAttributes does NOT apply to these
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "(805)-123-4567", attributes: nil))
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
@@ -119,6 +119,7 @@ class ViewController : UIViewController {
         // this works but it applies to all links
         print(self.tv.linkTextAttributes as Any)
         self.tv.linkTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange]
+        // this allows individual link's attributes to work
         self.tv.linkTextAttributes = [:]
         
 //        print(NSTextAttachment.character)
@@ -132,7 +133,7 @@ class ViewController : UIViewController {
             let mas = NSMutableAttributedString()
             mas.append(NSAttributedString(string: "LINKNOT", attributes: [
                 .link : URL(string: "https://www.apple.com")!,
-                .foregroundColor : UIColor.green,
+                .foregroundColor : UIColor.green, // this is ignored????
                 .underlineStyle : NSUnderlineStyle.single.rawValue
             ]))
             let lab = UILabel()
@@ -141,6 +142,7 @@ class ViewController : UIViewController {
             lab.isUserInteractionEnabled = true
             self.view.addSubview(lab)
             lab.frame.origin.y += 30
+            lab.frame.origin.x += 10
             // just proving that (a) you can set this appearance, and (b) you can't tap it
         }
     }
