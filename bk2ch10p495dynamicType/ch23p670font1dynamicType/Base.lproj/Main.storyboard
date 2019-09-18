@@ -40,14 +40,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="exclamationmark.triangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0jZ-5j-6fE">
-                                <rect key="frame" x="20" y="120" width="26" height="23"/>
+                                <rect key="frame" x="24.5" y="149.5" width="26" height="23"/>
                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large">
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 </preferredSymbolConfiguration>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A wild and crazy label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elX-Gb-7pM">
-                                <rect key="frame" x="54" y="121.5" width="173" height="20.5"/>
+                                <rect key="frame" x="58.5" y="151" width="173" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0jZ-5j-6fE" firstAttribute="leading" secondItem="KEa-jI-etG" secondAttribute="leading" constant="20" id="Ag6-ke-Cfn"/>
+                            <constraint firstItem="0jZ-5j-6fE" firstAttribute="centerX" secondItem="KEa-jI-etG" secondAttribute="centerX" multiplier="0.2" id="2Kc-OG-Xos"/>
                             <constraint firstItem="KEa-jI-etG" firstAttribute="bottom" secondItem="bdx-Xp-Hca" secondAttribute="bottom" constant="20" id="CJm-8Q-gqQ"/>
                             <constraint firstItem="Yno-WP-NaF" firstAttribute="firstBaseline" secondItem="yDx-Rm-Fvd" secondAttribute="baseline" multiplier="1.2" constant="20" symbolType="layoutAnchor" id="CuD-U1-Mq7"/>
                             <constraint firstItem="KEa-jI-etG" firstAttribute="trailing" secondItem="bdx-Xp-Hca" secondAttribute="trailing" constant="20" id="EVP-P9-Nug"/>
@@ -63,7 +63,7 @@
                             <constraint firstItem="yDx-Rm-Fvd" firstAttribute="leading" secondItem="KEa-jI-etG" secondAttribute="leading" constant="20" id="dA6-hH-PLT"/>
                             <constraint firstItem="bdx-Xp-Hca" firstAttribute="top" secondItem="Qcx-Jx-5P2" secondAttribute="bottom" constant="52" id="drd-bB-rbz"/>
                             <constraint firstItem="KEa-jI-etG" firstAttribute="trailing" secondItem="Qcx-Jx-5P2" secondAttribute="trailing" constant="96" id="fpq-BR-zuF"/>
-                            <constraint firstItem="0jZ-5j-6fE" firstAttribute="top" secondItem="Yno-WP-NaF" secondAttribute="bottom" constant="20.5" id="gsN-0E-mmC"/>
+                            <constraint firstItem="0jZ-5j-6fE" firstAttribute="top" secondItem="Yno-WP-NaF" secondAttribute="bottom" constant="50" id="gsN-0E-mmC"/>
                             <constraint firstItem="yDx-Rm-Fvd" firstAttribute="top" secondItem="KEa-jI-etG" secondAttribute="top" constant="48" id="uSI-QZ-Ag0"/>
                             <constraint firstItem="elX-Gb-7pM" firstAttribute="leading" secondItem="0jZ-5j-6fE" secondAttribute="trailing" constant="8" symbolic="YES" id="vJh-dl-Spr"/>
                             <constraint firstItem="elX-Gb-7pM" firstAttribute="centerY" secondItem="0jZ-5j-6fE" secondAttribute="centerY" id="yJ3-OJ-She"/>
