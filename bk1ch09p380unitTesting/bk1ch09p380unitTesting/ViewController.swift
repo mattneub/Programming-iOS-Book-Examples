@@ -5,7 +5,7 @@ import UIKit
 class ViewController: UIViewController {
 
     func dogMyCats(_ s:String) -> String {
-        // return "" // fail test; comment out to pass test
+        return "" // fail test; comment out to pass test
         return "dogs"
     }
 

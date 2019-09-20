@@ -5,6 +5,7 @@ import SwiftUI
 struct ContentView : View {
     @State var isHello = true
     @EnvironmentObject var defaults : Defaults
+    @Environment(\.timeZone) var timeZone // just showing the syntax
     var greeting : String {
         self.isHello ? "Hello" : "Goodbye"
     }
@@ -13,6 +14,7 @@ struct ContentView : View {
         VStack {
             Button("Show Message") {
                 self.showSheet.toggle()
+                print(self.timeZone)
             }.sheet(isPresented: $showSheet) {
                 Greeting(greeting: self.greeting,
                          username: self.$defaults.username)
