@@ -16,7 +16,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
     "commandLineArgumentEntries" : [
 
     ],
@@ -26,6 +25,7 @@
   },
   "testTargets" : [
     {
+      "enabled" : false,
       "target" : {
         "containerPath" : "container:bk1ch09p380unitTesting.xcodeproj",
         "identifier" : "814A1AA11D109B13008F3FF6",
@@ -33,6 +33,10 @@
       }
     },
     {
+      "skippedTests" : [
+        "EmptyWindowTests\/testAsyncExample()",
+        "EmptyWindowTests\/testPerformanceExample()"
+      ],
       "target" : {
         "containerPath" : "container:bk1ch09p380unitTesting.xcodeproj",
         "identifier" : "814A1AAF1D109C1F008F3FF6",
