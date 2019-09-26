@@ -143,6 +143,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
             config.userContentController.add(handler, name: "playbutton")
         }
         
+        wv.configuration.applicationNameForUserAgent = "Version/1.0 MyShinyBrowser/1.0" // not working, too late?
+        
+        
         wv.restorationIdentifier = "wv"
         wv.scrollView.backgroundColor = .black // web view alone, ineffective
 
@@ -159,8 +162,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         wv.allowsBackForwardNavigationGestures = false
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(style:.whiteLarge)
+        let act = UIActivityIndicatorView(style:.large)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
+        act.color = .white
         self.activity = act
         wv.addSubview(act)
         act.translatesAutoresizingMaskIntoConstraints = false
@@ -355,7 +359,24 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
     
     
     var safariurl : URL?
+    // I injected a link to google myself into the HTML...
+    // I expect to see the desktop version of the site in my web view, but I don't
+    // aha, ok, I was able to get this to work perfectly by using Version/13.0.1 Safari/605.1.15
+    // now we can have desktop or mobile as desired
+    // wow this even works on an iPhone!
+//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+//        let preferences = WKWebpagePreferences()
+//        preferences.preferredContentMode = .desktop
+//        print("asking for desktop version")
+//        decisionHandler(.allow, preferences)
+//    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print(navigation.effectiveContentMode.rawValue) // 2, but I'm still not seeing the desktop version
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
+        print("old here")
         if navigationAction.navigationType == .linkActivated {
             if let url = navigationAction.request.url {
                 if url.scheme == "file" { // we do not scroll to anchor; bug in iOS 11?

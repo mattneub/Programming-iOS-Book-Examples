@@ -1,4 +1,5 @@
 <a name="ref"></a>
+<p><a href="https://www.google.com/search?q=Matt+Neuburg">Testing</a></p>
 <p>We already knew quite a bit about what made Mac OS X 10.7 Lion tick from previous, sometimes relatively exhaustive descriptions from Apple (see “<a href="http://tidbits.com/article/11682">Apple Offers a Glimpse of Mac OS X Lion</a>,” 20 October 2010, and “<a href="http://tidbits.com/article/11990">Apple Reveals More about Mac OS X Lion</a>,” 24 February 2011). During its Worldwide Developer Conference keynote, however, Apple provided a bit more information on stage, and posted a list of <a href="http://www.apple.com/macosx/whats-new/features.html">250 features it describes as new to Lion</a>.</p>
 
 <p>Lion isn’t just borrowing from iOS as part of the Mac OS X refresh. It’s also providing a skin that can hide the most confusing parts of a desktop operating system from either users who don’t want to learn one or those who cannot master it. We all know people in both categories.</p> 

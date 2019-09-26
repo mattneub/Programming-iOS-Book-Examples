@@ -76,9 +76,16 @@ class ViewController: UIViewController {
         default:break
         }
         
-        let wv = WKWebView(frame: CGRect(30,30,200,300), configuration: config)
+        let wv = WKWebView(frame: CGRect(30,30,30,30), configuration: config)
         self.view.addSubview(wv)
         self.wv = wv
+        
+        wv.translatesAutoresizingMaskIntoConstraints = false
+        wv.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30).isActive = true
+        wv.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30).isActive = true
+        wv.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 30).isActive = true
+        wv.heightAnchor.constraint(equalToConstant: 200).isActive = true
+
         
         switch before {
         case false:
