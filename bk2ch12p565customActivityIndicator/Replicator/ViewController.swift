@@ -22,6 +22,11 @@ extension CGVector {
         self.init(dx:dx, dy:dy)
     }
 }
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
 
 
 
@@ -47,7 +52,7 @@ class ViewController: UIViewController {
         bar.add(anim, forKey: nil)
         lay.instanceDelay = anim.duration / Double(lay.instanceCount)
         self.view.layer.addSublayer(lay)
-        lay.position = CGPoint(self.view.layer.bounds.midX, self.view.layer.bounds.midY)
+        lay.position = self.view.layer.bounds.center
         
     }
 

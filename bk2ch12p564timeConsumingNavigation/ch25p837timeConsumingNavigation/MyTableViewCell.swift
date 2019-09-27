@@ -37,11 +37,9 @@ class MyTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         if selected {
-            let v = UIActivityIndicatorView(style:.whiteLarge)
+            let v = UIActivityIndicatorView(style:.large)
             v.color = .yellow
-            DispatchQueue.main.async {
-                v.backgroundColor = UIColor(white:0.2, alpha:0.6)
-            }
+            v.backgroundColor = UIColor(white:0.2, alpha:0.6)
             v.layer.cornerRadius = 10
             v.frame = v.frame.insetBy(dx: -10, dy: -10)
             v.center = self.contentView.convert(self.bounds.center, from: self)
@@ -50,9 +48,7 @@ class MyTableViewCell: UITableViewCell {
             v.startAnimating()
 
         } else {
-            if let v = self.viewWithTag(1001) {
-                v.removeFromSuperview()
-            }
+            self.viewWithTag(1001)?.removeFromSuperview()
         }
         super.setSelected(selected, animated: animated)
 

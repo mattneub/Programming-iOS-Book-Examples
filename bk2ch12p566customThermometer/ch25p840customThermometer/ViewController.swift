@@ -43,22 +43,24 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        // self.prog2.backgroundColor = .black
-        self.prog2.trackTintColor = .black
-        
         let r = UIGraphicsImageRenderer(size:CGSize(10,10))
-        let im = r.image {
-            ctx in let con = ctx.cgContext
+        var trackim : UIImage?
+        let im = r.image { ctx in
+            let con = ctx.cgContext
+            // track
+            con.setFillColor(UIColor.black.cgColor)
+            con.fill(CGRect(0,0,10,10))
+            trackim = ctx.currentImage
+            // progress
             con.setFillColor(UIColor.yellow.cgColor)
-            con.fill(CGRect(0, 0, 10, 10))
-            let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
-            con.setLineWidth(2)
-            con.setStrokeColor(UIColor.black.cgColor)
-            con.stroke(r)
-            con.strokeEllipse(in: r)
-        }.resizableImage(withCapInsets:UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), resizingMode:.stretch)
-        
-        self.prog2.progressImage = im
+            con.fillEllipse(in: CGRect(2,2,6,6))
+        }
+        self.prog2.trackImage = trackim?.resizableImage(
+            withCapInsets:UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4),
+            resizingMode:.stretch)
+        self.prog2.progressImage = im.resizableImage(
+            withCapInsets:UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4),
+            resizingMode:.stretch)
         
         // but this code, which worked fine for years including iOS 7.0, was broken by iOS 7.1
         // and remained broken in iOS 8
