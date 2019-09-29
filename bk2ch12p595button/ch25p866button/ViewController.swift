@@ -45,6 +45,13 @@ class ViewController: UIViewController {
         self.button2.titleLabel!.textAlignment = .center
         self.button2.setTitle("Button with a title that wraps", for:.normal)
         
+        do {
+            let font = UIFont.systemFont(ofSize: 40)
+            let config = UIImage.SymbolConfiguration(font: font)
+            // legal, oddly
+            self.button2.setPreferredSymbolConfiguration(config, forImageIn: .normal)
+        }
+        
         // showing how the image drives out the title if it's too large
         do {
             var shrinkImage : Bool { return false } // change to true to shrink the image and show the title
@@ -56,6 +63,57 @@ class ViewController: UIViewController {
                 self.button3.setImage(im, for:.normal)
             }
         }
+        
+        // new in iOS 13
+        // you _can_ use a non symbol image, but don't
+        let sys = UIButton.systemButton(with: UIImage(systemName: "smiley")!, target: nil, action: nil)
+        sys.tintColor = .red
+        let font = UIFont.systemFont(ofSize: 40)
+        let config = UIImage.SymbolConfiguration(font: font)
+        sys.setPreferredSymbolConfiguration(config, forImageIn: .normal)
+        // so you _can_ add text...
+        // but it doesn't magically conform to the _symbol_ configuration
+        sys.setTitle("Test", for: .normal)
+        // so let's make them conform to one another
+        sys.titleLabel?.font = font
+        sys.sizeToFit() // crucial, or use autolayout
+        sys.frame.origin = CGPoint(50, 350)
+        sys.backgroundColor = .white
+        self.view.addSubview(sys)
+        
+        // so what happens if you do that the old way?
+        // it's exactly the same
+        do {
+            let sys = UIButton(type: .system)
+            sys.setImage(UIImage(systemName: "smiley")!, for:.normal)
+            sys.tintColor = .red
+            let font = UIFont.systemFont(ofSize: 40)
+            let config = UIImage.SymbolConfiguration(font: font)
+            sys.setPreferredSymbolConfiguration(config, forImageIn: .normal)
+            // so you _can_ add text...
+            // but it doesn't magically conform to the _symbol_ configuration
+            sys.setTitle("Test", for: .normal)
+            // so let's make them conform to one another
+            sys.titleLabel?.font = font
+            sys.sizeToFit() // crucial, or use autolayout
+            sys.frame.origin = CGPoint(250, 350)
+            sys.backgroundColor = .white
+            self.view.addSubview(sys)
+
+        }
+        
+        let rr = UIButton(type: .close) // new type
+        rr.setTitle("Test", for: .normal)
+        rr.frame.origin = CGPoint(50,400)
+        rr.sizeToFit()
+        rr.tintColor = .red // no effect
+        print(rr.currentBackgroundImage) // circle
+        print(rr.currentImage) // xmark symbol image
+        //rr.backgroundColor = .white
+        rr.imageView?.tintColor = .green // nope
+        self.view.addSubview(rr)
+        
+        // self.view.backgroundColor = .white
     }
 
 

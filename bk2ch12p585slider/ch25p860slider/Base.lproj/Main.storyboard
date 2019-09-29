@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="gold1b.png" maximumValueImage="gold2b.png" translatesAutoresizingMaskIntoConstraints="NO" id="D4A-j8-Da8" customClass="MySlider" customModule="ch25p860slider" customModuleProvider="target">
-                                <rect key="frame" x="35" y="102" width="250" height="31"/>
+                                <rect key="frame" x="35" y="82" width="250" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="246" id="3We-c0-Uie"/>
                                 </constraints>
@@ -53,7 +49,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gold1b.png" width="30" height="30"/>
-        <image name="gold2b.png" width="30" height="30"/>
+        <image name="gold1b.png" width="7.1999998092651367" height="7.1999998092651367"/>
+        <image name="gold2b.png" width="7.1999998092651367" height="7.1999998092651367"/>
     </resources>
 </document>
