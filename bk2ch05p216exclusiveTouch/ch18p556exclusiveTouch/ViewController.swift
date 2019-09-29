@@ -1,6 +1,17 @@
 
 import UIKit
 
+extension UIView {
+    func subviews<T:UIView>(ofType WhatType:T.Type) -> [T] {
+        var result = self.subviews.compactMap {$0 as? T}
+        for sub in self.subviews {
+            result.append(contentsOf: sub.subviews(ofType:WhatType))
+        }
+        return result
+    }
+}
+
+
 class ViewController : UIViewController {
     
     @IBOutlet weak var sw: UISwitch!
@@ -58,14 +69,22 @@ class ViewController : UIViewController {
             iv.bottomAnchor.constraint(equalTo: sw.bottomAnchor),
             iv.leadingAnchor.constraint(equalTo: sw.leadingAnchor),
             iv.trailingAnchor.constraint(equalTo: sw.trailingAnchor),
-            ])
+        ])
     }
 
     var didLayout = false
     override func viewDidLayoutSubviews() {
         if !didLayout {
             didLayout = true
-            self.putColor(.yellow, behindSwitch:self.sw)
+            // self.putColor(.yellow, behindSwitch:self.sw)
+            // whoa, check _this_ out
+            if #available(iOS 13.0, *) {
+                sw.subviews[0].subviews[0].backgroundColor = .green
+            } else if #available(iOS 12.0, *) {
+                sw.subviews[0].subviews[0].subviews[0].backgroundColor = .green
+            }
+
+            // sw.backgroundColor = .green
         }
     }
 }
