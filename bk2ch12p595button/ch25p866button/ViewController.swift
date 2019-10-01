@@ -107,8 +107,8 @@ class ViewController: UIViewController {
         rr.frame.origin = CGPoint(50,400)
         rr.sizeToFit()
         rr.tintColor = .red // no effect
-        print(rr.currentBackgroundImage) // circle
-        print(rr.currentImage) // xmark symbol image
+        print(rr.currentBackgroundImage as Any) // circle
+        print(rr.currentImage as Any) // xmark symbol image
         //rr.backgroundColor = .white
         rr.imageView?.tintColor = .green // nope
         self.view.addSubview(rr)

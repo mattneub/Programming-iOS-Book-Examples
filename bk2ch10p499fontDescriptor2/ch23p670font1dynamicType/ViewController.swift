@@ -54,29 +54,25 @@ class ViewController : UIViewController {
 
             switch whichh {
             case 0:
-                var f = UIFont.preferredFont(forTextStyle:.title2)
-                
-                let desc = f.fontDescriptor
+                let desc = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title2)
                 let d = [
                     UIFontDescriptor.FeatureKey.featureIdentifier: kStylisticAlternativesType,
                     UIFontDescriptor.FeatureKey.typeIdentifier: kStylisticAltOneOnSelector
                 ]
                 let desc2 = desc.addingAttributes([.featureSettings:[d]])
-                f = UIFont(descriptor: desc2, size: 0)
+                let f = UIFont(descriptor: desc2, size: 0)
                 
                 self.lab2.font = f
                 self.lab2.text = "1234567890 Hill IO" // notice the straight 6 and 9
 
             case 1:
-                var f = UIFont.preferredFont(forTextStyle:.title2)
-                
-                let desc = f.fontDescriptor
+                let desc = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title2)
                 let d = [
                     UIFontDescriptor.FeatureKey.featureIdentifier: kStylisticAlternativesType,
                     UIFontDescriptor.FeatureKey.typeIdentifier: kStylisticAltSixOnSelector
                 ]
                 let desc2 = desc.addingAttributes([.featureSettings:[d]])
-                f = UIFont(descriptor: desc2, size: 0)
+                let f = UIFont(descriptor: desc2, size: 0)
                 
                 self.lab2.text = "1234567890 Hill IO" // adds curvy ell, barred I, slashed zero
                 self.lab2.font = f
@@ -127,7 +123,7 @@ extension ViewController : UIFontPickerViewControllerDelegate {
 
     
     func fontPickerViewControllerDidPickFont(_ vc: UIFontPickerViewController) {
-        print(vc.selectedFontDescriptor)
+        print(vc.selectedFontDescriptor as Any)
         // automatically dismisses
     }
 }

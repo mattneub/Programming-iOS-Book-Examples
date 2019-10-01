@@ -95,9 +95,11 @@ class ViewController: UIViewController {
         self.sb.searchFieldBackgroundPositionAdjustment = UIOffset(horizontal: 0, vertical: -10) // up from center
         
         // at last! new in iOS 13
-        let tf = self.sb.searchTextField
-        tf.textColor = .white
-        // tf.isEnabled = false
+        if #available(iOS 13.0, *) {
+            let tf = self.sb.searchTextField
+            tf.textColor = .white
+            // tf.isEnabled = false
+        }
         
         self.sb.text = "Search me!"
         //self.sb.placeholder = "Search me!"
@@ -160,11 +162,17 @@ class ViewController: UIViewController {
         // unclear what this next line was supposed to do for me
         // self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.selected)
         
-        do {
-            let tf = self.sb.searchTextField
-            let token = UISearchToken(icon:nil, text:"Manny")
-            tf.insertToken(token, at:0) // try 1, you'll crash
-            print(tf.textualRange)
+        dont: do {
+            if #available(iOS 13.0, *) {
+                break dont
+                let tf = self.sb.searchTextField
+                let token = UISearchToken(icon:nil, text:"Manny")
+                tf.insertToken(token, at:0) // try 1, you'll crash
+                print(tf.textualRange)
+
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }

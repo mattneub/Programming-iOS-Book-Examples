@@ -27,7 +27,7 @@ class MySlider: UISlider {
         //    self.thumbTintColor = UIColor.orange()
         
         self.setThumbImage(UIImage(named:"moneybag1.png")!, for:.normal)
-        
+        // self.backgroundColor = .green
         
         
         let coinEnd = UIImage(named:"coin2.png")!.resizableImage(withCapInsets:

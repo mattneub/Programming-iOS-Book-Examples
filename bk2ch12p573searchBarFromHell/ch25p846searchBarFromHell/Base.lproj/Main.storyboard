@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="53o-Ge-amw">
-                                <rect key="frame" x="0.0" y="104" width="375" height="120"/>
+                                <rect key="frame" x="30" y="84" width="315" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="qEh-9p-8x5"/>
                                 </constraints>
@@ -28,17 +25,18 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="VI1-na-t4h"/>
                                 </connections>
                             </searchBar>
-                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLX-zC-euj">
-                                <rect key="frame" x="0.0" y="391" width="375" height="56"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBU-q7-XAC">
+                                <rect key="frame" x="20" y="295" width="335" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9FE-BJ-Iie" firstAttribute="trailing" secondItem="53o-Ge-amw" secondAttribute="trailing" id="BUi-yg-uvN"/>
-                            <constraint firstItem="53o-Ge-amw" firstAttribute="leading" secondItem="9FE-BJ-Iie" secondAttribute="leading" id="Bs1-ox-kyw"/>
-                            <constraint firstItem="YLX-zC-euj" firstAttribute="leading" secondItem="9FE-BJ-Iie" secondAttribute="leading" id="Sx4-jl-lcl"/>
-                            <constraint firstItem="9FE-BJ-Iie" firstAttribute="trailing" secondItem="YLX-zC-euj" secondAttribute="trailing" id="fiO-Bu-u0A"/>
-                            <constraint firstItem="YLX-zC-euj" firstAttribute="top" secondItem="9FE-BJ-Iie" secondAttribute="top" constant="371" id="qqd-9a-Xba"/>
+                            <constraint firstItem="qBU-q7-XAC" firstAttribute="leading" secondItem="9FE-BJ-Iie" secondAttribute="leading" constant="20" id="0SC-eg-mM7"/>
+                            <constraint firstItem="qBU-q7-XAC" firstAttribute="top" secondItem="53o-Ge-amw" secondAttribute="bottom" constant="91" id="9Tq-Q1-Mha"/>
+                            <constraint firstItem="9FE-BJ-Iie" firstAttribute="trailing" secondItem="53o-Ge-amw" secondAttribute="trailing" constant="30" id="BUi-yg-uvN"/>
+                            <constraint firstItem="53o-Ge-amw" firstAttribute="leading" secondItem="9FE-BJ-Iie" secondAttribute="leading" constant="30" id="Bs1-ox-kyw"/>
+                            <constraint firstItem="9FE-BJ-Iie" firstAttribute="trailing" secondItem="qBU-q7-XAC" secondAttribute="trailing" constant="20" id="kYk-m0-So8"/>
                             <constraint firstItem="53o-Ge-amw" firstAttribute="top" secondItem="9FE-BJ-Iie" secondAttribute="top" constant="84" id="sJB-nH-CnN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9FE-BJ-Iie"/>

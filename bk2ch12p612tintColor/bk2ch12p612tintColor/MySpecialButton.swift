@@ -2,6 +2,12 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class MySpecialButton : UIButton {
     
     var orig : NSAttributedString?
@@ -18,6 +24,5 @@ class MySpecialButton : UIButton {
         self.setAttributedTitle(
            self.tintAdjustmentMode == .dimmed ? self.dim : self.orig,
             for:.normal)
-
     }
 }
