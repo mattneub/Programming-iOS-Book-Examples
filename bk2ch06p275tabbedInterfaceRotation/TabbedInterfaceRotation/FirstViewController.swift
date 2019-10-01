@@ -23,8 +23,10 @@ class FirstViewController: UIViewController {
         self.tabBarItem.selectedImage = UIImage(named: "smiley")!
         // this doesn't solve it even though "second" is a PDF
         // self.tabBarItem.selectedImage = UIImage(named: "second")!
-
-
+        // the only way to fix it is _not_ to have a landscapeImagePhone:
+        // self.tabBarItem.landscapeImagePhone = nil
+        // so the presence of the landscapeImagePhone "drive out" the selectedImage
+        
     }
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

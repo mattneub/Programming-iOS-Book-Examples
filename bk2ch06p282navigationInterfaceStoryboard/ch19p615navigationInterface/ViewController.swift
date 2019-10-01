@@ -32,6 +32,12 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(self.navigationController?.navigationBar.standardAppearance as Any)
+        print(self.navigationController?.navigationBar.scrollEdgeAppearance as Any)
+    }
+    
     func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return .portrait
     }

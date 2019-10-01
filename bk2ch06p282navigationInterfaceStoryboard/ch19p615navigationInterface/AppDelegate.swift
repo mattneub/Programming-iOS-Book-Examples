@@ -46,6 +46,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         app.normal.backgroundImage = im
         let navbarapp = UINavigationBarAppearance()
         navbarapp.configureWithOpaqueBackground()
+        navbarapp.backgroundColor = .blue // no effect
         navbarapp.buttonAppearance = app
         let back = UIBarButtonItemAppearance()
         back.normal.backgroundImage = UIImage() // prevent back button item
@@ -57,6 +58,17 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // it is not vertically resized
         // and if it has an image, that image is resized to fit
 
+        // just testing
+        
+        
+        
+        do {
+            let navbarapp = UINavigationBarAppearance()
+            navbarapp.configureWithOpaqueBackground()
+            navbarapp.backgroundColor = .blue // okay, that works
+            // so this _is_ the scroll edge appearance even though there is no scroll edge
+            UINavigationBar.appearance().scrollEdgeAppearance = navbarapp
+        }
         
         
         return true

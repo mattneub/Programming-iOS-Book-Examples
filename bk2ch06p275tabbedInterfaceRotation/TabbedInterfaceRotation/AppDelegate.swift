@@ -38,16 +38,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().unselectedItemTintColor = .black // new in iOS 10
         // interesting: this seems to override my title text attributes for .normal
         
+        var which : Int { return 1 }
+        switch which {
+        case 1:
+            UITabBarItem.appearance().setTitleTextAttributes([
+                .font:UIFont(name:"Avenir-Heavy", size:14)!,
+                .foregroundColor:UIColor.green
+                ], for:.normal)
+            // I am curious but yellow
+            UITabBarItem.appearance().setTitleTextAttributes([
+                .font:UIFont(name:"Avenir-Heavy", size:14)!,
+                .foregroundColor:UIColor.yellow
+                ], for:.selected)
+        case 2:
+            // huge iOS 13 bug: trying to do this the iOS 13 appearance way...
+            // causes the icon to be too low and the text to be curtailed!
+            let app = UITabBarAppearance(idiom:.phone)
+            app.stackedLayoutAppearance.normal.titleTextAttributes = [
+            .font:UIFont(name:"Avenir-Heavy", size:14)!,
+            .foregroundColor:UIColor.black
+            ]
+            app.stackedLayoutAppearance.selected.titleTextAttributes = [
+            .font:UIFont(name:"Avenir-Heavy", size:14)!,
+            .foregroundColor:UIColor.black
+            ]
+            UITabBar.appearance().standardAppearance = app
+        default:break
+        }
         
-        UITabBarItem.appearance().setTitleTextAttributes([
-            .font:UIFont(name:"Avenir-Heavy", size:14)!,
-            .foregroundColor:UIColor.green
-            ], for:.normal)
-        // I am curious but yellow
-        UITabBarItem.appearance().setTitleTextAttributes([
-            .font:UIFont(name:"Avenir-Heavy", size:14)!,
-            .foregroundColor:UIColor.yellow
-            ], for:.selected)
         
         
         

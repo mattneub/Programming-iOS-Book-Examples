@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cci-g9-uDl">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Table-->
+        <scene sceneID="PDb-q5-HoI">
+            <objects>
+                <tableViewController title="Table" id="tGT-4s-3Kq" customClass="TableViewController" customModule="NavigationBarAppearance" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLg-gs-PSU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ZFO-7R-vgH">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZFO-7R-vgH" id="uHf-BI-Equ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tGT-4s-3Kq" id="9tw-fn-eXB"/>
+                            <outlet property="delegate" destination="tGT-4s-3Kq" id="aQb-nv-yao"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="kNJ-af-czE">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="71u-cb-m93">
+                                <connections>
+                                    <segue destination="lWX-oC-e9L" kind="show" id="cIA-er-yX8"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="Bx6-Ne-xJU"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZf-dO-Hec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2048.8000000000002" y="125.4872563718141"/>
+        </scene>
+        <!--Zotz! Settings-->
+        <scene sceneID="ToX-Rh-tGG">
+            <objects>
+                <viewController id="lWX-oC-e9L" customClass="ViewController" customModule="NavigationBarAppearance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yIk-PI-uzy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="l3Y-KX-Rth"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Zotz! Settings" id="rtO-ft-BHC">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="APD-R4-IbV">
+                            <connections>
+                                <segue destination="G2J-ER-FBQ" kind="show" id="gJU-eB-K8P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="msr-yp-DCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2734" y="137"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kdd-KJ-xrP">
+            <objects>
+                <viewController id="G2J-ER-FBQ" customClass="ViewController" customModule="NavigationBarAppearance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YRP-af-acj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1qD-vT-Zya"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ScG-NR-xlK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s6V-Q0-WRg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3419" y="139"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="1Lr-Bh-3gV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GxL-On-8q4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="pencil.circle" catalog="system" id="0Ls-WV-SUJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3MI-kg-Oea">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tGT-4s-3Kq" kind="relationship" relationship="rootViewController" id="1n2-aa-19V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zDO-Lx-2bS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114.4000000000001" y="126.38680659670166"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fNW-PY-k8x">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Cci-g9-uDl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dXE-I8-HUJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="GxL-On-8q4" kind="relationship" relationship="viewControllers" id="lO8-W2-U9R"/>
+                        <segue destination="Kc4-Z7-GpR" kind="relationship" relationship="viewControllers" id="Wij-S0-hKg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ByV-lQ-xkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="175.19999999999999" y="126.38680659670166"/>
+        </scene>
+        <!--Item2-->
+        <scene sceneID="4SV-2z-W6i">
+            <objects>
+                <viewController id="Kc4-Z7-GpR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VP0-BL-dUI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ADu-lY-Kkf"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item2" image="person.circle" catalog="system" id="5QV-OX-3mu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aG3-sL-itK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="614" y="832"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pencil.circle" catalog="system" width="64" height="60"/>
+        <image name="person.circle" catalog="system" width="64" height="60"/>
+    </resources>
+</document>
