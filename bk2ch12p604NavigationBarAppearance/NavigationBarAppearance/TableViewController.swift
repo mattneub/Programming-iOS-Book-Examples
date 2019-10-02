@@ -38,7 +38,11 @@ class TableViewController: UITableViewController {
         let bar = self.navigationController!.navigationBar
         bar.prefersLargeTitles = true
         // bar.isTranslucent = false // terrible things happen, leave this alone I think
-        // bar.barStyle = .default // this no longer has any effect on the status bar
+        // bar.barStyle = .black // this no longer has any effect on the status bar...
+        // bar.barTintColor = .red
+        // return
+        // ...unless you do it and _stop_
+        // as soon as you apply a UIBarAppearance, that effect goes away
         
         let app = UINavigationBarAppearance() // I do not understand what the `idiom:` initializer is for
         

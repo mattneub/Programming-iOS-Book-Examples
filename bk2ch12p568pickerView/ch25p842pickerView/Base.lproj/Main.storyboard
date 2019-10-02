@@ -16,11 +16,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESM-Gh-Wl4">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="D4N-Mt-EPR"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="D4N-Mt-EPR"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="Tn0-3N-5Dq"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="6ms-pI-oBd"/>

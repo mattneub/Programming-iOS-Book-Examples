@@ -40,10 +40,11 @@ class ViewController: UIViewController {
         // no need to play with animation in iOS 13; the change is animated by default
         //self.seg.layer.speed = 0.2
         delay(1) {
-            //UIView.animate(withDuration:0.4) {
-                self.seg.selectedSegmentIndex = 1
-                // self.seg.selectedSegmentIndex = UISegmentedControl.noSegment
-            //}
+            self.seg.selectedSegmentIndex = 1
+            return;
+            self.seg.selectedSegmentIndex = UISegmentedControl.noSegment // no visible effect
+            print(self.seg.selectedSegmentIndex) // -1, i.e. no segment
+            self.seg.setNeedsLayout() // aha
         }
         
         // in iOS 13, this is painted in a new way
