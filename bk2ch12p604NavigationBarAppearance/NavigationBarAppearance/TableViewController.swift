@@ -29,6 +29,10 @@ extension CGRect {
 }
 
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
 
 class TableViewController: UITableViewController {
 
@@ -137,7 +141,18 @@ class TableViewController: UITableViewController {
         
         self.tabBarItem?.standardAppearance = tbapp // not working
 
-
+        // ruins the stack appearance until _after_ we rotate once and back
+        tb.standardAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [
+            .font : UIFont(name:"Georgia", size:14)!,
+            .foregroundColor : UIColor.red
+        ]
+        tb.standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+            .font : UIFont(name:"Georgia", size:14)!,
+            .foregroundColor : UIColor.red
+        ]
+        delay(0.1) {
+            tb.setNeedsLayout()
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
