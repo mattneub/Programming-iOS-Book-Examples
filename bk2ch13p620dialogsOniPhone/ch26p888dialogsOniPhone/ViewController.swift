@@ -57,18 +57,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let tf = sender as! UITextField
         // enable OK button only if there is text
         // hold my beer and watch this: how to get a reference to the alert
-        var resp : UIResponder! = tf
-        while !(resp is UIAlertController) { resp = resp.next }
-        let alert = resp as! UIAlertController
-        alert.actions[1].isEnabled = (tf.text != "")
+        var resp : UIResponder? = tf
+        while !(resp is UIAlertController) { resp = resp?.next }
+        let alert = resp as? UIAlertController
+        alert?.actions[1].isEnabled = (tf.text != "")
     }
     
     // there is no Return key in the dialog, but we still need to stop a user with a hardware keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // return textField.text.map{!$0.isEmpty}!
         return textField.text != ""
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty { return true }
+        if Int(string) == nil { return false }
+        return true
+    }
 
     
     // =====

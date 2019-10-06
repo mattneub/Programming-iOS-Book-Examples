@@ -79,6 +79,12 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     
     @objc func tap (_ : UIGestureRecognizer) {
         //self.extensionContext?.performNotificationDefaultAction()
+        print("tap!")
         self.extensionContext?.dismissNotificationContentExtension()
+    }
+    
+    func didReceive(_ response: UNNotificationResponse, completionHandler completion: @escaping (UNNotificationContentExtensionResponseOption) -> Void) {
+        print("ha ha, I received this")
+        completion(.dismissAndForwardAction)
     }
 }

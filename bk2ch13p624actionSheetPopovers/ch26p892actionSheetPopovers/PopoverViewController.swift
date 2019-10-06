@@ -41,6 +41,17 @@ class PopoverViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ho", style: .default, handler: handler))
         alert.addAction(UIAlertAction(title: "Hey Nonny No", style: .default, handler: handler))
         // .OverCurrentContext is the default, so no need to specify! just show it
+        // well, not any more!
+        alert.modalPresentationStyle = .overCurrentContext
+        // that does no good: it appears you can't present an alert inside a popover in iOS 13
+        // not only that - the result is two presented view controllers, which ought to be illegal
+        // this seems like a major bug to me
+        // but you know, maybe Apple regards _me_ as the bug;
+        // perhaps this should never have been permitted in the first place,
+        // and they've just closed the hole?
+        alert.popoverPresentationController?.sourceRect = (sender as! UIView).bounds
+        alert.popoverPresentationController?.sourceView = (sender as! UIView)
+        // yuck
         self.present(alert, animated: true)
         // tapping outside the sheet but inside the containing popover dismisses the sheet
         // tapping outside the containing popover dismisses the popover

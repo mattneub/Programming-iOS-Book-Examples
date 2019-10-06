@@ -78,7 +78,7 @@ class MyUserNotificationHelper : NSObject {
         }
     }
     
-    var provisional = false
+    var provisional = true
     private func doAuthorization() {
         print("asking for authorization")
         
@@ -153,7 +153,7 @@ class MyUserNotificationHelper : NSObject {
     }
     
     fileprivate func createNotification() {
-        print("creating notification" + Date().description)
+        print("creating notification at ", Date())
         
         // need trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
@@ -249,6 +249,7 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+        print(UIApplication.shared.applicationState.rawValue)
         let id = response.actionIdentifier // can be default, dismiss, or one of ours
         print("user action was: \(id)")
         print("on main thread", Thread.isMainThread)
