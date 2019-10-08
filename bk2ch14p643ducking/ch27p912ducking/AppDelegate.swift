@@ -16,6 +16,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print(cat)
         // default is solo ambient
         
+        let sess = AVAudioSession.sharedInstance()
+        try? sess.setCategory(.ambient, mode:.default)
+        try? sess.setActive(true)
+        print("secondary hint? ", sess.secondaryAudioShouldBeSilencedHint)
+
+        
         // deliberate leak here
         
         NotificationCenter.default.addObserver(forName:
@@ -50,7 +56,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         }
         
         // use control center to test, e.g. start and stop a Music song
-        // okay but this is not arriving! cutting the discussion from the book
+        // need to be _ambient_ (not solo ambient) to get this
         
         NotificationCenter.default.addObserver(forName:
             AVAudioSession.silenceSecondaryAudioHintNotification, object: nil, queue: nil) { n in
@@ -75,6 +81,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("app became active")
+        let sess = AVAudioSession.sharedInstance()
+        print("secondary hint? ", sess.secondaryAudioShouldBeSilencedHint)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

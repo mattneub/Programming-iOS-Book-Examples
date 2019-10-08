@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
 
 
-    let which = 1
+    let which = 1 // 1 is present, 2 is push, but they no longer talk about that
     
     @IBAction func doPresent(_ sender: Any) {
         switch which {
@@ -34,6 +34,11 @@ class ViewController: UIViewController {
             // let url = Bundle.main.url(forResource:"wilhelm", withExtension: "aiff")!
             let player = AVPlayer(url: url)
             av.player = player
+            let metadata = AVMutableMetadataItem()
+            metadata.keySpace = .common
+            metadata.key = AVMetadataKey.commonKeyTitle as NSString
+            metadata.value = "El Mirage" as NSString
+            av.player?.currentItem?.externalMetadata = [metadata]
             self.present(av, animated: true) {
                 // av.view.backgroundColor = .green
                 // let iv = UIImageView(image:UIImage(named:"smiley")!)
@@ -69,12 +74,6 @@ class ViewController: UIViewController {
                 print(av.contentOverlayView!.frame)
             }
         case 2:
-            // hmmm... this works so poorly that I can't really recommend it
-            // if edgesForExtendedLayout is not set, we see the position slider just peeping down;
-            // if it is, we don't see it at all, and so important functionality is lost
-            // moreover, no matter what I do, the resulting interface is very confusing for the user
-            // so I'm going to cut discussion of this approach from the book
-            // well, it doesn't seem so bad now, putting the discussion back in
             let av = AVPlayerViewController()
             av.edgesForExtendedLayout = []
             self.navigationController?.navigationBar.isTranslucent = false
@@ -102,6 +101,7 @@ extension ViewController : AVPlayerViewControllerDelegate {
             ch(true)
         }
     }
+    
 
 }
 

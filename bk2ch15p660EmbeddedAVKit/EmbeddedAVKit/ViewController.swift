@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         */
         
         var ob : NSKeyValueObservation!
-        ob = av.observe(\.isReadyForDisplay, options: .new) { vc, ch in
+        ob = av.observe(\.isReadyForDisplay, options: [.initial, .new]) { vc, ch in
             guard let ok = ch.newValue, ok else {return}
             self.obs.remove(ob)
             DispatchQueue.main.async {
@@ -130,6 +130,8 @@ class ViewController: UIViewController {
         }
         self.obs.insert(ob)
         
+        av.delegate = self
+        
         return; // just proving you can swap out the player
         delay(3) {
             let url = Bundle.main.url(forResource:"wilhelm", withExtension:"aiff")!
@@ -138,6 +140,40 @@ class ViewController: UIViewController {
         }
     }
     
+}
+
+extension ViewController : AVPlayerViewControllerDelegate {
+    // new in iOS 13, available back to iOS 12 if you compile against iOS 13
+    
+    func playerViewController(
+        _ av: AVPlayerViewController,
+        willBeginFullScreenPresentationWithAnimationCoordinator
+        coordinator: UIViewControllerTransitionCoordinator) {
+        
+        print(av, av.parent as Any)
+        coordinator.animate(alongsideTransition: { con in
+            // ...
+        }) { con in
+            if con.isCancelled {
+                // ...
+            } else {
+                print("really went full screen")
+                delay(3) {
+                    print(av, av.parent as Any)
+                }
+            }
+        }
+        
+    }
+    
+    func playerViewController(_ av: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        print("will end")
+        print(av, av.parent as Any)
+        print(av.view as Any, av.view.superview as Any, av.view.window as Any)
+    }
+    
+    
+
 }
 
 // seems to work only on device, not simulator

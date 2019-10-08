@@ -96,4 +96,21 @@ class PepEditorViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("---")
+        let pt = CGPoint(x: self.view.bounds.maxX, y: self.view.bounds.maxY)
+        print("local: ", pt)
+        let pt2 = self.view.convert(pt, to:self.view.window!)
+        print("window: ", pt2)
+        let pt3 = self.view.convert(pt, to:self.view.window!.windowScene!.coordinateSpace)
+        print("window scene: ", pt3)
+        let pt4 = self.view.convert(pt, to:UIScreen.main.coordinateSpace)
+        print("screen: ", pt4)
+        let pt5 = self.view.convert(pt, to:UIScreen.main.fixedCoordinateSpace)
+        print("screen fixed: ", pt5)
+        print("---")
+    }
+
+    
 }
