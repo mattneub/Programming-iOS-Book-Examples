@@ -17,24 +17,29 @@ class ViewController: UIViewController {
         scc.changePlaybackPositionCommand.isEnabled = false
     }
     
-    @objc func doPlayPause(_ event:MPRemoteCommandEvent) {
+    @discardableResult
+    @objc func doPlayPause(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("playpause")
-        guard let p = self.player.player else { return }
+        guard let p = self.player.player else { return .noActionableNowPlayingItem }
         if p.isPlaying { self.doPause(event) } else { self.doPlay(event) }
+        return .success
     }
-    @objc func doPlay(_ event:MPRemoteCommandEvent) {
+    @discardableResult
+    @objc func doPlay(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("play")
-        guard let p = self.player.player else { return }
+        guard let p = self.player.player else { return .noActionableNowPlayingItem }
         p.play()
         let mpic = MPNowPlayingInfoCenter.default()
         if var d = mpic.nowPlayingInfo {
             d[MPNowPlayingInfoPropertyPlaybackRate] = 1
             mpic.nowPlayingInfo = d
         }
+        return .success
     }
-    @objc func doPause(_ event:MPRemoteCommandEvent) {
+    @discardableResult
+    @objc func doPause(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("pause")
-        guard let p = self.player.player else { return }
+        guard let p = self.player.player else { return .noActionableNowPlayingItem }
         p.pause()
         let mpic = MPNowPlayingInfoCenter.default()
         if var d = mpic.nowPlayingInfo {
@@ -42,6 +47,7 @@ class ViewController: UIViewController {
             d[MPNowPlayingInfoPropertyElapsedPlaybackTime] = p.currentTime // *
             mpic.nowPlayingInfo = d
         }
+        return .success
     }
     
     deinit {

@@ -286,7 +286,7 @@ class ViewController: UIViewController {
         
         let outbuf = AVAudioPCMBuffer(pcmFormat: f.processingFormat, frameCapacity: sz)!
         
-        var which : Int { return 1 }
+        var which : Int { return 2 }
         switch which {
         case 1:
             // arbitrarily append two seconds of processing time to allow reverb to fade

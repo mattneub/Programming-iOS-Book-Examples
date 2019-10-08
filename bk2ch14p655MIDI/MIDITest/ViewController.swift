@@ -8,6 +8,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+// test on device!
 
 class ViewController: UIViewController {
     
@@ -17,10 +18,17 @@ class ViewController: UIViewController {
 
     @IBAction func doButton(_ sender: Any) {
         
+        self.seq?.stop()
+        self.engine.stop()
+        self.seq = nil
+        self.engine = AVAudioEngine()
+        self.player?.stop()
+        self.player = nil
+        
         let midurl = Bundle.main.url(forResource:"presto", withExtension: "mid")!
         let sndurl = Bundle.main.url(forResource:"PianoBell", withExtension: "sf2")!
         
-        var which : Int { return 2 } // 1 or 2
+        let which = (sender as! UIView).tag
         
         switch which {
         case 1:

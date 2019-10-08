@@ -62,6 +62,12 @@ class ViewController: UIViewController {
         guard let rec = SFSpeechRecognizer(locale:loc)
             else {print("no recognizer"); return}
         print("rec isAvailable says: \(rec.isAvailable)")
+        if rec.supportsOnDeviceRecognition {
+            print("on device recognition")
+            req.requiresOnDeviceRecognition = true
+        } else {
+            print("no on device recognition")
+        }
         print("starting file recognition")
         rec.recognitionTask(with: req) { result, err in
             if let result = result {
@@ -103,6 +109,12 @@ class ViewController: UIViewController {
         guard let rec = SFSpeechRecognizer(locale:loc)
             else {print("no recognizer"); return}
         print("rec isAvailable says: \(rec.isAvailable)")
+        if rec.supportsOnDeviceRecognition {
+            print("on device recognition")
+            req.requiresOnDeviceRecognition = true
+        } else {
+            print("no on device recognition")
+        }
         // tap into microphone thru audio engine!
         let input = self.engine.inputNode
         input.installTap(onBus: 0, bufferSize: 4096, format: input.outputFormat(forBus: 0)) {

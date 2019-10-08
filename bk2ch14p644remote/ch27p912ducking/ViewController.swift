@@ -62,23 +62,32 @@ class ViewController: UIViewController {
     
     // these are used only in case 0
     
-    @objc func doPlayPause(_ event:MPRemoteCommandEvent) {
+    // Your selector should return a MPRemoteCommandHandlerStatus value when
+    // possible.
+    // ok this is now downright required
+
+    
+    @objc func doPlayPause(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("playpause")
         let p = self.player.player!
         if p.isPlaying { p.pause() } else { p.play() }
+        return .success
     }
-    @objc func doPlay(_ event:MPRemoteCommandEvent) {
+    @objc func doPlay(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("play")
         let p = self.player.player!
         p.play()
+        return .success
     }
-    @objc func doPause(_ event:MPRemoteCommandEvent) {
+    @objc func doPause(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("pause")
         let p = self.player.player!
         p.pause()
+        return .success
     }
-    @objc func doLike(_ event:MPRemoteCommandEvent) {
+    @objc func doLike(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("like")
+        return .success
     }
 
     

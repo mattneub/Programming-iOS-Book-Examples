@@ -5,6 +5,7 @@ import AVFoundation
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
+    var ob : NSKeyValueObservation?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
@@ -27,8 +28,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // we should pause our sound (doesn't happen automatically)
         
         NotificationCenter.default.addObserver(forName:
-            AVAudioSession.interruptionNotification, object: nil, queue: nil) {
+        AVAudioSession.interruptionNotification, object: nil, queue: nil) {
                 n in
+                // sure takes a long time for end interruption notification arrive
                 let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
                 let type = AVAudioSession.InterruptionType(rawValue: why)!
                 switch type {
@@ -48,6 +50,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         }
         
         // use control center to test, e.g. start and stop a Music song
+        // okay but this is not arriving! cutting the discussion from the book
         
         NotificationCenter.default.addObserver(forName:
             AVAudioSession.silenceSecondaryAudioHintNotification, object: nil, queue: nil) { n in
@@ -62,7 +65,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                 }
         }
         
-        
+        let ob = AVAudioSession.sharedInstance().observe(\.promptStyle) { (sess, ch) in
+            print(ch) // never prints so I guess I don't know the circumstances
+        }
+        self.ob = ob
+                
         return true
     }
     

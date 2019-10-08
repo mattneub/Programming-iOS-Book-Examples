@@ -123,6 +123,8 @@ class TableViewController: UITableViewController {
             .font: UIFont(name:"Chalkduster", size:20)!,
             .foregroundColor: UIColor.black
         ]
+        
+        // bar.tintColor = .black // showing how to tint the back indicator
 
         // =========
         
