@@ -66,9 +66,8 @@ class ViewController: UIViewController {
             player.stop()
             player.setQueue(with:queue)
             delay(0.2) {
-                // player.prepareToPlay() // causes the queue to take effect
                 player.prepareToPlay() { err in
-                    
+                    player.play()
                 }
             }
         }
@@ -94,15 +93,22 @@ class ViewController: UIViewController {
     @IBAction func doAppend(_ sender: Any) {
         checkForMusicLibraryAccess {
             let player = self.player
-            player.append(self.createDesc())
-            delay(0.2) { // can't do this too soon or we "time out"
+            var ob : NSObjectProtocol?
+            ob = NotificationCenter.default.addObserver(forName: .MPMusicPlayerControllerQueueDidChange, object: nil, queue: nil) { _ in
+                NotificationCenter.default.removeObserver(ob!)
                 player.perform(queueTransaction: {q in
+                    print("and the queue is now:")
                     print(q.items.map{$0.title!})
                 }) {q, err in
-                    if let err = err { print(err) }
+                    if let err = err { print("error", err) }
                 }
             }
-            // correct way, instead of delay, is probably to use MPMusicPlayerControllerQueueDidChange notification
+            if player.playbackState == .playing {
+                print("pausing")
+                self.doStop(self)
+            }
+            print("appending")
+            player.append(self.createDesc())
         }
     }
     
