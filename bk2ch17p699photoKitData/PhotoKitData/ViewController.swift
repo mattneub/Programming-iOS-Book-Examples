@@ -49,6 +49,7 @@ class ViewController: UIViewController {
     }
 
 
+    // warning, moments will cease to be supported, I've removed this example from the book
     @IBAction func doButton(_ sender: Any) {
         
         checkForPhotoLibraryAccess{
@@ -96,6 +97,7 @@ class ViewController: UIViewController {
             
             let result = PHAssetCollection.fetchAssetCollections(with:
                 .album, subtype: self.subtype, options: nil)
+            // for thing in result {}
             let albums = result.objects(at: IndexSet(0..<result.count))
             for album in albums {
                 let count = album.estimatedAssetCount

@@ -18,14 +18,14 @@ class EditingViewController: UIViewController, MTKViewDelegate {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var mtkview: MTKView!
     
-    var context : CIContext!
+    var context : CIContext?
     let displayImage : CIImage
     let vig = VignetteFilter()
     var initialVignette : Double = 0.7
     var canUndo = false
     weak var delegate : EditingViewControllerDelegate?
     
-    var queue: MTLCommandQueue!
+    var queue: MTLCommandQueue?
 
     
     init(displayImage:CIImage) {
@@ -62,6 +62,7 @@ class EditingViewController: UIViewController, MTKViewDelegate {
             return
         }
         self.mtkview.device = device
+        self.mtkview.framebufferOnly = false
         
         // mode: draw on demand
         self.mtkview.isPaused = true
@@ -95,13 +96,15 @@ class EditingViewController: UIViewController, MTKViewDelegate {
         // wait, I just realized I can do that by offsetting the draw bounds origin
         
         // minimal dance required in order to draw: render, present, commit
-        let buffer = self.queue.makeCommandBuffer()!
+        guard let texture = self.mtkview.currentDrawable?.texture else {return}
+        guard let buffer = self.queue?.makeCommandBuffer() else {return}
         self.context!.render(output,
-                             to: view.currentDrawable!.texture,
+                             to: texture,
                              commandBuffer: buffer,
                              bounds: CGRect(origin:CGPoint(x:-r.origin.x, y:-r.origin.y), size:view.drawableSize),
                              colorSpace: CGColorSpaceCreateDeviceRGB())
-        buffer.present(view.currentDrawable!)
+        guard let drawable = self.mtkview.currentDrawable else { return }
+        buffer.present(drawable)
         buffer.commit()
 
     }

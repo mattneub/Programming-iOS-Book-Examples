@@ -31,10 +31,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var v: UIView!
 
     @IBAction func doShowMovie(_ sender: Any) {
-        checkForPhotoLibraryAccess(andThen: self.reallyShowMovie)
+        checkForPhotoLibraryAccess(andThen: self.fetchMovie)
     }
     
-    func reallyShowMovie() {
+    func fetchMovie() {
         let opts = PHFetchOptions()
         opts.fetchLimit = 1
         let result = PHAsset.fetchAssets(with: .video, options: opts)

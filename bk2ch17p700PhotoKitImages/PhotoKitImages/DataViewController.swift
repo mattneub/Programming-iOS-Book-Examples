@@ -118,6 +118,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                 }
             }
             let nav = UINavigationController(rootViewController: evc)
+            nav.modalPresentationStyle = .overFullScreen
             self.present(nav, animated: true)
         }
     }
@@ -133,28 +134,33 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         self.view.addSubview(act)
         act.startAnimating()
         
+        // moving this stuff to outside the background thread was a big help!
+        let inurl = self.input.fullSizeImageURL!
+        let output = PHContentEditingOutput(contentEditingInput:self.input)
+        let outurl = output.renderedContentURL
+        
+        // okay, I now believe this next line is crucial for picking up orientation correctly
+        // if we don't do that, we can't save back into the library
+        var ci = CIImage(contentsOf: inurl, options: [.applyOrientationProperty:true])!
+        let space = ci.colorSpace!
+        if vignette >= 0.0 {
+            let vig = VignetteFilter()
+            vig.setValue(ci, forKey: "inputImage")
+            vig.setValue(vignette, forKey: "inputPercentage")
+            ci = vig.outputImage!
+        }
+
+        let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
+        output.adjustmentData = PHAdjustmentData(
+            formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
+
+
+        // new in iOS 10
+        // warning: this is time-consuming! (even more than how I was doing it before)
         DispatchQueue.global(qos: .userInitiated).async {
 
-            let inurl = self.input.fullSizeImageURL!
-            let output = PHContentEditingOutput(contentEditingInput:self.input)
-            let outurl = output.renderedContentURL
-            // okay, I now believe this next line is crucial for picking up orientation correctly
-            // if we don't do that, we can't save back into the library
-            var ci = CIImage(contentsOf: inurl, options: [.applyOrientationProperty:true])!
-            let space = ci.colorSpace!
-            if vignette >= 0.0 {
-                let vig = VignetteFilter()
-                vig.setValue(ci, forKey: "inputImage")
-                vig.setValue(vignette, forKey: "inputPercentage")
-                ci = vig.outputImage!
-            }
-            // new in iOS 10
-            // warning: this is time-consuming! (even more than how I was doing it before)
             try! CIContext().writeJPEGRepresentation(of: ci, to: outurl, colorSpace: space)
 
-            let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
-            output.adjustmentData = PHAdjustmentData(
-                formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
 
             // now we must tell the photo library to pick up the edited image
             // all this main-queue-plus-delay stuff seems to be genuinely necessary
@@ -173,8 +179,9 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                             // in our case, since are already displaying this photo...
                             // ...we should now reload it
                             // but for some reason I'm having trouble talking to the library, add delay
-                            // needs to be quite lengthy! surely this is not a correct solution...????
-                            delay(0.5) {
+                            print("delaying")
+                            delay(0.1) {
+                                print("after delay")
                                 act.removeFromSuperview()
                                 self.setUpInterface()
                             }

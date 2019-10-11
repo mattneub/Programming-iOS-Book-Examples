@@ -165,7 +165,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                         print("live is nil!")
                         // well then I'll fetch it myself, said the little red hen
                         if let asset = asset {
-                            PHImageManager().requestLivePhoto(for: asset, targetSize: self.redView.bounds.size, contentMode: .aspectFit, options: nil) { photo, info in
+                            PHImageManager.default().requestLivePhoto(for: asset, targetSize: self.redView.bounds.size, contentMode: .aspectFit, options: nil) { photo, info in
                                 if let photo = photo {
                                     self.showLivePhoto(photo)
                                 }
