@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         let sz = CGSize(20,20)
         let r = UIGraphicsImageRenderer(size:sz)
         let im1 = r.image {
@@ -192,19 +192,23 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    let player = MPMusicPlayerController.applicationQueuePlayer
+    
     @IBAction func doStop(_ sender: Any) {
         print("invalidating timer, stopping player")
         self.timer?.invalidate()
         self.timer = nil
-        let player = MPMusicPlayerController.applicationQueuePlayer
-        player.stop()
+        if self.player.playbackState == .playing {
+            self.player.stop()
+        }
         delay(1) {
             // let's find out what this does to the queue
-            player.perform(queueTransaction: { _ in }) { q,_ in
+            self.player.perform(queueTransaction: { q in
                 print(q.items.count, q.items.map {$0.title ?? "no title"})
                 // okay so it looks like it no longer empties the queue
                 // so there is now no difference between pausing and stopping?
-            }
+            }, completionHandler: {_,_ in})
         }
     }
     
@@ -212,9 +216,9 @@ class ViewController: UIViewController {
         print("do play short songs")
         checkForMusicLibraryAccess {
             // configure notification on main queue
-            let player = MPMusicPlayerController.applicationQueuePlayer
-            player.beginGeneratingPlaybackNotifications()
-            NotificationCenter.default.addObserver(self, selector: #selector(self.changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
+            self.player.beginGeneratingPlaybackNotifications()
+            NotificationCenter.default.removeObserver(self) // let's not add ourselves twice by mistake eh
+            NotificationCenter.default.addObserver(self, selector: #selector(self.changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: self.player)
             
             // get off main queue, allow button to unhighlight
             DispatchQueue.global(qos:.userInitiated).async {
@@ -245,41 +249,18 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     print("stopping")
-                    player.stop()
-                    // 
-                    
-                    
+                    if self.player.playbackState == .playing {
+                        self.player.stop()
+                    }
                     print("setting shuffle mode")
-                    player.shuffleMode = .songs
-                    print("setting the queue")
-                    player.setQueue(with:queue)
-                    // no need to use this elaborate approach here, probably
-                    // return; // testing whether the queue is really set
-                    // ok the queue is definitely not set unless we at least call `prepareToPlay`
-                    func onWeGo() {
-                        print("preparing to play")
-                        player.prepareToPlay { err in
-                            if err == nil {
-                                // return; // testing whether prepareToPlay itself plays; they fixed this?
-                                print("playing")
-                                player.play()
-                                
-                                self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
-                                self.timer?.tolerance = 0.1
-                                
-                            } else { print(err as Any) }
-                        }
-                    }
-                    var shouldDelay : Bool { return false }
-                    // testing whether the delay is still needed
-                    // okay, I'm not seeing any need for the delay here
-                    if shouldDelay {
-                        print("delaying")
-                        delay(0.2, closure: onWeGo)
-                    } else {
-                        print("no delay, on we go")
-                        onWeGo()
-                    }
+                    self.player.shuffleMode = .songs
+                    
+                    self.player.setQueue(with:queue)
+                    print("playing")
+                    self.player.play()
+                    print("starting time")
+                    self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
+                    self.timer?.tolerance = 0.1
                 }
             }
             
@@ -292,22 +273,22 @@ class ViewController: UIViewController {
             self.timer?.fire() // looks better if we fire timer now
         }
         self.label.text = ""
-        let player = MPMusicPlayerController.applicationQueuePlayer
+        let player = self.player
         guard let obj = n.object, obj as AnyObject === player else { return } // just playing safe
         guard let title = player.nowPlayingItem?.title else {return}
         if player.playbackState != .playing {print("stopped"); return}
         let ix = player.indexOfNowPlayingItem
         guard ix != NSNotFound else {return}
         // new, we can get the queue!
-        player.perform(queueTransaction: { _ in }) { q,_ in
+        player.perform(queueTransaction: { q in
             print(q.items.count, q.items.map {$0.title ?? "no title"})
             self.label.text = "\(ix+1) of \(q.items.count): \(title)"
-        }
+        }, completionHandler: {_,_ in})
     }
     
     @objc func timerFired(_: Any) {
         print("timer fired")
-        let player = MPMusicPlayerController.applicationQueuePlayer
+        let player = self.player
         guard let item = player.nowPlayingItem, player.playbackState != .stopped else {
             self.prog.isHidden = true
             return

@@ -287,6 +287,7 @@ class ViewController: UIViewController {
         guard self.items.count > 0 else {return}
         let newItem = self.items.removeFirst()
         self.qp.insert(newItem, after:nil) // means "at end"
+        print(self.qp.items().count)
     }
     
     func timerFired(time:CMTime) {

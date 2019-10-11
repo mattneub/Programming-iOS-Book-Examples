@@ -38,10 +38,15 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
 
 class ViewController: UIViewController {
     
+    let player = MPMusicPlayerController.applicationQueuePlayer
+    // let player = MPMusicPlayerController.systemMusicPlayer
+
+    
     
     @IBAction func doStop(_ sender: Any) {
-        let player = MPMusicPlayerController.applicationQueuePlayer
-        player.stop()
+        if self.player.playbackState == .playing {
+            self.player.stop()
+        }
     }
     
     
@@ -53,12 +58,11 @@ class ViewController: UIViewController {
             let result = songs.items
             guard let items = result, items.count > 0 else {return}
             let song = items[0]
-            
-            let player = MPMusicPlayerController.applicationQueuePlayer
-            // let player = MPMusicPlayerController.systemMusicPlayer
-            
-            print("stopping")
-            player.stop()
+                        
+            if self.player.playbackState == .playing {
+                print("stopping")
+                self.player.stop()
+            }
             
             /*
              setQueue(with query: MPMediaQuery)
@@ -71,10 +75,16 @@ class ViewController: UIViewController {
              */
             
             // thus there are four possibilities...
-            // and at the moment they all work
+            // true,true succeeds
+            // true,false succeeds
+            // false,true succeeds
+            // false,false succeeds
             
+            // ok, I learned something very important!
+            // they all work _if you use an instance property_
+            
+            var useDescriptor : Bool { return true }
             var useCollection : Bool { return true }
-            var useDescriptor : Bool { return false }
             
             let coll = MPMediaItemCollection(items: [song])
             let predicate = MPMediaPropertyPredicate(
@@ -85,33 +95,22 @@ class ViewController: UIViewController {
             switch (useDescriptor, useCollection) {
             case (false,false):
                 print("setting queue with item collection")
-                player.setQueue(with: coll)
+                self.player.setQueue(with: coll)
             case (false,true):
                 print("setting queue with query")
-                player.setQueue(with: query)
-            case (true,true): // descriptor, item collection
+                self.player.setQueue(with: query)
+            case (true,true):
                 print("setting queue with descriptor, item collection")
                 let desc = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: coll)
-                player.setQueue(with: desc)
-            case (true,false): // descriptor, query
+                self.player.setQueue(with: desc)
+            case (true,false):
                 print("setting queue with descriptor, query")
                 let desc = MPMusicPlayerMediaItemQueueDescriptor(query: query)
-                player.setQueue(with: desc)
+                self.player.setQueue(with: desc)
             }
             
-            print("inserting delay")
-            delay(0.2) {
-                player.prepareToPlay { err in
-                    if let err = err {
-                        print("printing error")
-                        print(err)
-                        return
-                    }
-                    print("trying to play")
-                    // weird: no need to actually say play!
-                    // player.play()
-                }
-            }
+            print("trying to play")
+            self.player.play()
         }
     }
 

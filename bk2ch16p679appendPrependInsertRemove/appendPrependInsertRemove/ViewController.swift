@@ -35,8 +35,19 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
 class ViewController: UIViewController {
     let player = MPMusicPlayerController.applicationQueuePlayer
     // let player = MPMusicPlayerController.systemMusicPlayer
+    // var ob : NSObjectProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        let ob = NotificationCenter.default.addObserver(
+            forName: .MPMusicPlayerControllerQueueDidChange,
+            object: self.player, queue: nil) { n in
+                // okay, after hours of testing I determined that
+                // implementing this method to call `player.perform(queueTransaction:)`,
+                // even empty, will cause a crash or other failure with the player
+        }
+        self.ob = ob
+ */
         self.baseQueue()
     }
     
@@ -62,16 +73,16 @@ class ViewController: UIViewController {
             }
             print("got \(shorties.count) short songs")
             let queue = MPMediaItemCollection(items:shorties)
-            let player = self.player
-            player.stop()
-            player.setQueue(with:queue)
+            if self.player.playbackState == .playing {
+                self.player.stop()
+            }
+            print("setting queue")
+            self.player.setQueue(with:queue)
             delay(0.2) {
-                player.prepareToPlay() { err in
-                    player.play()
-                }
+                print("playing")
+                self.player.play()
             }
         }
-
     }
     
     func createDesc() -> MPMusicPlayerMediaItemQueueDescriptor {
@@ -92,23 +103,13 @@ class ViewController: UIViewController {
     
     @IBAction func doAppend(_ sender: Any) {
         checkForMusicLibraryAccess {
-            let player = self.player
-            var ob : NSObjectProtocol?
-            ob = NotificationCenter.default.addObserver(forName: .MPMusicPlayerControllerQueueDidChange, object: nil, queue: nil) { _ in
-                NotificationCenter.default.removeObserver(ob!)
-                player.perform(queueTransaction: {q in
-                    print("and the queue is now:")
-                    print(q.items.map{$0.title!})
-                }) {q, err in
-                    if let err = err { print("error", err) }
-                }
-            }
-            if player.playbackState == .playing {
-                print("pausing")
-                self.doStop(self)
-            }
             print("appending")
-            player.append(self.createDesc())
+            self.player.append(self.createDesc())
+            self.player.perform(queueTransaction: {q in
+            }, completionHandler: {q,_ in
+                print(q.items.map{$0.title!})
+            })
+
         }
     }
     
@@ -116,66 +117,61 @@ class ViewController: UIViewController {
     // that way, you see that prepend means insert after currently playing item
     @IBAction func doPrepend(_ sender: Any) {
         checkForMusicLibraryAccess {
-            let player = self.player
-            player.prepend(self.createDesc())
-            delay(0.2) { // can't do this too soon or we "time out"
-                player.perform(queueTransaction: {q in
-                    print(q.items.map{$0.title!})
-                }) {q, err in
-                    if let err = err { print(err) }
-                }
-            }
+            print("prepending")
+            self.player.prepend(self.createDesc()) // works correctly, though I sometimes hear a glitch at that moment
+            self.player.perform(queueTransaction: {q in
+            }, completionHandler: {q,_ in
+                print(q.items.map{$0.title!})
+            })
+
         }
     }
 
     @IBAction func doInsert(_ sender: Any) {
         checkForMusicLibraryAccess {
             let qd = self.createDesc()
-            let player = self.player
-            player.perform(queueTransaction: {q in
-                print("before:", q.items.map{$0.title!})
-                q.insert(qd, after:q.items.last!) // bug: if `after:` is not nil, nothing happens
+
+            self.player.perform(queueTransaction: {q in
+                print("inserting")
+                q.insert(qd, after:q.items[3]) // okay, they fixed that one anyway! this works
+                // plus there is no audible glitch, nice
             }) {q, err in
-                // well, dammit, there's another bug!
-                // the queue does not reflect the change we just made!
-                if let err = err { print(err) }
-                print("after:", q.items.map{$0.title!})
-                delay(0.2) {
-                    player.perform(queueTransaction: { qq in
-                        print("after after:", qq.items.map{$0.title!})
-                    }) { _,_ in }
-                }
+                if let err = err { print("error", err) }
+                // and they fixed the delay issue for this one!
+                print("and the queue is now")
+                print(q.items.map{$0.title!})
             }
         }
     }
     
     @IBAction func doRemove(_ sender: Any) {
         checkForMusicLibraryAccess {
-            let player = self.player
-            player.perform(queueTransaction: {q in
-                print("before:", q.items.map{$0.title!})
-                q.remove(q.items[3])
-            }) {q, err in
-                // same bug; the change is not reflected correctly
-                if let err = err { print(err) }
-                print("after:", q.items.map{$0.title!})
-                delay(0.2) {
-                    player.perform(queueTransaction: { qq in
-                        print("after after:", qq.items.map{$0.title!})
-                    }) { _,_ in }
+            self.player.perform(queueTransaction: {q in
+            }, completionHandler: {q,_ in
+                print(q.items.map{$0.title!})
+            })
+            delay(0.2) { // delay because otherwise they complain of overlapping transactions
+                self.player.perform(queueTransaction: {q in
+                    print("removing")
+                    q.remove(q.items[3])
+                }) {q, err in
+                    if let err = err { print("error", err) }
+                    print("and the queue is now")
+                    print(q.items.map{$0.title!})
                 }
             }
         }
     }
 
     @IBAction func doStop(_ sender: Any) {
-        let state = player.playbackState
-        print("state:", state.rawValue)
-        player.perform(queueTransaction: {q in
-            print(q.items.map{$0.title!})
-        }) {q, err in
-            if let err = err { print(err) }
-        }
+//        let state = player.playbackState
+//        print("state:", state.rawValue)
+//        player.perform(queueTransaction: {q in
+//            print(q.items.map{$0.title!})
+//        }) {q, err in
+//            // if let err = err { print(err) }
+//            // there is _always_ an error because we didn't transact
+//        }
 
         if state == .playing {
             player.pause()
