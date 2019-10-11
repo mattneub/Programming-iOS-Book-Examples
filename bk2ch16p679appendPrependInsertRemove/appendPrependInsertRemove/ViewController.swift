@@ -35,19 +35,32 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
 class ViewController: UIViewController {
     let player = MPMusicPlayerController.applicationQueuePlayer
     // let player = MPMusicPlayerController.systemMusicPlayer
-    // var ob : NSObjectProtocol?
+    var ob : NSObjectProtocol?
+    var lock = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
         let ob = NotificationCenter.default.addObserver(
             forName: .MPMusicPlayerControllerQueueDidChange,
-            object: self.player, queue: nil) { n in
+            object: self.player, queue: OperationQueue.main) { n in
                 // okay, after hours of testing I determined that
                 // implementing this method to call `player.perform(queueTransaction:)`,
                 // even empty, will cause a crash or other failure with the player
+                // my attempts to work around this have failed
+                // okay, I think the reason is that calling player.perform itself changes the queue!
+                // but I seem to be unable to set up a lock to prevent overlap
+                // this crude pseudo-lock seems to work!
+                print("change")
+                if self.lock { return }
+                self.lock = true
+                self.player.perform(queueTransaction: {q in
+                    NSLog("perform")
+                    print(q.items.map{$0.title!})
+                }, completionHandler: {_,_ in
+                    NSLog("completion")
+                    self.lock = false
+                })
         }
         self.ob = ob
- */
         self.baseQueue()
     }
     
@@ -78,7 +91,7 @@ class ViewController: UIViewController {
             }
             print("setting queue")
             self.player.setQueue(with:queue)
-            delay(0.2) {
+            delay(0.2) { // definitely need this here
                 print("playing")
                 self.player.play()
             }
@@ -105,10 +118,11 @@ class ViewController: UIViewController {
         checkForMusicLibraryAccess {
             print("appending")
             self.player.append(self.createDesc())
-            self.player.perform(queueTransaction: {q in
-            }, completionHandler: {q,_ in
-                print(q.items.map{$0.title!})
-            })
+            // this fails because it is too soon, the change has not happened yet
+//            self.player.perform(queueTransaction: {q in
+//            }, completionHandler: {q,_ in
+//                print(q.items.map{$0.title!})
+//            })
 
         }
     }
@@ -119,11 +133,11 @@ class ViewController: UIViewController {
         checkForMusicLibraryAccess {
             print("prepending")
             self.player.prepend(self.createDesc()) // works correctly, though I sometimes hear a glitch at that moment
-            self.player.perform(queueTransaction: {q in
-            }, completionHandler: {q,_ in
-                print(q.items.map{$0.title!})
-            })
-
+            // this fails because it is too soon, the change has not happened yet
+//            self.player.perform(queueTransaction: {q in
+//            }, completionHandler: {q,_ in
+//                print(q.items.map{$0.title!})
+//            })
         }
     }
 
@@ -148,9 +162,8 @@ class ViewController: UIViewController {
         checkForMusicLibraryAccess {
             self.player.perform(queueTransaction: {q in
             }, completionHandler: {q,_ in
+                print("before removing")
                 print(q.items.map{$0.title!})
-            })
-            delay(0.2) { // delay because otherwise they complain of overlapping transactions
                 self.player.perform(queueTransaction: {q in
                     print("removing")
                     q.remove(q.items[3])
@@ -159,12 +172,12 @@ class ViewController: UIViewController {
                     print("and the queue is now")
                     print(q.items.map{$0.title!})
                 }
-            }
+            })
         }
     }
 
     @IBAction func doStop(_ sender: Any) {
-//        let state = player.playbackState
+        let state = player.playbackState
 //        print("state:", state.rawValue)
 //        player.perform(queueTransaction: {q in
 //            print(q.items.map{$0.title!})
