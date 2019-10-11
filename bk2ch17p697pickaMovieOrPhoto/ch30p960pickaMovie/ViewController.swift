@@ -13,6 +13,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 }
 
 func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
+    // uncomment to test what happens if we proceed without authorization
+//    f?()
+//    return;
+    
     let status = PHPhotoLibrary.authorizationStatus()
     switch status {
     case .authorized:
@@ -67,24 +71,26 @@ class ViewController: UIViewController {
         checkForPhotoLibraryAccess {
         
             // horrible Moments interface
-            let src = UIImagePickerController.SourceType.savedPhotosAlbum
-            // let src = UIImagePickerController.SourceType.photoLibrary
+            // and to make matters worse, it doesn't match iOS 13 Photos app
+            // let src = UIImagePickerController.SourceType.savedPhotosAlbum
+            let src = UIImagePickerController.SourceType.photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(src)
                 else { print("alas"); return }
-            guard let arr = UIImagePickerController.availableMediaTypes(for:src)
-                else { print("no available types"); return }
+            let arr = UIImagePickerController.availableMediaTypes(for:src)
+            print("available types", arr as Any)
+            if arr == nil || arr!.count == 0  { print("no available types"); return }
             let picker = UIImagePickerController()
             picker.sourceType = src
             // if you don't explicitly include live photos, you won't get any live photos as live photos
             picker.mediaTypes = [kUTTypeLivePhoto as String, kUTTypeImage as String, kUTTypeMovie as String]
-            // picker.mediaTypes = arr
-            print(arr)
+
+            print(picker.mediaTypes)
             picker.delegate = self
             
             // new in iOS 11
-            picker.videoExportPreset = AVAssetExportPreset640x480 // for example
+            picker.videoExportPreset = AVAssetExportPreset640x480 // or whatever
             
-            picker.allowsEditing = false // try true
+            picker.allowsEditing = true // try true
             
             // this will automatically be fullscreen on phone and pad, looks fine
             // note that for .photoLibrary, iPhone app must permit portrait orientation
@@ -118,18 +124,24 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) { //
+        print("====== pick!")
+        let mediatype = info[.mediaType]
+        print("media type:", mediatype as Any)
         let asset = info[.phAsset] as? PHAsset
-        print(asset as Any)
-        print(asset?.playbackStyle.rawValue as Any)
+        print("asset:", asset as Any)
+        print("playbackstyle:", asset?.playbackStyle.rawValue as Any)
         // types are 0 for unsupported, then image, imageAnimated, livePhoto, video, videoLooping
         let url = info[.mediaURL] as? URL
         print("media url:", url as Any)
         var im = info[.originalImage] as? UIImage
+        print("original image:", im as Any)
         if let ed = info[.editedImage] as? UIImage {
             im = ed
         }
         let live = info[.livePhoto] as? PHLivePhoto
+        print("live:", live as Any)
         let imurl = info[.imageURL] as? URL
+        print("image url:", imurl as Any)
         self.dismiss(animated:true) {
             if let style = asset?.playbackStyle {
                 switch style {
@@ -146,8 +158,19 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                         self.showAnimatedImage(imurl!)
                     }
                 case .livePhoto:
+                    // hmm, I'm getting .livePhoto but live _is_ nil!
                     if live != nil {
                         self.showLivePhoto(live!)
+                    } else {
+                        print("live is nil!")
+                        // well then I'll fetch it myself, said the little red hen
+                        if let asset = asset {
+                            PHImageManager().requestLivePhoto(for: asset, targetSize: self.redView.bounds.size, contentMode: .aspectFit, options: nil) { photo, info in
+                                if let photo = photo {
+                                    self.showLivePhoto(photo)
+                                }
+                            }
+                        }
                     }
                 case .video:
                     if url != nil {
