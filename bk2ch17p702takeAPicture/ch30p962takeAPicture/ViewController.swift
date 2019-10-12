@@ -123,7 +123,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let src = UIImagePickerController.SourceType.camera
         guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
         
-        var which : Int {return 4} // 1, 2, 3, 4
+        var which : Int {return 3} // 1, 2, 3, 4
         let desiredTypes : [String] = {
             switch which {
             case 1: return [kUTTypeImage as String]
@@ -174,7 +174,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                         // showing how simple it is to save into the Camera Roll
                         // return;
                         checkForPhotoLibraryAccess {
-                            var which : Int { return 0 }
+                            var which : Int { return 1 }
                             switch which {
                             case 0: // simply add image to library
                                 let lib = PHPhotoLibrary.shared()

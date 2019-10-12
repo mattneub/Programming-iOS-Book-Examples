@@ -41,9 +41,9 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
     
     let myidentifier = "com.neuburg.matt.PhotoKitImages.vignette"
     var displayImage : CIImage?
-    var context : CIContext!
+    var context : CIContext?
     let vig = VignetteFilter()
-    var queue: MTLCommandQueue!
+    var queue: MTLCommandQueue?
 
 
     
@@ -70,7 +70,8 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             return
         }
         self.mtkview.device = device
-        
+        self.mtkview.framebufferOnly = false
+
         // mode: draw on demand
         self.mtkview.isPaused = true
         self.mtkview.enableSetNeedsDisplay = true
@@ -125,13 +126,15 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         // wait, I just realized I can do that by offsetting the draw bounds origin
         
         // minimal dance required in order to draw: render, present, commit
-        let buffer = self.queue.makeCommandBuffer()!
+        guard let texture = self.mtkview.currentDrawable?.texture else {return}
+        guard let buffer = self.queue?.makeCommandBuffer() else {return}
         self.context!.render(output,
-                             to: view.currentDrawable!.texture,
+                             to: texture,
                              commandBuffer: buffer,
                              bounds: CGRect(origin:CGPoint(x:-r.origin.x, y:-r.origin.y), size:view.drawableSize),
                              colorSpace: CGColorSpaceCreateDeviceRGB())
-        buffer.present(view.currentDrawable!)
+        guard let drawable = self.mtkview.currentDrawable else { return }
+        buffer.present(drawable)
         buffer.commit()
         
     }
