@@ -57,7 +57,9 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         let opts = PHImageRequestOptions()
         opts.resizeMode = .exact
         opts.version = .current
-        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(600,600), contentMode: .aspectFit, options: opts) { im, info in
+        // NB I do _not_ use PHImageManager.default! That's because it caches...
+        // so when I reload the image after editing it, I'm having trouble getting the new one to load
+        PHImageManager().requestImage(for: asset, targetSize: CGSize(600,600), contentMode: .aspectFit, options: opts) { im, info in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging
@@ -98,10 +100,11 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // for reasons that are totally unclear to me, this line doesn't work here...
             // (portrait images come out in landscape)
             // but it _does_ work in the photo editing extension (PhotoEditingViewController)
-            // let evc = EditingViewController(displayImage:CIImage(image:im, options:[.applyOrientationProperty:true])!)
-            let or = input.fullSizeImageOrientation
-            let evc = EditingViewController(displayImage:CIImage(image: im)!.oriented(forExifOrientation:or))
-            
+            // ok, well, fmitm, now it works (iOS 13? can't check whether this is a change or not)
+            let evc = EditingViewController(displayImage:CIImage(image:im, options:[.applyOrientationProperty:true])!)
+            // let or = input.fullSizeImageOrientation
+            // let evc = EditingViewController(displayImage:CIImage(image: im)!.oriented(forExifOrientation:or))
+
             // oddly, I didn't have to do that before because I was drawing the image into an image graphics context
             // and using that — and that reoriented it!
             
@@ -134,33 +137,29 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         self.view.addSubview(act)
         act.startAnimating()
         
-        // moving this stuff to outside the background thread was a big help!
-        let inurl = self.input.fullSizeImageURL!
-        let output = PHContentEditingOutput(contentEditingInput:self.input)
-        let outurl = output.renderedContentURL
-        
-        // okay, I now believe this next line is crucial for picking up orientation correctly
-        // if we don't do that, we can't save back into the library
-        var ci = CIImage(contentsOf: inurl, options: [.applyOrientationProperty:true])!
-        let space = ci.colorSpace!
-        if vignette >= 0.0 {
-            let vig = VignetteFilter()
-            vig.setValue(ci, forKey: "inputImage")
-            vig.setValue(vignette, forKey: "inputPercentage")
-            ci = vig.outputImage!
-        }
-
-        let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
-        output.adjustmentData = PHAdjustmentData(
-            formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
-
-
-        // new in iOS 10
-        // warning: this is time-consuming! (even more than how I was doing it before)
+        // done on background thread because the two starred lines are time-consuming
         DispatchQueue.global(qos: .userInitiated).async {
+            
+            let inurl = self.input.fullSizeImageURL!
+            let output = PHContentEditingOutput(contentEditingInput:self.input)
+            let outurl = output.renderedContentURL
+            
+            // okay, I now believe this next line is crucial for picking up orientation correctly
+            // if we don't do that, we can't save back into the library
+            var ci = CIImage(contentsOf: inurl, options: [.applyOrientationProperty:true])! // *
+            let space = ci.colorSpace!
+            if vignette >= 0.0 {
+                let vig = VignetteFilter()
+                vig.setValue(ci, forKey: "inputImage")
+                vig.setValue(vignette, forKey: "inputPercentage")
+                ci = vig.outputImage!
+            }
+            
+            let data = try! NSKeyedArchiver.archivedData(withRootObject: vignette, requiringSecureCoding: true)
+            output.adjustmentData = PHAdjustmentData(
+                formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
 
-            try! CIContext().writeJPEGRepresentation(of: ci, to: outurl, colorSpace: space)
-
+            try! CIContext().writeJPEGRepresentation(of: ci, to: outurl, colorSpace: space) // *
 
             // now we must tell the photo library to pick up the edited image
             // all this main-queue-plus-delay stuff seems to be genuinely necessary
@@ -179,12 +178,15 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                             // in our case, since are already displaying this photo...
                             // ...we should now reload it
                             // but for some reason I'm having trouble talking to the library, add delay
-                            print("delaying")
-                            delay(0.1) {
-                                print("after delay")
+//                            print("delaying")
+//                            delay(0.5) {
+//                                print("after delay")
+                            // all right, I think I figured out the problem!
+                            // the docs say that the `default` PHImageManager caches its results
+                            // so to work around that caching I do _not_ use the `default`
                                 act.removeFromSuperview()
                                 self.setUpInterface()
-                            }
+//                            }
                         } else {
                             act.removeFromSuperview()
                             print("phasset change request error: \(err as Any)")

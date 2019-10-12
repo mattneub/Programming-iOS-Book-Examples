@@ -26,6 +26,7 @@
 		32EBFD7F19A10EA9008F9D28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EBFD7D19A10EA9008F9D28 /* Main.storyboard */; };
 		32EBFD8119A10EA9008F9D28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32EBFD8019A10EA9008F9D28 /* Assets.xcassets */; };
 		32FC0F231BBF106600BB8293 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32FC0F221BBF106600BB8293 /* LaunchScreen.storyboard */; };
+		81D8F2232352568500446536 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D8F2222352568500446536 /* MetalKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		32EBFD7E19A10EA9008F9D28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32EBFD8019A10EA9008F9D28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32FC0F221BBF106600BB8293 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81D8F2222352568500446536 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D8F2232352568500446536 /* MetalKit.framework in Frameworks */,
 				32C5A88D1C5C0CE600064A33 /* VignetteFilter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +137,7 @@
 		3276DA4F1BC0A17900DDD64E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81D8F2222352568500446536 /* MetalKit.framework */,
 				32C5A8951C5C107900064A33 /* UIKit.framework */,
 				3276DA501BC0A17900DDD64E /* PhotosUI.framework */,
 				3276DA521BC0A17900DDD64E /* Photos.framework */,
