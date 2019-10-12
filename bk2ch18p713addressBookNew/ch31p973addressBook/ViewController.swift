@@ -51,7 +51,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     @IBAction func doFindMoi (_ sender: Any!) {
         checkForContactsAccess {
             DispatchQueue.global(qos: .userInitiated).async {
-                var which : Int {return 2} // 1 or 2
+                var which : Int {return 1} // 1 or 2
                 do {
                     var premoi : CNContact!
                     switch which {
@@ -125,9 +125,12 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                             if let val = result[key] as? String {
                                 if val == "country" {
                                     // r is the range of the country name
-                                    let country = s.substring(with: r)
-                                    print(country) // New Zealand
-                                    // ...
+                                    print("country is:", s.substring(with: r))
+                                    if let mas = attr.mutableCopy() as? NSMutableAttributedString {
+                                        mas.addAttributes([.underlineStyle:NSUnderlineStyle.single.rawValue], range: r)
+                                        print(mas)
+                                        print(mas.string)
+                                    }
                                     stop.pointee = true
                                 }
                             }
@@ -227,6 +230,10 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     }
                 }
             }
+            if snide == nil {
+                print("you didn't do the experiment properly, snide is nil")
+                return
+            }
             
             let vc = CNContactViewController(for:snide)
             vc.delegate = self
@@ -259,7 +266,10 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         // con.imageData = UIImage(named:"snidely")!.pngData() // works
         let npvc = CNContactViewController(forNewContact: con)
         npvc.delegate = self
-        self.present(UINavigationController(rootViewController: npvc), animated:true)
+        // but there's a bug in iOS 13; you can't dismiss the thing
+        let nav = UINavigationController(rootViewController: npvc)
+        // nav.modalPresentationStyle = .fullScreen // that didn't help
+        self.present(nav, animated:true)
     }
     
     @IBAction func doUnknownPerson (_ sender: Any) {
@@ -274,7 +284,10 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         unkvc.delegate = self
         unkvc.allowsActions = true
         // unkvc.displayedPropertyKeys = []
+        unkvc.edgesForExtendedLayout = [] // yuck, try to prevent bug in iOS 13
+        self.navigationController?.view.backgroundColor = .white // ditto
         self.navigationController?.pushViewController(unkvc, animated: true)
+        // self.present(UINavigationController(rootViewController:unkvc), animated:true)
     }
 
 
