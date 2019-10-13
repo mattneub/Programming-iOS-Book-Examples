@@ -51,34 +51,30 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     @IBAction func doFindMoi (_ sender: Any!) {
         checkForContactsAccess {
             DispatchQueue.global(qos: .userInitiated).async {
-                var which : Int {return 1} // 1 or 2
+                var which : Int {return 2} // 1 or 2
                 do {
                     var premoi : CNContact!
                     switch which {
                     case 1:
-                        let pred = CNContact.predicateForContacts(matchingName:"Matt")
-                        var matts = try CNContactStore().unifiedContacts(matching:pred, keysToFetch: [
+                        let pred = CNContact.predicateForContacts(matchingName:"Matt Neuburg") // "Neuburg Matt" works too etc.
+                        let matts = try CNContactStore().unifiedContacts(matching:pred, keysToFetch: [
                             CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
                             ])
-                        matts = matts.filter{$0.familyName == "Neuburg"}
                         guard let moi = matts.first else {
                             print("couldn't find myself")
                             return
                         }
                         premoi = moi
                     case 2:
-                        let pred = CNContact.predicateForContacts(matchingName:"Matt")
+                        let pred = CNContact.predicateForContacts(matchingName:"Matt Neuburg")
                         let req = CNContactFetchRequest(keysToFetch: [
                             CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
                             ])
                         req.predicate = pred
                         var matt : CNContact? = nil
-                        try CNContactStore().enumerateContacts(with:req) {
-                            con, stop in
-                            if con.familyName == "Neuburg" {
-                                matt = con
-                                stop.pointee = true
-                            }
+                        try CNContactStore().enumerateContacts(with:req) { con, stop in
+                            matt = con
+                            stop.pointee = true
                         }
                         guard let moi = matt else {
                             print("couldn't find myself")
@@ -113,7 +109,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     
                     // intriguing: you can find the pieces of a physical address
                     do {
-                        let pred = CNContact.predicateForContacts(matchingName:"Charlotte")
+                        let pred = CNContact.predicateForContacts(matchingName:"Charlotte Wilson")
                         let c = try CNContactStore().unifiedContacts(matching: pred, keysToFetch: [CNContactPostalAddressesKey as CNKeyDescriptor])[0]
                         let addr = c.postalAddresses[0]
                         let form = CNPostalAddressFormatter()
@@ -206,7 +202,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
             if status == .authorized {
                 print("getting from store")
                 do {
-                    let pred = CNContact.predicateForContacts(matchingName: "Snidely")
+                    let pred = CNContact.predicateForContacts(matchingName: "Snidely Whiplash")
                     let keys = CNContactViewController.descriptorForRequiredKeys()
                     let snides = try CNContactStore().unifiedContacts(matching: pred, keysToFetch: [keys])
                     guard let snide1 = snides.first else {
@@ -266,9 +262,8 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         // con.imageData = UIImage(named:"snidely")!.pngData() // works
         let npvc = CNContactViewController(forNewContact: con)
         npvc.delegate = self
-        // but there's a bug in iOS 13; you can't dismiss the thing
+        // but there's a bug in iOS 13; you can't dismiss the thing if the keyboard is showing
         let nav = UINavigationController(rootViewController: npvc)
-        // nav.modalPresentationStyle = .fullScreen // that didn't help
         self.present(nav, animated:true)
     }
     
