@@ -52,6 +52,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     @IBAction func createCalendar (_ sender: Any) {
         checkForEventAccess {
             do {
+                // just testing: what sources do we even have?
+                print(self.database.sources)
                 // obtain local source
                 let locals = self.database.sources.filter {$0.sourceType == .local}
                 guard let src = locals.first else {
@@ -88,7 +90,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                 }
                 // form the start and end dates
                 let greg = Calendar(identifier:.gregorian)
-                var comp = DateComponents(year:2017, month:8, day:10, hour:15)
+                var comp = DateComponents(year:2019, month:8, day:10, hour:15)
                 let d1 = greg.date(from:comp)!
                 comp.hour = comp.hour! + 1
                 let d2 = greg.date(from:comp)!
@@ -148,7 +150,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                 ev.calendar = cal
                 // need a start date and end date
                 let greg = Calendar(identifier:.gregorian)
-                var comp = DateComponents(year:2017, month:1, hour:10)
+                var comp = DateComponents(year:2019, month:1, hour:10)
                 comp.weekday = 1 // Sunday
                 comp.weekdayOrdinal = 1 // *first* Sunday
                 ev.startDate = greg.date(from:comp)!
