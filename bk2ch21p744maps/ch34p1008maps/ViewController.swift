@@ -32,7 +32,7 @@ extension CGVector {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 2 // 1...10
+    let which = 10 // 1...10
     
     @IBOutlet var map : MKMapView!
     let annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
@@ -65,12 +65,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
             _ = MKMetersPerMapPointAtLatitude(loc.latitude)
         }
         
+        // new in iOS 13 we can at last limit scroll and zoom!
+        self.map.cameraBoundary = MKMapView.CameraBoundary(coordinateRegion: MKCoordinateRegion(center: loc, span: MKCoordinateSpan(latitudeDelta: 0.6, longitudeDelta: 0.6)))
+        self.map.cameraZoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 130_000)
+        
         // try new iOS 11 feature
         self.map.showsCompass = false
         let compass = MKCompassButton(mapView:self.map)
         compass.frame.origin = CGPoint(20,400)
-        // compass.compassVisibility = .visible
-        compass.isHidden = true // prevent annoying initial flash
+        compass.compassVisibility = .visible
+        // compass.isHidden = true // prevent annoying initial flash
+        // ok I guess that doesn't do anything useful any more
         self.view.addSubview(compass)
         
 
@@ -164,7 +169,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             self.map.addOverlay(over)
             // print(self.map.overlays)
         }
-        if which == 10 {
+        noAnnotation: if which == 10 {
             
             let lat = self.annloc.latitude
             let metersPerPoint = MKMetersPerMapPointAtLatitude(lat)
@@ -175,6 +180,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let mr = MKMapRect(x: c.x + 2*unit, y: c.y - 4.5*unit, width: Double(sz.width), height: Double(sz.height))
             let over = MyPathOverlay(rect:mr)
             self.map.addOverlay(over, level:.aboveRoads)
+            
+            break noAnnotation
             
             let annot = MKPointAnnotation()
             annot.coordinate = over.coordinate
@@ -306,15 +313,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // this now works!
         print(MKMapItemTypeIdentifier)
         print(MKMapType.standard.rawValue)
+        let coord = self.map.region.center
+        let span = self.map.region.span
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            MKLaunchOptionsMapCenterKey: self.map.region.center,
-            MKLaunchOptionsMapSpanKey: self.map.region.span
+            // great, new in iOS 13 we crash if we don't convert these ourselves
+            MKLaunchOptionsMapCenterKey: coord as NSValue,
+            MKLaunchOptionsMapSpanKey: span as NSValue
         ])
         
     }
     
     // this is no longer needed! my views are draggable as long as `isDraggable` is true
+    // though to be sure the dragging gesture is a bit tricky
     private func mapViewNOT(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
         print("here")
         switch newState {

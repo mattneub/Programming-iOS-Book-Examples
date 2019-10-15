@@ -24,7 +24,11 @@ class MyPathOverlayRenderer : MKOverlayRenderer {
 
         con.setStrokeColor(UIColor.black.cgColor)
         con.setFillColor(UIColor.red.withAlphaComponent(0.2).cgColor)
-        con.setLineWidth(1.2/zoomScale)
+        // again, something is wrong here
+        // I need to work out what this has to do with scale
+        let scale = UIScreen.main.scale
+        con.setLineWidth(2/(zoomScale/scale))
+        // con.setLineWidth(100)
         
         let unit = CGFloat(overlay.boundingMapRect.width/4.0)
         

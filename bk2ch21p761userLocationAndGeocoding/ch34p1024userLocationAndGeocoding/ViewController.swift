@@ -31,10 +31,13 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     @IBAction func doButton (_ sender: Any) {
         let mi = MKMapItem.forCurrentLocation()
         // here, however, it seems that we cannot set the span...?
-        let span = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            MKLaunchOptionsMapSpanKey: span
+            // whoa, in iOS 13 you crash if you try passing a coordinate span
+            // okay, you can avoid the crash by making an NSValue yourself
+            // but it still doesn't _do_ anything
+            // MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: span)
         ])
     }
     
@@ -98,8 +101,11 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             return
         }
         let req = MKLocalSearch.Request()
-        req.naturalLanguageQuery = "Thai restaurant"
+        req.naturalLanguageQuery = "Thai"
         req.region = MKCoordinateRegion(center: loc.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 1,longitudeDelta: 1))
+        req.resultTypes = .pointOfInterest
+        let filter = MKPointOfInterestFilter(including: [.restaurant])
+        req.pointOfInterestFilter = filter
         let search = MKLocalSearch(request:req)
         search.start { response, error in
             guard let response = response else {
@@ -108,6 +114,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             }
             self.map.showsUserLocation = false
             let mi = response.mapItems[0] // I'm feeling lucky
+            print(response.mapItems)
             let place = mi.placemark
             let loc = place.location!.coordinate
             let reg = MKCoordinateRegion(center: loc, latitudinalMeters: 1200, longitudinalMeters: 1200)
@@ -117,6 +124,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             ann.subtitle = mi.phoneNumber
             ann.coordinate = loc
             self.map.addAnnotation(ann)
+            self.map.pointOfInterestFilter = filter
         }
     }
     
