@@ -11,6 +11,7 @@
 		322A6EA71BAE17B900A2F306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322A6EA61BAE17B900A2F306 /* Assets.xcassets */; };
 		322A6EAA1BAE17B900A2F306 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322A6EA81BAE17B900A2F306 /* LaunchScreen.storyboard */; };
 		8134AE7C22E3504000E9A558 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134AE7B22E3504000E9A558 /* SceneDelegate.swift */; };
+		817443C62357375800AA5B44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817443C52357375800AA5B44 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		322A6EA91BAE17B900A2F306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		322A6EAB1BAE17B900A2F306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8134AE7B22E3504000E9A558 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		817443C52357375800AA5B44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				322A6E9F1BAE17B900A2F306 /* AppDelegate.swift */,
 				8134AE7B22E3504000E9A558 /* SceneDelegate.swift */,
+				817443C52357375800AA5B44 /* ViewController.swift */,
 				322A6EA61BAE17B900A2F306 /* Assets.xcassets */,
 				322A6EA81BAE17B900A2F306 /* LaunchScreen.storyboard */,
 				322A6EAB1BAE17B900A2F306 /* Info.plist */,
@@ -132,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817443C62357375800AA5B44 /* ViewController.swift in Sources */,
 				322A6EA01BAE17B900A2F306 /* AppDelegate.swift in Sources */,
 				8134AE7C22E3504000E9A558 /* SceneDelegate.swift in Sources */,
 			);
@@ -237,7 +241,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bk2ch01p004appWithoutStoryboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk2ch01p004appWithoutStoryboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -251,7 +255,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bk2ch01p004appWithoutStoryboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk2ch01p004appWithoutStoryboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
