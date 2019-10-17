@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,13 +10,13 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch35p1032location" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MyCoolApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEp-Pq-uy4">
-                                <rect key="frame" x="16" y="125" width="119" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEp-Pq-uy4">
+                                <rect key="frame" x="16" y="105" width="117" height="30"/>
                                 <state key="normal" title="Find My Location">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -27,7 +25,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5U-Qt-T1O">
-                                <rect key="frame" x="16" y="28" width="140" height="30"/>
+                                <rect key="frame" x="16" y="8" width="140" height="30"/>
                                 <state key="normal" title="Ask for When In Use">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -36,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9E-nW-PJl">
-                                <rect key="frame" x="16" y="77" width="100" height="30"/>
+                                <rect key="frame" x="16" y="57" width="100" height="30"/>
                                 <state key="normal" title="Ask for Always">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -45,27 +43,27 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="woB-LU-Hp8">
-                                <rect key="frame" x="16" y="179" width="343" height="448"/>
+                                <rect key="frame" x="16" y="159" width="343" height="428"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="635-lk-uKF">
-                                <rect key="frame" x="299" y="28" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="635-lk-uKF">
+                                <rect key="frame" x="320" y="8" width="32" height="30"/>
                                 <state key="normal" title="Stop"/>
                                 <connections>
                                     <action selector="stop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="P4B-L0-GTd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ah6-d3-u8b">
-                                <rect key="frame" x="267" y="125" width="85" height="30"/>
+                                <rect key="frame" x="267" y="105" width="85" height="30"/>
                                 <state key="normal" title="Where am I?"/>
                                 <connections>
                                     <action selector="whereAmI:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zX4-Ug-pwE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyw-Ma-z0D">
-                                <rect key="frame" x="299" y="617" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyw-Ma-z0D">
+                                <rect key="frame" x="311" y="607" width="36" height="30"/>
                                 <state key="normal" title="Clear"/>
                                 <connections>
                                     <action selector="doClear:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SZb-mm-kwk"/>
@@ -75,14 +73,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t5U-Qt-T1O" firstAttribute="top" secondItem="Au0-2w-qdl" secondAttribute="top" constant="8" id="03f-82-bCE"/>
-                            <constraint firstItem="Au0-2w-qdl" firstAttribute="bottom" secondItem="tyw-Ma-z0D" secondAttribute="bottom" constant="20" id="3HB-1e-Y6I"/>
+                            <constraint firstItem="Au0-2w-qdl" firstAttribute="bottom" secondItem="tyw-Ma-z0D" secondAttribute="bottom" constant="30" id="3HB-1e-Y6I"/>
                             <constraint firstItem="ah6-d3-u8b" firstAttribute="top" secondItem="Au0-2w-qdl" secondAttribute="top" constant="105" id="7Kh-Pj-ohU"/>
                             <constraint firstItem="Au0-2w-qdl" firstAttribute="trailing" secondItem="tyw-Ma-z0D" secondAttribute="trailing" constant="28" id="HUd-vM-urX"/>
                             <constraint firstItem="woB-LU-Hp8" firstAttribute="leading" secondItem="Au0-2w-qdl" secondAttribute="leading" constant="16" id="ThK-8Q-Fw0"/>
                             <constraint firstItem="Au0-2w-qdl" firstAttribute="trailing" secondItem="ah6-d3-u8b" secondAttribute="trailing" constant="23" id="Xlk-Zh-oep"/>
                             <constraint firstItem="woB-LU-Hp8" firstAttribute="top" secondItem="pEp-Pq-uy4" secondAttribute="bottom" constant="24" id="Yaa-4r-X9m"/>
                             <constraint firstItem="Au0-2w-qdl" firstAttribute="trailing" secondItem="woB-LU-Hp8" secondAttribute="trailing" constant="16" id="acy-5S-tST"/>
-                            <constraint firstItem="Au0-2w-qdl" firstAttribute="bottom" secondItem="woB-LU-Hp8" secondAttribute="bottom" constant="40" id="bXg-pv-1gF"/>
+                            <constraint firstItem="Au0-2w-qdl" firstAttribute="bottom" secondItem="woB-LU-Hp8" secondAttribute="bottom" constant="80" id="bXg-pv-1gF"/>
                             <constraint firstItem="p9E-nW-PJl" firstAttribute="leading" secondItem="Au0-2w-qdl" secondAttribute="leading" constant="16" id="bsm-Ha-jFK"/>
                             <constraint firstItem="pEp-Pq-uy4" firstAttribute="top" secondItem="p9E-nW-PJl" secondAttribute="bottom" constant="18" id="eOe-sl-mnn"/>
                             <constraint firstItem="pEp-Pq-uy4" firstAttribute="leading" secondItem="Au0-2w-qdl" secondAttribute="leading" constant="16" id="fDV-gi-sj0"/>

@@ -64,6 +64,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var startTime : Date!
     var trying = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(goingIntoBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    @objc func goingIntoBackground(_ n:Notification) {
+        self.managerHolder.checkForLocationAccess() {
+            self.locman.allowsBackgroundLocationUpdates = true // test background loc
+        }
+        self.managerHolder.checkForLocationAccess(always: true) {
+            if CLLocationManager.significantLocationChangeMonitoringAvailable() {
+                self.locman.startMonitoringVisits() // test background monitoring
+                // self.locman.showsBackgroundLocationIndicator = true // test blue bar
+            }
+        }
+    }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("did change auth: \(status.rawValue)", to:&output)
@@ -73,6 +90,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.managerHolder.doThisWhenAuthorized = nil
         default: break
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+        print(String(describing:visit), to:&output)
     }
     
     var which = 0
@@ -126,6 +147,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func stopTrying () {
         self.locman.stopUpdatingLocation()
+        self.locman.stopMonitoringVisits()
         self.startTime = nil
         self.trying = false
     }
@@ -167,7 +189,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             // got it
             print("You are at \(coord.latitude) \(coord.longitude)", to:&output)
-            self.stopTrying()
+            //self.stopTrying()
         case 2:
             let loc = locations.last!
             let coord = loc.coordinate
