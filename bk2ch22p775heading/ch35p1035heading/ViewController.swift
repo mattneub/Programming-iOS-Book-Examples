@@ -43,13 +43,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             h = h2
         }
         let cards = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
-        var dir = "N"
-        for (ix, card) in cards.enumerated() {
-            if h < 45.0/2.0 + 45.0*Double(ix) {
-                dir = card
-                break
-            }
+        func degToName(_ d:Double) -> String {
+            let divCount = cards.count
+            let angularRange = 360.0 / Double(divCount)
+            let bucket = Int((d + angularRange/2.0)/angularRange)
+            return cards[bucket % divCount]
         }
+        let dir = degToName(h)
         if self.lab.text != dir {
             self.lab.text = dir
         }

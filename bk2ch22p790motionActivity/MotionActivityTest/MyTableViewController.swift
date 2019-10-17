@@ -24,6 +24,13 @@ class MyTableViewController: UITableViewController {
         print("distance: \(ok3)")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let alert = UIAlertController(title: "Relaunched", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated:true)
+    }
+    
     func checkAuthorization(andThen f:(()->())? = nil) {
         guard CMMotionActivityManager.isActivityAvailable() else {
             print("darn")
@@ -43,7 +50,11 @@ class MyTableViewController: UITableViewController {
             }
         case .authorized: f?()
         case .restricted: break // do nothing
-        case .denied: break // could beg for authorization here
+        case .denied:
+            let alert = UIAlertController(title: "Denied", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated:true)
+            break // could beg for authorization here
         @unknown default: fatalError()
         }
     }
@@ -58,6 +69,11 @@ class MyTableViewController: UITableViewController {
         let now = Date()
         let yester = now - (60*60*24) // !
         self.actman.queryActivityStarting(from: yester, to: now, to: self.queue) { arr, err in
+            if let err = err {
+                let alert = UIAlertController(title: "Error", message: err.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated:true)
+            }
             guard var acts = arr else {return}
             // crude filter: eliminate empties, low-confidence, and successive duplicates
             let blank = "f f f f f f"
