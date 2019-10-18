@@ -90,6 +90,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton8 (_ sender: Any) {
         do {
+            print("testing write array to file")
             let arr = ["Manny", "Moe", "Jack"]
             let temp = FileManager.default.temporaryDirectory
             let f = temp.appendingPathComponent("pep.plist")
@@ -100,18 +101,23 @@ class ViewController: UIViewController {
         do {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            
+            print("archiving Person using secure coding")
             let moi = Person(firstName: "Matt", lastName: "Neuburg")
             let moidata = try NSKeyedArchiver.archivedData(withRootObject: moi, requiringSecureCoding: true)
             let moifile = docsurl.appendingPathComponent("moi.txt")
             
+            print("serializing Person using property list encoder")
             let moi2 = Person2(firstName: "Matt", lastName: "Neuburg")
             let moidata2 = try PropertyListEncoder().encode(moi2)
             let moifile2 = docsurl.appendingPathComponent("moi2.txt")
             
+            print("writing serialized Person2 to file")
             try moidata2.write(to: moifile2, options: .atomic)
             
             switch which {
             case 1:
+                print("writing archived Person to file")
                 try moidata.write(to: moifile, options: .atomic)
                 var moifilevar = moifile // NB we need a var here
                 var rv = URLResourceValues() // * new way, very nice
@@ -124,6 +130,7 @@ class ViewController: UIViewController {
                 fc.coordinate(with:[intent], queue: .main) { err in
                     // compiler gets confused if a one-liner returns a BOOL result
                     do {
+                        print("writing archived Person to file")
                         try moidata.write(to: intent.url, options: .atomic)
                     } catch {
                         print(error)
@@ -138,6 +145,7 @@ class ViewController: UIViewController {
             
             let arr = [moi]
             let arrfile = docsurl.appendingPathComponent("arr.plist")
+            print("attempting vainly to write an array of Person directly to disk")
             let ok = (arr as NSArray).write(to: arrfile, atomically: true)
             print(ok) // false
             
@@ -147,6 +155,7 @@ class ViewController: UIViewController {
             let arrfile2 = docsurl.appendingPathComponent("arr2.plist")
             let plister = PropertyListEncoder()
             plister.outputFormat = .xml // just so we can read it
+            print("attempting successfully to write an array of Person2 by encoding to plist first")
             try plister.encode(arr2).write(to: arrfile2, options: .atomic)
             print("we didn't throw writing array of Person2")
             let s = try String.init(contentsOf: arrfile2)
@@ -164,6 +173,7 @@ class ViewController: UIViewController {
             switch which {
             case 1:
                 let persondata = try Data(contentsOf: moifile)
+                print("retrieving secure archived Person")
                 let person = try NSKeyedUnarchiver.unarchivedObject(ofClass: Person.self, from: persondata)!
                 print(person)
             case 2:
@@ -172,6 +182,7 @@ class ViewController: UIViewController {
                 let intent = NSFileAccessIntent.readingIntent(with: moifile)
                 fc.coordinate(with: [intent], queue: .main) { err in
                     do {
+                        print("retrieving secure archived Person")
                         let persondata = try Data(contentsOf: intent.url)
                         let person = try NSKeyedUnarchiver.unarchivedObject(ofClass: Person.self, from: persondata)!
                         print(person)
@@ -186,11 +197,13 @@ class ViewController: UIViewController {
 //            let arr = NSArray(contentsOf: arrfile)
 //            print(arr)
             
+            print("retrieving saved plist Person2")
             let moifile2 = docsurl.appendingPathComponent("moi2.txt")
             let persondata = try Data(contentsOf: moifile2)
             let person = try PropertyListDecoder().decode(Person2.self, from: persondata)
             print(person)
             
+            print("retrieving saved plist array of Person2")
             let arrfile2 = docsurl.appendingPathComponent("arr2.plist")
             let arraydata = try Data(contentsOf: arrfile2)
             let arr = try PropertyListDecoder().decode([Person2].self, from:arraydata)
