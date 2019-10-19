@@ -1,5 +1,14 @@
 
 import UIKit
+import os.log
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
+let mylog = OSLog(subsystem: "fileHandoff", category: "testing")
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
@@ -8,7 +17,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         print("start \(#function)")
         print("end \(#function)")
-
+        if let d = launchOptions {
+            os_log("launching %{public}@", log: mylog, type: .default, d as NSDictionary)
+        }
         return true
     }
     
@@ -60,5 +71,49 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     // logging shows that handleOpenURL: comes *between* willEnter and didBecome
+
+}
+
+@available(iOS 13.0, *)
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+        
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        print("start \(#function)")
+        print("end \(#function)")
+        let cons = connectionOptions.urlContexts
+        os_log("connect %{public}@", log: mylog, type: .default, cons)
+        print("cons", cons)
+//        if let _ = scene as? UIWindowScene {
+            if let vc = self.window?.rootViewController as? ViewController,
+                let url = cons.first?.url {
+                vc.loadViewIfNeeded() // can't call method until we have a view
+                vc.displayDoc(url: url)
+            }
+//        }
+    }
+        
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        print("open context", URLContexts.first?.url as Any)
+        let cons = URLContexts.first!.url as NSURL
+        os_log("open context %{public}@", log: mylog, type: .default, cons)
+        if let vc = self.window?.rootViewController as? ViewController,
+            let url = URLContexts.first?.url {
+            vc.displayDoc(url: url)
+        }
+    }
+    
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        print("start \(#function)")
+        print("end \(#function)")
+        os_log("foreground", log: mylog, type: .default)
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        print("start \(#function)")
+        print("end \(#function)")
+        os_log("active", log: mylog, type: .default)
+    }
 
 }
