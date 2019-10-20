@@ -9,15 +9,13 @@ class ViewController: UIViewController {
         let d = FileWrapper(directoryWithFileWrappers: [:])
         let imnames = ["manny.jpg", "moe.jpg", "jack.jpg"]
         for imname in imnames {
-            let im = UIImage(named:imname)!
-            let imfw = FileWrapper(regularFileWithContents: im.jpegData(compressionQuality: 1)!)
-            imfw.preferredFilename = imname
-            d.addFileWrapper(imfw)
+            d.addRegularFile(
+                withContents:
+                    UIImage(named:imname)!.jpegData(compressionQuality: 1)!,
+                preferredFilename: imname)
         }
-        let list = try! JSONEncoder().encode(imnames)
-        let listfw = FileWrapper(regularFileWithContents: list)
-        listfw.preferredFilename = "list"
-        d.addFileWrapper(listfw)
+        let list = try! PropertyListEncoder().encode(imnames)
+        d.addRegularFile(withContents: list, preferredFilename: "list")
         let fwurl = docurl.appendingPathComponent("myFileWrapper")
         try? fm.removeItem(at: fwurl)
         do {
@@ -35,7 +33,7 @@ class ViewController: UIViewController {
         do {
             let d = try FileWrapper(url: fwurl)
             if let list = d.fileWrappers?["list"]?.regularFileContents {
-                let imnames = try! JSONDecoder().decode([String].self, from: list)
+                let imnames = try PropertyListDecoder().decode([String].self, from: list)
                 print("got", imnames)
                 for imname in imnames {
                     if let imdata = d.fileWrappers?[imname]?.regularFileContents {

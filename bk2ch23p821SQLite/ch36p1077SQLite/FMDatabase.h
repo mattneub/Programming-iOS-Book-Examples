@@ -338,7 +338,7 @@ typedef NS_ENUM(int, FMDBCheckpointMode) {
  @see [`sqlite3_bind`](http://sqlite.org/c3ref/bind_blob.html)
  */
 
-- (BOOL)executeUpdate:(NSString*)sql withErrorAndBindings:(NSError * _Nullable *)outErr, ...;
+- (BOOL)executeUpdate:(NSString*)sql withErrorAndBindings:(NSError * _Nullable __autoreleasing *)outErr, ...;
 
 /** Execute single update statement
  
@@ -347,7 +347,7 @@ typedef NS_ENUM(int, FMDBCheckpointMode) {
  @warning **Deprecated**: Please use `<executeUpdate:withErrorAndBindings>` instead.
  */
 
-- (BOOL)update:(NSString*)sql withErrorAndBindings:(NSError * _Nullable*)outErr, ...  __deprecated_msg("Use executeUpdate:withErrorAndBindings: instead");;
+- (BOOL)update:(NSString*)sql withErrorAndBindings:(NSError * _Nullable __autoreleasing *)outErr, ...  __deprecated_msg("Use executeUpdate:withErrorAndBindings: instead");;
 
 /** Execute single update statement
 
@@ -985,7 +985,7 @@ typedef NS_ENUM(int, FMDBCheckpointMode) {
  @see rollbackToSavePointWithName:error:
  */
 
-- (BOOL)startSavePointWithName:(NSString*)name error:(NSError * _Nullable *)outErr;
+- (BOOL)startSavePointWithName:(NSString*)name error:(NSError * _Nullable __autoreleasing *)outErr;
 
 /** Release save point
 
@@ -1000,7 +1000,7 @@ typedef NS_ENUM(int, FMDBCheckpointMode) {
  
  */
 
-- (BOOL)releaseSavePointWithName:(NSString*)name error:(NSError * _Nullable *)outErr;
+- (BOOL)releaseSavePointWithName:(NSString*)name error:(NSError * _Nullable __autoreleasing *)outErr;
 
 /** Roll back to save point
 
@@ -1014,7 +1014,7 @@ typedef NS_ENUM(int, FMDBCheckpointMode) {
  
  */
 
-- (BOOL)rollbackToSavePointWithName:(NSString*)name error:(NSError * _Nullable *)outErr;
+- (BOOL)rollbackToSavePointWithName:(NSString*)name error:(NSError * _Nullable __autoreleasing *)outErr;
 
 /** Start save point
 
@@ -1341,7 +1341,7 @@ typedef NS_ENUM(int, SqliteValueType) {
  @warning Note there is no direct getter for the `NSDateFormatter`, and you should not use the formatter you pass to FMDB for other purposes, as `NSDateFormatter` is not thread-safe.
  */
 
-- (void)setDateFormat:(NSDateFormatter *)format;
+- (void)setDateFormat:(NSDateFormatter * _Nullable)format;
 
 /** Convert the supplied NSString to NSDate, using the current database formatter.
  
@@ -1371,7 +1371,7 @@ typedef NS_ENUM(int, SqliteValueType) {
  @see storeableDateFormat:
  */
 
-- (NSString *)stringFromDate:(NSDate *)date;
+- (NSString * _Nullable)stringFromDate:(NSDate *)date;
 
 @end
 

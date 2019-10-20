@@ -6,6 +6,19 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext : NSManagedObjectContext!
     
+    let cellID = "Cell"
+    
+    lazy var ds : UITableViewDiffableDataSource<String,NSManagedObjectID> = {
+        UITableViewDiffableDataSource(tableView: self.tableView) {
+            tv,ip,id in
+            let cell = tv.dequeueReusableCell(withIdentifier: self.cellID, for: ip)
+            cell.accessoryType = .disclosureIndicator
+            let group = self.frc.managedObjectContext.object(with: id) as! Group
+            cell.textLabel!.text = group.name
+            return cell
+        }
+    }()
+    
     lazy var frc: NSFetchedResultsController<Group> = {
         let req: NSFetchRequest<Group> = Group.fetchRequest()
         req.fetchBatchSize = 20
@@ -36,6 +49,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         self.navigationItem.leftBarButtonItems = [b2]
         self.title = "Groups"
         // no need to register cell, comes from storyboard
+        let _ = self.frc // "tickle" the lazy vars
     }
     
     @objc func doRefresh(_:AnyObject) {
@@ -66,27 +80,19 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             })
         self.present(av, animated: true)
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.frc.sections!.count
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.frc.sections![section]
-        return sectionInfo.numberOfObjects
-    }
-    
-	let cellID = "Cell"
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
-        cell.accessoryType = .disclosureIndicator
-        let group = self.frc.object(at:indexPath)
-        cell.textLabel!.text = group.name
-        return cell
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.reloadData()
+        
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+        // it's a string and a NSManagedObjectID
+//        var snap = NSDiffableDataSourceSnapshot<String,NSManagedObjectID>()
+//        snap.appendSections(snapshot.sectionIdentifiers as! [String])
+//        for item in snapshot.itemIdentifiers {
+//            let section = snapshot.sectionIdentifier(forSectionContainingItemIdentifier: item)
+//            snap.appendItems([item as! NSManagedObjectID], toSection: section as? String)
+//        }
+//        self.ds.apply(snap, animatingDifferences: false)
+        print("change")
+        let snapshot = snapshot as NSDiffableDataSourceSnapshot<String,NSManagedObjectID>
+        self.ds.apply(snapshot, animatingDifferences: false)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

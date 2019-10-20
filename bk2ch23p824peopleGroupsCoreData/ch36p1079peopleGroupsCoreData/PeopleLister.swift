@@ -3,10 +3,16 @@
 import UIKit
 import CoreData
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
     
     let group : Group
-
+    
     init(group:Group) {
         self.group = group
         super.init(nibName:"PeopleLister", bundle:nil)
@@ -15,19 +21,32 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
-
+    
+    lazy var ds : UITableViewDiffableDataSource<String,NSManagedObjectID> = {
+        UITableViewDiffableDataSource(tableView: self.tableView) {
+            tv,ip,id in
+            let cell = tv.dequeueReusableCell(withIdentifier: "Person", for: ip)
+            let person = self.frc.managedObjectContext.object(with: id) as! Person
+            let first = cell.viewWithTag(1) as! UITextField
+            let last = cell.viewWithTag(2) as! UITextField
+            first.text = person.firstName; last.text = person.lastName
+            first.delegate = self; last.delegate = self
+            return cell
+        }
+    }()
+    
     lazy var frc: NSFetchedResultsController<Person> = {
         let req: NSFetchRequest<Person> = Person.fetchRequest()
         req.fetchBatchSize = 20
         let sortDescriptor = NSSortDescriptor(key:"timestamp", ascending:true)
         req.sortDescriptors = [sortDescriptor]
-
+        
         let pred = NSPredicate(format:"group = %@", self.group)
         req.predicate = pred
         
         let afrc = NSFetchedResultsController(fetchRequest:req,
-            managedObjectContext:self.group.managedObjectContext!,
-            sectionNameKeyPath:nil, cacheName:nil)
+                                              managedObjectContext:self.group.managedObjectContext!,
+                                              sectionNameKeyPath:nil, cacheName:nil)
         afrc.delegate = self
         
         do {
@@ -38,7 +57,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         }
         return afrc
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,27 +66,10 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         self.navigationItem.rightBarButtonItems = [b]
         
         self.tableView.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
+        
+        _ = self.frc // "tickle" the lazies
     }
         
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.frc.sections!.count
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.frc.sections![section]
-        return sectionInfo.numberOfObjects
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Person", for: indexPath)
-        let person = self.frc.object(at:indexPath)
-        let first = cell.viewWithTag(1) as! UITextField
-        let last = cell.viewWithTag(2) as! UITextField
-        first.text = person.firstName; last.text = person.lastName
-        first.delegate = self; last.delegate = self
-        return cell
-    }
-    
     @objc func doAdd(_:AnyObject) {
         self.tableView.endEditing(true)
         let context = self.frc.managedObjectContext
@@ -79,11 +81,21 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         // save context
         do {
             try context.save()
+            delay(0.1) {
+                let row = self.tableView.numberOfRows(inSection: 0) - 1
+                let ip = IndexPath(row: row, section: 0)
+                self.tableView.scrollToRow(at: ip, at: .bottom, animated: false)
+                let cell = self.tableView.cellForRow(at: ip)
+                if let cell = cell {
+                    if let tf = cell.contentView.viewWithTag(1) as? UITextField {
+                        tf.becomeFirstResponder()
+                    }
+                }
+            }
         } catch {
             print(error)
             return
         }
-        // and the rest is in the update delegate messages
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -94,7 +106,6 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         let ip = self.tableView.indexPath(for:cell)!
         let object = self.frc.object(at:ip)
         object.setValue(textField.text!, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
-        
         // save context
         do {
             try object.managedObjectContext!.save()
@@ -102,7 +113,6 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
             print(error)
             return
         }
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -119,27 +129,22 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     
     // === content update ===
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.endUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChange anObject: Any,
-        at indexPath: IndexPath?,
-        for type: NSFetchedResultsChangeType,
-        newIndexPath: IndexPath?) {
-            if type == .insert {
-                self.tableView.insertRows(at:[newIndexPath!], with: .automatic)
-                DispatchQueue.main.async { // wait for interface to settle
-                    let cell = self.tableView.cellForRow(at:newIndexPath!)!
-                    let tf = cell.viewWithTag(1) as! UITextField
-                    tf.becomeFirstResponder()
-                }
-            }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+        // it's a string and a NSManagedObjectID
+        //        var snap = NSDiffableDataSourceSnapshot<String,NSManagedObjectID>()
+        //        snap.appendSections(snapshot.sectionIdentifiers as! [String])
+        //        for item in snapshot.itemIdentifiers {
+        //            let section = snapshot.sectionIdentifier(forSectionContainingItemIdentifier: item)
+        //            snap.appendItems([item as! NSManagedObjectID], toSection: section as? String)
+        //        }
+        //        self.ds.apply(snap, animatingDifferences: false)
+        print("change")
+        let oldsnapshot = self.ds.snapshot()
+        let snapshot = snapshot as NSDiffableDataSourceSnapshot<String,NSManagedObjectID>
+        if oldsnapshot.itemIdentifiers == snapshot.itemIdentifiers {
+            return // prevent reload in case where nothing happened
+        }
+        self.ds.apply(snapshot, animatingDifferences: false)
     }
 
 }

@@ -184,8 +184,9 @@ class ViewController: UIViewController {
                     do {
                         print("retrieving secure archived Person")
                         let persondata = try Data(contentsOf: intent.url)
-                        let person = try NSKeyedUnarchiver.unarchivedObject(ofClass: Person.self, from: persondata)!
-                        print(person)
+                        if let person = try NSKeyedUnarchiver.unarchivedObject(ofClass: Person.self, from: persondata) {
+                            print(person)
+                        }
                     } catch {
                         print(error)
                     }

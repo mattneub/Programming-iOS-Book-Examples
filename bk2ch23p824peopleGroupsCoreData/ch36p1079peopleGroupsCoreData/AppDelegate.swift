@@ -12,7 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let nav = self.window!.rootViewController as! UINavigationController
         let tvc = nav.topViewController as! GroupLister
-        tvc.managedObjectContext = self.persistentContainer.viewContext
+        let del = UIApplication.shared.delegate as! AppDelegate
+        tvc.managedObjectContext = del.persistentContainer.viewContext
         return true
     }
     

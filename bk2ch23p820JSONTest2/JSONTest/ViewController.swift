@@ -18,12 +18,14 @@ class ViewController: UIViewController {
     }()
     @IBAction func doGo(_ sender: Any) {
         var comp = URLComponents()
+        // https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand
+        // but it doesn't seem to randomize very well, so I've dropped that
         comp.scheme = "https"
         comp.host = "quotesondesign.com"
-        comp.path = "/wp-json/posts"
+        comp.path = "/wp-json/wp/v2/posts"
         var qi = [URLQueryItem]()
-        qi.append(URLQueryItem(name: "filter[orderby]", value: "rand"))
-        qi.append(URLQueryItem(name: "filter[posts_per_page]", value: "1"))
+        qi.append(URLQueryItem(name: "orderby", value: "rand"))
+        qi.append(URLQueryItem(name: "per_page", value: "1"))
         comp.queryItems = qi
         if let url = comp.url {
             let d = self.sess.dataTask(with: url) { data,_,_ in
@@ -38,9 +40,15 @@ class ViewController: UIViewController {
     }
     
     func parse(_ data:Data) {
+        struct Item : Decodable {
+            let value : String
+            enum CodingKeys : String, CodingKey {
+                case value = "rendered"
+            }
+        }
         struct Quote : Decodable {
-            let author : String
-            let tag : String
+            let author : Item
+            let tag : Item
             enum CodingKeys : String, CodingKey {
                 case author = "title"
                 case tag = "content"
@@ -49,14 +57,16 @@ class ViewController: UIViewController {
         print(String(data: data, encoding: .utf8)!)
         if let arr = try? JSONDecoder().decode([Quote].self, from: data) {
             let quote = arr.first!
-            self.authorLabel.text = quote.author
-            let data = quote.tag.data(using: .utf8)!
+            self.authorLabel.text = quote.author.value
+            let quotation = quote.tag.value
             let html = NSAttributedString.DocumentType.html
+            let enc = String.Encoding.utf8.rawValue
             if let mas = try? NSMutableAttributedString(
-                data: data,
-                options: [.documentType : html],
+                data: quotation.data(using: .utf8)!,
+                options: [.documentType : html, .characterEncoding : enc],
                 documentAttributes: nil) {
                 let s = mas.string as NSString
+                print(s)
                 mas.addAttributes(
                     [.font:UIFont(name: "Georgia", size: 18)!],
                     range: NSRange(location: 0, length: s.length))
