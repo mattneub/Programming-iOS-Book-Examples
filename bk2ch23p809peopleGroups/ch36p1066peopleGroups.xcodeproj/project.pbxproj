@@ -17,7 +17,7 @@
 		325156CF19AFEED100BE7C83 /* GroupLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325156CE19AFEED100BE7C83 /* GroupLister.swift */; };
 		328BA2A31BCAC810005A17A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */; };
 		32B5FA9419B0D77D00BA7DFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */; };
-		8158D4FD212061F400BF1BD4 /* frowney.png in Resources */ = {isa = PBXBuildFile; fileRef = 8158D4FC212061F400BF1BD4 /* frowney.png */; };
+		817D5EA7235BE10600A341EC /* frowney.png in Resources */ = {isa = PBXBuildFile; fileRef = 817D5EA6235BE10600A341EC /* frowney.png */; };
 		8195BF571FB2B86500E2B1F1 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195BF561FB2B86500E2B1F1 /* QuickLook.framework */; };
 		8195BF5A1FB2B86500E2B1F1 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195BF591FB2B86500E2B1F1 /* PreviewViewController.swift */; };
 		8195BF5D1FB2B86500E2B1F1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8195BF5B1FB2B86500E2B1F1 /* MainInterface.storyboard */; };
@@ -27,6 +27,7 @@
 		8195BF681FB2B99E00E2B1F1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC419AF99AF0065F2C5 /* Person.swift */; };
 		8195BF691FB2B99E00E2B1F1 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA218328E6A00B84460 /* PersonCell.xib */; };
 		81D2D6EC1FB60B38007D80C7 /* smiley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81D2D6EB1FB60B38007D80C7 /* smiley.jpg */; };
+		81F36066235B7FEF00889FDD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F36065235B7FEF00889FDD /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,14 +67,15 @@
 		325156CE19AFEED100BE7C83 /* GroupLister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLister.swift; sourceTree = "<group>"; };
 		328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8158D4FC212061F400BF1BD4 /* frowney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frowney.png; path = ../../iOS10bookexamples/bk2ch02p051ImageAndTraitCollection/ImageAndTraitCollection/frowney.png; sourceTree = "<group>"; };
+		817D5EA6235BE10600A341EC /* frowney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frowney.png; sourceTree = "<group>"; };
 		8195BF541FB2B86500E2B1F1 /* PeopleGroupPreview.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PeopleGroupPreview.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8195BF561FB2B86500E2B1F1 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		8195BF591FB2B86500E2B1F1 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		8195BF5C1FB2B86500E2B1F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		8195BF5E1FB2B86500E2B1F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8196516221206FC800649BC8 /* ch36p1066peopleGroups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ch36p1066peopleGroups.entitlements; sourceTree = "<group>"; };
 		81D2D6EB1FB60B38007D80C7 /* smiley.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smiley.jpg; sourceTree = "<group>"; };
+		81F36064235B7CDE00889FDD /* ch36p1066peopleGroups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ch36p1066peopleGroups.entitlements; sourceTree = "<group>"; };
+		81F36065235B7FEF00889FDD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F36066235B7FEF00889FDD /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +120,7 @@
 		32335D6918328D8100B84460 /* ch36p1066peopleGroups */ = {
 			isa = PBXGroup;
 			children = (
-				8196516221206FC800649BC8 /* ch36p1066peopleGroups.entitlements */,
+				81F36064235B7CDE00889FDD /* ch36p1066peopleGroups.entitlements */,
 				32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */,
 				32335D7518328D8100B84460 /* Main.storyboard */,
 				325156CE19AFEED100BE7C83 /* GroupLister.swift */,
@@ -126,8 +129,8 @@
 				32335DA618328FA400B84460 /* PeopleLister.xib */,
 				320D8AC419AF99AF0065F2C5 /* Person.swift */,
 				32335DA218328E6A00B84460 /* PersonCell.xib */,
-				8158D4FC212061F400BF1BD4 /* frowney.png */,
 				81D2D6EB1FB60B38007D80C7 /* smiley.jpg */,
+				817D5EA6235BE10600A341EC /* frowney.png */,
 				32335D7B18328D8100B84460 /* Assets.xcassets */,
 				328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */,
 				32335D6B18328D8100B84460 /* ch36p1066peopleGroups-Info.plist */,
@@ -138,6 +141,7 @@
 		8195BF551FB2B86500E2B1F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81F36065235B7FEF00889FDD /* CloudKit.framework */,
 				8195BF561FB2B86500E2B1F1 /* QuickLook.framework */,
 			);
 			name = Frameworks;
@@ -251,7 +255,7 @@
 				81D2D6EC1FB60B38007D80C7 /* smiley.jpg in Resources */,
 				32335D7C18328D8100B84460 /* Assets.xcassets in Resources */,
 				32335DA718328FA400B84460 /* PeopleLister.xib in Resources */,
-				8158D4FD212061F400BF1BD4 /* frowney.png in Resources */,
+				817D5EA7235BE10600A341EC /* frowney.png in Resources */,
 				32335DA518328E6A00B84460 /* PersonCell.xib in Resources */,
 				328BA2A31BCAC810005A17A9 /* LaunchScreen.storyboard in Resources */,
 				32335D7718328D8100B84460 /* Main.storyboard in Resources */,
@@ -402,6 +406,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ch36p1066peopleGroups/ch36p1066peopleGroups.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -411,7 +416,7 @@
 				INFOPLIST_FILE = "ch36p1066peopleGroups/ch36p1066peopleGroups-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.testingPeopleGroups2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.pplgrps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -428,6 +433,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ch36p1066peopleGroups/ch36p1066peopleGroups.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -437,7 +443,7 @@
 				INFOPLIST_FILE = "ch36p1066peopleGroups/ch36p1066peopleGroups-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.testingPeopleGroups2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.pplgrps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -477,7 +483,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.testingPeopleGroups2.PeopleGroupPreview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.pplgrps.PeopleGroupPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -518,7 +524,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.testingPeopleGroups2.PeopleGroupPreview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.pplgrps.PeopleGroupPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

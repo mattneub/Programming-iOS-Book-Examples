@@ -52,17 +52,11 @@ class PeopleDocument: UIDocument {
         throw NSError(domain: "NoDataDomain", code: -2, userInfo: nil)
     }
     
-    // ??? I don't see that this does anything perceptible
-    // okay, but we need to try again, there may have been a bug in how was renamified...
-    // ...and so I may have been forced to configure the returned dictionary incorrectly
-    
     override func fileAttributesToWrite(to url: URL, for saveOperation: UIDocument.SaveOperation) throws -> [AnyHashable : Any] {
-        let icon = UIImage(named:"smiley.jpg")! // yup, it's working now!
+        let icon = UIImage(named:"frowney")!
         let sz = CGSize(1024,1024)
         let im = UIGraphicsImageRenderer(size:sz, format:icon.imageRendererFormat).image {_ in
-            icon.draw(at: CGPoint(
-                (sz.width - icon.size.width)/2,
-                (sz.height - icon.size.height)/2))
+            icon.draw(in: CGRect(origin:.zero, size:CGSize(1024,1024)))
         }
         var d = try super.fileAttributesToWrite(to: url, for: saveOperation)
         let key1 = URLResourceKey.thumbnailDictionaryKey

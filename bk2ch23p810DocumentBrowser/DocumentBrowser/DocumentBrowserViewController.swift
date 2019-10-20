@@ -63,7 +63,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
             switch which {
             case 1: // this is basically how their template is configured and how the video example works
                 // blank document exists in our app bundle
-                let newDocumentURL = Bundle.main.url(forResource: "newdoc", withExtension: "pplgrp2")
+                let newDocumentURL = Bundle.main.url(forResource: "newdoc", withExtension: "pplgrp2new")
                 if newDocumentURL != nil {
                     importHandler(newDocumentURL, .copy)
                 } else {
@@ -73,7 +73,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
                 // similar code appears in the docs on this method
                 let fm = FileManager.default
                 let temp = fm.temporaryDirectory
-                let fileURL = temp.appendingPathComponent(docname + ".pplgrp2")
+                let fileURL = temp.appendingPathComponent(docname + ".pplgrp2new")
                 let newdoc = PeopleDocument(fileURL: fileURL)
                 newdoc.save(to: fileURL, for: .forOverwriting) { ok in
                     guard ok else { importHandler(nil, .none); return }

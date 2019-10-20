@@ -1,7 +1,15 @@
+//
+//  ThumbnailProvider.swift
+//  PeopleGroupThumbnail
+//
+//  Created by Matt Neuburg on 10/19/19.
+//  Copyright © 2019 Matt Neuburg. All rights reserved.
+//
 
 import UIKit
-import QuickLook
 import AVFoundation
+import QuickLookThumbnailing
+import os.log
 
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
@@ -24,19 +32,20 @@ extension CGVector {
     }
 }
 
+let mylog = OSLog(subsystem: "thumbnailExtension", category: "testing")
 
-
-class ThumbnailProvider: QLThumbnailProvider {
+@objc class ThumbnailProvider: QLThumbnailProvider {
     
     override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
         
         // simple solution: provide the same thumbnail, all the time, as an image file
         
-        /*
+        os_log("here", log: mylog, type: .debug)
+        
         let url = Bundle.main.url(forResource: "smiley", withExtension: "jpg")!
         let reply = QLThumbnailReply(imageFileURL: url)
         handler(reply, nil)
- */
+        return;
         
         // however, that's not very sophisticated or very interesting
         // let's actually _read_ the incoming request and actually _draw_ an appropriate thumbnail
@@ -48,7 +57,7 @@ class ThumbnailProvider: QLThumbnailProvider {
         let maxsz = request.maximumSize
         let r = AVMakeRect(aspectRatio: im.size, insideRect: CGRect(origin:.zero, size:maxsz))
 
-        let att = NSAttributedString(string:name, attributes:[.font:UIFont(name:"Georgia", size:14)!])
+        let att = NSAttributedString(string:name, attributes:[.font:UIFont(name:"Georgia", size:14)!, .foregroundColor:UIColor.white])
         let attsz = att.size()
         
         // if you draw using the context parameter, note that it is flipped
@@ -71,9 +80,12 @@ class ThumbnailProvider: QLThumbnailProvider {
         }
         
         // let reply = QLThumbnailReply(contextSize: r.size, drawing: draw)
-        let reply = QLThumbnailReply(contextSize: r.size, currentContextDrawing: draw)
-        handler(reply,nil)
+        let reply2 = QLThumbnailReply(contextSize: r.size, currentContextDrawing: draw)
+        print(reply2)
+        handler(reply2,nil)
         
         
     }
 }
+
+

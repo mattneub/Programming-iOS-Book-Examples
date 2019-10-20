@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("called application(_:open:options:)", url) // not actually implemented, just testing
+        print(#function, url) // not actually implemented, just testing
         return false
     }
 
@@ -53,3 +53,22 @@ http://developer.apple.com/library/mac/#documentation/General/Conceptual/iCloudD
 which discusses how to detect changes in status.
 */
 
+@available(iOS 13.0, *)
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+        
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let cons = connectionOptions.urlContexts
+        if let url = cons.first?.url {
+            print(#function, url) // not actually implemented, just testing
+        }
+    }
+        
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            print(#function, url) // not actually implemented, just testing
+        }
+    }
+    
+}
