@@ -9,7 +9,6 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     @IBOutlet var wv : WKWebView!
     var doc : URL?
     var docs = [URL]()
-    let dic = UIDocumentInteractionController()
     let exts : Set<String> = ["pdf", "txt"]
     
     func displayDoc (url:URL) {
@@ -58,18 +57,18 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             print("no doc")
             return
         }
-        self.dic.url = url
+        let dic = UIDocumentInteractionController(url: url!)
         let v = sender as! UIView
-        self.dic.delegate = self
+        dic.delegate = self
         var which : Int { return 1 }
         switch which {
         case 1:
-            let ok = self.dic.presentOpenInMenu(from:v.bounds, in: v, animated: true)
+            let ok = dic.presentOpenInMenu(from:v.bounds, in: v, animated: true)
             if !ok {
                 print("That didn't work out")
             }
         case 2:
-            let ok = self.dic.presentOptionsMenu(from: v.bounds, in: v, animated: true)
+            let ok = dic.presentOptionsMenu(from: v.bounds, in: v, animated: true)
             if !ok {
                 print("That didn't work out")
             }
@@ -87,9 +86,9 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             return
         }
         print(url as Any)
-        self.dic.url = url
-        self.dic.delegate = self
-        self.dic.presentPreview(animated:true)
+        let dic = UIDocumentInteractionController(url:url!)
+        dic.delegate = self
+        dic.presentPreview(animated:true)
     }
     
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {

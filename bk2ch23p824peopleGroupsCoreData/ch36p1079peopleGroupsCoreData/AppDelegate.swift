@@ -17,6 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func saveContext() {
+        let context = self.persistentContainer.viewContext
+        if context.hasChanges {
+            if let _ = try? context.save() {
+                print("saved")
+            }
+        }
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        self.saveContext()
+    }
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let con = NSPersistentContainer(name: "PeopleGroupsCoreData")
         con.loadPersistentStores { desc, err in

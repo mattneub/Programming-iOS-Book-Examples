@@ -13,7 +13,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             tv,ip,id in
             let cell = tv.dequeueReusableCell(withIdentifier: self.cellID, for: ip)
             cell.accessoryType = .disclosureIndicator
-            let group = self.frc.managedObjectContext.object(with: id) as! Group
+            let group = self.frc.object(at: ip)
             cell.textLabel!.text = group.name
             return cell
         }
@@ -52,6 +52,11 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         let _ = self.frc // "tickle" the lazy vars
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
     @objc func doRefresh(_:AnyObject) {
         // currently a no-op
     }
@@ -67,14 +72,6 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             group.name = av.textFields![0].text!
             group.uuid = UUID()
             group.timestamp = Date()
-            
-            // save context
-            do {
-                try context.save()
-            } catch {
-                print(error)
-                return
-            }
             let pl = PeopleLister(group: group)
             self.navigationController!.pushViewController(pl, animated: true)
             })

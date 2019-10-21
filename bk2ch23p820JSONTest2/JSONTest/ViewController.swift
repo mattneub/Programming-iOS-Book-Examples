@@ -8,6 +8,26 @@
 
 import UIKit
 
+enum IntOrString: Decodable {
+    case int(Int)
+    case string(String)
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let int = try? container.decode(Int.self) {
+            self = .int(int)
+        } else if let string = try? container.decode(String.self) {
+            self = .string(string)
+        } else {
+            throw DecodingError.typeMismatch(
+                IntOrString.self,
+                DecodingError.Context(
+                    codingPath: decoder.codingPath,
+                    debugDescription: "Neither String nor Int"))
+        }
+    }
+}
+
+
 class ViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
@@ -54,11 +74,64 @@ class ViewController: UIViewController {
                 case tag = "content"
             }
         }
+        struct Quote2 : Decodable {
+            let author : String
+            let tag : String
+            enum CodingKeys : String, CodingKey {
+                case author = "title"
+                case tag = "content"
+            }
+            private struct Item2 : Decodable {
+                let value : String
+                enum CodingKeys : String, CodingKey {
+                    case value = "rendered"
+                }
+            }
+            init(from decoder: Decoder) throws {
+                let con = try decoder.container(keyedBy: CodingKeys.self)
+                let author = try con.decode(Item2.self, forKey: .author)
+                self.author = author.value
+                let tag = try con.decode(Item2.self, forKey: .tag)
+                self.tag = tag.value
+            }
+        }
+        struct Quote3 : Decodable {
+            struct AnyCodingKey : CodingKey {
+              var stringValue: String
+              var intValue: Int?
+
+              init(_ codingKey: CodingKey) {
+                self.stringValue = codingKey.stringValue
+                self.intValue = codingKey.intValue
+              }
+
+              init(stringValue: String) {
+                self.stringValue = stringValue
+                self.intValue = nil
+              }
+
+              init(intValue: Int) {
+                self.stringValue = String(intValue)
+                self.intValue = intValue
+              }
+            }
+            init(from decoder: Decoder) throws {
+                let con = try decoder.container(keyedBy: AnyCodingKey.self)
+                let keys = con.allKeys
+                print(keys)
+            }
+        }
+
+
         print(String(data: data, encoding: .utf8)!)
-        if let arr = try? JSONDecoder().decode([Quote].self, from: data) {
+//        _ = try? JSONDecoder().decode([Quote3].self, from: data)
+//        return;
+        if let arr = try? JSONDecoder().decode([Quote2].self, from: data) {
             let quote = arr.first!
-            self.authorLabel.text = quote.author.value
-            let quotation = quote.tag.value
+//            self.authorLabel.text = quote.author.value
+//            let quotation = quote.tag.value
+            self.authorLabel.text = quote.author
+            let quotation = quote.tag
             let html = NSAttributedString.DocumentType.html
             let enc = String.Encoding.utf8.rawValue
             if let mas = try? NSMutableAttributedString(

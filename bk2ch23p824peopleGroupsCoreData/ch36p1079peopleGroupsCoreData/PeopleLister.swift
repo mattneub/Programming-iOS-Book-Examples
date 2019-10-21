@@ -26,7 +26,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         UITableViewDiffableDataSource(tableView: self.tableView) {
             tv,ip,id in
             let cell = tv.dequeueReusableCell(withIdentifier: "Person", for: ip)
-            let person = self.frc.managedObjectContext.object(with: id) as! Person
+            let person = self.frc.object(at: ip)
             let first = cell.viewWithTag(1) as! UITextField
             let last = cell.viewWithTag(2) as! UITextField
             first.text = person.firstName; last.text = person.lastName
@@ -78,23 +78,16 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         person.lastName = ""
         person.firstName = ""
         person.timestamp = Date()
-        // save context
-        do {
-            try context.save()
-            delay(0.1) {
-                let row = self.tableView.numberOfRows(inSection: 0) - 1
-                let ip = IndexPath(row: row, section: 0)
-                self.tableView.scrollToRow(at: ip, at: .bottom, animated: false)
-                let cell = self.tableView.cellForRow(at: ip)
-                if let cell = cell {
-                    if let tf = cell.contentView.viewWithTag(1) as? UITextField {
-                        tf.becomeFirstResponder()
-                    }
+        delay(0.1) {
+            let row = self.tableView.numberOfRows(inSection: 0) - 1
+            let ip = IndexPath(row: row, section: 0)
+            self.tableView.scrollToRow(at: ip, at: .bottom, animated: false)
+            let cell = self.tableView.cellForRow(at: ip)
+            if let cell = cell {
+                if let tf = cell.contentView.viewWithTag(1) as? UITextField {
+                    tf.becomeFirstResponder()
                 }
             }
-        } catch {
-            print(error)
-            return
         }
     }
     
@@ -106,25 +99,12 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         let ip = self.tableView.indexPath(for:cell)!
         let object = self.frc.object(at:ip)
         object.setValue(textField.text!, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
-        // save context
-        do {
-            try object.managedObjectContext!.save()
-        } catch {
-            print(error)
-            return
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let context = self.frc.managedObjectContext
-        // save context
-        do {
-            try context.save()
-        } catch {
-            print(error)
-            return
-        }
+        self.view.endEditing(true)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
     // === content update ===

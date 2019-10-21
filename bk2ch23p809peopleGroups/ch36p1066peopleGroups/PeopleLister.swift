@@ -2,7 +2,7 @@
 
 import UIKit
 
-class PeopleLister: UITableViewController, UITextFieldDelegate {
+class PeopleLister: UITableViewController, UITextFieldDelegate, UIDocumentInteractionControllerDelegate {
     
     let fileURL : URL
     var doc : PeopleDocument!
@@ -25,8 +25,10 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         
         self.title = (self.fileURL.lastPathComponent as NSString)
             .deletingPathExtension
+        
         let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
-        self.navigationItem.rightBarButtonItems = [b]
+        let b2 = UIBarButtonItem(title: "Preview", style: .plain, target: self, action: #selector(doPreview))
+        self.navigationItem.rightBarButtonItems = [b, b2]
         
         self.tableView.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
         
@@ -130,5 +132,16 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    @objc func doPreview (_ sender: Any) {
+        let dic = UIDocumentInteractionController(url:self.fileURL)
+        dic.delegate = self
+        dic.presentPreview(animated:true)
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+
 
 }
