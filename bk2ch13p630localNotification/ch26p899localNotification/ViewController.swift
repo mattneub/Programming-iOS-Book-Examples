@@ -78,7 +78,7 @@ class MyUserNotificationHelper : NSObject {
         }
     }
     
-    var provisional = true
+    var provisional = false
     private func doAuthorization() {
         print("asking for authorization")
         
@@ -94,6 +94,7 @@ class MyUserNotificationHelper : NSObject {
                 return
             }
             if ok {
+                print("we got authorization")
                 self.checkCategories()
             } else {
                 print("user refused authorization")
@@ -248,6 +249,10 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
     // need to be fast, esp. as we may have been woken in the background to handle this
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        beep() // prove that we are called
+        // the idea is to show that we are called whether we were in background or not running at all
+        // and indeed we are
         
         print(UIApplication.shared.applicationState.rawValue)
         let id = response.actionIdentifier // can be default, dismiss, or one of ours

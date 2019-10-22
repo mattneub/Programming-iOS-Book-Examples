@@ -16,27 +16,30 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
     }()
 
     var model : [Model] = {
-        let mannyurl = "https://www.apeth.com/pep/manny.jpg"
-        let jackurl = "https://www.apeth.com/pep/jack.jpg"
-        let moeurl = "https://www.apeth.com/pep/moe.jpg"
+        let mannyurl = URL(string:"https://www.apeth.com/pep/manny.jpg")!
+        let jackurl = URL(string:"https://www.apeth.com/pep/jack.jpg")!
+        let moeurl = URL(string:"https://www.apeth.com/pep/moe.jpg")!
         var arr = [Model]()
         for _ in 0 ..< 15 {
-            let m = Model()
-            m.text = "Manny"
-            m.picurl = mannyurl
+            let m = Model (
+                text : "Manny",
+                picurl : mannyurl
+            )
             arr.append(m)
-        }
-        for _ in 0 ..< 15 {
-            let m = Model()
-            m.text = "Moe"
-            m.picurl = moeurl
-            arr.append(m)
-        }
-        for _ in 0 ..< 15 {
-            let m = Model()
-            m.text = "Jack"
-            m.picurl = jackurl
-            arr.append(m)
+//        }
+//        for _ in 0 ..< 15 {
+            let m2 = Model (
+                text : "Moe",
+                picurl : moeurl
+            )
+            arr.append(m2)
+//        }
+//        for _ in 0 ..< 15 {
+            let m3 = Model (
+                text : "Jack",
+                picurl : jackurl
+            )
+            arr.append(m3)
         }
         return arr
     }()
@@ -62,8 +65,7 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
             guard m.im == nil else { print("nop \(ip)"); continue } // we have an image, nothing to do
             guard m.task == nil else { print("nop2 \(ip)"); continue } // we're already downloading
             print("prefetching for \(ip)")
-            let url = URL(string:m.picurl)!
-            m.task = self.downloader.download(url:url) { url in
+            m.task = self.downloader.download(url:m.picurl) { url in
                 m.task = nil
                 if let url = url, let data = try? Data(contentsOf: url) {
                     print("got \(ip)")
@@ -78,9 +80,10 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         let m = self.model[indexPath.row]
-        cell.textLabel!.text = m.text
-        cell.imageView!.image = m.im // image or nil
+        cell.textLabel?.text = m.text
+        cell.imageView?.image = m.im // image or nil
         if m.task == nil && m.im == nil {
+            // I regard the need for this as a bug in the prefetch architecture
             self.tableView(tableView, prefetchRowsAt:[indexPath])
         }
         return cell
@@ -108,8 +111,12 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
 // but the truth is that this should have been a simple value class all along, so here it is
 
 class Model {
-    var text : String!
-    var im : UIImage!
-    var picurl : String!
-    var task : URLSessionTask!
+    init(text: String, picurl: URL) {
+        self.text = text
+        self.picurl = picurl
+    }
+    var text : String
+    var picurl : URL
+    var im : UIImage?
+    var task : URLSessionTask?
 }

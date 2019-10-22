@@ -52,6 +52,7 @@ class ViewController: UIViewController {
                     print(err)
                 }
             }) { im in
+                print("here's your image")
                 self.iv.image = im
         }
     }
