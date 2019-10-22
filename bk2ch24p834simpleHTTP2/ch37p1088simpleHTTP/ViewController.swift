@@ -36,5 +36,24 @@ class ViewController: UIViewController {
         task.resume()
     }
     
+    @IBAction func doCombineNetworking(_ sender: Any) {
+        let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
+        let url = URL(string:s)!
+        let session = URLSession.shared
+        let _ = session.dataTaskPublisher(for: url)
+            .tryMap { data, response -> UIImage? in
+                if (response as? HTTPURLResponse)?.statusCode != 200 {
+                    throw NSError(domain: "wrong status", code: 0)
+                }
+                return UIImage(data:data)
+            }.receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { comp in
+                if case let .failure(err) = comp {
+                    print(err)
+                }
+            }) { im in
+                self.iv.image = im
+        }
+    }
     
 }

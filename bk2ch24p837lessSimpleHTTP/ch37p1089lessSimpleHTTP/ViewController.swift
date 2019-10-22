@@ -11,7 +11,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
     
     lazy var session : URLSession = {
         let config = URLSessionConfiguration.ephemeral
-        config.allowsCellularAccess = false
+        config.allowsExpensiveNetworkAccess = false
         let session = URLSession(configuration: config, delegate: self, delegateQueue: .main)
         return session
     }()

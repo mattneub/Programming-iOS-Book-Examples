@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     lazy var session : URLSession = {
         let id = "com.neuburg.matt.backgroundDownload"
         let config = URLSessionConfiguration.background(withIdentifier: id)
-        config.allowsCellularAccess = false
+        config.allowsExpensiveNetworkAccess = false
         // could set config.isDiscretionary here
         let sess = URLSession(
             configuration: config, delegate: self, delegateQueue: .main)

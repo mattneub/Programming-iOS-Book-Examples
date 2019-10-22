@@ -8,7 +8,7 @@ class ViewController: UIViewController {
     
     let downloader : MyDownloader = {
         let config = URLSessionConfiguration.ephemeral
-        config.allowsCellularAccess = false
+        config.allowsExpensiveNetworkAccess = false
         config.urlCache = nil
         return MyDownloader(configuration:config)
     }()

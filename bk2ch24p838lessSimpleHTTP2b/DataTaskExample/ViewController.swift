@@ -9,7 +9,7 @@ class ViewController: UIViewController, URLSessionDataDelegate {
     
     lazy var session : URLSession = {
         let config = URLSessionConfiguration.ephemeral
-        config.allowsCellularAccess = false
+        config.allowsExpensiveNetworkAccess = false
         config.requestCachePolicy = .reloadIgnoringLocalCacheData
         config.urlCache = nil
         config.httpMaximumConnectionsPerHost = 2
