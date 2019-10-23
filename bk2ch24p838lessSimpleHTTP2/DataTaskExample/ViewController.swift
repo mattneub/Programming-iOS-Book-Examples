@@ -39,6 +39,12 @@ class ViewController: UIViewController, URLSessionDataDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         print("completed: error: \(error as Any)")
+        // just testing the syntax
+        if let err = error as? URLError {
+            if err.networkUnavailableReason == .constrained {
+                print("yep")
+            }
+        }
         self.task = nil
         if error == nil {
             DispatchQueue.main.async {
