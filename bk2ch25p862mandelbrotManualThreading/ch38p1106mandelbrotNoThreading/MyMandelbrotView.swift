@@ -32,7 +32,7 @@ class MyMandelbrotView : UIView {
     // you can increase the size of MANDELBROT_STEPS to make even more of a delay
     // but on my device, there's plenty of delay as is!
     
-    let MANDELBROT_STEPS = 1000
+    let MANDELBROT_STEPS = 100
     
     var bitmapContext: CGContext!
     var odd = false

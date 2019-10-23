@@ -24,6 +24,12 @@ extension CGVector {
     }
 }
 
+let backgroundTaskQueue : OperationQueue = {
+    let q = OperationQueue()
+    q.maxConcurrentOperationCount = 1
+    return q
+}()
+
 class MyMandelbrotView : UIView {
     
     let MANDELBROT_STEPS = 1000
@@ -34,27 +40,54 @@ class MyMandelbrotView : UIView {
     var odd = false
     
     // jumping-off point: draw the Mandelbrot set
+    
+    var which : Int { return 2 } // 1 or 2
+    
     func drawThatPuppy () {
         // self.makeBitmapContext(CGSize.zero) // test "wrong thread" assertion
         // to test backgrounding, increase MANDELBROT_STEPS and suspend while calculating
-        var bti : UIBackgroundTaskIdentifier = .invalid
-        bti = UIApplication.shared.beginBackgroundTask {
-            UIApplication.shared.endBackgroundTask(bti)
-        }
-        guard bti != .invalid else { return }
-        let center = CGPoint(self.bounds.midX, self.bounds.midY)
-        let bounds = self.bounds
-        self.draw_queue.async {
-            let bitmap = self.makeBitmapContext(size: bounds.size)
-            self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
-            DispatchQueue.main.async {
-                // testing crash
-                // self.assertOnBackgroundThread() // crash! :)
-
-                self.bitmapContext = bitmap
-                self.setNeedsDisplay()
+        switch which {
+        case 1:
+            var bti : UIBackgroundTaskIdentifier = .invalid
+            bti = UIApplication.shared.beginBackgroundTask {
                 UIApplication.shared.endBackgroundTask(bti)
             }
+            guard bti != .invalid else { return }
+            let center = CGPoint(self.bounds.midX, self.bounds.midY)
+            let bounds = self.bounds
+            self.draw_queue.async {
+                let bitmap = self.makeBitmapContext(size: bounds.size)
+                self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
+                print("drew")
+                DispatchQueue.main.async {
+                    // testing crash
+                    // self.assertOnBackgroundThread() // crash! :)
+
+                    self.bitmapContext = bitmap
+                    self.setNeedsDisplay()
+                    print("finished")
+                    UIApplication.shared.endBackgroundTask(bti)
+                }
+            }
+        case 2:
+            let center = CGPoint(self.bounds.midX, self.bounds.midY)
+            let bounds = self.bounds
+            let task = BackgroundTaskOperation()
+            let bitmap = self.makeBitmapContext(size: bounds.size)
+            task.whatToDo = {
+                print("starting to draw")
+                self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
+                print("finished draw")
+                DispatchQueue.main.async {
+                    print(UIApplication.shared.backgroundTimeRemaining, "remaining")
+                    print("main thread stuff")
+                    self.bitmapContext = bitmap
+                    self.setNeedsDisplay()
+                }
+            }
+            task.cleanup = { print("let's pretend we have cleanup to do here") }
+            backgroundTaskQueue.addOperation(task)
+        default: break
         }
     }
     
@@ -66,7 +99,9 @@ class MyMandelbrotView : UIView {
         
         // woohoo! much nicer way to do this, we can drop use of setSpecific and getSpecific
         
-        dispatchPrecondition(condition: .onQueue(self.draw_queue))
+        if which == 1 {
+            dispatchPrecondition(condition: .onQueue(self.draw_queue))
+        }
     }
 
     
@@ -131,11 +166,18 @@ class MyMandelbrotView : UIView {
     
     override func draw(_ rect: CGRect) {
         if self.bitmapContext != nil {
+            print("I got a bitmap context")
+            print(UIApplication.shared.applicationState.rawValue)
+            // yeah, my little toggle trick doesn't work when we background...
+            // because we get extra draw calls then
+            // so to find out if we drew, just look at "I got a bitmap context"
             let context = UIGraphicsGetCurrentContext()!
+            context.setFillColor(self.odd ? UIColor.red.cgColor : UIColor.green.cgColor)
+            self.odd.toggle()
+            context.fill(self.bounds)
+            
             let im = self.bitmapContext.makeImage()
             context.draw(im!, in: self.bounds)
-            self.odd = !self.odd
-            self.backgroundColor = self.odd ? .green : .red
         }
     }
     

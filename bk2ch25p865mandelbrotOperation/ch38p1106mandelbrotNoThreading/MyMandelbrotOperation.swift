@@ -18,7 +18,7 @@ class MyMandelbrotOperation : Operation {
         super.init()
     }
     
-    let MANDELBROT_STEPS = 1000
+    let MANDELBROT_STEPS = 100
 
     // create instance variable
     func makeBitmapContext(size:CGSize) {

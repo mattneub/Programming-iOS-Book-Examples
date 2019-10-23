@@ -40,8 +40,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.testOnce()
-        self.testDispatchGroups()
+        // self.testOnce()
+        // self.testDispatchGroups()
     }
     
     func testOnce() {
