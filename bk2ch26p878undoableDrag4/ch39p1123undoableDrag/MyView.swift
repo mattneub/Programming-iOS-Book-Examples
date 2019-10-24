@@ -61,11 +61,10 @@ class MyView : UIView {
     @objc func longPress (_ g : UIGestureRecognizer) {
         if g.state == .began {
             let m = UIMenuController.shared
-            m.setTargetRect(self.bounds, in: self)
             let mi1 = UIMenuItem(title: self.undoer.undoMenuItemTitle, action: #selector(undo))
             let mi2 = UIMenuItem(title: self.undoer.redoMenuItemTitle, action: #selector(redo))
             m.menuItems = [mi1, mi2]
-            m.setMenuVisible(true, animated:true)
+            m.showMenu(from: self, rect: self.bounds)
         }
     }
     

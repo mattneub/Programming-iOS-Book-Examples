@@ -96,6 +96,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C929ED701813710C00B3C4AE = {
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 1000;
 					};
 				};
@@ -261,6 +262,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Prefix.pch";
 				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Info.plist";
@@ -278,6 +280,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Prefix.pch";
 				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Info.plist";
