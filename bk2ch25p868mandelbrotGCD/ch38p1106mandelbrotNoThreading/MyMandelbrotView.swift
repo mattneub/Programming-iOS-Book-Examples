@@ -72,8 +72,8 @@ class MyMandelbrotView : UIView {
         case 2:
             let center = CGPoint(self.bounds.midX, self.bounds.midY)
             let bounds = self.bounds
-            let task = BackgroundTaskOperation()
             let bitmap = self.makeBitmapContext(size: bounds.size)
+            let task = BackgroundTaskOperation()
             task.whatToDo = {
                 print("starting to draw")
                 self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
