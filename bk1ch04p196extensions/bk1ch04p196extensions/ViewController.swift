@@ -46,7 +46,7 @@ extension CGRect {
 }
 
 extension CGSize {
-    func sizeByDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
+    func withDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
         return CGSize(width:self.width + dw, height:self.height + dh)
     }
 }

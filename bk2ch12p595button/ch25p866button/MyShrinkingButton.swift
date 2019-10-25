@@ -26,7 +26,7 @@ extension CGVector {
 
 
 extension CGSize {
-    func sizeByDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
+    func withDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
         return CGSize(self.width + dw, self.height + dh)
     }
 }
@@ -42,7 +42,7 @@ class MyShrinkingButton: UIButton {
     }
     
     override var intrinsicContentSize : CGSize {
-        return super.intrinsicContentSize.sizeByDelta(dw:25, dh: 20)
+        return super.intrinsicContentSize.withDelta(dw:25, dh: 20)
     }
 
     

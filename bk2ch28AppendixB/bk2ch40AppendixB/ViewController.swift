@@ -36,7 +36,7 @@ extension CGRect {
 }
 
 extension CGSize {
-    func sizeByDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
+    func withDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
         return CGSize(self.width + dw, self.height + dh)
     }
 }
@@ -54,15 +54,17 @@ extension String {
     }
 }
 
-func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
-    var d = [String:UIView]()
-    for (ix,v) in arr.enumerated() {
-        d["v\(ix+1)"] = v
+extension Array where Element:UIView {
+    func dictionaryOfNames() -> [String:UIView] {
+        var d = [String:UIView]()
+        for (ix,v) in self.enumerated() {
+            d["v\(ix+1)"] = v
+        }
+        return d
     }
-    return d
 }
 
-@objc extension UIView {
+extension UIView {
     func reportAmbiguity(filtering:Bool = false) {
         let has = self.hasAmbiguousLayout
         if has || !filtering {
@@ -74,7 +76,7 @@ func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     }
 }
 
-@objc extension UIView {
+extension UIView {
     func listConstraints(recursing:Bool = true, up:Bool = false, filtering:Bool = false) {
         let arr1 = self.constraintsAffectingLayout(for:.horizontal)
         let arr2 = self.constraintsAffectingLayout(for:.vertical)
@@ -225,12 +227,11 @@ class ViewController: UIViewController {
             // do something here
         }
         
-        let d = dictionaryOfNames(self.view, self.v)
+        let d = [self.view, self.v].dictionaryOfNames()
         print(d)
         
-        NSLayoutConstraint.reportAmbiguity(self.view)
-        NSLayoutConstraint.listConstraints(self.view)
-        
+        self.view.reportAmbiguity()
+        self.view.listConstraints()
         
         let _ = imageOfSize(CGSize(100,100)) {
             let con = UIGraphicsGetCurrentContext()!
