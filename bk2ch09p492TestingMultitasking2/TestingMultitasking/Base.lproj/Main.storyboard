@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bFS-i2-ggy">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,38 +10,67 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="VC" id="BYZ-38-t0r" customClass="ViewController" customModule="TestingMultitasking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC" id="BYZ-38-t0r" customClass="ViewController" customModule="TestingMultitasking2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxJ-zj-wwP">
-                                <rect key="frame" x="39" y="43" width="54" height="30"/>
+                                <rect key="frame" x="35" y="57" width="54" height="30"/>
                                 <state key="normal" title="Dismiss"/>
                                 <connections>
                                     <action selector="doButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gSZ-PV-8Bx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kF3-cc-Ue8">
-                                <rect key="frame" x="36" y="104" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kF3-cc-Ue8">
+                                <rect key="frame" x="36" y="121" width="53" height="30"/>
                                 <state key="normal" title="Present"/>
                                 <connections>
                                     <action selector="doButton2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fAN-0U-9RX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGN-6V-uh7">
+                                <rect key="frame" x="294" y="57" width="35" height="30"/>
+                                <state key="normal" title="Push"/>
+                                <connections>
+                                    <action selector="doButton3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="imh-Um-WXe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kF3-cc-Ue8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="0kD-vv-S5y"/>
+                            <constraint firstItem="kF3-cc-Ue8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="0kD-vv-S5y"/>
                             <constraint firstItem="jxJ-zj-wwP" firstAttribute="top" secondItem="sFP-vy-q01" secondAttribute="top" constant="23" id="AfF-ae-V3j"/>
-                            <constraint firstItem="kF3-cc-Ue8" firstAttribute="top" secondItem="sFP-vy-q01" secondAttribute="top" constant="84" id="LY3-nx-tlI"/>
+                            <constraint firstItem="kF3-cc-Ue8" firstAttribute="top" secondItem="sFP-vy-q01" secondAttribute="top" constant="77" id="LY3-nx-tlI"/>
+                            <constraint firstItem="sFP-vy-q01" firstAttribute="trailing" secondItem="OGN-6V-uh7" secondAttribute="trailing" constant="46" id="OON-LV-nGr"/>
                             <constraint firstItem="jxJ-zj-wwP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="19" id="mF5-FY-sbp"/>
+                            <constraint firstItem="OGN-6V-uh7" firstAttribute="top" secondItem="sFP-vy-q01" secondAttribute="top" constant="13" id="tDe-Wm-FL8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sFP-vy-q01"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hpk-mv-qGP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1071.2" y="106.59670164917542"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7LO-k8-qFQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bFS-i2-ggy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1gU-B2-mQP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="c6T-2Q-bvX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBW-4M-UX0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="106.59670164917542"/>
         </scene>
     </scenes>
 </document>

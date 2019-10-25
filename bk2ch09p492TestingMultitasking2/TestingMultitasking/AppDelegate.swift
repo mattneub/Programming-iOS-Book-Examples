@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // use os_log so we can read from the device console
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
         
 //        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
 //            os_log("%d", application.applicationState.rawValue)
@@ -25,23 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
 

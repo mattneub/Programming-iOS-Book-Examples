@@ -2,6 +2,7 @@
 
 import UIKit
 import UserNotifications
+import os.log
 
 
 
@@ -250,7 +251,7 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        beep() // prove that we are called
+        os_log("%{public}@ %{public}@", log: log, self, #function)
         // the idea is to show that we are called whether we were in background or not running at all
         // and indeed we are
         

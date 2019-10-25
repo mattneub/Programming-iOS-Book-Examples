@@ -2,19 +2,13 @@
 import UIKit
 import UserNotifications
 import AudioToolbox
+import os.log
+
+let log = OSLog(subsystem: "CoffeeTime", category: "Coffee")
 
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
-}
-
-func beep() {
-    let sndurl = Bundle.main.url(forResource:"test", withExtension: "aif")!
-    var snd : SystemSoundID = 0
-    AudioServicesCreateSystemSoundID(sndurl as CFURL, &snd)
-    AudioServicesPlaySystemSoundWithCompletion(snd) {
-        AudioServicesDisposeSystemSoundID(snd)
-    }
 }
 
 @UIApplicationMain
@@ -27,6 +21,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // must set user notification center delegate before we finish launching!
         let center = UNUserNotificationCenter.current()
         center.delegate = self.notifHelper
+        os_log("%{public}@ %{public}@", log: log, launchOptions ?? [:], #function)
         return true
     }
     
@@ -62,6 +57,7 @@ class SceneDelegate : UIResponder, UIWindowSceneDelegate {
             if shortcutItem.type == "coffee.schedule" {
                 if let d = shortcutItem.userInfo {
                     if let time = d["time"] as? Int {
+                        os_log("%{public}@ %{public}@", log: log, self, #function)
                         let alert = UIAlertController(title: "Coffee1", message: "Coffee reminder scheduled in \(time) minutes", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default))
                         self.window?.makeKeyAndVisible()
@@ -72,6 +68,7 @@ class SceneDelegate : UIResponder, UIWindowSceneDelegate {
         }
         if let resp = connectionOptions.notificationResponse {
             // under what circumstances does a notification arrive here?
+            os_log("%{public}@ %{public}@", log: log, self, #function)
             let title = resp.notification.request.content.title
             let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -88,6 +85,7 @@ class SceneDelegate : UIResponder, UIWindowSceneDelegate {
             if let d = shortcutItem.userInfo {
                 if let time = d["time"] as? Int {
                     // for debugging purposes, let's show an actual alert
+                    os_log("%{public}@ %{public}@", log: log, self, #function)
                     let alert = UIAlertController(title: "Coffee!", message: "Coffee reminder scheduled in \(time) minutes", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.window?.rootViewController?.present(alert, animated: true)

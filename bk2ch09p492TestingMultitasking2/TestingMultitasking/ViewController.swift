@@ -12,12 +12,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
         if self.presentingViewController != nil {
             self.view.backgroundColor = .yellow
         }
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        os_log("%{public}@", log: log, #function)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
     
     @IBAction func doButton(_ sender: Any) {
@@ -67,10 +67,13 @@ class ViewController: UIViewController {
 
         }
     }
-
+    @IBAction func doButton3(_ sender: Any) {
+        self.navigationController?.pushViewController(ViewController(), animated: true)
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         os_log("SIZE %{public}@ %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
-        print(self.view.window?.windowScene?.activationState.rawValue)
+        os_log("SIZE %{public}@ %d", log: log, #function, self.view.window?.windowScene?.activationState.rawValue ?? -1)
         let larger = max(size.width, size.height)
         let smaller = min(size.width, size.height)
         print(#function, size, larger/smaller, terminator:"\n\n")
@@ -83,7 +86,7 @@ class ViewController: UIViewController {
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         os_log("TRAIT %{public}@ %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
-        print(self.view.window?.windowScene?.activationState.rawValue)
+        os_log("TRAIT %{public}@ %d", log: log, #function, self.view.window?.windowScene?.activationState.rawValue ?? -1)
         print(#function, newCollection, terminator:"\n\n")
         super.willTransition(to: newCollection, with: coordinator)
         delay(1) {
