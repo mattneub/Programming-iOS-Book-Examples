@@ -1,12 +1,14 @@
 
 
 import UIKit
+import os.log
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
         print("will connect", session.persistentIdentifier, window as Any)
         print("scene title", scene.title as Any)
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -58,6 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
         print("scene state restoration activity called")
         return scene.userActivity
     }
@@ -73,22 +76,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      */
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        print("did enter background")
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
 

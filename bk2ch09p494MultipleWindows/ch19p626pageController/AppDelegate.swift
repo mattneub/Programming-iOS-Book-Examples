@@ -1,13 +1,15 @@
 
 import UIKit
+import os.log
 
+let log = OSLog(subsystem: "MultipleWindows", category: "TestingMultiple")
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
-        print("did finish launching")
+        os_log("%{public}@ %{public}@", log: log, self, #function)
         return true
     }
     
@@ -35,12 +37,18 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let config = UISceneConfiguration(name: "Default Configuration", sessionRole: .windowApplication)
         config.delegateClass = SceneDelegate.self
         config.storyboard = UIStoryboard(name: "Main", bundle: nil)
+        os_log("%{public}@ %{public}@", log: log, self, #function)
         return config
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         print("did discard") // e.g. user swiped up? but I'm not seeing it
         // video says can be delayed, but for me it never seems to come in
+        os_log("%{public}@ %{public}@", log: log, self, #function)
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        os_log("%{public}@ %{public}@", log: log, self, #function)
     }
 
 

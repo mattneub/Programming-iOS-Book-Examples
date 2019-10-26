@@ -166,5 +166,18 @@ class RootViewController : UITableViewController {
         }
         return nil
     }
+    
+    override func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion {
+            let vc = UIViewController()
+            vc.loadViewIfNeeded()
+            vc.view.backgroundColor = .yellow
+            let lab = UILabel(frame:CGRect(x: 50, y: 50, width: 50, height: 50))
+            lab.text = "It works!"
+            lab.sizeToFit()
+            vc.view.addSubview(lab)
+            self.show(vc, sender:self)
+        }
+    }
 
 }
