@@ -11,10 +11,40 @@ class ViewController: UIViewController {
         
         // do manually what UIStackView does: make distributing UILayoutGuide objects
         
+        var guides = [UILayoutGuide]()
+        // one fewer guides than views
+        for _ in views.dropLast() {
+            let g = UILayoutGuide()
+            self.view.addLayoutGuide(g)
+            guides.append(g)
+        }
+        // guides leading and width are arbitrary
+        let anc = self.view.leadingAnchor
+        for g in guides {
+            g.leadingAnchor.constraint(equalTo:anc).isActive = true
+            g.widthAnchor.constraint(equalToConstant:10).isActive = true
+        }
+        // guides top to previous view
+        for (v,g) in zip(views.dropLast(), guides) {
+            v.bottomAnchor.constraint(equalTo:g.topAnchor).isActive = true
+        }
+        // guides bottom to next view
+        for (v,g) in zip(views.dropFirst(), guides) {
+            v.topAnchor.constraint(equalTo:g.bottomAnchor).isActive = true
+        }
+        // guide heights equal to each other!
+        let h = guides[0].heightAnchor
+        for g in guides.dropFirst() {
+            g.heightAnchor.constraint(equalTo:h).isActive = true
+        }
+        
+        /*
         let guides = [UILayoutGuide(), UILayoutGuide(), UILayoutGuide()]
         for guide in guides {
             self.view.addLayoutGuide(guide)
         }
+ */
+        /*
         NSLayoutConstraint.activate([
             // guide left is arbitrary, let's say superview margin
             guides[0].leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
@@ -36,6 +66,7 @@ class ViewController: UIViewController {
             guides[1].heightAnchor.constraint(equalTo:guides[0].heightAnchor),
             guides[2].heightAnchor.constraint(equalTo:guides[0].heightAnchor),
         ])
+ */
         
         // isn't it spooooky, possums?
         
