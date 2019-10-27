@@ -31,10 +31,11 @@ class ViewController : UIViewController {
         }
     }
     
-    var which = 2
+    var which = 1
     func animate() {
         switch which {
         case 1:
+            var porig = self.v.center
             var p = self.v.center
             var opts : UIView.KeyframeAnimationOptions = .calculationModeLinear
             let opt2 : UIView.AnimationOptions = .curveLinear
@@ -74,6 +75,33 @@ class ViewController : UIViewController {
                                         self.v.center = p
                     }
             })
+            dont: do {
+                break dont
+                let dx : CGFloat = 100
+                let dy : CGFloat = 50
+                var dir : CGFloat = 1
+                var p = porig
+                let r = UIGraphicsImageRenderer(bounds:self.view.bounds)
+                let im = r.image {
+                    _ in
+                    let con = UIGraphicsGetCurrentContext()!
+                    con.move(to: p)
+                    p.x += dx*dir; p.y += dy
+                    con.addLine(to: p)
+                    dir *= -1
+                    p.x += dx*dir; p.y += dy
+                    con.addLine(to: p)
+                    dir *= -1
+                    p.x += dx*dir; p.y += dy
+                    con.addLine(to: p)
+                    dir *= -1
+                    p.x += dx*dir; p.y += dy
+                    con.addLine(to: p)
+                    con.strokePath()
+                }
+                let iv = UIImageView(image:im)
+                self.view.addSubview(iv)
+            }
         case 2:
             var p = self.v.center
             var opts : UIView.KeyframeAnimationOptions = .calculationModeCubic
