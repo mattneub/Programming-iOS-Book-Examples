@@ -7,6 +7,34 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 
 class ViewController : UIViewController {
     @IBOutlet var iv : UIImageView!
@@ -19,15 +47,13 @@ class ViewController : UIViewController {
         let moi = UIImage(named:"Moi")!
         let moici = CIImage(image:moi)!
         let moiextent = moici.extent
-        
-        let center = CGPoint(x: moiextent.midX, y: moiextent.midY)
-        
+                
         let smaller = min(moiextent.width, moiextent.height)
         let larger = max(moiextent.width, moiextent.height)
         
         // first filter
         let grad = CIFilter.radialGradient()
-        grad.center = center
+        grad.center = moiextent.center
         grad.radius0 = Float(smaller)/2.0 * 0.7
         grad.radius1 = Float(larger)/2.0
         let gradimage = grad.outputImage!

@@ -2,6 +2,33 @@
 import UIKit
 import CoreImage.CIFilterBuiltins
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
 
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
@@ -20,8 +47,7 @@ class ViewController : UIViewController {
         let tran = CIFilter.flashTransition()
         tran.inputImage = CIImage(color: CIColor(color:.red))
         tran.targetImage = moi
-        let center = CGPoint(x:self.moiextent.midX, y:self.moiextent.midY)
-        tran.center = center
+        tran.center = self.moiextent.center
         
         self.tran = tran
         self.timestamp = 0.0 // signal that we are starting
