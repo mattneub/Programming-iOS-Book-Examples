@@ -9,6 +9,8 @@ class FirstViewController : UIViewController {
         switch which {
         case 1:
             let vc = ExtraViewController()
+//            vc.modalPresentationStyle = .overFullScreen
+//            vc.modalTransitionStyle = .flipHorizontal
             self.present(vc, animated: true)
             
         case 2:
@@ -21,6 +23,7 @@ class FirstViewController : UIViewController {
 
         case 3:
             let vc = ExtraViewController()
+//            vc.modalTransitionStyle = .flipHorizontal
             self.definesPresentationContext = true
             // comment out next line to see the difference
             self.providesPresentationContextTransitionStyle = true
