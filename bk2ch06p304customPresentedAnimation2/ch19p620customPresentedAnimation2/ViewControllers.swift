@@ -22,6 +22,14 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 
 
 
@@ -125,7 +133,7 @@ class MyPresentationController : UIPresentationController {
         // but here we just assume that it *is* its native size
         let v = self.presentedView!
         let con = self.containerView!
-        v.center = CGPoint(con.bounds.midX, con.bounds.midY)
+        v.center = con.bounds.center
         return v.frame.integral
     }
     

@@ -24,6 +24,13 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
 
 
 class MyMandelbrotView : UIView {
@@ -40,7 +47,7 @@ class MyMandelbrotView : UIView {
     /*
     func drawThatPuppy () {
         self.makeBitmapContext(self.bounds.size)
-        let center = CGPoint(self.bounds.midX, self.bounds.midY)
+        let center = self.bounds.center
         self.drawAtCenter(center, zoom:1)
         self.setNeedsDisplay()
     }
@@ -55,7 +62,7 @@ class MyMandelbrotView : UIView {
     func drawThatPuppy () {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.makeBitmapContext(size:self.bounds.size)
-        let center = CGPoint(self.bounds.midX, self.bounds.midY)
+        let center = self.bounds.center
         let d : [AnyHashable:Any] = ["center":center, "bounds":self.bounds, "zoom":CGFloat(1)]
         self.performSelector(inBackground: #selector(reallyDraw), with: d)
     }

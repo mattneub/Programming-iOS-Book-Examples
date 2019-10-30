@@ -24,6 +24,14 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 let backgroundTaskQueue : OperationQueue = {
     let q = OperationQueue()
     q.maxConcurrentOperationCount = 1
@@ -53,7 +61,7 @@ class MyMandelbrotView : UIView {
                 UIApplication.shared.endBackgroundTask(bti)
             }
             guard bti != .invalid else { return }
-            let center = CGPoint(self.bounds.midX, self.bounds.midY)
+            let center = self.bounds.center
             let bounds = self.bounds
             self.draw_queue.async {
                 let bitmap = self.makeBitmapContext(size: bounds.size)
@@ -70,7 +78,7 @@ class MyMandelbrotView : UIView {
                 }
             }
         case 2:
-            let center = CGPoint(self.bounds.midX, self.bounds.midY)
+            let center = self.bounds.center
             let bounds = self.bounds
             let bitmap = self.makeBitmapContext(size: bounds.size)
             let task = BackgroundTaskOperation()

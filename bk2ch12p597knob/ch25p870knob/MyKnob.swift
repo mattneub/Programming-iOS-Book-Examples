@@ -22,6 +22,13 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
 
 
 class MyKnob: UIControl {
@@ -36,7 +43,7 @@ class MyKnob: UIControl {
 
     func pToA (_ t:UITouch) -> CGFloat {
         let loc = t.location(in: self)
-        let c = CGPoint(self.bounds.midX, self.bounds.midY)
+        let c = self.bounds.center
         return atan2(loc.y - c.y, loc.x - c.x)
     }
     

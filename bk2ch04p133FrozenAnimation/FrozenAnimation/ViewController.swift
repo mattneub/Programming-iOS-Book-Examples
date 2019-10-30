@@ -23,6 +23,14 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 
 
 class ViewController: UIViewController {
@@ -39,13 +47,13 @@ class ViewController: UIViewController {
             let b = self.slider.bounds
             do {
                 let r = self.slider.thumbRect(forBounds: b, trackRect: self.slider.trackRect(forBounds: b), value: 0)
-                let c = CGPoint(r.midX, r.midY)
+                let c = r.center
                 let c2 = self.view.convert(c, from:self.slider)
                 self.v.center.x = c2.x
             }
             do {
                 let r = self.slider.thumbRect(forBounds: b, trackRect: self.slider.trackRect(forBounds: b), value: 1)
-                let c = CGPoint(r.midX, r.midY)
+                let c = r.center
                 let c2 = self.view.convert(c, from:self.slider)
                 self.pTarget = c2
             }

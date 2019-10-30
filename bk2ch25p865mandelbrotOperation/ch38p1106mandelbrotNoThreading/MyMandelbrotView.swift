@@ -24,6 +24,14 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 
 
 class MyMandelbrotView : UIView {
@@ -38,7 +46,7 @@ class MyMandelbrotView : UIView {
     }()
     
     func drawThatPuppy () {
-        let center = CGPoint(self.bounds.midX, self.bounds.midY)
+        let center = self.bounds.center
         let op = MyMandelbrotOperation(center: center, bounds: self.bounds, zoom: 1)
         NotificationCenter.default.addObserver(self, selector: #selector(operationFinished), name: MyMandelbrotOperation.mandelOpFinished, object: op)
         self.queue.addOperation(op)

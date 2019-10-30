@@ -23,6 +23,14 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 
 
 class RootViewController: UIViewController {
@@ -45,7 +53,7 @@ class RootViewController: UIViewController {
                 .flexibleBottomMargin,
                 .flexibleRightMargin]
             label.sizeToFit()
-            label.center = CGPoint(v.bounds.midX, v.bounds.midY)
+            label.center = v.bounds.center
             label.frame = label.frame.integral
 
         case 2:

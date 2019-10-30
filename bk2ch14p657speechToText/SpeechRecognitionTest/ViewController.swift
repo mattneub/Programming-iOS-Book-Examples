@@ -135,6 +135,8 @@ class ViewController: UIViewController {
                     print("finished!")
                 }
             } else {
+                // with on device recognition I always get error 203 when we stop
+                // but I don't think that's of any importance
                 print(err!)
                 self.recLabel.isHidden = true
             }

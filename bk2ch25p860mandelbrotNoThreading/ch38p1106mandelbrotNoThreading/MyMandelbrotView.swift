@@ -24,6 +24,14 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 
 
 class MyMandelbrotView : UIView {
@@ -40,7 +48,7 @@ class MyMandelbrotView : UIView {
     // jumping-off point: draw the Mandelbrot set
     func drawThatPuppy () {
         self.makeBitmapContext(size: self.bounds.size)
-        let center = CGPoint(self.bounds.midX, self.bounds.midY)
+        let center = self.bounds.center
         self.draw(center: center, bounds: self.bounds, zoom: 1)
         self.setNeedsDisplay()
     }

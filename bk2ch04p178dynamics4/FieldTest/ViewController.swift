@@ -28,6 +28,14 @@ extension CGVector {
     }
 }
 
+extension CGRect {
+    var center : CGPoint {
+        return CGPoint(self.midX, self.midY)
+    }
+}
+
+
+
 
 // just a workshop for playing with fields; feel free to change anything and experiment
 
@@ -56,7 +64,7 @@ class ViewController: UIViewController {
             // let f = UIFieldBehavior.electricField()
             let f = UIFieldBehavior.magneticField()
             let r = self.anim.referenceView!.bounds
-            f.position = CGPoint(r.midX, r.midY)
+            f.position = r.center
             f.falloff = 1
             f.strength = 1
             f.addItem(v)
