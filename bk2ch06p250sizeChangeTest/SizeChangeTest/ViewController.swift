@@ -40,19 +40,19 @@ class ViewController: UIViewController {
         print(size)
         super.viewWillTransition(to:size, with: coordinator)
         if #available(iOS 13.0, *) {
-            let sborBefore = self.view.window?.windowScene?.interfaceOrientation
-            print(sborBefore?.rawValue as Any)
+            let before = self.view.window?.windowScene?.interfaceOrientation
+            print(before?.rawValue as Any)
         } else {
-            let sborBefore = UIApplication.shared.statusBarOrientation
-            print(sborBefore.rawValue as Any)
+            let before = UIApplication.shared.statusBarOrientation
+            print(before.rawValue as Any)
         }
         coordinator.animate(alongsideTransition: nil) { _ in
             if #available(iOS 13.0, *) {
-                let sborAfter = self.view.window?.windowScene?.interfaceOrientation
-                print(sborAfter?.rawValue as Any)
+                let after = self.view.window?.windowScene?.interfaceOrientation
+                print(after?.rawValue as Any)
             } else {
-                let sborAfter = UIApplication.shared.statusBarOrientation
-                print(sborAfter.rawValue as Any)
+                let after = UIApplication.shared.statusBarOrientation
+                print(after.rawValue as Any)
             }
         }
     }
