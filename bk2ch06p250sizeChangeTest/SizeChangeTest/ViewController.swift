@@ -16,6 +16,7 @@ import UIKit
 // in iOS 13, it's the other way round:
 // `willTransition(to:with:)` _is_ called, but `traitCollectionDidChange(_:)` is _not_ called
 // I find that bizarre either way, frankly
+// ??? has this changed, or did my test change? now it seems neither is called
 
 class ViewController: UIViewController {
     
