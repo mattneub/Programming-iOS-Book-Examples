@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PeekAndPop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ContextualMenuWithPreview" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,39 +27,46 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vns-mf-FaD">
                                 <rect key="frame" x="16" y="65" width="343" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FvM-ey-aJW">
-                                        <rect key="frame" x="20" y="10" width="303" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFL-rk-8Nd">
-                                                <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
-                                                <state key="normal" title="Manny"/>
-                                                <connections>
-                                                    <action selector="doShowBoy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m3w-rX-mgl"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXR-je-jqA">
-                                                <rect key="frame" x="101" y="0.0" width="101" height="30"/>
-                                                <state key="normal" title="Moe"/>
-                                                <connections>
-                                                    <action selector="doShowBoy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7fW-ah-R5C"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K03-ne-0fU">
-                                                <rect key="frame" x="202" y="0.0" width="101" height="30"/>
-                                                <state key="normal" title="Jack"/>
-                                                <connections>
-                                                    <action selector="doShowBoy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jLN-90-sof"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFL-rk-8Nd">
+                                        <rect key="frame" x="20" y="10" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="0pJ-r4-Paa"/>
+                                        </constraints>
+                                        <state key="normal" title="Manny"/>
+                                        <connections>
+                                            <action selector="doShowBoy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m3w-rX-mgl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXR-je-jqA">
+                                        <rect key="frame" x="141.5" y="10" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="rOU-6X-GgK"/>
+                                        </constraints>
+                                        <state key="normal" title="Moe"/>
+                                        <connections>
+                                            <action selector="doShowBoy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7fW-ah-R5C"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K03-ne-0fU">
+                                        <rect key="frame" x="263.5" y="10" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="5t7-HH-G1e"/>
+                                        </constraints>
+                                        <state key="normal" title="Jack"/>
+                                        <connections>
+                                            <action selector="doShowBoy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jLN-90-sof"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="FvM-ey-aJW" firstAttribute="top" secondItem="Vns-mf-FaD" secondAttribute="top" constant="10" id="Isv-J0-RGZ"/>
+                                    <constraint firstItem="yXR-je-jqA" firstAttribute="centerY" secondItem="xFL-rk-8Nd" secondAttribute="centerY" id="00e-QF-QIG"/>
+                                    <constraint firstItem="xFL-rk-8Nd" firstAttribute="centerY" secondItem="Vns-mf-FaD" secondAttribute="centerY" id="6K9-8U-Zbu"/>
+                                    <constraint firstItem="K03-ne-0fU" firstAttribute="centerY" secondItem="xFL-rk-8Nd" secondAttribute="centerY" id="BeY-A9-iEw"/>
                                     <constraint firstAttribute="height" constant="50" id="Vjn-bZ-uf7"/>
-                                    <constraint firstAttribute="trailing" secondItem="FvM-ey-aJW" secondAttribute="trailing" constant="20" id="fcv-EF-kqD"/>
-                                    <constraint firstItem="FvM-ey-aJW" firstAttribute="leading" secondItem="Vns-mf-FaD" secondAttribute="leading" constant="20" id="vLG-ir-bFS"/>
+                                    <constraint firstAttribute="trailing" secondItem="K03-ne-0fU" secondAttribute="trailing" constant="19.5" id="WVJ-6S-BY0"/>
+                                    <constraint firstItem="yXR-je-jqA" firstAttribute="centerX" secondItem="Vns-mf-FaD" secondAttribute="centerX" id="gKT-tx-lLA"/>
+                                    <constraint firstItem="xFL-rk-8Nd" firstAttribute="leading" secondItem="Vns-mf-FaD" secondAttribute="leading" constant="20" id="j7h-Jo-gqb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -96,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcW-j3-ORv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="133"/>
+            <point key="canvasLocation" x="953" y="123"/>
         </scene>
     </scenes>
 </document>

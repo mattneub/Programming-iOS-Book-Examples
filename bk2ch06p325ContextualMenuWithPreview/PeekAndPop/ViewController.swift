@@ -47,8 +47,12 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, previewForHighlightingMenuWithConfiguration config: UIContextMenuConfiguration) -> UITargetedPreview? {
-        let button = self.buttonSuperview.viewWithTag(config.identifier as! Int)!
-        return UITargetedPreview(view: button)
+        if let tag = config.identifier as? Int {
+            if let button = self.buttonSuperview.viewWithTag(tag) {
+                return UITargetedPreview(view: button)
+            }
+        }
+        return nil
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
