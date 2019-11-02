@@ -46,7 +46,7 @@ class ViewController: UICollectionViewController {
                         items.append(NSCollectionLayoutGroupCustomItem(frame: frame))
                         frame.origin.x += w + 10
                         frame.size.height -= 6; frame.origin.y += 3
-                        if frame.size.height < 6 {
+                        if frame.size.height < 20 {
                             return items
                         }
                         if frame.maxX > env.container.contentSize.width {
@@ -56,6 +56,7 @@ class ViewController: UICollectionViewController {
                 }
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 20
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
                 return section
             case 2...3:
                 // groups as items
@@ -76,6 +77,7 @@ class ViewController: UICollectionViewController {
                 hgroup.interItemSpacing = .flexible(1)
                 let section = NSCollectionLayoutSection(group: hgroup)
                 section.interGroupSpacing = 20
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
                 return section
             case 4...5:
                 // orthogonal scrolling
@@ -125,9 +127,12 @@ class ViewController: UICollectionViewController {
             lab.tag = 1
             cell.contentView.addSubview(lab)
             cell.contentView.layer.borderWidth = 2
+            
+            lab.textAlignment = .center
         }
         let lab = cell.contentView.viewWithTag(1) as! UILabel
         lab.text = String(indexPath.item)
+        lab.frame = cell.bounds
         return cell
     }
 
