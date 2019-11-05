@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     func checkMicAuthorization(andThen f: (() -> ())?) {
         print("checking mic authorization")
+        // different names from all other authorizations, sheesh
         let sess = AVAudioSession.sharedInstance()
         let status = sess.recordPermission
         switch status {
