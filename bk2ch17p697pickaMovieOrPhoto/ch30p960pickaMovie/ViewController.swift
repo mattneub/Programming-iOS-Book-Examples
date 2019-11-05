@@ -163,14 +163,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                         self.showLivePhoto(live!)
                     } else {
                         print("live is nil!")
-                        // well then I'll fetch it myself, said the little red hen
-                        if let asset = asset {
-                            PHImageManager.default().requestLivePhoto(for: asset, targetSize: self.redView.bounds.size, contentMode: .aspectFit, options: nil) { photo, info in
-                                if let photo = photo {
-                                    self.showLivePhoto(photo)
-                                }
-                            }
-                        }
+                        self.fetchLivePhoto(from:asset)
                     }
                 case .video:
                     if url != nil {
@@ -264,6 +257,17 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         self.redView.addSubview(av.view)
         av.didMove(toParent: self)
         player.play()
+    }
+    
+    func fetchLivePhoto(from asset:PHAsset?) {
+        // well then I'll fetch it myself, said the little red hen
+        if let asset = asset {
+            PHImageManager.default().requestLivePhoto(for: asset, targetSize: self.redView.bounds.size, contentMode: .aspectFit, options: nil) { photo, info in
+                if let photo = photo {
+                    self.showLivePhoto(photo)
+                }
+            }
+        }
     }
     
     func showLivePhoto(_ ph:PHLivePhoto) {
