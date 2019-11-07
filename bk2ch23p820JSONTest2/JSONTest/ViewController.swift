@@ -76,10 +76,10 @@ class ViewController: UIViewController {
         }
         struct Quote2 : Decodable {
             let author : String
-            let tag : String
+            let quotation : String
             enum CodingKeys : String, CodingKey {
                 case author = "title"
-                case tag = "content"
+                case quotation = "content"
             }
             private struct Item2 : Decodable {
                 let value : String
@@ -91,8 +91,8 @@ class ViewController: UIViewController {
                 let con = try decoder.container(keyedBy: CodingKeys.self)
                 let author = try con.decode(Item2.self, forKey: .author)
                 self.author = author.value
-                let tag = try con.decode(Item2.self, forKey: .tag)
-                self.tag = tag.value
+                let quotation = try con.decode(Item2.self, forKey: .quotation)
+                self.quotation = quotation.value
             }
         }
         struct Quote3 : Decodable {
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
 //            self.authorLabel.text = quote.author.value
 //            let quotation = quote.tag.value
             self.authorLabel.text = quote.author
-            let quotation = quote.tag
+            let quotation = quote.quotation
             let html = NSAttributedString.DocumentType.html
             let enc = String.Encoding.utf8.rawValue
             if let mas = try? NSMutableAttributedString(
