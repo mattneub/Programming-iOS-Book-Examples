@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,14 +49,14 @@
                                 </items>
                             </tabBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="7tY-eM-8w0">
-                                <rect key="frame" x="20" y="210" width="85" height="76"/>
+                                <rect key="frame" x="20" y="190" width="85" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="4ZM-q8-Y1I"/>
                                     <constraint firstAttribute="height" constant="76" id="k5V-Bu-Fxb"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="Sdm-VE-V7E">
-                                <rect key="frame" x="55" y="210" width="304" height="321"/>
+                                <rect key="frame" x="55" y="190" width="304" height="321"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="321" id="1zb-j1-4tO"/>
                                     <constraint firstAttribute="width" constant="304" id="FVB-pA-9ar"/>

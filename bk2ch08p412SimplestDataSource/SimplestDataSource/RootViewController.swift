@@ -74,6 +74,7 @@ class RootViewController: UITableViewController {
         
         // test orientation bug
         // seems to be fixed
+        // try both false and true just to show it works
         self.navigationController?.navigationBar.prefersLargeTitles = true
         // adding this stuff really screws up the look of the thing
 //        let navbarapp = UINavigationBarAppearance()
@@ -87,6 +88,11 @@ class RootViewController: UITableViewController {
             .foregroundColor: UIColor.blue
         ])
         self.tableView.refreshControl!.attributedTitle = att
+        
+        delay(2) {
+            print(self.tableView.contentInset)
+            print(self.tableView.adjustedContentInset)
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
