@@ -122,12 +122,22 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIScene.didEnterBackgroundNotification, object: nil)
-        } else {
-            NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    var didAppearInitially = false
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !didAppearInitially {
+            didAppearInitially = true
+            if #available(iOS 13.0, *) {
+                let scene = self.view.window?.windowScene
+                NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIScene.didEnterBackgroundNotification, object: scene)
+            } else {
+                NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: UIApplication.didEnterBackgroundNotification, object: nil)
+            }
+            NotificationCenter.default.addObserver(self, selector: #selector(memoryNotification), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
+
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(memoryNotification), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
     }
     
     @objc func memoryNotification(_ n:Notification) {
