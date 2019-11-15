@@ -72,8 +72,8 @@ class ViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        os_log("SIZE %{public}@ %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
-        os_log("SIZE %{public}@ %d", log: log, #function, self.view.window?.windowScene?.activationState.rawValue ?? -1)
+        os_log("SIZE %{public}@ app state %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
+        os_log("SIZE %{public}@ scene state %d", log: log, #function, self.view.window?.windowScene?.activationState.rawValue ?? -1)
         let larger = max(size.width, size.height)
         let smaller = min(size.width, size.height)
         print(#function, size, larger/smaller, terminator:"\n\n")
@@ -85,8 +85,8 @@ class ViewController: UIViewController {
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        os_log("TRAIT %{public}@ %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
-        os_log("TRAIT %{public}@ %d", log: log, #function, self.view.window?.windowScene?.activationState.rawValue ?? -1)
+        os_log("TRAIT %{public}@ app state %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
+        os_log("TRAIT %{public}@ scene state %d", log: log, #function, self.view.window?.windowScene?.activationState.rawValue ?? -1)
         print(#function, newCollection, terminator:"\n\n")
         super.willTransition(to: newCollection, with: coordinator)
         delay(1) {
@@ -96,8 +96,8 @@ class ViewController: UIViewController {
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        os_log("TRAIT %{public}@ %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
-        print(self.view.window?.windowScene?.activationState.rawValue)
+        os_log("TRAIT %{public}@ app state %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
+        os_log("TRAIT %{public}@ scene state %d", log: log, #function, self.view.window?.windowScene?.activationState.rawValue ?? -1)
         print(#function, self.traitCollection, terminator:"\n\n")
         super.traitCollectionDidChange(previousTraitCollection)
     }
