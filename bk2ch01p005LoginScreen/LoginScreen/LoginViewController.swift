@@ -4,8 +4,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var message : String = ""
-    convenience init?(coder:NSCoder, message:String) {
-        self.init(coder:coder)
+    convenience init(coder:NSCoder, message:String) {
+        self.init(coder:coder)!
         self.message = message
     }
 
