@@ -118,6 +118,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         // ... with this:
         let lister = PeopleLister(fileURL: documentURL)
         let nav = UINavigationController(rootViewController: lister)
+        nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true)
     }
 }
