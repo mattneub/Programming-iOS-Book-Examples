@@ -32,7 +32,7 @@ extension CGVector {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 10 // 1...10
+    let which = 3 // 1...10
     
     @IBOutlet var map : MKMapView!
     let annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
@@ -201,6 +201,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     v.markerTintColor = .green
                     v.glyphText = "!"
                     // v.glyphImage = UIImage(named:"smileyWithTransparencyTiny")!.withRenderingMode(.alwaysOriginal)
+                    //v.glyphImage = UIImage(systemName:"exclamationmark.circle")!
                     v.glyphTintColor = .black
                     // v.animatesWhenAdded = true
                     v.isDraggable = true
