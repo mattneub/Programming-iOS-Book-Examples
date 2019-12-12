@@ -113,8 +113,14 @@ class TableViewController: UITableViewController {
             UIGraphicsImageRenderer(size:sz).image { ctx in
                 ctx.fill(CGRect(0,0,20,20)) // mask is entire image
             }
-        // but it's backwards! so reverse them
-        bar.standardAppearance.setBackIndicatorImage(indicmask, transitionMaskImage: indic)
+        // but before iOS 13.3 it's backwards! so reverse them
+        if #available(iOS 13.3, *) {
+            print("normal")
+            bar.standardAppearance.setBackIndicatorImage(indic, transitionMaskImage: indicmask)
+        } else {
+            print("reversed")
+            bar.standardAppearance.setBackIndicatorImage(indicmask, transitionMaskImage: indic)
+        }
         
         // =========
         
