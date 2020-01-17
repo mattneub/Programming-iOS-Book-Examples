@@ -1,6 +1,0 @@
-
-
-
-@interface SmilerLayer : CALayer
-
-@end
