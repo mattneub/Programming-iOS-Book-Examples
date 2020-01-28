@@ -70,8 +70,10 @@ class ViewController: UIViewController {
             av.delegate = self
             av.allowsPictureInPicturePlayback = true
             // av.updatesNowPlayingInfoCenter = true // that's the default
+            // av.showsPlaybackControls = false
             delay(2) {
                 print(av.contentOverlayView!.frame)
+                // av.player?.play()
             }
         case 2:
             let av = AVPlayerViewController()
