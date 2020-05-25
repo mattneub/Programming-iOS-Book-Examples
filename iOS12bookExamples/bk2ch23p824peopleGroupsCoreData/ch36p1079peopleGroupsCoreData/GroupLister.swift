@@ -76,7 +76,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         return sectionInfo.numberOfObjects
     }
     
-	let cellID = "Cell"
+    let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         cell.accessoryType = .disclosureIndicator

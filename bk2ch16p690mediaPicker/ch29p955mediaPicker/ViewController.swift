@@ -39,8 +39,8 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
         MPMediaLibrary.requestAuthorization() { status in
             if status == .authorized {
                 DispatchQueue.main.async {
-                	f?()
-				}
+                    f?()
+                }
             }
         }
     case .restricted:

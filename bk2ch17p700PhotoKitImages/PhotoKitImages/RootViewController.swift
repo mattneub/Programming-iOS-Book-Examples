@@ -15,8 +15,8 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
         PHPhotoLibrary.requestAuthorization() { status in
             if status == .authorized {
                 DispatchQueue.main.async {
-                	f?()
-				}
+                    f?()
+                }
             }
         }
     case .restricted:

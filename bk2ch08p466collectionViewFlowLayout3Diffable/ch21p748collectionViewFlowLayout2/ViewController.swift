@@ -19,7 +19,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     let cellID = "Cell"
-	let headerID = "Header"
+    let headerID = "Header"
     
     override func viewDidLoad() {
         // register cell, comes from a nib even though we are using a storyboard

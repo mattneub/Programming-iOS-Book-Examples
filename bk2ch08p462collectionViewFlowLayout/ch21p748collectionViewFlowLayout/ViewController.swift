@@ -90,7 +90,7 @@ class ViewController : UICollectionViewController {
     
     // cells
     
-	let cellID = "Cell"
+    let cellID = "Cell"
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) 

@@ -15,9 +15,9 @@ class ViewController: UIViewController {
         case .notDetermined:
             SFSpeechRecognizer.requestAuthorization {status2 in
                 if status2 == .authorized {
-					DispatchQueue.main.async {
-						f?()
-					}
+                    DispatchQueue.main.async {
+                        f?()
+                    }
                 }
             }
         case .authorized:
@@ -36,9 +36,9 @@ class ViewController: UIViewController {
         case .undetermined:
             sess.requestRecordPermission {ok in
                 if ok {
-					DispatchQueue.main.async {
-						f?()
-					}
+                    DispatchQueue.main.async {
+                        f?()
+                    }
                 }
             }
         case .granted:

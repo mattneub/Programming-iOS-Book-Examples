@@ -16,8 +16,8 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
         PHPhotoLibrary.requestAuthorization() { status in
             if status == .authorized {
                 DispatchQueue.main.async {
-                	f?()
-				}
+                    f?()
+                }
             }
         }
     case .restricted:
@@ -74,8 +74,8 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
         AVCaptureDevice.requestAccess(for:.video) { granted in
             if granted {
                 DispatchQueue.main.async {
-                	f?()
-				}
+                    f?()
+                }
             }
         }
     case .restricted:

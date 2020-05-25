@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 extension ViewController : UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerShouldDismissPopover(
         _ pop: UIPopoverPresentationController) -> Bool {
-			return pop.presentedViewController.presentedViewController == nil
+            return pop.presentedViewController.presentedViewController == nil
     }
 }
 

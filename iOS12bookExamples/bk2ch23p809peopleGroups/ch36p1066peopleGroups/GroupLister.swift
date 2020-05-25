@@ -20,7 +20,7 @@ class GroupLister: UITableViewController {
         return NSURL() as URL // shouldn't happen
     }
     
-	let cellID = "Cell"
+    let cellID = "Cell"
 
     override func viewDidLoad() {
         super.viewDidLoad()

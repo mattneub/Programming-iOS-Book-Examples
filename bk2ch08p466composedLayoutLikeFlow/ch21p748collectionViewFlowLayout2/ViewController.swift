@@ -100,7 +100,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     let cellID = "Cell"
-	let headerID = "Header"
+    let headerID = "Header"
     
     // UICollectionViewDiffableDataSource is pickier than table view diffable
     // must register stuff before applying data
