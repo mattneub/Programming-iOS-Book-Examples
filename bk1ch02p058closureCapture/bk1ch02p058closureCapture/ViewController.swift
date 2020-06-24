@@ -58,8 +58,14 @@ class ViewController: UIViewController {
         let f3 = funcPasser {
             print(self.presentingViewController as Any) // self required
         }
-        
-        let _ = (f2,f3)
+        // new in Swift 5.3, can move `self` to the capture list
+        // self is still required, but this way we acknowledge the potential cycle...
+        // while avoiding repetitious or "ugly" code
+        let f4 = funcPasser { [self] in
+            print(presentingViewController as Any)
+        }
+
+        let _ = (f2,f3,f4)
     }
     
     func pass100 (_ f:(Int)->()) {

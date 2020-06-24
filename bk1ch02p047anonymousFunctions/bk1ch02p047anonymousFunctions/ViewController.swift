@@ -30,8 +30,10 @@ func test(h:(Int, Int, Int) -> Int) {
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var myButton2: UIButton!
     @IBOutlet weak var myButton: UIButton!
+    @IBOutlet weak var myButton2: UIButton!
+    @IBOutlet weak var myButton3: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +140,17 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func doButton3(_ sender: Any) {
+        // new in Swift 5.3, both anonymous functions can use trailing closure syntax
+        // the key is that all but the first must be labelled with no comma
+        // Xcode does nice indentation when you do that too
+        UIView.animate(withDuration:0.4) {
+            self.myButton3.frame.origin.y += 20
+        } completion: { _ in
+            print("finished")
+        }
+
+    }
 
 
 }
