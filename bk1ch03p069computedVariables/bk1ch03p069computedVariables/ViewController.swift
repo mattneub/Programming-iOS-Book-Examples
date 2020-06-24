@@ -22,11 +22,15 @@ var now3 : String {
     Date().description // you can also omit `return` if it's a one-liner, Swift 5.1
 }
 
-// warning, I expect some property wrapper feature names to change in the next iteration
 @propertyWrapper struct Facade<T> {
     private var _p : T
-    init(wrappedValue:T) {self._p = wrappedValue}
-    init(_ val:T) {self._p = val}
+    init(wrappedValue:T) {
+        print("called the wrappedValue initializer")
+        self._p = wrappedValue}
+    init(_ val:T) {
+        print("called the other initializer")
+        self._p = val
+    }
     var wrappedValue : T {
         get {
             return self._p
@@ -81,7 +85,9 @@ class ViewController: UIViewController {
     }
     
     // Swift 5.1, can sluff the above off into a property wrapper
-    @Facade("test") var p : String
+    // Swift 5.3, we don't need the explicit type declaration
+    @Facade var ptesting = "test" // wrapped value initializer
+    @Facade("test") var p // other initializer
     
     // more "practical" facade, a clamped setter
     private var _pp : Int = 0
@@ -94,9 +100,9 @@ class ViewController: UIViewController {
         }
     }
     
-    @Clamped(min:-7, max:7) var clamped : Int = 0
+    @Clamped(min:-7, max:7) var clamped = 0
     
-    @Clamped(wrappedValue:0, min:-7, max:7) var anotherWay : Int
+    @Clamped(wrappedValue:0, min:-7, max:7) var anotherWay
     
     // observer
     var s = "whatever" {
