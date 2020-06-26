@@ -40,7 +40,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // but overloading is _not_ legal at the local level
-        // I take it that is because we have no dynamic dispatch here?
         /*
          func sayyy (what:String) {
          }
@@ -56,6 +55,17 @@ class ViewController: UIViewController {
         giveMeAString(say())
         let result = say() + "two"
         print(result)
+        
+        // new in Swift 5.2, there's another way to disambiguate:
+        // use the function signature
+        do {
+            let result = (say as () -> String)()
+            print(result)
+        }
+        do {
+            let result: String = say()
+            print(result)
+        }
     
     }
 
