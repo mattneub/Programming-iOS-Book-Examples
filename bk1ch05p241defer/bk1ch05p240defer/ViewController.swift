@@ -81,27 +81,27 @@ class ViewController: UIViewController {
     }
     
     func doSomethingTimeConsuming() {
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.view.window?.isUserInteractionEnabled = false
         // ... do stuff ...
-        UIApplication.shared.endIgnoringInteractionEvents()
+        self.view.window?.isUserInteractionEnabled = true
     }
     
     var somethingHappened = true
     func doSomethingTimeConsuming2() {
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.view.window?.isUserInteractionEnabled = false
         // ... do stuff ...
         if somethingHappened {
             return
         }
         // ... do more stuff ...
-        UIApplication.shared.endIgnoringInteractionEvents()
+        self.view.window?.isUserInteractionEnabled = true
     }
 
     func doSomethingTimeConsuming3() {
         defer {
-            UIApplication.shared.endIgnoringInteractionEvents()
+            self.view.window?.isUserInteractionEnabled = true
         }
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.view.window?.isUserInteractionEnabled = false
         // ... do stuff ...
         if somethingHappened {
             return

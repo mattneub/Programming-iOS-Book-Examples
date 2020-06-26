@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         String().sayHello()
         // have to say Swift here:
         let s = Swift.String(1)
+        _ = s
     }
 
 

@@ -123,7 +123,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         stringMaybe7 = "howdy"
         _ = stringMaybe7
         
-        
+        _ = (f, upper, stringMaybe, stringMaybe2)
     }
 
 
