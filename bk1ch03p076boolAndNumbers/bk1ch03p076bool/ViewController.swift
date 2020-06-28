@@ -269,11 +269,16 @@ class ViewController: UIViewController {
             print(r1, r2)
             let eq3 = r1 >= r2.nextDown && r1 <= r2.nextUp
             print(eq3)
-
-
         }
 
-
+        do {
+            let i:Int = 1
+            let i2:UInt8 = 2
+            let ok = i < i2 // true
+            let ok2 = i == i2 // false
+            // let sum = i + i2 // error
+            print(ok, ok2)
+        }
         
     }
     

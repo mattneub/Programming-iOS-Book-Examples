@@ -124,6 +124,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         _ = stringMaybe7
         
         _ = (f, upper, stringMaybe, stringMaybe2)
+        
+        do {
+            // this seems weird, but it makes sense really:
+            // we are passing the string out into the implicit Optional wrapper
+            // it's really no different from assigning "howdy" to a `String?` variable
+            let f = { () -> String in
+                return "howdy"
+            }
+            let f2 : () -> String? = f
+            print(f()) // howdy
+            print(f2() as Any) // Optional("howdy")
+        }
     }
 
 

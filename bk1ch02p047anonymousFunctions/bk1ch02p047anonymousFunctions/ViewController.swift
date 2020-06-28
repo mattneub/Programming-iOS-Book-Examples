@@ -83,22 +83,23 @@ class ViewController: UIViewController {
         print(arr4)
         
         // however, you can't use trailing closures directly before curly braces
+        // ok, now you can, but you get a warning
         
-//        for i in arr.map {$0*2} { // Trailing closure requires parentheses for disambiguation in this context
-//            print(i)
-//        }
+        for i in arr.map {$0*2} { // Trailing closure in this context is confusable with the body of the statement
+            print(i)
+        }
 
-        for i in (arr.map {$0*2}) {
+        for i in arr.map ({$0*2}) {
             print(i)
         }
         
         _ = arr.map{$0*2}.first == 4
         
-//        if arr.map {$0*2}.first == 4 { // spew of meaningless error messages
-//            print("yup")
-//        }
+        if arr.map{$0*2}.first == 4 { // Trailing closure in this context is confusable with the body of the statement
+            print("yup")
+        }
 
-        if (arr.map {$0*2}.first) == 4 {
+        if arr.map({$0*2}).first == 4 {
             print("yup")
         }
 

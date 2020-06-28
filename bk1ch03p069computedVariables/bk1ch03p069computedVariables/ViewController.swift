@@ -22,6 +22,14 @@ var now3 : String {
     Date().description // you can also omit `return` if it's a one-liner, Swift 5.1
 }
 
+typealias SomeType = Int // just testing the syntax, ignore
+@propertyWrapper struct MyWrapper {
+    var wrappedValue : SomeType {
+        get { 1 }
+        set { /*...*/ }
+    }
+}
+
 @propertyWrapper struct Facade<T> {
     private var _p : T
     init(wrappedValue:T) {
@@ -71,6 +79,8 @@ class ViewController: UIViewController {
     var mp : MPMusicPlayerController {
         MPMusicPlayerController.systemMusicPlayer // NB no longer a method
     }
+
+    @MyWrapper var myProperty // can omit type, as it is known from the wrapper
 
     
     // typical "facade" structure

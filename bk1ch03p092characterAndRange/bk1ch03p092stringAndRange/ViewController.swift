@@ -329,6 +329,12 @@ class ViewController: UIViewController {
         
         do {
             let s = "string"
+            let sub = s[...] // String.SubSequence = Substring, weird eh
+            _ = sub
+        }
+        
+        do {
+            let s = "string"
             let range = s.startIndex..<s.endIndex
             let range2 = ..<s.endIndex
             let range3 = ...s.index(before: s.endIndex)
