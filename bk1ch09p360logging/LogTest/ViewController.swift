@@ -1,7 +1,7 @@
 
 import UIKit
 import os
-let mylog = OSLog(subsystem: "com.neuburg.matt", category: "testing")
+let mylog = Logger(subsystem: "com.neuburg.matt", category: "testing")
 
 
 class ViewController: UIViewController {
@@ -26,10 +26,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         NSLog("%@", self.bigmessage)
     }
     @IBAction func doOSLog(_ sender: Any) {
-        os_log("%{public}@", log: mylog, "this is a test, os_log")
-        os_log("%{public}@", log: mylog, self.view)
-        os_log("%{public}@", log: mylog, self.bigmessage)
-
+        mylog.log("this is a test, os_log")
+        mylog.log("\(self.view)")
+        mylog.log("\(self.bigmessage)")
+        mylog.log("this is a test of \(self, privacy: .public)")
     }
     
 }
