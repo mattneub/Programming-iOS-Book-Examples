@@ -74,7 +74,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             group.timestamp = Date()
             let pl = PeopleLister(group: group)
             self.navigationController!.pushViewController(pl, animated: true)
-            })
+        })
         self.present(av, animated: true)
     }
         
