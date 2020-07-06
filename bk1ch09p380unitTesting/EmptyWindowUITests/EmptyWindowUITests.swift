@@ -29,7 +29,9 @@ class EmptyWindowUITests: XCTestCase {
         attachment.name = "OpeningScreen"
         self.add(attachment)
         app.buttons["GreetingButton"].tap()
-        app.alerts["Howdy!"].buttons["OK"].tap()
+        XCTContext.runActivity(named: "tap that button kid") { _ in
+            app.alerts["Howdy!"].buttons["OK"].tap()
+        }
         
     }
     
