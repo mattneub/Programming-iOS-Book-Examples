@@ -32,26 +32,29 @@ class ViewController: UIViewController {
     
     @IBOutlet var mySwitch : MySwitch!
     
-    let cardTappedCardNamePublisher = NotificationCenter.default.publisher(for: Card.tapped)
+    let cardTappedCardNamePublisher =
+        NotificationCenter.default.publisher(for: Card.tapped)
         .compactMap {$0.object as? Card}
         .map {$0.name}
-    //.eraseToAnyPublisher()
+    // .eraseToAnyPublisher()
     // lazy var switchOnPublisher = mySwitch.$isOnPublisher
     //.eraseToAnyPublisher()
     // lazy var pub = self.mySwitch.publisher(for: \.isOn) // KVO
     lazy var combination =
         Publishers.CombineLatest(
-            self.cardTappedCardNamePublisher, self.mySwitch.$isOnPublisher)
-                .scan((nil,true)) { $0.1 != $1.1 ? (nil,$1.1) : $1 }
-                .filter { $0.1 }
-                .compactMap { $0.0 }
-                //.eraseToAnyPublisher()
+            self.cardTappedCardNamePublisher,
+            self.mySwitch.$isOnPublisher
+        )
+        .scan(("",true,true)) { ($1.0, $0.2, $1.1) }
+        .filter { $0.1 && $0.2 }
+        .map { $0.0 }
+        .eraseToAnyPublisher()
     
     var which = 3
-    var sink : AnyCancellable?
+    var storage = Set<AnyCancellable>()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         switch which {
         case 0:
             NotificationCenter.default.addObserver(self, selector: #selector(cardTapped), name: Card.tapped, object: nil)
@@ -59,17 +62,17 @@ class ViewController: UIViewController {
             let sink = self.cardTappedCardNamePublisher.sink {
                 print($0)
             }
-            self.sink = sink
+            sink.store(in: &self.storage)
         case 2:
             let sink = self.mySwitch.$isOnPublisher.sink {
                 print($0)
             }
-            self.sink = sink
+            sink.store(in: &self.storage)
         case 3:
             let sink = self.combination.sink {
                 print($0)
             }
-            self.sink = sink
+            sink.store(in: &self.storage)
         default:break
         }
         
@@ -83,6 +86,6 @@ class ViewController: UIViewController {
     deinit {
         print("farewell from view controller")
     }
-
+    
 }
 
