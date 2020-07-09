@@ -17,14 +17,14 @@ class Card : UIView {
 }
 
 class MySwitch : UISwitch {
+    @Published var isOnPublisher = false
     required init?(coder: NSCoder) {
         super.init(coder:coder)
         self.isOnPublisher = self.isOn
-        self.addTarget(self, action: #selector(didChangeOn), for: .valueChanged)
-    }
-    @Published var isOnPublisher = false
-    @objc func didChangeOn() {
-        self.isOnPublisher = self.isOn
+        let action = UIAction(title: "") {[unowned self] _ in
+            self.isOnPublisher = self.isOn
+        }
+        self.addAction(action, for: .primaryActionTriggered)
     }
 }
 
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         .map { $0.0 }
         .eraseToAnyPublisher()
     
-    var which = 3
+    var which = 2
     var storage = Set<AnyCancellable>()
     override func viewDidLoad() {
         super.viewDidLoad()

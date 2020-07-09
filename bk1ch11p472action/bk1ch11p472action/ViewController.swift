@@ -45,6 +45,18 @@ class ViewController: UIViewController {
         var r : UIResponder! = sender
         repeat { print(r as Any, "\n"); r = r.next } while r != nil
     }
+    
+    // new iOS 14 UIAction notation
+    func test() {
+        let action = UIAction(title: "") { [unowned self] _ in
+            let alert = UIAlertController(
+                title: "Howdy!", message: "You tapped me!", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true)
+        }
+        self.button.addAction(action, for: .touchUpInside)
+    }
 
 }
 
