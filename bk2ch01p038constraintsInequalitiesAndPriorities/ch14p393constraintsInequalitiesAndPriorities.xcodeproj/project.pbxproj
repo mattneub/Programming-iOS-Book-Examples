@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -100,7 +100,7 @@
 				};
 			};
 			buildConfigurationList = C9747E8D17AAC83600C8EC8F /* Build configuration list for PBXProject "ch14p393constraintsInequalitiesAndPriorities" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -264,7 +264,10 @@
 				GCC_PREFIX_HEADER = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Prefix.pch";
 				INFOPLIST_FILE = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -284,7 +287,10 @@
 				GCC_PREFIX_HEADER = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Prefix.pch";
 				INFOPLIST_FILE = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
