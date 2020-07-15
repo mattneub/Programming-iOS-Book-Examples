@@ -40,7 +40,7 @@ class MyView : UIView {
     }
     func configure() {
         // return;
-        self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
+        self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1))
         let v2 = UIView()
         v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
         let v3 = UIView()
