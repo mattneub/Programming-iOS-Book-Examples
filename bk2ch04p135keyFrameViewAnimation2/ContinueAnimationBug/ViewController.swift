@@ -10,15 +10,14 @@ class ViewController: UIViewController {
     @IBAction func doStart(_ sender: Any) {
         self.anim = UIViewPropertyAnimator(duration: 4, timingParameters: UICubicTimingParameters())
         self.anim.addAnimations {
-            UIView.animateKeyframes(withDuration: 0, delay: 0, animations: {
+            UIView.animateKeyframes(withDuration: 0, delay: 0) {
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
                     self.v.center.x += 100
                 }
                 UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25) {
                     self.v.backgroundColor = .red
                 }
-
-            })
+            } completion: { _ in }
             
         }
         // if we don't set this, the view jumps when we continue the animation

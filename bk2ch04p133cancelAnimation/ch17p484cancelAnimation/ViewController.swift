@@ -40,12 +40,11 @@ class ViewController : UIViewController {
         self.pOrig = self.v.center
         self.pFinal = self.v.center
         self.pFinal.x += 100
-        UIView.animate(withDuration:4, animations: {
+        UIView.animate(withDuration:4) {
             self.v.center = self.pFinal
-            }, completion: {
-                _ in
-                print("finished initial animation")
-        })
+        } completion: { _ in
+            print("finished initial animation")
+        }
     }
     
     func animate2() {
@@ -61,26 +60,26 @@ class ViewController : UIViewController {
     }
     
     let which = 3
-
+    
     func cancel() {
         switch which {
         case 1:
             // simplest possible solution: just kill it dead
             self.v.layer.removeAllAnimations()
-            /*
-        case 2:
-            // iOS 7 and before; no longer works in iOS 8
-            let opts = UIViewAnimationOptions.beginFromCurrentState
-            UIView.animate(withDuration:0.1, delay:0.1, options:opts,
-                animations: {
-                    var p = self.pFinal!
-                    p.x += 1
-                    self.v.center = p
-                }, completion: {
-                    _ in
-                    self.v.center = self.pFinal
-            })
- */
+        /*
+         case 2:
+         // iOS 7 and before; no longer works in iOS 8
+         let opts = UIViewAnimationOptions.beginFromCurrentState
+         UIView.animate(withDuration:0.1, delay:0.1, options:opts,
+         animations: {
+         var p = self.pFinal!
+         p.x += 1
+         self.v.center = p
+         }, completion: {
+         _ in
+         self.v.center = self.pFinal
+         })
+         */
         case 2:
             // comment out the first two lines here to see what "additive" means
             // the new animation does not remove the original animation...

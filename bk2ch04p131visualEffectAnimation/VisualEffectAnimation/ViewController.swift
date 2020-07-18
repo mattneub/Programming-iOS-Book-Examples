@@ -39,14 +39,13 @@ class ViewController: UIViewController {
         
         delay(4) {
             print("start")
-            UIView.animate(withDuration:4, animations: {
+            UIView.animate(withDuration:4) {
                 e.effect = UIBlurEffect(style:.light)
-            }, completion: {
-                _ in // yuckkk
+            } completion: { _ in // yuckkk
 //                UIView.animate(withDuration:4) {
 //                    e.frame = CGRect(50,50,0,0)
 //                }
-            })
+            }
         }
         
     }

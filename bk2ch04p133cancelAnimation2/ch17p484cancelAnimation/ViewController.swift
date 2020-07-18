@@ -7,21 +7,18 @@ class ViewController : UIViewController {
     func animate() {
         self.pOrig = self.v.center
         let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
-        UIView.animate(withDuration:1, delay: 0, options: opts,
-            animations: {
-                self.v.center.x += 100
-            })
+        UIView.animate(withDuration:1, delay: 0, options: opts) {
+            self.v.center.x += 100
+        } completion: { _ in }
     }
     
     
     func cancel() {
         // this works the same way in iOS 8 as before...
         // ...because animation is not additive when existing animation is repeating
-        UIView.animate(withDuration:0.1, delay:0,
-            options:.beginFromCurrentState,
-            animations: {
-                self.v.center = self.pOrig
-            })
+        UIView.animate(withDuration:0.1, delay:0, options:.beginFromCurrentState) {
+            self.v.center = self.pOrig
+        } completion: { _ in }
     }
     
     @IBAction func doStart(_ sender: Any?) {

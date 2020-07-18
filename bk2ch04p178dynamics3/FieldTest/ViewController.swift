@@ -67,7 +67,7 @@ class ViewController: UIViewController {
     
     var anim : UIDynamicAnimator!
     
-    let which = 1
+    let which = 2
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

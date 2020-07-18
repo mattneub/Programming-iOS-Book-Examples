@@ -71,14 +71,12 @@ class ViewController: UIViewController {
             self.anim.addBehavior(f)
         }
         
-        delay(0.3) {
-            // self.anim.perform(Selector(("setDebugEnabled:")), with:true)
-        }
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("here")
+        self.anim.perform(Selector(("setDebugEnabled:")), with:true)
     }
 
 }
