@@ -75,11 +75,11 @@ class MyView : UIView {
         
         let info = CGImageAlphaInfo.alphaOnly.rawValue
         let pixel = UnsafeMutablePointer<UInt8>.allocate(capacity:1)
+        pixel.initialize(to: 0)
         defer {
             pixel.deinitialize(count: 1)
             pixel.deallocate()
         }
-        pixel[0] = 0
         let sp = CGColorSpaceCreateDeviceGray()
         let context = CGContext(data: pixel,
             width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1,

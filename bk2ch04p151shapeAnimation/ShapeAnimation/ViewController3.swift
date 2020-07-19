@@ -30,8 +30,11 @@ fileprivate class CircleLayer : CALayer {
         return path.cgPath
     }
     func update() {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
         self.shape?.path = self.path(for: self.bounds)
         self.shape?.frame = self.bounds
+        CATransaction.commit()
     }
 }
 fileprivate class CircleView3 : UIView {

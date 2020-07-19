@@ -49,9 +49,12 @@ fileprivate class CircleLayer : CALayer {
         let unit = b.height/3
         b = CGRect(x: 5, y: unit, width: unit, height: unit)
         // print("layer draw", b)
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
         let path = UIBezierPath(ovalIn: b)
         self.shape?.path = path.cgPath
         self.shape?.frame = self.bounds
+        CATransaction.commit()
     }
 }
 fileprivate class CircleView : UIView {
