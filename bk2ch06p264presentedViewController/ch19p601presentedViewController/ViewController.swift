@@ -19,7 +19,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.data = "This is very important data!"
         svc.delegate = self
         
-        var which : Int { return 1 }
+        var which : Int { return 4 }
         switch which {
         case 1: break // showing that .coverVertical is the default
         case 2: svc.modalTransitionStyle = .coverVertical
@@ -40,7 +40,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
         print(self.traitCollection)
         
-        var which2 : Int { return -1 }
+        var which2 : Int { return 0 }
         switch which2 {
         case -1: break // showing that .fullScreen is the default
             // but not in iOS 13! if you don't specify anything,
@@ -77,7 +77,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         self.present(svc, animated:true) {
             print(svc.view.gestureRecognizers as Any)
             print(svc.modalPresentationStyle.rawValue)
-            print(svc.presentationController?.adaptivePresentationStyle.rawValue)
+            print(svc.presentationController?.adaptivePresentationStyle.rawValue as Any)
         }
         // self.showViewController(svc, sender:self) // ooops! we're in a nav interface, uses that :)
         
