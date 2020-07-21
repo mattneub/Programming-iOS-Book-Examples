@@ -9,6 +9,12 @@ extension UIView {
     }
 }
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class ViewController: UIViewController, UIContextMenuInteractionDelegate {
     @IBOutlet weak var imageBackground: UIView!
     let boys = ["manny", "moe", "jack"]
@@ -35,6 +41,19 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
 //            let simpleAction = UIAction(title: "Testing", handler: { _ in
 //            })
 //            return UIMenu(title: "", children: [simpleAction])
+            let def = UIDeferredMenuElement { f in
+                delay(2) {
+                    let action = UIAction(title: "Yoho") { action in
+                        // do nothing
+                    }
+                    let action2 = UIAction(title: "Yoho") { action in
+                        // do nothing
+                    }
+
+                    f([action, action2])
+                }
+            }
+            
             let favKey = "favoritePepBoy"
             let fav = UserDefaults.standard.string(forKey:favKey)
             let star = boy == fav ? "star.fill" : "star"
@@ -53,9 +72,8 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
                 print ("coloring", boy, action.title.lowercased())
             }
             let color = UIMenu(title: "Colorize", children: [red,green,blue])
-            return UIMenu(title: "", children: [favorite, color])
+            return UIMenu(title: "", children: [favorite, color, def])
         }
-        config
         return config
     }
 
