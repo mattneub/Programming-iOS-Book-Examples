@@ -13,9 +13,8 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         style:.plain, target:nil, action:nil)
         self.navigationItem.rightBarButtonItems = [b, b2]
         
-        // how to customize back button
-        let b3 = UIBarButtonItem(image:UIImage(named:"files"), style:.plain, target:nil, action:nil)
-        self.navigationItem.backBarButtonItem = b3
+        // how to customize back button title alone
+        self.navigationItem.backButtonTitle = "Files"
         
     }
     
