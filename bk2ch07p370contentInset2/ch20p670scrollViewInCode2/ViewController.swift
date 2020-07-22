@@ -100,7 +100,8 @@ class ViewController : UIViewController {
 //            sv.scrollIndicatorInsets = self.sv.contentInset
             print("content inset", sv.contentInset)
             print("adjusted content inset", sv.adjustedContentInset)
-            print("indicator insets", sv.scrollIndicatorInsets)
+            print("vertical scroll indicator insets", sv.verticalScrollIndicatorInsets)
+            print("horizontal scroll indicator insets", sv.horizontalScrollIndicatorInsets)
             print("content offset", sv.contentOffset)
             print("nav bar height", self.navigationController?.navigationBar.bounds.height as Any)
         }
@@ -116,7 +117,8 @@ extension ViewController : UIScrollViewDelegate {
         print("did change inset!")
         print("content inset", sv.contentInset)
         print("adjusted content inset", sv.adjustedContentInset)
-        print("indicator insets", sv.scrollIndicatorInsets)
+        print("vertical scroll indicator insets", sv.verticalScrollIndicatorInsets)
+        print("horizontal scroll indicator insets", sv.horizontalScrollIndicatorInsets)
         print("content offset", sv.contentOffset)
         print("behavior", sv.contentInsetAdjustmentBehavior.rawValue)
         // deprecated, just checking
