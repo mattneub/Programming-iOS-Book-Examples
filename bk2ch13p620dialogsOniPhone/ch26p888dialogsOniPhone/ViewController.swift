@@ -2,6 +2,19 @@
 
 import UIKit
 
+class MyAlertController : UIAlertController {}
+
+extension UIResponder {
+    func next<T:UIResponder>(ofType: T.Type) -> T? {
+        let r = self.next
+        if let r = r as? T ?? r?.next(ofType: T.self) {
+            return r
+        } else {
+            return nil
+        }
+    }
+}
+
 // all greatly changed in iOS 8 and much for the better in my humble opinion
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -57,9 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let tf = sender as! UITextField
         // enable OK button only if there is text
         // hold my beer and watch this: how to get a reference to the alert
-        var resp : UIResponder? = tf
-        while !(resp is UIAlertController) { resp = resp?.next }
-        let alert = resp as? UIAlertController
+        let alert = tf.next(ofType: UIAlertController.self)
         alert?.actions[1].isEnabled = (tf.text != "")
     }
     
