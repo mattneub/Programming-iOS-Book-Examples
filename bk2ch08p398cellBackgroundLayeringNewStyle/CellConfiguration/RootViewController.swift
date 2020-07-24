@@ -49,7 +49,7 @@ class RootViewController : UITableViewController {
 
 class MyCell : UITableViewCell {
     override func updateConfiguration(using state: UICellConfigurationState) {
-        var back = UIBackgroundConfiguration.listPlainCell()
+        var back = UIBackgroundConfiguration.listPlainCell().updated(for: state)
         let v = UIImageView(image: UIImage(named:"linen.png"))
         v.contentMode = .scaleToFill
         // there is no selectedCustomView; we just change the custom view _ourselves_ when selected

@@ -2,6 +2,17 @@
 
 import UIKit
 
+extension UIResponder {
+    func next<T:UIResponder>(ofType: T.Type) -> T? {
+        let r = self.next
+        if let r = r as? T ?? r?.next(ofType: T.self) {
+            return r
+        } else {
+            return nil
+        }
+    }
+}
+
 class RootViewController : UITableViewController, UITextFieldDelegate {
     var name = ""
     var numbers = [String]()
@@ -71,9 +82,8 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         // some cell's text field has finished editing; which cell?
-        var v : UIView? = textField
-        repeat { v = v?.superview } while !(v is UITableViewCell)
-        if let cell = v as? MyCell {
+        if let cell = textField.next(ofType: MyCell.self) {
+            print("yeehaa")
             // update data model to match
             if let ip = self.tableView.indexPath(for:cell) {
                 let s = cell.textField.text ?? ""
