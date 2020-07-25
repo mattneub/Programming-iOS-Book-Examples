@@ -304,7 +304,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ch19p633containerControllerCustomAnimation;
 				SWIFT_OBJC_BRIDGING_HEADER = "ch19p631containerController/ch19p633containerControllerCustomAnimation-Bridging-Header.h";
