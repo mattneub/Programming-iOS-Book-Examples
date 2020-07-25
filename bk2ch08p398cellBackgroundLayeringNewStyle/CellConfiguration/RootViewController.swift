@@ -34,12 +34,20 @@ class RootViewController : UITableViewController {
         // the content we can do ourselves right here
         var config = cell.defaultContentConfiguration()
         config.textProperties.color = .white
+        // config.textProperties.color = .red
         config.text = "Hello there! \(indexPath.row)"
         cell.contentConfiguration = config
         
         // but in order to get different configuration when selected,
         // we have to use the cell subclass - so tell the cell to do so
-        cell.automaticallyUpdatesBackgroundConfiguration = false
+        // cell.automaticallyUpdatesBackgroundConfiguration = false
+        
+//        var back = UIBackgroundConfiguration.listPlainCell()
+//        back.backgroundColor = .red
+//        let v = UIImageView(image: UIImage(named:"linen.png"))
+//        v.contentMode = .scaleToFill
+//        back.customView = v
+//        cell.backgroundConfiguration = back
         
         return cell
     }
@@ -50,6 +58,9 @@ class RootViewController : UITableViewController {
 class MyCell : UITableViewCell {
     override func updateConfiguration(using state: UICellConfigurationState) {
         var back = UIBackgroundConfiguration.listPlainCell().updated(for: state)
+//        self.backgroundConfiguration = back
+//        return;
+        //
         let v = UIImageView(image: UIImage(named:"linen.png"))
         v.contentMode = .scaleToFill
         // there is no selectedCustomView; we just change the custom view _ourselves_ when selected
