@@ -90,63 +90,25 @@ class RootViewController : UITableViewController {
 //        config.secondaryText = "Testing"
 //        config.prefersSideBySideTextAndSecondaryText = true
 //        config.secondaryTextProperties.color = .white
-        config.imageProperties.maximumSize = CGSize(0,20)
-        config.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 2, leading: -10, bottom: 2, trailing: 30)
-        config.image = UIImage(named:"us_flag_small.gif")
-        config.imageToTextPadding = 6
         var back = UIBackgroundConfiguration.listPlainHeaderFooter()
         back.backgroundColor = .black
         h.contentConfiguration = config
         h.backgroundConfiguration = back
-        /*
-        if h.viewWithTag(1) == nil {
-            print("configuring a new header view") // only called about 8 times
 
-            h.backgroundView = UIView()
-            h.backgroundView?.backgroundColor = .black
-            let lab = UILabel()
-            lab.tag = 1
-            lab.font = UIFont(name:"Georgia-Bold", size:22)
-            lab.textColor = .green
-            lab.backgroundColor = .clear
-            h.contentView.addSubview(lab)
+        // to get the flag _after_ the text, let's insert it ourselves
+        if let cv = h.contentView as? UIListContentView, cv.viewWithTag(1) == nil {
             let v = UIImageView()
-            v.tag = 2
-            v.backgroundColor = .black
+            v.tag = 1
             v.image = UIImage(named:"us_flag_small.gif")
+            v.contentMode = .scaleAspectFit
             h.contentView.addSubview(v)
-            lab.translatesAutoresizingMaskIntoConstraints = false
             v.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                NSLayoutConstraint.constraints(withVisualFormat:"H:|-5-[lab(25)]-10-[v(40)]",
-                    metrics:nil, views:["v":v, "lab":lab]),
-                NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|",
-                    metrics:nil, views:["v":v]),
-                NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
-                    metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
-            
-            // uncomment to see bug where button does not inherit superview's tint color
-            // ooooh, bug is fixed
+            v.centerYAnchor.constraint(equalTo: cv.centerYAnchor).isActive = true
+            v.leadingAnchor.constraint(equalTo: cv.textLayoutGuide!.trailingAnchor, constant: 10).isActive = true
+            v.widthAnchor.constraint(equalToConstant: 40).isActive = true
         }
-        let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sections[section].sectionName
-        // print(h.backgroundView?.backgroundColor)
-        // h.textLabel!.text = "THIS IS A TEST"
- */
         
-        // hmm, but you can't do this because there is no text label
-        // so how can you coordinate custom views with default views?
-        /*
-        let b = UIButton(type:.system)
-        b.setTitle("Howdy", for:.normal)
-        b.sizeToFit()
-        print(b.tintColor, h.tintColor)
-        h.contentView.addSubview(b)
-        let lab = h.textLabel!
-        b.leadingAnchor.constraint(equalTo: lab.trailingAnchor, constant: 10).isActive = true
-        b.centerYAnchor.constraint(equalTo: h.contentView.centerYAnchor).isActive = true
- */
+        
 
         return h
         

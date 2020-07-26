@@ -38,6 +38,20 @@ class RootViewController : UITableViewController {
         config.text = "Hello there! \(indexPath.row)"
         cell.contentConfiguration = config
         
+        // showing how to associate another view with the existing view!
+        // not forgetting that cells are still reused of course...
+        if let cv = cell.contentView as? UIListContentView,
+           cv.viewWithTag(1) == nil {
+            let guide = cv.textLayoutGuide!
+            let iv = UIImageView(image: UIImage(systemName: "hand.point.left"))
+            iv.tag = 1
+            iv.tintColor = .black
+            iv.translatesAutoresizingMaskIntoConstraints = false
+            cv.addSubview(iv)
+            iv.leadingAnchor.constraint(equalToSystemSpacingAfter: guide.trailingAnchor, multiplier: 1).isActive = true
+            iv.centerYAnchor.constraint(equalTo: guide.centerYAnchor).isActive = true
+        }
+        
         // but in order to get different configuration when selected,
         // we have to use the cell subclass - so tell the cell to do so
         // actually no, so I don't understand what this is for
