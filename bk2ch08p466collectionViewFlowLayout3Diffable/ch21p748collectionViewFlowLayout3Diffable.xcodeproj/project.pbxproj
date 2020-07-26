@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -270,7 +270,7 @@
 				};
 			};
 			buildConfigurationList = C9F1DE171803183800AE4AE5 /* Build configuration list for PBXProject "ch21p748collectionViewFlowLayout3Diffable" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -488,7 +488,10 @@
 				GCC_PREFIX_HEADER = "ch21p748collectionViewFlowLayout2/ch21p748collectionViewFlowLayout2-Prefix.pch";
 				INFOPLIST_FILE = "ch21p748collectionViewFlowLayout2/ch21p748collectionViewFlowLayout2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -508,7 +511,10 @@
 				GCC_PREFIX_HEADER = "ch21p748collectionViewFlowLayout2/ch21p748collectionViewFlowLayout2-Prefix.pch";
 				INFOPLIST_FILE = "ch21p748collectionViewFlowLayout2/ch21p748collectionViewFlowLayout2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

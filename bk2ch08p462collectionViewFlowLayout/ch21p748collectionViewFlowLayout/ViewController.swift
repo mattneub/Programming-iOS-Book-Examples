@@ -57,9 +57,9 @@ class ViewController : UICollectionViewController {
         let flow = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flow.headerReferenceSize = CGSize(30,30)
         // still not working, layout is wrong
-        // flow.estimatedItemSize = CGSize(30,100)
-//        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        flow.itemSize = UICollectionViewFlowLayout.automaticSize
+//         flow.estimatedItemSize = CGSize(30,100)
+        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        flow.itemSize = UICollectionViewFlowLayout.automaticSize
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

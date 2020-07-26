@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -104,7 +104,7 @@
 				};
 			};
 			buildConfigurationList = C9F1DD2D1803070D00AE4AE5 /* Build configuration list for PBXProject "ch21p748collectionViewCellBackgroundLayering" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -268,7 +268,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p648collectionViewCellBackgroundLayering/ch21p748collectionViewCellBackgroundLayering-Prefix.pch";
 				INFOPLIST_FILE = "ch21p648collectionViewCellBackgroundLayering/ch21p748collectionViewCellBackgroundLayering-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ch21p748collectionViewCellBackgroundLayering;
@@ -286,7 +290,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p648collectionViewCellBackgroundLayering/ch21p748collectionViewCellBackgroundLayering-Prefix.pch";
 				INFOPLIST_FILE = "ch21p648collectionViewCellBackgroundLayering/ch21p748collectionViewCellBackgroundLayering-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ch21p748collectionViewCellBackgroundLayering;
