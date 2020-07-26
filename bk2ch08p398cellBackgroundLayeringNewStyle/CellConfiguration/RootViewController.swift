@@ -40,6 +40,7 @@ class RootViewController : UITableViewController {
         
         // but in order to get different configuration when selected,
         // we have to use the cell subclass - so tell the cell to do so
+        // actually no, so I don't understand what this is for
         // cell.automaticallyUpdatesBackgroundConfiguration = false
         
 //        var back = UIBackgroundConfiguration.listPlainCell()
@@ -73,6 +74,7 @@ class MyCell : UITableViewCell {
         }
         back.customView = v
         back.backgroundColor = .red
+        // tried animating this but it was a failure
         self.backgroundConfiguration = back
     }
 }
