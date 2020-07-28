@@ -201,9 +201,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // NB According to Apple, in iOS 8 I should be able to eliminate this code;
     // simply turning on estimatedItemSize should do it for me (sizing according to constraints)
     // but I have not been able to get that feature to work
-    
-    /*
+
+    var fixed = true
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if fixed {
+            return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+        }
+        
         
         let memosize = self.sections[indexPath.section].itemData[indexPath.row].size
         if memosize != .zero {
@@ -216,12 +220,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // NB this is what I was getting wrong all these years
         // you have to size the _contentView_
         // (no more container view trickery)
-        var sz = self.modelCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        var sz = self.modelCell.contentView.systemLayoutSizeFitting(
+            UIView.layoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         self.sections[indexPath.section].itemData[indexPath.row].size = sz // memoize
         return sz
     }
- */
  
     
     // selection: nothing to do!
