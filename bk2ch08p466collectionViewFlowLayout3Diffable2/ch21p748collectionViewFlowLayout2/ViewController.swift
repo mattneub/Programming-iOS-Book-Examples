@@ -3,7 +3,7 @@ import UIKit
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var datasource : UICollectionViewDiffableDataSource<String,String>! = nil
+    var datasource : UICollectionViewDiffableDataSource<String,String>!
     
     override var prefersStatusBarHidden : Bool {
         return true
@@ -35,12 +35,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
         let sections = Array(d).sorted{$0.key < $1.key} // *
-        var snap = NSDiffableDataSourceSnapshot<String,String>()
+        // let's use the new section snapshots!
         for section in sections {
-            snap.appendSections([section.0])
-            snap.appendItems(section.1)
+            var snap = NSDiffableDataSourceSectionSnapshot<String>()
+            snap.append(section.1)
+            datasource.apply(snap, to: section.0, animatingDifferences: false)
         }
-        self.datasource.apply(snap, animatingDifferences: false)
 
 
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))

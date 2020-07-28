@@ -42,25 +42,6 @@ extension NSDiffableDataSourceSnapshot {
     }
 }
 
-class MyDiffable : UICollectionViewDiffableDataSource<String,String> {
-    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return collectionView.collectionViewLayout is MyFlowLayout
-    }
-    
-    override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
-        print("move")
-        let srcid = self.itemIdentifier(for: source)!
-        let destid = self.itemIdentifier(for: dest)!
-        var snap = self.snapshot()
-        if dest.item > source.item {
-            snap.moveItem(srcid, afterItem: destid)
-        } else {
-            snap.moveItem(srcid, beforeItem: destid)
-        }
-        self.apply(snap, animatingDifferences:false)
-    }
-}
-
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     static let header = "Header"
@@ -105,7 +86,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // UICollectionViewDiffableDataSource is pickier than table view diffable
     // must register stuff before applying data
     // and if there are supplementary views, must have a supplementary view provider!
-    lazy var datasource = MyDiffable(collectionView: self.collectionView) { cv, ip, s in
+    lazy var datasource = UICollectionViewDiffableDataSource<String,String>(collectionView: self.collectionView) { cv, ip, s in
         return self.makeCell(cv, ip, s)
     }
     
@@ -138,6 +119,15 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             snap.appendItems(section.1)
         }
         self.datasource.apply(snap, animatingDifferences: false)
+        // must implement this if you want reordering
+        self.datasource.reorderingHandlers.canReorderItem = { [unowned self] _ in
+            self.collectionView.collectionViewLayout is MyFlowLayout
+        }
+        // just testing to show that by the time we get this, the data have been reordered!
+        self.datasource.reorderingHandlers.didReorder = { [unowned self] transaction in
+            let snap = self.datasource.snapshot(for:"A")
+            print(snap.visualDescription())
+        }
 
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
         self.navigationItem.leftBarButtonItem = b

@@ -12,7 +12,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
 //    }
 //    var sections : [Section]!
     
-    var datasource : UICollectionViewDiffableDataSource<String,String>! = nil
+    var datasource : UICollectionViewDiffableDataSource<String,String>!
     
     override var prefersStatusBarHidden : Bool {
         return true
