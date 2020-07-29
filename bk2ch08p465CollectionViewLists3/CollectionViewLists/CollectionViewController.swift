@@ -5,8 +5,6 @@ import UIKit
 class CollectionViewController: UICollectionViewController {
     init() {
         var config = UICollectionLayoutListConfiguration(appearance: .plain)
-        // this works too
-        // config.headerMode = .firstItemInSection
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         super.init(collectionViewLayout: layout)
     }
@@ -19,6 +17,24 @@ class CollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // start over
+        var config = UICollectionLayoutListConfiguration(appearance: .plain)
+        // this works too
+        // config.headerMode = .firstItemInSection
+        config.trailingSwipeActionsConfigurationProvider = { indexPath in
+            if indexPath.item == 0 { return nil }
+            let del = UIContextualAction(style: .destructive, title: "Delete") {
+                action, view, completion in
+                self.delete(at: indexPath)
+                completion(true)
+            }
+            return UISwipeActionsConfiguration(actions: [del])
+        }
+        let layout = UICollectionViewCompositionalLayout.list(using: config)
+        self.collectionView.collectionViewLayout = layout
+        
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem // works!
         // new notation in iOS 14: no need to register a cell! (or supplementary item)
         // instead, a Registration struct has a closure...
         // and in the diffable data source, you just return the Configured cell or supplementary
@@ -31,7 +47,7 @@ class CollectionViewController: UICollectionViewController {
                 let f : () -> () = { print("ha!") }
                 cell.accessories = [.outlineDisclosure(options: opts, actionHandler: nil)]
             } else {
-                cell.accessories = []
+                cell.accessories = [.delete()]
             }
             cell.contentConfiguration = contentConfig
         }
@@ -45,5 +61,13 @@ class CollectionViewController: UICollectionViewController {
         snap.append(["Manny", "Moe", "Jack"], to: "Pep")
         // section is created for us
         self.dataSource.apply(snap, to: "Dummy", animatingDifferences: false)
+    }
+    
+    func delete(at ip: IndexPath) {
+        var snap = self.dataSource.snapshot()
+        if let ident = self.dataSource.itemIdentifier(for: ip) {
+            snap.deleteItems([ident])
+        }
+        self.dataSource.apply(snap)
     }
 }
