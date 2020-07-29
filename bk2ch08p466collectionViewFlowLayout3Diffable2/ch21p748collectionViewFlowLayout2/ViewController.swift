@@ -14,12 +14,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         typealias SuppReg = UICollectionView.SupplementaryRegistration
         // registration _objects_, new in iOS 14, cute eh
         let cellReg = CellReg<Cell, String>(
-            cellNib: UINib(nibName:"Cell", bundle:nil)) { cell, ip, s in
-            self.configureCell(cell, ip, s)
+            cellNib: UINib(nibName:"Cell", bundle:nil)) { [weak self]
+            cell, ip, s in self?.configureCell(cell, ip, s)
         }
         let headReg = SuppReg<UICollectionReusableView> (
-            elementKind: UICollectionView.elementKindSectionHeader) { v, kind, ip in
-            self.configureHeader(v, kind, ip)
+            elementKind: UICollectionView.elementKindSectionHeader) { [weak self]
+            v, kind, ip in self?.configureHeader(v, kind, ip)
         }
         // in the data source,dequeue a Configured cell or supplementary item
         self.datasource = UICollectionViewDiffableDataSource<String,String>(collectionView:self.collectionView) { cv,ip,s in

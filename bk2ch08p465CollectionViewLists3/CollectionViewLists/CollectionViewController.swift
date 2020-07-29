@@ -2,6 +2,12 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class CollectionViewController: UICollectionViewController {
     init() {
         var config = UICollectionLayoutListConfiguration(appearance: .plain)
@@ -13,7 +19,7 @@ class CollectionViewController: UICollectionViewController {
     }
     private let cellId = "Cell"
     
-    var dataSource: UICollectionViewDiffableDataSource<String, String>!
+    var datasource: UICollectionViewDiffableDataSource<String, String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +30,8 @@ class CollectionViewController: UICollectionViewController {
         config.trailingSwipeActionsConfigurationProvider = { indexPath in
             if indexPath.item == 0 { return nil }
             let del = UIContextualAction(style: .destructive, title: "Delete") {
-                action, view, completion in
-                self.delete(at: indexPath)
+                [weak self] action, view, completion in
+                self?.delete(at: indexPath)
                 completion(true)
             }
             return UISwipeActionsConfiguration(actions: [del])
@@ -54,20 +60,30 @@ class CollectionViewController: UICollectionViewController {
         let ds = UICollectionViewDiffableDataSource<String, String>(collectionView:self.collectionView) { cv, ip, s in
             cv.dequeueConfiguredReusableCell(using: reg, for: ip, item: s)
         }
-        self.dataSource = ds
+        self.datasource = ds
         // and now... (drum roll) outlines!
         var snap = NSDiffableDataSourceSectionSnapshot<String>()
         snap.append(["Pep"]) // to:nil
         snap.append(["Manny", "Moe", "Jack"], to: "Pep")
         // section is created for us
-        self.dataSource.apply(snap, to: "Dummy", animatingDifferences: false)
+        self.datasource.apply(snap, to: "Dummy", animatingDifferences: false)
+        
+        delay(2) {
+            let snap = self.datasource.snapshot(for: "Dummy")
+            print(snap.visualDescription())
+            let level = snap.level(of: "Pep")
+            print(level)
+            let snap2 = snap.snapshot(of: "Pep")
+            let children = snap2.rootItems
+            print(children)
+        }
     }
     
     func delete(at ip: IndexPath) {
-        var snap = self.dataSource.snapshot()
-        if let ident = self.dataSource.itemIdentifier(for: ip) {
+        var snap = self.datasource.snapshot()
+        if let ident = self.datasource.itemIdentifier(for: ip) {
             snap.deleteItems([ident])
         }
-        self.dataSource.apply(snap)
+        self.datasource.apply(snap)
     }
 }

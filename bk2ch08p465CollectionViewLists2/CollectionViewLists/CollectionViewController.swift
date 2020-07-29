@@ -20,7 +20,7 @@ class CollectionViewController: UICollectionViewController {
         config.headerMode = .firstItemInSection
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         self.collectionView.collectionViewLayout = layout
-        self.collectionView!.register(UICollectionViewListCell.self, forCellWithReuseIdentifier: self.cellId)
+        self.collectionView.register(UICollectionViewListCell.self, forCellWithReuseIdentifier: self.cellId)
 
     }
 
