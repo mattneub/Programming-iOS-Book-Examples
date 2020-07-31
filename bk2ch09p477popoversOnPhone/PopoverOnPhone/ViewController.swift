@@ -26,25 +26,27 @@ extension CGVector {
 
 
 class MyViewController: UIViewController {
+    let wv = WKWebView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let wv = WKWebView()
         wv.backgroundColor = .white
         wv.backgroundColor = .clear
         self.view.backgroundColor = .white
         self.view.addSubview(wv)
         wv.frame = self.view.bounds
         wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let f = Bundle.main.path(forResource: "linkhelp", ofType: "html")
-        let s = try! String(contentsOfFile: f!)
-        wv.loadHTMLString(s, baseURL: nil)
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("horizontal", self.traitCollection.horizontalSizeClass == .compact ? "compact" : "regular")
+        let helpf = Bundle.main.url(forResource: "help", withExtension: nil)
+        let help = Bundle.main.url(forResource: "linkhelp", withExtension: "html", subdirectory: "help")
+        wv.loadFileURL(help!, allowingReadAccessTo: helpf!)
+
     }
 }
 

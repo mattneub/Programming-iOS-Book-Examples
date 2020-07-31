@@ -15,7 +15,7 @@ class ViewController2: UIViewController, UIPopoverPresentationControllerDelegate
 //                pop.sourceRect = v.bounds
 //            }
             
-            var workaround : Bool { return true }
+            var workaround : Bool { true }
             if workaround {
                 print("del")
                 pop.delegate = self
