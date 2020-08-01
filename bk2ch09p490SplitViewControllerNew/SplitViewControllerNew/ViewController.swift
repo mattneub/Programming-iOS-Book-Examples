@@ -43,6 +43,11 @@ class ViewController: UIViewController {
         }
 
         split.delegate = self
+        
+        print(split.presentsWithGesture)
+        split.presentsWithGesture = true // also affects button presence! default is true
+        print(split.showsSecondaryOnlyButton)
+        split.showsSecondaryOnlyButton = true // only in three-columns; default is false
                 
         delay(2) {
             print(split.viewControllers) // NB, no longer encompasses all vcs
@@ -51,6 +56,23 @@ class ViewController: UIViewController {
             print(pepListCompact.splitViewController as Any)
             print(pep.splitViewController as Any)
         }
+    }
+    var initial = true
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if self.initial {
+            if self.traitCollection.userInterfaceIdiom == .pad {
+                if self.view.bounds.width < self.view.bounds.height {
+                    let svc = self.children[0] as! UISplitViewController
+                    svc.show(.primary)
+                }
+            }
+            var playTricks: Bool { false }
+            if playTricks {
+                self.playThoseTricks()
+            }
+        }
+        self.initial = false
     }
 }
 
@@ -102,6 +124,16 @@ extension ViewController : UISplitViewControllerDelegate {
         }
         return proposedDisplayMode
     }
+    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
+        print("will change to", displayMode.rawValue)
+    }
+    
+    func splitViewControllerInteractivePresentationGestureWillBegin(_ svc: UISplitViewController) {
+        print("gesture beginning")
+    }
+    func splitViewControllerInteractivePresentationGestureDidEnd(_ svc: UISplitViewController) {
+        print("gesture ended")
+    }
 }
 
 extension UISplitViewController.Column {
@@ -116,3 +148,16 @@ extension UISplitViewController.Column {
 // suppose Moe is showing in split, we unsplit: still see moe, that's good, but moe is not selected in primary
 
 // suppose Jack is showing in full, we split to become compact: we collapse to Moe or maybe it's to whatever was showing last time we were compact
+
+extension ViewController {
+    func playThoseTricks() {
+        print("tricks")
+        let svc = self.children[0] as! UISplitViewController
+        svc.preferredDisplayMode = .oneOverSecondary
+        svc.maximumPrimaryColumnWidth = 250
+        // svc.preferredPrimaryColumnWidthFraction = 0.3 // no effect
+        let reg = UITraitCollection(horizontalSizeClass: .regular)
+        let traits = UITraitCollection(traitsFrom: [reg])
+        self.setOverrideTraitCollection(traits, forChild: svc)
+    }
+}
