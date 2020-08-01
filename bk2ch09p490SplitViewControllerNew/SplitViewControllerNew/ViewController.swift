@@ -10,7 +10,9 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 var supp : Bool { return false }
 
 class ViewController: UIViewController {
-
+    
+    var chosenBoyPrimary : String?
+    var chosenBoyCompact : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,16 +23,16 @@ class ViewController: UIViewController {
         split.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         split.didMove(toParent: self)
         
-        let pepList = PepListViewController(collectionViewLayout: UICollectionViewLayout())
+        let pepList = PepListViewController()
         split.setViewController(pepList, for: .primary)
         
-        let vc = UIViewController()
-        split.setViewController(vc, for: .secondary)
-        vc.view.backgroundColor = .white
+        let pep = Pep()
+        let pepNav = UINavigationController(rootViewController: pep)
+        split.setViewController(pepNav, for: .secondary)
         
         // also prepare flow in case of compactness
         // here, _we_ have to supply the navigation controller
-        let pepListCompact = PepListCompactViewController(collectionViewLayout: UICollectionViewLayout())
+        let pepListCompact = PepListCompactViewController()
         let nav = UINavigationController(rootViewController: pepListCompact)
         split.setViewController(nav, for: .compact)
         
@@ -47,7 +49,7 @@ class ViewController: UIViewController {
             print(split.children) // ooo, on compact this is all three
             print(pepList.splitViewController as Any)
             print(pepListCompact.splitViewController as Any)
-            print(vc.splitViewController as Any)
+            print(pep.splitViewController as Any)
         }
     }
 }
@@ -67,30 +69,25 @@ extension ViewController : UISplitViewControllerDelegate {
     }
     
     func splitViewController(_ svc: UISplitViewController, topColumnForCollapsingToProposedTopColumn proposedTopColumn: UISplitViewController.Column) -> UISplitViewController.Column {
-        guard let current = svc.viewController(for: .secondary)?.children.first as? Pep else {
-            return proposedTopColumn
-        }
-        let boy = current.boy
-        let newPep = PepCompact(pepBoy: boy)
-        if let nav = svc.viewController(for: .compact) as? UINavigationController {
-            delay(0.1) { // doesn't help the weird autolayout messages
+        print("collapsing...")
+        if let boy = self.chosenBoyPrimary,
+           let nav = svc.viewController(for: .compact) as? UINavigationController {
+                let newPep = PepCompact(pepBoy: boy)
                 nav.popToRootViewController(animated: false)
                 nav.pushViewController(newPep, animated: false)
-            }
         }
-        return proposedTopColumn // i.e. .compact
+        return proposedTopColumn
     }
     
     func splitViewController(_ svc: UISplitViewController, displayModeForExpandingToProposedDisplayMode proposedDisplayMode: UISplitViewController.DisplayMode) -> UISplitViewController.DisplayMode {
-        guard let nav = svc.viewController(for: .compact) as? UINavigationController,
-              let current = nav.topViewController as? PepCompact,
-              let list = svc.viewController(for: .primary) as? PepListViewController
-        else {
-            return proposedDisplayMode
-        }
-        let boy = current.boy
-        delay(0.1) { // because you can't do this _during_ the delegate method
-            list.select(boy: boy)
+        print("expanding...")
+        if let boy = self.chosenBoyCompact,
+           let list = svc.viewController(for: .primary) as? PepListViewController {
+                delay(0.1) {
+                    let newPep = Pep(pepBoy: boy)
+                    let nav = UINavigationController(rootViewController: newPep)
+                    list.showDetailViewController(nav, sender: self)
+                }
         }
         return proposedDisplayMode
     }

@@ -6,6 +6,10 @@ class PepListCompactViewController: UICollectionViewController {
     
     var datasource: UICollectionViewDiffableDataSource<String, String>!
     
+    convenience init() {
+        self.init(collectionViewLayout: UICollectionViewLayout())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Pep"
@@ -33,12 +37,17 @@ class PepListCompactViewController: UICollectionViewController {
         self.datasource.apply(snap, to: "Dummy", animatingDifferences: false)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    fileprivate func respondToSelection(_ indexPath: IndexPath) {
         let snap = self.datasource.snapshot()
         let boy = snap.itemIdentifiers[indexPath.row]
         let pep = PepCompact(pepBoy: boy)
-        // in the compact case, there is no split view controller in effect
-        // just push
+        // in the compact case, just push
         self.navigationController?.pushViewController(pep, animated: true)
+        (self.splitViewController?.parent as? ViewController)?.chosenBoyCompact = boy
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.respondToSelection(indexPath)
+    }
+    
 }

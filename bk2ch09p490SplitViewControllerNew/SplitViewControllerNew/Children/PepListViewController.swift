@@ -5,6 +5,10 @@ class PepListViewController: UICollectionViewController {
 
     var datasource: UICollectionViewDiffableDataSource<String, String>!
     
+    convenience init() {
+        self.init(collectionViewLayout: UICollectionViewLayout())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Pep"
@@ -35,13 +39,10 @@ class PepListViewController: UICollectionViewController {
         let snap = self.datasource.snapshot()
         let boy = snap.itemIdentifiers[indexPath.row]
         let pep = Pep(pepBoy: boy)
-        // this didn't work because it now _pushes_ onto the second nav's _stack_ which is not what I want
-        //        self.showDetailViewController(pep, sender: self)
-        // and this has the same issue
-        //        self.splitViewController?.setViewController(pep, for: .secondary)
-        // looks like this is what to do
+        // make our own nav controller so we don't push onto existing stack
         let nav = UINavigationController(rootViewController: pep)
         self.showDetailViewController(nav, sender: self)
+        (self.splitViewController?.parent as? ViewController)?.chosenBoyPrimary = boy
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -51,9 +52,4 @@ class PepListViewController: UICollectionViewController {
         }
     }
     
-    func select(boy: String) {
-        if let ip = self.datasource.indexPath(for: boy) {
-            self.respondToSelection(ip)
-        }
-    }
 }

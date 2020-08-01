@@ -14,6 +14,10 @@ class PepCompact: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    convenience init() {
+        self.init(pepBoy: "Manny")
+    }
+    
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }

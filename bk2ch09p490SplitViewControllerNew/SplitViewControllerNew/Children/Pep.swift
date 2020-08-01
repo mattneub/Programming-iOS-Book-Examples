@@ -1,5 +1,4 @@
 
-
 import UIKit
 
 class Pep: UIViewController {
@@ -8,9 +7,15 @@ class Pep: UIViewController {
     @IBOutlet var name : UILabel!
     @IBOutlet var pic : UIImageView!
     
+    override var nibName: String? { "Pep" }
+    
     init(pepBoy boy:String) {
         self.boy = boy
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init() {
+        self.init(pepBoy: "Manny")
     }
     
     required init(coder: NSCoder) {
