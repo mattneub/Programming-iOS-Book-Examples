@@ -55,6 +55,25 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UISplitViewControllerDelegate {
+    func swap(_ svc: UISplitViewController, collapsing: Bool) {
+        if collapsing {
+            if let boy = self.chosenBoyPrimary,
+               let nav = svc.viewController(for: .compact) as? UINavigationController {
+                let newPep = PepCompact(pepBoy: boy)
+                nav.popToRootViewController(animated: false)
+                nav.pushViewController(newPep, animated: false)
+                self.chosenBoyCompact = boy
+            }
+        } else {
+            if let boy = self.chosenBoyCompact,
+               let list = svc.viewController(for: .primary) as? PepListViewController {
+                let newPep = Pep(pepBoy: boy)
+                let nav = UINavigationController(rootViewController: newPep)
+                list.showDetailViewController(nav, sender: self)
+                self.chosenBoyPrimary = boy
+            }
+        }
+    }
     func splitViewController(_ svc: UISplitViewController, willShow column: UISplitViewController.Column) {
         print(column.desc, "will show")
     }
@@ -70,24 +89,16 @@ extension ViewController : UISplitViewControllerDelegate {
     
     func splitViewController(_ svc: UISplitViewController, topColumnForCollapsingToProposedTopColumn proposedTopColumn: UISplitViewController.Column) -> UISplitViewController.Column {
         print("collapsing...")
-        if let boy = self.chosenBoyPrimary,
-           let nav = svc.viewController(for: .compact) as? UINavigationController {
-                let newPep = PepCompact(pepBoy: boy)
-                nav.popToRootViewController(animated: false)
-                nav.pushViewController(newPep, animated: false)
+        delay(0.1) {
+            self.swap(svc, collapsing: true)
         }
         return proposedTopColumn
     }
     
     func splitViewController(_ svc: UISplitViewController, displayModeForExpandingToProposedDisplayMode proposedDisplayMode: UISplitViewController.DisplayMode) -> UISplitViewController.DisplayMode {
         print("expanding...")
-        if let boy = self.chosenBoyCompact,
-           let list = svc.viewController(for: .primary) as? PepListViewController {
-                delay(0.1) {
-                    let newPep = Pep(pepBoy: boy)
-                    let nav = UINavigationController(rootViewController: newPep)
-                    list.showDetailViewController(nav, sender: self)
-                }
+        delay(0.1) {
+            self.swap(svc, collapsing: false)
         }
         return proposedDisplayMode
     }
