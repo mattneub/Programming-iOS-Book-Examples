@@ -164,7 +164,7 @@ extension RootViewController : UITableViewDropDelegate {
                 print("about to load object")
                 item.itemProvider.loadObject(ofClass: Person.self) { p, err in
                     DispatchQueue.main.async {
-                        // uncomment to see actual sequence of events unfold in so-mo
+                        // uncomment to see actual sequence of events unfold in slo-mo
                         // delay(2) {
                         guard let p = p as? Person else {
                             con.deletePlaceholder()
