@@ -48,6 +48,12 @@ class ViewController: UIViewController {
         split.presentsWithGesture = true // also affects button presence! default is true
         print(split.showsSecondaryOnlyButton)
         split.showsSecondaryOnlyButton = true // only in three-columns; default is false
+        
+        // experiment to show that you must set the maximum for the others to take effect
+//        split.preferredPrimaryColumnWidthFraction = 0.5
+//        split.preferredPrimaryColumnWidth = 800
+//        print(split.maximumPrimaryColumnWidth)
+//        split.maximumPrimaryColumnWidth = 1000
                 
         delay(2) {
             print(split.viewControllers) // NB, no longer encompasses all vcs
