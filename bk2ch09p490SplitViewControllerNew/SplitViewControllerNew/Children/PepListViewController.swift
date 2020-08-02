@@ -42,7 +42,7 @@ class PepListViewController: UICollectionViewController {
         // make our own nav controller so we don't push onto existing stack
         let nav = UINavigationController(rootViewController: pep)
         self.showDetailViewController(nav, sender: self)
-        (self.splitViewController?.parent as? ViewController)?.chosenBoyPrimary = boy
+        (self.splitViewController?.parent as? ViewController)?.chosenBoy = boy
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

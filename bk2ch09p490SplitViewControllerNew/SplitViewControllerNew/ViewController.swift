@@ -11,8 +11,7 @@ var supp : Bool { return false }
 
 class ViewController: UIViewController {
     
-    var chosenBoyPrimary : String?
-    var chosenBoyCompact : String?
+    var chosenBoy : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,20 +84,20 @@ class ViewController: UIViewController {
 extension ViewController : UISplitViewControllerDelegate {
     func swap(_ svc: UISplitViewController, collapsing: Bool) {
         if collapsing {
-            if let boy = self.chosenBoyPrimary,
+            if let boy = self.chosenBoy,
                let nav = svc.viewController(for: .compact) as? UINavigationController {
                 let newPep = PepCompact(pepBoy: boy)
                 nav.popToRootViewController(animated: false)
                 nav.pushViewController(newPep, animated: false)
-                self.chosenBoyCompact = boy
+                self.chosenBoy = boy
             }
         } else {
-            if let boy = self.chosenBoyCompact,
+            if let boy = self.chosenBoy,
                let list = svc.viewController(for: .primary) as? PepListViewController {
                 let newPep = Pep(pepBoy: boy)
                 let nav = UINavigationController(rootViewController: newPep)
                 list.showDetailViewController(nav, sender: self)
-                self.chosenBoyPrimary = boy
+                self.chosenBoy = boy
             }
         }
     }

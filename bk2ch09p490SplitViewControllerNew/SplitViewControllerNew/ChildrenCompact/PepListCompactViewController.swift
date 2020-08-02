@@ -43,7 +43,7 @@ class PepListCompactViewController: UICollectionViewController {
         let pep = PepCompact(pepBoy: boy)
         // in the compact case, just push
         self.navigationController?.pushViewController(pep, animated: true)
-        (self.splitViewController?.parent as? ViewController)?.chosenBoyCompact = boy
+        (self.splitViewController?.parent as? ViewController)?.chosenBoy = boy
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
