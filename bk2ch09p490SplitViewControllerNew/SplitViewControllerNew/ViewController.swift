@@ -156,9 +156,10 @@ extension ViewController {
     func playThoseTricks() {
         print("tricks")
         let svc = self.children[0] as! UISplitViewController
-        svc.preferredDisplayMode = .oneOverSecondary
-        svc.maximumPrimaryColumnWidth = 250
-        // svc.preferredPrimaryColumnWidthFraction = 0.3 // no effect
+        svc.preferredSplitBehavior = .tile
+        svc.preferredDisplayMode = .oneBesideSecondary
+        svc.maximumPrimaryColumnWidth = 200
+        svc.preferredPrimaryColumnWidthFraction = 0.5
         let reg = UITraitCollection(horizontalSizeClass: .regular)
         let traits = UITraitCollection(traitsFrom: [reg])
         self.setOverrideTraitCollection(traits, forChild: svc)
