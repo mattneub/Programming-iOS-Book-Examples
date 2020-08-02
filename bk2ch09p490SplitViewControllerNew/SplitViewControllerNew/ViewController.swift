@@ -89,7 +89,6 @@ extension ViewController : UISplitViewControllerDelegate {
                 let newPep = PepCompact(pepBoy: boy)
                 nav.popToRootViewController(animated: false)
                 nav.pushViewController(newPep, animated: false)
-                self.chosenBoy = boy
             }
         } else {
             if let boy = self.chosenBoy,
@@ -97,7 +96,6 @@ extension ViewController : UISplitViewControllerDelegate {
                 let newPep = Pep(pepBoy: boy)
                 let nav = UINavigationController(rootViewController: newPep)
                 list.showDetailViewController(nav, sender: self)
-                self.chosenBoy = boy
             }
         }
     }
