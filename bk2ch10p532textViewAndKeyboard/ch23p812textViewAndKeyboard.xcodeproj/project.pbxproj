@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -104,7 +104,7 @@
 				};
 			};
 			buildConfigurationList = C929ED6C1813710C00B3C4AE /* Build configuration list for PBXProject "ch23p812textViewAndKeyboard" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -268,7 +268,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p812textViewAndKeyboard-Prefix.pch";
 				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p812textViewAndKeyboard-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ch23p812textViewAndKeyboard;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -285,7 +289,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p812textViewAndKeyboard-Prefix.pch";
 				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p812textViewAndKeyboard-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ch23p812textViewAndKeyboard;
 				SWIFT_VERSION = 5.0;

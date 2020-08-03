@@ -68,6 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return (ks, newRect)
     }
 
+    #error("needs fixing")
     @objc func keyboardShow(_ n:Notification) {
         print("show")
         guard self.traitCollection.userInterfaceIdiom == .phone else {return}

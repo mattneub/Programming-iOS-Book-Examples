@@ -75,6 +75,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         return (ks, newRect)
     }
     
+    #error("needs updating")
     @objc func keyboardShow(_ n:Notification) {
         let d = n.userInfo!
         let (state, rnew) = keyboardState(for:d, in:self.scrollView)
