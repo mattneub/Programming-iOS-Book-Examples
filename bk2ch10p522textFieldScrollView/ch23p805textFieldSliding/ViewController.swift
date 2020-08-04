@@ -2,21 +2,24 @@
 
 import UIKit
 
+// warning, test on device! on simulator, can do some fake autoscrolling that's wrong
+
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet var scrollView : UIScrollView!
+    @IBOutlet var sv : UIScrollView!
     var oldContentInset = UIEdgeInsets.zero
     var oldIndicatorInset = UIEdgeInsets.zero
     var oldOffset = CGPoint.zero
+    var prevr = CGRect.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // content view's width and height constraints in storyboard are placeholders
-        let contentView = self.scrollView.subviews[0]
+        let contentView = self.sv.subviews[0]
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalTo:self.scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalTo:self.scrollView.heightAnchor),
+            contentView.widthAnchor.constraint(equalTo:self.sv.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo:self.sv.heightAnchor),
         ])
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -24,7 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardChange), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
 
         
-        self.scrollView.keyboardDismissMode = .interactive
+        self.sv.keyboardDismissMode = .interactive
         
         // just testing: what if the scroll view doesn't occupy the whole main view?
         // self.bottomConstraint.constant = 30
@@ -68,25 +71,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return (ks, newRect)
     }
 
-    #error("needs fixing")
     @objc func keyboardShow(_ n:Notification) {
         print("show")
         guard self.traitCollection.userInterfaceIdiom == .phone else {return}
         let d = n.userInfo!
-        let (state, rnew) = keyboardState(for:d, in:self.scrollView)
+        let (state, rnew) = keyboardState(for:d, in:self.sv)
         if state == .entering {
             print("really showing")
-            self.oldContentInset = self.scrollView.contentInset
-            self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
-            self.oldOffset = self.scrollView.contentOffset
+            self.oldContentInset = self.sv.contentInset
+            self.oldIndicatorInset = self.sv.verticalScrollIndicatorInsets
+            self.oldOffset = self.sv.contentOffset
         }
-        print("show")
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset
-        if let rnew = rnew {
-            let h = rnew.intersection(self.scrollView.bounds).height + 6 // ?
-            self.scrollView.contentInset.bottom = h
-            self.scrollView.scrollIndicatorInsets.bottom = h
+        if let rnew = rnew, rnew != self.prevr {
+            print("adjusting")
+            self.prevr = rnew
+            let h = rnew.intersection(self.sv.bounds).height + 6 // ?
+            self.sv.contentInset.bottom = h
+            self.sv.verticalScrollIndicatorInsets.bottom = h
         }
     }
     
@@ -94,13 +97,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print("hide")
         guard self.traitCollection.userInterfaceIdiom == .phone else {return}
         let d = n.userInfo!
-        let (state, _) = keyboardState(for:d, in:self.scrollView)
+        let (state, _) = keyboardState(for:d, in:self.sv)
         if state == .exiting {
             print("really hiding")
             // restore original setup
-            self.scrollView.contentOffset = self.oldOffset
-            self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
-            self.scrollView.contentInset = self.oldContentInset
+            self.sv.contentOffset = self.oldOffset
+            self.sv.verticalScrollIndicatorInsets = self.oldIndicatorInset
+            self.sv.contentInset = self.oldContentInset
+            self.prevr = .zero
         }
     }
 

@@ -36,8 +36,12 @@ class ViewController : UIViewController {
             .preferredFontDescriptor(withTextStyle:.body)
             .withDesign(.serif)!
         let emphasis = body.withSymbolicTraits(.traitItalic)!
-        let fbody = UIFont(descriptor: body, size: 0)
-        let femphasis = UIFont(descriptor: emphasis, size: 0)
+        var fbody = UIFont(descriptor: body, size: 0)
+        // work around lack of dynamism; this should not be necessary
+        fbody = UIFontMetrics(forTextStyle: .body).scaledFont(for: fbody)
+        var femphasis = UIFont(descriptor: emphasis, size: 0)
+        // work around lack of dynamism; this should not be necessary
+        femphasis = UIFontMetrics(forTextStyle: .body).scaledFont(for: femphasis)
         
         let s = self.lab.text!
         let mas = NSMutableAttributedString(string: s, attributes: [.font:fbody])
