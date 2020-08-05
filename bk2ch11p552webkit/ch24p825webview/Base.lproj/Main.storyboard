@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3uX-z4-z57">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3uX-z4-z57">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,8 +14,8 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="9j4-ul-Ujr"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="yhr-XM-kMI">
                         <barButtonItem key="rightBarButtonItem" title="Push" id="RgB-EV-YE2">
@@ -40,12 +40,13 @@
                             <wkWebView contentMode="scaleToFill" restorationIdentifier="wv" customUserAgent="" translatesAutoresizingMaskIntoConstraints="NO" id="s19-Cm-bas">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="Version/13.0.1 Safari/605.1.15">
+                                <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="Version/13.1.2 Safari/605.1.15">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="PPW-r3-6rE"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PPW-r3-6rE" firstAttribute="bottom" secondItem="s19-Cm-bas" secondAttribute="bottom" id="Eh2-8T-gxr"/>
@@ -53,7 +54,6 @@
                             <constraint firstItem="s19-Cm-bas" firstAttribute="top" secondItem="PPW-r3-6rE" secondAttribute="top" id="WNM-Hm-mjd"/>
                             <constraint firstItem="s19-Cm-bas" firstAttribute="leading" secondItem="PPW-r3-6rE" secondAttribute="leading" id="lSp-VY-Kme"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PPW-r3-6rE"/>
                     </view>
                     <connections>
                         <outlet property="wv" destination="s19-Cm-bas" id="7AU-ZJ-DsY"/>
