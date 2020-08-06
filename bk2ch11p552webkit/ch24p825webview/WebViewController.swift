@@ -237,7 +237,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
             
             do {
                 let rule = self.cssrule
-                let script = WKUserScript(source: rule, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+                let script = WKUserScript(source: rule, injectionTime: .atDocumentStart, forMainFrameOnly: true, in: .defaultClient)
                 let config = self.wv.configuration
                 config.userContentController.addUserScript(script)
             }
