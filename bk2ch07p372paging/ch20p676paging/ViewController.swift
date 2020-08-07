@@ -29,6 +29,25 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     @IBOutlet var sv : UIScrollView!
     @IBOutlet var pager : UIPageControl!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.pager.currentPageIndicatorTintColor = .systemRed
+        self.pager.pageIndicatorTintColor = .systemOrange
+        
+        
+        // self.pager.backgroundColor = .blue
+//         self.pager.backgroundStyle = .prominent
+//        self.pager.pageIndicatorTintColor = .yellow
+//        self.pager.currentPageIndicatorTintColor = .orange
+//        self.pager.tintColor = .green // does nothing
+//        self.pager.allowsContinuousInteraction = false
+//        self.pager.preferredIndicatorImage = UIImage(systemName: "diamond.fill")!
+//        self.pager.setIndicatorImage(UIImage(named: "trash")!.withRenderingMode(.alwaysOriginal), forPage: 0)
+//        self.pager.numberOfPages = 20
+//        print(self.pager.size(forNumberOfPages: 20))
+//        print(self.pager.size(forNumberOfPages: 30))
+    }
+    
     var didLayout = false
     override func viewDidLayoutSubviews() {
         if !self.didLayout {

@@ -44,19 +44,22 @@ class ViewController: UIViewController {
             return;
             self.seg.selectedSegmentIndex = UISegmentedControl.noSegment // no visible effect
             print(self.seg.selectedSegmentIndex) // -1, i.e. no segment
-            self.seg.setNeedsLayout() // aha
+            // self.seg.setNeedsLayout() // aha
+            // okay, that trick is no longer needed in iOS 14
         }
         
         // in iOS 13, this is painted in a new way
         // the tint color does not affect the text or the border or anything
         // there is a selected segment tint color that is ...
         // the background of the new sliding round rect
-//        self.seg.tintColor = .red
-//        if #available(iOS 13.0, *) {
-//            // self.seg.selectedSegmentTintColor = .green
-//        }
-//        // self.seg.isMomentary = true
-//        self.seg.setEnabled(false, forSegmentAt: 2)
+        self.seg.tintColor = .red
+        self.seg.selectedSegmentTintColor = .green
+        // self.seg.isMomentary = true
+        self.seg.setEnabled(false, forSegmentAt: 2)
+        seg.setTitleTextAttributes([
+            .foregroundColor: UIColor.blue // this works in iOS 13 to color the text
+            // whoa! more than that, it is the default tint color for template images too!!!!!!!!
+        ], for: .normal)
         // return
         
         // background, set desired height but make width resizable
@@ -98,38 +101,44 @@ class ViewController: UIViewController {
         }
         self.seg.setDividerImage(div, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
-        let seg = UISegmentedControl(
-            items: [
-                UIImage(named:"smiley")!.withRenderingMode(.alwaysOriginal),
-                "Two"
-            ])
-        seg.tintColor = .red // no effect in iOS 13
-        if #available(iOS 13.0, *) {
-            // this works in iOS 13 to tint the image
-            seg.setImage(UIImage(named:"smiley")!
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.green),
-                         forSegmentAt: 0)
-            print(seg.tintColor == .red) // true but so what?
+        /*****************/
+        
+        // try the new iOS 14 initializer! action.sender is still the control, but no need to examine selected index
+        let action1 = UIAction(image: UIImage(named:"smiley")!.withRenderingMode(.alwaysOriginal)) { action in
+            print(action.sender!)
+            print("segment zero selected")
         }
+        let action2 = UIAction(title: "Two") { action in
+            print(action.sender!)
+            print("segment one selected")
+        }
+        
+        let seg2 = UISegmentedControl(frame: .zero, actions:[action1, action2])
+        seg2.tintColor = .red // no effect in iOS 13
+        // this works in iOS 13 to tint the image
+        seg2.setImage(UIImage(named:"smiley")!
+            .withRenderingMode(.alwaysOriginal)
+            .withTintColor(.green),
+                     forSegmentAt: 0)
+        print(seg2.tintColor == .red) // true but so what?
         // yay, keys work
-        seg.setTitleTextAttributes([
+        seg2.setTitleTextAttributes([
             .foregroundColor: UIColor.blue // this works in iOS 13 to color the text
             // whoa! more than that, it is the default tint color for template images too!!!!!!!!
         ], for: .normal)
 
-        seg.frame.origin = CGPoint(40,100)
-        seg.frame.size.width = 200
+        seg2.frame.origin = CGPoint(40,100)
+        seg2.frame.size.width = 200
         //seg.setWidth(0, forSegmentAt: 0)
-        seg.apportionsSegmentWidthsByContent = true
-        seg.sizeToFit()
-        self.view.addSubview(seg)
+        seg2.apportionsSegmentWidthsByContent = true
+        seg2.sizeToFit()
+        self.view.addSubview(seg2)
         return;
-        seg.translatesAutoresizingMaskIntoConstraints = false
+        seg2.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            seg.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
-            seg.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
-            seg.heightAnchor.constraint(equalToConstant: UIImage(named:"smiley")!.size.height)
+            seg2.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
+            seg2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
+            seg2.heightAnchor.constraint(equalToConstant: UIImage(named:"smiley")!.size.height)
             ])
     }
     

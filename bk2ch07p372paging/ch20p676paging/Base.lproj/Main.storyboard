@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP0-h3-1W8">
+                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP0-h3-1W8">
                                 <rect key="frame" x="16" y="66" width="343" height="155"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="155" id="DYf-Pc-Hoc"/>
@@ -29,14 +25,13 @@
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-zv-7S5">
-                                <rect key="frame" x="0.0" y="229" width="375" height="37"/>
-                                <color key="pageIndicatorTintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="209" width="375" height="27.5"/>
                                 <connections>
                                     <action selector="userDidPage:" destination="vXZ-lx-hvc" eventType="valueChanged" id="BCh-sE-Eod"/>
                                 </connections>
                             </pageControl>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="FlY-Yj-38l"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dbX-zv-7S5" firstAttribute="leading" secondItem="FlY-Yj-38l" secondAttribute="leading" id="3mf-4l-2b8"/>
@@ -46,7 +41,6 @@
                             <constraint firstItem="zP0-h3-1W8" firstAttribute="top" secondItem="FlY-Yj-38l" secondAttribute="top" constant="46" id="iob-ME-wuQ"/>
                             <constraint firstItem="FlY-Yj-38l" firstAttribute="trailing" secondItem="dbX-zv-7S5" secondAttribute="trailing" id="sht-0v-XRR"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FlY-Yj-38l"/>
                     </view>
                     <connections>
                         <outlet property="pager" destination="dbX-zv-7S5" id="cb2-wH-kYf"/>

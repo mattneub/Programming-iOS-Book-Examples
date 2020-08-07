@@ -1,23 +1,39 @@
 
 import UIKit
 
+extension UIControl {
+    func addAction(for event: UIControl.Event,
+                   handler: @escaping UIActionHandler) {
+        self.addAction(UIAction(handler:handler), for:event)
+    }
+}
+
+
 class ViewController: UIViewController {
     @IBOutlet weak var dp: UIDatePicker!
-
+    @IBOutlet weak var dp2: UIDatePicker!
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        dp2.datePickerMode = .time
+        dp2.preferredDatePickerStyle = .inline
+        dp2.minuteInterval = 30
+        dp2.addAction(for: .valueChanged) { action in
+            print((action.sender as! UIDatePicker).date)
+        }
         
-        var which : Int { return 1 }
+        var which : Int { return 2 }
 
         switch which {
         case 1:
+            // dp.preferredDatePickerStyle = .inline
             dp.datePickerMode = .date
             // dp.datePickerMode = .dateAndTime
-            var dc = DateComponents(year:1954, month:1, day:1)
+            var dc = DateComponents(year:1954, month:1, day:2)
             let c = Calendar(identifier:.gregorian)
             let d1 = c.date(from: dc)!
             dp.minimumDate = d1

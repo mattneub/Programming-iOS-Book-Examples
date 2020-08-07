@@ -63,7 +63,7 @@ class MySlider: UISlider {
         let delta = Float(percentage) * (s.maximumValue - s.minimumValue)
         let value = s.minimumValue + delta
         delay(0.1) {
-            UIView.animate(withDuration: 0.15) {
+            UIView.animate(withDuration: 1) {
                 s.setValue(value, animated:true) // NB behold the secret of getting animation
             }
         }
