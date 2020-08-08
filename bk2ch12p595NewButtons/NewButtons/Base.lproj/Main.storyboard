@@ -75,7 +75,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="1mi-Ho-ukj">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Isi-EM-mga">
+                        <barButtonItem key="rightBarButtonItem" title="Push" id="Isi-EM-mga">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" id="saX-p6-Y0E"/>
                             </connections>

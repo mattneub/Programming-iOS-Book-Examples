@@ -94,7 +94,27 @@ class ViewController: UIViewController {
             b.setTitle("Favorite Pep Boy:", for: .normal)
             b.sizeToFit()
             b.frame.origin = CGPoint(50,200)
-            self.rebuildMenuForButton(b)
+            // "dynamic" menu, formed at the moment the user taps the button
+            b.menu = UIMenu() // so that we have a menu to start with
+            b.addAction(for: .menuActionTriggered) { action in
+                guard let b = action.sender as? UIButton else { return }
+                func boyAction(for name: String) -> UIAction {
+                    let image : UIImage? =
+                        name == self.currentFavorite ?
+                        UIImage(systemName: "checkmark") :
+                        nil
+                    return UIAction(title: name, image: image) { [weak self] action in
+                        self?.currentFavorite = action.title
+                        b.setTitle("Favorite Pep Boy: \(name)", for: .normal)
+                        b.sizeToFit()
+                    }
+                }
+                b.menu = UIMenu(title: "", children: [
+                    boyAction(for: "Manny"),
+                    boyAction(for: "Moe"),
+                    boyAction(for: "Jack")
+                ])
+            }
             b.showsMenuAsPrimaryAction = true
             self.view.addSubview(b)
         default: break
@@ -102,25 +122,6 @@ class ViewController: UIViewController {
 
     }
 
-    func rebuildMenuForButton(_ b: UIButton) {
-        func boyAction(for name: String) -> UIAction {
-            let image : UIImage? =
-                name == self.currentFavorite ?
-                UIImage(systemName: "checkmark") :
-                nil
-            return UIAction(title: name, image: image) { [weak self] action in
-                self?.currentFavorite = action.title
-                self?.rebuildMenuForButton(b)
-                b.setTitle("Favorite Pep Boy: \(name)", for: .normal)
-                b.sizeToFit()
-            }
-        }
-        b.menu = UIMenu(title: "", children: [
-            boyAction(for: "Manny"),
-            boyAction(for: "Moe"),
-            boyAction(for: "Jack")
-        ])
-    }
     
     deinit {
         print("farewell")
