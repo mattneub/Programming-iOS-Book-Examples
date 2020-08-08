@@ -38,6 +38,7 @@ class ViewController: UIViewController {
             let im = UIImage(systemName: "circle")!
             // try changing the image to im
             self.longBBI.primaryAction = UIAction(title: "Long", image: nil) { action in }
+            // self.longBBI.title = "Aha" // yep
         } else {
             self.longBBI.target = self
             self.longBBI.action = #selector(tap)

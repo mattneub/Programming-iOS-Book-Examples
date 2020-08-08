@@ -35,12 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window!.tintColor = .red // prove that bar item tint color is inherited
         
-        UITabBar.appearance().unselectedItemTintColor = .black // new in iOS 10
+        UITabBar.appearance().unselectedItemTintColor = .blue // new in iOS 10
         // interesting: this seems to override my title text attributes for .normal
         
-        var which : Int { return 1 }
+        var which : Int { return 2 }
         switch which {
         case 1:
+            // the green is ignored, the blue of unselectedItemTintColor overrides
             UITabBarItem.appearance().setTitleTextAttributes([
                 .font:UIFont(name:"Avenir-Heavy", size:14)!,
                 .foregroundColor:UIColor.green
@@ -53,15 +54,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case 2:
             // huge iOS 13 bug: trying to do this the iOS 13 appearance way...
             // causes the icon to be too low and the text to be curtailed!
-            let app = UITabBarAppearance(idiom:.phone)
+            // ok, fixed in iOS 14! what a relief
+            let app = UITabBarAppearance()
             app.stackedLayoutAppearance.normal.titleTextAttributes = [
             .font:UIFont(name:"Avenir-Heavy", size:14)!,
-            .foregroundColor:UIColor.black
+            .foregroundColor:UIColor.green
             ]
             app.stackedLayoutAppearance.selected.titleTextAttributes = [
             .font:UIFont(name:"Avenir-Heavy", size:14)!,
-            .foregroundColor:UIColor.black
+            .foregroundColor:UIColor.red
             ]
+//            app.inlineLayoutAppearance.normal.titleTextAttributes = [
+//                .font:UIFont(name:"Avenir-Heavy", size:14)!,
+//                .foregroundColor:UIColor.green
+//            ]
+//            app.inlineLayoutAppearance.selected.titleTextAttributes = [
+//                .font:UIFont(name:"Avenir-Heavy", size:14)!,
+//                .foregroundColor:UIColor.red
+//            ]
+            app.compactInlineLayoutAppearance.normal.titleTextAttributes = [
+                .font:UIFont(name:"Avenir-Heavy", size:14)!,
+                .foregroundColor:UIColor.green
+            ]
+            app.compactInlineLayoutAppearance.selected.titleTextAttributes = [
+                .font:UIFont(name:"Avenir-Heavy", size:14)!,
+                .foregroundColor:UIColor.red
+            ]
+
             UITabBar.appearance().standardAppearance = app
         default:break
         }
