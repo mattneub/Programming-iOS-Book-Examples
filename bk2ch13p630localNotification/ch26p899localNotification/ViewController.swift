@@ -169,6 +169,7 @@ class MyUserNotificationHelper : NSObject {
         content.sound = UNNotificationSound.default
         content.sound = UNNotificationSound(named: UNNotificationSoundName("test.aif"))
         content.badge = 20
+        content.userInfo["scheduled"] = Date()
         
         // if we want to see actions, we must add category identifier
         content.categoryIdentifier = self.categoryIdentifier
@@ -204,16 +205,24 @@ class MyUserNotificationHelper : NSObject {
         let center = UNUserNotificationCenter.current()
         center.add(req)
         
-        // test nextTriggerDate bug
+        // test nextTriggerDate bug; keep app running if you want to see this
         print("scheduling at", Date())
+        print("time trigger is", trigger.timeInterval)
         DispatchQueue.main.asyncAfter(deadline: .now()+5) {
             print("checking at", Date())
             UNUserNotificationCenter.current().getPendingNotificationRequests {
                 arr in let arr = arr
                 guard arr.count > 0 else { print("no pending requests"); return }
-                if let req = arr[0].trigger as? UNTimeIntervalNotificationTrigger {
-                    let fd = req.nextTriggerDate()
+                let req = arr[0]
+                if let trig = req.trigger as? UNTimeIntervalNotificationTrigger {
+                    let fd = trig.nextTriggerDate()
                     print("trigger date", fd as Any)
+                    if let d = req.content.userInfo["scheduled"] as? Date {
+                        print("but it was scheduled at", d)
+                        print("with a time interval of", trig.timeInterval)
+                    }
+                } else {
+                    print("no time interval trigger")
                 }
             }
         }
@@ -236,9 +245,13 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
         
         print("received notification while active", Date())
         
-        // NB in iOS 14, alert is replaced by banner here
-        completionHandler([.sound, .banner]) // go for it, system!
-        // completionHandler([])
+        var ok : Bool { true }
+        if ok {
+            // NB in iOS 14, alert is replaced by banner here
+            completionHandler([.sound, .banner]) // go for it, system!
+        } else {
+            completionHandler([])
+        }
         
         // oooh oooh I accidentally learned something
         // if Do Not Disturb is on, no notifications interrupt

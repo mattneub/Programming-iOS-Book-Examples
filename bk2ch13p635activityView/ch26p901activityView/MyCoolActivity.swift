@@ -29,6 +29,7 @@ class MyCoolActivity : UIActivity {
     var image : UIImage
     
     override init() {
+        print("creating a cool activity")
         let im = UIImage(named:"sunglasses.png")!
         self.image = im
         super.init()
