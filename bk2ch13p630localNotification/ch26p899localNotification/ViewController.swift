@@ -70,7 +70,7 @@ class MyUserNotificationHelper : NSObject {
             case .denied:
                 // print("denied, giving up")
                 break // nothing to do, pointless to go on
-            case .authorized, .provisional:
+            case .authorized, .provisional, .ephemeral:
                 self.checkCategories() // prepare to create notification
             @unknown default:
                 fatalError()
@@ -138,6 +138,7 @@ class MyUserNotificationHelper : NSObject {
         let action2 = UNNotificationAction(identifier: "reconfigure",
                                            title: "Reconfigure", options: [.foreground])
         let action3 = UNTextInputNotificationAction(identifier: "message", title: "Message", options: [], textInputButtonTitle: "Message", textInputPlaceholder: "message")
+        _ = action3 // shut the compiler up
         var actions = [action1, action2]
         // but the above is just to test the syntax
         actions = []
@@ -235,8 +236,9 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
         
         print("received notification while active", Date())
         
-        // completionHandler([.sound, .alert]) // go for it, system!
-        completionHandler([])
+        // NB in iOS 14, alert is replaced by banner here
+        completionHandler([.sound, .banner]) // go for it, system!
+        // completionHandler([])
         
         // oooh oooh I accidentally learned something
         // if Do Not Disturb is on, no notifications interrupt
@@ -289,7 +291,7 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
         print("I should be opening my settings screen now!")
         // called before we become active
         let id = "settings"
-        UIApplication.shared.keyWindow?.rootViewController?.performSegue(withIdentifier: id, sender: nil)
+        UIApplication.shared.windows.first (where: \.isKeyWindow)?.rootViewController?.performSegue(withIdentifier: id, sender: nil)
     }
 
     

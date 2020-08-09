@@ -15,8 +15,6 @@ extension UIResponder {
     }
 }
 
-// all greatly changed in iOS 8 and much for the better in my humble opinion
-
 class ViewController: UIViewController, UITextFieldDelegate {
     
     var alertString = ""
@@ -89,20 +87,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // =====
     
     @IBAction func doActionSheet(_ sender: Any) {
-        let action = UIAlertController(title: "Choose New Layout", message: nil, preferredStyle: .actionSheet)
-        action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in print("Cancel")}))
+        let alert = UIAlertController(title: "Not So Fast!",
+                                      message: """
+            Do you really want to do this \
+            tremendously destructive thing?
+            """,
+                                      preferredStyle: .actionSheet)
         func handler(_ act:UIAlertAction) {
-            print(act.title as Any)
+            print("User tapped \(act.title as Any)")
         }
-        for s in ["3 by 3", "4 by 3", "4 by 4", "5 by 4", "5 by 5"] {
-            action.addAction(UIAlertAction(title: s, style: .default, handler: handler))
-        }
-        // action.view.tintColor = .yellow
-        self.present(action, animated: true)
-        if let pop = action.popoverPresentationController {
-            let v = sender as! UIView
-            pop.sourceView = v
-            pop.sourceRect = v.bounds
-        }
+        // illustrating the three button styles
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: handler))
+        alert.addAction(UIAlertAction(title: "Just Do It!", style: .destructive, handler: handler))
+        alert.addAction(UIAlertAction(title: "Maybe", style: .default, handler: handler))
+        self.present(alert, animated: true)
     }
 }
