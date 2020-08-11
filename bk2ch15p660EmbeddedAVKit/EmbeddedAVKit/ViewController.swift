@@ -104,6 +104,10 @@ class ViewController: UIViewController {
         self.view.addSubview(av.view)
         av.didMove(toParent:self)
         
+        // yep, it works
+//        av.entersFullScreenWhenPlaybackBegins = true
+//        av.exitsFullScreenWhenPlaybackEnds = true
+        
         /*
         // just experimenting
         let grs = (av.view.subviews[0] as UIView).gestureRecognizers as [UIGestureRecognizer]
