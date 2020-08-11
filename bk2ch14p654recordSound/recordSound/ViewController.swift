@@ -56,6 +56,8 @@ class ViewController: UIViewController {
             let rec = try AVAudioRecorder(url:self.recurl, format:format!)
             self.recorder = rec
             print("recording")
+            // let's find out where we are recording thru
+            print(AVAudioSession.sharedInstance().currentRoute.inputs)
             rec.record(forDuration: 10)
         } catch {
             print("oops")
