@@ -21,7 +21,7 @@ class CollectionViewController: UICollectionViewController {
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         self.collectionView.collectionViewLayout = layout
         self.collectionView.register(UICollectionViewListCell.self, forCellWithReuseIdentifier: self.cellId)
-        self.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerId)
+        self.collectionView.register(UICollectionViewListCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.headerId)
     }
     
     let data = ["Manny", "Moe", "Jack"]
@@ -50,21 +50,13 @@ class CollectionViewController: UICollectionViewController {
         }
     }
     
+    // Apple says: for the header of a collection view list, use a list cell!
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.headerId, for: indexPath)
-        var lab : UIView! = v.viewWithTag(1)
-        if lab == nil {
-            lab = UILabel()
-            lab.tag = 1
-            lab.translatesAutoresizingMaskIntoConstraints = false
-            v.addSubview(lab)
-            lab.topAnchor.constraint(equalTo: v.topAnchor, constant: 5).isActive = true
-            lab.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant: -5).isActive = true
-            lab.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 15).isActive = true
-            v.backgroundColor = .lightGray
-            v.layer.zPosition = 1
-        }
-        (lab as! UILabel).text = "Pep \(indexPath.section)"
+        let v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.headerId, for: indexPath) as! UICollectionViewListCell
+        var contentConfig = v.defaultContentConfiguration()
+        contentConfig.text = "Pep \(indexPath.section)"
+        v.contentConfiguration = contentConfig
+        v.layer.zPosition = 1
         return v
     }
 }
