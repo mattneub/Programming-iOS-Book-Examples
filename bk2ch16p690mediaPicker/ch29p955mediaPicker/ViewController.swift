@@ -64,8 +64,8 @@ class ViewController: UIViewController {
             let picker = MPMediaPickerController(mediaTypes:.music)
             picker.showsCloudItems = false
             picker.delegate = self
-            picker.allowsPickingMultipleItems = true
-            picker.modalPresentationStyle = .popover
+            picker.allowsPickingMultipleItems = true // try false
+            picker.modalPresentationStyle = .popover // try commenting out on iPad
             picker.preferredContentSize = CGSize(500,600)
             self.present(picker, animated: true)
             if let pop = picker.popoverPresentationController {
@@ -73,6 +73,7 @@ class ViewController: UIViewController {
                     pop.barButtonItem = b
                 }
             }
+            print(picker.modalPresentationStyle.rawValue) // 1 on iPad by default
         }
     }
 }
