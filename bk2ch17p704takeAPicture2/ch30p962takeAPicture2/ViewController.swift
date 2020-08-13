@@ -86,7 +86,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
         let picker = UIImagePickerController()
         picker.sourceType = src
-        picker.mediaTypes = [kUTTypeImage as String]
+        picker.mediaTypes = [UTType.image.identifier]
         picker.allowsEditing = true
         picker.delegate = self
         

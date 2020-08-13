@@ -59,7 +59,8 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         opts.version = .current
         // NB I do _not_ use PHImageManager.default! That's because it caches...
         // so when I reload the image after editing it, I'm having trouble getting the new one to load
-        PHImageManager().requestImage(for: asset, targetSize: CGSize(600,600), contentMode: .aspectFit, options: opts) { im, info in
+        // ooooh, hold it, looks like they fixed this! using `.default` after all
+        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(600,600), contentMode: .aspectFit, options: opts) { im, info in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging

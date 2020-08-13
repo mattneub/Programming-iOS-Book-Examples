@@ -66,5 +66,7 @@
 	<string>The app wants to stuff your photo library full of ugly pictures.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>The app wants to blur your photos.</string>
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
 </dict>
 </plist>

@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func doButton2(_ sender: Any) {
+        // Select Photos, Allow Access to All Photos, Don't Allow
         PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
             switch status {
             case .notDetermined:

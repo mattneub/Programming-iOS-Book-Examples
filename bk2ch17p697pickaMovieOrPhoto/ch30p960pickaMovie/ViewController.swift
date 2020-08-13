@@ -47,6 +47,7 @@ class ViewController: UIViewController {
 extension ViewController : PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true) { // NB if you don't say this, it won't dismiss!
+            print(Thread.isMainThread) // yep
             guard let result = results.first else { return }
             // proving you don't get asset id unless you specified library
             let assetid = result.assetIdentifier

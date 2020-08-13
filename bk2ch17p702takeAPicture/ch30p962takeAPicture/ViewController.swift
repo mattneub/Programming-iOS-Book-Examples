@@ -123,17 +123,17 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let src = UIImagePickerController.SourceType.camera
         guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
         
-        var which : Int {return 3} // 1, 2, 3, 4
+        var which : Int {return 3} // 1, 2, 3
         let desiredTypes : [String] = {
             switch which {
-            case 1: return [kUTTypeImage as String]
-            case 2: return [kUTTypeMovie as String]
-            case 3: return [kUTTypeImage as String, kUTTypeMovie as String]
-            case 4: return [kUTTypeImage as String, kUTTypeLivePhoto as String] // nope
-            default: return [kUTTypeImage as String, kUTTypeMovie as String, kUTTypeLivePhoto as String] // nope
+            case 1: return [UTType.image.identifier]
+            case 2: return [UTType.movie.identifier]
+            case 3: return [UTType.image.identifier, UTType.movie.identifier]
+            default: fatalError("hey")
             }
         }()
-        // so I think what this proves is that they are not going to let me take a live photo this way
+        // they are not going to let me take a live photo this way
+        
         let picker = UIImagePickerController()
         picker.sourceType = src
         picker.mediaTypes = desiredTypes
@@ -166,13 +166,13 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             print(m as Any)
             self.dismiss(animated:true) {
                 let mediatype = info[.mediaType]
-                guard let type = mediatype as? NSString else {return}
-                switch type as CFString {
-                case kUTTypeImage:
+                guard let type = mediatype as? String else {return}
+                switch type {
+                case UTType.image.identifier:
                     if im != nil {
                         self.showImage(im!)
                         // showing how simple it is to save into the Camera Roll
-                        // return;
+                        return;
                         checkForPhotoLibraryAccess {
                             var which : Int { return 1 }
                             switch which {
@@ -201,7 +201,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                             
                         }
                     }
-                case kUTTypeMovie:
+                case UTType.movie.identifier:
                     if url != nil {
                         self.showMovie(url!)
                     }
