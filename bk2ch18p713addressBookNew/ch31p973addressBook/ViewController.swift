@@ -51,7 +51,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     @IBAction func doFindMoi (_ sender: Any!) {
         checkForContactsAccess {
             DispatchQueue.global(qos: .userInitiated).async {
-                var which : Int {return 2} // 1 or 2
+                var which : Int {return 1} // 1 or 2
                 do {
                     var premoi : CNContact!
                     switch which {
@@ -88,6 +88,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     if moi.isKeyAvailable(CNContactEmailAddressesKey) {
                         print(moi.emailAddresses)
                     } else {
+                        // print(moi.emailAddresses) // try to crash; yep
                         print("you haven't fetched emails yet")
                     }
                     let moi2 = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor])
