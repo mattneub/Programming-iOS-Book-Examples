@@ -8,10 +8,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
-    let status = PHPhotoLibrary.authorizationStatus()
+func checkForPhotoLibraryAccess(for level: PHAccessLevel = .readWrite, andThen f:(()->())? = nil) {
+    let status = PHPhotoLibrary.authorizationStatus(for: level)
     switch status {
-    case .authorized:
+    case .authorized, .limited: // *
         f?()
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
@@ -49,38 +49,7 @@ class ViewController: UIViewController {
     }
 
 
-    // warning, moments will cease to be supported, I've removed this example from the book
-    @IBAction func doButton(_ sender: Any) {
-        
-        checkForPhotoLibraryAccess{
-        
-            let opts = PHFetchOptions()
-            let desc = NSSortDescriptor(key: "startDate", ascending: true)
-            opts.sortDescriptors = [desc]
-            let result = PHCollectionList.fetchCollectionLists(with:
-                .momentList, subtype: .momentListYear, options: opts)
-            let lists = result.objects(at: IndexSet(0..<result.count))
-            for list in lists {
-                let f = DateFormatter()
-                f.dateFormat = "yyyy"
-                print(f.string(from:list.startDate!))
-                // return // uncomment for first example, years alone
-                if list.collectionListType == .momentList {
-                    let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
-                    let colls = result.objects(at: IndexSet(0..<result.count))
-                    for (ix,coll) in colls.enumerated() {
-                        if ix == 0 {
-                            print("======= \(result.count) clusters")
-                        }
-                        f.dateFormat = ("yyyy-MM-dd")
-                        let count = coll.estimatedAssetCount
-                        print("starting \(f.string(from:coll.startDate!)):", count)
-                    }
-                }
-                print("\n")
-            }
-        }
-    }
+
     
     var which : Int { return 1 }
     var subtype : PHAssetCollectionSubtype {

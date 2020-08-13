@@ -6,10 +6,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
-    let status = PHPhotoLibrary.authorizationStatus()
+func checkForPhotoLibraryAccess(for level: PHAccessLevel = .readWrite, andThen f:(()->())? = nil) {
+    let status = PHPhotoLibrary.authorizationStatus(for: level)
     switch status {
-    case .authorized:
+    case .authorized, .limited: // *
         f?()
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in

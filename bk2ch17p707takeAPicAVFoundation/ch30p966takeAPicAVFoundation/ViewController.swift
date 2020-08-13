@@ -27,10 +27,10 @@ extension CGVector {
 
 
 
-func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
-    let status = PHPhotoLibrary.authorizationStatus()
+func checkForPhotoLibraryAccess(for level: PHAccessLevel = .readWrite, andThen f:(()->())? = nil) {
+    let status = PHPhotoLibrary.authorizationStatus(for: level)
     switch status {
-    case .authorized:
+    case .authorized, .limited: // *
         f?()
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
@@ -196,7 +196,6 @@ class ViewController: UIViewController {
         }
         let settings = AVCapturePhotoSettings()
         settings.flashMode = .auto
-        settings.isAutoStillImageStabilizationEnabled = true
         // let's also ask for a preview image
         let pbpf = settings.availablePreviewPhotoPixelFormatTypes[0]
         let len = max(self.previewLayer.bounds.width, self.previewLayer.bounds.height)
