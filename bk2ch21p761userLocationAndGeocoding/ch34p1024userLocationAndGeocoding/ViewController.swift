@@ -26,19 +26,24 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         
         self.map.delegate = self
         
+        // ???
+        sb.textContentType = .addressCityAndState
+        sb.autocorrectionType = .yes
     }
     
     @IBAction func doButton (_ sender: Any) {
         let mi = MKMapItem.forCurrentLocation()
         // here, however, it seems that we cannot set the span...?
+        // makes the maps app unhappy if you try it
         let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        mi.openInMaps(launchOptions:[
+        let opts : [String : Any] = [
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            // whoa, in iOS 13 you crash if you try passing a coordinate span
-            // okay, you can avoid the crash by making an NSValue yourself
-            // but it still doesn't _do_ anything
             // MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: span)
-        ])
+        ]
+        let scene = self.view.window?.windowScene
+        mi.openInMaps(launchOptions: opts, from: scene) { ok in
+            print(ok)
+        }
     }
     
     @IBAction func doButton2 (_ sender: Any) {
@@ -94,6 +99,23 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                 animated: true)
         }
     }
+    @IBAction func restaurantsOnMap(_ sender: Any) {
+        guard let loc = self.map.userLocation.location else {
+            print("I don't know where you are now")
+            return
+        }
+        let req = MKLocalPointsOfInterestRequest(coordinateRegion: self.map.region)
+        req.pointOfInterestFilter = MKPointOfInterestFilter(including: [.restaurant])
+        let search = MKLocalSearch(request: req)
+        search.start { response, error in
+            guard let response = response else {
+                print(error as Any)
+                return
+            }
+            print("local restaurants:")
+            print(response)
+        }
+    }
     
     @IBAction func thaiFoodNearMapLocation (_ sender: Any) {
         guard let loc = self.map.userLocation.location else {
@@ -114,7 +136,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             }
             self.map.showsUserLocation = false
             let mi = response.mapItems[0] // I'm feeling lucky
-            print(response.mapItems)
+            // print(response.mapItems)
             let place = mi.placemark
             let loc = place.location!.coordinate
             let reg = MKCoordinateRegion(center: loc, latitudinalMeters: 1200, longitudinalMeters: 1200)
@@ -164,6 +186,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                 }
             }
         }
+
     }
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -180,7 +203,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         print(type(of:annotation))
         if let annotation = annotation as? MKUserLocation {
             annotation.title = "You are here, stupid!"
-            return nil
+            // return nil
             let v = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
             return v
         }

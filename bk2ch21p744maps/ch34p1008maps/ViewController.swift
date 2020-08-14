@@ -322,6 +322,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             MKLaunchOptionsMapSpanKey: span
         ]
         let scene = self.view.window?.windowScene
+        // iOS 13.2
         mi.openInMaps(launchOptions: opts, from: scene) { ok in
             print(ok)
         }
