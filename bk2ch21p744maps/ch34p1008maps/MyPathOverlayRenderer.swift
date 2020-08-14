@@ -21,11 +21,13 @@ class MyPathOverlayRenderer : MKOverlayRenderer {
         NSLog("draw this: %@", MKStringFromMapRect(mapRect))
         NSLog("converts to: %@", NSCoder.string(for: self.rect(for:mapRect)))
         NSLog("currently clipping to: %@", NSCoder.string(for: con.boundingBoxOfClipPath))
+        print(con.ctm)
 
         con.setStrokeColor(UIColor.black.cgColor)
         con.setFillColor(UIColor.red.withAlphaComponent(0.2).cgColor)
         // again, something is wrong here
         // I need to work out what this has to do with scale
+        // I presume it's because the context fails now to take that into account
         let scale = UIScreen.main.scale
         con.setLineWidth(2/(zoomScale/scale))
         // con.setLineWidth(100)
