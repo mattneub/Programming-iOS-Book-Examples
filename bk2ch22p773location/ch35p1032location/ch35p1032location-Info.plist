@@ -46,5 +46,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>ExactTracking</key>
+		<string>The app would like to map your walk.</string>
+	</dict>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<false/>
 </dict>
 </plist>
