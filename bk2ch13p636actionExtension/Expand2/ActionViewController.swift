@@ -1,6 +1,7 @@
 
 import UIKit
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 class ActionViewController: UIViewController {
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -17,7 +18,7 @@ class ActionViewController: UIViewController {
         return result
     }()
     
-    let desiredType = kUTTypePlainText as String
+    let desiredType = UTType.plainText.identifier
     var orig : String?
     var expansion : String?
     

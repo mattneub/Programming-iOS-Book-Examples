@@ -3,6 +3,7 @@
 import UIKit
 import MobileCoreServices
 import Contacts
+import UniformTypeIdentifiers
 
 final class Person : NSObject, Codable {
     
@@ -24,7 +25,7 @@ extension Person : NSItemProviderWriting {
     
     // this means that a Person can be dragged to where a string is expected
     static var writableTypeIdentifiersForItemProvider =
-        [personUTI, kUTTypeUTF8PlainText as String]
+        [personUTI, UTType.plainText.identifier]
     
     func loadData(withTypeIdentifier typeid: String, forItemProviderCompletionHandler ch: @escaping (Data?, Error?) -> Void) -> Progress? {
         switch typeid {
@@ -34,7 +35,7 @@ extension Person : NSItemProviderWriting {
             } catch {
                 ch(nil, error)
             }
-        case kUTTypeUTF8PlainText as NSString as String:
+        case UTType.plainText.identifier:
             ch(self.description.data(using: .utf8)!, nil)
         default: ch(nil, MyError.oops)
         }
@@ -45,7 +46,7 @@ extension Person : NSItemProviderWriting {
 extension Person : NSItemProviderReading {
     
     // this means that a string can be dragged to where a Person is expected
-    static var readableTypeIdentifiersForItemProvider = [personUTI, kUTTypeVCard as String, kUTTypeUTF8PlainText as String]
+    static var readableTypeIdentifiersForItemProvider = [personUTI, UTType.vCard.identifier, UTType.plainText.identifier]
     
     static func object(withItemProviderData data: Data, typeIdentifier typeid: String) throws -> Self {
         switch typeid {
@@ -56,7 +57,7 @@ extension Person : NSItemProviderReading {
             } catch {
                 throw error
             }
-        case kUTTypeUTF8PlainText as NSString as String:
+        case UTType.plainText.identifier:
             if let s = String(data: data, encoding: .utf8) {
                 let arr = s.split(separator:" ")
                 let first = arr.dropLast().joined(separator: " ")
@@ -64,7 +65,7 @@ extension Person : NSItemProviderReading {
                 return self.init(firstName: first, lastName: String(last))
             }
             throw MyError.oops
-        case kUTTypeVCard as NSString as String:
+        case UTType.vCard.identifier:
             do {
                 let con = try CNContactVCardSerialization.contacts(with: data)[0]
                 if con.givenName.isEmpty && con.familyName.isEmpty {

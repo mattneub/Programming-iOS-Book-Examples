@@ -1,6 +1,7 @@
 
 import UIKit
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 
 class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
@@ -19,7 +20,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     var extensionContext: NSExtensionContext?
     // NSObject has no magically acquired extension context, we must keep a reference
     
-    let desiredType = kUTTypePlainText as String
+    let desiredType = UTType.plainText.identifier
     
     func beginRequest(with context: NSExtensionContext) {
         // Do not call super in an Action extension with no user interface
