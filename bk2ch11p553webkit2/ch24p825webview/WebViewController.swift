@@ -92,7 +92,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             }
         })
         wv.navigationDelegate = self
-        
+        wv.configuration.limitsNavigationsToAppBoundDomains = true // new in iOS 14
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,7 +106,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             // return // forget it, just trying to see if I was in restoration's way, but I'm not
         }
         
-        let url = URL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
+        let url = URL(string: "https://www.apeth.com/RubyFrontierDocs/default.html")!
         self.wv.load(URLRequest(url:url))
     }
     
