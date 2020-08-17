@@ -7,6 +7,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+// Okay so it looks like they have at last abandoned the rather clumsy Inbox stuff
+// so the file goes into temporary storage and your first job is to copy it out
+// changing the code to do that
+
 
 let mylog = OSLog(subsystem: "fileHandoff", category: "testing")
 
@@ -88,8 +92,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        if let _ = scene as? UIWindowScene {
             if let vc = self.window?.rootViewController as? ViewController,
                 let url = cons.first?.url {
-                vc.loadViewIfNeeded() // can't call method until we have a view
-                vc.displayDoc(url: url)
+                do {
+                    let fm = FileManager.default
+                    let docsurl = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    let dest = docsurl.appendingPathComponent(url.lastPathComponent)
+                    print("copying")
+                    try fm.copyItem(at: url, to: dest)
+                    vc.loadViewIfNeeded() // can't call method until we have a view
+                    vc.displayDoc(url: url)
+                } catch {
+                    print(error)
+                }
+
             }
 //        }
     }
@@ -100,7 +114,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         os_log("open context %{public}@", log: mylog, type: .default, cons)
         if let vc = self.window?.rootViewController as? ViewController,
             let url = URLContexts.first?.url {
-            vc.displayDoc(url: url)
+            do {
+                let fm = FileManager.default
+                let docsurl = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                let dest = docsurl.appendingPathComponent(url.lastPathComponent)
+                print("copying")
+                try fm.copyItem(at: url, to: dest)
+                vc.displayDoc(url: dest)
+            } catch {
+                print(error)
+            }
         }
     }
     

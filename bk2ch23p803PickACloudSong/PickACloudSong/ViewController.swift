@@ -24,17 +24,41 @@ class ViewController: UIViewController, UIDocumentPickerDelegate {
                 return [UTType.mp3]
             }
         }()
-        let picker = UIDocumentPickerViewController(forOpeningContentTypes: types, asCopy: true)
-        picker.delegate = self
-        self.present(picker, animated: true)
+        switch which {
+        case 0:
+            let picker = UIDocumentPickerViewController(forOpeningContentTypes: types, asCopy: true)
+            picker.delegate = self
+            self.present(picker, animated: true)
+        case 1:
+            let picker = UIDocumentPickerViewController(forOpeningContentTypes: types)
+            picker.delegate = self
+            self.present(picker, animated: true)
+        default: break
+        }
     }
+    
+    var which : Int { 1 }
+    
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        guard urls.count == 1 else {return}
-        guard let vals = try? urls[0].resourceValues(forKeys: [.typeIdentifierKey]), vals.typeIdentifier == UTType.mp3.identifier else {return}
-        let vc = AVPlayerViewController()
-        vc.player = AVPlayer(url: urls[0])
-        self.present(vc, animated: true) { vc.player?.play() }
-        print(urls[0])
+        switch which {
+        case 0:
+            guard urls.count == 1 else {return}
+            guard let vals = try? urls[0].resourceValues(forKeys: [.typeIdentifierKey]), vals.typeIdentifier == UTType.mp3.identifier else {return}
+            let vc = AVPlayerViewController()
+            vc.player = AVPlayer(url: urls[0])
+            self.present(vc, animated: true) { vc.player?.play() }
+            print(urls[0])
+        case 1:
+            guard urls.count == 1 else {return}
+            guard urls[0].startAccessingSecurityScopedResource() else { return }
+            guard let vals = try? urls[0].resourceValues(forKeys: [.typeIdentifierKey]), vals.typeIdentifier == UTType.mp3.identifier else {return}
+            let vc = AVPlayerViewController()
+            vc.player = AVPlayer(url: urls[0])
+            self.present(vc, animated: true) { vc.player?.play() }
+            print(urls[0])
+            urls[0].stopAccessingSecurityScopedResource()
+        default: break
+        }
     }
 
 
