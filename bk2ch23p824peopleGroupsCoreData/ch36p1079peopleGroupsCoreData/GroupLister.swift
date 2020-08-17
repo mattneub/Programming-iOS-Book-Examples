@@ -54,7 +54,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
     @objc func doRefresh(_:AnyObject) {

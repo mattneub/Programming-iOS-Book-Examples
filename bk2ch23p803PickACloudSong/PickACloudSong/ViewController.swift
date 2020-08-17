@@ -33,11 +33,20 @@ class ViewController: UIViewController, UIDocumentPickerDelegate {
             let picker = UIDocumentPickerViewController(forOpeningContentTypes: types)
             picker.delegate = self
             self.present(picker, animated: true)
+        case 2:
+            // not in the book, just testing
+            let url = Bundle.main.url(forResource: "lib", withExtension: "jpg")!
+            let fm = FileManager.default
+            let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let newurl = docs.appendingPathComponent("lib.jpg")
+            try? fm.copyItem(at: url, to: newurl)
+            let picker = UIDocumentPickerViewController(forExporting: [url])
+            self.present(picker, animated: true, completion: nil)
         default: break
         }
     }
     
-    var which : Int { 1 }
+    var which : Int { 2 }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         switch which {
@@ -57,6 +66,9 @@ class ViewController: UIViewController, UIDocumentPickerDelegate {
             self.present(vc, animated: true) { vc.player?.play() }
             print(urls[0])
             urls[0].stopAccessingSecurityScopedResource()
+        case 2:
+            // not in the book
+            print(urls[0])
         default: break
         }
     }

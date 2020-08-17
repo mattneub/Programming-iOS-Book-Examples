@@ -104,7 +104,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
     // === content update ===
