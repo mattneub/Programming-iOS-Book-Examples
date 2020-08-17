@@ -22,10 +22,10 @@ class ViewController: UIViewController {
                 print(err as Any)
                 return
             }
-            let status = (resp as! HTTPURLResponse).statusCode
-            print("response status: \(status)")
+            let status = (resp as? HTTPURLResponse)?.statusCode
+            print("response status: \(status as Any)")
             guard status == 200 else {
-                print(status)
+                print(status as Any)
                 return
             }
             if let url = fileURL, let d = try? Data(contentsOf:url) {
