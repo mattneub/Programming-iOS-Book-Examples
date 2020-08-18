@@ -1,6 +1,8 @@
 
 import UIKit
 
+import StoreKit
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {

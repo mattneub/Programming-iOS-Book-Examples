@@ -107,6 +107,10 @@ class MyMandelbrotView : UIView {
         
         // woohoo! much nicer way to do this, we can drop use of setSpecific and getSpecific
         
+        if Thread.isMainThread {
+            
+        }
+        
         if which == 1 {
             dispatchPrecondition(condition: .onQueue(self.draw_queue))
         }

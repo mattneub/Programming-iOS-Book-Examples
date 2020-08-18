@@ -57,8 +57,8 @@
 		81F9F30824EB03030023F25F /* UniversalLinksTest */ = {
 			isa = PBXGroup;
 			children = (
-				8152758324EB1484008E050A /* Main.storyboard */,
 				81F9F31D24EB042A0023F25F /* UniversalLinksTest.entitlements */,
+				8152758324EB1484008E050A /* Main.storyboard */,
 				81F9F30924EB03030023F25F /* AppDelegate.swift */,
 				81F9F30B24EB03030023F25F /* SceneDelegate.swift */,
 				81F9F30D24EB03030023F25F /* ViewController.swift */,
