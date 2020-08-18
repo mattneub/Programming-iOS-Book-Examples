@@ -8,20 +8,6 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-
-//struct Oncer2 {
-//    private static var once : Void = {
-//        print("I did it once too!")
-//    }()
-//    func doThisOnce() {
-//        _ = type(of:self).once
-//    }
-//}
-//let oncer2 = Oncer2()
-
-
-
-
 class ViewController: UIViewController {
 
     @IBOutlet var mv : MyMandelbrotView!
@@ -30,35 +16,13 @@ class ViewController: UIViewController {
         self.mv.drawThatPuppy()
     }
     
-//    struct Oncer {
-//        private static var once : Void = {
-//            print("I did it once!")
-//        }()
-//        func doThisOnce() {
-//            _ = type(of:self).once
-//        }
-//    }
-//    let oncer = Oncer()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.testOnce()
         // self.testDispatchGroups()
         // self.test()
         self.testSerial()
     }
-    
-//    func testOnce() {
-//        self.oncer.doThisOnce()
-//        self.oncer.doThisOnce()
-//        self.oncer.doThisOnce()
-//        self.oncer.doThisOnce()
-//        oncer2.doThisOnce()
-//        oncer2.doThisOnce()
-//        oncer2.doThisOnce()
-//        oncer2.doThisOnce()
-//    }
-    
+        
     func testDispatchGroups() {
         DispatchQueue.global(qos: .background).async {
             let queue = DispatchQueue(label:"com.neuburg.groupq", attributes:.concurrent)
