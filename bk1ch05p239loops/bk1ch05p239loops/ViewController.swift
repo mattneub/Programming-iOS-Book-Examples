@@ -28,7 +28,7 @@ struct Primes {
         while primes.count < n {
             appendNextPrime()
         }
-        print("returning", primes[n])
+        print("returning", primes[n-1])
         return primes[n-1]
     }
 }
@@ -366,6 +366,22 @@ class ViewController: UIViewController {
                 return dog
             }
             print(dogs.map{$0.name})
+            
+            // interesting trick I never thought of: make the struct self-updating
+            // see https://stackoverflow.com/a/63485959/341994
+            struct Dog2 {
+                var name : String
+                var license = 0
+                mutating func update(execute: (inout Self) -> ()) {
+                    execute(&self)
+                }
+            }
+            var dogs2 : [Dog2] = [Dog2(name: "rover"), Dog2(name: "fido")]
+            for ix in dogs2.indices {
+                // just making sure we don't get simultaneous access error
+                dogs2[ix].update { $0.name = "Spot"; $0.license = 1 }
+            }
+            print(dogs2.map{$0.name})
         }
         
         do {

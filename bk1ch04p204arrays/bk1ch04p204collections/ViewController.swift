@@ -385,6 +385,23 @@ class ViewController: UIViewController {
         }
         
         do {
+            struct Person {
+                let firstName: String
+                let lastName: String
+            }
+            var arr = [
+                Person(firstName: "Manny", lastName: "Pep"),
+                Person(firstName: "Harpo", lastName: "Marx"),
+                Person(firstName: "Jack", lastName: "Pep"),
+                Person(firstName: "Groucho", lastName: "Marx")
+            ]
+            arr.sort {
+                ($0.lastName, $0.firstName) < ($1.lastName, $1.firstName)
+            }
+            print(arr)
+        }
+        
+        do {
             let arr = [1,2,3,4,5,6]
             let arr2 = arr.split {$0.isMultiple(of:2)} // split at evens: [[1], [3], [5]]
             print(arr2)
