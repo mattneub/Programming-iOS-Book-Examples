@@ -45,7 +45,7 @@ class ViewController : UIViewController {
         let opts : UIView.AnimationOptions = .transitionFlipFromLeft
         UIView.transition(with:self.iv, duration: 0.8, options: opts) {
             self.iv.image = UIImage(named:"Smiley")
-        } completion: { _ in }
+        }
         
         // ======
         
@@ -54,7 +54,7 @@ class ViewController : UIViewController {
             self.v.reverse.toggle()
             UIView.transition(with:self.v, duration: 1, options: opts) {
                 self.v.setNeedsDisplay()
-            } completion: { _ in }
+            }
         }
         
         // ======
@@ -65,7 +65,7 @@ class ViewController : UIViewController {
             f.size.width = self.outer.frame.width
             f.origin.x = 0
             self.inner.frame = f
-        } completion: { _ in }
+        }
         
     }
     

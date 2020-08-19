@@ -9,7 +9,7 @@ class ViewController : UIViewController {
         let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
         UIView.animate(withDuration:1, delay: 0, options: opts) {
             self.v.center.x += 100
-        } completion: { _ in }
+        }
     }
     
     
@@ -18,7 +18,7 @@ class ViewController : UIViewController {
         // ...because animation is not additive when existing animation is repeating
         UIView.animate(withDuration:0.1, delay:0, options:.beginFromCurrentState) {
             self.v.center = self.pOrig
-        } completion: { _ in }
+        }
     }
     
     @IBAction func doStart(_ sender: Any?) {

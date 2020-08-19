@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         let opts : UIView.AnimationOptions = [.autoreverse, .repeat]
         UIView.animate(withDuration:1, delay: 0, options: opts) {
             self.v.center.x += 100
-        } completion: { _ in }
+        }
     }
     
     func cancel() {
@@ -21,7 +21,7 @@ class ViewController : UIViewController {
             if let val = self.v.layer.value(forKey:"pOrig") as? CGPoint {
                 self.v.center = val
             }
-        } completion: { _ in }
+        }
     }
     
     @IBAction func doStart(_ sender: Any?) {

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
                 UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25) {
                     self.v.backgroundColor = .red
                 }
-            } completion: { _ in }
+            }
             
         }
         // if we don't set this, the view jumps when we continue the animation

@@ -74,7 +74,7 @@ class ViewController : UIViewController {
                                         p.x += dx*dir; p.y += dy
                                         self.v.center = p
                     }
-            } completion: { _ in }
+            }
             dont: do {
                 break dont
                 let dx : CGFloat = 100
@@ -142,7 +142,7 @@ class ViewController : UIViewController {
                                         p.x += dx*dir; p.y += dy
                                         self.v.center = p
                     }
-            } completion: { _ in }
+            }
 
         default : break
         }

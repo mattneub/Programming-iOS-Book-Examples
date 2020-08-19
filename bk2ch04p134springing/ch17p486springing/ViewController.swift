@@ -13,7 +13,7 @@ class ViewController : UIViewController {
                            usingSpringWithDamping: 0.7,
                            initialSpringVelocity: 20) {
                 self.v.center.y += 100
-            } completion: { _ in }
+            }
         case 2:
             // new in iOS 9, springing is exposed at layer level
             CATransaction.setDisableActions(true)

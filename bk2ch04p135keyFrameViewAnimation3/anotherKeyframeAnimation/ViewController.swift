@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             UIView.addKeyframe(withRelativeStartTime: start, relativeDuration: 0.5) {
                 self.reds[ix].center.y += 100
             }
-        } completion: { _ in }
+        }
     }
 
 

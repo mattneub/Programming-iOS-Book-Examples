@@ -38,9 +38,8 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
             return pep
         } actionProvider: { _ in
 //            return nil
-//            let simpleAction = UIAction(title: "Testing", handler: { _ in
-//            })
-//            return UIMenu(title: "", children: [simpleAction])
+            let simpleAction = UIAction(title: "Testing") { _ in }
+            return UIMenu(title: "", children: [simpleAction])
             let def = UIDeferredMenuElement { f in
                 delay(2) {
                     let action = UIAction(title: "Yoho") { action in
