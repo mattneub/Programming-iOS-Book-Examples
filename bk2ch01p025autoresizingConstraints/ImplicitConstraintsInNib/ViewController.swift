@@ -64,10 +64,10 @@ extension CGVector {
         guard recursing else { return }
         if !up { // down
             for sub in self.subviews {
-                sub.listConstraints(up:up)
+                sub.listConstraints(up:up, filtering:filtering)
             }
         } else { // up
-            self.superview?.listConstraints(up:up)
+            self.superview?.listConstraints(up:up, filtering:filtering)
         }
     }
 }

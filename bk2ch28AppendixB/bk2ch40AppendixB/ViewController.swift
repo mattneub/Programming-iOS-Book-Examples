@@ -72,7 +72,7 @@ extension Array where Element:UIView {
     }
 }
 
-extension UIView {
+@objc extension UIView {
     func reportAmbiguity(filtering:Bool = false) {
         let has = self.hasAmbiguousLayout
         if has || !filtering {
@@ -84,7 +84,7 @@ extension UIView {
     }
 }
 
-extension UIView {
+@objc extension UIView {
     func listConstraints(recursing:Bool = true, up:Bool = false, filtering:Bool = false) {
         let arr1 = self.constraintsAffectingLayout(for:.horizontal)
         let arr2 = self.constraintsAffectingLayout(for:.vertical)
@@ -100,14 +100,20 @@ extension UIView {
         guard recursing else { return }
         if !up { // down
             for sub in self.subviews {
-                sub.listConstraints(up:up)
+                sub.listConstraints(up:up, filtering:filtering)
             }
         } else { // up
-            self.superview?.listConstraints(up:up)
+            self.superview?.listConstraints(up:up, filtering:filtering)
         }
     }
 }
 
+@objc extension UIView {
+    func constraint(withIdentifier id: String) -> NSLayoutConstraint? {
+        return self.constraints.first { $0.identifier == id } ??
+            self.superview?.constraint(withIdentifier: id)
+    }
+}
 
 extension UIView {
     @IBInspectable var name : String? {
@@ -236,7 +242,7 @@ class ViewController: UIViewController {
         let d = [self.view, self.v].dictionaryOfNames()
         print(d)
         
-        self.view.reportAmbiguity()
+        //self.view.reportAmbiguity()
         self.view.listConstraints()
                 
         var arr = [1,2,3,4]
