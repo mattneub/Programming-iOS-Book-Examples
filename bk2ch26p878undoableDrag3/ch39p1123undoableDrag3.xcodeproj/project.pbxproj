@@ -260,6 +260,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch39p1123undoableDrag/ch39p1123undoableDrag3-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ch39p1123undoableDrag/Info.plist";
@@ -282,6 +283,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch39p1123undoableDrag/ch39p1123undoableDrag3-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ch39p1123undoableDrag/Info.plist";
