@@ -22,14 +22,14 @@ class ViewController: UIViewController {
         print("green view top:", self.greenView.frame.origin.y)
         let howFar : CGFloat = 300
         topConstraint.constant -= howFar
-        UIView.animate(withDuration: 6, animations: ({
+        UIView.animate(withDuration: 6) {
             self.view.layoutIfNeeded()
-        })) { _ in
+        } completion: { _ in
             print("green view top:", self.greenView.frame.origin.y)
             self.topConstraint.constant += howFar
-            UIView.animate(withDuration:6, animations: ({
+            UIView.animate(withDuration:6) {
                 self.view.layoutIfNeeded()
-            })) { _ in
+            } completion: { _ in
                 print("green view top:", self.greenView.frame.origin.y)
             }
         }

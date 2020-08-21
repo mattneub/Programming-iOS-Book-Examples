@@ -169,11 +169,11 @@ extension RootViewController : UITableViewDropDelegate {
             let item = item.dragItem
             guard let p = item.localObject as? Person else {continue}
 
-            // tableView.performBatchUpdates({
+            // tableView.performBatchUpdates {
             self.sections[ip.section].rowData[ip.row] = p
             tableView.reloadRows(at: [ip], with: .none)
             coord.drop(item, toRowAt: ip)
-            // })
+            // }
             // coord.drop(item, intoRowAt: ip, rect: tableView.cellForRow(at: ip)!.bounds)
             // coord.drop(item, to: UIDragPreviewTarget(container: tableView, center: .zero))
             

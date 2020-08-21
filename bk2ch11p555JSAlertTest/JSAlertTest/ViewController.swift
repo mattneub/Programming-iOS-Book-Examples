@@ -99,7 +99,7 @@ extension ViewController : WKUIDelegate {
     // even if we don't implement anything further
     
     func webView(_ webView: WKWebView, contextMenuConfigurationForElement elementInfo: WKContextMenuElementInfo, completionHandler: @escaping (UIContextMenuConfiguration?) -> Void) {
-        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: {
+        let config = UIContextMenuConfiguration(identifier: nil) {
 //            let config = SFSafariViewController.Configuration()
 //            config.barCollapsingEnabled = false
 //            let sfvc = SFSafariViewController(url: elementInfo.linkURL!, configuration:config)
@@ -125,8 +125,7 @@ extension ViewController : WKUIDelegate {
             }
             let wvc = WebViewController(dataStore: self.datastore, url: elementInfo.linkURL!)
             return wvc
-        })
-        { elements in
+        } actionProvider: { elements in
             let action = UIAction(title: "Test") { _ in
                 print("Test")
             }

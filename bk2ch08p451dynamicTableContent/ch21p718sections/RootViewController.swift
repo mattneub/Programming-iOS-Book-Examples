@@ -135,17 +135,17 @@ class RootViewController : UITableViewController {
         if #available(iOS 11.0, *) {
             if self.hiddenSections.contains(sec) {
                 self.hiddenSections.remove(sec)
-                self.tableView.performBatchUpdates({
+                self.tableView.performBatchUpdates {
                     self.tableView.insertRows(at:arr, with:.automatic)
-                }) { _ in
+                } completion: { _ in
                     // improvement: make sure first inserted row is showing
                     self.tableView.scrollToRow(at:arr[0], at:.none, animated:true)
                 }
             } else {
                 self.hiddenSections.insert(sec)
-                self.tableView.performBatchUpdates({
+                self.tableView.performBatchUpdates {
                     self.tableView.deleteRows(at:arr, with:.automatic)
-                }) { _ in
+                } completion: { _ in
                     // improvement: make sure removed section doesn't vanish off top
                     let rect = self.tableView.rect(forSection: sec)
                     self.tableView.scrollRectToVisible(rect, animated: true)

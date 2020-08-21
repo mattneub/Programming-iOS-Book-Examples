@@ -48,9 +48,9 @@ class ViewController : UIViewController {
 
         case 5:
             // proving that the completion block works
-            CATransaction.setCompletionBlock({
+            CATransaction.setCompletionBlock {
                 print("done")
-                })
+            }
             
             // capture the start and end values
             let startValue = arrow.transform

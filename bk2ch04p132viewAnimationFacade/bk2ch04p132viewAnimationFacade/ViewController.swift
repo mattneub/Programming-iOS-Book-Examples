@@ -48,7 +48,7 @@ class MyView : UIView {
             }
             // can use a property animator here too
             // but only if we generate it this way
-//            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0, delay: 0, options: [], animations: {self.center = p})
+//            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0, delay: 0, options: []) {self.center = p}
         }
     }
 }

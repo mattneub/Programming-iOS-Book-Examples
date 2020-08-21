@@ -62,12 +62,12 @@ class ViewController2: UIViewController {
     }
     @IBAction func doButton(_ sender: Any) {
         self.big.toggle()
-        UIView.animate(withDuration: 1, delay: 0, options: [.layoutSubviews], animations: {
+        UIView.animate(withDuration: 1, delay: 0, options: [.layoutSubviews]) {
             self.greenView.frame = self.targetRect
             let lay = self.circleView.layer as! CircleLayer
             lay.frame = self.greenView.bounds
             lay.update()
-        })
+        }
     }
 }
 

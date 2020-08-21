@@ -264,13 +264,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             }
         }
         // request the deletion from the view; notice the slick automatic animation
-        self.collectionView.performBatchUpdates({
+        self.collectionView.performBatchUpdates {
             self.collectionView.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
                 self.sections.remove(at:empties) // see utility function at top of file
                 self.collectionView.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
-        })
+        }
     }
     
     // menus moved to next example

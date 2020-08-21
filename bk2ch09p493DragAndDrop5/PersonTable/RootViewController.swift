@@ -141,10 +141,10 @@ extension RootViewController : UITableViewDropDelegate {
             if let ip = coord.destinationIndexPath {
                 coord.session.loadObjects(ofClass: Person.self) { persons in
                     for person in (persons as! [Person]).reversed() {
-                        tableView.performBatchUpdates({
+                        tableView.performBatchUpdates {
                             self.sections[ip.section].rowData.insert(person, at: ip.row)
                             tableView.insertRows(at: [ip], with: .none)
-                        })
+                        }
                     }
                 }
             }

@@ -48,9 +48,9 @@ class MyView : UIView {
             // let oldCenter = self.center
             self.undoer.registerUndo(withTarget: self) {
                 [oldCenter = self.center] myself in
-                UIView.animate(withDuration:0.4, delay: 0.1, animations: {
+                UIView.animate(withDuration:0.4, delay: 0.1) {
                     myself.center = oldCenter
-                })
+                }
                 myself.setCenterUndoably(oldCenter)
             }
             self.undoer.setActionName("Move")

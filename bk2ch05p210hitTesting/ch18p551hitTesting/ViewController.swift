@@ -29,13 +29,12 @@ class ViewController : UIViewController {
         let v = g.view?.hitTest(p, with: nil)
         if let v = v as? UIImageView {
             UIView.animate(withDuration:0.2, delay: 0,
-                options: .autoreverse,
-                animations: {
+                           options: .autoreverse) {
                     v.transform = CGAffineTransform(scaleX:1.1, y:1.1)
-                }, completion: {
+                } completion: {
                     _ in
                     v.transform = .identity
-                })
+                }
         }
     }
 }

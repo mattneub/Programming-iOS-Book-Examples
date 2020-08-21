@@ -131,12 +131,12 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
             self.numbers += [""]
             let ct = self.numbers.count
             if #available(iOS 11.0, *) {
-                tv.performBatchUpdates({
+                tv.performBatchUpdates {
                     tv.insertRows(at:
                         [IndexPath(row:ct-1, section:1)], with:.automatic)
                     tv.reloadRows(at:
                         [IndexPath(row:ct-2, section:1)], with:.automatic)
-                }) { _ in
+                } completion: { _ in
                     let cell = self.tableView.cellForRow(at:
                         IndexPath(row:ct-1, section:1))
                     (cell as! MyCell).textField.becomeFirstResponder()
@@ -161,11 +161,11 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
             self.numbers.remove(at:ip.row)
 
             if #available(iOS 11.0, *) {
-                tv.performBatchUpdates({
+                tv.performBatchUpdates {
                     tv.deleteRows(at:[ip], with:.automatic)
                     // if we omit reload, we get weird constraints errors
                     tv.reloadSections(IndexSet(integer:1), with:.automatic)
-                })
+                }
             } else {
                 tv.beginUpdates()
                 tv.deleteRows(at:

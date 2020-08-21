@@ -63,7 +63,7 @@ class ViewController3: UIViewController {
     }
     @IBAction func doButton(_ sender: Any) {
         self.big.toggle()
-        UIView.animate(withDuration: 1, delay: 0, options: [.layoutSubviews], animations: {
+        UIView.animate(withDuration: 1, delay: 0, options: [.layoutSubviews]) {
             self.greenView.frame = self.targetRect
             let lay = self.circleView.layer as! CircleLayer
             let oldPath = lay.shape?.path
@@ -91,7 +91,7 @@ class ViewController3: UIViewController {
             ba2.duration = 1
             lay.shape?.add(ba2, forKey: nil)
 
-        })
+        }
     }
 }
 

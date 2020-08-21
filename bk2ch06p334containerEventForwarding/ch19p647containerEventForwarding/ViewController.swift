@@ -121,14 +121,12 @@ On flip we expect to see (ignoring parent messages):
                             to:tovc,
                             duration:0.4,
                             options:.transitionFlipFromLeft,
-                            animations:nil,
-                            completion: {
-                                _ in
+                            animations: nil) { _ in
                                 // finally, finish up
                                 // note: when we call add, we must call "did" afterwards
                                 tovc.didMove(toParent: self)
                                 fromvc.removeFromParent() // "did" called for us
-            })
+            }
         case 2: // manual forwarding of appearance messages
             fromvc.beginAppearanceTransition(false, animated:true) // *
             tovc.beginAppearanceTransition(true, animated:true) // *

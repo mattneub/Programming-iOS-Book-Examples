@@ -82,9 +82,9 @@ class ViewController: UIViewController {
     }
     @IBAction func doButton(_ sender: Any) {
         self.big.toggle()
-        UIView.animate(withDuration: 1, delay: 0, options: [.layoutSubviews], animations: {
+        UIView.animate(withDuration: 1, delay: 0, options: [.layoutSubviews]) {
             self.greenView.frame = self.targetRect
-        })
+        }
         let lay = self.circleView.layer as! CircleLayer
         let cur = lay.dummy
         lay.dummy = cur == 10 ? 0 : 10

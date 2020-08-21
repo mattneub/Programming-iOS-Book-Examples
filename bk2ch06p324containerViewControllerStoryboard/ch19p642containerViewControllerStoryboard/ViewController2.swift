@@ -50,12 +50,12 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
         r2start.origin.y -= r2start.size.height
         v2.frame = r2start
         con.addSubview(v2)
-        UIView.animate(withDuration:0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, animations: {
+        UIView.animate(withDuration:0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10) {
             v2.frame = r2end
-            }, completion: {
+            } completion: {
                 _ in
                 transitionContext.completeTransition(true)
-            })
+            }
 
     }
 }

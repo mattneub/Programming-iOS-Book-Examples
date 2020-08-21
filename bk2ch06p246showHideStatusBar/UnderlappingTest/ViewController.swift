@@ -39,10 +39,10 @@ class ViewController: UIViewController {
         self.hide.toggle()
 //        self.setNeedsStatusBarAppearanceUpdate()
 //        return;
-        UIView.animate(withDuration:1, animations: {
+        UIView.animate(withDuration:1) {
             self.setNeedsStatusBarAppearanceUpdate()
             // self.view.layoutIfNeeded()
-        }) { _ in
+        } completion: { _ in
             // new in iOS 13
             if let sbman = self.view.window?.windowScene?.statusBarManager {
                 print(sbman.statusBarFrame)
