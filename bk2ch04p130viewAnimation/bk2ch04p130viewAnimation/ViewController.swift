@@ -319,9 +319,9 @@ class ViewController: UIViewController {
              case 10:
              let opts = UIViewAnimationOptions.autoreverse
              let xorig = self.v.center.x
-             UIView.animate(times:3, duration:1, delay:0, options:opts, animations:{
+             UIView.animate(times:3, duration:1, delay:0, options:opts, animations: {
              self.v.center.x += 100
-             }, completion:{
+             }, completion: {
              _ in
              self.v.center.x = xorig
              })

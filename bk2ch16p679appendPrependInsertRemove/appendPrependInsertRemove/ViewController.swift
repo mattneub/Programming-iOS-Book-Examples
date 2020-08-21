@@ -54,7 +54,7 @@ class ViewController: UIViewController {
                 self.lock = true
                 self.player.perform(queueTransaction: {q in
                     NSLog("perform")
-                    print(q.items.map{$0.title!})
+                    print(q.items.map {$0.title!})
                 }, completionHandler: {_,_ in
                     NSLog("completion")
                     self.lock = false
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
             // this fails because it is too soon, the change has not happened yet
 //            self.player.perform(queueTransaction: {q in
 //            }, completionHandler: {q,_ in
-//                print(q.items.map{$0.title!})
+//                print(q.items.map {$0.title!})
 //            })
 
         }
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             // this fails because it is too soon, the change has not happened yet
 //            self.player.perform(queueTransaction: {q in
 //            }, completionHandler: {q,_ in
-//                print(q.items.map{$0.title!})
+//                print(q.items.map {$0.title!})
 //            })
         }
     }
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
                 if let err = err { print("error", err) }
                 // and they fixed the delay issue for this one!
                 print("and the queue is now")
-                print(q.items.map{$0.title!})
+                print(q.items.map {$0.title!})
             }
         }
     }
@@ -163,14 +163,14 @@ class ViewController: UIViewController {
             self.player.perform(queueTransaction: {q in
             }, completionHandler: {q,_ in
                 print("before removing")
-                print(q.items.map{$0.title!})
+                print(q.items.map {$0.title!})
                 self.player.perform(queueTransaction: {q in
                     print("removing")
                     q.remove(q.items[3])
                 }) {q, err in
                     if let err = err { print("error", err) }
                     print("and the queue is now")
-                    print(q.items.map{$0.title!})
+                    print(q.items.map {$0.title!})
                 }
             })
         }
@@ -180,7 +180,7 @@ class ViewController: UIViewController {
         let state = player.playbackState
 //        print("state:", state.rawValue)
 //        player.perform(queueTransaction: {q in
-//            print(q.items.map{$0.title!})
+//            print(q.items.map {$0.title!})
 //        }) {q, err in
 //            // if let err = err { print(err) }
 //            // there is _always_ an error because we didn't transact

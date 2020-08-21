@@ -117,22 +117,22 @@ class ViewController: UIViewController {
             
             switch which {
             case 1:
-                PHPhotoLibrary.shared().performChanges({
+                PHPhotoLibrary.shared().performChanges {
                     let t = "TestAlbum"
                     typealias Req = PHAssetCollectionChangeRequest
                     Req.creationRequestForAssetCollection(withTitle:t)
-                })
+                }
 
                 
             case 2:
                 
                 var ph : PHObjectPlaceholder?
-                PHPhotoLibrary.shared().performChanges({
+                PHPhotoLibrary.shared().performChanges {
                     let t = "TestAlbum"
                     typealias Req = PHAssetCollectionChangeRequest
                     let cr = Req.creationRequestForAssetCollection(withTitle:t)
                     ph = cr.placeholderForCreatedAssetCollection
-                }) { ok, err in
+                } completionHandler: { ok, err in
                     print("created TestAlbum: \(ok)")
                     if ok, let ph = ph {
                         print("and its id is \(ph.localIdentifier)")
@@ -185,11 +185,11 @@ class ViewController: UIViewController {
                 return
             }
             
-            PHPhotoLibrary.shared().performChanges({
+            PHPhotoLibrary.shared().performChanges {
                 typealias Req = PHAssetCollectionChangeRequest
                 let cr = Req(for: alb2)
                 cr?.addAssets([asset1] as NSArray)
-            })  {
+            } completionHandler: {
                 (ok:Bool, err:Error?) in
                 print("added it: \(ok)")
             }

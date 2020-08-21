@@ -45,7 +45,7 @@ class ViewController : UICollectionViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+        self.sections = Array(d).sorted {$0.key < $1.key}.map {
             Section(sectionName: $0.key, rowData: $0.value)
         }
         

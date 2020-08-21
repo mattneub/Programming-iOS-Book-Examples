@@ -51,7 +51,7 @@ class ViewController : UIViewController {
                 "H:[v2]-20-|", metrics: nil, views: d),
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:[v1(>=100)]-(>=20)-[v2(>=100)]", metrics: nil, views: d)
-            ].flatMap{$0})
+            ].flatMap {$0})
         // added width shrinkage limit to both labels, so neither gets driven down to invisibility
         
         // we will be ambiguous when the label texts grow
@@ -78,7 +78,7 @@ class ViewController : UIViewController {
                 "H:|-(>=10)-[v2]-[v1]-(>=10)-|",
                 options: .alignAllLastBaseline,
                 metrics: nil, views: d2)
-            ].flatMap{$0})
+            ].flatMap {$0})
         
         let con = button.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
         // no longer need to say rawValue

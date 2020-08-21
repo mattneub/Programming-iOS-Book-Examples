@@ -93,9 +93,9 @@ class ViewController: UIViewController {
             print(i)
         }
         
-        _ = arr.map{$0*2}.first == 4
+        _ = arr.map {$0*2}.first == 4
         
-        if arr.map{$0*2}.first == 4 { // Trailing closure in this context is confusable with the body of the statement
+        if arr.map {$0*2}.first == 4 { // Trailing closure in this context is confusable with the body of the statement
             print("yup")
         }
 

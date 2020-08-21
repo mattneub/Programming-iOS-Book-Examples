@@ -186,7 +186,7 @@ extension ViewController2 {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let tc = self.transitionCoordinator {
-            tc.animate(alongsideTransition:{
+            tc.animate(alongsideTransition: {
                 _ in
 //                self.buttonTopConstraint.constant += 200
 //                self.view.layoutIfNeeded()

@@ -259,10 +259,10 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
             checkForPhotoLibraryAccess {
                 print("saving to library")
                 let lib = PHPhotoLibrary.shared()
-                lib.performChanges({
+                lib.performChanges {
                     let req = PHAssetCreationRequest.forAsset()
                     req.addResource(with: .photo, data: data, options: nil)
-                })
+                }
             }
 
         }
@@ -292,10 +292,10 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
                         checkForPhotoLibraryAccess {
                             print("saving to library")
                             let lib = PHPhotoLibrary.shared()
-                            lib.performChanges({
+                            lib.performChanges {
                                 let req = PHAssetCreationRequest.forAsset()
                                 req.addResource(with: .photo, data: data, options: nil)
-                            })
+                            }
                         }
                     
                 }

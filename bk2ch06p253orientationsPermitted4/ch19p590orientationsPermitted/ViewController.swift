@@ -89,7 +89,7 @@ class ViewController : UIViewController {
         print("window transform: \(self.view.window!.transform)")
         print("view transform: \(self.view.transform)")
         let t1 = coordinator.targetTransform
-        coordinator.animate(alongsideTransition:{
+        coordinator.animate(alongsideTransition: {
             _ in
             print("transitioning size change to \(size)")
             // assuming we originally launched into portrait...

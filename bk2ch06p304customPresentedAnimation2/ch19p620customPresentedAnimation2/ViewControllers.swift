@@ -101,7 +101,7 @@ class MyPresentationController : UIPresentationController {
         con.insertSubview(shadow, at: 0)
         shadow.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let tc = self.presentedViewController.transitionCoordinator!
-        tc.animate(alongsideTransition:{
+        tc.animate(alongsideTransition: {
             _ in
             shadow.alpha = 1
             }, completion: {
@@ -116,7 +116,7 @@ class MyPresentationController : UIPresentationController {
         let con = self.containerView!
         let shadow = con.subviews[0]
         let tc = self.presentedViewController.transitionCoordinator!
-        tc.animate(alongsideTransition:{
+        tc.animate(alongsideTransition: {
             _ in
             shadow.alpha = 0
             }, completion: {

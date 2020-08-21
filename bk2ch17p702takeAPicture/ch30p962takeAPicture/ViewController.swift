@@ -178,11 +178,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                             switch which {
                             case 0: // simply add image to library
                                 let lib = PHPhotoLibrary.shared()
-                                lib.performChanges({
+                                lib.performChanges {
                                     typealias Req = PHAssetChangeRequest
                                     let req = Req.creationRequestForAsset(from: im!)
                                     // apply metadata info here, as desired
-                                })
+                                }
                             case 1: // add image while folding in the metadata
                                 let jpeg = im!.jpegData(compressionQuality: 1)!
                                 let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!
@@ -192,10 +192,10 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                 CGImageDestinationAddImageFromSource(dest, src, 0, m)
                                 CGImageDestinationFinalize(dest)
                                 let lib = PHPhotoLibrary.shared()
-                                lib.performChanges({
+                                lib.performChanges {
                                     let req = PHAssetCreationRequest.forAsset()
                                     req.addResource(with: .photo, data: data as Data, options: nil)
-                                })
+                                }
                             default: break
                             }
                             

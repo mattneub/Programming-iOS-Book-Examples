@@ -172,11 +172,11 @@ extension RootViewController : UITableViewDropDelegate {
                             return
                         }
                         print("object loaded, committing insertion")
-                        con.commitInsertion(dataSourceUpdates: {ip in
-                            tableView.performBatchUpdates({
+                        con.commitInsertion { ip in
+                            tableView.performBatchUpdates {
                                 self.sections[ip.section].rowData.insert(p, at: ip.row)
-                            })
-                        })
+                            }
+                        }
                         // }
                     }
                 }

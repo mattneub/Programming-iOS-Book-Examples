@@ -165,12 +165,12 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // now we must tell the photo library to pick up the edited image
             // all this main-queue-plus-delay stuff seems to be genuinely necessary
             DispatchQueue.main.async {
-                PHPhotoLibrary.shared().performChanges({
+                PHPhotoLibrary.shared().performChanges {
                     print("finishing", self.asset as Any)
                     typealias Req = PHAssetChangeRequest
                     let req = Req(for: self.asset)
                     req.contentEditingOutput = output
-                }) { ok, err in
+                } completionHandler: { ok, err in
                     DispatchQueue.main.async {
                         print("in completion handler")
                         // at the last minute, the user will get a special "modify?" dialog

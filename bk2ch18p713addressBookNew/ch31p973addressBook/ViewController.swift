@@ -93,7 +93,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     }
                     let moi2 = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor])
                     let emails = moi2.emailAddresses
-                    let workemails = emails.filter{$0.label == CNLabelWork}.map{$0.value}
+                    let workemails = emails.filter {$0.label == CNLabelWork}.map {$0.value}
                     print(workemails)
                     let full = CNContactFormatterStyle.fullName
                     let keys = CNContactFormatter.descriptorForRequiredKeys(for:full)

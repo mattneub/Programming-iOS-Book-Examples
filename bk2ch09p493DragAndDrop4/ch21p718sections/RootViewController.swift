@@ -28,7 +28,7 @@ class RootViewController : UITableViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+        self.sections = Array(d).sorted {$0.key < $1.key}.map {
             Section(sectionName: $0.key, rowData: $0.value)
         }
         
@@ -119,7 +119,7 @@ class RootViewController : UITableViewController {
                     metrics:nil, views:["v":v]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                     metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatMap {$0})
             
             // uncomment to see bug where button does not inherit superview's tint color
             // ooooh, bug is fixed
@@ -154,7 +154,7 @@ class RootViewController : UITableViewController {
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         // return nil
-        return self.sections.map{$0.sectionName}
+        return self.sections.map {$0.sectionName}
     }
 }
 

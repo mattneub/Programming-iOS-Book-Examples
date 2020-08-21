@@ -20,7 +20,7 @@ import UIKit
         let arr2 = self.constraintsAffectingLayout(for:.vertical)
         var arr = arr1 + arr2
         if filtering {
-            arr = arr.filter{
+            arr = arr.filter {
                 $0.firstItem as? UIView == self ||
                     $0.secondItem as? UIView == self }
         }
@@ -180,7 +180,7 @@ class ViewController: UIViewController {
                 // uncomment me to form a conflict
 //                NSLayoutConstraint.constraints(withVisualFormat:
 //                    "V:[v3(10)]|", metrics: nil, views: d),
-                ].flatMap{$0})
+                ].flatMap {$0})
         default: break
         }
         

@@ -31,7 +31,7 @@ class MyHeader: UITableViewHeaderFooterView {
                                                metrics:nil, views:["v":v]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                                                metrics:nil, views:["lab":lab])
-            ].flatMap{$0})
+            ].flatMap {$0})
         }
         let lab = self.contentView.viewWithTag(1) as! UILabel
         lab.text = configuration.sectionName

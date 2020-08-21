@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         self.redView.addInteraction(dragger)
         
         self.button.isSpringLoaded = true // mostly buttons and button-like things, and table/collection views
-        self.button.addInteraction(UISpringLoadedInteraction() { int, con in
+        self.button.addInteraction(UISpringLoadedInteraction { int, con in
             // there are two initializers; this is the simplest one, with just an activation handler
             // the button will sort of flash and fire this method
             // it won't also automatically fire its main control event; that's up to you

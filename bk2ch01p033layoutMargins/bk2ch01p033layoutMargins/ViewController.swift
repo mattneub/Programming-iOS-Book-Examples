@@ -44,14 +44,14 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":redView]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":redView])
-                ].flatMap{$0})
+                ].flatMap {$0})
         case 1:
             // trying to figure out how use visual layout format to pin to safe area
             // so far, I haven't found a way; I've filed a bug
             NSLayoutConstraint.activate([
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":redView]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:[s]-[v]-(0)-|", metrics: nil, views: ["v":redView, "s":self.view.safeAreaLayoutGuide])
-                ].flatMap{$0})
+                ].flatMap {$0})
         default: break
         }
         
@@ -85,14 +85,14 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|-[v1]-|", metrics: nil, views: ["v1":greenView]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|-[v1]-|", metrics: nil, views: ["v1":greenView])
-                ].flatMap{$0})
+                ].flatMap {$0})
             
         case 2:
             // test underlap of margin (use logging)
             NSLayoutConstraint.activate([
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|-10-[v1]-|", metrics: nil, views: ["v1":greenView]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|-[v1]-|", metrics: nil, views: ["v1":greenView])
-                ].flatMap{$0})
+                ].flatMap {$0})
 
         case 3:
             // display margins; new notation treats margins as a pseudoview (UILayoutGuide)

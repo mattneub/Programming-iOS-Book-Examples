@@ -108,7 +108,7 @@ extension Animator : UIViewControllerAnimatedTransitioning {
         return anim
     }
     
-    func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval{
+    func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 2
     }
     

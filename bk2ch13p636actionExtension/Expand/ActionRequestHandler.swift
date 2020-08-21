@@ -11,7 +11,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         let s = try! String(contentsOf:path)
         let arr = s.components(separatedBy:"\n")
         var result : [String:String] = [:]
-        stride(from: 0, to: arr.count, by: 2).map{($0,$0+1)}.forEach {
+        stride(from: 0, to: arr.count, by: 2).map {($0,$0+1)}.forEach {
             result[arr[$0.0]] = arr[$0.1]
         }
         return result

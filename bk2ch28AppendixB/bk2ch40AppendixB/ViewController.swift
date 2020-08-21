@@ -90,7 +90,7 @@ extension Array where Element:UIView {
         let arr2 = self.constraintsAffectingLayout(for:.vertical)
         var arr = arr1 + arr2
         if filtering {
-            arr = arr.filter{
+            arr = arr.filter {
                 $0.firstItem as? UIView == self ||
                     $0.secondItem as? UIView == self }
         }
@@ -169,8 +169,8 @@ extension Array {
 extension Array {
     mutating func remove2(at ixs:Set<Int>) {
         var arr = Swift.Array(self.enumerated())
-        arr.removeAll{ixs.contains($0.offset)}
-        self = arr.map{$0.element}
+        arr.removeAll {ixs.contains($0.offset)}
+        self = arr.map {$0.element}
     }
 }
 
@@ -196,7 +196,7 @@ extension UIImage {
 
 class Wrapper<T> {
     let p:T
-    init(_ p:T){self.p = p}
+    init(_ p:T) {self.p = p}
 }
 
 

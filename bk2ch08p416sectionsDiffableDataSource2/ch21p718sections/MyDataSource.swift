@@ -35,7 +35,7 @@ class MyDataSource: UITableViewDiffableDataSource<String, String> {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let sections = Array(d).sorted{$0.key < $1.key} // *
+        let sections = Array(d).sorted {$0.key < $1.key} // *
         
         var snap = NSDiffableDataSourceSnapshot<String,String>()
         for section in sections {
@@ -80,7 +80,7 @@ extension MyDataSource : UITableViewDelegate {
                                                metrics:nil, views:["v":v]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                                                metrics:nil, views:["lab":lab])
-            ].flatMap{$0})
+            ].flatMap {$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.snapshot().sectionIdentifiers[section] // *

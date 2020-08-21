@@ -155,9 +155,9 @@ extension ViewController : AVPlayerViewControllerDelegate {
         coordinator: UIViewControllerTransitionCoordinator) {
         
         print(av, av.parent as Any)
-        coordinator.animate(alongsideTransition: { con in
+        coordinator.animate { con in
             // ...
-        }) { con in
+        } completion: { con in
             if con.isCancelled {
                 // ...
             } else {

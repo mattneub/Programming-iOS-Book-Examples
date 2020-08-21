@@ -122,7 +122,7 @@ On flip we expect to see (ignoring parent messages):
                             duration:0.4,
                             options:.transitionFlipFromLeft,
                             animations:nil,
-                            completion:{
+                            completion: {
                                 _ in
                                 // finally, finish up
                                 // note: when we call add, we must call "did" afterwards

@@ -208,11 +208,11 @@ class ViewController: UIViewController {
         delay(1) {
             // let's find out what this does to the queue
             if let p = self.player as? MPMusicPlayerApplicationController {
-                p.perform(queueTransaction: { q in
+                p.perform { q in
                     print(q.items.count, q.items.map {$0.title ?? "no title"})
                     // okay so it looks like it no longer empties the queue
                     // so there is now no difference between pausing and stopping?
-                }, completionHandler: {_,_ in})
+                } completionHandler: {_,_ in}
             }
         }
     }
@@ -305,10 +305,10 @@ class ViewController: UIViewController {
         guard ix != NSNotFound else {return}
         // new, we can get the queue!
         if let p = self.player as? MPMusicPlayerApplicationController {
-            p.perform(queueTransaction: { q in
+            p.perform { q in
                 print(q.items.count, q.items.map {$0.title ?? "no title"})
                 self.label.text = "\(ix+1) of \(q.items.count): \(title)"
-            }, completionHandler: {_,_ in})
+            } completionHandler: {_,_ in}
         }
     }
     

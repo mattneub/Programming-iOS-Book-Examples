@@ -111,7 +111,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let sections = Array(d).sorted{$0.key < $1.key} // *
+        let sections = Array(d).sorted {$0.key < $1.key} // *
         
         var snap = NSDiffableDataSourceSnapshot<String,String>() // whoa, now struct?
         for section in sections {
@@ -401,7 +401,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
 //            return prop
 //        }
         // they are different, we're crossing a boundary - shift size values!
-//        var sizes = self.sections[orig.section].itemData.map{$0.size}
+//        var sizes = self.sections[orig.section].itemData.map {$0.size}
 //        let size = sizes.remove(at: orig.item)
 //        sizes.insert(size, at:prop.item)
 //        for (ix,size) in sizes.enumerated() {

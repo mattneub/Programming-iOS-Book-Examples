@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         
         // apply common constraints
         
-        NSLayoutConstraint.activate([c1, c3, c4].flatMap{$0})
+        NSLayoutConstraint.activate([c1, c3, c4].flatMap {$0})
         
         // first set of constraints (for when v2 is present)
 

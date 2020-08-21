@@ -13,7 +13,7 @@ struct Primes {
     static func appendNextPrime() {
         next: for i in (primes.last!+1)... {
             let sqrt = Int(Double(i).squareRoot())
-            for prime in primes.lazy.prefix(while:{$0 <= sqrt}) {
+            for prime in primes.lazy.prefix(while: {$0 <= sqrt}) {
                 if i.isMultiple(of: prime) {
                     continue next
                 }
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
             let textField = subview2
             // ok but I've decided I hate that while loop, let's be cooler
             let chain = sequence(first:textField as UIView) {$0.superview}
-            if let cell = (chain.first{$0 is UITableViewCell}) as? UITableViewCell {
+            if let cell = (chain.first {$0 is UITableViewCell}) as? UITableViewCell {
                 print("got it \(cell)")
             } else {
                 print("nope")
@@ -218,7 +218,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let range = (0...10).reversed().filter{$0.isMultiple(of:2)}
+            let range = (0...10).reversed().filter {$0.isMultiple(of:2)}
             for i in range {
                 print(i) // 10, 8, 6, 4, 2, 0
             }
@@ -354,18 +354,18 @@ class ViewController: UIViewController {
             for var dog in dogs { // some day maybe can say inout here
                 dog.name = dog.name.uppercased()
             }
-            print(dogs.map{$0.name})
+            print(dogs.map {$0.name})
             for ix in dogs.indices { // this is a standard workaround
                 dogs[ix].name = dogs[ix].name.uppercased()
             }
-            print(dogs.map{$0.name})
+            print(dogs.map {$0.name})
             // of course can work around it like this, but so ugly and often not what you wanted to say
             dogs = dogs.map {dog in
                 var dog = dog
                 dog.name = dog.name.lowercased()
                 return dog
             }
-            print(dogs.map{$0.name})
+            print(dogs.map {$0.name})
             
             // interesting trick I never thought of: make the struct self-updating
             // see https://stackoverflow.com/a/63485959/341994
@@ -381,7 +381,7 @@ class ViewController: UIViewController {
                 // just making sure we don't get simultaneous access error
                 dogs2[ix].update { $0.name = "Spot"; $0.license = 1 }
             }
-            print(dogs2.map{$0.name})
+            print(dogs2.map {$0.name})
         }
         
         do {

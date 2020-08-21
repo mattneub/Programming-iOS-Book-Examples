@@ -134,11 +134,11 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
     func presentationControllerWillDismiss(_ pc: UIPresentationController) {
         print("will")
         if let tc = pc.presentedViewController.transitionCoordinator {
-            tc.animate(alongsideTransition: {_ in
+            tc.animate {_ in
                 for v in pc.presentedViewController.view.subviews {
                     v.alpha = 0
                 }
-            })
+            }
         }
     }
     func presentationControllerDidDismiss(_ pc: UIPresentationController) {

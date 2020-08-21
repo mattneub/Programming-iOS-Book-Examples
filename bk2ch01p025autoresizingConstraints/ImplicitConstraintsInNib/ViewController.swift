@@ -54,7 +54,7 @@ extension CGVector {
         let arr2 = self.constraintsAffectingLayout(for:.vertical)
         var arr = arr1 + arr2
         if filtering {
-            arr = arr.filter{
+            arr = arr.filter {
                 $0.firstItem as? UIView == self ||
                     $0.secondItem as? UIView == self }
         }

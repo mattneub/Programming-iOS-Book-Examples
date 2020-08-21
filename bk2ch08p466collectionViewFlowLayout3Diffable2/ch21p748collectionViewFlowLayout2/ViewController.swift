@@ -34,7 +34,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let sections = Array(d).sorted{$0.key < $1.key} // *
+        let sections = Array(d).sorted {$0.key < $1.key} // *
         // let's use the new section snapshots!
         for section in sections {
             var snap = NSDiffableDataSourceSectionSnapshot<String>()
@@ -87,7 +87,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                                                metrics:nil, views:["lab":lab]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:[lab(30)]-5-|",
                                                metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatMap {$0})
         }
         let lab = v.subviews[0] as! UILabel
         let snap = self.datasource.snapshot()

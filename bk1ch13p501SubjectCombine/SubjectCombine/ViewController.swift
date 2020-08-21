@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         curr.value = ("au revoir") // another way, but I doubt you're supposed to do that
         
         let pass2 = PassthroughSubject<String,Never>()
-        let sink3 = pass2.sink{
+        let sink3 = pass2.sink {
             print($0)
         }
         // must capture the result or we won't operate

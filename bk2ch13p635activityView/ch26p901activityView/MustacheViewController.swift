@@ -26,7 +26,7 @@ class MustacheViewController: UIViewController {
         self.activity?.activityDidFinish(true)
     }
     
-    deinit{
+    deinit {
         print("elaborate view controller dealloc")
     }
 

@@ -62,7 +62,7 @@ class ViewController: UIViewController {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let arr = try fm.contentsOfDirectory(at:docsurl, includingPropertiesForKeys: nil)
-            arr.forEach{ print($0.lastPathComponent) }
+            arr.forEach { print($0.lastPathComponent) }
             // ======
     //        self.query.enumerateResultsUsingBlock {
     //            obj, ix, stop in

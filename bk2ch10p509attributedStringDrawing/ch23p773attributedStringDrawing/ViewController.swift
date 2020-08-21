@@ -85,7 +85,7 @@ class ViewController : UIViewController {
         ], range: r)
         
         content.addAttribute(.paragraphStyle,
-            value:lend(){
+            value:lend() {
             (para:NSMutableParagraphStyle) in
             para.headIndent = 10
             para.firstLineHeadIndent = 10
@@ -110,7 +110,7 @@ class ViewController : UIViewController {
             ], range:NSMakeRange(0,1))
         
         content2.addAttribute(.paragraphStyle,
-            value:lend(){
+            value:lend() {
             (para2 : NSMutableParagraphStyle) in
             para2.headIndent = 10
             para2.firstLineHeadIndent = 10

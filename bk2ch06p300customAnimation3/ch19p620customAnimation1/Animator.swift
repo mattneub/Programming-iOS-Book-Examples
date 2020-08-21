@@ -97,7 +97,7 @@ extension Animator : UIViewControllerInteractiveTransitioning {
     
     // called if we are interactive
     // (because we now have no percent driver)
-    func startInteractiveTransition(_ ctx: UIViewControllerContextTransitioning){
+    func startInteractiveTransition(_ ctx: UIViewControllerContextTransitioning) {
         print("startInteractiveTransition")
         
         // store the animator so the gesture recognizer can get at it

@@ -9,7 +9,7 @@ class SearchResultsController : UITableViewController {
     
     func take(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.map{$0.rowData}.flatMap{$0}
+        self.originalData = data.map {$0.rowData}.flatMap {$0}
     }
     
     let cellID = "Cell"
