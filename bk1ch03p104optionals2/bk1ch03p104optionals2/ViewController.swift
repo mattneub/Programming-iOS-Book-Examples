@@ -95,7 +95,9 @@ class ViewController: UIViewController {
         print(upper4 as Any)
         
         // longer chain - still just one Optional results
-        let f = self.view.window?.rootViewController?.view.frame
+        // deliberately unwrapping views even though I don't have to...
+        // ...because it makes such a great chain
+        let f = self.view?.window?.rootViewController?.view?.frame
 
         let d = Dog()
         let bigname = d.speak()?.uppercased()
@@ -164,9 +166,9 @@ class ViewController: UIViewController {
         
         do {
             let s : String? = "howdy"
-            let s2 = s.map {$0.uppercased()}
+            let s2 = s.map {($0 + ", world").uppercased()}
+            print(s2 as Any)
             _ = s2
-
         }
         
         do {

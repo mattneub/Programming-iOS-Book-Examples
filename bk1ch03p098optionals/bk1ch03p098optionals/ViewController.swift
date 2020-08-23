@@ -22,7 +22,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         
         // better example would be to start with a view controller:
-        let f = self.view.window?.rootViewController?.view.frame
+        let f = self.view?.window?.rootViewController?.view?.frame
         
         self.navigationController?.hidesBarsOnTap = true
         let ok : Void? = self.navigationController?.hidesBarsOnTap = true
