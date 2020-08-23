@@ -15,11 +15,11 @@ class ViewController: UIViewController {
         takeCString(arrayOfCChar!)
         //
         let contiguousArrayOfCChar : ContiguousArray<CChar> = s.utf8CString
-        contiguousArrayOfCChar.withUnsafeBufferPointer { (ptr) -> Void in
+        contiguousArrayOfCChar.withUnsafeBufferPointer { ptr -> Void in
             takeCString(ptr.baseAddress!)
         }
         
-        s.withCString { (ptr) -> Void in
+        s.withCString { ptr -> Void in
             takeCString(ptr)
         }
         

@@ -21,7 +21,7 @@ class MySwitch : UISwitch {
     required init?(coder: NSCoder) {
         super.init(coder:coder)
         self.isOnPublisher = self.isOn
-        let action = UIAction(title: "") {[unowned self] _ in
+        let action = UIAction {[unowned self] _ in
             self.isOnPublisher = self.isOn
         }
         self.addAction(action, for: .primaryActionTriggered)

@@ -390,7 +390,7 @@ class ViewController: UIViewController {
             let pep = ["Manny", "Moe", "Jack"] as NSArray
                         
             let ems = pep.objects(
-                at: pep.indexesOfObjects { (obj, idx, stop) -> Bool in
+                at: pep.indexesOfObjects { obj, idx, stop -> Bool in
                     return (obj as! NSString).range(
                         of: "m", options:.caseInsensitive
                         ).location == 0
