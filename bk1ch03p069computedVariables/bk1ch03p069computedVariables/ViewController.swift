@@ -49,6 +49,19 @@ typealias SomeType = Int // just testing the syntax, ignore
     }
 }
 
+@propertyWrapper struct ClampedInt { // nongeneric version
+    private var _i : Int = 0
+    var wrappedValue : Int {
+        get {
+            self._i
+        }
+        set {
+            self._i = Swift.max(Swift.min(newValue,5),0)
+        }
+    }
+}
+
+
 @propertyWrapper struct Clamped<T:Comparable> {
     private var _i : T
     private let min : T
@@ -81,7 +94,7 @@ class ViewController: UIViewController {
     }
 
     @MyWrapper var myProperty // can omit type, as it is known from the wrapper
-
+    @ClampedInt var whatever // ditto, because ClampedInt is not generic
     
     // typical "facade" structure
     private var __p : String = ""

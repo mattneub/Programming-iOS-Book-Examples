@@ -5,7 +5,7 @@ import UIKit
 // singleton
 
 class MyClass {
-    static let sharedMyClassSingleton = MyClass()
+    static let shared = MyClass()
 }
 
 class MyView : UIView {
@@ -41,7 +41,7 @@ class Helper2 {
         }
         set {
             if _p != nil {
-                fatalError("cannot assign")
+                fatalError("cannot assign twice")
             }
             self._p = newValue
         }
@@ -72,7 +72,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let s1 = MyClass.shared
+        let s2 = MyClass.shared
+        print( s1 === s2 )
         
         let layout = UICollectionViewLayout()
         class MyDynamicAnimator : UIDynamicAnimator {}
@@ -81,7 +83,7 @@ class ViewController: UIViewController {
         
         self.helper = Helper(self)
         print("did one", self.helper)
-        self.helper = Helper(self)
+        self.helper = Helper(self) // crash, better than nothing I suppose
         print("did two", self.helper)
         
 
