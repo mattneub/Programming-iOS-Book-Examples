@@ -63,7 +63,12 @@ struct DigitReplacer {
     }
 }
 
-
+struct Dog {
+    let name: String
+}
+func dogExpecter(_ dog: Dog) {
+    print(dog.name)
+}
 
 class ViewController: UIViewController {
 
@@ -111,6 +116,7 @@ class ViewController: UIViewController {
         _ = thing
         _ = dddd
         
+        dogExpecter(.init(name:"Fido"))
     }
 
 
