@@ -367,21 +367,46 @@ class ViewController: UIViewController {
             }
             print(dogs.map {$0.name})
             
+            for var dog in dogs {
+                dog.name = "yoho"
+            }
+            print(dogs.map (\.name))
+            
+        }
+        
+        do {
+            struct Dog  {
+                var name : String
+            }
+            var dogs : [Dog] = [Dog(name: "rover"), Dog(name: "fido")]
+            func fixNames(_ dogs: inout [Dog]) {
+                for var dog in dogs {
+                    dog.name = "spot"
+                }
+            }
+            fixNames(&dogs)
+            print(dogs.map (\.name)) // nope, obviously not
+        }
+        
+        do {
             // interesting trick I never thought of: make the struct self-updating
             // see https://stackoverflow.com/a/63485959/341994
-            struct Dog2 {
+            struct Dog {
                 var name : String
                 var license = 0
+                init(_ n:String) {
+                    self.name = n
+                }
                 mutating func update(execute: (inout Self) -> ()) {
                     execute(&self)
                 }
             }
-            var dogs2 : [Dog2] = [Dog2(name: "rover"), Dog2(name: "fido")]
-            for ix in dogs2.indices {
+            var dogs : [Dog] = [Dog("rover"), Dog("fido")]
+            for ix in dogs.indices {
                 // just making sure we don't get simultaneous access error
-                dogs2[ix].update { $0.name = "Spot"; $0.license = 1 }
+                dogs[ix].update { $0.name = $0.name.uppercased(); $0.license = 1 }
             }
-            print(dogs2.map {$0.name})
+            print(dogs.map {$0.name})
         }
         
         do {
