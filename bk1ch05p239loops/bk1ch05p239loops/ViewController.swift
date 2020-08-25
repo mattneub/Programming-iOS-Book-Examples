@@ -2,6 +2,33 @@
 
 import UIKit
 
+protocol SelfUpdating {
+    mutating func update(execute: (inout Self) -> () )
+}
+extension SelfUpdating {
+    mutating func update(execute: (inout Self) -> () ) {
+        execute(&self)
+    }
+}
+extension Array where Element: SelfUpdating {
+    mutating func forEach(execute: (inout Element) -> ()) {
+        for ix in self.indices {
+            self[ix].update(execute: execute)
+        }
+    }
+}
+
+// Aaron
+extension Array {
+    func copy(_ transform: ((inout Element) -> Void)? = nil) -> [Element] {
+        return self.map { e in
+            var new = e
+            transform?(&new)
+            return new
+        }
+    }
+}
+
 enum MyError {
     case number(Int)
     case message(String)
@@ -391,20 +418,35 @@ class ViewController: UIViewController {
         do {
             // interesting trick I never thought of: make the struct self-updating
             // see https://stackoverflow.com/a/63485959/341994
+            struct Dog : SelfUpdating {
+                var name : String
+                var license = 0
+                init(_ n:String) {
+                    self.name = n
+                }
+            }
+            var dogs : [Dog] = [Dog("rover"), Dog("fido")]
+            dogs.forEach { dog in
+                // just making sure we don't get simultaneous access error
+                dog.name = dog.name.uppercased()
+                dog.license = 1
+            }
+            print(dogs.map {$0.name})
+        }
+        
+        do {
             struct Dog {
                 var name : String
                 var license = 0
                 init(_ n:String) {
                     self.name = n
                 }
-                mutating func update(execute: (inout Self) -> ()) {
-                    execute(&self)
-                }
             }
+            // Aaron's solution
             var dogs : [Dog] = [Dog("rover"), Dog("fido")]
-            for ix in dogs.indices {
-                // just making sure we don't get simultaneous access error
-                dogs[ix].update { $0.name = $0.name.uppercased(); $0.license = 1 }
+            dogs = dogs.copy { dog in
+                dog.name = dog.name.uppercased()
+                dog.license = 1
             }
             print(dogs.map {$0.name})
         }
