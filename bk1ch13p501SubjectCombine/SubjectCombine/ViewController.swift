@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         }
         // must capture the result or we won't operate
         let cancellable = self.pass.subscribe(pass2) // a subject can subscribe to a subject
-        self.pass.send("mannie")
+        self.pass.send("manny")
         self.pass.send("moe")
         self.pass.send("jack")
         cancellable.cancel()

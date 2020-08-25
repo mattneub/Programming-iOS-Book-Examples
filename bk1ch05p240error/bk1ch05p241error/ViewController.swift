@@ -159,6 +159,18 @@ class ViewController: UIViewController {
             print("failed")
         }
         
+        do {
+            let result: Void? = try? canThrowButReturnsNoValue(shouldThrow: false)
+            let ok = result != nil
+            print(ok)
+        }
+        
+        do {
+            let result: Void? = try? canThrowButReturnsNoValue(shouldThrow: true)
+            let ok = result != nil
+            print(ok)
+        }
+
     }
     
     func test() {
@@ -313,6 +325,15 @@ class ViewController: UIViewController {
             throw Whoops.oops
         }
         return "Howdy"
+    }
+    
+    func canThrowButReturnsNoValue(shouldThrow: Bool) throws {
+        enum Whoops : Error {
+            case oops
+        }
+        if shouldThrow {
+            throw Whoops.oops
+        }
     }
     
     func tapField(_ g: Any) {
