@@ -102,9 +102,9 @@ class ViewController: UIViewController {
         
         do {
             let s = "Hello"
-            let r = (s as NSString).range(of: "ell")
+            let range = (s as NSString).range(of: "ell") // NSRange
             let mas = NSMutableAttributedString(string:s)
-            mas.addAttributes([.foregroundColor:UIColor.red], range: r)
+            mas.addAttributes([.foregroundColor:UIColor.red], range: range)
         }
 
         do {
