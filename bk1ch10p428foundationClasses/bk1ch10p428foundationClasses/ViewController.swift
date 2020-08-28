@@ -371,8 +371,8 @@ class ViewController: UIViewController {
             let arr = ["zero", "one", "two", "three", "four", "five",
                        "six", "seven", "eight", "nine", "ten"]
             var ixs = IndexSet()
-            ixs.insert(integersIn: Range(1...4))
-            ixs.insert(integersIn: Range(8...10))
+            ixs.insert(integersIn: 1...4)
+            ixs.insert(integersIn: 8...10)
             let arr2 = (arr as NSArray).objects(at:ixs)
             print(arr2)
         }
