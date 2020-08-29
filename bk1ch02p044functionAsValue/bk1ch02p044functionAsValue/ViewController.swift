@@ -23,6 +23,11 @@ class Cat {
     }
 }
 
+class Cat2 {
+    func purr() {}
+    func purr(_ loudly:Bool) {}
+}
+
 class Dog {
     let cat = Cat()
     func bark() {
@@ -64,9 +69,13 @@ class Dog {
         let purrFunction2 = self.cat.purr
         let purrFunction3 = Cat.purr
         
+        // let purrFunction4 = Cat2.purr // ambiguous
+        let purrFunction4 = Cat2.purr as (Cat2) -> () -> Void // use curried notation
+        
         _ = purrFunction1
         _ = purrFunction2
         _ = purrFunction3
+        _ = purrFunction4
     }
 }
 
