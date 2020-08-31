@@ -15,7 +15,7 @@ class ManagerHolder {
         // new in iOS 14, use instance method, not class method
         var status: CLAuthorizationStatus!
         if #available(iOS 14.0,*) {
-            status = self.locman.authorizationStatus()
+            status = self.locman.authorizationStatus
         } else {
             status = CLLocationManager.authorizationStatus()
         }
@@ -85,8 +85,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @objc func goingIntoBackground(_ n:Notification) {
         let status : CLAuthorizationStatus = {
-            if #available(iOS 14.10,*) {
-                return self.locman.authorizationStatus()
+            if #available(iOS 14.0,*) {
+                return self.locman.authorizationStatus
             } else {
                 return CLLocationManager.authorizationStatus()
             }
@@ -116,14 +116,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // if you implement both, the new one is called in iOS 14
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status : CLAuthorizationStatus = {
-            if #available(iOS 14.10,*) {
-                return self.locman.authorizationStatus()
+            if #available(iOS 14.0,*) {
+                return self.locman.authorizationStatus
             } else {
                 return CLLocationManager.authorizationStatus()
             }
         }()
         print("authorization is", status.rawValue, to: &output)
-        if #available(iOS 14.10,*) {
+        if #available(iOS 14.0,*) {
             print("accuracy is: \(manager.accuracyAuthorization.rawValue)", to: &output)
         }
         if status == .authorizedAlways || status == .authorizedWhenInUse {
@@ -147,7 +147,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func testPrecisionRequest(_ sender: Any) {
-        if #available(iOS 14.10,*) {
+        if #available(iOS 14.0,*) {
             self.locman.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "ExactTracking") { err in
                 
             }
@@ -175,14 +175,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func reportStatus(_ sender: Any) {
         let status : CLAuthorizationStatus = {
-            if #available(iOS 14.10,*) {
-                return self.locman.authorizationStatus()
+            if #available(iOS 14.0,*) {
+                return self.locman.authorizationStatus
             } else {
                 return CLLocationManager.authorizationStatus()
             }
         }()
         print("auth is: \(status.rawValue)", to:&output)
-        if #available(iOS 14.10,*) {
+        if #available(iOS 14.0,*) {
             print("accuracy is: \(self.locman.accuracyAuthorization.rawValue)", to: &output)
         }
     }
@@ -238,7 +238,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if self.startTime == nil {
                 self.startTime = Date()
                 // if reduced accuracy, don't ignore the first one, as the second one will be a long time coming!
-                if #available(iOS 14.10,*) {
+                if #available(iOS 14.0,*) {
                     if manager.accuracyAuthorization != .reducedAccuracy {
                         return // ignore first attempt
                     }
@@ -254,7 +254,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.stopTrying()
                 return
             }
-            if #available(iOS 14.10,*) {
+            if #available(iOS 14.0,*) {
                 if manager.accuracyAuthorization != .reducedAccuracy {
                     if acc < 0 || acc > REQ_ACC {
                         return // wait for the next one
