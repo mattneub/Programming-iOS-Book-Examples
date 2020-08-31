@@ -86,7 +86,7 @@ class ViewController : UIViewController {
         // no longer need an extension to add to a priority
         let ppppp = con.priority + 8
         NSLayoutConstraint.activate([con])
-
+        _ = ppppp
 
         
     }
