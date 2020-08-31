@@ -18,6 +18,22 @@ extension UITraitCollection {
     }
 }
 
+// hint, make sure you don't have portrait orientation lock on! (control center)
+
+class ViewController2: UIViewController {
+    override var shouldAutorotate: Bool {
+        print("should 2")
+        return true
+    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        print("supported 2")
+        return .all
+    }
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        print("preferred 2")
+        return .portrait
+    }
+}
 
 class ViewController: UIViewController {
     
