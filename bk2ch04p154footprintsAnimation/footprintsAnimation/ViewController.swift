@@ -16,15 +16,15 @@ class ViewController: UIViewController, CAAnimationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        leftfoot.name = "left"
-        leftfoot.contents = UIImage(named:"leftfoot")!.cgImage
-        leftfoot.frame = CGRect(x: 100, y: 300, width: 50, height: 80)
-        self.view.layer.addSublayer(leftfoot)
+        self.leftfoot.name = "left"
+        self.leftfoot.contents = UIImage(named:"leftfoot")!.cgImage
+        self.leftfoot.frame = CGRect(x: 100, y: 300, width: 50, height: 80)
+        self.view.layer.addSublayer(self.leftfoot)
 
-        rightfoot.name = "right"
-        rightfoot.contents = UIImage(named:"rightfoot")!.cgImage
-        rightfoot.frame = CGRect(x: 170, y: 300, width: 50, height: 80)
-        self.view.layer.addSublayer(rightfoot)
+        self.rightfoot.name = "right"
+        self.rightfoot.contents = UIImage(named:"rightfoot")!.cgImage
+        self.rightfoot.frame = CGRect(x: 170, y: 300, width: 50, height: 80)
+        self.view.layer.addSublayer(self.rightfoot)
         delay(2) {
             self.start()
         }
@@ -35,7 +35,6 @@ class ViewController: UIViewController, CAAnimationDelegate {
         firstLeftStep.byValue = -80
         firstLeftStep.duration = 1
         firstLeftStep.fillMode = .forwards
-        
         func rightStepAfter(_ t: Double) -> CABasicAnimation {
             let rightStep = CABasicAnimation(keyPath: "sublayers.right.position.y")
             rightStep.byValue = -160
@@ -52,26 +51,21 @@ class ViewController: UIViewController, CAAnimationDelegate {
             leftStep.fillMode = .forwards
             return leftStep
         }
-        
         let group = CAAnimationGroup()
-        group.duration = 15
-        group.animations = [
-            firstLeftStep,
-            rightStepAfter(1),
-            leftStepAfter(3),
-            rightStepAfter(5),
-            leftStepAfter(7),
-            rightStepAfter(9),
-            leftStepAfter(11),
-            rightStepAfter(13)
-        ]
+        group.duration = 11
+        group.animations = [firstLeftStep]
+        for i in stride(from: 1, through: 9, by: 4) {
+            group.animations?.append(rightStepAfter(Double(i)))
+            group.animations?.append(leftStepAfter(Double(i+2)))
+        }
         group.delegate = self
         self.view.layer.add(group, forKey: nil)
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        rightfoot.removeFromSuperlayer()
-        leftfoot.removeFromSuperlayer()
+        print("done")
+        self.rightfoot.removeFromSuperlayer()
+        self.leftfoot.removeFromSuperlayer()
     }
 
 }
