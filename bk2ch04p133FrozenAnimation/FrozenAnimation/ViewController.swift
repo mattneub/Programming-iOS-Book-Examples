@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     var anim : UIViewPropertyAnimator!
     @IBOutlet weak var slider: UISlider!
     var didConfig = false
-    var pTarget = CGPoint.zero
+    var rightmostPoint = CGPoint.zero
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
                 let r = self.slider.thumbRect(forBounds: b, trackRect: self.slider.trackRect(forBounds: b), value: 1)
                 let c = r.center
                 let c2 = self.view.convert(c, from:self.slider)
-                self.pTarget = c2
+                self.rightmostPoint = c2
             }
         }
     }
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
-            self.v.center.x = self.pTarget.x
+            self.v.center.x = self.rightmostPoint.x
             self.v.backgroundColor = .green
         }
         // uncomment to see the point of this property

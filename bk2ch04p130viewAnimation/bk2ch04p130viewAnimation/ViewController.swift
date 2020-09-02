@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             // however, other code in the animations function runs as soon as you call...
             // startAnimation, as the logging here shows
             case 3:
-                var anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
                     self.v.backgroundColor = .red
                     self.v.center.y += 100
                 }
@@ -114,10 +114,12 @@ class ViewController: UIViewController {
                 anim.startAnimation() // logs immediately as we go from not running to running
                 print("linearly", anim.scrubsLinearly) // logs second
                 print(self.v.layer.animationKeys() as Any)
-                delay(2) {
-                    ob = nil // heh heh, just keeping the observer alive
-                    ob2 = nil // heh heh, just keeping the other observer alive
-                    print(anim) // heh heh, just keeping the animator alive
+                withExtendedLifetime([ob, ob2, anim]) {
+                    delay(2) {
+                        ob = nil // heh heh, just keeping the observer alive
+                        ob2 = nil // heh heh, just keeping the other observer alive
+                        print(anim) // heh heh, just keeping the animator alive
+                    }
                 }
             // in both cases, goes
             //                state 1 running false
@@ -127,7 +129,7 @@ class ViewController: UIViewController {
             // ("paused on completion")
             //                state 0 running false
             case 4:
-                var anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
                     self.v.backgroundColor = .red
                     self.v.center.y += 100
                 }
@@ -152,10 +154,11 @@ class ViewController: UIViewController {
                     print("ho")
                 }
                 anim.startAnimation() // logs immediately as we go from not running to running
-                delay(2) {
-                    ob = nil // heh heh, just keeping the observer alive
+                withExtendedLifetime(ob) {
+                    delay(2) {
+                        ob = nil // heh heh, just keeping the observer alive
+                    }
                 }
-                
             case 5:
                 let anim = UIViewPropertyAnimator(duration: 1, timingParameters: UICubicTimingParameters(animationCurve:.linear))
                 anim.addAnimations {
