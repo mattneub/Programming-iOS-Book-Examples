@@ -19,7 +19,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.data = "This is very important data!"
         svc.delegate = self
         
-        var which : Int { return 4 }
+        var which : Int { return 1 }
         switch which {
         case 1: break // showing that .coverVertical is the default
         case 2: svc.modalTransitionStyle = .coverVertical
@@ -86,6 +86,12 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     func accept(data:Any) {
         // do something with data here
+        
+        // test to show that if this involves a change of interface, the user will see it
+        // self.view.backgroundColor = .green
+        // but I don't quite see what we can do about that in any case -
+        // sure, I could switch to `viewWillDisappear`, but even then the change might be visible to the user
+        // (in a partial covering situation, for instance)
         
         // prove that you received data
         print(data)
