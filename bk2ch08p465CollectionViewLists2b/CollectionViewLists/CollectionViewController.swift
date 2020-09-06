@@ -56,7 +56,8 @@ class CollectionViewController: UICollectionViewController {
         var contentConfig = v.defaultContentConfiguration()
         contentConfig.text = "Pep \(indexPath.section)"
         v.contentConfiguration = contentConfig
-        v.layer.zPosition = 1
+        // this was a bug workaround, but they fixed the bug
+        // v.layer.zPosition = 1
         return v
     }
 }

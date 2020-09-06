@@ -43,10 +43,9 @@ class RootViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
-        let config = MyCell.Configuration(
-            text: "The author of this book, who would rather be out dirt biking",
-            image: UIImage(named:"moi.png")!
-        )
+        let s = "The author of this book, who would rather be out dirt biking"
+        let im = UIImage(named:"moi.png")!
+        let config = MyCell.Configuration(text: s, image: im)
         cell.configure(config)
         return cell
     }

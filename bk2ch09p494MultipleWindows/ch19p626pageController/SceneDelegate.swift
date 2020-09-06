@@ -45,10 +45,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if !pepName.isEmpty {
             scene.title = "Editing"
             let s = scene.session.configuration.storyboard!
-            let peped = s.instantiateViewController(identifier: "pepEditor") as! PepEditorViewController
-            peped.pepName = pepName
-            self.window?.rootViewController = peped
-            peped.restorationInfo = scene.userActivity?.userInfo
+            let pepEditor = s.instantiateViewController(identifier: "pepEditor") as! PepEditorViewController
+            pepEditor.pepName = pepName
+            self.window?.rootViewController = pepEditor
+            pepEditor.restorationInfo = scene.userActivity?.userInfo
             return
         }
         
