@@ -9,12 +9,13 @@ func lend<T> (closure:(T)->()) -> T where T:NSObject {
 
 class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var tv : UITextView!
-    var scrollView : UIScrollView! {
+    var sv : UIScrollView! {
         return self.tv
     }
     var oldContentInset = UIEdgeInsets.zero
     var oldIndicatorInset = UIEdgeInsets.zero
     var oldOffset = CGPoint.zero
+    var prevr = CGRect.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,41 +73,47 @@ class ViewController: UIViewController, UITextViewDelegate {
                 ks = .exiting
             }
         }
+        print(ks == .entering ? "entering" : ks == .exiting ? "exiting" : "unknown")
         return (ks, newRect)
     }
-    
-    #error("needs updating")
+
     @objc func keyboardShow(_ n:Notification) {
+        print("show")
+        guard self.traitCollection.userInterfaceIdiom == .phone else {return}
         let d = n.userInfo!
-        let (state, rnew) = keyboardState(for:d, in:self.scrollView)
+        let (state, rnew) = keyboardState(for:d, in:self.sv)
         if state == .entering {
             print("really showing")
-            self.oldContentInset = self.scrollView.contentInset
-            self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
-            self.oldOffset = self.scrollView.contentOffset
+            self.oldContentInset = self.sv.contentInset
+            self.oldIndicatorInset = self.sv.verticalScrollIndicatorInsets
+            self.oldOffset = self.sv.contentOffset
         }
-        print("show")
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset
-        if let rnew = rnew {
-            let h = rnew.intersection(self.scrollView.bounds).height
-            self.scrollView.contentInset.bottom = h
-            self.scrollView.scrollIndicatorInsets.bottom = h
+        if let rnew = rnew, rnew != self.prevr {
+            print("adjusting")
+            self.prevr = rnew
+            let h = rnew.intersection(self.sv.bounds).height + 6 // ?
+            self.sv.contentInset.bottom = h
+            self.sv.verticalScrollIndicatorInsets.bottom = h
         }
     }
     
     @objc func keyboardHide(_ n:Notification) {
+        print("hide")
+        guard self.traitCollection.userInterfaceIdiom == .phone else {return}
         let d = n.userInfo!
-        let (state, _) = keyboardState(for:d, in:self.scrollView)
+        let (state, _) = keyboardState(for:d, in:self.sv)
         if state == .exiting {
             print("really hiding")
             // restore original setup
-            // we _don't_ do this; let the text view position itself
-            // self.scrollView.contentOffset = self.oldOffset
-            self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
-            self.scrollView.contentInset = self.oldContentInset
+            self.sv.contentOffset = self.oldOffset
+            self.sv.verticalScrollIndicatorInsets = self.oldIndicatorInset
+            self.sv.contentInset = self.oldContentInset
+            self.prevr = .zero
         }
     }
+
 
     
 

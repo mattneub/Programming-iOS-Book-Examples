@@ -38,6 +38,7 @@ class ViewController : UIViewController {
         let emphasis = body.withSymbolicTraits(.traitItalic)!
         var fbody = UIFont(descriptor: body, size: 0)
         // work around lack of dynamism; this should not be necessary
+        // bug still there in beta 6
         fbody = UIFontMetrics(forTextStyle: .body).scaledFont(for: fbody)
         var femphasis = UIFont(descriptor: emphasis, size: 0)
         // work around lack of dynamism; this should not be necessary
