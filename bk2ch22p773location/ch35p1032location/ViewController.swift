@@ -79,7 +79,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(goingIntoBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(comingIntoForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-
+        return;
+        // for screen shots
+        let v = UIView()
+        v.backgroundColor = .white
+        v.frame = self.view.bounds
+        self.view.addSubview(v)
+        v.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.testWhenInUseRequest(self)
     }
     
     

@@ -80,7 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .font:UIFont(name:"Avenir-Heavy", size:14)!,
                 .foregroundColor:UIColor.red
             ]
-
+            // uncomment next lines to see if bug is still there
+//            app.stackedItemPositioning = .centered
+//            app.stackedItemSpacing = 0
+//            app.stackedItemWidth = 50
             UITabBar.appearance().standardAppearance = app
         default:break
         }

@@ -37,7 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // new in iOS 14, use instance method, not class method
         var status: CLAuthorizationStatus!
         if #available(iOS 14.0,*) {
-            status = self.locman.authorizationStatus()
+            status = self.locman.authorizationStatus
         } else {
             status = CLLocationManager.authorizationStatus()
         }
@@ -83,7 +83,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @available(iOS 14.0,*)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let status = manager.authorizationStatus()
+        let status = manager.authorizationStatus
         print("authorization is", status.rawValue)
         updateStatus(status)
         if status == .authorizedAlways || status == .authorizedWhenInUse {
@@ -98,7 +98,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @available(iOS 14.0,*)
     @IBAction func doStatus(_ sender: Any) {
-        self.updateStatus(self.locman.authorizationStatus())
+        self.updateStatus(self.locman.authorizationStatus)
     }
 }
 

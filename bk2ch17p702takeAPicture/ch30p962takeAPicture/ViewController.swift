@@ -152,9 +152,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             print(info[.phAsset] as Any)
             let url = info[.mediaURL] as? URL
-            var im = info[.originalImage] as? UIImage
-            if let ed = info[.editedImage] as? UIImage {
-                im = ed
+            var image = info[.originalImage] as? UIImage
+            if let edited = info[.editedImage] as? UIImage {
+                image = edited
             }
             if let live = info[.livePhoto] {
                 print("I got a live photo!") // nope
@@ -162,15 +162,15 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             }
             let imurl = info[.imageURL] as? URL
             print(imurl as Any)
-            let m = info[.mediaMetadata] as? NSDictionary
-            print(m as Any)
+            let metadata = info[.mediaMetadata] as? NSDictionary
+            print(metadata as Any)
             self.dismiss(animated:true) {
                 let mediatype = info[.mediaType]
                 guard let type = mediatype as? String else {return}
                 switch type {
                 case UTType.image.identifier:
-                    if im != nil {
-                        self.showImage(im!)
+                    if image != nil {
+                        self.showImage(image!)
                         // showing how simple it is to save into the Camera Roll
                         return;
                         checkForPhotoLibraryAccess {
@@ -180,16 +180,16 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                 let lib = PHPhotoLibrary.shared()
                                 lib.performChanges {
                                     typealias Req = PHAssetChangeRequest
-                                    let req = Req.creationRequestForAsset(from: im!)
+                                    let req = Req.creationRequestForAsset(from: image!)
                                     // apply metadata info here, as desired
                                 }
                             case 1: // add image while folding in the metadata
-                                let jpeg = im!.jpegData(compressionQuality: 1)!
+                                let jpeg = image!.jpegData(compressionQuality: 1)!
                                 let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!
                                 let data = NSMutableData()
                                 let uti = CGImageSourceGetType(src)!
                                 let dest = CGImageDestinationCreateWithData(data as CFMutableData, uti, 1, nil)!
-                                CGImageDestinationAddImageFromSource(dest, src, 0, m)
+                                CGImageDestinationAddImageFromSource(dest, src, 0, metadata)
                                 CGImageDestinationFinalize(dest)
                                 let lib = PHPhotoLibrary.shared()
                                 lib.performChanges {
