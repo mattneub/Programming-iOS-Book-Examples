@@ -8,6 +8,18 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+extension UIResponder {
+    func next<T:UIResponder>(ofType: T.Type) -> T? {
+        let r = self.next
+        if let r = r as? T ?? r?.next(ofType: T.self) {
+            return r
+        } else {
+            return nil
+        }
+    }
+}
+
+
 
 class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
     
@@ -93,9 +105,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("did end editing")
-        var v : UIView = textField
-        repeat { v = v.superview! } while !(v is UITableViewCell)
-        let cell = v as! UITableViewCell
+        guard let cell = textField.next(ofType: UITableViewCell.self) else { return }
         let ip = self.tableView.indexPath(for:cell)!
         let object = self.frc.object(at:ip)
         object.setValue(textField.text!, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
