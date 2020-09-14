@@ -128,7 +128,8 @@ extension ViewController : UISplitViewControllerDelegate {
         return proposedDisplayMode
     }
     func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
-        print("will change to", displayMode.rawValue)
+        print("will change to")
+        dump(displayMode)
     }
     
     func splitViewControllerInteractivePresentationGestureWillBegin(_ svc: UISplitViewController) {
