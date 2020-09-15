@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "CB9CF3FF-00A0-4574-8936-3373040C8C22",
+      "name" : "TestPlan2Config",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "enabled" : false,
+      "target" : {
+        "containerPath" : "container:bk1ch09p380unitTesting.xcodeproj",
+        "identifier" : "814A1AAF1D109C1F008F3FF6",
+        "name" : "EmptyWindowTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:bk1ch09p380unitTesting.xcodeproj",
+        "identifier" : "814A1AA11D109B13008F3FF6",
+        "name" : "EmptyWindowUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

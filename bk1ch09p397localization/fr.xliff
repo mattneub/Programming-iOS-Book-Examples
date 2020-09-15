@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Empty Window/Base.lproj/Main.storyboard" source-language="en" target-language="fr" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.0" build-num="11A419c"/>
+    </header>
+    <body>
+      <trans-unit id="YMD-h7-RKH.normalTitle" xml:space="preserve">
+        <source>Hello</source>
+        <target>Bonjour</target>
+        <note>Class = "UIButton"; normalTitle = "Hello"; ObjectID = "YMD-h7-RKH";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Empty Window/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.0" build-num="11A419c"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>Empty Window</source>
+        <target>Fenêtre Vide</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Empty Window</source>
+        <target>Empty Window</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Empty Window/en.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.0" build-num="11A419c"/>
+    </header>
+    <body>
+      <trans-unit id="Accept" xml:space="preserve">
+        <source>OK</source>
+        <target>OK</target>
+        <note>Dismiss</note>
+      </trans-unit>
+      <trans-unit id="Greeting" xml:space="preserve">
+        <source>Howdy!</source>
+        <target>Bonjour!</target>
+        <note>Say hello</note>
+      </trans-unit>
+      <trans-unit id="Tapped" xml:space="preserve">
+        <source>You tapped me!</source>
+        <target>Vous m'avez tapé!</target>
+        <note>User tapped button</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
