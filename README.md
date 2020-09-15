@@ -5,7 +5,7 @@ Examples have been revised for Xcode 12, Swift 5.3, and iOS 14.
 
 If you find these examples helpful and you haven't purchased the books, please consider doing so.
 
-The downloadable code for the most recent previous editions has been moved off to subfolders and zip files. The code for the earlier editions has been removed.
+The downloadable code for the previous editions back through iOS 9 has been moved off to subfolders and zip files. The code for the earlier editions has been removed.
 
 Matt Neuburg
 
