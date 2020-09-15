@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
         tf.borderStyle = .none
         // tf.borderStyle = .bezel
-        // tf.borderStyle = .line
+         tf.borderStyle = .line
         // tf.borderStyle = .roundedRect
         tf.background = UIImage(named:"yellowsilk4")
         

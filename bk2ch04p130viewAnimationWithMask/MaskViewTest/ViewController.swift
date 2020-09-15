@@ -68,11 +68,11 @@ class ViewController: UIViewController {
     
     @IBAction func doButton(_ sender: Any) {
         let currect = self.yellowView.bounds
-        UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear, .autoreverse], animations: {
+        UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear, .autoreverse]) {
             let rect = CGRect(origin: .zero, size: CGSize(200, 200))
             self.yellowView.bounds = rect
             self.yellowView.mask!.frame = rect
-        }) { _ in
+        } completion: { _ in
             self.yellowView.bounds = currect
             self.yellowView.mask!.frame = currect
         }

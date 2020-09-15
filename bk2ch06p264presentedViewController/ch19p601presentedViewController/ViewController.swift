@@ -40,7 +40,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
         print(self.traitCollection)
         
-        var which2 : Int { return -1 }
+        var which2 : Int { return 0 }
         switch which2 {
         case -1: break // showing that .fullScreen is the default
             // but not in iOS 13! if you don't specify anything,
@@ -77,7 +77,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         self.present(svc, animated:true) {
             print(svc.view.gestureRecognizers as Any)
             print(svc.modalPresentationStyle.rawValue)
-            print(svc.presentationController?.adaptivePresentationStyle.rawValue)
+            print(svc.presentationController?.adaptivePresentationStyle.rawValue as Any)
         }
         // self.showViewController(svc, sender:self) // ooops! we're in a nav interface, uses that :)
         
@@ -86,6 +86,12 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     func accept(data:Any) {
         // do something with data here
+        
+        // test to show that if this involves a change of interface, the user will see it
+        // self.view.backgroundColor = .green
+        // but I don't quite see what we can do about that in any case -
+        // sure, I could switch to `viewWillDisappear`, but even then the change might be visible to the user
+        // (in a partial covering situation, for instance)
         
         // prove that you received data
         print(data)
@@ -134,11 +140,11 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
     func presentationControllerWillDismiss(_ pc: UIPresentationController) {
         print("will")
         if let tc = pc.presentedViewController.transitionCoordinator {
-            tc.animate(alongsideTransition: {_ in
+            tc.animate {_ in
                 for v in pc.presentedViewController.view.subviews {
                     v.alpha = 0
                 }
-            })
+            }
         }
     }
     func presentationControllerDidDismiss(_ pc: UIPresentationController) {

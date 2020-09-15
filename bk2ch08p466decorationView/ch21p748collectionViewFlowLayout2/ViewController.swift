@@ -63,8 +63,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let d2 = d.mapValues{$0.map {Item(name:$0, size:.zero)}}
-        self.sections = Array(d2).sorted{$0.key < $1.key}.map {
+        let d2 = d.mapValues {$0.map {Item(name:$0, size:.zero)}}
+        self.sections = Array(d2).sorted {$0.key < $1.key}.map {
             Section(sectionName: $0.key, itemData: $0.value)
         }
 
@@ -135,7 +135,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                         metrics:nil, views:["lab":lab]),
                     NSLayoutConstraint.constraints(withVisualFormat:"V:[lab(30)]-5-|",
                     metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatMap {$0})
             }
             let lab = v.subviews[0] as! UILabel
             lab.text = self.sections[indexPath.section].sectionName
@@ -267,13 +267,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             }
         }
         // request the deletion from the view; notice the slick automatic animation
-        self.collectionView.performBatchUpdates({
+        self.collectionView.performBatchUpdates {
             self.collectionView.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
                 self.sections.remove(at:empties) // see utility function at top of file
                 self.collectionView.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
-        })
+        }
     }
     
     // menu =================

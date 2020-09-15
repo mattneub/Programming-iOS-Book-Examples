@@ -22,11 +22,23 @@ var now3 : String {
     Date().description // you can also omit `return` if it's a one-liner, Swift 5.1
 }
 
-// warning, I expect some property wrapper feature names to change in the next iteration
+typealias SomeType = Int // just testing the syntax, ignore
+@propertyWrapper struct MyWrapper {
+    var wrappedValue : SomeType {
+        get { 1 }
+        set { /*...*/ }
+    }
+}
+
 @propertyWrapper struct Facade<T> {
     private var _p : T
-    init(wrappedValue:T) {self._p = wrappedValue}
-    init(_ val:T) {self._p = val}
+    init(wrappedValue:T) {
+        print("called the wrappedValue initializer")
+        self._p = wrappedValue}
+    init(_ val:T) {
+        print("called the other initializer")
+        self._p = val
+    }
     var wrappedValue : T {
         get {
             return self._p
@@ -36,6 +48,19 @@ var now3 : String {
         }
     }
 }
+
+@propertyWrapper struct ClampedInt { // nongeneric version
+    private var _i : Int = 0
+    var wrappedValue : Int {
+        get {
+            self._i
+        }
+        set {
+            self._i = Swift.max(Swift.min(newValue,5),0)
+        }
+    }
+}
+
 
 @propertyWrapper struct Clamped<T:Comparable> {
     private var _i : T
@@ -68,6 +93,8 @@ class ViewController: UIViewController {
         MPMusicPlayerController.systemMusicPlayer // NB no longer a method
     }
 
+    @MyWrapper var myProperty // can omit type, as it is known from the wrapper
+    @ClampedInt var whatever // ditto, because ClampedInt is not generic
     
     // typical "facade" structure
     private var __p : String = ""
@@ -81,7 +108,9 @@ class ViewController: UIViewController {
     }
     
     // Swift 5.1, can sluff the above off into a property wrapper
-    @Facade("test") var p : String
+    // Swift 5.3, we don't need the explicit type declaration
+    @Facade var ptesting = "test" // wrapped value initializer
+    @Facade("test") var p // other initializer
     
     // more "practical" facade, a clamped setter
     private var _pp : Int = 0
@@ -94,9 +123,9 @@ class ViewController: UIViewController {
         }
     }
     
-    @Clamped(min:-7, max:7) var clamped : Int = 0
+    @Clamped(min:-7, max:7) var clamped = 0
     
-    @Clamped(wrappedValue:0, min:-7, max:7) var anotherWay : Int
+    @Clamped(wrappedValue:0, min:-7, max:7) var anotherWay
     
     // observer
     var s = "whatever" {

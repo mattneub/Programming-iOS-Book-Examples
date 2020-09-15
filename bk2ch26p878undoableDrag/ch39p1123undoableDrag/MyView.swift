@@ -31,9 +31,9 @@ class MyView : UIView {
             object: self.center)
         self.undoer.setActionName("Move")
         if self.undoer.isUndoing || self.undoer.isRedoing {
-            UIView.animate(withDuration:0.4, delay: 0.1, animations: {
+            UIView.animate(withDuration:0.4, delay: 0.1) {
                 self.center = newCenter as! CGPoint
-            })
+            }
         } else { // just do it
             self.center = newCenter as! CGPoint
         }

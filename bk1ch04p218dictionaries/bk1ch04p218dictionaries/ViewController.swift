@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         do {
             let abbrevs = ["CA", "NY"]
             let names = ["California", "New York"]
-            let tuples = (abbrevs.indices).map{(abbrevs[$0],names[$0])}
+            let tuples = (abbrevs.indices).map {(abbrevs[$0],names[$0])}
             let d = Dictionary(uniqueKeysWithValues: tuples)
             print(d) // ["NY": "New York", "CA": "California"]
             
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         
         do {
             let sentence = "how much wood would a wood chuck chuck"
-            let words = sentence.split(separator: " ").map{String($0)}
+            let words = sentence.split(separator: " ").map {String($0)}
             // old approach
             var d = [String:Int]()
             for word in words {
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             // here's a silly but interesting way to accomplish the same thing:
             do {
                 let ones = Array(repeating: 1, count: words.count)
-                let d = Dictionary(zip(words,ones)){$0+$1}
+                let d = Dictionary(zip(words,ones)) {$0+$1}
                 print(d)
             }
         }
@@ -169,7 +169,7 @@ class ViewController: UIViewController {
             var d2 = [String:Dog2]()
             d2["doog"] = Dog2(name:"Fidro")
             d2["dog"] = Dog2(name:"Fido")
-            let ok = d1.sorted{$0.key<$1.key}.elementsEqual(d2.sorted{$0.key<$1.key}) {
+            let ok = d1.sorted {$0.key<$1.key}.elementsEqual(d2.sorted {$0.key<$1.key}) {
                 $0.key == $1.key && $0.value.name == $1.value.name
             }
             print(ok)
@@ -218,7 +218,7 @@ class ViewController: UIViewController {
             let min = d.values.min()
             print(min as Any) // Optional(1)
             
-            let arr = d.values.filter{$0 < 2}
+            let arr = d.values.filter {$0 < 2}
             print(arr) // [1]
             
             let keysSorted = d.keys.sorted()
@@ -230,20 +230,20 @@ class ViewController: UIViewController {
         
         do {
             let d = ["CA": "California", "NY": "New York"]
-            let d2 = d.filter {$0.value > "New Jersey"}.mapValues{$0.uppercased()}
+            let d2 = d.filter {$0.value > "New Jersey"}.mapValues {$0.uppercased()}
             print(d2) // ["NY": "NEW YORK"]
         }
         
         do {
             let d = ["CA": "California", "NY": "New York", "RJ": ""]
-            let d2 = d.compactMapValues{$0.last}
+            let d2 = d.compactMapValues {$0.last}
             print(d2) // ["CA": "a", "NY": "k"]
         }
         
         do {
             let d1 = ["CA": "California", "NY": "New York"]
             let d2 = ["MD": "Maryland", "NY": "New York"]
-            let d3 = d1.merging(d2){orig, _ in orig}
+            let d3 = d1.merging(d2) {orig, _ in orig}
             print(d3) // ["MD": "Maryland", "NY": "New York", "CA": "California"]
         }
         
@@ -252,7 +252,7 @@ class ViewController: UIViewController {
         do {
             let d1 = ["CA": "California", "NY": "New York"]
             let d2 = [("MD","Maryland"), ("NY","New York")]
-            let d3 = d1.merging(d2){orig, _ in orig}
+            let d3 = d1.merging(d2) {orig, _ in orig}
             print(d3) // ["MD": "Maryland", "NY": "New York", "CA": "California"]
         }
         

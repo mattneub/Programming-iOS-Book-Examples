@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E6E00A5232DF4C8008B8DE3 /* yellowsilk4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E6E00A4232DF4C8008B8DE3 /* yellowsilk4@2x.png */; };
+		8104BEC224D8BCD000E4A8A6 /* yellowsilk4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8104BEC124D8BCD000E4A8A6 /* yellowsilk4@2x.png */; };
 		FEAF0341214080470061176E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAF0340214080470061176E /* AppDelegate.swift */; };
 		FEAF0343214080470061176E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAF0342214080470061176E /* ViewController.swift */; };
 		FEAF0346214080470061176E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAF0344214080470061176E /* Main.storyboard */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9E6E00A4232DF4C8008B8DE3 /* yellowsilk4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yellowsilk4@2x.png"; path = "../../iOS10bookExamples/bk2ch10p520textFieldSliding/ch23p805textFieldSliding/yellowsilk4@2x.png"; sourceTree = "<group>"; };
+		8104BEC124D8BCD000E4A8A6 /* yellowsilk4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yellowsilk4@2x.png"; path = "../../iOS12bookExamples/bk2ch10p520textFieldSliding/ch23p805textFieldSliding/yellowsilk4@2x.png"; sourceTree = "<group>"; };
 		FEAF033D214080470061176E /* TextFieldLeftViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldLeftViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAF0340214080470061176E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEAF0342214080470061176E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 				FEAF0347214080480061176E /* Assets.xcassets */,
 				FEAF0349214080480061176E /* LaunchScreen.storyboard */,
 				FEAF034C214080480061176E /* Info.plist */,
-				9E6E00A4232DF4C8008B8DE3 /* yellowsilk4@2x.png */,
+				8104BEC124D8BCD000E4A8A6 /* yellowsilk4@2x.png */,
 			);
 			path = TextFieldLeftViewTest;
 			sourceTree = "<group>";
@@ -129,7 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEAF03532140805A0061176E /* oneBlueCircle.png in Resources */,
-				9E6E00A5232DF4C8008B8DE3 /* yellowsilk4@2x.png in Resources */,
+				8104BEC224D8BCD000E4A8A6 /* yellowsilk4@2x.png in Resources */,
 				FEAF034B214080480061176E /* LaunchScreen.storyboard in Resources */,
 				FEAF0348214080480061176E /* Assets.xcassets in Resources */,
 				FEAF0346214080470061176E /* Main.storyboard in Resources */,
@@ -293,7 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = TextFieldLeftViewTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = TextFieldLeftViewTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

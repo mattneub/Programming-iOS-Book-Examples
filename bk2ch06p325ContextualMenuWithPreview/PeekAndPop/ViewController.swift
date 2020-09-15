@@ -33,13 +33,12 @@ class ViewController: UIViewController, UIContextMenuInteractionDelegate {
             print ("coloring", boy, action.title.lowercased())
         }
         let color = UIMenu(title: "Colorize", children: [red,green,blue])
-        let config = UIContextMenuConfiguration(identifier: button.tag as NSNumber, previewProvider: {
+        let config = UIContextMenuConfiguration(identifier: button.tag as NSNumber) {
             // return nil
             let pep = Pep(pepBoy: boy)
             pep.preferredContentSize = CGSize(width: 240, height: 300)
             return pep
-        })
-        { _  in
+        } actionProvider: { _ in
             // return nil
             return UIMenu(title: "", children: [favorite, color])
         }

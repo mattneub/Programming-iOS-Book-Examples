@@ -15,7 +15,11 @@ class Manny {
     func sayName() {
         print(name)
     }
-    class Klass {}
+    class Klass {
+        func sayName() {
+            // print(name) // Instance member 'name' of type 'Manny' cannot be used on instance of nested type 'Manny.Klass'
+        }
+    }
     struct Struct {}
     enum Enum {}
 }

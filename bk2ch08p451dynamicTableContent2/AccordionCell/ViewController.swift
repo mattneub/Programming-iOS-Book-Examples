@@ -5,10 +5,11 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var showDatePicker = false
+    let expandedHeight: CGFloat = 200
     
     @IBOutlet weak var tableView: UITableView!
     @IBAction func toggleDatePickerCell(_ sender: AnyObject) {
-        self.showDatePicker = !self.showDatePicker
+        self.showDatePicker.toggle()
         self.tableView.performBatchUpdates(nil)
     }
     
@@ -32,7 +33,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         case 1:
             if cell.contentView.subviews.count == 0 {
-                let dp = UIDatePicker(frame:CGRect(x: 0,y: 0,width: cell.contentView.bounds.width,height: 200))
+                let dp = UIDatePicker(frame:CGRect(x: 0,y: 0,width: cell.contentView.bounds.width,height: self.expandedHeight))
+                dp.preferredDatePickerStyle = .wheels
                 cell.contentView.addSubview(dp)
                 cell.clipsToBounds = true
             }
@@ -45,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let datePickerPath = IndexPath(row: 1, section: 0)
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == datePickerPath {
-            return self.showDatePicker ? 200 : 0
+            return self.showDatePicker ? self.expandedHeight : 0
         }
         return tableView.rowHeight
     }

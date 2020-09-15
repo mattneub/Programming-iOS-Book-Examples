@@ -22,7 +22,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         
         // better example would be to start with a view controller:
-        let f = self.view.window?.rootViewController?.view.frame
+        let f = self.view?.window?.rootViewController?.view?.frame
         
         self.navigationController?.hidesBarsOnTap = true
         let ok : Void? = self.navigationController?.hidesBarsOnTap = true
@@ -123,7 +123,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         stringMaybe7 = "howdy"
         _ = stringMaybe7
         
+        _ = (f, upper, stringMaybe, stringMaybe2)
         
+        do {
+            // this seems weird, but it makes sense really:
+            // we are passing the string out into the implicit Optional wrapper
+            // it's really no different from assigning "howdy" to a `String?` variable
+            let f = { () -> String in
+                return "howdy"
+            }
+            let f2 : () -> String? = f
+            print(f()) // howdy
+            print(f2() as Any) // Optional("howdy")
+        }
     }
 
 

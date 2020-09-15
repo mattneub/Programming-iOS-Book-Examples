@@ -23,6 +23,7 @@ class IntAdder {
     }
 }
 
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -37,7 +38,16 @@ class ViewController: UIViewController {
         let result2 = myAdder.sum() // method call
         print(result2)
         
-        
+        // in Swift 5, local types overshadow imported types
+        struct String {
+            func sayHello() {
+                print("Hello, I'm a String!")
+            }
+        }
+        String().sayHello()
+        // have to say Swift here:
+        let s = Swift.String(1)
+        _ = s
     }
 
 

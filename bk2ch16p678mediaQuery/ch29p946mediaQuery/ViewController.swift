@@ -193,7 +193,10 @@ class ViewController: UIViewController {
         }
     }
     
-    let player = MPMusicPlayerController.applicationQueuePlayer
+    let player : MPMusicPlayerController = {
+        var sys : Bool { false }
+        return sys ? .systemMusicPlayer : .applicationMusicPlayer
+    }()
     
     @IBAction func doStop(_ sender: Any) {
         print("invalidating timer, stopping player")
@@ -204,21 +207,39 @@ class ViewController: UIViewController {
         }
         delay(1) {
             // let's find out what this does to the queue
-            self.player.perform(queueTransaction: { q in
-                print(q.items.count, q.items.map {$0.title ?? "no title"})
-                // okay so it looks like it no longer empties the queue
-                // so there is now no difference between pausing and stopping?
-            }, completionHandler: {_,_ in})
+            if let p = self.player as? MPMusicPlayerApplicationController {
+                p.perform { q in
+                    print(q.items.count, q.items.map {$0.title ?? "no title"})
+                    // okay so it looks like it no longer empties the queue
+                    // so there is now no difference between pausing and stopping?
+                } completionHandler: {_,_ in}
+            }
         }
     }
     
+    @objc func statechanged() {
+        print("state changed")
+    }
+    @objc func volumechanged() {
+        print("volume changed")
+    }
+    @objc func queuechanged() {
+        print("queue changed")
+    }
+
     @IBAction func doPlayShortSongs (_ sender: Any) {
         print("do play short songs")
         checkForMusicLibraryAccess {
             // configure notification on main queue
-            self.player.beginGeneratingPlaybackNotifications()
+            // this appears to be a no-op! makes no difference at all whether you call it
+            // self.player.beginGeneratingPlaybackNotifications()
             NotificationCenter.default.removeObserver(self) // let's not add ourselves twice by mistake eh
             NotificationCenter.default.addObserver(self, selector: #selector(self.changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: self.player)
+            // test all notifications
+            NotificationCenter.default.addObserver(self, selector: #selector(self.statechanged), name: .MPMusicPlayerControllerPlaybackStateDidChange, object: self.player)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.volumechanged), name: .MPMusicPlayerControllerVolumeDidChange, object: self.player)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.queuechanged), name: .MPMusicPlayerControllerQueueDidChange, object: self.player)
+
             
             // get off main queue, allow button to unhighlight
             DispatchQueue.global(qos:.userInitiated).async {
@@ -276,14 +297,19 @@ class ViewController: UIViewController {
         let player = self.player
         guard let obj = n.object, obj as AnyObject === player else { return } // just playing safe
         guard let title = player.nowPlayingItem?.title else {return}
-        if player.playbackState != .playing {print("stopped"); return}
+        // ok but this next line is causing trouble...
+        // ... because we _do_ get several calls with stopped playback state
+        // ... including the first one! so we never set the text for that one
+        // if player.playbackState != .playing {print(player.playbackState.rawValue); return}
         let ix = player.indexOfNowPlayingItem
         guard ix != NSNotFound else {return}
         // new, we can get the queue!
-        player.perform(queueTransaction: { q in
-            print(q.items.count, q.items.map {$0.title ?? "no title"})
-            self.label.text = "\(ix+1) of \(q.items.count): \(title)"
-        }, completionHandler: {_,_ in})
+        if let p = self.player as? MPMusicPlayerApplicationController {
+            p.perform { q in
+                print(q.items.count, q.items.map {$0.title ?? "no title"})
+                self.label.text = "\(ix+1) of \(q.items.count): \(title)"
+            } completionHandler: {_,_ in}
+        }
     }
     
     @objc func timerFired(_: Any) {

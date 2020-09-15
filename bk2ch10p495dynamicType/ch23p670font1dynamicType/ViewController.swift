@@ -26,9 +26,11 @@ class ViewController : UIViewController {
         
         // but this you can't do in IB (hold my margarita this time):
         
-        self.lab2.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: self.lab2.font)
-        self.lab2.adjustsFontForContentSizeCategory = true
-
+        if let f = self.lab2.font {
+            let f2 = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: f)
+            self.lab2.font = f2
+            self.lab2.adjustsFontForContentSizeCategory = true
+        }
         
         // and presto, it is now dynamic! wow!!!!!
         // ok weird, I get inconsistent results
@@ -42,14 +44,7 @@ class ViewController : UIViewController {
         self.bigButton.titleLabel?.adjustsFontForContentSizeCategory = true
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.lab2.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: self.lab2.font)
-        self.lab2.adjustsFontForContentSizeCategory = true
-
-    }
-        
+            
     override func traitCollectionDidChange(_ oldtc: UITraitCollection?) {
 
         let newsize = self.traitCollection.preferredContentSizeCategory

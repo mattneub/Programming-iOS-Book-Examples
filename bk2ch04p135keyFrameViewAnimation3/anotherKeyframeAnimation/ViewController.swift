@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }
     
     func test() {
-        UIView.animateKeyframes(withDuration: 2, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 2, delay: 0, options: []) {
             var start = 0.0
             var ix = 0
             UIView.addKeyframe(withRelativeStartTime: start, relativeDuration: 0.5) {
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             UIView.addKeyframe(withRelativeStartTime: start, relativeDuration: 0.5) {
                 self.reds[ix].center.y += 100
             }
-        })
+        }
     }
 
 

@@ -64,11 +64,11 @@ extension MyPresentationController {
         shadow.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // can play tricks with the presenting view just like phone sheet
         if let tc = self.presentingViewController.transitionCoordinator {
-            tc.animate(alongsideTransition: { _ in
+            tc.animate { _ in
                 if self.traitCollection.userInterfaceIdiom == .phone {
                     self.presentingViewController.view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
                 }
-            })
+            }
         }
     }
 }
@@ -80,10 +80,10 @@ extension MyPresentationController {
         let con = self.containerView!
         let shadow = con.subviews[0]
         if let tc = self.presentedViewController.transitionCoordinator {
-            tc.animate(alongsideTransition: { _ in
+            tc.animate { _ in
                 shadow.alpha = 0
                 self.presentingViewController.view.transform = .identity
-            })
+            }
         }
     }
 }
@@ -186,11 +186,11 @@ extension ViewController2 {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let tc = self.transitionCoordinator {
-            tc.animate(alongsideTransition:{
+            tc.animate {
                 _ in
 //                self.buttonTopConstraint.constant += 200
 //                self.view.layoutIfNeeded()
-            })
+            }
         }
     }
 }

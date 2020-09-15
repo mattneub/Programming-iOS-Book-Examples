@@ -47,9 +47,8 @@ class RootViewController : UITableViewController {
             
             cell.textLabel!.textColor = .white
             
-            let v = UIImageView() // no need to set frame
+            let v = UIImageView(image: UIImage(named:"linen.png")) // no need to set frame
             v.contentMode = .scaleToFill
-            v.image = UIImage(named:"linen.png")
             cell.backgroundView = v
             
             let v2 = UIView() // no need to set frame

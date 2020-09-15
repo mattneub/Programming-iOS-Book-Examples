@@ -100,7 +100,7 @@ class ViewController: UIViewController {
             }
         }
         
-        struct Dog{}
+        struct Dog {}
         enum MyDogCarrier : Equatable {
             // case dog(Dog) // error because Dog is not equatable
         }

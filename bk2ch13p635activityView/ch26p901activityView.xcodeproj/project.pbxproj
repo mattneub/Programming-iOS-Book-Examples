@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -67,10 +67,10 @@
 				3219EB3B1BB0F58E0037939C /* AppDelegate.swift */,
 				C97D40F41822B36D002DFE75 /* Main.storyboard */,
 				3217DF20199688DF001092A9 /* ViewController.swift */,
-				3217DF1E199683BD001092A9 /* MustacheViewController.swift */,
-				C97D41191822B3C0002DFE75 /* MustacheViewController.xib */,
 				3217DF1C19968190001092A9 /* MyCoolActivity.swift */,
 				3212667519956BA100455E8E /* MyElaborateActivity.swift */,
+				3217DF1E199683BD001092A9 /* MustacheViewController.swift */,
+				C97D41191822B3C0002DFE75 /* MustacheViewController.xib */,
 				C97D41221822B626002DFE75 /* sunglasses.png */,
 				C97D40FA1822B36D002DFE75 /* Assets.xcassets */,
 				3219EB3D1BB0F5B10037939C /* LaunchScreen.storyboard */,
@@ -116,7 +116,7 @@
 				};
 			};
 			buildConfigurationList = C97D40DA1822B36D002DFE75 /* Build configuration list for PBXProject "ch26p901activityView" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -285,9 +285,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p901activityView/ch26p901activityView-Prefix.pch";
 				INFOPLIST_FILE = "ch26p901activityView/ch26p901activityView-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -306,8 +309,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p901activityView/ch26p901activityView-Prefix.pch";
 				INFOPLIST_FILE = "ch26p901activityView/ch26p901activityView-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.neuburg.matt.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

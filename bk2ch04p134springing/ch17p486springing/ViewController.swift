@@ -10,11 +10,10 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             UIView.animate(withDuration:0.8, delay: 0,
-                usingSpringWithDamping: 0.7,
-                initialSpringVelocity: 20,
-                animations: {
-                    self.v.center.y += 100
-                })
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 20) {
+                self.v.center.y += 100
+            }
         case 2:
             // new in iOS 9, springing is exposed at layer level
             CATransaction.setDisableActions(true)

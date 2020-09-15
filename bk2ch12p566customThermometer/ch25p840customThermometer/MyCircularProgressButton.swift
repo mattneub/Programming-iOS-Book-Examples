@@ -14,7 +14,8 @@ class MyCircularProgressButton : UIButton {
         guard self.shapelayer == nil else {return}
         let layer = CAShapeLayer()
         layer.frame = self.bounds
-        layer.lineWidth = 2
+        layer.lineWidth = 3
+        layer.lineCap = .round
         layer.fillColor = nil
         layer.strokeColor = UIColor.red.cgColor
         let b = UIBezierPath(ovalIn: self.bounds.insetBy(dx: 3, dy: 3))

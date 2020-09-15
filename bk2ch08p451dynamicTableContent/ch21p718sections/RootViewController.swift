@@ -36,7 +36,7 @@ class RootViewController : UITableViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+        self.sections = Array(d).sorted {$0.key < $1.key}.map {
             Section(sectionName: $0.key, rowData: $0.value)
         }
 
@@ -115,7 +115,7 @@ class RootViewController : UITableViewController {
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:|[lab]|",
                     metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatMap {$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sections[section].sectionName
@@ -124,7 +124,7 @@ class RootViewController : UITableViewController {
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sections.map{$0.sectionName}
+        return self.sections.map {$0.sectionName}
     }
     
     @objc func tapped (_ g : UIGestureRecognizer) {
@@ -135,17 +135,17 @@ class RootViewController : UITableViewController {
         if #available(iOS 11.0, *) {
             if self.hiddenSections.contains(sec) {
                 self.hiddenSections.remove(sec)
-                self.tableView.performBatchUpdates({
+                self.tableView.performBatchUpdates {
                     self.tableView.insertRows(at:arr, with:.automatic)
-                }) { _ in
+                } completion: { _ in
                     // improvement: make sure first inserted row is showing
                     self.tableView.scrollToRow(at:arr[0], at:.none, animated:true)
                 }
             } else {
                 self.hiddenSections.insert(sec)
-                self.tableView.performBatchUpdates({
+                self.tableView.performBatchUpdates {
                     self.tableView.deleteRows(at:arr, with:.automatic)
-                }) { _ in
+                } completion: { _ in
                     // improvement: make sure removed section doesn't vanish off top
                     let rect = self.tableView.rect(forSection: sec)
                     self.tableView.scrollRectToVisible(rect, animated: true)

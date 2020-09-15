@@ -10,7 +10,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         self.title = "First"
                 
         // how to customize back button
-        let b3 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.plain, target:nil, action:nil)
+        let b3 = UIBarButtonItem(image: UIImage(named: "files.png"))
         self.navigationItem.backBarButtonItem = b3
 
     }

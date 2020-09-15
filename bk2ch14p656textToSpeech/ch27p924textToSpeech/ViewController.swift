@@ -28,6 +28,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
         }
         if let v = AVSpeechSynthesisVoice(language: "en-US") {
             utter.voice = v
+            // utter.prefersAssistiveTechnologySettings
 //            var rate =
 //                AVSpeechUtteranceMaximumSpeechRate - AVSpeechUtteranceMinimumSpeechRate
 //            rate = rate * 0.15 + AVSpeechUtteranceMinimumSpeechRate

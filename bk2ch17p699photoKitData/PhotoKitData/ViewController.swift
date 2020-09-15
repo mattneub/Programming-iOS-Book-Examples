@@ -8,10 +8,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
-    let status = PHPhotoLibrary.authorizationStatus()
+func checkForPhotoLibraryAccess(for level: PHAccessLevel = .readWrite, andThen f:(()->())? = nil) {
+    let status = PHPhotoLibrary.authorizationStatus(for: level)
     switch status {
-    case .authorized:
+    case .authorized, .limited: // *
         f?()
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
@@ -49,38 +49,7 @@ class ViewController: UIViewController {
     }
 
 
-    // warning, moments will cease to be supported, I've removed this example from the book
-    @IBAction func doButton(_ sender: Any) {
-        
-        checkForPhotoLibraryAccess{
-        
-            let opts = PHFetchOptions()
-            let desc = NSSortDescriptor(key: "startDate", ascending: true)
-            opts.sortDescriptors = [desc]
-            let result = PHCollectionList.fetchCollectionLists(with:
-                .momentList, subtype: .momentListYear, options: opts)
-            let lists = result.objects(at: IndexSet(0..<result.count))
-            for list in lists {
-                let f = DateFormatter()
-                f.dateFormat = "yyyy"
-                print(f.string(from:list.startDate!))
-                // return // uncomment for first example, years alone
-                if list.collectionListType == .momentList {
-                    let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
-                    let colls = result.objects(at: IndexSet(0..<result.count))
-                    for (ix,coll) in colls.enumerated() {
-                        if ix == 0 {
-                            print("======= \(result.count) clusters")
-                        }
-                        f.dateFormat = ("yyyy-MM-dd")
-                        let count = coll.estimatedAssetCount
-                        print("starting \(f.string(from:coll.startDate!)):", count)
-                    }
-                }
-                print("\n")
-            }
-        }
-    }
+
     
     var which : Int { return 1 }
     var subtype : PHAssetCollectionSubtype {
@@ -148,22 +117,22 @@ class ViewController: UIViewController {
             
             switch which {
             case 1:
-                PHPhotoLibrary.shared().performChanges({
+                PHPhotoLibrary.shared().performChanges {
                     let t = "TestAlbum"
                     typealias Req = PHAssetCollectionChangeRequest
                     Req.creationRequestForAssetCollection(withTitle:t)
-                })
+                }
 
                 
             case 2:
                 
                 var ph : PHObjectPlaceholder?
-                PHPhotoLibrary.shared().performChanges({
+                PHPhotoLibrary.shared().performChanges {
                     let t = "TestAlbum"
                     typealias Req = PHAssetCollectionChangeRequest
                     let cr = Req.creationRequestForAssetCollection(withTitle:t)
                     ph = cr.placeholderForCreatedAssetCollection
-                }) { ok, err in
+                } completionHandler: { ok, err in
                     print("created TestAlbum: \(ok)")
                     if ok, let ph = ph {
                         print("and its id is \(ph.localIdentifier)")
@@ -216,11 +185,11 @@ class ViewController: UIViewController {
                 return
             }
             
-            PHPhotoLibrary.shared().performChanges({
+            PHPhotoLibrary.shared().performChanges {
                 typealias Req = PHAssetCollectionChangeRequest
                 let cr = Req(for: alb2)
                 cr?.addAssets([asset1] as NSArray)
-            })  {
+            } completionHandler: {
                 (ok:Bool, err:Error?) in
                 print("added it: \(ok)")
             }

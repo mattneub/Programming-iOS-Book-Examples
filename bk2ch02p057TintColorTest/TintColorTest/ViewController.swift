@@ -16,7 +16,10 @@ class ViewController: UIViewController {
         
         let smiley = UIImage(named:"Smiley")!
         let smileyTemplate = UIImage(named:"SmileyTemplate")!
-        let doc = UIImage(systemName:"doc")!
+        var doc = UIImage(systemName:"doc")!
+        if #available(iOS 14.0, *) {
+            doc = UIImage(systemName:"folder.badge.plus")!
+        }
         
         if let w = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first {
             w.tintColor = .red
@@ -46,6 +49,13 @@ class ViewController: UIViewController {
         
         self.b[6].setImage(doc.withTintColor(.yellow, renderingMode: .alwaysOriginal), for:.normal) // now yellow template // *
         self.iv[6].image = doc.withTintColor(.yellow, renderingMode: .alwaysOriginal) // now yellow template // *
+        // ok, new in iOS 12, the button, but not the image view, can be assigned
+        // a "multicolor" image
+        // I take it the rule is: it must be a template milieu...
+        // ...and you must not assign the image a tint color
+        self.b[6].setImage(doc.withRenderingMode(.alwaysOriginal), for:.normal) // multi!
+        self.b[6].tintColor = .yellow // still multi
+        self.iv[6].image = doc.withRenderingMode(.alwaysOriginal) // not
         
 //        let im = UIImage(systemName:"circle.fill")?.withTintColor(.yellow) // nope, red
 //        let iv = UIImageView(image:im)

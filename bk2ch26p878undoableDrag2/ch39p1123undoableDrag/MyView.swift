@@ -32,9 +32,9 @@ class MyView : UIView {
         self.undoer.setActionName("Move")
         if self.undoer.isUndoing || self.undoer.isRedoing {
             print("undoing or redoing")
-            UIView.animate(withDuration:0.4, delay: 0.1, animations: {
+            UIView.animate(withDuration:0.4, delay: 0.1) {
                 self.center = newCenter // *
-            })
+            }
         } else {
             // just do it
             print("just do it")

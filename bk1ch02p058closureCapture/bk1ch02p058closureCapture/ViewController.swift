@@ -50,16 +50,22 @@ class ViewController: UIViewController {
     
     func test() {
         func f() {
-            print(presentingViewController as Any)
+            print(view as Any)
         }
         funcCaller(f:f) // okay
         let f2 = funcPasser(f:f) // okay, even though f doesn't say "self"
         // I regard that as a bug (and I think so does Jordan Rose)
         let f3 = funcPasser {
-            print(self.presentingViewController as Any) // self required
+            print(self.view.bounds) // self required
         }
-        
-        let _ = (f2,f3)
+        // new in Swift 5.3, can move `self` to the capture list
+        // self is still required, but this way we acknowledge the potential cycle...
+        // while avoiding repetitious or "ugly" code
+        let f4 = funcPasser { [self] in
+            print(view.bounds)
+        }
+
+        let _ = (f2,f3,f4)
     }
     
     func pass100 (_ f:(Int)->()) {

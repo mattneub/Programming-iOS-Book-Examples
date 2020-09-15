@@ -159,10 +159,10 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello world"
-            let arra = s.split{$0 == " "}
+            let arra = s.split {$0 == " "}
             print(arra)
             print(type(of:arra[0]))
-            let arr = s.split{$0 == " "}.map{String($0)}
+            let arr = s.split {$0 == " "}.map {String($0)}
             print(arr)
         }
         
@@ -329,6 +329,12 @@ class ViewController: UIViewController {
         
         do {
             let s = "string"
+            let sub = s[...] // String.SubSequence = Substring, weird eh
+            _ = sub
+        }
+        
+        do {
+            let s = "string"
             let range = s.startIndex..<s.endIndex
             let range2 = ..<s.endIndex
             let range3 = ...s.index(before: s.endIndex)
@@ -371,7 +377,7 @@ class ViewController: UIViewController {
             s.append(contentsOf: Array(" world")) // "hello world"
             s.append(contentsOf: ["!" as Character, "?" as Character])
             
-            s.append(contentsOf: (1...3).map{Character(String($0))})
+            s.append(contentsOf: (1...3).map {Character(String($0))})
             // s.append(contentsOf: (1...3)) // nope
         }
  

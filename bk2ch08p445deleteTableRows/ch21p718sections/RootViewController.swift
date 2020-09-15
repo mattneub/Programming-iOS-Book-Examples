@@ -28,7 +28,7 @@ class RootViewController : UITableViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+        self.sections = Array(d).sorted {$0.key < $1.key}.map {
             Section(sectionName: $0.key, rowData: $0.value)
         }
 
@@ -86,7 +86,7 @@ class RootViewController : UITableViewController {
     
     @objc func doDeleteSelected(_ sender:Any) {
         guard let sel = self.tableView.indexPathsForSelectedRows else {return}
-        self.tableView.performBatchUpdates({
+        self.tableView.performBatchUpdates {
             for ip in sel.sorted().reversed() {
                 self.sections[ip.section].rowData.remove(at:ip.row)
             }
@@ -98,7 +98,7 @@ class RootViewController : UITableViewController {
                 self.sections.remove(at:sec)
             }
             self.tableView.deleteSections(IndexSet(secs), with: .fade)
-        })
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -174,7 +174,7 @@ class RootViewController : UITableViewController {
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:|[lab]|",
                     metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatMap {$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sections[section].sectionName
@@ -182,7 +182,7 @@ class RootViewController : UITableViewController {
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sections.map{$0.sectionName}
+        return self.sections.map {$0.sectionName}
     }
 
     override func tableView(_ tableView: UITableView,
@@ -193,7 +193,7 @@ class RootViewController : UITableViewController {
         // (but try this in iOS 12, you'll see the problem)
         switch editingStyle {
         case .delete:
-            tableView.performBatchUpdates({
+            tableView.performBatchUpdates {
                 self.sections[ip.section].rowData.remove(at:ip.row)
                 tableView.deleteRows(at:[ip], with: .automatic)
                 if self.sections[ip.section].rowData.count == 0 {
@@ -201,7 +201,7 @@ class RootViewController : UITableViewController {
                     tableView.deleteSections(
                         IndexSet(integer: ip.section), with:.fade)
                 }
-            })
+            }
         default: break
         }
     }

@@ -324,7 +324,7 @@ class ViewController: UIViewController {
         }
         print(components)
         
-        do { // don't do this?
+        do { // don't do this! now a warning, eventually will be an error
             let ptr = UnsafeMutablePointer(&components)
             ptr[0] = 1
         }

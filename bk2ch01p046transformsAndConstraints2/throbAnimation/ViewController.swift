@@ -30,18 +30,17 @@ class ViewController: UIViewController {
 //        self.v2.removeConstraints(self.constraints)
 
         UIView.animate(withDuration:0.4, delay: 0,
-            options: .autoreverse,
-            animations: {
+            options: .autoreverse) {
                 self.v1.transform = CGAffineTransform(scaleX:1.1, y:1.1)
                 self.v2.transform = CGAffineTransform(scaleX:1.1, y:1.1)
-            }, completion: {
+            } completion: {
                 _ in
                 self.v1.transform = .identity
                 self.v2.transform = .identity
 
 //                self.v2.addConstraints(self.constraints)
 //                self.v2.setTranslatesAutoresizingMaskIntoConstraints(false)
-            })
+            }
     }
 
 }

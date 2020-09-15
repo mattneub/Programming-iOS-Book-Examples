@@ -43,10 +43,9 @@ class ViewController : UIViewController {
             from:fromvc,
             to:tovc,
             duration:0.4,
-            options:.transitionFlipFromLeft,
-            animations: {
+            options:.transitionFlipFromLeft) {
                 self.constrainInPanel(tovc.view) // *
-        }) { _ in
+        } completion: { _ in
             // when we call add, we must call "did" afterwards
             tovc.didMove(toParent: self)
             fromvc.removeFromParent() // "did" called for us
@@ -60,7 +59,7 @@ class ViewController : UIViewController {
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", metrics:nil, views:["v":v]),
             NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", metrics:nil, views:["v":v])
-            ].flatMap{$0})
+            ].flatMap {$0})
     }
     
     // a different way (don't use both!)

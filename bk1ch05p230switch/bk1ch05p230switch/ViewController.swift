@@ -31,6 +31,8 @@ enum Filter : CustomStringConvertible {
 enum MyError {
     case number(Int)
     case message(String)
+    case doubleMessage(String, String)
+    case doubleMessage2((String, String))
     case fatal
 }
 
@@ -265,6 +267,16 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         case .number(0):
             print("It's a zero error number")
         default:break
+        }
+        
+        // demonstrate warning when you try to splat an implicit tuple
+        // warning is new in Swift 5.2, revised in Swift 5.3
+        switch err {
+        case .doubleMessage(let s1, let s2):
+            print("It's", s1, "and", s2)
+        case .doubleMessage2(let s1, let s2):
+            print("It's", s1, "and", s2)
+        default: break
         }
         
         do {

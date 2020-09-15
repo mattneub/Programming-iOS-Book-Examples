@@ -48,8 +48,8 @@ class ViewController : UIViewController {
             var dir : CGFloat = 1
             UIView.animateKeyframes(withDuration:4,
                                     delay: 0,
-                                    options: opts, // comment in or out
-                animations: {
+                                    options: opts // comment in or out
+            ) {
                     // self.v.alpha = 0
                     UIView.addKeyframe(withRelativeStartTime:start,
                                        relativeDuration: dur) {
@@ -74,7 +74,7 @@ class ViewController : UIViewController {
                                         p.x += dx*dir; p.y += dy
                                         self.v.center = p
                     }
-            })
+            }
             dont: do {
                 break dont
                 let dx : CGFloat = 100
@@ -116,8 +116,8 @@ class ViewController : UIViewController {
             var ix = 0
             UIView.animateKeyframes(withDuration:2,
                                     delay: 0,
-                                    options: opts, // comment in or out
-                animations: {
+                                    options: opts // comment in or out
+            ) {
                     // self.v.alpha = 0
                     UIView.addKeyframe(withRelativeStartTime:starts[ix],
                                        relativeDuration: durs[ix]) {
@@ -142,7 +142,7 @@ class ViewController : UIViewController {
                                         p.x += dx*dir; p.y += dy
                                         self.v.center = p
                     }
-            })
+            }
 
         default : break
         }

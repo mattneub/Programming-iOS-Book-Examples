@@ -5,7 +5,7 @@ import WebKit
 import AudioToolbox
 import ImageIO
 import AVFoundation
-
+import CoreLocation
 
 @objc enum Star : Int {
     case blue
@@ -222,6 +222,30 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             t.take1id(MyClass2()) // objc
         }
         
+        do {
+            let thing = Thing()
+            do {
+                let s = try thing.stringReturner()
+                print(s)
+            } catch {
+                print("error:", error)
+            }
+        }
+        
+        do {
+            let thing = Thing()
+            do {
+                // returns a Bool in ObjC but returns Void in Swift
+                try thing.boolReturner()
+                print("book returned ok")
+            } catch CLError.locationUnknown {
+                print("CLError location unknown caught")
+            } catch {
+                print("error:", error)
+            }
+        }
+
+        
         // another way of looking at the question
         do {
             func test(_ x:Any) {
@@ -335,17 +359,36 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         do {
             UIGraphicsBeginImageContext(CGSize(width:200,height:200))
             let c = UIGraphicsGetCurrentContext()!
-            // see https://github.com/apple/swift-evolution/blob/master/proposals/0184-unsafe-pointers-add-missing.md
-            let arr = UnsafeMutablePointer<CGPoint>.allocate(capacity:4)
+            // see swift evolution 0184-unsafe-pointers-add-missing.md
+            let ptr = UnsafeMutablePointer<CGPoint>.allocate(capacity:4)
+            ptr.initialize(repeating: .zero, count: 4)
             defer {
-                arr.deinitialize(count:4)
-                arr.deallocate()
+                ptr.deinitialize(count:4)
+                ptr.deallocate()
             }
-            arr[0] = CGPoint(x:0,y:0)
-            arr[1] = CGPoint(x:50,y:50)
-            arr[2] = CGPoint(x:50,y:50)
-            arr[3] = CGPoint(x:0,y:100)
-            c.__strokeLineSegments(between: arr, count:4)
+            ptr[0] = CGPoint(x:0,y:0)
+            ptr[1] = CGPoint(x:50,y:50)
+            ptr[2] = CGPoint(x:50,y:50)
+            ptr[3] = CGPoint(x:0,y:100)
+            c.__strokeLineSegments(between: ptr, count: 4)
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            self.view.addSubview(UIImageView(image:im)) // just checking :)
+        }
+        
+        do {
+            // new in iOS 14; also for String
+            // this lets us make a Swift Array or String by manipulating memory but without a temp
+            let array = Array<CGPoint>(unsafeUninitializedCapacity: 4) { (arr, count) in
+                arr[0] = CGPoint(x:0,y:0)
+                arr[1] = CGPoint(x:50,y:50)
+                arr[2] = CGPoint(x:50,y:50)
+                arr[3] = CGPoint(x:0,y:100)
+                count = 4 // crucial
+            }
+            UIGraphicsBeginImageContext(CGSize(width:200,height:200))
+            let c = UIGraphicsGetCurrentContext()!
+            c.__strokeLineSegments(between: array, count: 4)
             let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             self.view.addSubview(UIImageView(image:im)) // just checking :)
@@ -363,6 +406,23 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
                 
                 print(red, green, blue, alpha)
             }
+        }
+        
+        do {
+            let col = UIColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
+            if let comp = col.cgColor.__unsafeComponents,
+                let sp = col.cgColor.colorSpace,
+                sp.model == .rgb {
+                    let comp = Array<CGFloat>(unsafeUninitializedCapacity: 4) { (arr, count) in
+                        count = 4
+                        for ix in arr.indices {
+                            arr[ix] = comp[ix]
+                        }
+                    }
+                    print(comp)
+                    let (r,g,b,a) = (comp[0], comp[1], comp[2], comp[3])
+                    print(r,g,b,a)
+                }
         }
         
         do {

@@ -92,10 +92,10 @@ class RootViewController : UITableViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-//        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+//        self.sections = Array(d).sorted {$0.key < $1.key}.map {
 //            Section(sectionName: $0.key, rowData: $0.value)
 //        }
-        let sections = Array(d).sorted{$0.key < $1.key}
+        let sections = Array(d).sorted {$0.key < $1.key}
         var snap = NSDiffableDataSourceSnapshot<String,String>()
         for section in sections {
             snap.appendSections([section.0])
@@ -198,7 +198,7 @@ class RootViewController : UITableViewController {
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:|[lab]|",
                     metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatMap {$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         // *

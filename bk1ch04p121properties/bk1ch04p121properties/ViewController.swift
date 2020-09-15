@@ -77,14 +77,14 @@ struct Greeting {
     static let friendly = "hello there"
     static let hostile = "go away"
     static let ambivalent = friendly + " but " + hostile // legal!
-    // static let ambivalent2a = self.friendly + " but " + self.hostile // compile error
+    static let ambivalent2a = Self.friendly + " but " + Self.hostile // compile error if you say `self`
     static let ambivalent2 = Greeting.friendly + " but " + Greeting.hostile
     static var ambivalent3 : String {
         self.friendly + " but " + self.hostile // legal!
     }
-//    static var ambivalent4 : String = {
-//        self.friendly + " but " + self.hostile // compile error
-//        }()
+    static var ambivalent4 : String = {
+        Self.friendly + " but " + Self.hostile // compile error if you say `self`
+    }()
 
 }
 

@@ -1,6 +1,7 @@
 
 import UIKit
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 
 class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
@@ -10,7 +11,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         let s = try! String(contentsOf:path)
         let arr = s.components(separatedBy:"\n")
         var result : [String:String] = [:]
-        stride(from: 0, to: arr.count, by: 2).map{($0,$0+1)}.forEach {
+        stride(from: 0, to: arr.count, by: 2).map {($0,$0+1)}.forEach {
             result[arr[$0.0]] = arr[$0.1]
         }
         return result
@@ -19,7 +20,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     var extensionContext: NSExtensionContext?
     // NSObject has no magically acquired extension context, we must keep a reference
     
-    let desiredType = kUTTypePlainText as String
+    let desiredType = UTType.plainText.identifier
     
     func beginRequest(with context: NSExtensionContext) {
         // Do not call super in an Action extension with no user interface

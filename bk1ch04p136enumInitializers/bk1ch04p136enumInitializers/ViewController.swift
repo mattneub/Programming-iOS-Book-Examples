@@ -44,6 +44,10 @@ enum Filter : String, CaseIterable {
         }
     }
 
+    // here's an idea!
+    static subscript(ix: Int) -> Filter {
+        Filter.allCases[ix]
+    }
 
 }
 
@@ -99,6 +103,9 @@ class ViewController: UIViewController {
         let type3 = Filter(2) // .podcasts, wrapped in a Optional
 
         let type4 = Filter(5) // nil
+        
+        let type4b = Filter[2] // .podcasts
+        print(type4b)
         
         let type5 = Filter("Playlists")
         

@@ -139,9 +139,9 @@ class ViewController : UIViewController {
         case 9:
             layer.delegate = self
             
-            CATransaction.setCompletionBlock({
+            CATransaction.setCompletionBlock {
                 layer.removeFromSuperlayer()
-                })
+            }
             CATransaction.setValue("", forKey:"bye")
             layer.opacity = 0
             // the delegate (me) will "shrink" the layer as it disappears

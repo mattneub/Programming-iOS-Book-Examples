@@ -4,8 +4,6 @@ import CoreData
 
 class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    var managedObjectContext : NSManagedObjectContext!
-    
     let cellID = "Cell"
     
     lazy var ds : UITableViewDiffableDataSource<String,NSManagedObjectID> = {
@@ -25,9 +23,11 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         let sortDescriptor = NSSortDescriptor(key:"timestamp", ascending:true)
         req.sortDescriptors = [sortDescriptor]
 
+        let del = UIApplication.shared.delegate as! AppDelegate
+        let moc = del.persistentContainer.viewContext
         let frc = NSFetchedResultsController(
             fetchRequest:req,
-            managedObjectContext:self.managedObjectContext,
+            managedObjectContext:moc,
             sectionNameKeyPath:nil, cacheName:nil)
         frc.delegate = self
         do {
@@ -54,7 +54,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
     @objc func doRefresh(_:AnyObject) {
@@ -74,7 +74,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             group.timestamp = Date()
             let pl = PeopleLister(group: group)
             self.navigationController!.pushViewController(pl, animated: true)
-            })
+        })
         self.present(av, animated: true)
     }
         

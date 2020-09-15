@@ -99,7 +99,10 @@ class ViewController : UIViewController {
             // the adjustedContentInset is _added_ to any content inset we explicitly provide
             // thus in most cases the best option is to do nothing!
             print(sv.contentInset) // zero
-            print(sv.scrollIndicatorInsets) // zero
+            // deprecated getter
+            // print(sv.scrollIndicatorInsets) // zero
+            print(sv.horizontalScrollIndicatorInsets) // zero
+            print(sv.verticalScrollIndicatorInsets) // zero
             print(sv.contentOffset) // 0, -20
         }
         

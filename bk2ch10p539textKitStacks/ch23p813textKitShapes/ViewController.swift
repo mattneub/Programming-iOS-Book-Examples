@@ -26,7 +26,7 @@ class ViewController: UIViewController {
             ])
         
         mas.addAttribute(.paragraphStyle,
-            value:lend(){
+            value:lend() {
                 (para:NSMutableParagraphStyle) in
                 para.alignment = .left
                 para.lineBreakMode = .byWordWrapping

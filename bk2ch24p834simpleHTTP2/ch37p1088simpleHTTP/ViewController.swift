@@ -1,6 +1,7 @@
 
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
 
@@ -17,10 +18,10 @@ class ViewController: UIViewController {
                 print(err as Any)
                 return
             }
-            let status = (resp as! HTTPURLResponse).statusCode
-            print("response status: \(status)")
+            let status = (resp as? HTTPURLResponse)?.statusCode
+            print("response status: \(status as Any)")
             guard status == 200 else {
-                print(status)
+                print(status as Any)
                 return
             }
             if let d = data {
@@ -36,25 +37,26 @@ class ViewController: UIViewController {
         task.resume()
     }
     
+    var pipeline : AnyCancellable?
     @IBAction func doCombineNetworking(_ sender: Any) {
         let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = URL(string:s)!
         let session = URLSession.shared
-        let _ = session.dataTaskPublisher(for: url)
+        let pipeline = session.dataTaskPublisher(for: url)
             .tryMap { data, response -> UIImage? in
                 if (response as? HTTPURLResponse)?.statusCode != 200 {
                     throw NSError(domain: "wrong status", code: 0)
                 }
                 return UIImage(data:data)
             }.receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { comp in
+            .sink { comp in
                 if case let .failure(err) = comp {
                     print(err)
                 }
-            }) { im in
+            } receiveValue: { im in
                 print("here's your image")
                 self.iv.image = im
-        }
+            }
+        self.pipeline = pipeline
     }
-    
 }

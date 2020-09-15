@@ -1,8 +1,6 @@
 
 
 import UIKit
-import MobileCoreServices
-import Photos
 import PhotosUI
 import AVKit
 import ImageIO
@@ -12,32 +10,6 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
-    // uncomment to test what happens if we proceed without authorization
-//    f?()
-//    return;
-    
-    let status = PHPhotoLibrary.authorizationStatus()
-    switch status {
-    case .authorized:
-        f?()
-    case .notDetermined:
-        PHPhotoLibrary.requestAuthorization() { status in
-            if status == .authorized {
-                DispatchQueue.main.async {
-                    f?()
-                }
-            }
-        }
-    case .restricted:
-        // do nothing
-        break
-    case .denied:
-        // do nothing, or beg the user to authorize us in Settings
-        break
-    @unknown default: fatalError()
-    }
-}
 
 
 class ViewController: UIViewController {
@@ -51,157 +23,115 @@ class ViewController: UIViewController {
         return .landscape
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
     @IBAction func doPick (_ sender: Any) {
         
-        // according to the video, in iOS 11 no authorization is required,
-        // because everything is happening out-of-process
-        // but they haven't stated this accurately;
-        // it works to get the photo, but if you want important stuff like the PHAsset and the media URL,
-        // you still need authorization
         
-        checkForPhotoLibraryAccess {
-        
-            // horrible Moments interface
-            // and to make matters worse, it doesn't match iOS 13 Photos app
-            // let src = UIImagePickerController.SourceType.savedPhotosAlbum
-            let src = UIImagePickerController.SourceType.photoLibrary
-            guard UIImagePickerController.isSourceTypeAvailable(src)
-                else { print("alas"); return }
-            let arr = UIImagePickerController.availableMediaTypes(for:src)
-            print("available types", arr as Any)
-            if arr == nil || arr!.count == 0  { print("no available types"); return }
-            let picker = UIImagePickerController()
-            picker.sourceType = src
-            // if you don't explicitly include live photos, you won't get any live photos as live photos
-            picker.mediaTypes = [kUTTypeLivePhoto as String, kUTTypeImage as String, kUTTypeMovie as String]
-
-            print(picker.mediaTypes)
+        // new in iOS 14, we can get the asset _later_ so we don't need access up front
+        do {
+            // if you create the configuration with no photo library, you will not get asset identifiers
+            var config = PHPickerConfiguration()
+            // try it _with_ the library
+            config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1 // default
+            // what you filter out will indeed not appear in the picker
+            config.filter = .livePhotos // default is all three appear, no filter
+            let picker = PHPickerViewController(configuration: config)
             picker.delegate = self
-            
-            // new in iOS 11
-            picker.videoExportPreset = AVAssetExportPreset640x480 // or whatever
-            
-            picker.allowsEditing = true // try true
-            
-            // this will automatically be fullscreen on phone and pad, looks fine
-            // note that for .photoLibrary, iPhone app must permit portrait orientation
-            // if we want a popover, on pad, we can do that; just uncomment next line
-            picker.modalPresentationStyle = .popover
+            // works okay as a popover but even better just present, it will be a normal sheet
             self.present(picker, animated: true)
-            if let pop = picker.popoverPresentationController {
-                let v = sender as! UIView
-                pop.sourceView = v
-                pop.sourceRect = v.bounds
-            }
-            
         }
         
     }
 }
 
-// if we do nothing about cancel, cancels automatically
-// if we do nothing about what was chosen, cancel automatically but of course now we have no access
-
-// interesting problem is that we have no control over permitted orientations of picker
-// that's why I subclass for the sake of the example
-
-extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // this has no effect
-    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-        return .landscape
+extension ViewController : PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true) { // NB if you don't say this, it won't dismiss!
+            print(Thread.isMainThread) // yep
+            guard let result = results.first else { return }
+            // proving you don't get asset id unless you specified library
+            let assetid = result.assetIdentifier
+            print(assetid as Any)
+            // what did we get? I think the way to find out is to ask the provider
+            let prov = result.itemProvider
+            let types = prov.registeredTypeIdentifiers
+            print("types:", types)
+            // for image, "public.jpeg" or "public.png" etc
+            // for video, "com.apple.quicktime-movie"
+            // for live photo, ["com.apple.live-photo-bundle", "public.jpeg"]
+            // for looping live photo, ["com.apple.private.auto-loop-gif", "com.apple.quicktime-movie", "com.compuserve.gif"]
+            
+            // NB UTType is new in iOS 14! where did they document this????
+            if prov.hasItemConformingToTypeIdentifier(UTType.movie.identifier) {
+                self.dealWithVideo(result)
+            } else if prov.canLoadObject(ofClass: PHLivePhoto.self) {
+                self.dealWithLivePhoto(result)
+            } else if prov.canLoadObject(ofClass: UIImage.self) {
+                self.dealWithImage(result)
+            }
+        }
     }
     
+    // deal with the different types
+    // the result's itemProvider is ready to supply the data
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) { //
-        print("====== pick!")
-        let mediatype = info[.mediaType]
-        print("media type:", mediatype as Any)
-        let asset = info[.phAsset] as? PHAsset
-        print("asset:", asset as Any)
-        print("playbackstyle:", asset?.playbackStyle.rawValue as Any)
-        // types are 0 for unsupported, then image, imageAnimated, livePhoto, video, videoLooping
-        let url = info[.mediaURL] as? URL
-        print("media url:", url as Any)
-        var im = info[.originalImage] as? UIImage
-        print("original image:", im as Any)
-        if let ed = info[.editedImage] as? UIImage {
-            im = ed
-        }
-        let live = info[.livePhoto] as? PHLivePhoto
-        print("live:", live as Any)
-        let imurl = info[.imageURL] as? URL
-        print("image url:", imurl as Any)
-        self.dismiss(animated:true) {
-            if let style = asset?.playbackStyle {
-                switch style {
-                case .image:
-                    if im != nil {
-                        self.showImage(im!)
-                    }
-                    // how to pick up metadata
-                    if imurl != nil {
-                        self.pickUpMetadata(imurl!)
-                    }
-                case .imageAnimated:
-                    if imurl != nil {
-                        self.showAnimatedImage(imurl!)
-                    }
-                case .livePhoto:
-                    // hmm, I'm getting .livePhoto but live _is_ nil!
-                    if live != nil {
-                        self.showLivePhoto(live!)
+    fileprivate func dealWithVideo(_ result: PHPickerResult) {
+        // this is the hardest case
+        // there is no class that represents "a movie"
+        // plus, we don't want the movie in memory, we want a file on disk
+        // so ask the provider to save the data for us
+        let movie = UTType.movie.identifier // "com.apple.quicktime-movie"
+        let prov = result.itemProvider
+        // NB we could have a Progress here if we want one
+        prov.loadFileRepresentation(forTypeIdentifier: movie) { url, err in
+            if let url = url {
+                // ok but there's a problem: the file wants to be deleted
+                // so I use `main.sync` to pin it down long enough to configure the presentation
+                DispatchQueue.main.sync {
+                    // this type is private but I don't see how else to know it loops
+                    let loopType = "com.apple.private.auto-loop-gif"
+                    if prov.hasItemConformingToTypeIdentifier(loopType) {
+                        print("looping movie")
+                        self.showLoopingMovie(url: url)
                     } else {
-                        print("live is nil!")
-                        self.fetchLivePhoto(from:asset)
+                        print("normal movie")
+                        self.showMovie(url: url)
                     }
-                case .video:
-                    if url != nil {
-                        self.showMovie(url:url!)
-                    }
-                case .videoLooping:
-                    if url != nil {
-                        self.showLoopingMovie(url:url!)
-                    }
-                case .unsupported: break
-                @unknown default: fatalError()
                 }
             }
-            // old code from when only three types of result were possible
-            /*
-            if let mediatype = info[UIImagePickerControllerMediaType],
-                let type = mediatype as? NSString {
-                switch type as CFString {
-                case kUTTypeLivePhoto:
-                    if live != nil {
-                        self.showLivePhoto(live!)
-                    }
-                case kUTTypeImage:
-                    if im != nil {
-                        self.showImage(im!)
-                    }
-                case kUTTypeMovie:
-                    if url != nil {
-                        self.showMovie(url:url!)
-                    }
-                default:break
-                }
-            }
- */
         }
     }
+    
+    // the other cases are easy; just load the data as objects
+    
+    fileprivate func dealWithLivePhoto(_ result: PHPickerResult) {
+        let prov = result.itemProvider
+        prov.loadObject(ofClass: PHLivePhoto.self) { livePhoto, err in
+            if let photo = livePhoto as? PHLivePhoto {
+                DispatchQueue.main.async {
+                    self.showLivePhoto(photo)
+                }
+            }
+        }
+    }
+    
+    fileprivate func dealWithImage(_ result: PHPickerResult) {
+        let prov = result.itemProvider
+        prov.loadObject(ofClass: UIImage.self) { im, err in
+            if let im = im as? UIImage {
+                DispatchQueue.main.async {
+                    self.showImage(im)
+                    // ??? but how do I pick up the image metadata
+                    // well, the provider can provide the image data
+                    self.fetchMetadata(prov)
+                }
+            }
+        }
+    }
+
     
     func clearAll() {
+        print("clearing interface")
         if self.children.count > 0 {
             let av = self.children[0] as! AVPlayerViewController
             av.willMove(toParent: nil)
@@ -225,6 +155,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func showImage(_ im:UIImage) {
+        print("showing image")
         self.clearAll()
         let iv = UIImageView(image:im)
         iv.contentMode = .scaleAspectFit
@@ -234,6 +165,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     func showMovie(url:URL) {
         self.clearAll()
+        print("showing movie")
         let av = AVPlayerViewController()
         let player = AVPlayer(url:url)
         av.player = player
@@ -247,6 +179,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     func showLoopingMovie(url:URL) {
         self.clearAll()
+        print("showing loop")
         let av = AVPlayerViewController()
         let player = AVQueuePlayer(url:url)
         av.player = player
@@ -261,8 +194,12 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     func fetchLivePhoto(from asset:PHAsset?) {
         // well then I'll fetch it myself, said the little red hen
+        print("attempting to fetch live photo")
         if let asset = asset {
-            PHImageManager.default().requestLivePhoto(for: asset, targetSize: self.redView.bounds.size, contentMode: .aspectFit, options: nil) { photo, info in
+            let options = PHLivePhotoRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            PHImageManager.default().requestLivePhoto(for: asset, targetSize: self.redView.bounds.size, contentMode: .aspectFit, options: options) { photo, info in
+                print("got live photo")
                 if let photo = photo {
                     self.showLivePhoto(photo)
                 }
@@ -271,6 +208,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func showLivePhoto(_ ph:PHLivePhoto) {
+        print("showing live photo")
         self.clearAll()
         let v = PHLivePhotoView(frame:self.redView.bounds)
         v.contentMode = .scaleAspectFit
@@ -278,11 +216,13 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         self.redView.addSubview(v)
     }
     
-    func pickUpMetadata(_ imurl:URL?) {
-        let src = CGImageSourceCreateWithURL(imurl! as CFURL, nil)!
-        let d = CGImageSourceCopyPropertiesAtIndex(src,0,nil) as! [AnyHashable:Any]
-        print(d)
-
+    func fetchMetadata(_ prov:NSItemProvider) {
+        prov.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { data, err in
+            if let data = data {
+                let src = CGImageSourceCreateWithData(data as CFData, nil)!
+                let d = CGImageSourceCopyPropertiesAtIndex(src,0,nil) as! [AnyHashable:Any]
+                print("metadata", d)
+            }
+        }
     }
-    
 }

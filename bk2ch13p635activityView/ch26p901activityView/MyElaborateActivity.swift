@@ -7,6 +7,7 @@ class MyElaborateActivity : UIActivity {
     var image : UIImage
     
     override init() {
+        print("creating an elaborate activity")
         let idiom = UIScreen.main.traitCollection.userInterfaceIdiom
         var scale : CGFloat = (idiom == .pad ? 76 : 60) - 10
         let im = UIImage(named:"sunglasses.png")!
@@ -45,6 +46,11 @@ class MyElaborateActivity : UIActivity {
     override func prepare(withActivityItems activityItems: [Any]) {
         print("elaborate prepare \(activityItems)")
         self.items = activityItems
+    }
+    
+    override func perform() {
+        print("elaborate perform")
+        self.activityDidFinish(true)
     }
     
     override var activityViewController : UIViewController? {

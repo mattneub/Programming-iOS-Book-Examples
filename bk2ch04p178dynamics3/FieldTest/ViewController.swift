@@ -39,8 +39,7 @@ extension CGRect {
 class MyDelayedFieldBehavior : UIFieldBehavior {
     
     // ignore, just testing the syntax
-    let b = UIFieldBehavior.field {
-        (beh, pt, v, m, c, t) -> CGVector in
+    let b = UIFieldBehavior.field { beh, pt, v, m, c, t in
         if t > 0.25 {
             return CGVector(-v.dx, -v.dy)
         }
@@ -50,8 +49,7 @@ class MyDelayedFieldBehavior : UIFieldBehavior {
     
     var delay = 0.0
     class func dragField(delay del:Double) -> Self {
-        let f = self.field {
-            (beh, pt, v, m, c, t) -> CGVector in
+        let f = self.field { beh, pt, v, m, c, t in
             if t > (beh as! MyDelayedFieldBehavior).delay {
                 return CGVector(-v.dx, -v.dy)
             }
@@ -67,7 +65,7 @@ class ViewController: UIViewController {
     
     var anim : UIDynamicAnimator!
     
-    let which = 1
+    let which = 2
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

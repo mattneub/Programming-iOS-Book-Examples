@@ -67,21 +67,21 @@ extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
             r2start.origin.y -= r2start.size.height
             v2.frame = r2start
             con.addSubview(v2)
-            UIView.animate(withDuration:0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, animations: {
+            UIView.animate(withDuration:0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10) {
                 v2.frame = r2end
-                }, completion: {
+                } completion: {
                     _ in
                     ctx.completeTransition(true)
-            })
+            }
         } else if let v1 = ctx.view(forKey:.from) {
             var r1end = r1start
             r1end.origin.y = -r1end.size.height
-            UIView.animate(withDuration:0.8, animations: {
+            UIView.animate(withDuration:0.8) {
                 v1.frame = r1end
-                }, completion: {
+                } completion: {
                     _ in
                     ctx.completeTransition(true)
-            })
+            }
         }
     }
     

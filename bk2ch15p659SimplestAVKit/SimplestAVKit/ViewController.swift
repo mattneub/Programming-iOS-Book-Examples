@@ -23,10 +23,11 @@ class ViewController: UIViewController {
     }
     
 
-
+    var pic = false // is picture in picture going on?
     let which = 1 // 1 is present, 2 is push, but they no longer talk about that
     
     @IBAction func doPresent(_ sender: Any) {
+        if self.pic { return } // don't do this in the middle of picture in picture
         switch which {
         case 1:
             let av = AVPlayerViewController()
@@ -99,11 +100,18 @@ extension ViewController : AVPlayerViewControllerDelegate {
     
     
     func playerViewController(_ pvc: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler ch: @escaping (Bool) -> Void) {
-        self.present(pvc, animated:true) { 
+        self.present(pvc, animated:true) {
             ch(true)
         }
     }
     
+    func playerViewControllerDidStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
+        self.pic = true
+    }
+    
+    func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
+        self.pic = false
+    }
 
 }
 

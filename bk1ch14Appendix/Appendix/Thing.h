@@ -36,6 +36,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) take1id: (id) anid;
 - (void) take1id2: (id) anid;
 
+// gotta say nullable so we fit the pattern!
+- (nullable NSString*) stringReturnerWithError: (NSError**) err;
+// imported into Swift as returning Void
+- (BOOL) boolReturnerWithError: (NSError**) err;
+
+
 NS_ASSUME_NONNULL_END
 
 

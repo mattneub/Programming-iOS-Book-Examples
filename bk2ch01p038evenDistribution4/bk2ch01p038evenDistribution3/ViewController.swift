@@ -36,7 +36,10 @@ class ViewController: UIViewController {
             sv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor),
         ])
         
-
+        // also observe layer backing stack view
+        print(type(of:sv.layer))
+        // iOS 13: CATransformLayer
+        // iOS 14: CALayer
     
     }
 

@@ -30,7 +30,7 @@ class Observer {
     
     var obs = Set<NSKeyValueObservation>()
     
-    func registerWith(_ observed:Observed) {
+    func register(with observed:Observed) {
         let opts : NSKeyValueObservingOptions = [.old, .new]
         let ob = observed.observe(\.value, options: opts) { obj, change in
             // obj is the observed object
@@ -79,7 +79,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         observer = Observer()
         // step one: registration
         let kp = \Observed.value
-        observer.registerWith(observed)
+        observer.register(with: observed)
         
         // step two: make a change in a KVO compatible way
         observed.value = true

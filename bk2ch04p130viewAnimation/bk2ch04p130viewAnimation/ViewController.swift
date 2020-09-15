@@ -74,12 +74,12 @@ class ViewController: UIViewController {
                 print("starting to sleep")
                 usleep(10000000)
                 print("finished sleeping")
-                // despite the name, animation does not start until your code finishes
-                // so it is true view animation managed on the animation server as before
-                // however, other code in the animations function runs as soon as you call...
-                // startAnimation, as the logging here shows
+            // despite the name, animation does not start until your code finishes
+            // so it is true view animation managed on the animation server as before
+            // however, other code in the animations function runs as soon as you call...
+            // startAnimation, as the logging here shows
             case 3:
-                var anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
                     self.v.backgroundColor = .red
                     self.v.center.y += 100
                 }
@@ -114,20 +114,22 @@ class ViewController: UIViewController {
                 anim.startAnimation() // logs immediately as we go from not running to running
                 print("linearly", anim.scrubsLinearly) // logs second
                 print(self.v.layer.animationKeys() as Any)
-                delay(2) {
-                    ob = nil // heh heh, just keeping the observer alive
-                    ob2 = nil // heh heh, just keeping the other observer alive
-                    print(anim) // heh heh, just keeping the animator alive
+                withExtendedLifetime([ob, ob2, anim]) {
+                    delay(2) {
+                        ob = nil // heh heh, just keeping the observer alive
+                        ob2 = nil // heh heh, just keeping the other observer alive
+                        print(anim) // heh heh, just keeping the animator alive
+                    }
                 }
-                // in both cases, goes
-//                state 1 running false
-//                running true state 1
-                // ("linearly true")
-//                running false state 1
-                // ("paused on completion")
-//                state 0 running false
+            // in both cases, goes
+            //                state 1 running false
+            //                running true state 1
+            // ("linearly true")
+            //                running false state 1
+            // ("paused on completion")
+            //                state 0 running false
             case 4:
-                var anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
                     self.v.backgroundColor = .red
                     self.v.center.y += 100
                 }
@@ -152,10 +154,11 @@ class ViewController: UIViewController {
                     print("ho")
                 }
                 anim.startAnimation() // logs immediately as we go from not running to running
-                delay(2) {
-                    ob = nil // heh heh, just keeping the observer alive
+                withExtendedLifetime(ob) {
+                    delay(2) {
+                        ob = nil // heh heh, just keeping the observer alive
+                    }
                 }
-
             case 5:
                 let anim = UIViewPropertyAnimator(duration: 1, timingParameters: UICubicTimingParameters(animationCurve:.linear))
                 anim.addAnimations {
@@ -237,37 +240,34 @@ class ViewController: UIViewController {
             case 12:
                 let opts : UIView.AnimationOptions = .autoreverse
                 let xorig = self.v.center.x
-                UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
+                UIView.animate(withDuration:1, delay: 0, options: opts) {
                     self.v.center.x += 100
-                    }, completion: {
-                        _ in
-                        self.v.center.x = xorig
-                })
-                // can't figure out how to reproduce that using property animator
+                } completion: { _ in
+                    self.v.center.x = xorig
+                }
+            // can't figure out how to reproduce that using property animator
             case 13:
                 let opts : UIView.AnimationOptions = .autoreverse
                 let xorig = self.v.center.x
-                UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
+                UIView.animate(withDuration:1, delay: 0, options: opts) {
                     UIView.setAnimationRepeatCount(3) // *
                     self.v.center.x += 100
-                    }, completion: {
-                        _ in
-                        self.v.center.x = xorig
-                })
+                } completion: { _ in
+                    self.v.center.x = xorig
+                }
             case 14:
                 // new iOS 13 solution, though actually it seems to read back into iOS 12
                 let xorig = self.v.center.x
-                UIView.animate(withDuration:1, animations: {
-                    UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+                UIView.animate(withDuration:1) {
+                    UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true) {
                         self.v.center.x += 100
-                    })
-                }, completion: {
-                    _ in
+                    }
+                } completion: { _ in
                     print("done")
                     self.v.center.x = xorig
-                })
-                // cute I guess, but I don't see how it help with the problem of a
-                // UIViewPropertyAnimator doing autoreversing repeating animation
+                }
+            // cute I guess, but I don't see how it help with the problem of a
+            // UIViewPropertyAnimator doing autoreversing repeating animation
             case 15:
                 // something like an autoreversing repeating animation
                 // made with a property animator
@@ -299,8 +299,8 @@ class ViewController: UIViewController {
                 anim.addAnimations({
                     self.v.center.x += 100
                 }, delayFactor: 0.5)
-                anim.addCompletion {
-                    _ in print(self.v.center)
+                anim.addCompletion { _ in
+                    print(self.v.center)
                 }
                 anim.startAnimation()
             case 17:
@@ -311,43 +311,43 @@ class ViewController: UIViewController {
                 }
                 anim.addAnimations({
                     self.v.center.y = yorig
-                    }, delayFactor: 0.5)
-                anim.addCompletion {
-                    _ in print(self.v.center)
+                }, delayFactor: 0.5)
+                anim.addCompletion { _ in
+                    print(self.v.center)
                 }
                 anim.startAnimation()
-                /*
-            case 9:
-                self.animate(count:3)
-            case 10:
-                let opts = UIViewAnimationOptions.autoreverse
-                let xorig = self.v.center.x
-                UIView.animate(times:3, duration:1, delay:0, options:opts, animations:{
-                    self.v.center.x += 100
-                    }, completion:{
-                        _ in
-                        self.v.center.x = xorig
-                })
-            case 11:
-                UIView.animate(withDuration:1) {
-                    self.v.center.x += 100
-                }
-                // let opts = UIViewAnimationOptions.beginFromCurrentState
-                UIView.animate(withDuration:1) {
-                        self.v.center.y += 100
-                }
-            case 12:
-                UIView.animate(withDuration:2, animations: {
-                    self.v.center.x += 100
-                })
-                delay(1) {
-                    // let opts = UIViewAnimationOptions.beginFromCurrentState
-                    UIView.animate(withDuration:1, delay: 0, options: [],
-                        animations: {
-                            self.v.center.y += 100
-                        })
-                }
- */
+            /*
+             case 9:
+             self.animate(count:3)
+             case 10:
+             let opts = UIViewAnimationOptions.autoreverse
+             let xorig = self.v.center.x
+             UIView.animate(times:3, duration:1, delay:0, options:opts, animations: {
+             self.v.center.x += 100
+             }, completion: {
+             _ in
+             self.v.center.x = xorig
+             })
+             case 11:
+             UIView.animate(withDuration:1) {
+             self.v.center.x += 100
+             }
+             // let opts = UIViewAnimationOptions.beginFromCurrentState
+             UIView.animate(withDuration:1) {
+             self.v.center.y += 100
+             }
+             case 12:
+             UIView.animate(withDuration:2, animations: {
+             self.v.center.x += 100
+             })
+             delay(1) {
+             // let opts = UIViewAnimationOptions.beginFromCurrentState
+             UIView.animate(withDuration:1, delay: 0, options: [],
+             animations: {
+             self.v.center.y += 100
+             })
+             }
+             */
             default:break
             }
         }
@@ -360,27 +360,25 @@ class ViewController: UIViewController {
         case 1:
             let opts = UIView.AnimationOptions.autoreverse
             let xorig = self.v.center.x
-            UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
+            UIView.animate(withDuration:1, delay: 0, options: opts) {
                 UIView.setAnimationRepeatCount(Float(count)) // I really don't like this
                 self.v.center.x += 100
-                }, completion: {
-                    _ in
+                } completion: { _ in
                     self.v.center.x = xorig
-            })
+            }
         case 2:
             let opts = UIView.AnimationOptions.autoreverse
             let xorig = self.v.center.x
-            UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
+            UIView.animate(withDuration:1, delay: 0, options: opts) {
                 self.v.center.x += 100
-                }, completion: {
-                    _ in
+                } completion: { _ in
                     self.v.center.x = xorig
                     if count > 1 {
                         delay(0) {
                             self.animate(count:count-1)
                         }
                     }
-            })
+            }
         default: break
         }
     }

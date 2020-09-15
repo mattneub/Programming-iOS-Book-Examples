@@ -20,7 +20,7 @@ import UIKit
         let arr2 = self.constraintsAffectingLayout(for:.vertical)
         var arr = arr1 + arr2
         if filtering {
-            arr = arr.filter{
+            arr = arr.filter {
                 $0.firstItem as? UIView == self ||
                     $0.secondItem as? UIView == self }
         }
@@ -30,10 +30,10 @@ import UIKit
         guard recursing else { return }
         if !up { // down
             for sub in self.subviews {
-                sub.listConstraints(up:up)
+                sub.listConstraints(up:up, filtering:filtering)
             }
         } else { // up
-            self.superview?.listConstraints(up:up)
+            self.superview?.listConstraints(up:up, filtering:filtering)
         }
     }
 }
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         v2.translatesAutoresizingMaskIntoConstraints = false
         v3.translatesAutoresizingMaskIntoConstraints = false
         
-        var which : Int {return 1}
+        var which : Int {return 2}
         switch which {
         case 1:
             // the old way, and this is the last time I'm going to show this
@@ -131,16 +131,32 @@ class ViewController: UIViewController {
             // and we should now be activating constraints, not adding them...
             // to a specific view
             // whereever possible, activate all the constraints at once
+            
+            // to make the logging more interesting, add a superview
+            let v1b = UIView()
+            v1b.translatesAutoresizingMaskIntoConstraints = false
+            v1.addSubview(v1b)
+            v1b.addSubview(v2)
+            v1b.addSubview(v3)
+            
+            
             NSLayoutConstraint.activate([
-                v2.leadingAnchor.constraint(equalTo:v1.leadingAnchor),
-                v2.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
-                v2.topAnchor.constraint(equalTo:v1.topAnchor),
+                v2.leadingAnchor.constraint(equalTo:v1b.leadingAnchor),
+                v2.trailingAnchor.constraint(equalTo:v1b.trailingAnchor),
+                v2.topAnchor.constraint(equalTo:v1b.topAnchor),
                 v2.heightAnchor.constraint(equalToConstant:10),
                 v3.widthAnchor.constraint(equalToConstant:20),
                 v3.heightAnchor.constraint(equalToConstant:20),
-                v3.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
-                v3.bottomAnchor.constraint(equalTo:v1.bottomAnchor)
+                v3.trailingAnchor.constraint(equalTo:v1b.trailingAnchor),
+                v3.bottomAnchor.constraint(equalTo:v1b.bottomAnchor)
                 ])
+            
+            NSLayoutConstraint.activate([
+                v1b.topAnchor.constraint(equalTo:v1.topAnchor),
+                v1b.bottomAnchor.constraint(equalTo:v1.bottomAnchor),
+                v1b.leadingAnchor.constraint(equalTo:v1.leadingAnchor),
+                v1b.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
+            ])
             
         case 3:
             
@@ -164,16 +180,16 @@ class ViewController: UIViewController {
                 // uncomment me to form a conflict
 //                NSLayoutConstraint.constraints(withVisualFormat:
 //                    "V:[v3(10)]|", metrics: nil, views: d),
-                ].flatMap{$0})
+                ].flatMap {$0})
         default: break
         }
         
         delay(2) {
             v1.bounds.size.width += 40
             v1.bounds.size.height -= 50
-            self.view.reportAmbiguity(filtering: true)
+            // self.view.reportAmbiguity(filtering: true)
             print()
-            v1.listConstraints(up:true)
+            v1.listConstraints(up:false, filtering: true)
         }
         
 

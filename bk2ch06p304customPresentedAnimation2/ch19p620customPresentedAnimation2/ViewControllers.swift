@@ -101,30 +101,30 @@ class MyPresentationController : UIPresentationController {
         con.insertSubview(shadow, at: 0)
         shadow.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let tc = self.presentedViewController.transitionCoordinator!
-        tc.animate(alongsideTransition:{
+        tc.animate {
             _ in
             shadow.alpha = 1
-            }, completion: {
+            } completion: {
                 _ in
                 let vc = self.presentingViewController
                 let v = vc.view
                 v?.tintAdjustmentMode = .dimmed
-            })
+            }
     }
     
     override func dismissalTransitionWillBegin() {
         let con = self.containerView!
         let shadow = con.subviews[0]
         let tc = self.presentedViewController.transitionCoordinator!
-        tc.animate(alongsideTransition:{
+        tc.animate {
             _ in
             shadow.alpha = 0
-            }, completion: {
+            } completion: {
                 _ in
                 let vc = self.presentingViewController
                 let v = vc.view
                 v?.tintAdjustmentMode = .automatic
-            })
+            }
     }
     
     override var frameOfPresentedViewInContainerView : CGRect {
@@ -189,21 +189,21 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
             let scale = CGAffineTransform(scaleX:1.6, y:1.6)
             v2.transform = scale
             v2.alpha = 0
-            UIView.animate(withDuration:0.25, animations: {
+            UIView.animate(withDuration:0.25) {
                 v2.alpha = 1
                 v2.transform = .identity
-                }, completion: {
+                } completion: {
                     _ in
                     ctx.completeTransition(true)
-                })
+                }
         } else if let v1 = v1 { // dismissing
             print("dismissal animation")
-            UIView.animate(withDuration:0.25, animations: {
+            UIView.animate(withDuration:0.25) {
                 v1.alpha = 0
-                }, completion: {
+                } completion: {
                     _ in
                     ctx.completeTransition(true)
-                })
+                }
         }
         
     }

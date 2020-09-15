@@ -89,7 +89,7 @@ class ViewController : UIViewController {
         print("window transform: \(self.view.window!.transform)")
         print("view transform: \(self.view.transform)")
         let t1 = coordinator.targetTransform
-        coordinator.animate(alongsideTransition:{
+        coordinator.animate {
             _ in
             print("transitioning size change to \(size)")
             // assuming we originally launched into portrait...
@@ -97,7 +97,7 @@ class ViewController : UIViewController {
             let t2 = coordinator.targetTransform
             print("same", t1 == t2)
             self.v.transform = coordinator.targetTransform.inverted().concatenating(self.v.transform)
-            }, completion: {
+            } completion: {
                 _ in
                 // showing that in iOS 8 the screen itself changes "size"
                 print("did transition size change to \(size)")
@@ -116,7 +116,7 @@ class ViewController : UIViewController {
                 print("window transform: \(self.view.window!.transform)")
                 print("view transform: \(self.view.transform)")
                 print(CGAffineTransform.identity)
-            })
+            }
     }
     
     // layout events check

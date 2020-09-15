@@ -50,13 +50,12 @@ class ViewController : UIViewController {
         // when we call remove, we must call "will" (with nil) beforehand
         fromvc.willMove(toParent: nil)
         // then perform the transition
-        self.transition(
-            from:fromvc, to:tovc,
-            duration:0.4, // no options:
-            animations: {
-                iv.frame = tovc.view.frame // animate bounds change
-                self.constrainInPanel(tovc.view) // *
-        }) { _ in
+        let opts = UIView.AnimationOptions.transitionFlipFromLeft
+        self.transition(from:fromvc, to:tovc, duration:0.4) {
+            iv.frame = tovc.view.frame // animate bounds change
+            // ... configure tovc.view constraints here ...
+            self.constrainInPanel(tovc.view) // *
+        } completion: { _ in
             tovc.view.alpha = 1
             iv.removeFromSuperview()
             // when we call add, we must call "did" afterwards
@@ -72,7 +71,7 @@ class ViewController : UIViewController {
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", metrics:nil, views:["v":v]),
             NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", metrics:nil, views:["v":v])
-            ].flatMap{$0})
+            ].flatMap {$0})
     }
     
 }

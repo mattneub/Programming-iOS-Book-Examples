@@ -7,6 +7,7 @@ class MustacheViewController: UIViewController {
     var items: [Any]
 
     init(activity:UIActivity, items:[Any]) {
+        print("creating view controller")
         self.activity = activity
         self.items = items
         super.init(nibName: "MustacheViewController", bundle: nil)
@@ -17,6 +18,7 @@ class MustacheViewController: UIViewController {
     }
     
     @IBAction func doCancel(_ sender: Any) {
+        print("cancel")
         self.activity?.activityDidFinish(false)
     }
     
@@ -24,7 +26,7 @@ class MustacheViewController: UIViewController {
         self.activity?.activityDidFinish(true)
     }
     
-    deinit{
+    deinit {
         print("elaborate view controller dealloc")
     }
 

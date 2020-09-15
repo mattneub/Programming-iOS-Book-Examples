@@ -53,6 +53,7 @@ extension UIDynamicAnimator {
     // but a collision behavior has fallen into the array, so we crash if we say that
     // in fact, we can't even fetch items(in:) as a Swift array at all
     // still not fixed in iOS 13
+    // not fixed in iOS 14
     func views(in rect: CGRect) -> [UIView] {
         // return self.items(in:rect) as! [UIView]
         let nsitems = self.items(in: rect) as NSArray

@@ -56,7 +56,7 @@ class RootViewController : UITableViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let sections = Array(d).sorted{$0.key < $1.key} // *
+        let sections = Array(d).sorted {$0.key < $1.key} // *
         
         var snap = NSDiffableDataSourceSnapshot<String,String>() // whoa, now struct?
         for section in sections {
@@ -127,7 +127,7 @@ class RootViewController : UITableViewController {
                     metrics:nil, views:["v":v]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                     metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatMap {$0})
             
             // uncomment to see bug where button does not inherit superview's tint color
             // ooooh, bug is fixed
@@ -163,6 +163,6 @@ class RootViewController : UITableViewController {
     // this will never be called, and I don't see how to get section index titles at all
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return nil
-        // return self.sections.map{$0.sectionName}
+        // return self.sections.map {$0.sectionName}
     }
 }

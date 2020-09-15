@@ -25,22 +25,24 @@ class ViewController : UIViewController {
         let tc = self.traitCollection
         if ptc == nil ||
         ptc!.preferredContentSizeCategory != tc.preferredContentSizeCategory {
-            // self.doDynamicType()
-            // no need, it's already dynamic
+            // self.doDynamicType() // why is this needed? can't seem to be dynamic without it
+            print("here")
         }
     }
     
     func doDynamicType() {
         
-        var body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:.body)
-        if #available(iOS 13.0, *) {
-            if let desc = body.withDesign(.serif) { // weehoo
-                body = desc
-            }
-        }
+        let body = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle:.body)
+            .withDesign(.serif)!
         let emphasis = body.withSymbolicTraits(.traitItalic)!
-        let fbody = UIFont(descriptor: body, size: 0)
-        let femphasis = UIFont(descriptor: emphasis, size: 0)
+        var fbody = UIFont(descriptor: body, size: 0)
+        // work around lack of dynamism; this should not be necessary
+        // bug still there in beta 6
+        fbody = UIFontMetrics(forTextStyle: .body).scaledFont(for: fbody)
+        var femphasis = UIFont(descriptor: emphasis, size: 0)
+        // work around lack of dynamism; this should not be necessary
+        femphasis = UIFontMetrics(forTextStyle: .body).scaledFont(for: femphasis)
         
         let s = self.lab.text!
         let mas = NSMutableAttributedString(string: s, attributes: [.font:fbody])

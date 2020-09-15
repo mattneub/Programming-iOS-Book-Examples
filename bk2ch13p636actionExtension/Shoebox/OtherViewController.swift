@@ -2,10 +2,11 @@
 
 import UIKit
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 class OtherViewController: UIViewController {
     
-    let desiredType = kUTTypePlainText as String
+    let desiredType = UTType.plainText.identifier
     
     var s : String?
     

@@ -35,14 +35,13 @@ class ViewController : UIViewController {
         // when we call remove, we must call "will" (with nil) beforehand
         fromvc.willMove(toParent: nil)
         // then perform the transition
-        self.transition(
-            from:fromvc, to:tovc,
-            duration:0.4, options:.transitionFlipFromLeft,
-            animations:nil) { _ in
-                // when we call add, we must call "did" afterwards
-                tovc.didMove(toParent: self)
-                fromvc.removeFromParent() // "did" called for us
-                UIApplication.shared.endIgnoringInteractionEvents()
+        let opts = UIView.AnimationOptions.transitionFlipFromLeft
+        self.transition( from:fromvc, to:tovc, duration:0.4, options:opts) {
+        } completion: { _ in
+            // when we call add, we must call "did" afterwards
+            tovc.didMove(toParent: self)
+            fromvc.removeFromParent() // "did" called for us
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
         
     }

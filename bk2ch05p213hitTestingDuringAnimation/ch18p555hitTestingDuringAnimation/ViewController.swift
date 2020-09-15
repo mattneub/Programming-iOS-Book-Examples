@@ -50,10 +50,9 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             let opt = UIView.AnimationOptions.allowUserInteraction
-            UIView.animate(withDuration:10, delay: 0, options: opt,
-                animations: {
-                    self.button.center = goal
-                })
+            UIView.animate(withDuration:10, delay: 0, options: opt) {
+                self.button.center = goal
+            }
         case 2:
             let ba = CABasicAnimation(keyPath:#keyPath(CALayer.position))
             ba.duration = 10

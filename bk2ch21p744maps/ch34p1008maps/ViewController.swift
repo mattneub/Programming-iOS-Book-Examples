@@ -32,7 +32,7 @@ extension CGVector {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 3 // 1...10
+    let which = 10 // 1...10
     
     @IBOutlet var map : MKMapView!
     let annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
@@ -316,12 +316,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
         print(MKMapType.standard.rawValue)
         let coord = self.map.region.center
         let span = self.map.region.span
-        mi.openInMaps(launchOptions:[
+        let opts : [String:Any] = [
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            // great, new in iOS 13 we crash if we don't convert these ourselves
-            MKLaunchOptionsMapCenterKey: coord as NSValue,
-            MKLaunchOptionsMapSpanKey: span as NSValue
-        ])
+            MKLaunchOptionsMapCenterKey: coord,
+            MKLaunchOptionsMapSpanKey: span
+        ]
+        let scene = self.view.window?.windowScene
+        // iOS 13.2
+        mi.openInMaps(launchOptions: opts, from: scene) { ok in
+            print(ok)
+        }
         
     }
     

@@ -42,25 +42,6 @@ extension NSDiffableDataSourceSnapshot {
     }
 }
 
-class MyDiffable : UICollectionViewDiffableDataSource<String,String> {
-    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return collectionView.collectionViewLayout is MyFlowLayout
-    }
-    
-    override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
-        print("move")
-        let srcid = self.itemIdentifier(for: source)!
-        let destid = self.itemIdentifier(for: dest)!
-        var snap = self.snapshot()
-        if dest.item > source.item {
-            snap.moveItem(srcid, afterItem: destid)
-        } else {
-            snap.moveItem(srcid, beforeItem: destid)
-        }
-        self.apply(snap, animatingDifferences:false)
-    }
-}
-
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     static let header = "Header"
@@ -105,7 +86,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // UICollectionViewDiffableDataSource is pickier than table view diffable
     // must register stuff before applying data
     // and if there are supplementary views, must have a supplementary view provider!
-    lazy var datasource = MyDiffable(collectionView: self.collectionView) { cv, ip, s in
+    lazy var datasource = UICollectionViewDiffableDataSource<String,String>(collectionView: self.collectionView) { cv, ip, s in
         return self.makeCell(cv, ip, s)
     }
     
@@ -130,7 +111,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        let sections = Array(d).sorted{$0.key < $1.key} // *
+        let sections = Array(d).sorted {$0.key < $1.key} // *
         
         var snap = NSDiffableDataSourceSnapshot<String,String>() // whoa, now struct?
         for section in sections {
@@ -138,6 +119,15 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             snap.appendItems(section.1)
         }
         self.datasource.apply(snap, animatingDifferences: false)
+        // must implement this if you want reordering
+        self.datasource.reorderingHandlers.canReorderItem = { [unowned self] _ in
+            self.collectionView.collectionViewLayout is MyFlowLayout
+        }
+        // just testing to show that by the time we get this, the data have been reordered!
+        self.datasource.reorderingHandlers.didReorder = { [unowned self] transaction in
+            let snap = self.datasource.snapshot(for:"A")
+            print(snap.visualDescription())
+        }
 
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
         self.navigationItem.leftBarButtonItem = b
@@ -339,13 +329,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             }
         }
         // request the deletion from the view; notice the slick automatic animation
-        self.collectionView.performBatchUpdates({
+        self.collectionView.performBatchUpdates {
             self.collectionView.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
                 self.sections.remove(at:empties) // see utility function at top of file
                 self.collectionView.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
-        })
+        }
  */
     }
     
@@ -411,7 +401,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
 //            return prop
 //        }
         // they are different, we're crossing a boundary - shift size values!
-//        var sizes = self.sections[orig.section].itemData.map{$0.size}
+//        var sizes = self.sections[orig.section].itemData.map {$0.size}
 //        let size = sizes.remove(at: orig.item)
 //        sizes.insert(size, at:prop.item)
 //        for (ix,size) in sizes.enumerated() {

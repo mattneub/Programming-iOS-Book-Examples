@@ -47,10 +47,12 @@ class ViewController: UIViewController {
         self.prog.setProgress(Float(step.value / (step.maximumValue - step.minimumValue)), animated:true)
     }
 
+    var customize : Bool { false }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // return;
+        // disastrous
+        // self.stepper.bounds.size.height = self.stepper.bounds.height - 10
+        guard self.customize else { return }
         
         self.stepper.tintColor = UIColor.yellow
         

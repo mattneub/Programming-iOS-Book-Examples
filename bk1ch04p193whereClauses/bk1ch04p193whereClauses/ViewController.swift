@@ -65,6 +65,10 @@ struct JustTesting2 {
     func flyAndWalk3a<T> (_ f:T) where T: Flier, T: Dog {}
 }
 
+struct JustTesting3<T> {
+    func flyAndWalk (_ f:T) where T: Flier {} // this was not legal until Swift 5.3
+}
+
 func flyAndWalk<T> (_ f:T) -> String where T:Walker, T:Flier {return "ha"}
 // func flyAndWalkNOT<T:Walker, T: Flier>(_ f: T) {}
 func flyAndWalkBis<T> (_ f:T) where T:Walker & Flier {}

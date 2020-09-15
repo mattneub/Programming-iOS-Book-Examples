@@ -53,7 +53,7 @@ class ViewController: UIViewController {
             ])
         
         mas.addAttribute(.paragraphStyle,
-            value:lend(){
+            value:lend() {
                 (para:NSMutableParagraphStyle) in
                 para.alignment = .left
                 para.lineBreakMode = .byWordWrapping
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         self.tv.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
         let d : [String:UIView] = ["tv":self.tv]
         NSLayoutConstraint.constraints(withVisualFormat:"H:|-(10)-[tv]-(10)-|",
-                                       metrics:nil, views:d).forEach{$0.isActive = true}
+                                       metrics:nil, views:d).forEach {$0.isActive = true}
 
     }
     

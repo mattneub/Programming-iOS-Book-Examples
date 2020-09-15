@@ -85,12 +85,12 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
             }
         }
         self.task = nil
-//        let response = downloadTask.response as! HTTPURLResponse
-//        let stat = response.statusCode
-//        print("status \(stat)")
-//        if stat != 200 {
-//            return
-//        }
+        let status = (downloadTask.response as? HTTPURLResponse)?.statusCode
+        print("response status: \(status as Any)")
+        guard status == 200 else {
+            print(status as Any)
+            return
+        }
         if let d = try? Data(contentsOf:fileURL) {
             let im = UIImage(data:d)
             DispatchQueue.main.async {

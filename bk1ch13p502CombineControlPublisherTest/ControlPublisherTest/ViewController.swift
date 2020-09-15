@@ -96,7 +96,7 @@ class ViewController: UIViewController {
         self.view.addSubview(button)
         
         let pub = button.publisher()
-            .scan(0){ i,_ in i+1 }
+            .scan(0) { i,_ in i+1 }
         pub.sink {print($0)}.store(in:&storage)
 //        delay(10) { // testing manual cancellation
 //            [weak self] in self?.storage.removeAll()
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
             s1.publisher()
                 .compactMap { ($0 as? UISwitch)?.isOn }
                 .filter { onOff ? $0 : !$0 }
-                .sink{ s2.setOn($0, animated:true) }
+                .sink { s2.setOn($0, animated:true) }
                 .store(in: &storage)
         }
         pair(when:s1, goes:false, alsoDoThatTo:s2)

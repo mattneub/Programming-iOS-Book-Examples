@@ -12,10 +12,17 @@ class ManagerHolder {
             self.locman.startUpdatingLocation()
             return
         }
-        let status = CLLocationManager.authorizationStatus()
+        // new in iOS 14, use instance method, not class method
+        var status: CLAuthorizationStatus!
+        if #available(iOS 14.0,*) {
+            status = self.locman.authorizationStatus
+        } else {
+            status = CLLocationManager.authorizationStatus()
+        }
         switch status {
         case .authorizedWhenInUse:
             if always { // try to step up
+                print("trying to step up")
                 self.doThisWhenAuthorized = f
                 self.locman.requestAlwaysAuthorization()
             } else {
@@ -25,17 +32,20 @@ class ManagerHolder {
             f?()
         case .notDetermined:
             self.doThisWhenAuthorized = f
-            always ?
-                self.locman.requestAlwaysAuthorization() :
+            if always {
+                print("asking for always")
+                self.locman.requestAlwaysAuthorization()
+            } else {
+                print("asking for when in use")
                 self.locman.requestWhenInUseAuthorization()
+            }
         case .restricted:
-            // do nothing
+            print("restricted")
             break
         case .denied:
             print("denied")
-            // do nothing, or beg the user to authorize us in Settings
             break
-        @unknown default: fatalError()
+        default: fatalError()
         }
     }
 }
@@ -68,28 +78,65 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(goingIntoBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(comingIntoForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        return;
+        // for screen shots
+        let v = UIView()
+        v.backgroundColor = .white
+        v.frame = self.view.bounds
+        self.view.addSubview(v)
+        v.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.testWhenInUseRequest(self)
     }
     
+    
     @objc func goingIntoBackground(_ n:Notification) {
-        self.managerHolder.checkForLocationAccess() {
+        let status : CLAuthorizationStatus = {
+            if #available(iOS 14.0,*) {
+                return self.locman.authorizationStatus
+            } else {
+                return CLLocationManager.authorizationStatus()
+            }
+        }()
+        if status == .authorizedWhenInUse {
             self.locman.allowsBackgroundLocationUpdates = true // test background loc
         }
-        self.managerHolder.checkForLocationAccess(always: true) {
+        if status == .authorizedAlways {
             if CLLocationManager.significantLocationChangeMonitoringAvailable() {
+                print("start visit monitoring", to: &output)
                 self.locman.startMonitoringVisits() // test background monitoring
                 // self.locman.showsBackgroundLocationIndicator = true // test blue bar
+            } else {
+                print("no significant change monitoring, sorry", to: &output)
             }
         }
     }
+    
+    @objc func comingIntoForeground(_ n:Notification) {
+        self.locman.allowsBackgroundLocationUpdates = false
+        self.locman.stopMonitoringVisits()
+    }
 
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("did change auth: \(status.rawValue)", to:&output)
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            self.managerHolder.doThisWhenAuthorized?()
-            self.managerHolder.doThisWhenAuthorized = nil
-        default: break
+
+    // deprecated:
+    // func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    // if you implement both, the new one is called in iOS 14
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let status : CLAuthorizationStatus = {
+            if #available(iOS 14.0,*) {
+                return self.locman.authorizationStatus
+            } else {
+                return CLLocationManager.authorizationStatus()
+            }
+        }()
+        print("authorization is", status.rawValue, to: &output)
+        if #available(iOS 14.0,*) {
+            print("accuracy is: \(manager.accuracyAuthorization.rawValue)", to: &output)
         }
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            self.managerHolder.doThisWhenAuthorized?()
+        }
+        self.managerHolder.doThisWhenAuthorized = nil
     }
     
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
@@ -105,7 +152,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func testAlwaysRequest (_ sender: Any) {
         self.managerHolder.checkForLocationAccess(always:true)
     }
-
+    
+    @IBAction func testPrecisionRequest(_ sender: Any) {
+        if #available(iOS 14.0,*) {
+            self.locman.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "ExactTracking") { err in
+                
+            }
+        }
+    }
+    
     @IBAction func doClear(_ sender: Any) {
         self.tv.text = ""
         self.output = ""
@@ -125,6 +180,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
+    @IBAction func reportStatus(_ sender: Any) {
+        let status : CLAuthorizationStatus = {
+            if #available(iOS 14.0,*) {
+                return self.locman.authorizationStatus
+            } else {
+                return CLLocationManager.authorizationStatus()
+            }
+        }()
+        print("auth is: \(status.rawValue)", to:&output)
+        if #available(iOS 14.0,*) {
+            print("accuracy is: \(self.locman.accuracyAuthorization.rawValue)", to: &output)
+        }
+    }
+    
+    // NB new in iOS 14, kCLLocationAccuracyReduced is a thing
     func reallyFindMe() {
         switch self.which {
         case 1:
@@ -174,7 +244,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let coord = loc.coordinate
             if self.startTime == nil {
                 self.startTime = Date()
-                return // ignore first attempt
+                // if reduced accuracy, don't ignore the first one, as the second one will be a long time coming!
+                if #available(iOS 14.0,*) {
+                    if manager.accuracyAuthorization != .reducedAccuracy {
+                        return // ignore first attempt
+                    }
+                } else {
+                    return // ignore first attempt
+                }
             }
             print("accuracy:", acc, to:&output)
             let elapsed = time.timeIntervalSince(self.startTime)
@@ -184,8 +261,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.stopTrying()
                 return
             }
-            if acc < 0 || acc > REQ_ACC {
-                return // wait for the next one
+            if #available(iOS 14.0,*) {
+                if manager.accuracyAuthorization != .reducedAccuracy {
+                    if acc < 0 || acc > REQ_ACC {
+                        return // wait for the next one
+                    }
+                }
+            } else {
+                if acc < 0 || acc > REQ_ACC {
+                    return // wait for the next one
+                }
             }
             // got it
             print("You are at \(coord.latitude) \(coord.longitude)", to:&output)
@@ -196,6 +281,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print("The quick way: You are at \(coord.latitude) \(coord.longitude)", to:&output)
             // bug: can be called twice in quick succession
             // ok, the bug is gone; it seems that we just get the cached value the second time
+            // but these do keep arriving! is that a bug?
         default: break
         }
     }

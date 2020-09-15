@@ -5,15 +5,9 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var window: UIWindow?
-    
+        
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let nav = self.window!.rootViewController as! UINavigationController
-        let tvc = nav.topViewController as! GroupLister
-        let del = UIApplication.shared.delegate as! AppDelegate
-        tvc.managedObjectContext = del.persistentContainer.viewContext
         return true
     }
     
@@ -24,10 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("saved")
             }
         }
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        self.saveContext()
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -42,3 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
 }
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    var window: UIWindow?
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+    }
+}
+
+

@@ -138,6 +138,7 @@ class TableViewController: UITableViewController {
         
         let tb = self.tabBarController!.tabBar
         let tbapp = UITabBarAppearance() // NB you must _create_ the appearance, not just configure it
+        // comment out next line to avoid issue
         tbapp.stackedItemPositioning = .centered
         tbapp.stackedItemSpacing = 0
         tbapp.stackedItemWidth = 35
@@ -150,6 +151,7 @@ class TableViewController: UITableViewController {
         self.tabBarItem?.standardAppearance = tbapp // not working
 
         // ruins the stack appearance until _after_ we rotate once and back
+        // note this is only for this artificially imposed .centered positioning
         tb.standardAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [
             .font : UIFont(name:"Georgia", size:14)!,
             .foregroundColor : UIColor.red

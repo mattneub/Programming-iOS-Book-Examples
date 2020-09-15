@@ -85,6 +85,7 @@ class ViewController : UIViewController {
         
         let checkim = UIImage(systemName:"checkmark.circle")!.withRenderingMode(.alwaysOriginal)
         // if you don't ask for always original, you don't get automatic tinting
+        // confirmed still true in iOS 14
         let check = NSTextAttachment(image:checkim)
         let checkchar = NSAttributedString(attachment:check)
         

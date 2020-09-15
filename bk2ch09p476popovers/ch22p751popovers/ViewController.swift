@@ -48,6 +48,7 @@ class ViewController : UIViewController {
             // I find this annoying; why does the toolbar default to being active?
             nav.popoverPresentationController?.passthroughViews = nil
             return; // just experimenting to prove passthru works when isModal
+            // the really annoying thing is that this breaks the `nil` fix on the other bar button
             nav.popoverPresentationController?.passthroughViews = [self.view]
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.doTap))
             if self.view.gestureRecognizers?.count ?? 0 == 0 {
@@ -124,7 +125,7 @@ class ViewController : UIViewController {
     @IBAction func doPopover2 (_ sender: Any) {
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
-        // vc.isModalInPopover = true
+        // vc.isModalInPresentation = true
         print(vc.popoverPresentationController as Any) // NB valid here, we could configure here
         
         self.present(vc, animated: true) {
@@ -132,6 +133,8 @@ class ViewController : UIViewController {
         }
         // vc's view is now loaded and we are free to configure it further
         vc.view.frame = CGRect(0,0,300,300)
+        // vc.view.backgroundColor = .clear
+        // means let presentation controller background win
         vc.view.backgroundColor = .green
         vc.preferredContentSize = CGSize(300,300)
         let label = UILabel()
@@ -146,9 +149,10 @@ class ViewController : UIViewController {
         if let pop = vc.popoverPresentationController {
             print(pop)
             // uncomment next line if you want there to be no way to dismiss!
-            // vc.isModalInPopover = true
+            // vc.isModalInPresentation = true
             // we can dictate the background view
             pop.popoverBackgroundViewClass = MyPopoverBackgroundView.self
+            pop.backgroundColor = .red // comment out previous line to see
             pop.barButtonItem = sender as? UIBarButtonItem
             // we can force the popover further from the edge of the screen
             // silly example: just a little extra space at this popover's right
@@ -185,8 +189,8 @@ class ViewController : UIViewController {
             print("presented")
             
             // long-standing problem of how we want this to be dismissable
-            // presenter.isModalInPopover = true // no, has no effect
-            // vc.isModalInPopover = true // no, unnecessary: it now _will_ be modal!
+            // presenter.isModalInPresentation = true // no, has no effect
+            // vc.isModalInPresention = true // no, unnecessary: it now _will_ be modal!
             // (and in fact you can't prevent it)
         }
         

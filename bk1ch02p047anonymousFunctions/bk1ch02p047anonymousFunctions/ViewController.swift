@@ -30,8 +30,10 @@ func test(h:(Int, Int, Int) -> Int) {
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var myButton2: UIButton!
     @IBOutlet weak var myButton: UIButton!
+    @IBOutlet weak var myButton2: UIButton!
+    @IBOutlet weak var myButton3: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,22 +83,23 @@ class ViewController: UIViewController {
         print(arr4)
         
         // however, you can't use trailing closures directly before curly braces
+        // ok, now you can, but you get a warning
         
-//        for i in arr.map {$0*2} { // Trailing closure requires parentheses for disambiguation in this context
-//            print(i)
-//        }
+        for i in arr.map {$0*2} { // Trailing closure in this context is confusable with the body of the statement
+            print(i)
+        }
 
-        for i in (arr.map {$0*2}) {
+        for i in arr.map ({$0*2}) {
             print(i)
         }
         
-        _ = arr.map{$0*2}.first == 4
+        _ = arr.map {$0*2}.first == 4
         
-//        if arr.map {$0*2}.first == 4 { // spew of meaningless error messages
-//            print("yup")
-//        }
+        if arr.map {$0*2}.first == 4 { // Trailing closure in this context is confusable with the body of the statement
+            print("yup")
+        }
 
-        if (arr.map {$0*2}.first) == 4 {
+        if arr.map({$0*2}).first == 4 {
             print("yup")
         }
 
@@ -138,6 +141,17 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func doButton3(_ sender: Any) {
+        // new in Swift 5.3, both anonymous functions can use trailing closure syntax
+        // the key is that all but the first must be labelled with no comma
+        // Xcode does nice indentation when you do that too
+        UIView.animate(withDuration:0.4) {
+            self.myButton3.frame.origin.y += 20
+        } completion: { _ in
+            print("finished")
+        }
+
+    }
 
 
 }

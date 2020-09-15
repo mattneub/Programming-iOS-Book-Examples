@@ -73,6 +73,15 @@ enum MyError3 : Equatable {
     case fatal
 }
 
+enum Planet : Comparable {
+    case mercury
+    case venus
+    case earth
+    case mars
+    case asteroid(String)
+    case jupiter
+}
+
 enum Testing {
     case one
     case two(testing:String) // legal
@@ -165,6 +174,13 @@ class ViewController: UIViewController {
             _ = ok4
             
             
+        }
+        
+        do {
+            let test1 = Planet.mercury < Planet.venus // true
+            let test2 = Planet.jupiter > Planet.asteroid("Ceres") // true
+            let test3 = Planet.asteroid("Ceres") < Planet.asteroid("Vesta") // true
+            print(test1, test2, test3)
         }
     
     }

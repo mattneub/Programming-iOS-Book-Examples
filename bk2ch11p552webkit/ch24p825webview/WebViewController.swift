@@ -45,6 +45,13 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         document.documentElement.appendChild(s);
         """
     }
+    var cssrule2 : String {
+        return """
+        var s = document.createElement('style');
+        s.textContent = `body { font-size: ${thefontsize}px; }`;
+        document.documentElement.appendChild(s);
+        """
+    }
     @IBOutlet weak var wv : WKWebView!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -136,15 +143,15 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         switch leak {
         case true:
             let config = self.wv.configuration
-            config.userContentController.add(self, name: "playbutton")
+            config.userContentController.add(self, contentWorld: .defaultClient, name: "playbutton")
         case false:
             let config = self.wv.configuration
             let handler = MyMessageHandler(delegate:self)
-            config.userContentController.add(handler, name: "playbutton")
+            config.userContentController.add(handler, contentWorld: .defaultClient, name: "playbutton")
         }
         
-        wv.configuration.applicationNameForUserAgent = "Version/1.0 MyShinyBrowser/1.0" // not working, too late?
-        
+        wv.configuration.applicationNameForUserAgent = "Version/13.1.2 Safari/605.1.15" // not working, too late?
+        // so presumably if the web view comes from the storyboard, you must set this in the storyboard
         
         wv.restorationIdentifier = "wv"
         wv.scrollView.backgroundColor = .black // web view alone, ineffective
@@ -230,7 +237,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
             
             do {
                 let rule = self.cssrule
-                let script = WKUserScript(source: rule, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+                let script = WKUserScript(source: rule, injectionTime: .atDocumentStart, forMainFrameOnly: true, in: .defaultClient)
                 let config = self.wv.configuration
                 config.userContentController.addUserScript(script)
             }
@@ -342,8 +349,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         if self.fontsize < 10 {
             self.fontsize = 20
         }
-        let s = self.cssrule
-        self.wv.evaluateJavaScript(s)
+//        let s = self.cssrule
+//        self.wv.evaluateJavaScript(s, in: nil, in: .defaultClient)
+        self.wv.callAsyncJavaScript(self.cssrule2, arguments: ["thefontsize": self.fontsize], in: nil, in: .defaultClient)
     }
     
     deinit {
@@ -375,12 +383,17 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         print(navigation.effectiveContentMode.rawValue) // 2, but I'm still not seeing the desktop version
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
         print("old here")
+        preferences.preferredContentMode = .desktop
+        print("asking for desktop version")
+
         if navigationAction.navigationType == .linkActivated {
             if let url = navigationAction.request.url {
                 if url.scheme == "file" { // we do not scroll to anchor; bug in iOS 11?
-                    decisionHandler(.allow)
+                    decisionHandler(.allow, preferences)
                     return
                 }
                 print("user would like to navigate to \(url)")
@@ -388,12 +401,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
                 switch whichNav {
                 case 0:
                     // this is how you would open in Mobile Safari
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
-                    decisionHandler(.cancel)
+                    UIApplication.shared.open(url)
+                    decisionHandler(.cancel, preferences)
                     return
                 case 1:
                     // this is how to use the new Safari view controller
@@ -401,18 +410,20 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
                     self.safariurl = url
                     svc.restorationIdentifier = "sf" // doesn't help
                     svc.restorationClass = type(of:self)
-                    // svc.delegate = self
+                    svc.delegate = self
                     self.present(svc, animated: true)
-                    decisionHandler(.cancel)
+                    decisionHandler(.cancel, preferences)
                     return
-                default:break
+                default:
+                    decisionHandler(.allow, preferences)
+                    return
                 }
             }
         }
         // must always call _something_
-        decisionHandler(.allow)
+        decisionHandler(.allow, preferences)
     }
-    
+
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) { // new in iOS 9
         print("process did terminate") // but I do not know under what circumstances this will actually be called
     }
@@ -425,7 +436,10 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
     func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
         print("loaded svc")
     }
-
+    
+    func safariViewControllerWillOpenInBrowser(_ controller: SFSafariViewController) { // new in iOS 14
+        print("will open in browser")
+    }
     
     func userContentController(_ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage) {

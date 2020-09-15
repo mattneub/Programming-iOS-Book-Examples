@@ -12,6 +12,7 @@
 		8158D4CE211FBCBF00BF1BD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8158D4CC211FBCBF00BF1BD4 /* Main.storyboard */; };
 		8158D4D0211FBCC100BF1BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8158D4CF211FBCC100BF1BD4 /* Assets.xcassets */; };
 		8158D4D3211FBCC100BF1BD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8158D4D1211FBCC100BF1BD4 /* LaunchScreen.storyboard */; };
+		81D5586A24EA0DAC00E7B389 /* lib.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81D5586924EA0DAC00E7B389 /* lib.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8158D4CF211FBCC100BF1BD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8158D4D2211FBCC100BF1BD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8158D4D4211FBCC100BF1BD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81D5586924EA0DAC00E7B389 /* lib.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lib.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				8158D4C8211FBCBF00BF1BD4 /* AppDelegate.swift */,
 				8158D4CA211FBCBF00BF1BD4 /* ViewController.swift */,
+				81D5586924EA0DAC00E7B389 /* lib.jpg */,
 				8158D4CC211FBCBF00BF1BD4 /* Main.storyboard */,
 				8158D4CF211FBCC100BF1BD4 /* Assets.xcassets */,
 				8158D4D1211FBCC100BF1BD4 /* LaunchScreen.storyboard */,
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8158D4D3211FBCC100BF1BD4 /* LaunchScreen.storyboard in Resources */,
+				81D5586A24EA0DAC00E7B389 /* lib.jpg in Resources */,
 				8158D4D0211FBCC100BF1BD4 /* Assets.xcassets in Resources */,
 				8158D4CE211FBCBF00BF1BD4 /* Main.storyboard in Resources */,
 			);
@@ -285,6 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = PickACloudSong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = PickACloudSong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

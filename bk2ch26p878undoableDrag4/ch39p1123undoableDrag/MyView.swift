@@ -39,9 +39,9 @@ class MyView : UIView {
             func registerForUndo() {
                 self.undoer.registerUndo(withTarget: self) {
                     [oldCenter = self.center] myself in
-                    UIView.animate(withDuration:0.4, delay: 0.1, animations: {
+                    UIView.animate(withDuration:0.4, delay: 0.1) {
                         myself.center = oldCenter
-                    })
+                    }
                     registerForUndo()
                 }
                 self.undoer.setActionName("Move")

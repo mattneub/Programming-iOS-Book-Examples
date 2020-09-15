@@ -27,10 +27,10 @@ extension CGVector {
 
 
 
-func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
-    let status = PHPhotoLibrary.authorizationStatus()
+func checkForPhotoLibraryAccess(for level: PHAccessLevel = .readWrite, andThen f:(()->())? = nil) {
+    let status = PHPhotoLibrary.authorizationStatus(for: level)
     switch status {
-    case .authorized:
+    case .authorized, .limited: // *
         f?()
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
@@ -153,6 +153,7 @@ class ViewController: UIViewController {
         checkForMicrophoneCaptureAccess(andThen:self.reallyStart)
     }
         
+    let sessionQueue = DispatchQueue(label: "sessionQueue")
     func reallyStart() {
         if self.sess != nil && self.sess.isRunning {
             self.sess.stopRunning()
@@ -160,63 +161,74 @@ class ViewController: UIViewController {
             self.sess = nil
             return
         }
-        self.iv?.removeFromSuperview()
         
         self.sess = AVCaptureSession()
-        
-        do {
-            self.sess.beginConfiguration()
             
-            guard self.sess.canSetSessionPreset(self.sess.sessionPreset) else {return}
-            self.sess.sessionPreset = .photo
+        self.sessionQueue.async {
+            do {
+                self.sess.beginConfiguration()
+                
+                guard self.sess.canSetSessionPreset(self.sess.sessionPreset) else {return}
+                self.sess.sessionPreset = .photo
+                
+                let output = AVCapturePhotoOutput()
+                guard self.sess.canAddOutput(output) else {return}
+                self.sess.addOutput(output)
+                
+                self.sess.commitConfiguration()
+            }
             
-            let output = AVCapturePhotoOutput()
-            guard self.sess.canAddOutput(output) else {return}
-            self.sess.addOutput(output)
+            guard let cam = AVCaptureDevice.default(for: .video),
+                let input = try? AVCaptureDeviceInput(device:cam)
+                else {return}
+            self.sess.addInput(input)
             
-            self.sess.commitConfiguration()
+            self.sess.startRunning()
+            
+            DispatchQueue.main.async {
+                self.iv?.removeFromSuperview()
+                let lay = AVCaptureVideoPreviewLayer(session:self.sess)
+                lay.frame = self.previewRect
+                self.view.layer.addSublayer(lay)
+                self.previewLayer = lay // keep a ref so we can remove it later
+            }
         }
-        
-        guard let cam = AVCaptureDevice.default(for: .video),
-            let input = try? AVCaptureDeviceInput(device:cam)
-            else {return}
-        self.sess.addInput(input)
-        
-        let lay = AVCaptureVideoPreviewLayer(session:self.sess)
-        lay.frame = self.previewRect
-        self.view.layer.addSublayer(lay)
-        self.previewLayer = lay // keep a ref so we can remove it later
-        
-        self.sess.startRunning()
     }
     
     @IBAction func doSnap (_ sender: Any) {
         guard self.sess != nil && self.sess.isRunning else {
             return
         }
-        let settings = AVCapturePhotoSettings()
-        settings.flashMode = .auto
-        settings.isAutoStillImageStabilizationEnabled = true
-        // let's also ask for a preview image
-        let pbpf = settings.availablePreviewPhotoPixelFormatTypes[0]
-        let len = max(self.previewLayer.bounds.width, self.previewLayer.bounds.height)
-        settings.previewPhotoFormat = [
-            kCVPixelBufferPixelFormatTypeKey as String : pbpf,
-            kCVPixelBufferWidthKey as String : len,
-            kCVPixelBufferHeightKey as String : len
-        ]
-        // let's also ask for a thumnail image
-        settings.embeddedThumbnailPhotoFormat = [
-            AVVideoCodecKey : AVVideoCodecType.jpeg
-        ]
+        
+        self.sessionQueue.async {
+            guard let output = self.sess.outputs[0] as? AVCapturePhotoOutput else {return}
+            let settings = AVCapturePhotoSettings()
+            // let's also ask for a preview image
+            let pbpf = settings.availablePreviewPhotoPixelFormatTypes[0]
+            let len = max(self.previewLayer.bounds.width, self.previewLayer.bounds.height)
+            settings.previewPhotoFormat = [
+                kCVPixelBufferPixelFormatTypeKey as String : pbpf,
+                kCVPixelBufferWidthKey as String : len,
+                kCVPixelBufferHeightKey as String : len
+            ]
+            // let's also ask for a thumnail image
+            settings.embeddedThumbnailPhotoFormat = [
+                AVVideoCodecKey : AVVideoCodecType.jpeg
+            ]
 
-        guard let output = self.sess.outputs[0] as? AVCapturePhotoOutput else {return}
-        // how to deal with orientation; stolen from Apple's AVCam example!
-        if let conn = output.connection(with: .video) {
-            let orientation = UIDevice.current.orientation.videoOrientation!
-            conn.videoOrientation = orientation
+            
+            let supported = output.supportedFlashModes
+            if supported.contains(.auto) {
+                settings.flashMode = .auto
+            }
+            
+            // how to deal with orientation; stolen from Apple's AVCam example!
+            if let conn = output.connection(with: .video) {
+                let orientation = UIDevice.current.orientation.videoOrientation!
+                conn.videoOrientation = orientation
+            }
+            output.capturePhoto(with: settings, delegate: self)
         }
-        output.capturePhoto(with: settings, delegate: self)
     }
 
 }
@@ -247,10 +259,10 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
             checkForPhotoLibraryAccess {
                 print("saving to library")
                 let lib = PHPhotoLibrary.shared()
-                lib.performChanges({
+                lib.performChanges {
                     let req = PHAssetCreationRequest.forAsset()
                     req.addResource(with: .photo, data: data, options: nil)
-                })
+                }
             }
 
         }
@@ -280,10 +292,10 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
                         checkForPhotoLibraryAccess {
                             print("saving to library")
                             let lib = PHPhotoLibrary.shared()
-                            lib.performChanges({
+                            lib.performChanges {
                                 let req = PHAssetCreationRequest.forAsset()
                                 req.addResource(with: .photo, data: data, options: nil)
-                            })
+                            }
                         }
                     
                 }

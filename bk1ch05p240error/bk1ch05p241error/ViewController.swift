@@ -159,12 +159,24 @@ class ViewController: UIViewController {
             print("failed")
         }
         
+        do {
+            let result: Void? = try? canThrowButReturnsNoValue(shouldThrow: false)
+            let ok = result != nil
+            print(ok)
+        }
+        
+        do {
+            let result: Void? = try? canThrowButReturnsNoValue(shouldThrow: true)
+            let ok = result != nil
+            print(ok)
+        }
+
     }
     
     func test() {
         for what in 1...7 {
             do {
-                print("throwing!")
+                print("throwing!", what)
                 switch what {
                 case 1: throw MyFirstError.firstMinorMistake
                 case 2: throw MyFirstError.firstMajorMistake
@@ -175,11 +187,10 @@ class ViewController: UIViewController {
                 case 7: throw MySecondError.secondFatalMistake
                 default: break
                 }
-            } catch MyFirstError.firstMinorMistake {
-                print("first minor mistake")
+            } catch MyFirstError.firstMinorMistake, MyFirstError.firstMajorMistake {
+                print("first minor or major mistake")
             } catch let err as MyFirstError {
-                // will never be called, just testing the syntax
-                print("first mistake, not minor \(err)")
+                print("first mistake, not minor or major, \(err)")
             } catch MySecondError.secondMinorMistake(let i) where i < 0 {
                 print("my second minor mistake \(i)")
             } catch {
@@ -314,6 +325,15 @@ class ViewController: UIViewController {
             throw Whoops.oops
         }
         return "Howdy"
+    }
+    
+    func canThrowButReturnsNoValue(shouldThrow: Bool) throws {
+        enum Whoops : Error {
+            case oops
+        }
+        if shouldThrow {
+            throw Whoops.oops
+        }
     }
     
     func tapField(_ g: Any) {

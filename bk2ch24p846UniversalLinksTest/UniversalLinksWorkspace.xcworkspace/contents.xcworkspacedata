@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:TesterForLinks/TesterForLinks.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:UniversalLinksTest.xcodeproj">
+   </FileRef>
+</Workspace>

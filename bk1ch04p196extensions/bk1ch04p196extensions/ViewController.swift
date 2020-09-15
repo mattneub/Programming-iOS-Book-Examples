@@ -28,6 +28,25 @@ extension Array {
 }
  */
 
+protocol Protocol1 {}
+protocol Protocol2 {}
+struct MyStruct<T> {
+    // ...
+    func f3() where T:Protocol1, T:Protocol2 {
+        
+    }
+}
+extension MyStruct where T:Protocol1, T:Protocol2 {
+    func f() {
+    }
+}
+extension MyStruct where T:Protocol1 {
+    func f2() where T:Protocol2 {
+        
+    }
+}
+
+
 extension String {
     func range(_ start:Int, _ count:Int) -> Range<String.Index> {
         let i = self.index(start >= 0 ?
@@ -152,6 +171,21 @@ extension Array where Element:Comparable {
         return minimum
     }
 }
+
+// new in Swift 5.3
+
+extension Array {
+    func myMin2() -> Element? where Element:Comparable {
+        var minimum = self.first
+        for item in self.dropFirst() {
+            if item < minimum! {
+                minimum = item
+            }
+        }
+        return minimum
+    }
+}
+
 
 /*
 

@@ -2,6 +2,8 @@
 
 import UIKit
 import MobileCoreServices
+import UniformTypeIdentifiers
+
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
@@ -10,7 +12,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var tf : UITextField!
-    let desiredType = kUTTypePlainText as String
+    let desiredType = UTType.plainText.identifier
     
     override func viewDidLoad() {
         super.viewDidLoad()

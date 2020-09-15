@@ -75,7 +75,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
     func calendar(name:String ) -> EKCalendar? {
         let cals = self.database.calendars(for:.event)
-        return cals.filter {$0.title == name}.first
+        return cals.first {$0.title == name}
     }
     
     @IBAction func createSimpleEvent (_ sender: Any) {
@@ -90,7 +90,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                 }
                 // form the start and end dates
                 let greg = Calendar(identifier:.gregorian)
-                var comp = DateComponents(year:2019, month:8, day:10, hour:15)
+                var comp = DateComponents(year:2020, month:8, day:10, hour:15)
                 let d1 = greg.date(from:comp)!
                 comp.hour = comp.hour! + 1
                 let d2 = greg.date(from:comp)!
@@ -150,7 +150,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                 ev.calendar = cal
                 // need a start date and end date
                 let greg = Calendar(identifier:.gregorian)
-                var comp = DateComponents(year:2019, month:1, hour:10)
+                var comp = DateComponents(year:2020, month:1, hour:10)
                 comp.weekday = 1 // Sunday
                 comp.weekdayOrdinal = 1 // *first* Sunday
                 ev.startDate = greg.date(from:comp)!
@@ -259,7 +259,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             let evc = EKEventEditViewController()
             evc.eventStore = self.database
             evc.editViewDelegate = self
-            evc.modalPresentationStyle = .popover
+            // evc.modalPresentationStyle = .popover
             self.present(evc, animated: true)
             if let pop = evc.popoverPresentationController {
                 if let v = sender as? UIView {
@@ -296,7 +296,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             choo.delegate = self
             choo.navigationItem.prompt = "Pick a calendar to delete:"
             let nav = UINavigationController(rootViewController: choo)
-            nav.modalPresentationStyle = .popover
+            // nav.modalPresentationStyle = .popover
             self.present(nav, animated: true)
             if let pop = nav.popoverPresentationController {
                 if let v = sender as? UIView {
@@ -319,7 +319,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         guard cals.count > 0 else { self.dismiss(animated:true); return }
         let calsToDelete = cals.map {$0.calendarIdentifier}
         let alert = UIAlertController(title:"Delete selected calendar?",
-                                      message:nil, preferredStyle:.actionSheet)
+                                      message:nil, preferredStyle:.alert)
         alert.addAction(UIAlertAction(title:"Cancel", style:.cancel))
         alert.addAction(UIAlertAction(title:"Delete", style:.destructive) {_ in
             for id in calsToDelete {

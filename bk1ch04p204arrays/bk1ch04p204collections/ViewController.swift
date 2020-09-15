@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             do {
                 let arr2 : [Flier] = [Insect()]
                 // instead of above, to cast down, must cast individual elements down
-                let arr3 = arr2.map{$0 as! Insect}
+                let arr3 = arr2.map {$0 as! Insect}
                 _ = arr2
                 _ = arr3
             }
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
         do {
             let dogs = Array(repeating:Dog(), count:3)
             print(dogs[0] === dogs[1])
-            let dogs2 = (0..<3).map{_ in Dog()}
+            let dogs2 = (0..<3).map {_ in Dog()}
             print(dogs2[0] === dogs2[1])
         }
         
@@ -385,6 +385,23 @@ class ViewController: UIViewController {
         }
         
         do {
+            struct Person {
+                let firstName: String
+                let lastName: String
+            }
+            var arr = [
+                Person(firstName: "Manny", lastName: "Pep"),
+                Person(firstName: "Harpo", lastName: "Marx"),
+                Person(firstName: "Jack", lastName: "Pep"),
+                Person(firstName: "Groucho", lastName: "Marx")
+            ]
+            arr.sort {
+                ($0.lastName, $0.firstName) < ($1.lastName, $1.firstName)
+            }
+            print(arr)
+        }
+        
+        do {
             let arr = [1,2,3,4,5,6]
             let arr2 = arr.split {$0.isMultiple(of:2)} // split at evens: [[1], [3], [5]]
             print(arr2)
@@ -430,22 +447,22 @@ class ViewController: UIViewController {
         let arr2 = arr.map {$0 * 2} // [2,4,6]
         let arr3 = arr.map {Double($0)} // [1.0, 2.0, 3.0]
         // pepboys.map(print) // no longer compiles
-        let arr4 = pepboys.filter{$0.hasPrefix("M")} // ["Manny", "Moe"]
+        let arr4 = pepboys.filter {$0.hasPrefix("M")} // ["Manny", "Moe"]
         
         do {
             var pepboys = ["Manny", "Jack", "Moe"]
-            pepboys.removeAll{$0.hasPrefix("M")} // pepboys is now ["Jack"]
+            pepboys.removeAll {$0.hasPrefix("M")} // pepboys is now ["Jack"]
             print(pepboys)
             pepboys = ["Manny", "Jack", "Moe"]
-            let pepboys2 = pepboys.filter{!$0.hasPrefix("M")}
+            let pepboys2 = pepboys.filter {!$0.hasPrefix("M")}
             print(pepboys2)
         }
         
         do {
             let pepboys = ["Manny", "Jack", "Moe"]
-            let arr1 = pepboys.filter{$0.hasPrefix("M")} // ["Manny", "Moe"]
-            let arr2 = pepboys.prefix{$0.hasPrefix("M")} // ["Manny"]
-            let arr3 = pepboys.drop{$0.hasPrefix("M")} // ["Jack", "Moe"]
+            let arr1 = pepboys.filter {$0.hasPrefix("M")} // ["Manny", "Moe"]
+            let arr2 = pepboys.prefix {$0.hasPrefix("M")} // ["Manny"]
+            let arr3 = pepboys.drop {$0.hasPrefix("M")} // ["Jack", "Moe"]
             print(arr1)
             print(arr2)
             print(arr3)
@@ -536,7 +553,7 @@ class ViewController: UIViewController {
         // these are legal uses of flatMap in Swift 4.1, plus another way to flatten
         
         do {
-            let arr = [[1],[2]].flatMap{$0}
+            let arr = [[1],[2]].flatMap {$0}
             print(arr)
         }
         
@@ -552,7 +569,7 @@ class ViewController: UIViewController {
         
         do {
             let arr = [[1, 2], [3, 4]]
-            let arr2 = arr.flatMap{$0.map{String($0)}} // ["1", "2", "3", "4"]
+            let arr2 = arr.flatMap {$0.map {String($0)}} // ["1", "2", "3", "4"]
             print(arr2)
         }
         
@@ -560,13 +577,13 @@ class ViewController: UIViewController {
         // it unwraps Optionals safely while eliminating nils
         do {
             let arr : [String?] = ["Manny", nil, nil, "Moe", nil, "Jack", nil]
-            let arr2 = arr.compactMap{$0}
+            let arr2 = arr.compactMap {$0}
             print(arr2)
         }
         
         do {
             let arr : [Any] = [1, "hey", 2, "ho"] // NOT AnyObject! No automatic bridge-crossing
-            let arr2 = arr.compactMap{$0 as? String} // ["hey", "ho"]
+            let arr2 = arr.compactMap {$0 as? String} // ["hey", "ho"]
             print(arr2)
             
             // let arrr : [AnyObject] = ["howdy"] // illegal
@@ -574,7 +591,7 @@ class ViewController: UIViewController {
         
         do { // better example
             let arr = ["1", "hey", "2", "ho"]
-            let arr2 = arr.compactMap{Int($0)} // [1, 2]
+            let arr2 = arr.compactMap {Int($0)} // [1, 2]
             print(arr2)
         }
         
@@ -636,8 +653,8 @@ class ViewController: UIViewController {
         
         do {
             let arr = [String?]()
-            // let arr2 = arr.map{if $0 == nil {return NSNull()} else {return $0!}} // compile error
-            // let arr2 = arr.map{s -> AnyObject in if s == nil {return NSNull()} else {return s!}}
+            // let arr2 = arr.map {if $0 == nil {return NSNull()} else {return $0!}} // compile error
+            // let arr2 = arr.map {s -> AnyObject in if s == nil {return NSNull()} else {return s!}}
             let arr2 : [Any] =
                 arr.map {if $0 != nil {return $0!} else {return NSNull()}} // * NB change to [Any]
             _ = arr2

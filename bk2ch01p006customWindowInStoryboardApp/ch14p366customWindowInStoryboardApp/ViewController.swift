@@ -13,7 +13,11 @@ class ViewController : UIViewController {
         print(self.view.window!)
         print(UIApplication.shared.delegate!.window!!) // kind of wacky, there, Swift
         print((UIApplication.shared.delegate as! AppDelegate).window!)
-        print(UIApplication.shared.keyWindow!)
+        if #available(iOS 13.0, *) {} else {
+            print(UIApplication.shared.keyWindow!) // deprecated
+        }
+        print(UIApplication.shared.windows.first!)
+        print(UIApplication.shared.windows.first {$0.isKeyWindow}!)
         print(UIApplication.shared.windows.count) // prove there's just the one, ours
     }
     

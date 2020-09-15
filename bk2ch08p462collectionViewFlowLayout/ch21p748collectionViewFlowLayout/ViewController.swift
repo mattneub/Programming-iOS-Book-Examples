@@ -45,7 +45,7 @@ class ViewController : UICollectionViewController {
                 forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         let d = Dictionary(grouping: states) {String($0.prefix(1))}
-        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+        self.sections = Array(d).sorted {$0.key < $1.key}.map {
             Section(sectionName: $0.key, rowData: $0.value)
         }
         
@@ -56,8 +56,8 @@ class ViewController : UICollectionViewController {
         // ...you won't see any headers
         let flow = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flow.headerReferenceSize = CGSize(30,30)
-        // still not working, layout is wrong
-        // flow.estimatedItemSize = CGSize(30,100)
+        // self-sizing still not working, layout is wrong
+//        flow.estimatedItemSize = CGSize(30,100)
 //        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 //        flow.itemSize = UICollectionViewFlowLayout.automaticSize
     }

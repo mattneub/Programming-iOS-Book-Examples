@@ -84,6 +84,19 @@ func makeRoundedRectangleMaker(_ sz:CGSize) -> () -> UIImage {
     }
 }
 
+// we could also omit the _first_ return, but I find that a bit obscure...
+func makeRoundedRectangleMakerObscure(_ sz:CGSize) -> () -> UIImage {
+    {
+        imageOfSize(sz) {
+            let p = UIBezierPath(
+                roundedRect: CGRect(origin:CGPoint.zero, size:sz),
+                cornerRadius: 8)
+            p.stroke()
+        }
+    }
+}
+
+
 // stop hard-coding the radius
 func makeRoundedRectangleMaker2(_ sz:CGSize, _ r:CGFloat) -> () -> UIImage {
     return {

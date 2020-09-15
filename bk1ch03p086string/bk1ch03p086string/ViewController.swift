@@ -137,7 +137,7 @@ class ViewController: UIViewController {
             Line 3\n
             """
             print(s)
-            print(Array(s).filter{$0 == "\n"}.count)
+            print(Array(s).filter {$0 == "\n"}.count)
         }
         f()
         

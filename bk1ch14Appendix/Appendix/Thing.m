@@ -2,6 +2,7 @@
 
 #import "Thing.h"
 #import "Appendix-Swift.h"
+#import <CoreLocation/CoreLocation.h>
 
 void setState (State s) {
     NSLog(@"%d",s);
@@ -67,6 +68,18 @@ void setState (State s) {
     NSLog(@"%@: %@", NSStringFromClass([anid class]), @"cannot NSLog directly");
 }
 
+- (NSString*) stringReturnerWithError: (NSError**) err {
+    return nil; // proving that this is all it takes to throw; we don't actually have to supply NSError
+    return @"howdy";
+}
+
+- (BOOL) boolReturnerWithError: (NSError**) err {
+    // we don't actually have to supply NSError here either
+    // here, let's throw a core location error to see how it comes across in Swift
+    *err = [[NSError alloc] initWithDomain:kCLErrorDomain code:kCLErrorLocationUnknown userInfo:nil];
+    return NO; // proving the this is all it takes to throw
+    return YES;
+}
 
 @end
 

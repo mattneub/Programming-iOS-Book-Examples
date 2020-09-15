@@ -2,6 +2,7 @@
 import UIKit
 import ImageIO
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 //// temporary workaround from Joe Groff at Apple
 //extension CFString: Hashable {
@@ -75,7 +76,7 @@ class ViewController: UIViewController {
         let fm = FileManager.default
         let suppurl = try! fm.url(for:.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let tiff = suppurl.appendingPathComponent("mytiff.tiff")
-        let dest = CGImageDestinationCreateWithURL(tiff as CFURL, kUTTypeTIFF, 1, nil)!
+        let dest = CGImageDestinationCreateWithURL(tiff as CFURL, UTType.tiff.identifier as CFString, 1, nil)!
         CGImageDestinationAddImageFromSource(dest, src, 0, nil)
         let ok = CGImageDestinationFinalize(dest)
         if ok {
