@@ -38,6 +38,7 @@ struct MyContentConfiguration : UIContentConfiguration {
         return MyContentView(self)
     }
     func updated(for state: UIConfigurationState) -> MyContentConfiguration {
+        print("updated")
         return self
     }
 }
@@ -50,7 +51,7 @@ class ViewController: UIViewController {
         // test harness
         var config = MyContentConfiguration()
         config.text = "Hello, world"
-        let v = config.makeContentView()
+        let v = MyContentView(config)
         v.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
         v.backgroundColor = .yellow
         self.view.addSubview(v)

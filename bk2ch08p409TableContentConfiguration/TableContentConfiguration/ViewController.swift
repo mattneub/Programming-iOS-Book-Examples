@@ -15,6 +15,8 @@ class MyContentView : UIView, UIContentView {
         self.addSubview(self.label)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.highlightedTextColor = .white
+        // that works, so it is not an example of why you'd need to implement updatedForState
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
@@ -38,6 +40,9 @@ struct MyContentConfiguration : UIContentConfiguration {
         return MyContentView(self)
     }
     func updated(for state: UIConfigurationState) -> MyContentConfiguration {
+        if let state = state as? UICellConfigurationState {
+            print(state.isSelected, state.isHighlighted, state.traitCollection)
+        }
         return self
     }
 }
@@ -56,7 +61,7 @@ class ViewController: UITableViewController {
     }
     
     let cellID = "cell"
-    var which = 3
+    var which = 2
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         switch which {
@@ -87,6 +92,14 @@ class ViewController: UITableViewController {
         default: break
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if tableView.indexPathForSelectedRow == indexPath {
+            tableView.deselectRow(at:indexPath, animated:false)
+            return nil
+        }
+        return indexPath
     }
 }
 
