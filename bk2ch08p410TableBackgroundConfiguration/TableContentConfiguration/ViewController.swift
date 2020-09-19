@@ -100,7 +100,7 @@ class ViewController: UITableViewController {
 //            cell.selectionStyle = .none
             var b = UIBackgroundConfiguration.listPlainCell()
             // cannot use both background color and background color transformer
-            // b.backgroundColor = .blue
+            // b.backgroundColor = .red
             // b.backgroundColor = nil // uses the tint color!
             b.customView = UIImageView(image: UIImage(named: "linen"))
             b.backgroundColorTransformer = UIConfigurationColorTransformer { [weak cell] c in
