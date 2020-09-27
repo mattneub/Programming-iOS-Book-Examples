@@ -49,7 +49,7 @@ class ViewController: UICollectionViewController {
 //                }
 //            }
             let grav = UIGravityBehavior(items: items)
-            grav.action = {
+            grav.action = { [unowned self] in
                 // have to prompt for another frame
                 self.collectionView.collectionViewLayout.invalidateLayout()
                 let items = anim.items(in: self.collectionView.bounds)

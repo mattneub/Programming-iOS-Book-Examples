@@ -152,5 +152,6 @@ class MyView : UIView {
         
     }
     
+    deinit { print("farewell") }
     
 }

@@ -43,6 +43,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpInterface()
+        PHPhotoLibrary.shared().register(self)
     }
     
     func setUpInterface() {
@@ -186,8 +187,9 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                             // the docs say that the `default` PHImageManager caches its results
                             // so to work around that caching I do _not_ use the `default`
                                 act.removeFromSuperview()
-                                self.setUpInterface()
+//                                self.setUpInterface()
 //                            }
+                            // no, that didn't help, back to the artificial delay, argh
                         } else {
                             act.removeFromSuperview()
                             print("phasset change request error: \(err as Any)")
@@ -198,6 +200,21 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             
         }
     }
+    deinit {
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
+    }
+}
+
+// hmm, this seems quite reliable — I still need the blasted delay though
+extension DataViewController : PHPhotoLibraryChangeObserver {
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        delay(0.1) {
+            print("changed")
+            self.setUpInterface()
+        }
+    }
+    
     
 }
+
 

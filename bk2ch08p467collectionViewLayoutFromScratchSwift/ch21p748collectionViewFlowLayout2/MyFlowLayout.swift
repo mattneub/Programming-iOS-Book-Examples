@@ -115,7 +115,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         
         let grav = UIGravityBehavior(items:atts)
         grav.magnitude = 0.8
-        grav.action = {
+        grav.action = { [unowned self] in
             let atts = self.animator.items(in:visworld)
             if atts.count == 0 || anim.elapsedTime > 4 {
                 //print("done")

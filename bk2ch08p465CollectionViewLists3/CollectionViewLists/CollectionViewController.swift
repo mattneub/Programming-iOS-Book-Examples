@@ -48,10 +48,14 @@ class CollectionViewController: UICollectionViewController {
         let reg = CellReg<UICollectionViewListCell, String> { cell, ip, s in
             var contentConfig = cell.defaultContentConfiguration()
             contentConfig.text = s
-            if ip.item == 0 {
-                let opts = UICellAccessory.OutlineDisclosureOptions(style: .header)
-                let f : () -> () = { print("ha!") }
-                cell.accessories = [.outlineDisclosure(options: opts, actionHandler: nil)]
+            let snap = self.datasource.snapshot(for: "Dummy")
+            let snap2 = snap.snapshot(of: s)
+            if snap2.items.count > 0 {
+//            if ip.item == 0 {
+//                let opts = UICellAccessory.OutlineDisclosureOptions(style: .header)
+//                let f : () -> () = { print("ha!") }
+//                cell.accessories = [.outlineDisclosure(options: opts, actionHandler: nil)]
+                cell.accessories = [.outlineDisclosure()]
             } else {
                 cell.accessories = [.delete()]
             }
@@ -86,4 +90,21 @@ class CollectionViewController: UICollectionViewController {
         }
         self.datasource.apply(snap)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        var snap = self.datasource.snapshot(for: "Dummy")
+        let s = self.datasource.itemIdentifier(for: indexPath)!
+        let snap2 = snap.snapshot(of: s)
+        let hasChildren = snap2.items.count > 0
+        if hasChildren {
+            if snap.isExpanded(s) {
+                snap.collapse([s])
+            } else {
+                snap.expand([s])
+            }
+            self.datasource.apply(snap, to: "Dummy")
+        }
+        return !hasChildren
+    }
+
 }

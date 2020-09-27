@@ -24,4 +24,7 @@ class BackgroundTaskOperation: Operation {
     func doOnMainQueueAndBlockUntilFinished(_ f:@escaping ()->()) {
         OperationQueue.main.addOperations([BlockOperation(block: f)], waitUntilFinished: true)
     }
+    deinit {
+        print("farewell from the background task operation")
+    }
 }

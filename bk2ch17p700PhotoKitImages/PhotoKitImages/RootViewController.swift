@@ -13,8 +13,9 @@ func checkForPhotoLibraryAccess(for level: PHAccessLevel = .readWrite, andThen f
         f?()
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
-            if status == .authorized {
+            if status == .authorized || status == .limited {
                 DispatchQueue.main.async {
+                    print("got authorization")
                     f?()
                 }
             }
@@ -54,9 +55,12 @@ class RootViewController: UIViewController {
     func tryToAddInitialPage() {
         self.modelController = ModelController()
         if let dvc = self.modelController.viewController(at:0, storyboard: self.storyboard!) {
+            print("added initial page")
             let viewControllers = [dvc]
             self.pvc!.setViewControllers(viewControllers, direction: .forward, animated: false)
             self.pvc!.dataSource = self.modelController
+        } else {
+            print("failed to add initial page")
         }
     }
     

@@ -29,11 +29,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: self.headerID)
 
-        self.datasource = UICollectionViewDiffableDataSource<String,String>(collectionView:self.collectionView) { cv,ip,s in
-            return self.makeCell(cv,ip,s)
+        self.datasource = UICollectionViewDiffableDataSource<String,String>(collectionView:self.collectionView) { [weak self] cv,ip,s in
+            return self?.makeCell(cv,ip,s)
         }
-        self.datasource.supplementaryViewProvider = { cv,kind,ip in
-            return self.makeSupplementaryView(cv,kind,ip)
+        self.datasource.supplementaryViewProvider = { [weak self] cv,kind,ip in
+            return self?.makeSupplementaryView(cv,kind,ip)
         }
         
         let s = try! String(
@@ -58,6 +58,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         let b2 = UIBarButtonItem(title:"Delete", style:.plain, target:self, action:#selector(doDelete(_:)))
         self.navigationItem.rightBarButtonItem = b2
+        
+        self.navigationItem.leftItemsSupplementBackButton = true
         
         self.collectionView.backgroundColor = .white
         self.collectionView.allowsMultipleSelection = true
@@ -216,7 +218,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         }
  */
     }
-    
+    deinit { print("farewell") }
     
 
 }

@@ -34,7 +34,7 @@ class ViewController: UICollectionViewController {
             }
         }
         let grav = UIGravityBehavior(items: atts)
-        grav.action = {
+        grav.action = { [unowned self] in
             let items = anim.items(in: self.collectionView.bounds)
             if items.count == 0 {
                 print("done")
@@ -53,7 +53,7 @@ class ViewController: UICollectionViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
-        section.visibleItemsInvalidationHandler = { items, offset, env in
+        section.visibleItemsInvalidationHandler = {[unowned self] items, _, _ in
             if let anim = self.anim {
                 print("go")
                 for item in items {
