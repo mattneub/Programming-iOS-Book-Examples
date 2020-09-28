@@ -41,8 +41,10 @@ class MyContentView : UIView, UIContentView {
         sw.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         sw.topAnchor.constraint(equalTo: self.topAnchor, constant:10).isActive = true
         sw.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant:-10).isActive = true
-        sw.addAction(UIAction {[unowned sw] action in
-            (configuration as? Config)?.isOnChanged?(sw.isOn, self)
+        sw.addAction(UIAction { action in
+            if let sender = action.sender as? UISwitch {
+                (configuration as? Config)?.isOnChanged?(sender.isOn, sender)
+            }
         }, for: .valueChanged)
         config()
     }
@@ -91,7 +93,7 @@ class ViewController2: UIViewController {
     var datasource : UITableViewDiffableDataSource<String,UniBool>!
     override func viewDidLoad() {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.datasource = UITableViewDiffableDataSource<String,UniBool>(tableView: self.tableView) { tv, ip, isOn in
+        self.datasource = UITableViewDiffableDataSource<String,UniBool>(tableView: self.tableView) { [unowned self] tv, ip, isOn in
             let cell = tv.dequeueReusableCell(withIdentifier: "cell", for: ip)
             var config = Config()
             config.isOn = isOn.bool
@@ -116,5 +118,8 @@ class ViewController2: UIViewController {
         snap.appendSections(["Dummy"])
         snap.appendItems((1...100).map {_ in UniBool(uuid: UUID(), bool: false)})
         self.datasource.apply(snap, animatingDifferences: false)
+    }
+    deinit {
+        print("farewell2") // check memory management
     }
 }

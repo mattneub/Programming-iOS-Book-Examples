@@ -38,8 +38,10 @@ class MyContentView : UIView, UIContentView {
         self.addSubview(sw)
         sw.center = CGPoint(x:self.bounds.midX, y:self.bounds.midY)
         sw.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
-        sw.addAction(UIAction {[unowned sw] action in
-            (configuration as? Config)?.delegate?.switchChangedTo(sw.isOn, sender:self)
+        sw.addAction(UIAction { action in
+            if let sender = action.sender as? UISwitch {
+                (configuration as? Config)?.delegate?.switchChangedTo(sender.isOn, sender:sender)
+            }
         }, for: .valueChanged)
         config()
     }
