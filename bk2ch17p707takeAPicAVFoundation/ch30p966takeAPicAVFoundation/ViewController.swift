@@ -195,6 +195,25 @@ class ViewController: UIViewController {
         }
     }
     
+    // oooo here's some fun code (not mine, really) for adjusting the zoom
+    @IBAction func doSlider (_ sender: UISlider) {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+        let minz = device.minAvailableVideoZoomFactor
+        let maxz = min(device.maxAvailableVideoZoomFactor, 6) // otherwise it zooms insanely high on my device
+        let val = sender.value
+        let newval = (maxz-minz)*CGFloat(val)+minz
+        func update(scale factor: CGFloat) {
+            do {
+                try device.lockForConfiguration()
+                defer { device.unlockForConfiguration() }
+                device.videoZoomFactor = factor
+            } catch {
+                print(error)
+            }
+        }
+        update(scale: newval)
+    }
+    
     @IBAction func doSnap (_ sender: Any) {
         guard self.sess != nil && self.sess.isRunning else {
             return
