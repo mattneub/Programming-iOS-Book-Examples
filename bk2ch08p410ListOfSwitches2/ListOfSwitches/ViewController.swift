@@ -85,28 +85,20 @@ class ViewController: UIViewController, UITableViewDataSource {
 }
 
 class ViewController2: UIViewController {
-    struct UniBool : Hashable {
-        let uuid : UUID
-        var bool : Bool
-    }
     @IBOutlet var tableView : UITableView!
-    var datasource : UITableViewDiffableDataSource<String,UniBool>!
+    var datasource : UITableViewDiffableDataSource<String,UUID>!
+    var switches = [UUID:Bool]()
     override func viewDidLoad() {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.datasource = UITableViewDiffableDataSource<String,UniBool>(tableView: self.tableView) { [unowned self] tv, ip, isOn in
+        self.datasource = UITableViewDiffableDataSource<String,UUID>(tableView: self.tableView) { [unowned self] tv, ip, uuid in
             let cell = tv.dequeueReusableCell(withIdentifier: "cell", for: ip)
             var config = Config()
-            config.isOn = isOn.bool
+            config.isOn = self.switches[uuid] ?? false
             config.isOnChanged = { isOn, v in
                 if let cell = v.next(ofType: UITableViewCell.self) {
                     if let ip = tv.indexPath(for: cell) {
-                        if let unibool = self.datasource.itemIdentifier(for: ip) {
-                            var snap = self.datasource.snapshot()
-                            snap.insertItems([UniBool(uuid: UUID(), bool: isOn)], afterItem: unibool)
-                            snap.deleteItems([unibool])
-                            delay(0.3) {
-                                self.datasource.apply(snap, animatingDifferences: false)
-                            }
+                        if let uuid = self.datasource.itemIdentifier(for: ip) {
+                            self.switches[uuid] = isOn
                         }
                     }
                 }
@@ -114,9 +106,13 @@ class ViewController2: UIViewController {
             cell.contentConfiguration = config
             return cell
         }
-        var snap = NSDiffableDataSourceSnapshot<String,UniBool>()
+        var snap = NSDiffableDataSourceSnapshot<String,UUID>()
         snap.appendSections(["Dummy"])
-        snap.appendItems((1...100).map {_ in UniBool(uuid: UUID(), bool: false)})
+        snap.appendItems((1...100).map {_ in
+            let uuid = UUID()
+            self.switches[uuid] = false
+            return uuid
+        })
         self.datasource.apply(snap, animatingDifferences: false)
     }
     deinit {
