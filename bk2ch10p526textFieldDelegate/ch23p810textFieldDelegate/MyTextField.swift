@@ -53,13 +53,12 @@ class MyTextField: UITextField {
     override func copy(_ sender:Any?) {
         super.copy(sender)
         let pb = UIPasteboard.general
-        if var s = pb.string {
+        if let s = pb.string {
             // ... alter s here ...
-            // s = s + "surprise!"
-            pb.string = s
+            let ss = s + "surprise!"
+            pb.string = ss
             
-            s = pb.string! // shut the compiler up
-            print("copied", s)
+            print("pasteboard contains", pb.string as Any)
         }
     }
 }

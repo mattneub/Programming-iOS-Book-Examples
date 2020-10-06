@@ -5,7 +5,7 @@ import CoreLocation
 class ManagerHolder {
     let locman = CLLocationManager()
     var doThisWhenAuthorized : (() -> ())?
-    func checkForLocationAccess(always:Bool = false, andThen f: (()->())? = nil) {
+    func checkForLocationAccess(always: Bool=false, andThen f: (()->())?=nil) {
         // no services? fail but try get alert
         guard CLLocationManager.locationServicesEnabled() else {
             print("no location services")
