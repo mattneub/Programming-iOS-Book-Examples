@@ -145,6 +145,36 @@ extension UIView {
     }
 }
 
+// not in the book, but maybe they should be:
+// utilities for understandind an untouchable view
+
+extension UIView {
+    @objc func reportNoninteractiveSuperview() {
+        if let sup = self.superview {
+            if !sup.isUserInteractionEnabled {
+                print(sup, "is disabled")
+            } else {
+                sup.reportNoninteractiveSuperview()
+            }
+        } else {
+            print("no disabled superviews found")
+        }
+    }
+}
+extension UIView {
+    @objc func reportSuperviews(filtering:Bool = true) {
+        var currentSuper : UIView? = self.superview
+        print("reporting on \(self)\n")
+        while let ancestor = currentSuper {
+            let ok = ancestor.bounds.contains(ancestor.convert(self.frame, from: self.superview))
+            let report = "it is \(ok ? "inside" : "OUTSIDE") \(ancestor)\n"
+            if !filtering || !ok { print(report) }
+            currentSuper = ancestor.superview
+        }
+    }
+}
+
+
 extension UIControl {
     func addAction(for event: UIControl.Event,
                    handler: @escaping UIActionHandler) {
