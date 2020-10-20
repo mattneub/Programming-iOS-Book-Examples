@@ -146,7 +146,7 @@ extension UIView {
 }
 
 // not in the book, but maybe they should be:
-// utilities for understandind an untouchable view
+// utilities for understanding an untouchable view
 
 extension UIView {
     @objc func reportNoninteractiveSuperview() {
@@ -173,6 +173,21 @@ extension UIView {
         }
     }
 }
+
+// utility for shortening constraint creation
+// I'm not big on this kind of thing, but this is so common it seems to need something
+
+extension UIView {
+    func pinToSuperview(_ insets:NSDirectionalEdgeInsets = .zero) {
+        guard let sup = self.superview else { return }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: sup.topAnchor, constant: insets.top).isActive = true
+        self.trailingAnchor.constraint(equalTo: sup.trailingAnchor, constant: -insets.trailing).isActive = true
+        self.leadingAnchor.constraint(equalTo: sup.leadingAnchor, constant: insets.leading).isActive = true
+        self.bottomAnchor.constraint(equalTo: sup.bottomAnchor, constant: -insets.bottom).isActive = true
+    }
+}
+
 
 
 extension UIControl {
