@@ -174,7 +174,7 @@ extension UIView {
     }
 }
 
-// utility for shortening constraint creation
+// utility for shortening constraint creation, not in book
 // I'm not big on this kind of thing, but this is so common it seems to need something
 
 extension UIView {
@@ -188,6 +188,13 @@ extension UIView {
     }
 }
 
+// reverse of `contains`, not in book, but I'd much rather talk this way:
+
+extension Equatable {
+    func isMember<T>(of coll:T) -> Bool where T:Collection, T.Element == Self {
+        return coll.contains(self)
+    }
+}
 
 
 extension UIControl {
