@@ -33,14 +33,28 @@ class ViewController: UIViewController {
     
     /*
      
-     iPhone 5s: compact, regular, 2.0; compact, compact, 2.0
-     iPhone 8 Plus: compact, regular, 3.0; regular, compact, 3.0
-     iPhone X: compact, regular, 3.0; compact, compact, 3.0
-     iPhone XR: compact, regular, 2.0; regular, compact, 2.0
-     iPhone XS: compact, regular, 3.0; compact, compact, 3.0
-     iPhone XS Max: compact, regular, 3.0; regular, compact, 3.0
-     
+     iPhone 6s:         ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 2.0
+     iPhone 8 Plus:     ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 3.0
+     iPhone X:          ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone XR:         ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 2.0
+     iPhone XS:         ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone XS Max:     ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 3.0
+     iPhone 11:         ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 2.0
+     iPhone 11 Pro:     ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone 11 Pro Max: ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 3.0
+     iPhone 12:         ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone 12 Pro:     ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone 12 Pro Max: ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 3.0
+     iPhone 12 mini:    ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+
+     The iPads are all
+
+     iPad: ↔︎ regular, ↕︎ regular; ↔︎ regular, ↕︎ regular; 2.0
+
+
      So, the XR and XS Max are like the Plus models as far as size classes go.
+     The iPhone 11 and iPhone 11 Pro Max are also "big" iPhones.
+     The iPhone 12 Pro Max is a "big" iPhone.
      
      */
 
