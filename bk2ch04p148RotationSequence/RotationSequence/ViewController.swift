@@ -99,7 +99,8 @@ class ViewController: UIViewController, CAAnimationDelegate {
         for additiveAngle in angles {
             let delay = first ? 0.0 : 0.2
             let absoluteAngle = currentAngle + additiveAngle
-            let b = CABasicAnimation(keyPath: "transform.rotation")
+            let b = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
+            b.valueFunction = CAValueFunction(name: .rotateZ)
             b.fromValue = currentAngle
             b.toValue = absoluteAngle
             b.beginTime = delay + accumulatedTime
