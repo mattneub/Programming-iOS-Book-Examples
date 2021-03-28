@@ -11,12 +11,21 @@ class MyProgressView: UIView {
         let ins : CGFloat = 2
         let r = self.bounds.insetBy(dx: ins, dy: ins)
         let radius : CGFloat = r.size.height / 2
-        let d90 = CGFloat.pi/2
+        let midbottom = CGPoint(r.midX, r.maxY)
         let path = CGMutablePath()
-        path.move(to:CGPoint(r.maxX - radius, ins))
-        path.addArc(center:CGPoint(
-                    radius+ins, radius+ins), radius: radius, startAngle: -d90, endAngle: d90, clockwise: true)
-        path.addArc(center:CGPoint(r.maxX - radius, radius+ins), radius: radius, startAngle: d90, endAngle: -d90, clockwise: true)
+        path.move(to: midbottom)
+        path.addArc(tangent1End: CGPoint(r.maxX, r.maxY),
+                    tangent2End: CGPoint(r.maxX, r.minY),
+                    radius: radius)
+        path.addArc(tangent1End: CGPoint(r.maxX, r.minY),
+                    tangent2End: CGPoint(r.minX, r.minY),
+                    radius: radius)
+        path.addArc(tangent1End: CGPoint(r.minX, r.minY),
+                    tangent2End: CGPoint(r.minX, r.maxY),
+                    radius: radius)
+        path.addArc(tangent1End: CGPoint(r.minX, r.maxY),
+                    tangent2End: CGPoint(r.maxX, r.maxY),
+                    radius: radius)
         path.closeSubpath()
         c.addPath(path)
         c.setLineWidth(2)
