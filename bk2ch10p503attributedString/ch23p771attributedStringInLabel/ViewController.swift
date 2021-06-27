@@ -136,5 +136,67 @@ class ViewController : UIViewController {
         }
     }
     
+    @available(iOS 15, *)
+    func theNewWay() {
+        // attributed strings now have properties
+        // cleverly uses dynamic member lookup
+        let s1 = """
+            The Gettysburg Address, as delivered on a certain occasion \
+            (namely Thursday, November 19, 1863) by A. Lincoln
+            """
+        var att = AttributedString(s1)
+        att.font = UIFont(name:"Arial-BoldMT", size:15)
+        att.foregroundColor = UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)
+        // can apply attributes directly to range slice
+        // good chance to demonstrate an AttributeContainer, expressing a dictionary...
+        // without looking like one
+        // this is all done by some combination of dynamic member lookup
+        // and callAsFunction, perhaps using an intermediate builder object
+        // but I don't yet understand the details
+        if let r = att.range(of: "Gettysburg Address") {
+            att[r].mergeAttributes(.init().strokeColor(.red).strokeWidth(-2.0))
+        }
+        // disappointingly, there is apparently no change in this
+        let para = NSMutableParagraphStyle()
+        para.headIndent = 10
+        para.firstLineHeadIndent = 10
+        para.tailIndent = -10
+        para.lineBreakMode = .byWordWrapping
+        para.alignment = .center
+        para.paragraphSpacing = 15
+        // underneath it still works as before; sufficient to apply para to first char
+        let start = att.startIndex
+        let firstCharacter = start..<att.index(start, offsetByCharacters: 1)
+        att[firstCharacter].paragraphStyle = para
+        
+        let s2 = """
+            Fourscore and seven years ago, our fathers brought forth \
+            upon this continent a new nation, conceived in liberty and \
+            dedicated to the proposition that all men are created equal.
+            """
+        var att2 = AttributedString(s2)
+        att2.font = UIFont(name:"HoeflerText-Black", size:16)
+        let start2 = att2.startIndex
+        let firstCharacter2 = start2..<att2.index(start, offsetByCharacters: 1)
+        att2[firstCharacter2].mergeAttributes(
+            .init()
+                .font(UIFont(name:"HoeflerText-Black", size:24)!)
+                .expansion(0.3)
+                .kern(-4))
+        let para2 = NSMutableParagraphStyle()
+        para2.headIndent = 10
+        para2.firstLineHeadIndent = 10
+        para2.tailIndent = -10
+        para2.lineBreakMode = .byWordWrapping
+        para2.alignment = .justified
+        para2.lineHeightMultiple = 1.2
+        para2.hyphenationFactor = 1.0
+        att2[firstCharacter2].paragraphStyle = para2
+
+        // wow really easy to concatenate; they act like strings
+        let both = NSAttributedString(att + "\n" + att2)
+        _ = both
+    }
+    
     
 }
