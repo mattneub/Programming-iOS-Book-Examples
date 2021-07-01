@@ -122,6 +122,14 @@ class ViewController: UIViewController {
                 UIApplication.shared.endBackgroundTask(bti!)
             }
         }
+        
+        do {
+            let myAction = UIAction(title: "Hello") { action in
+                print(action)
+                // print(myAction) // illegal
+            }
+            _ = myAction
+        }
     }
     
 }

@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         var arrow = CGRect.zero
         var body = CGRect.zero
         struct Arrow {
-            static let ARHEIGHT : CGFloat = 0
+            static let ARHEIGHT = 0.0 // in Swift 5.5, Double for expected CGFloat
         }
         // but the whole example may fall to the ground...
         // as they may be blocking access to the original C functions entirely
@@ -110,6 +110,9 @@ class ViewController: UIViewController {
         // hmm, maybe I can subsitute this example:
         
         let c = UIColor.purple
+        // nb cannot just remove the CGFloat declarations here
+        // CGFloat is a synonym for Double now, but UnsafeMutablePointer<CGFloat>
+        // doesn't know that
         var r : CGFloat = 0
         var g : CGFloat = 0
         var b : CGFloat = 0

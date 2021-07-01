@@ -29,6 +29,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         if ok != nil {
             // it worked
         }
+        
+        let label = UILabel()
+        label.text? = "testing1"
+        print(label.text as Any)
+        label.text = "testing1"
+        label.text? = "testing2"
+        print(label.text as Any)
 
         var stringMaybe = Optional("howdy")
         print(stringMaybe as Any)

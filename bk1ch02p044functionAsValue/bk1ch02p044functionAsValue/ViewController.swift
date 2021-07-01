@@ -107,8 +107,21 @@ class Dog2 {
         // let barkFunction2 = bark(_:) // still ambiguous
         let barkFunction = bark as (Int) -> () // NB
         _ = barkFunction
+        
     }
 }
+
+class Dog3 {
+    func bark(loudly:Bool = false) {
+    }
+    func bark(softly:Bool) {
+    }
+    func test() {
+        self.bark() // fine
+        // let barkFunction = bark // compile error
+    }
+}
+
 
 
 class ViewController: UIViewController {

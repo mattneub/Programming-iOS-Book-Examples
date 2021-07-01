@@ -36,6 +36,17 @@ class ViewController: UIViewController {
         countDownFrom2(5)
         countDownFrom3(5)
 
+        func f() {
+            func g() {
+                
+            }
+            func g(what:String) {
+                
+            }
+            func g() -> String {
+                "test"
+            }
+        }
     
     
     }
