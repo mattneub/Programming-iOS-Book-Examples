@@ -119,6 +119,8 @@ class Dog3 {
     func test() {
         self.bark() // fine
         // let barkFunction = bark // compile error
+        let barkFunction = bark(loudly:)
+        _ = barkFunction
     }
 }
 

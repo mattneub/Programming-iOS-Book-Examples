@@ -298,17 +298,70 @@ public enum Color : Int {
     case color3
 }
 
+class Dog2 {
+    func wrapped() -> DogWrapper2 { DogWrapper2(self) }
+}
+class NoisyDog2 : Dog2 {}
+struct DogWrapper2 {
+    private let dog : Dog2
+    init(_ dog: Dog2) { self.dog = dog }
+    func unwrap() -> Dog2 { self.dog }
+}
+
+class Dog3 {
+    // this is now illegal, so how to say DogWrapper3<Self>?
+    // func wrapped() -> DogWrapper3 { DogWrapper3(self) }
+    // yeah nah:
+    // func wrapped() -> DogWrapper3<Self> { DogWrapper3(self) }
+}
+class NoisyDog3 : Dog3 {}
+struct DogWrapper3<T:Dog3> {
+    private let dog : T
+    init(_ dog: T) { self.dog = dog }
+    func unwrap() -> T { self.dog }
+}
+
+// https://stackoverflow.com/a/66414305/341994
+protocol WrappableDog : Dog4 { }
+extension WrappableDog {
+    func wrapped() -> DogWrapper4<Self> { DogWrapper4(self) }
+}
+class Dog4 : WrappableDog {
+}
+class NoisyDog4 : Dog4 {}
+struct DogWrapper4<T:Dog4> {
+    private let dog : T
+    init(_ dog: T) { self.dog = dog }
+    func unwrap() -> T { self.dog }
+}
+
+
+
 
 class ViewController: UIViewController {
+    func test() {
+        let nd = NoisyDog2()
+        let wrapper = nd.wrapped()
+        let unwrapped = wrapper.unwrap() // Dog2
+        print(type(of: unwrapped))
+        
+        do {
+            let nd = NoisyDog4()
+            let wrapper = nd.wrapped()
+            let unwrapped = wrapper.unwrap() // NoisyDog4, just what I wanted
+            print(type(of: unwrapped))
+        }
+    }
+    
     @IBOutlet var button : UIButton!
     
     @IBAction func doButton(_ sender: Any) {
         print("button")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.test()
         
         self.button.sendActions(for: .touchUpInside)
         

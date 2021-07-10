@@ -48,9 +48,18 @@ protocol MyViewProtocol2 : UIView {
     func doSomethingReallyCool()
 }
 
+protocol MyClassyProtocol : AnyObject {
+    
+}
+
+@objc protocol MyClassyProtocol2 : AnyObject { // hmm I was expecting redundancy warning
+    
+}
+
+
 protocol MyOtherProtocol where Self: UIView {}
-protocol MyOtherProtocol2 where Self: AnyObject {} // same as class
-protocol MyOtherProtocol3: class {} // still legal
+protocol MyOtherProtocol2 where Self: AnyObject {} // same as old class
+protocol MyOtherProtocol3: class {} // now deprecated
 
 class MyView : UIView, MyViewProtocol {
     func doSomethingCool() {}

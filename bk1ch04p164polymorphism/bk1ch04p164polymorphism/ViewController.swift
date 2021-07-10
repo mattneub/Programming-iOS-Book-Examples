@@ -118,7 +118,7 @@ class ViewController: UIViewController {
             let iii = 1
             let ii : NSNumber = iii as NSNumber // explicit "as" now required // no it isn't // yes it is, I wish they would make up their minds
             ud.set(ii, forKey: "Test")
-            ud.set(iii, forKey: "Test") // this is legal because this is now Any
+            ud.set(iii, forKey: "Test") // uses setInteger:forKey:
             let i = ud.object(forKey: "Test") as! Int
             _ = i
             let s : NSString = "howdy" // so why isn't it required here???

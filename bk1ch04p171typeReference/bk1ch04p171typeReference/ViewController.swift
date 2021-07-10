@@ -45,7 +45,7 @@ func dogTypeExpecter(_ whattype:Dog.Type) {
     print("is it Dog?", equality)
     let typology = whattype is Dog.Type
     print("is it any kind of Dog?", typology) // always true, as compiler warns
-    print("is it any kind of Noisy dog?", whattype is NoisyDog.Type) // always true, as compiler warns
+    print("is it any kind of Noisy dog?", whattype is NoisyDog.Type)
     
     do { // legal but pointless
         _ = NoisyDog.self == Dog.self

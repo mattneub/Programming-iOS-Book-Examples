@@ -4,16 +4,16 @@ import UIKit
 
 // shortening an associated type chain by using an intermediate associated type with a where clause
 
-protocol Wieldable {
+protocol Armament {
 }
-struct Sword : Wieldable {
+struct Sword : Armament {
 }
-struct Bow : Wieldable {
+struct Bow : Armament {
 }
 protocol Fighter {
     // associatedtype Enemy where Enemy : Fighter
     associatedtype Enemy : Fighter
-    associatedtype Weapon : Wieldable
+    associatedtype Weapon : Armament
     associatedtype EnemyWeapon where EnemyWeapon == Enemy.Weapon // *
     func steal(weapon:EnemyWeapon, from:Enemy) // *
 }

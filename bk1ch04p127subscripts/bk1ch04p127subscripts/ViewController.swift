@@ -97,12 +97,35 @@ class ViewController: UIViewController {
         
         let vc2 = UIApplication.shared.windows.first?.rootViewController
         print(vc2 as Any)
-
+        
+        // might all fall to the ground due to deprecation? I need another example?
+        print(app.connectedScenes.count)
+        let scene = app.connectedScenes.first as? UIWindowScene
+        let wind = scene?.windows.first
+        // let wind2 = scene?.keyWindow // will they always be the same?
+        let root = wind?.rootViewController
+        print(root as Any)
+        
         let secondPepBoy = Pep[1] // Moe
         print(secondPepBoy)
 
     }
-
-
+    
 }
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
+extension UIViewController : UITextFieldDelegate {
+    public func textFieldDidBeginEditing(_ tf:UITextField) {
+        let app = UIApplication.shared
+        delay(2) {
+            print(app) // give ourselves a place to stand when the keyboard is showing
+        }
+    }
+}
+
 

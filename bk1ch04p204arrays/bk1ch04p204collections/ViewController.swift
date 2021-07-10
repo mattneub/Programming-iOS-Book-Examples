@@ -402,6 +402,30 @@ class ViewController: UIViewController {
         }
         
         do {
+            // well this is not as exciting as I hoped;
+            // it isn't native at all, it's just a window onto the Foundation
+            // must inherit from NSObject and be totally exposed
+            @objcMembers class Person: NSObject {
+                internal init(firstName: String, lastName: String) {
+                    self.firstName = firstName
+                    self.lastName = lastName
+                }
+                let firstName: String
+                let lastName: String
+            }
+            var arr = [
+                Person(firstName: "Manny", lastName: "Pep"),
+                Person(firstName: "Harpo", lastName: "Marx"),
+                Person(firstName: "Jack", lastName: "Pep"),
+                Person(firstName: "Groucho", lastName: "Marx")
+            ]
+            let desc = SortDescriptor(\Person.lastName)
+            let desc2 = SortDescriptor(\Person.firstName)
+            arr.sort(using: [desc2, desc])
+            print(arr.map {$0.firstName + " " + $0.lastName})
+        }
+        
+        do {
             let arr = [1,2,3,4,5,6]
             let arr2 = arr.split {$0.isMultiple(of:2)} // split at evens: [[1], [3], [5]]
             print(arr2)

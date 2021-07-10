@@ -1,0 +1,252 @@
+
+
+import UIKit
+
+// playing with the new iOS 15 Foundation formatting syntax
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // dates
+        
+        let d = Date.now
+        do {
+            let s = d.formatted() // abbreviated, no time zone, local
+            print(s)
+        }
+        do {
+            let s = d.formatted(.dateTime.day(.defaultDigits).month(.wide))
+            print(s) // July 1 - your order is irrelevant, you are localized
+        }
+        do {
+            let s = d.formatted(.dateTime.timeZone(.identifier(.long)))
+            print(s) // Pacific/Auckland
+        }
+        do {
+            // iso8601
+            let s = d.formatted(
+                .iso8601.dateSeparator(.dash).timeSeparator(.colon)
+                    .dateTimeSeparator(.standard).timeZoneSeparator(.colon))
+            print(s) // 2021-07-01T04:24:27Z
+        }
+        do {
+            // verbatim means a format string
+            // but even then you don't have to know all the ins and outs;
+            // uses interpolation! needs a clear type if you declare separately,
+            // so that the interpolations work
+            let formatString : Date.FormatString = """
+            \(day: .defaultDigits) \
+            \(month: .wide), \
+            \(year: .defaultDigits) at \
+            \(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .oneBased)):\
+            \(minute: .twoDigits) \
+            \(timeZone: .localizedGMT(.long))
+            """
+            let format = Date.VerbatimFormatStyle(format: formatString, locale: .autoupdatingCurrent, timeZone: .autoupdatingCurrent, calendar: .init(identifier:.gregorian))
+            let s = d.formatted(format)
+            print(s) // 1 July, 2021 at 16:10 GMT+12:00
+        }
+        
+        do { // relative date
+            let d2 = d - 1000000 // or whatever
+            let s = d2.formatted(.relative(presentation: .named, unitsStyle: .wide))
+            print(s) // now; or, e.g., last week; or whatever
+        }
+        
+        do { // relative date
+            let d2 = d - 1000000 // or whatever
+            let s = d2.formatted(.relative(presentation: .numeric, unitsStyle: .narrow))
+            print(s) // 1 wk. ago, or whatever
+        }
+
+        // date intervals: you start with a range (I didn't know about this)
+        let d2 = d + 100
+        let r = d..<d2
+        
+        do {
+            let s = r.formatted()
+            print(s) // 7/1/21, 5:07 – 5:08 PM
+        }
+        
+        do {
+            let s = r.formatted(.interval)
+            print(s) // same, and I am unsure how to format it further
+        }
+        
+        do {
+            let s = r.formatted(.timeDuration)
+            print(s) // 1:40, minutes and seconds
+            // but I am unsure how to format _that_
+        }
+        
+        do {
+            // the question is how to do this sort of thing
+            // feels like they've left out a lot of functionality
+            func secondsToHourMinFormat(time: TimeInterval) -> String? {
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute]
+                formatter.zeroFormattingBehavior = .pad
+                formatter.unitsStyle = .positional
+                return formatter.string(from: time)
+            }
+            let d = 3680.0
+            let s = secondsToHourMinFormat(time: d)
+            print(s as Any) // 01:01
+            
+        }
+        
+        do { // date components
+            let s = r.formatted(.components(style: .narrow, fields: .init([.hour, .minute])))
+            print(s) // 1min - limited in ability to format??? seems wrong as it is
+            // where are features like includesApproximationPhrase, includesTimeRemainingPhrase ????
+        }
+                
+
+        do {
+            let format = Date.IntervalFormatStyle(date: .omitted, time: .standard, locale: .autoupdatingCurrent, calendar: .init(identifier: .gregorian), timeZone: .autoupdatingCurrent)
+            let s = r.formatted(format)
+            print(s) // 6:12:09 PM – 6:13:49 PM, cute but not exactly up to me
+        }
+        
+        // numbers, including percent and currency
+        
+        let pi = Double.pi
+        
+        do {
+            let s = pi.formatted()
+            print(s) // 3.141593
+        }
+
+        do {
+            let s = pi.formatted(.number.precision(.fractionLength(3)))
+            print(s) // 3.142
+            
+        }
+        
+        do {
+            let s = pi.formatted(.number.precision(.fractionLength(3)).rounded(rule: .down))
+            print(s) // 3.141
+        }
+        
+        do {
+            let s = pi.formatted(.number.precision(.fractionLength(10)).scale(4).sign(strategy: .always()).notation(.scientific))
+            print(s) // +1.2566370614E1 :))))
+        }
+
+        do {
+            let s = 1_000_000.formatted(.number.grouping(.automatic))
+            print(s) // 1,000,000, whereas `.never` means no commas
+        }
+        
+        do {
+            let s = 45.formatted(.percent)
+            print(s) // 45%
+        }
+
+        do {
+            let s = 45.formatted(.currency(code: "USD"))
+            print(s) // $45.00
+        }
+        
+        // person name components
+        
+        var comp = PersonNameComponents()
+        comp.familyName = "Neuburg"
+        comp.givenName = "Matt"
+        comp.namePrefix = "Mr."
+        do {
+            let s = comp.formatted(.name(style: .abbreviated))
+            print(s) // MN
+        }
+        do {
+            let s = comp.formatted(.name(style: .short))
+            print(s) // Matt
+        }
+        do {
+            let s = comp.formatted(.name(style: .long))
+            print(s) // Mr. Matt Neuburg
+        }
+
+        // bytes
+        // I don't think any law requires UInt64 but it is obviously best
+        let b : UInt64 = 1_000_254_221
+        do {
+            let s = b.formatted(.byteCount(style: .decimal))
+            print(s) // 1 GB
+        }
+        do {
+            let s = b.formatted(.byteCount(style: .decimal, allowedUnits: .init([.kb, .mb]), spellsOutZero: true, includesExactByteCount: true))
+            print(s) // 1,000.3 MB (1,000,254,221 bytes)
+        }
+
+        // measurement
+        let m = Measurement(value: 4.8765, unit: UnitLength.inches)
+        do {
+            let s = m.formatted(
+                .measurement(
+                    width: .wide,
+                    usage: .general,
+                    numberFormat: .numeric( // this is nice, why don't others do it???
+                        precision: .fractionLength(2),
+                        roundingIncrement: 0.1)))
+            print(s) // 4.90 inches
+        }
+        
+        // list
+        let pep = ["Manny", "Moe", "Jack"]
+        do {
+            let s = pep.formatted(.list(type: .and, width: .standard))
+            print(s) // Manny, Moe, and Jack
+        }
+        
+        // now let's try going the other way; I'll use a date string
+        let ds = "Jan 2, 2014"
+        do {
+            let format : Date.FormatString =
+                "\(month: .abbreviated) \(day: .defaultDigits), \(year: .defaultDigits)"
+            var strat = Date.ParseStrategy(format: format, timeZone: .current)
+            strat.locale = .current // language needed, obviously!
+            if let date = try? Date(ds, strategy: strat) {
+                print(date.formatted())
+            } else {
+                print("yeh nah")
+            }
+        }
+        
+        // you can also call parse on a format style
+        let ds2 = "Jul 2, 2021, 11:30 AM"
+        do {
+            let style = Date.FormatStyle(date: .abbreviated, time: .shortened)
+            // if in doubt, print something out!
+            // print(Date.now.formatted(style))
+            if let date = try? style.parse(ds2) {
+                print(date.formatted())
+            } else {
+                print("oh well")
+            }
+        }
+        
+        // one final point; the pieces can be all attributed so you can find them
+        do {
+            let style = Date.FormatStyle(date: .abbreviated, time: .shortened).attributed
+            let attrib = Date.now.formatted(style)
+            if let (_,range) = (attrib.runs[\.dateField].filter{$0.0 == .month}.first) {
+                print(String(attrib.characters[range])) // Jul
+            }
+//            if let (_, range) = monthField {
+//                print(attrib[range])
+//            }
+//            for run in attrib.runs {
+//                if let what = run.dateField, what == .month {
+//                    let r = run.range // so here's where it is
+//                    print("month part is", String(attrib.characters[r]))
+//                }
+//            }
+        }
+    }
+
+
+}
+

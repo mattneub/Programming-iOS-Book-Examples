@@ -182,6 +182,9 @@ class ViewController: UIViewController {
             let test3 = Planet.asteroid("Ceres") < Planet.asteroid("Vesta") // true
             print(test1, test2, test3)
         }
+        
+        // incredibly, this was made legal only recently, Swift 5.4
+        self.view.backgroundColor = .red.withAlphaComponent(0.5)
     
     }
     

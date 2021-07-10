@@ -16,20 +16,24 @@ protocol ViewProtocol where Self : UIView {}
 extension UIView : ViewProtocol {}
 
 protocol Flier2 {
-    associatedtype Other
-    func flockTogetherWith(_ f:Self.Other) // just showing that this is legal
-    func mateWith(_ f:Other)
+    associatedtype T
+    func flockTogetherWith(_ f:Self.T) // just showing that this is legal
+    func mateWith(_ f:T)
 }
 struct Bird2 : Flier2 {
     func flockTogetherWith(_ f:Bird2) {}
     func mateWith(_ f:Bird2) {}
 }
-/*
-struct Bird2Not : Flier2 { // does not conform
+struct Bird2Not : Flier2 {
     func flockTogetherWith(_ f: String) {}
-    func mateWith(_ f:Int) {}
+    func mateWith(_ f: String) {}
 }
- */
+struct Bee {}
+struct Bird2b : Flier2 {
+    func flockTogetherWith(_ f:Bee) {}
+    func mateWith(_ f:Bee) {}
+}
+
 
 func takeAndReturnSameThing<T> (_ t:T) -> T {
     if T.self is String.Type {
@@ -54,12 +58,12 @@ let holder = HolderOfTwoSameThings(thingOne:"howdy", thingTwo:"getLost")
 func flockTwoTogether<T, U>(_ f1:T, _ f2:U) {}
 let vd : Void = flockTwoTogether("hey", 1)
 
-// WHOA! Using a `where` clause in Swift 4 works around the weird rule where you can't say Other : Flier3a
+// WHOA! Using a `where` clause in Swift 4 works around the weird rule where you can't say associatedType T : Flier3a
 // however, I'm told that's a bug; recursive constraints are not ready for prime time and this should not have been allowed
 
 protocol Flier3a {
-    associatedtype Other where Other : Flier3a
-    func flockTogetherWith(f:Other)
+    associatedtype T where T : Flier3a
+    func flockTogetherWith(f:T)
 }
 
 struct Bird3a : Flier3a {
@@ -72,11 +76,11 @@ struct Bird3a : Flier3a {
 // still illegal in Swift 3 toolchain
 // still illegal in Swift 4
 
-/*
+// well it's fine now
 
 protocol Flier3aa {
-    associatedtype Other : Flier3aa
-    func flockTogetherWith(f:Other)
+    associatedtype T : Flier3aa
+    func flockTogetherWith(f:T)
 }
 struct Bird3aa : Flier3aa {
     func flockTogetherWith(f:Insect3aa) {}
@@ -85,17 +89,14 @@ struct Insect3aa : Flier3aa {
     func flockTogetherWith(f:Insect3aa) {}
 }
 
-*/
+// old workaround:
 
-// workaround:
-
-///*
 
 protocol Superflier3 {}
 
 protocol Flier3 : Superflier3 {
-    associatedtype Other : Superflier3
-    func flockTogetherWith(f:Other)
+    associatedtype T : Superflier3
+    func flockTogetherWith(f:T)
 }
 struct Bird3 : Flier3 {
     func flockTogetherWith(f:Insect3) {}
@@ -104,20 +105,20 @@ struct Insect3 : Flier3 {
     func flockTogetherWith(f:Insect3) {}
 }
 
-//*/
-
 // okay but I'm sort of sorry I used that example at all; here's something a bit clearer that avoids the whole self-reference issue:
 
 protocol Flier7 {
     func fly()
 }
-protocol Flocker7 {
-    associatedtype Other : Flier7
-    func flockTogetherWith(f:Other)
-}
-struct Bird7 : Flocker7, Flier7 {
+struct Bee7 : Flier7 {
     func fly() {}
-    func flockTogetherWith(f:Bird7) {}
+}
+protocol Flocker7 {
+    associatedtype T : Flier7
+    func flockTogetherWith(f:T)
+}
+struct Bird7 : Flocker7 {
+    func flockTogetherWith(f:Bee7) {}
 }
 
 // ========
@@ -142,10 +143,10 @@ func myMin<T:Comparable>(_ things:T...) -> T {
 // it can _only_ be used as a type constraint, as in flockTwoTogether2
 
 protocol Flier4 {
-    associatedtype Other
+    associatedtype T
 }
 struct Bird4 : Flier4 {
-    typealias Other = String
+    typealias T = String
 }
 
 class Dog<T> {
@@ -205,7 +206,7 @@ protocol Walker {}
 struct Quadruped : Walker {}
 
 protocol Flier6 {
-    associatedtype Other
+    associatedtype T
     func fly()
 }
 
@@ -224,9 +225,24 @@ func flockTwoTogether6<T1:Flier6, T2:Flier6>(f1:T1, _ f2:T2) {
 // just testing: this one actually segfaults
 // but not any more! In Swift 2.2 (Xcode 7.3b) this is fine; not sure when that happened
 // but in Swift 3 is segfaults again, taking it back out
-// in Swift 4 it errors coherently as being "recursive"
+// in Swift 4 and later it errors coherently as being "recursive"
 // class Dog2<T:Dog2> {}
 
+// interesting that you don't have to say Node<T> throughout here
+class Node<T> {
+    let value:T
+    let parent:Node?
+    init(_ value:T, parent:Node?) {
+        self.value = value
+        self.parent = parent
+    }
+}
+
+class Dogg<T> {
+    func speak(_ what:T) {}
+}
+// uncomment to see the error
+// var d: Dogg? // compile error
 
 
 class ViewController: UIViewController {
@@ -273,7 +289,6 @@ class ViewController: UIViewController {
         }
         
         do {
-            // not in book, but I suppose it should be: how to check type of resolved generic placeholder
             // From https://stackoverflow.com/a/46249717/341994
             
             func get<T>() -> T? {
@@ -282,6 +297,13 @@ class ViewController: UIViewController {
             }
             let _ : Int? = get()
             let _ : String? = get()
+        }
+        
+        do {
+            let d = Dog<String>()
+            print(type(of:d))
+            let nd = NoisyDog()
+            print(type(of:nd))
         }
         
     }

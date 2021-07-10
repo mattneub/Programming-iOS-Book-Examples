@@ -4,16 +4,16 @@ import UIKit
 
 // =====
 
-protocol Wieldable {
+protocol Armament {
 }
-struct Sword : Wieldable {
+struct Sword : Armament {
 }
-struct Bow : Wieldable {
+struct Bow : Armament {
 }
 protocol Fighter {
     // associatedtype Enemy where Enemy : Fighter // in Swift 4.1, we can recurse directly
     associatedtype Enemy : Fighter
-    associatedtype Weapon : Wieldable
+    associatedtype Weapon : Armament
     func steal(weapon:Self.Enemy.Weapon, from:Self.Enemy)
 }
 struct Soldier : Fighter {
@@ -85,6 +85,21 @@ struct S : Generic {
     typealias UU = Bird
     typealias U = FlyingDog
 }
+
+protocol Flier2 {
+    func fly()
+}
+protocol Flocker2 {
+    associatedtype T : Flier2 // *
+    func flockTogetherWith(f:T)
+}
+protocol Flocker3 {
+    associatedtype T where T: Flier2 // *
+    func flockTogetherWith(f:T)
+}
+
+
+
 
 
 class ViewController: UIViewController {

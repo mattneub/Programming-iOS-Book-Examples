@@ -251,7 +251,7 @@ class ViewController: UIViewController {
             print(any as AnyObject? === d1) // false
             
             let any2 : Any? = d1
-            print(any2 as AnyObject === d1) // false! huh?
+            print(any2 as AnyObject === d1) // false! huh? ok, well true now anyway
             print(any2 as AnyObject? === d1) // true
             
             let any3 : Any = d1

@@ -7,16 +7,16 @@ import UIKit
 // ==== colon and protocol
 
 protocol Flier {
-    associatedtype Other
+    associatedtype T
 }
 struct Bird : Flier {
-    typealias Other = String
+    typealias T = String
 }
 struct Insect : Flier {
-    typealias Other = Bird
+    typealias T = Bird
 }
 // the convention now seems to be to put everything in the where clause
-func flockTogether<T> (_ f:T) where T:Flier, T.Other:Equatable {}
+func flockTogether<T> (_ f:T) where T:Flier, T.T:Equatable {}
 
 // ==== colon and class
 
@@ -27,12 +27,12 @@ class NoisyDog : Dog {
 struct Cat {}
 enum Bug {}
 struct Pig : Flier {
-    typealias Other = Dog
+    typealias T = Dog
 }
 struct Pig2 : Flier {
-    typealias Other = NoisyDog
+    typealias T = NoisyDog
 }
-func flockTogether2<T> (_ f:T) where T:Flier, T.Other:Dog {}
+func flockTogether2<T> (_ f:T) where T:Flier, T.T:Dog {}
 
 // ==== equality and protocol
 
@@ -41,27 +41,27 @@ protocol Walker {
 struct Kiwi : Walker {
 }
 struct Bird3 : Flier {
-    typealias Other = Kiwi
+    typealias T = Kiwi
 }
 struct Insect3 : Flier {
-    typealias Other = Walker
+    typealias T = Walker
 }
-func flockTogether3<T> (_ f:T) where T:Flier, T.Other == Walker {}
+func flockTogether3<T> (_ f:T) where T:Flier, T.T == Walker {}
 
 // ==== equality and class
 
-func flockTogether4<T> (_ f:T) where T:Flier, T.Other == Dog {}
+func flockTogether4<T> (_ f:T) where T:Flier, T.T == Dog {}
 
 // ==== equality and two associated type chains
 
 struct Bird4 : Flier {
-    typealias Other = String
+    typealias T = String
 }
 struct Insect4 : Flier {
-    typealias Other = Int
+    typealias T = Int
 }
-func flockTwoTogether<T,U> (_ f1:T, _ f2:U)
-    where T:Flier, U:Flier, T.Other == U.Other {}
+func flockTwoTogether<U1,U2> (_ f1:U1, _ f2:U2)
+    where U1:Flier, U2:Flier, U1.T == U2.T {}
 
 // ==== with a struct (just testing the outside-the-angle-brackets syntax)
 
@@ -90,15 +90,13 @@ class ViewController: UIViewController {
         // flockTwoTogether(Bird4(), Insect4()) // nope
         
         var s = "hello"
-        s.append(contentsOf: " world") // "hello world"; character array
+        s.append(contentsOf: " there")
+        s.append(contentsOf: " world")
         print(s)
         s.append(contentsOf: ["!" as Character, "?" as Character])
-        print(s) // "hello world!?"
-        
-        s = "hello"
-        s.append(" world") // "hello world"
         print(s)
-
+        // yeah nah
+        // s.append(contentsOf: ("1" as Character)..<("9" as Character))
         
         var arr = ["manny", "moe"]
         arr.append(contentsOf: ["jack"])
