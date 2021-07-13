@@ -385,6 +385,38 @@ class ViewController: UIViewController {
         }
         
         do {
+            // it appears that these are two different methods
+            // with two different complexities
+            let arr = [1,2,3,4,5]
+            let rev = arr.reversed() // Collection, O(1)
+            for i in rev {
+                print(i)
+            }
+            // I'm very confused and surprised by this
+            let nextToLast = arr.reversed()[1] // Sequence, O(n)!
+            print(nextToLast)
+            
+            let nextToLast2 = arr.reversed()._base[1] // Collection again
+            print(nextToLast2) // but wrong answer, it's still 4 because it's the base
+            
+            var arr2 = arr
+            arr2.reverse()
+            print(arr2)
+            
+            let slice = arr[1...2]
+            print(slice.reversed().indices)
+            
+        }
+        
+        do { // well, this didn't work
+            var arr = [1,2,3]
+            let rev = arr.reversed()
+            // let i = rev[1] // what??? compile error!!!!
+            arr[1] = 20
+            print(rev[rev.index(after:rev.startIndex)])
+        }
+        
+        do {
             struct Person {
                 let firstName: String
                 let lastName: String

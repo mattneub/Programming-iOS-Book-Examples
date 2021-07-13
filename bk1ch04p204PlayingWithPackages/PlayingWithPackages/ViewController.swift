@@ -269,8 +269,16 @@ class ViewController: UIViewController {
         
         do {
             // striding; basically an alternative to the stride global?
-            stride(from: 1, to: 10, by: 2)
-            (1...10).striding(by:2)
+            for i in stride(from: 1, to: 10, by: 2) {
+                print(i)
+            }
+            for i in (1...10).striding(by:2) /*.striding(by:3)*/ {
+                print(i)
+            }
+            let planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter"]
+            for planet in planets.striding(by:2) {
+                print(planet) // Mercury, Earth, Jupiter
+            }
             // a difference is that the latter results in a StrideCollection object that itself has a `stride` method that results in another, and so on
         }
         
