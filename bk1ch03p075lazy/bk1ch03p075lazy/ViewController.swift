@@ -2,6 +2,15 @@
 
 import UIKit
 
+// lazy var and value types
+
+struct Person {
+    private lazy var name = "matt"
+    mutating func getName() -> String {
+        return self.name // compile error unless func is mutating
+    }
+}
+
 // singleton
 
 class MyClass {
