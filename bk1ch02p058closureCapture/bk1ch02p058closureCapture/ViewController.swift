@@ -93,8 +93,27 @@ class ViewController: UIViewController {
         }
         pass100(setX)
         print(x)
-
         
+        // anonymous function version
+        
+        x = 0
+        print(x)
+        pass100 { newX in
+            x = newX
+        }
+        print(x)
+        
+        // anonymous function version with capture list
+        
+        x = 0
+        print(x)
+        pass100 { [x] newX in
+            // x = newX // compile error
+            var x = x
+            x = newX // legal, but no effect on original x
+        }
+        print(x)
+
         
         func greet () {
             print("howdy")
