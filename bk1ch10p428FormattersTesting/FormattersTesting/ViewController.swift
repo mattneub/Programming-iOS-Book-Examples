@@ -14,22 +14,22 @@ class ViewController: UIViewController {
         let d = Date.now
         do {
             let s = d.formatted() // abbreviated, no time zone, local
-            print(s)
+            print(s) // 9/1/2021, 4:02 PM
         }
         do {
             let s = d.formatted(.dateTime.day(.defaultDigits).month(.wide))
-            print(s) // July 1 - your order is irrelevant, you are localized
+            print(s) // September 1 - your order is irrelevant, you are localized
         }
         do {
             let s = d.formatted(.dateTime.timeZone(.identifier(.long)))
-            print(s) // Pacific/Auckland
+            print(s) // America/Los_Angeles
         }
         do {
             // iso8601
             let s = d.formatted(
                 .iso8601.dateSeparator(.dash).timeSeparator(.colon)
                     .dateTimeSeparator(.standard).timeZoneSeparator(.colon))
-            print(s) // 2021-07-01T04:24:27Z
+            print(s) // 2021-09-01T23:02:44Z
         }
         do {
             // verbatim means a format string
@@ -46,19 +46,19 @@ class ViewController: UIViewController {
             """
             let format = Date.VerbatimFormatStyle(format: formatString, locale: .autoupdatingCurrent, timeZone: .autoupdatingCurrent, calendar: .init(identifier:.gregorian))
             let s = d.formatted(format)
-            print(s) // 1 July, 2021 at 16:10 GMT+12:00
+            print(s) // 1 September, 2021 at 16:02 GMT-07:00
         }
         
         do { // relative date
             let d2 = d - 1000000 // or whatever
             let s = d2.formatted(.relative(presentation: .named, unitsStyle: .wide))
-            print(s) // now; or, e.g., last week; or whatever
+            print(s) // 2 weeks ago (or whatever)
         }
         
         do { // relative date
             let d2 = d - 1000000 // or whatever
             let s = d2.formatted(.relative(presentation: .numeric, unitsStyle: .narrow))
-            print(s) // 1 wk. ago, or whatever
+            print(s) // 2 wk. ago (or whatever)
         }
 
         // date intervals: you start with a range (I didn't know about this)
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         
         do {
             let s = r.formatted()
-            print(s) // 7/1/21, 5:07 – 5:08 PM
+            print(s) // 9/1/21, 4:02 – 4:04 PM
         }
         
         do {
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         do {
             let format = Date.IntervalFormatStyle(date: .omitted, time: .standard, locale: .autoupdatingCurrent, calendar: .init(identifier: .gregorian), timeZone: .autoupdatingCurrent)
             let s = r.formatted(format)
-            print(s) // 6:12:09 PM – 6:13:49 PM, cute but not exactly up to me
+            print(s) // 4:02:44 PM – 4:04:24 PM, cute but not exactly up to me
         }
         
         // numbers, including percent and currency
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
 
         do {
             let s = 1_000_000.formatted(.number.grouping(.automatic))
-            print(s) // 1,000,000, whereas `.never` means no commas
+            print(s) // 1,000,000 — whereas `.never` means no commas
         }
         
         do {
@@ -177,8 +177,9 @@ class ViewController: UIViewController {
             print(s) // 1 GB
         }
         do {
-            let s = b.formatted(.byteCount(style: .decimal, allowedUnits: .init([.kb, .mb]), spellsOutZero: true, includesExactByteCount: true))
+            let s = b.formatted(.byteCount(style: .decimal, allowedUnits: .init([.kb, .mb]), spellsOutZero: true, includesActualByteCount: true))
             print(s) // 1,000.3 MB (1,000,254,221 bytes)
+            // hmm, no, it's giving me 1 GB; what happened to allowed units?
         }
 
         // measurement
@@ -188,9 +189,7 @@ class ViewController: UIViewController {
                 .measurement(
                     width: .wide,
                     usage: .general,
-                    numberFormat: .numeric( // this is nice, why don't others do it???
-                        precision: .fractionLength(2),
-                        roundingIncrement: 0.1)))
+                    numberFormatStyle: .init().precision(.fractionLength(2)).rounded(rule: .awayFromZero, increment: 0.1)))
             print(s) // 4.90 inches
         }
         
@@ -209,7 +208,7 @@ class ViewController: UIViewController {
             var strat = Date.ParseStrategy(format: format, timeZone: .current)
             strat.locale = .current // language needed, obviously!
             if let date = try? Date(ds, strategy: strat) {
-                print(date.formatted())
+                print(date.formatted()) // 1/2/2014, 12:00 AM
             } else {
                 print("yeh nah")
             }
@@ -222,7 +221,7 @@ class ViewController: UIViewController {
             // if in doubt, print something out!
             // print(Date.now.formatted(style))
             if let date = try? style.parse(ds2) {
-                print(date.formatted())
+                print(date.formatted()) // 7/2/2021, 11:30 AM
             } else {
                 print("oh well")
             }
@@ -233,7 +232,7 @@ class ViewController: UIViewController {
             let style = Date.FormatStyle(date: .abbreviated, time: .shortened).attributed
             let attrib = Date.now.formatted(style)
             if let (_,range) = (attrib.runs[\.dateField].filter{$0.0 == .month}.first) {
-                print(String(attrib.characters[range])) // Jul
+                print(String(attrib.characters[range])) // Sep
             }
 //            if let (_, range) = monthField {
 //                print(attrib[range])
