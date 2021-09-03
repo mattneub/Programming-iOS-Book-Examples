@@ -118,6 +118,18 @@ class ViewController: UIViewController {
             let s = pi.formatted()
             print(s) // 3.141593
         }
+        
+        do {
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 2
+            let s = formatter.string(from: pi as NSNumber)
+            print(s) // 3.14
+        }
+        
+        do {
+            let s = pi.formatted(.number.precision(.fractionLength(2)))
+            print(s) // 3.14
+        }
 
         do {
             let s = pi.formatted(.number.precision(.fractionLength(3)))
@@ -193,6 +205,22 @@ class ViewController: UIViewController {
             print(s) // 4.90 inches
         }
         
+        do {
+            let m1 = Measurement(value:5, unit: UnitLength.miles)
+            let m2 = Measurement(value:6, unit: UnitLength.kilometers)
+            let total = m1 + m2
+            let mf = MeasurementFormatter()
+            let s = mf.string(from:total) // "8.728 mi"
+            print(s)
+            do {
+                let s = total.formatted(.measurement(
+                    width: .abbreviated,
+                    numberFormatStyle: .number.precision(.fractionLength(1...3))))
+                print(s)
+            }
+        }
+
+        
         // list
         let pep = ["Manny", "Moe", "Jack"]
         do {
@@ -206,6 +234,7 @@ class ViewController: UIViewController {
             let format : Date.FormatString =
                 "\(month: .abbreviated) \(day: .defaultDigits), \(year: .defaultDigits)"
             var strat = Date.ParseStrategy(format: format, timeZone: .current)
+            print(strat.format) // can find out what the format string is!
             strat.locale = .current // language needed, obviously!
             if let date = try? Date(ds, strategy: strat) {
                 print(date.formatted()) // 1/2/2014, 12:00 AM
@@ -243,6 +272,60 @@ class ViewController: UIViewController {
 //                    print("month part is", String(attrib.characters[r]))
 //                }
 //            }
+        }
+        
+        // ===== actual book examples ======
+        
+        do {
+            let s = Date.now.formatted(date:.numeric, time:.omitted)
+            // 7/6/2021
+            print(s)
+        }
+        
+        do {
+            let s = Date.now.formatted(.dateTime.day().month())
+            // Jul 6
+            print(s)
+        }
+        
+        do {
+            let s = Date.now.formatted(Date.VerbatimFormatStyle(
+                format: """
+                \(month: .defaultDigits)/\(day: .defaultDigits)/\(year: .defaultDigits)
+                """,
+                locale: .autoupdatingCurrent,
+                timeZone: .autoupdatingCurrent,
+                calendar: .autoupdatingCurrent))
+            // 7/6/2021
+            print(s)
+        }
+        
+        do {
+            let s = Date.now.formatted(date:.long, time:.complete)
+            print(s)
+        }
+        
+        do {
+            let s = "7/14/2021"
+            let d = try?(Date(s, strategy: Date.ParseStrategy(
+                format: """
+                \(month: .defaultDigits)/\(day: .defaultDigits)/\(year: .defaultDigits)
+                """,
+                timeZone: .autoupdatingCurrent,
+                isLenient: false)))
+            if let d = d {
+                print("yep", d)
+            } else {
+                print("nope")
+            }
+        }
+        
+        do {
+            let formatString : Date.FormatString = """
+                \(month: .defaultDigits)/\(day: .defaultDigits)/\(year: .defaultDigits)
+                """
+            let strategy = Date.ParseStrategy(format: formatString, timeZone: .current)
+            print(strategy.format)
         }
     }
 

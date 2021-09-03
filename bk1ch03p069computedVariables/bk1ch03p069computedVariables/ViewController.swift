@@ -85,6 +85,57 @@ typealias SomeType = Int // just testing the syntax, ignore
     }
 }
 
+// New in Swift 5.5, a function parameter can initialize a property wrapper
+// Moreover, there are two implicit initializers
+
+struct ROT13 { // copied from https://www.hackingwithswift.com/example-code/strings/how-to-calculate-the-rot13-of-a-string
+    // create a dictionary that will store our character mapping
+    private static var key = [Character: Character]()
+
+    // create arrays of all uppercase and lowercase letters
+    private static let uppercase = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    private static let lowercase = Array("abcdefghijklmnopqrstuvwxyz")
+
+    static func string(_ string: String) -> String {
+        // if this is the first time the method is being called, calculate the ROT13 key dictionary
+        if ROT13.key.isEmpty {
+            for i in 0 ..< 26 {
+                ROT13.key[ROT13.uppercase[i]] = ROT13.uppercase[(i + 13) % 26]
+                ROT13.key[ROT13.lowercase[i]] = ROT13.lowercase[(i + 13) % 26]
+            }
+        }
+
+        // now return the transformed string
+        let transformed = string.map { ROT13.key[$0] ?? $0 }
+        return String(transformed)
+    }
+}
+extension String {
+    func rot13() -> String {
+        return ROT13.string(self)
+    }
+}
+
+@propertyWrapper struct Rot13old {
+    var wrappedValue : String
+    var projectedValue : String {
+        wrappedValue.rot13()
+    }
+}
+@propertyWrapper struct Rot13 {
+    let orig : String
+    let ciph : String
+    init(wrappedValue:String) {
+        self.orig = wrappedValue
+        self.ciph = wrappedValue.rot13()
+    }
+    init(projectedValue:String) {
+        self.ciph = projectedValue
+        self.orig = projectedValue.rot13()
+    }
+    var wrappedValue : String { self.orig }
+    var projectedValue : String { self.ciph }
+}
 
 
 class ViewController: UIViewController {
@@ -178,11 +229,19 @@ class ViewController: UIViewController {
         self.s = "Hello"
         self.s = "Bonjour"
         
-        // @Clamped var test = 4 // not yet, dude
+        @Clamped(min:1, max:3) var test = 4 // now legal on local
+
+        self.cipher(string: "hello") // init with wrapped value
+        self.cipher($string: "uryyb") // init with projected value
 
     
-    
     }
+    
+    func cipher(@Rot13 string: String) {
+        print("the original string is", string)
+        print("the enciphered string is", $string)
+    }
+
     
     // old example, removed from book
     private var _myBigData : Data! = nil
