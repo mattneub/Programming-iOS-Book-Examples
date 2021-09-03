@@ -9,6 +9,15 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+extension Task where Success == Never, Failure == Never {
+    static func sleep(_ seconds:Double) async {
+        await self.sleep(UInt64(seconds * 1_000_000_000))
+    }
+    static func sleepThrowing(_ seconds:Double) async throws {
+        try await self.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+    }
+}
+
 
 class MyCell : UITableViewCell {
     let activityIndicator = UIActivityIndicatorView()
@@ -35,10 +44,16 @@ class ViewController: UITableViewController {
     let albums = [String]()
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delay(0.1) {
-        let t = TracksViewController(
-            mediaItemCollection: self.albums[indexPath.row])
-        self.navigationController?.pushViewController(t, animated: true)
+//        delay(0.1) {
+//        let t = TracksViewController(
+//            mediaItemCollection: self.albums[indexPath.row])
+//        self.navigationController?.pushViewController(t, animated: true)
+//        }
+        Task {
+            await Task.sleep(0.1)
+            let t = TracksViewController(
+                mediaItemCollection: self.albums[indexPath.row])
+            self.navigationController?.pushViewController(t, animated: true)
         }
     }
 

@@ -9,6 +9,11 @@ class TextFieldSelectionChangeStreamer: NSObject, UITextFieldDelegate {
         var myContinuation : AsyncStream<UITextField>.Continuation?
         self.values = AsyncStream { continuation in
             myContinuation = continuation
+            // I also tried to set the `onTermination` handler but couldn't; filed a bug
+            // ooo, Tyler Prevost has a workaround:
+            continuation.onTermination = { term in
+                print("terminated!")
+            } as (@Sendable (AsyncStream<UITextField>.Continuation.Termination) -> Void)
         }
         super.init()
         self.continuation = myContinuation
@@ -22,15 +27,32 @@ class TextFieldSelectionChangeStreamer: NSObject, UITextFieldDelegate {
 class ViewController: UIViewController {
     let textFieldSelectionChangeStreamer = TextFieldSelectionChangeStreamer()
     @IBOutlet var textField : UITextField?
+    var task : Task<Void, Never>?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textField?.delegate = self.textFieldSelectionChangeStreamer
-        Task {
+        let task = Task {
             for await textField in self.textFieldSelectionChangeStreamer.values {
                 print(textField.text ?? "")
             }
+            // let's unroll that so we can see what's actually happening
+//            var iter = self.textFieldSelectionChangeStreamer.values.makeAsyncIterator()
+//            for _ in 1...Int.max {
+//                if let tf = await iter.next() {
+//                    print(tf.text ?? "")
+//                } else {
+//                    print("I got nil")
+//                    break
+//                }
+//            }
         }
+        self.task = task
     }
+    // prove that an async stream is self-cancelling
+    @IBAction func doCancel (_ sender:Any) {
+        self.task?.cancel()
+    }
+
 
 
 }
