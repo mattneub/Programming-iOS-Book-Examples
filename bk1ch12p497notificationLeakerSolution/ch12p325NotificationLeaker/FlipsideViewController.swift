@@ -1,6 +1,7 @@
 
 
 import UIKit
+import Combine
 
 protocol FlipsideViewControllerDelegate : AnyObject {
     func flipsideViewControllerDidFinish(_ controller:FlipsideViewController)
@@ -17,9 +18,19 @@ class FlipsideViewController: UIViewController {
     weak var delegate : FlipsideViewControllerDelegate!
     
     var observers = Set<NSObject>()
+    var storage = Set<AnyCancellable>()
+    // async task
+    var task = Task {
+        let stream = NotificationCenter.default.notifications(named: .woohoo)
+        for await _ in stream {
+            print("the observer still exists!", self)
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // register observer
         let ob = NotificationCenter.default.addObserver(
         forName: .woohoo, object:nil, queue:nil) {
             [unowned self] // *
@@ -28,6 +39,14 @@ class FlipsideViewController: UIViewController {
             print(self.description) // leak me, leak me
         }
         self.observers.insert(ob as! NSObject)
+        
+        // combine pipeline
+        NotificationCenter.default.publisher(for: .woohoo)
+            .sink {
+                [unowned self] // *
+                _ in
+                print("The observer still exists!", self) }
+            .store(in: &self.storage)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -45,6 +64,7 @@ class FlipsideViewController: UIViewController {
         for ob in self.observers {
             NotificationCenter.default.removeObserver(ob) // *
         }
+        self.task.cancel() // *
     }
     
 }

@@ -1,5 +1,15 @@
 import UIKit
 
+extension Task where Success == Never, Failure == Never {
+    static func sleep(_ seconds:Double) async {
+        await self.sleep(UInt64(seconds * 1_000_000_000))
+    }
+    static func sleepThrowing(_ seconds:Double) async throws {
+        try await self.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+    }
+}
+
+
 class MainViewController: UIViewController, FlipsideViewControllerDelegate {
 
     func flipsideViewControllerDidFinish(_ controller:FlipsideViewController) {
@@ -15,7 +25,10 @@ class MainViewController: UIViewController, FlipsideViewControllerDelegate {
     }
     
     @IBAction func woohoo(_ sender : Any) {
-        NotificationCenter.default.post(name: .woohoo, object: nil)
+        Task {
+            await Task.sleep(2.0)
+            NotificationCenter.default.post(name: .woohoo, object: nil)
+        }
     }
     
 }
