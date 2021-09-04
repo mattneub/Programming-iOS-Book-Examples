@@ -54,8 +54,8 @@ struct ContentView : View {
             VStack {
                 Button("Show Message") {
                     self.showSheet.toggle()
-                }.sheet(isPresented: $showSheet) {
-                    Greeting(greeting: self.greeting,
+                }.sheet(isPresented: $showSheet) { [greeting] in
+                    Greeting(greeting: greeting,
                              username: self.$nameSaver.username)
                 }
                 Spacer()

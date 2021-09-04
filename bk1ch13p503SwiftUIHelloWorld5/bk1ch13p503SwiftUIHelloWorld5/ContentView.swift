@@ -15,8 +15,8 @@ struct ContentView : View {
             Button("Show Message") {
                 self.showSheet.toggle()
                 print(self.timeZone)
-            }.sheet(isPresented: $showSheet) {
-                Greeting(greeting: self.greeting,
+            }.sheet(isPresented: $showSheet) { [greeting] in
+                Greeting(greeting: greeting,
                          username: self.$defaults.username)
             }
             Spacer()
