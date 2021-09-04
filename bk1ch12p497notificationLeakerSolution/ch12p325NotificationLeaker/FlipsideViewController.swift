@@ -23,7 +23,7 @@ class FlipsideViewController: UIViewController {
     var task = Task {
         let stream = NotificationCenter.default.notifications(named: .woohoo)
         for await _ in stream {
-            print("the observer still exists!", self)
+            print("Task observing!", self)
         }
     }
     
@@ -35,7 +35,7 @@ class FlipsideViewController: UIViewController {
         forName: .woohoo, object:nil, queue:nil) {
             [unowned self] // *
             _ in
-            print("The observer still exists!")
+            print("Observer token observing!")
             print(self.description) // leak me, leak me
         }
         self.observers.insert(ob as! NSObject)
@@ -45,7 +45,7 @@ class FlipsideViewController: UIViewController {
             .sink {
                 [unowned self] // *
                 _ in
-                print("The observer still exists!", self) }
+                print("Combine pipeline observing!", self) }
             .store(in: &self.storage)
     }
     
@@ -61,9 +61,13 @@ class FlipsideViewController: UIViewController {
     // if deinit is not called when you tap Done, we are leaking
     deinit {
         print("deinit")
+        // observer token:
         for ob in self.observers {
             NotificationCenter.default.removeObserver(ob) // *
         }
+        // Combine pipeline:
+        // nothing needed!
+        // task:
         self.task.cancel() // *
     }
     

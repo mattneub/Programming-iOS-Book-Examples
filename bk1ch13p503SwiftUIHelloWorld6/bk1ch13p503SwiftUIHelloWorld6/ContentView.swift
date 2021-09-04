@@ -18,7 +18,7 @@ class NameSaver : ObservableObject {
         self.username = self.read() ?? ""
         self.$username
             .debounce(for: 0.4, scheduler: DispatchQueue.main)
-            .sink { self.save($0) }
+            .sink { [unowned self] in self.save($0) }
             .store(in: &self.storage)
     }
     func read() -> String? {

@@ -42,14 +42,14 @@ class MyMandelbrotView : UIView {
     private func configuredPipeline() -> AnyCancellable {
         let pipeline = self.trigger
             .receive(on: DispatchQueue.main)
-            .map { () -> (CGPoint, CGRect) in
+            .map { [unowned self] () -> (CGPoint, CGRect) in
                 print("start on main")
                 let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
                 let bounds = self.bounds
                 return (center:center, bounds:bounds)
             }
             .receive(on: draw_queue)
-            .map { (center, bounds) -> CGContext in
+            .map { [unowned self] (center, bounds) -> CGContext in
                 print("background start")
                 let bitmap = self.makeBitmapContext(size: bounds.size)
                 self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
@@ -57,7 +57,7 @@ class MyMandelbrotView : UIView {
                 return bitmap
             }
             .receive(on: DispatchQueue.main)
-            .map { (bitmap:CGContext) -> () in
+            .map { [unowned self] (bitmap:CGContext) -> () in
                 print("main again")
                 self.bitmapContext = bitmap
                 self.setNeedsDisplay()
@@ -67,20 +67,23 @@ class MyMandelbrotView : UIView {
     }
     
     private func configuredPipeline2() -> AnyCancellable {
-        let p1 = switchTo(upstream: self.trigger, on: DispatchQueue.main) { () -> (CGPoint, CGRect) in
+        let p1 = switchTo(upstream: self.trigger, on: DispatchQueue.main) {
+            [unowned self] () -> (CGPoint, CGRect) in
             print("start on main")
             let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
             let bounds = self.bounds
             return (center:center, bounds:bounds)
         }
-        let p2 = switchTo(upstream: p1, on: draw_queue) { (center, bounds) -> CGContext in
+        let p2 = switchTo(upstream: p1, on: draw_queue) {
+            [unowned self] (center, bounds) -> CGContext in
             print("background start")
             let bitmap = self.makeBitmapContext(size: bounds.size)
             self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
             print("background end")
             return bitmap
         }
-        let p3 = switchTo(upstream: p2, on: DispatchQueue.main) { (bitmap:CGContext) -> () in
+        let p3 = switchTo(upstream: p2, on: DispatchQueue.main) {
+            [unowned self] (bitmap:CGContext) -> () in
             print("main again")
             self.bitmapContext = bitmap
             self.setNeedsDisplay()
@@ -90,20 +93,23 @@ class MyMandelbrotView : UIView {
     
     private func configuredPipeline3() -> AnyCancellable {
         self.trigger
-        .performOn(DispatchQueue.main) { () -> (CGPoint, CGRect) in
+        .performOn(DispatchQueue.main) {
+            [unowned self] () -> (CGPoint, CGRect) in
             print("start on main")
             let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
             let bounds = self.bounds
             return (center:center, bounds:bounds)
         }
-        .performOn(draw_queue) { (center, bounds) -> CGContext in
+        .performOn(draw_queue) {
+            [unowned self] (center, bounds) -> CGContext in
             print("background start")
             let bitmap = self.makeBitmapContext(size: bounds.size)
             self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
             print("background end")
             return bitmap
         }
-        .performOn(DispatchQueue.main) { (bitmap:CGContext) -> () in
+        .performOn(DispatchQueue.main) {
+            [unowned self] (bitmap:CGContext) -> () in
             print("main again")
             self.bitmapContext = bitmap
             self.setNeedsDisplay()

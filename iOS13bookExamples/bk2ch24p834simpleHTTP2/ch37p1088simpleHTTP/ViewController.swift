@@ -51,7 +51,7 @@ class ViewController: UIViewController {
                 if case let .failure(err) = comp {
                     print(err)
                 }
-            }) { im in
+            }) { [unowned self] im in
                 print("here's your image")
                 self.iv.image = im
         }

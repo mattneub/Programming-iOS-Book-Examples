@@ -59,7 +59,9 @@ class ViewController: UIViewController {
     @IBAction func giveItAGo(_ sender:Any) {
         self.authorizationPublisher
             .receive(on: DispatchQueue.global(qos: .userInitiated))
-            .compactMap { (auth:Bool) -> Result<[CNLabeledValue<NSString>], Error>? in
+            .compactMap {
+                [unowned self]
+                (auth:Bool) -> Result<[CNLabeledValue<NSString>], Error>? in
                 if auth {
                     return self.getMyEmailAddresses()
                 }
