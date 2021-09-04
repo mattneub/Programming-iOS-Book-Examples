@@ -272,7 +272,7 @@
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = bk1ch13p503SwiftUIHelloWorld3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +294,7 @@
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = bk1ch13p503SwiftUIHelloWorld3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
