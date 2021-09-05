@@ -663,6 +663,14 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
     }
 
     @objc func doNewGame(_ sender:Any) { print("do new game") }
+    
+    @objc func asyncFunc() async -> Data { Data() } // legal!
+    
+    @objc func asyncFunc2() async throws -> Data { Data() }
+    
+    func callAsyncFunc() async {
+        _ = await self.asyncFunc()
+    }
 
 }
 
