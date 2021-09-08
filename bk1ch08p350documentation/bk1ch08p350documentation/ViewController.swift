@@ -1,6 +1,32 @@
 
 import UIKit
 
+// stuff from the Coolness framework, just to see what it does
+// when not in a framework
+
+/// Degree of coolness.
+public enum Temp {
+    /// So cool you could plotz.
+    case frigid
+    /// Kind of cool.
+    case lukewarm
+    /// Not particularly cool.
+    case boiling
+}
+
+
+/// Expression of coolness.
+public struct Cool {
+    var temp : Temp
+    
+    /// Changes our coolness.
+    /// - Parameter to: The ``Temp`` you'd like it to be.
+    public mutating func changeTemp(to: Temp) {
+        
+    }
+}
+
+
 class ViewController: UIViewController {
     
     /**
@@ -32,6 +58,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let t = Temp.frigid
     }
     
     /*
