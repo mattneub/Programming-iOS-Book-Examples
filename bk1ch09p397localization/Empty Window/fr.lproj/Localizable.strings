@@ -1,9 +1,9 @@
-/* Dismiss */
-"Accept" = "OK";
+/* Alert title: Say hello */
+"Howdy!" = "Bonjour!";
 
-/* Say hello */
-"Greeting" = "Bonjour!";
+/* Alert button: accept and dismiss */
+"OK" = "OK";
 
-/* User tapped button */
-"Tapped" = "Vous m'avez tapé!";
+/* Alert message: Report a tap */
+"You tapped me!" = "Vous m'avez tapé!";
 

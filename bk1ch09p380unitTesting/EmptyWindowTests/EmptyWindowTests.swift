@@ -74,6 +74,7 @@ class EmptyWindowTests: XCTestCase {
     }
     
     func testCustomAssertion() {
+        return; // comment out to try it
         let loc = XCTSourceCodeLocation(filePath: #file, lineNumber: #line) // point of failure
         var issue = XCTIssue(type: .assertionFailure, compactDescription: "oh darn")
         issue.add(XCTAttachment(string:"yipes"))
