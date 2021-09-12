@@ -96,23 +96,54 @@ class ViewController: UIViewController {
         
         // anonymous function version
         
-        x = 0
-        print(x)
-        pass100 { newX in
-            x = newX
+        do {
+            var x = 0
+            print(x)
+            pass100 { newX in
+                x = newX
+            }
+            print(x)
         }
-        print(x)
-        
+
         // anonymous function version with capture list
         
-        x = 0
-        print(x)
-        pass100 { [x] newX in
-            // x = newX // compile error
-            var x = x
-            x = newX // legal, but no effect on original x
+        do {
+            var x = 0
+            print(x)
+            pass100 { [x] newX in
+                // x = newX // compile error
+                var x = x
+                x = newX // legal, but no effect on original x
+            }
+            print(x)
         }
-        print(x)
+
+        // yeah, but that isn't what I really wanted to prove
+        // let's try again
+
+        do {
+            var x = 0
+            let f : () -> () = {
+                print(x)
+            }
+            f()
+            x = 1
+            f()
+        }
+
+        // but contrast:
+
+        do {
+            var x = 0
+            let f : () -> () = { [x] in // *
+                print(x)
+                // x = 100 // Cannot assign to value: 'x' is an immutable capture
+            }
+            // x = 100 // makes no difference either
+            f()
+            x = 1
+            f()
+        }
 
         
         func greet () {
