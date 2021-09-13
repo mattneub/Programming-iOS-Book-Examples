@@ -167,6 +167,12 @@ class ViewController: UIViewController {
             let s = "You have \(m + n) widgets."
             print(s)
         }
+
+        do {
+            // why did I never notice this before?
+            let s = "You have \("numerous".uppercased()) widgets"
+            print(s)
+        }
         
         do {
             // silly example of custom interpolation
