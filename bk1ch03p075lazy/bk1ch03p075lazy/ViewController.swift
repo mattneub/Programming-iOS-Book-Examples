@@ -2,6 +2,11 @@
 
 import UIKit
 
+var vglob : String = {
+    print("initializing vglob")
+    return "hello"
+}()
+
 // lazy var and value types
 
 struct Person {
@@ -78,9 +83,30 @@ class ViewController: UIViewController {
         h.vc = self
         return h
     }()
-    
+
+    static var vstat : String = {
+        print("initializing static v")
+        return "hello"
+    }()
+    lazy var vlazy : String = {
+        print("initializing lazy v")
+        return "hello"
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        print("setting vglob")
+        vglob = "yoho"
+        print("did set vglob")
+        print("setting vstat")
+        Self.vstat = "haha"
+        print("did set vstat")
+        print("setting vlazy")
+        self.vlazy = "teehee"
+        print("did set vlazy")
+
+
+
         let s1 = MyClass.shared
         let s2 = MyClass.shared
         print( s1 === s2 )
