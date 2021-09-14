@@ -2,6 +2,19 @@
 
 import UIKit
 
+class C {
+    let x = "howdy"
+}
+
+// can't override a constant stored property at all
+class CC : C {
+//    override var x : String {
+//        get { "yoho" }
+//    }
+    // override let x = "asdf"
+}
+
+
 class Dog {
     static func whatDogsSay() -> String {
         return "woof"
