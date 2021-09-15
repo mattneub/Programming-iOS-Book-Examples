@@ -11,6 +11,7 @@ actor BankAccount {
 
 // according to the proposal, this should allow BankAccount to adopt Hashable
 // but it doesn't; I've reported this as a bug
+// still there in RC
 extension BankAccount: Hashable {
     nonisolated func hash(into hasher: inout Hasher) {
         hasher.combine(accountNumber)

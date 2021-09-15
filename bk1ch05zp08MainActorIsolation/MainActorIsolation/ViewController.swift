@@ -37,6 +37,7 @@ class ViewController: UIViewController {
             // so it looks like @MainActor class status is _not_ inherited
             // at least not by non-override methods
             // but the proposal says it should be, so I regard that as a bug
+            // still the same in RC
             await self.viewControllerMethod()
         }
     }
