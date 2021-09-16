@@ -14,6 +14,7 @@ class TextFieldSelectionChangeStreamer: NSObject, UITextFieldDelegate {
             continuation.onTermination = { term in
                 print("terminated!")
             } as (@Sendable (AsyncStream<UITextField>.Continuation.Termination) -> Void)
+            // but not fixed in RC
         }
         super.init()
         self.continuation = myContinuation
