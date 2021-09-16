@@ -55,7 +55,7 @@ class Helper2 {
         }
         set {
             if _p != nil {
-                fatalError("cannot assign twice")
+                // fatalError("cannot assign twice")
             }
             self._p = newValue
         }
@@ -92,6 +92,7 @@ class ViewController: UIViewController {
         print("initializing lazy v")
         return "hello"
     }()
+    var which = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -120,7 +121,14 @@ class ViewController: UIViewController {
         print("did one", self.helper)
         self.helper = Helper(self) // crash, better than nothing I suppose
         print("did two", self.helper)
-        
+
+        lazy var what : String = {
+            print("lazy local initialized")
+            return "howdy"
+        }()
+        if which {
+            print(what)
+        }
 
     }
     
