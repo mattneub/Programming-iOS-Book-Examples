@@ -1,0 +1,9 @@
+/* Alert title: Say hello informally */
+"InformalHello" = "Salut!";
+
+/* Alert button: accept and dismiss */
+"OKButton" = "OK";
+
+/* Alert message: Report a tap */
+"ReportTap" = "Vous m'avez tapé!";
+
