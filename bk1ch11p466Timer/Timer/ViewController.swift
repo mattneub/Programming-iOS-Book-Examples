@@ -1,5 +1,6 @@
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
 
@@ -24,6 +25,30 @@ class ViewController: UIViewController {
     
     @objc func timerFired(_ : Timer) {
         print("fired2")
+    }
+
+    var pipeline : AnyCancellable?
+    func test() {
+        // just showing syntax
+        self.pipeline = Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+            .sink { print("timer fired at", $0) }
+        // ...
+        self.pipeline = nil
+    }
+    var task : Task<(), Never>?
+    func test2() {
+        // ditto
+        let timerpub = Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+        self.task = Task {
+            for await value in timerpub.values {
+                print("timer fired at", value)
+            }
+        }
+        // ...
+        self.task?.cancel()
+        self.task = nil
     }
 
 

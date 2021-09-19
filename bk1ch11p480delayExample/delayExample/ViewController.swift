@@ -42,18 +42,23 @@ class TracksViewController : UIViewController {
 
 class ViewController: UITableViewController {
     let albums = [String]()
-    
+    var which = 0
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        delay(0.1) {
-//        let t = TracksViewController(
-//            mediaItemCollection: self.albums[indexPath.row])
-//        self.navigationController?.pushViewController(t, animated: true)
-//        }
-        Task {
-            await Task.sleep(0.1)
+        switch which {
+        case 0:
+            delay(0.1) {
             let t = TracksViewController(
                 mediaItemCollection: self.albums[indexPath.row])
             self.navigationController?.pushViewController(t, animated: true)
+            }
+        case 1:
+            Task {
+                await Task.sleep(0.1)
+                let t = TracksViewController(
+                    mediaItemCollection: self.albums[indexPath.row])
+                self.navigationController?.pushViewController(t, animated: true)
+            }
+        default: break
         }
     }
 

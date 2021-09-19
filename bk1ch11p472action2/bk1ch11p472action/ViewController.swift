@@ -48,5 +48,28 @@ class ViewController: UIViewController {
     
     @IBAction func unwind(_ sender: UIStoryboardSegue) {}
 
+    var myButton : UIButton = UIButton()
+    func test() {
+        let action = UIAction { [unowned self] _ in
+            let alert = UIAlertController(
+                title: "Howdy!", message: "You tapped me!", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true)
+        }
+        self.myButton.addAction(action, for: .touchUpInside)
+    }
+    func test2() {
+        let action = UIAction { action in
+            if var resp = action.sender as? UIResponder {
+                while let r = resp.next {
+                    print(r); resp = r
+                }
+            }
+        }
+        self.myButton.addAction(action, for: .touchUpInside)
+
+    }
+
 }
 

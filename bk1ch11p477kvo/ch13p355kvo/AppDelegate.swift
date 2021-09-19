@@ -32,7 +32,7 @@ class Observer {
     
     func register(with observed:Observed) {
         let opts : NSKeyValueObservingOptions = [.old, .new]
-        let ob = observed.observe(\.value, options: opts) { obj, change in
+        let ob = observed.observe(\.value, options:opts) { obj, change in
             // obj is the observed object
             // change is an NSKeyValueObservedChange
             if let oldValue = change.oldValue {
@@ -46,7 +46,7 @@ class Observer {
             // yes, we can leak if we don't say unowned self
         }
         // the observer must live long enough for the function to be executed
-        obs.insert(ob)
+        self.obs.insert(ob)
     }
 
     
