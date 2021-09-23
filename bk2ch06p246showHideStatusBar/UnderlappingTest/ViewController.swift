@@ -31,8 +31,8 @@ class ViewController: UIViewController {
     }
     
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .fade
-        return .slide
+        //return .fade
+        return .slide // but it fades in iOS 15
     }
 
     @IBAction func doButton(_ sender: Any) {
