@@ -228,6 +228,7 @@ class RootViewController : UITableViewController {
         return destip
     }
     
+    #warning("it's claimed that this doesn't work correctly")
     override func tableView(_ tableView: UITableView, moveRowAt srcip: IndexPath, to destip: IndexPath) {
         let sec = srcip.section
         let srcrow = srcip.row
