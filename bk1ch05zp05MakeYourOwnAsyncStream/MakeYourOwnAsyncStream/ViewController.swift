@@ -10,10 +10,11 @@ class TextFieldSelectionChangeStreamer: NSObject, UITextFieldDelegate {
         self.values = AsyncStream { continuation in
             myContinuation = continuation
             // I also tried to set the `onTermination` handler but couldn't; filed a bug
-            // ooo, Tyler Prevost has a workaround:
-            continuation.onTermination = { term in
+            // ooo, Tyler Prevost has a workaround (improved by Doug Gregor at bugs.swift.org):
+            // https://stackoverflow.com/questions/69047723/cant-set-asyncstream-ontermination-handler
+            continuation.onTermination = { @Sendable term in
                 print("terminated!")
-            } as (@Sendable (AsyncStream<UITextField>.Continuation.Termination) -> Void)
+            }
             // but not fixed in RC
         }
         super.init()
