@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		810273DC251A7231008A6D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810273DB251A7231008A6D6A /* AppDelegate.swift */; };
+		810273DE251A7231008A6D6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810273DD251A7231008A6D6A /* SceneDelegate.swift */; };
+		810273E0251A7231008A6D6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810273DF251A7231008A6D6A /* ViewController.swift */; };
+		810273E3251A7231008A6D6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 810273E1251A7231008A6D6A /* Main.storyboard */; };
+		810273E5251A7232008A6D6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 810273E4251A7232008A6D6A /* Assets.xcassets */; };
+		810273E8251A7232008A6D6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 810273E6251A7232008A6D6A /* LaunchScreen.storyboard */; };
+		810273F1251A723D008A6D6A /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = 810273F0251A723D008A6D6A /* states.txt */; };
+		81027427251A77A7008A6D6A /* flag_westvirginia.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273F4251A77A6008A6D6A /* flag_westvirginia.gif */; };
+		81027428251A77A7008A6D6A /* flag_minnesota.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273F5251A77A6008A6D6A /* flag_minnesota.gif */; };
+		81027429251A77A7008A6D6A /* flag_northcarolina.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273F6251A77A6008A6D6A /* flag_northcarolina.gif */; };
+		8102742A251A77A7008A6D6A /* flag_michigan.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273F7251A77A6008A6D6A /* flag_michigan.gif */; };
+		8102742B251A77A7008A6D6A /* flag_arkansas.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273F8251A77A6008A6D6A /* flag_arkansas.gif */; };
+		8102742C251A77A7008A6D6A /* flag_wisconsin.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273F9251A77A6008A6D6A /* flag_wisconsin.gif */; };
+		8102742D251A77A7008A6D6A /* flag_oklahoma.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273FA251A77A6008A6D6A /* flag_oklahoma.gif */; };
+		8102742E251A77A7008A6D6A /* flag_mississippi.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273FB251A77A6008A6D6A /* flag_mississippi.gif */; };
+		8102742F251A77A7008A6D6A /* flag_newhampshire.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273FC251A77A6008A6D6A /* flag_newhampshire.gif */; };
+		81027430251A77A7008A6D6A /* flag_tennessee.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273FD251A77A6008A6D6A /* flag_tennessee.gif */; };
+		81027431251A77A7008A6D6A /* flag_louisiana.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273FE251A77A6008A6D6A /* flag_louisiana.gif */; };
+		81027432251A77A7008A6D6A /* flag_illinois.gif in Resources */ = {isa = PBXBuildFile; fileRef = 810273FF251A77A6008A6D6A /* flag_illinois.gif */; };
+		81027433251A77A7008A6D6A /* flag_massachusetts.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027400251A77A6008A6D6A /* flag_massachusetts.gif */; };
+		81027434251A77A7008A6D6A /* flag_vermont.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027401251A77A6008A6D6A /* flag_vermont.gif */; };
+		81027435251A77A7008A6D6A /* flag_idaho.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027402251A77A6008A6D6A /* flag_idaho.gif */; };
+		81027436251A77A7008A6D6A /* flag_utah.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027403251A77A6008A6D6A /* flag_utah.gif */; };
+		81027437251A77A7008A6D6A /* flag_nebraska.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027404251A77A6008A6D6A /* flag_nebraska.gif */; };
+		81027438251A77A7008A6D6A /* flag_colorado.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027405251A77A6008A6D6A /* flag_colorado.gif */; };
+		81027439251A77A7008A6D6A /* flag_florida.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027406251A77A6008A6D6A /* flag_florida.gif */; };
+		8102743A251A77A7008A6D6A /* flag_iowa.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027407251A77A6008A6D6A /* flag_iowa.gif */; };
+		8102743B251A77A7008A6D6A /* flag_wyoming.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027408251A77A6008A6D6A /* flag_wyoming.gif */; };
+		8102743C251A77A7008A6D6A /* flag_rhodeisland.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027409251A77A7008A6D6A /* flag_rhodeisland.gif */; };
+		8102743D251A77A7008A6D6A /* flag_delaware.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102740A251A77A7008A6D6A /* flag_delaware.gif */; };
+		8102743E251A77A7008A6D6A /* flag_northdakota.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102740B251A77A7008A6D6A /* flag_northdakota.gif */; };
+		8102743F251A77A7008A6D6A /* flag_ohio.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102740C251A77A7008A6D6A /* flag_ohio.gif */; };
+		81027440251A77A7008A6D6A /* flag_california.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102740D251A77A7008A6D6A /* flag_california.gif */; };
+		81027441251A77A7008A6D6A /* flag_southcarolina.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102740E251A77A7008A6D6A /* flag_southcarolina.gif */; };
+		81027442251A77A7008A6D6A /* flag_pennsylvania.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102740F251A77A7008A6D6A /* flag_pennsylvania.gif */; };
+		81027443251A77A7008A6D6A /* flag_virginia.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027410251A77A7008A6D6A /* flag_virginia.gif */; };
+		81027444251A77A7008A6D6A /* flag_missouri.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027411251A77A7008A6D6A /* flag_missouri.gif */; };
+		81027445251A77A7008A6D6A /* flag_nevada.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027412251A77A7008A6D6A /* flag_nevada.gif */; };
+		81027446251A77A7008A6D6A /* flag_montana.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027413251A77A7008A6D6A /* flag_montana.gif */; };
+		81027447251A77A7008A6D6A /* flag_connecticut.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027414251A77A7008A6D6A /* flag_connecticut.gif */; };
+		81027448251A77A7008A6D6A /* flag_southdakota.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027415251A77A7008A6D6A /* flag_southdakota.gif */; };
+		81027449251A77A7008A6D6A /* flag_hawaii.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027416251A77A7008A6D6A /* flag_hawaii.gif */; };
+		8102744A251A77A7008A6D6A /* flag_washington.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027417251A77A7008A6D6A /* flag_washington.gif */; };
+		8102744B251A77A7008A6D6A /* flag_newjersey.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027418251A77A7008A6D6A /* flag_newjersey.gif */; };
+		8102744C251A77A7008A6D6A /* flag_newyork.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027419251A77A7008A6D6A /* flag_newyork.gif */; };
+		8102744D251A77A7008A6D6A /* flag_maryland.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102741A251A77A7008A6D6A /* flag_maryland.gif */; };
+		8102744E251A77A7008A6D6A /* flag_alaska.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102741B251A77A7008A6D6A /* flag_alaska.gif */; };
+		8102744F251A77A7008A6D6A /* flag_kentucky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102741C251A77A7008A6D6A /* flag_kentucky.gif */; };
+		81027450251A77A7008A6D6A /* us_flag_small.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102741D251A77A7008A6D6A /* us_flag_small.gif */; };
+		81027451251A77A8008A6D6A /* flag_oregon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102741E251A77A7008A6D6A /* flag_oregon.gif */; };
+		81027452251A77A8008A6D6A /* flag_alabama.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8102741F251A77A7008A6D6A /* flag_alabama.gif */; };
+		81027453251A77A8008A6D6A /* flag_arizona.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027420251A77A7008A6D6A /* flag_arizona.gif */; };
+		81027454251A77A8008A6D6A /* flag_texas.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027421251A77A7008A6D6A /* flag_texas.gif */; };
+		81027455251A77A8008A6D6A /* flag_maine.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027422251A77A7008A6D6A /* flag_maine.gif */; };
+		81027456251A77A8008A6D6A /* flag_newmexico.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027423251A77A7008A6D6A /* flag_newmexico.gif */; };
+		81027457251A77A8008A6D6A /* flag_kansas.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027424251A77A7008A6D6A /* flag_kansas.gif */; };
+		81027458251A77A8008A6D6A /* flag_georgia.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027425251A77A7008A6D6A /* flag_georgia.gif */; };
+		81027459251A77A8008A6D6A /* flag_indiana.gif in Resources */ = {isa = PBXBuildFile; fileRef = 81027426251A77A7008A6D6A /* flag_indiana.gif */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		810273D8251A7231008A6D6A /* CollectionViewList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		810273DB251A7231008A6D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		810273DD251A7231008A6D6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		810273DF251A7231008A6D6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		810273E2251A7231008A6D6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		810273E4251A7232008A6D6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		810273E7251A7232008A6D6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		810273E9251A7232008A6D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		810273F0251A723D008A6D6A /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+		810273F4251A77A6008A6D6A /* flag_westvirginia.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_westvirginia.gif; sourceTree = "<group>"; };
+		810273F5251A77A6008A6D6A /* flag_minnesota.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_minnesota.gif; sourceTree = "<group>"; };
+		810273F6251A77A6008A6D6A /* flag_northcarolina.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_northcarolina.gif; sourceTree = "<group>"; };
+		810273F7251A77A6008A6D6A /* flag_michigan.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_michigan.gif; sourceTree = "<group>"; };
+		810273F8251A77A6008A6D6A /* flag_arkansas.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_arkansas.gif; sourceTree = "<group>"; };
+		810273F9251A77A6008A6D6A /* flag_wisconsin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_wisconsin.gif; sourceTree = "<group>"; };
+		810273FA251A77A6008A6D6A /* flag_oklahoma.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_oklahoma.gif; sourceTree = "<group>"; };
+		810273FB251A77A6008A6D6A /* flag_mississippi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_mississippi.gif; sourceTree = "<group>"; };
+		810273FC251A77A6008A6D6A /* flag_newhampshire.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_newhampshire.gif; sourceTree = "<group>"; };
+		810273FD251A77A6008A6D6A /* flag_tennessee.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_tennessee.gif; sourceTree = "<group>"; };
+		810273FE251A77A6008A6D6A /* flag_louisiana.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_louisiana.gif; sourceTree = "<group>"; };
+		810273FF251A77A6008A6D6A /* flag_illinois.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_illinois.gif; sourceTree = "<group>"; };
+		81027400251A77A6008A6D6A /* flag_massachusetts.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_massachusetts.gif; sourceTree = "<group>"; };
+		81027401251A77A6008A6D6A /* flag_vermont.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_vermont.gif; sourceTree = "<group>"; };
+		81027402251A77A6008A6D6A /* flag_idaho.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_idaho.gif; sourceTree = "<group>"; };
+		81027403251A77A6008A6D6A /* flag_utah.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_utah.gif; sourceTree = "<group>"; };
+		81027404251A77A6008A6D6A /* flag_nebraska.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_nebraska.gif; sourceTree = "<group>"; };
+		81027405251A77A6008A6D6A /* flag_colorado.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_colorado.gif; sourceTree = "<group>"; };
+		81027406251A77A6008A6D6A /* flag_florida.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_florida.gif; sourceTree = "<group>"; };
+		81027407251A77A6008A6D6A /* flag_iowa.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_iowa.gif; sourceTree = "<group>"; };
+		81027408251A77A6008A6D6A /* flag_wyoming.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_wyoming.gif; sourceTree = "<group>"; };
+		81027409251A77A7008A6D6A /* flag_rhodeisland.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_rhodeisland.gif; sourceTree = "<group>"; };
+		8102740A251A77A7008A6D6A /* flag_delaware.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_delaware.gif; sourceTree = "<group>"; };
+		8102740B251A77A7008A6D6A /* flag_northdakota.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_northdakota.gif; sourceTree = "<group>"; };
+		8102740C251A77A7008A6D6A /* flag_ohio.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_ohio.gif; sourceTree = "<group>"; };
+		8102740D251A77A7008A6D6A /* flag_california.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_california.gif; sourceTree = "<group>"; };
+		8102740E251A77A7008A6D6A /* flag_southcarolina.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_southcarolina.gif; sourceTree = "<group>"; };
+		8102740F251A77A7008A6D6A /* flag_pennsylvania.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_pennsylvania.gif; sourceTree = "<group>"; };
+		81027410251A77A7008A6D6A /* flag_virginia.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_virginia.gif; sourceTree = "<group>"; };
+		81027411251A77A7008A6D6A /* flag_missouri.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_missouri.gif; sourceTree = "<group>"; };
+		81027412251A77A7008A6D6A /* flag_nevada.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_nevada.gif; sourceTree = "<group>"; };
+		81027413251A77A7008A6D6A /* flag_montana.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_montana.gif; sourceTree = "<group>"; };
+		81027414251A77A7008A6D6A /* flag_connecticut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_connecticut.gif; sourceTree = "<group>"; };
+		81027415251A77A7008A6D6A /* flag_southdakota.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_southdakota.gif; sourceTree = "<group>"; };
+		81027416251A77A7008A6D6A /* flag_hawaii.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_hawaii.gif; sourceTree = "<group>"; };
+		81027417251A77A7008A6D6A /* flag_washington.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_washington.gif; sourceTree = "<group>"; };
+		81027418251A77A7008A6D6A /* flag_newjersey.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_newjersey.gif; sourceTree = "<group>"; };
+		81027419251A77A7008A6D6A /* flag_newyork.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_newyork.gif; sourceTree = "<group>"; };
+		8102741A251A77A7008A6D6A /* flag_maryland.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_maryland.gif; sourceTree = "<group>"; };
+		8102741B251A77A7008A6D6A /* flag_alaska.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_alaska.gif; sourceTree = "<group>"; };
+		8102741C251A77A7008A6D6A /* flag_kentucky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_kentucky.gif; sourceTree = "<group>"; };
+		8102741D251A77A7008A6D6A /* us_flag_small.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = us_flag_small.gif; sourceTree = "<group>"; };
+		8102741E251A77A7008A6D6A /* flag_oregon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_oregon.gif; sourceTree = "<group>"; };
+		8102741F251A77A7008A6D6A /* flag_alabama.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_alabama.gif; sourceTree = "<group>"; };
+		81027420251A77A7008A6D6A /* flag_arizona.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_arizona.gif; sourceTree = "<group>"; };
+		81027421251A77A7008A6D6A /* flag_texas.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_texas.gif; sourceTree = "<group>"; };
+		81027422251A77A7008A6D6A /* flag_maine.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_maine.gif; sourceTree = "<group>"; };
+		81027423251A77A7008A6D6A /* flag_newmexico.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_newmexico.gif; sourceTree = "<group>"; };
+		81027424251A77A7008A6D6A /* flag_kansas.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_kansas.gif; sourceTree = "<group>"; };
+		81027425251A77A7008A6D6A /* flag_georgia.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_georgia.gif; sourceTree = "<group>"; };
+		81027426251A77A7008A6D6A /* flag_indiana.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_indiana.gif; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		810273D5251A7231008A6D6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		810273CF251A7231008A6D6A = {
+			isa = PBXGroup;
+			children = (
+				810273DA251A7231008A6D6A /* CollectionViewList */,
+				810273D9251A7231008A6D6A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		810273D9251A7231008A6D6A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				810273D8251A7231008A6D6A /* CollectionViewList.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		810273DA251A7231008A6D6A /* CollectionViewList */ = {
+			isa = PBXGroup;
+			children = (
+				810273DB251A7231008A6D6A /* AppDelegate.swift */,
+				810273DD251A7231008A6D6A /* SceneDelegate.swift */,
+				810273DF251A7231008A6D6A /* ViewController.swift */,
+				810273E1251A7231008A6D6A /* Main.storyboard */,
+				810273F0251A723D008A6D6A /* states.txt */,
+				810273F3251A7780008A6D6A /* flags */,
+				810273E4251A7232008A6D6A /* Assets.xcassets */,
+				810273E6251A7232008A6D6A /* LaunchScreen.storyboard */,
+				810273E9251A7232008A6D6A /* Info.plist */,
+			);
+			path = CollectionViewList;
+			sourceTree = "<group>";
+		};
+		810273F3251A7780008A6D6A /* flags */ = {
+			isa = PBXGroup;
+			children = (
+				8102741F251A77A7008A6D6A /* flag_alabama.gif */,
+				8102741B251A77A7008A6D6A /* flag_alaska.gif */,
+				81027420251A77A7008A6D6A /* flag_arizona.gif */,
+				810273F8251A77A6008A6D6A /* flag_arkansas.gif */,
+				8102740D251A77A7008A6D6A /* flag_california.gif */,
+				81027405251A77A6008A6D6A /* flag_colorado.gif */,
+				81027414251A77A7008A6D6A /* flag_connecticut.gif */,
+				8102740A251A77A7008A6D6A /* flag_delaware.gif */,
+				81027406251A77A6008A6D6A /* flag_florida.gif */,
+				81027425251A77A7008A6D6A /* flag_georgia.gif */,
+				81027416251A77A7008A6D6A /* flag_hawaii.gif */,
+				81027402251A77A6008A6D6A /* flag_idaho.gif */,
+				810273FF251A77A6008A6D6A /* flag_illinois.gif */,
+				81027426251A77A7008A6D6A /* flag_indiana.gif */,
+				81027407251A77A6008A6D6A /* flag_iowa.gif */,
+				81027424251A77A7008A6D6A /* flag_kansas.gif */,
+				8102741C251A77A7008A6D6A /* flag_kentucky.gif */,
+				810273FE251A77A6008A6D6A /* flag_louisiana.gif */,
+				81027422251A77A7008A6D6A /* flag_maine.gif */,
+				8102741A251A77A7008A6D6A /* flag_maryland.gif */,
+				81027400251A77A6008A6D6A /* flag_massachusetts.gif */,
+				810273F7251A77A6008A6D6A /* flag_michigan.gif */,
+				810273F5251A77A6008A6D6A /* flag_minnesota.gif */,
+				810273FB251A77A6008A6D6A /* flag_mississippi.gif */,
+				81027411251A77A7008A6D6A /* flag_missouri.gif */,
+				81027413251A77A7008A6D6A /* flag_montana.gif */,
+				81027404251A77A6008A6D6A /* flag_nebraska.gif */,
+				81027412251A77A7008A6D6A /* flag_nevada.gif */,
+				810273FC251A77A6008A6D6A /* flag_newhampshire.gif */,
+				81027418251A77A7008A6D6A /* flag_newjersey.gif */,
+				81027423251A77A7008A6D6A /* flag_newmexico.gif */,
+				81027419251A77A7008A6D6A /* flag_newyork.gif */,
+				810273F6251A77A6008A6D6A /* flag_northcarolina.gif */,
+				8102740B251A77A7008A6D6A /* flag_northdakota.gif */,
+				8102740C251A77A7008A6D6A /* flag_ohio.gif */,
+				810273FA251A77A6008A6D6A /* flag_oklahoma.gif */,
+				8102741E251A77A7008A6D6A /* flag_oregon.gif */,
+				8102740F251A77A7008A6D6A /* flag_pennsylvania.gif */,
+				81027409251A77A7008A6D6A /* flag_rhodeisland.gif */,
+				8102740E251A77A7008A6D6A /* flag_southcarolina.gif */,
+				81027415251A77A7008A6D6A /* flag_southdakota.gif */,
+				810273FD251A77A6008A6D6A /* flag_tennessee.gif */,
+				81027421251A77A7008A6D6A /* flag_texas.gif */,
+				81027403251A77A6008A6D6A /* flag_utah.gif */,
+				81027401251A77A6008A6D6A /* flag_vermont.gif */,
+				81027410251A77A7008A6D6A /* flag_virginia.gif */,
+				81027417251A77A7008A6D6A /* flag_washington.gif */,
+				810273F4251A77A6008A6D6A /* flag_westvirginia.gif */,
+				810273F9251A77A6008A6D6A /* flag_wisconsin.gif */,
+				81027408251A77A6008A6D6A /* flag_wyoming.gif */,
+				8102741D251A77A7008A6D6A /* us_flag_small.gif */,
+			);
+			path = flags;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		810273D7251A7231008A6D6A /* CollectionViewList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 810273EC251A7232008A6D6A /* Build configuration list for PBXNativeTarget "CollectionViewList" */;
+			buildPhases = (
+				810273D4251A7231008A6D6A /* Sources */,
+				810273D5251A7231008A6D6A /* Frameworks */,
+				810273D6251A7231008A6D6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CollectionViewList;
+			productName = CollectionViewList;
+			productReference = 810273D8251A7231008A6D6A /* CollectionViewList.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		810273D0251A7231008A6D6A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					810273D7251A7231008A6D6A = {
+						CreatedOnToolsVersion = 12.0;
+					};
+				};
+			};
+			buildConfigurationList = 810273D3251A7231008A6D6A /* Build configuration list for PBXProject "CollectionViewList" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 810273CF251A7231008A6D6A;
+			productRefGroup = 810273D9251A7231008A6D6A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				810273D7251A7231008A6D6A /* CollectionViewList */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		810273D6251A7231008A6D6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81027436251A77A7008A6D6A /* flag_utah.gif in Resources */,
+				8102742C251A77A7008A6D6A /* flag_wisconsin.gif in Resources */,
+				8102744D251A77A7008A6D6A /* flag_maryland.gif in Resources */,
+				81027432251A77A7008A6D6A /* flag_illinois.gif in Resources */,
+				81027434251A77A7008A6D6A /* flag_vermont.gif in Resources */,
+				8102743E251A77A7008A6D6A /* flag_northdakota.gif in Resources */,
+				8102742D251A77A7008A6D6A /* flag_oklahoma.gif in Resources */,
+				81027453251A77A8008A6D6A /* flag_arizona.gif in Resources */,
+				81027443251A77A7008A6D6A /* flag_virginia.gif in Resources */,
+				8102742F251A77A7008A6D6A /* flag_newhampshire.gif in Resources */,
+				8102743C251A77A7008A6D6A /* flag_rhodeisland.gif in Resources */,
+				81027440251A77A7008A6D6A /* flag_california.gif in Resources */,
+				81027459251A77A8008A6D6A /* flag_indiana.gif in Resources */,
+				8102744A251A77A7008A6D6A /* flag_washington.gif in Resources */,
+				810273F1251A723D008A6D6A /* states.txt in Resources */,
+				81027442251A77A7008A6D6A /* flag_pennsylvania.gif in Resources */,
+				81027451251A77A8008A6D6A /* flag_oregon.gif in Resources */,
+				810273E8251A7232008A6D6A /* LaunchScreen.storyboard in Resources */,
+				8102744B251A77A7008A6D6A /* flag_newjersey.gif in Resources */,
+				81027456251A77A8008A6D6A /* flag_newmexico.gif in Resources */,
+				81027444251A77A7008A6D6A /* flag_missouri.gif in Resources */,
+				810273E5251A7232008A6D6A /* Assets.xcassets in Resources */,
+				810273E3251A7231008A6D6A /* Main.storyboard in Resources */,
+				81027445251A77A7008A6D6A /* flag_nevada.gif in Resources */,
+				81027450251A77A7008A6D6A /* us_flag_small.gif in Resources */,
+				8102743A251A77A7008A6D6A /* flag_iowa.gif in Resources */,
+				8102743B251A77A7008A6D6A /* flag_wyoming.gif in Resources */,
+				81027446251A77A7008A6D6A /* flag_montana.gif in Resources */,
+				81027429251A77A7008A6D6A /* flag_northcarolina.gif in Resources */,
+				8102743D251A77A7008A6D6A /* flag_delaware.gif in Resources */,
+				81027435251A77A7008A6D6A /* flag_idaho.gif in Resources */,
+				81027452251A77A8008A6D6A /* flag_alabama.gif in Resources */,
+				8102744F251A77A7008A6D6A /* flag_kentucky.gif in Resources */,
+				81027427251A77A7008A6D6A /* flag_westvirginia.gif in Resources */,
+				81027448251A77A7008A6D6A /* flag_southdakota.gif in Resources */,
+				8102743F251A77A7008A6D6A /* flag_ohio.gif in Resources */,
+				81027454251A77A8008A6D6A /* flag_texas.gif in Resources */,
+				81027455251A77A8008A6D6A /* flag_maine.gif in Resources */,
+				81027431251A77A7008A6D6A /* flag_louisiana.gif in Resources */,
+				81027430251A77A7008A6D6A /* flag_tennessee.gif in Resources */,
+				81027447251A77A7008A6D6A /* flag_connecticut.gif in Resources */,
+				8102742B251A77A7008A6D6A /* flag_arkansas.gif in Resources */,
+				8102742A251A77A7008A6D6A /* flag_michigan.gif in Resources */,
+				81027433251A77A7008A6D6A /* flag_massachusetts.gif in Resources */,
+				8102744C251A77A7008A6D6A /* flag_newyork.gif in Resources */,
+				81027437251A77A7008A6D6A /* flag_nebraska.gif in Resources */,
+				8102744E251A77A7008A6D6A /* flag_alaska.gif in Resources */,
+				8102742E251A77A7008A6D6A /* flag_mississippi.gif in Resources */,
+				81027449251A77A7008A6D6A /* flag_hawaii.gif in Resources */,
+				81027428251A77A7008A6D6A /* flag_minnesota.gif in Resources */,
+				81027458251A77A8008A6D6A /* flag_georgia.gif in Resources */,
+				81027439251A77A7008A6D6A /* flag_florida.gif in Resources */,
+				81027457251A77A8008A6D6A /* flag_kansas.gif in Resources */,
+				81027441251A77A7008A6D6A /* flag_southcarolina.gif in Resources */,
+				81027438251A77A7008A6D6A /* flag_colorado.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		810273D4251A7231008A6D6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				810273E0251A7231008A6D6A /* ViewController.swift in Sources */,
+				810273DC251A7231008A6D6A /* AppDelegate.swift in Sources */,
+				810273DE251A7231008A6D6A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		810273E1251A7231008A6D6A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				810273E2251A7231008A6D6A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		810273E6251A7232008A6D6A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				810273E7251A7232008A6D6A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		810273EA251A7232008A6D6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		810273EB251A7232008A6D6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		810273ED251A7232008A6D6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
+				INFOPLIST_FILE = CollectionViewList/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.CollectionViewList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		810273EE251A7232008A6D6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
+				INFOPLIST_FILE = CollectionViewList/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.CollectionViewList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		810273D3251A7231008A6D6A /* Build configuration list for PBXProject "CollectionViewList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				810273EA251A7232008A6D6A /* Debug */,
+				810273EB251A7232008A6D6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		810273EC251A7232008A6D6A /* Build configuration list for PBXNativeTarget "CollectionViewList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				810273ED251A7232008A6D6A /* Debug */,
+				810273EE251A7232008A6D6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 810273D0251A7231008A6D6A /* Project object */;
+}
