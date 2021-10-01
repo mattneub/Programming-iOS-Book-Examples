@@ -26,6 +26,11 @@ class Cat {
     fileprivate var secretName : String?
     private(set) var color : UIColor?
     fileprivate(set) var length : Double?
+    func tryToChangeWhatADogSays() {
+        let fido = Dog()
+        // fido.whatADogSays = "meow" // compile error
+        fido.bark() // "woof"
+    }
 }
 
 private class Kangaroo {
