@@ -19,6 +19,12 @@ class ViewController : UIViewController {
         print(UIApplication.shared.windows.first!)
         print(UIApplication.shared.windows.first {$0.isKeyWindow}!)
         print(UIApplication.shared.windows.count) // prove there's just the one, ours
+        let w = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
+            .windows.first
+        let w2 = UIApplication.shared.connectedScenes.compactMap { // ok formulation
+            $0 as? UIWindowScene
+        }.first?.windows.first
+        print(w2 as Any)
     }
     
     // for end of chapter 5 example

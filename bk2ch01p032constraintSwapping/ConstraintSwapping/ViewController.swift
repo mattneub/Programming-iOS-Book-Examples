@@ -45,26 +45,39 @@ class ViewController: UIViewController {
         
         // construct constraints
 
-        let c1 = NSLayoutConstraint.constraints(withVisualFormat:"H:|-(20)-[v(100)]", metrics: nil, views: ["v":v1])
-        let c2 = NSLayoutConstraint.constraints(withVisualFormat:"H:|-(20)-[v(100)]", metrics: nil, views: ["v":v2])
-        let c3 = NSLayoutConstraint.constraints(withVisualFormat:"H:|-(20)-[v(100)]", metrics: nil, views: ["v":v3])
-        let c4 = NSLayoutConstraint.constraints(withVisualFormat:"V:|-(100)-[v(20)]", metrics: nil, views: ["v":v1])
-        let c5with = NSLayoutConstraint.constraints(withVisualFormat:"V:[v1]-(20)-[v2(20)]-(20)-[v3(20)]", metrics: nil, views: ["v1":v1, "v2":v2, "v3":v3])
-        let c5without = NSLayoutConstraint.constraints(withVisualFormat:"V:[v1]-(20)-[v3(20)]", metrics: nil, views: ["v1":v1, "v3":v3])
-        
+        let v1leading = v1.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
+        let v1width = v1.widthAnchor.constraint(equalToConstant: 100)
+        let v2leading = v2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
+        let v2width = v2.widthAnchor.constraint(equalToConstant: 100)
+        let v3leading = v3.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
+        let v3width = v3.widthAnchor.constraint(equalToConstant: 100)
+        let v1top = v1.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100)
+        let v1height = v1.heightAnchor.constraint(equalToConstant: 20)
+        let v2height = v2.heightAnchor.constraint(equalToConstant: 20)
+        let v3height = v3.heightAnchor.constraint(equalToConstant: 20)
+        // when v2 is present
+        let v1tov2 = v1.bottomAnchor.constraint(equalTo: v2.topAnchor, constant: -20)
+        let v2tov3 = v2.bottomAnchor.constraint(equalTo: v3.topAnchor, constant: -20)
+        // when v2 is absent
+        let v1tov3 = v1.bottomAnchor.constraint(equalTo: v3.topAnchor, constant: -20)
+
         // apply common constraints
         
-        NSLayoutConstraint.activate([c1, c3, c4].flatMap {$0})
+        NSLayoutConstraint.activate([
+            v1leading, v1width, v3leading, v3width, v1top, v1height, v3height
+        ])
         
         // first set of constraints (for when v2 is present)
 
-        self.constraintsWith.append(contentsOf:c2)
-        self.constraintsWith.append(contentsOf:c5with)
+        self.constraintsWith = [
+            v2leading, v2width, v2height, v1tov2, v2tov3
+        ]
         
         // second set of constraints (for when v2 is absent)
         
-        self.constraintsWithout.append(contentsOf:c5without)
-        
+        self.constraintsWithout = [
+            v1tov3
+        ]
 
         // apply first set
 

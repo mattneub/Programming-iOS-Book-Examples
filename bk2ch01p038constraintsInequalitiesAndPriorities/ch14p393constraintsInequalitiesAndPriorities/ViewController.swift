@@ -38,20 +38,16 @@ class ViewController : UIViewController {
         self.lab1.translatesAutoresizingMaskIntoConstraints = false
         self.lab2.translatesAutoresizingMaskIntoConstraints = false
         
-        let d = dictionaryOfNames(lab1,lab2)
-        
+        let safe = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "V:|-20-[v1]", metrics: nil, views: d),
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "V:|-20-[v2]", metrics: nil, views: d),
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "H:|-20-[v1]", metrics: nil, views: d),
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "H:[v2]-20-|", metrics: nil, views: d),
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "H:[v1(>=100)]-(>=20)-[v2(>=100)]", metrics: nil, views: d)
-            ].flatMap {$0})
+            lab1.topAnchor.constraint(equalTo: safe.topAnchor, constant: 20),
+            lab2.topAnchor.constraint(equalTo: safe.topAnchor, constant: 20),
+            lab1.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 20),
+            lab2.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -20),
+            lab1.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
+            lab2.leadingAnchor.constraint(greaterThanOrEqualTo: lab1.trailingAnchor, constant: 20),
+            lab2.widthAnchor.constraint(greaterThanOrEqualToConstant: 100)
+        ])
         // added width shrinkage limit to both labels, so neither gets driven down to invisibility
         
         // we will be ambiguous when the label texts grow

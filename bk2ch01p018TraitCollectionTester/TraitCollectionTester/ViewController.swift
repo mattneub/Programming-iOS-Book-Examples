@@ -46,6 +46,10 @@ class ViewController: UIViewController {
      iPhone 12 Pro:     ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
      iPhone 12 Pro Max: ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 3.0
      iPhone 12 mini:    ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone 13:         ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone 13 Pro:     ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
+     iPhone 13 Pro Max: ↔︎ compact, ↕︎ regular; ↔︎ regular, ↕︎ compact; 3.0
+     iPhone 13 mini:    ↔︎ compact, ↕︎ regular; ↔︎ compact, ↕︎ compact; 3.0
 
      The iPads are all
 
@@ -54,7 +58,7 @@ class ViewController: UIViewController {
 
      So, the XR and XS Max are like the Plus models as far as size classes go.
      The iPhone 11 and iPhone 11 Pro Max are also "big" iPhones.
-     The iPhone 12 Pro Max is a "big" iPhone.
+     The iPhone 12 Pro Max and iPhone 13 Pro Max are also "big" iPhones.
      
      */
 

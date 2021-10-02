@@ -263,7 +263,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Prefix.pch";
 				INFOPLIST_FILE = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -286,7 +286,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Prefix.pch";
 				INFOPLIST_FILE = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

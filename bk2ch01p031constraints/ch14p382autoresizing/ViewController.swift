@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         v2.translatesAutoresizingMaskIntoConstraints = false
         v3.translatesAutoresizingMaskIntoConstraints = false
         
-        var which : Int {return 2}
+        var which : Int {return 3}
         switch which {
         case 1:
             // the old way, and this is the last time I'm going to show this
@@ -157,8 +157,24 @@ class ViewController: UIViewController {
                 v1b.leadingAnchor.constraint(equalTo:v1.leadingAnchor),
                 v1b.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
             ])
-            
         case 3:
+            // actual book example
+            NSLayoutConstraint.activate([
+                v2.leadingAnchor.constraint(equalTo:v1.leadingAnchor),
+                v2.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
+                v2.topAnchor.constraint(equalTo:v1.topAnchor),
+                v2.heightAnchor.constraint(equalToConstant:10),
+                v3.widthAnchor.constraint(equalToConstant:20),
+                // comment out next line to form an ambiguity
+                // without it "Height and vertical position are ambiguous for UIView."
+                v3.heightAnchor.constraint(equalToConstant:20),
+                // uncomment next line to form a conflict
+                // v3.heightAnchor.constraint(equalToConstant:10),
+                v3.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
+                v3.bottomAnchor.constraint(equalTo:v1.bottomAnchor)
+            ])
+
+        case 4:
             
             // NSDictionaryOfVariableBindings(v2,v3) // it's a macro, no macros in Swift
             
