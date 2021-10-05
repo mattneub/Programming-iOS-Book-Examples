@@ -11,11 +11,9 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 class MyView: UIView {
     enum Coolness {
-        case cool
-        case lukewarm
-        case hot
+        case cool, lukewarm, hot
     }
-    @Invalidating(.display, .layout) var coolness = Coolness.cool
+    @Invalidating(.display, .layout) var coolness : Coolness = .cool
     override func draw(_ rect: CGRect) {
         print("I'm redrawing")
         super.draw(rect)

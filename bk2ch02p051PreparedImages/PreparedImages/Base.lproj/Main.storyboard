@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PreparedImages" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jack" translatesAutoresizingMaskIntoConstraints="NO" id="Jmv-2x-RBn">
+                                <rect key="frame" x="51" y="172" width="239" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="9MG-P7-0Od"/>
+                                    <constraint firstAttribute="height" constant="190" id="iqL-64-VVM"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ls4-Ic-7Pe">
+                                <rect key="frame" x="51" y="433" width="67" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="aRl-3R-mQ8"/>
+                                    <constraint firstAttribute="height" constant="57" id="jPz-jl-1wE"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LC-AI-qUN">
+                                <rect key="frame" x="160" y="433" width="67" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="45F-A1-FfJ"/>
+                                    <constraint firstAttribute="height" constant="57" id="oSN-cs-3az"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0LC-AI-qUN" firstAttribute="leading" secondItem="ls4-Ic-7Pe" secondAttribute="trailing" constant="42" id="4Ax-hD-9jh"/>
+                            <constraint firstItem="ls4-Ic-7Pe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="URI-Ci-Ac2"/>
+                            <constraint firstItem="0LC-AI-qUN" firstAttribute="top" secondItem="Jmv-2x-RBn" secondAttribute="bottom" constant="71" id="W5T-Pk-JUy"/>
+                            <constraint firstItem="Jmv-2x-RBn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="128" id="cjo-8B-bQr"/>
+                            <constraint firstItem="Jmv-2x-RBn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="jus-sL-1wI"/>
+                            <constraint firstItem="ls4-Ic-7Pe" firstAttribute="top" secondItem="Jmv-2x-RBn" secondAttribute="bottom" constant="71" id="mO8-Wv-Hyo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button1" destination="ls4-Ic-7Pe" id="p3b-a2-rcg"/>
+                        <outlet property="button2" destination="0LC-AI-qUN" id="jKs-hm-RTc"/>
+                        <outlet property="imageView" destination="Jmv-2x-RBn" id="X20-ju-a5K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="97.767857142857139"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" systemColor="systemRedColor"/>
+    <resources>
+        <image name="jack" width="180" height="216"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

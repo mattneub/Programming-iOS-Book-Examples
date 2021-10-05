@@ -29,7 +29,7 @@ class MyView : UIView {
     }
     
     
-    let which = 6
+    let which = 5
     
     override func draw(_ rect: CGRect) {
         print("draw")
