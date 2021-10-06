@@ -62,7 +62,18 @@ class ViewController : UIViewController {
         lay3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
         lay3.frame = CGRect(43, 197, 160, 230)
         self.view.layer.addSublayer(lay3)
-        
+
+/*
+        delay(1) {
+            lay1.cornerRadius = 40
+            delay(1) {
+                lay1.cornerCurve = .continuous
+            }
+            lay3.cornerCurve = .circular
+            lay3.cornerRadius = 40
+        }
+ */
+
 //        let iv = UIImageView(image:UIImage(named:"smiley"))
 //        self.view.addSubview(iv)
 //        iv.frame.origin = CGPoint(180,180)
