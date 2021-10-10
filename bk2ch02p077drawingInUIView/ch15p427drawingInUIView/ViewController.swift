@@ -13,24 +13,23 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         let mv = MyView()
+        // mv.backgroundColor = .yellow
         self.view.addSubview(mv)
         
         mv.translatesAutoresizingMaskIntoConstraints = false
+
+        mv.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 25).isActive = true
+        mv.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25).isActive = true
+        let h = mv.heightAnchor.constraint(equalToConstant: 150)
+        h.isActive = true
+        mv.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+
+        //return; // comment out to experiment with resizing
         
-        mv.superview!.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|-25-[v]-25-|", metrics: nil, views: ["v":mv])
-        )
-        mv.superview!.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat:"V:[v(150)]", metrics: nil, views: ["v":mv])
-        )
-        mv.superview!.addConstraint(
-            NSLayoutConstraint(item: mv, attribute: .centerY, relatedBy: .equal, toItem: mv.superview, attribute: .centerY, multiplier: 1, constant: 0)
-        )
-        
-        return; // comment out to experiment with resizing
-        
-        delay(0.1) {
-            mv.bounds.size.height *= 2
+        Task {
+            // in the book:
+            // mv.bounds.size.height *= 2
+            h.constant *= 2
         }
     }
     
