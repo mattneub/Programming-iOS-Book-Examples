@@ -59,7 +59,7 @@ class ViewController : UIViewController {
         self.anim.startAnimation()
     }
     
-    let which = 3
+    let which = 2
     
     func cancel() {
         switch which {
@@ -85,24 +85,30 @@ class ViewController : UIViewController {
             // the new animation does not remove the original animation...
             // so the new animation just completes and the original proceeds as before
             // to prevent that, we have to intervene directly
-            self.v.layer.position = self.v.layer.presentation()!.position
-            self.v.layer.removeAllAnimations()
-            UIView.animate(withDuration:0.1) {
-                self.v.center = self.pFinal
+            if let pres = self.v.layer.presentation() {
+                self.v.layer.position = pres.position
+                self.v.layer.removeAllAnimations()
+                UIView.animate(withDuration:0.1) {
+                    self.v.center = self.pFinal
+                }
             }
         case 3:
             // same thing except this time we decide to return to the original position
             // we will get there, but it will take us the rest of the original 4 seconds...
             // unless we intervene directly
-            self.v.layer.position = self.v.layer.presentation()!.position
-            self.v.layer.removeAllAnimations()
-            UIView.animate(withDuration:0.1) {
-                self.v.center = self.pOrig // need to have recorded original position
+            if let pres = self.v.layer.presentation() {
+                self.v.layer.position = pres.position
+                self.v.layer.removeAllAnimations()
+                UIView.animate(withDuration:0.1) {
+                    self.v.center = self.pOrig // need to have recorded original position
+                }
             }
         case 4:
             // cancel just means stop where you are
-            self.v.layer.position = self.v.layer.presentation()!.position
-            self.v.layer.removeAllAnimations()
+            if let pres = self.v.layer.presentation() {
+                self.v.layer.position = pres.position
+                self.v.layer.removeAllAnimations()
+            }
         default: break
         }
     }

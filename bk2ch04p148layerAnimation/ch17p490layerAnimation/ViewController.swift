@@ -2,11 +2,15 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
 
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 11
+    let which = 10
 
     @IBAction func doButton(_ sender: Any?) {
         let c = self.compassView.layer as! CompassLayer
@@ -73,13 +77,15 @@ class ViewController : UIViewController {
         case 6:
             // actually this next line can be omitted
             // CATransaction.setDisableActions(true)
-            arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
+
             let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.8
+            anim.fromValue = arrow.transform
+            arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim.timingFunction = clunk
             arrow.add(anim, forKey:nil)
-            
+
         case 7:
             // capture the start and end values
             let nowValue = arrow.transform
@@ -108,8 +114,39 @@ class ViewController : UIViewController {
             anim.fromValue = Float.pi/40
             anim.toValue = -Float.pi/40
             arrow.add(anim, forKey:nil)
-            
+
         case 9:
+            // the 360 degree rotation that does nothing
+
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
+            anim.duration = 0.8
+            anim.fromValue = arrow.transform
+            arrow.transform = CATransform3DRotate(arrow.transform, .pi*2, 0, 0, 1)
+            let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
+            anim.timingFunction = clunk
+            arrow.add(anim, forKey:nil)
+
+        case 10:
+            // and here's how to fix it
+
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
+            anim.duration = 0.8
+            anim.valueFunction = CAValueFunction(name:.rotateZ)
+            anim.isAdditive = true
+            anim.fromValue = Float(0)
+            anim.toValue = Float.pi*2
+            let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
+            anim.timingFunction = clunk
+            arrow.add(anim, forKey:nil)
+            // just proving we can get the intervening values this way
+            delay(0.2) {
+                print(arrow.presentation()?.transform as Any)
+                delay(0.2) {
+                    print(arrow.presentation()?.transform as Any)
+                }
+            }
+
+        case 11:
             let rot = CGFloat.pi/4.0
             // see, but in this case we do need this
             CATransaction.setDisableActions(true)
@@ -125,7 +162,7 @@ class ViewController : UIViewController {
             anim.valueFunction = CAValueFunction(name:.rotateZ)
             arrow.add(anim, forKey:nil)
 
-        case 10:
+        case 12:
             var values = [0.0]
             let directions = sequence(first:1) {$0 * -1}
             let bases = stride(from: 20, to: 60, by: 5)
@@ -140,7 +177,7 @@ class ViewController : UIViewController {
             anim.valueFunction = CAValueFunction(name:.rotateZ)
             arrow.add(anim, forKey:nil)
 
-        case 11:
+        case 13:
             // put them all together, they spell Mother...
             
             // capture current value, set final value
@@ -180,7 +217,7 @@ class ViewController : UIViewController {
             group.duration = anim1.duration + anim2.duration
             arrow.add(group, forKey:nil)
 
-        case 12:
+        case 14:
             // proving that cornerRadius was always explicitly animatable
             CATransaction.setDisableActions(true)
             c.masksToBounds = true

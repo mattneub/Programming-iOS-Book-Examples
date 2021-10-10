@@ -116,7 +116,7 @@ class ViewController : UIViewController {
                 let items = self.anim.views(in:self.view.bounds)
                 let ix = items.firstIndex(of:self.iv)
                 if ix == nil {
-                    delay(0) { // * both are released
+                    Task { // * both are released
                         self.anim.removeAllBehaviors()
                         self.iv.removeFromSuperview()
                         print("done")

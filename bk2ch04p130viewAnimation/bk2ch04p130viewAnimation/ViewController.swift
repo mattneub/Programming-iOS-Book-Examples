@@ -55,11 +55,12 @@ class ViewController: UIViewController {
             print(0)
             print(self.v.center.y)
             switch which {
-            case 0:
-                UIView.beginAnimations(nil, context: nil)
-                UIView.setAnimationDuration(1)
-                self.v.backgroundColor = .red
-                UIView.commitAnimations()
+            case 0: break
+//                UIView.beginAnimations(nil, context: nil)
+//                UIView.setAnimationDuration(1)
+//                self.v.backgroundColor = .red
+//                UIView.commitAnimations()
+                // never mind
             case 1:
                 UIView.animate(withDuration:2) {
                     self.v.backgroundColor = .red
@@ -246,15 +247,15 @@ class ViewController: UIViewController {
                     self.v.center.x = xorig
                 }
             // can't figure out how to reproduce that using property animator
-            case 13:
-                let opts : UIView.AnimationOptions = .autoreverse
-                let xorig = self.v.center.x
-                UIView.animate(withDuration:1, delay: 0, options: opts) {
-                    UIView.setAnimationRepeatCount(3) // *
-                    self.v.center.x += 100
-                } completion: { _ in
-                    self.v.center.x = xorig
-                }
+            case 13: break
+//                let opts : UIView.AnimationOptions = .autoreverse
+//                let xorig = self.v.center.x
+//                UIView.animate(withDuration:1, delay: 0, options: opts) {
+//                    UIView.setAnimationRepeatCount(3) // *
+//                    self.v.center.x += 100
+//                } completion: { _ in
+//                    self.v.center.x = xorig
+//                }
             case 14:
                 // new iOS 13 solution, though actually it seems to read back into iOS 12
                 let xorig = self.v.center.x
@@ -357,15 +358,15 @@ class ViewController: UIViewController {
     
     func animate(count:Int) {
         switch whichAnimateWay {
-        case 1:
-            let opts = UIView.AnimationOptions.autoreverse
-            let xorig = self.v.center.x
-            UIView.animate(withDuration:1, delay: 0, options: opts) {
-                UIView.setAnimationRepeatCount(Float(count)) // I really don't like this
-                self.v.center.x += 100
-                } completion: { _ in
-                    self.v.center.x = xorig
-            }
+        case 1: break
+//            let opts = UIView.AnimationOptions.autoreverse
+//            let xorig = self.v.center.x
+//            UIView.animate(withDuration:1, delay: 0, options: opts) {
+//                UIView.setAnimationRepeatCount(Float(count)) // I really don't like this
+//                self.v.center.x += 100
+//                } completion: { _ in
+//                    self.v.center.x = xorig
+//            }
         case 2:
             let opts = UIView.AnimationOptions.autoreverse
             let xorig = self.v.center.x

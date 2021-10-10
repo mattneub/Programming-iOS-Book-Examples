@@ -17,12 +17,12 @@ class ViewController: UIViewController, CAAnimationDelegate {
         super.viewDidLoad()
         
         self.leftfoot.name = "left"
-        self.leftfoot.contents = UIImage(named:"leftfoot")!.cgImage
+        self.leftfoot.contents = UIImage(named:"leftfoot")?.cgImage
         self.leftfoot.frame = CGRect(x: 100, y: 300, width: 50, height: 80)
         self.view.layer.addSublayer(self.leftfoot)
 
         self.rightfoot.name = "right"
-        self.rightfoot.contents = UIImage(named:"rightfoot")!.cgImage
+        self.rightfoot.contents = UIImage(named:"rightfoot")?.cgImage
         self.rightfoot.frame = CGRect(x: 170, y: 300, width: 50, height: 80)
         self.view.layer.addSublayer(self.rightfoot)
         delay(2) {
