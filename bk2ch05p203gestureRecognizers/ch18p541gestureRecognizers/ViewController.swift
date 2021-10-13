@@ -29,7 +29,7 @@ class ViewController : UIViewController {
         t1.require(toFail:t2) // *
         self.v.addGestureRecognizer(t1)
         
-        var which : Int { return 1 }
+        var which : Int { return 2 }
 
         switch which {
         case 1:

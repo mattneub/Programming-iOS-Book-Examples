@@ -34,13 +34,15 @@ class ViewController: UIViewController {
         self.v.addGestureRecognizer(p)
     }
     
-    let which = 2
-
+    let which = 1
+    var dest = CGPoint.zero
     @objc func dragging(_ p : UIPanGestureRecognizer) {
         let v = p.view!
-        let dest = CGPoint(self.view.bounds.width/2, self.view.bounds.height - v.frame.height/2)
         switch p.state {
-        case .began, .changed:
+        case .began:
+            self.dest = v.center
+            fallthrough
+        case .changed:
             let delta = p.translation(in:v.superview)
             var c = v.center
             c.x += delta.x; c.y += delta.y
@@ -51,7 +53,7 @@ class ViewController: UIViewController {
             case 1:
                 let anim = UIViewPropertyAnimator(duration: 0.4, timingParameters: UISpringTimingParameters(dampingRatio: 0.6, initialVelocity: .zero))
                 anim.addAnimations {
-                    v.center = dest
+                    v.center = self.dest
                 }
                 anim.startAnimation()
             case 2:
@@ -65,7 +67,7 @@ class ViewController: UIViewController {
                 let disty = abs(c.y - dest.y)
                 let anim = UIViewPropertyAnimator(duration: 0.4, timingParameters: UISpringTimingParameters(dampingRatio: 0.6, initialVelocity: CGVector(vel.x/distx, vel.y/disty)))
                 anim.addAnimations {
-                    v.center = dest
+                    v.center = self.dest
                 }
                 anim.startAnimation()
             default: break

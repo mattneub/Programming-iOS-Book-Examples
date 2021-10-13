@@ -82,7 +82,6 @@ class MyView2Not : UIView {
 }
 
 class MyView2 : UIView {
-    var time : TimeInterval!
     var single = false
 
     

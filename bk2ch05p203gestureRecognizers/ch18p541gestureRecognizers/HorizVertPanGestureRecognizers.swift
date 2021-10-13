@@ -5,7 +5,7 @@ import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
 class HorizPanGestureRecognizer : UIPanGestureRecognizer {
-    var origLoc : CGPoint!
+    var origLoc = CGPoint.zero
     
     override func touchesBegan(_ touches: Set<UITouch>, with e: UIEvent) {
         self.origLoc = touches.first!.location(in:self.view!.superview)
@@ -33,8 +33,8 @@ class HorizPanGestureRecognizer : UIPanGestureRecognizer {
 }
 
 class VertPanGestureRecognizer : UIPanGestureRecognizer {
-    var origLoc : CGPoint!
-    
+    var origLoc = CGPoint.zero
+
     override func touchesBegan(_ touches: Set<UITouch>, with e: UIEvent) {
         self.origLoc = touches.first!.location(in:self.view!.superview)
         super.touchesBegan(touches, with:e)

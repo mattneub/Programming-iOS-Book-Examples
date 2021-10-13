@@ -78,11 +78,7 @@ class ViewController : UIViewController {
             didLayout = true
             // self.putColor(.yellow, behindSwitch:self.sw)
             // whoa, check _this_ out
-            if #available(iOS 13.0, *) {
-                sw.subviews[0].subviews[0].backgroundColor = .green
-            } else if #available(iOS 12.0, *) {
-                sw.subviews[0].subviews[0].subviews[0].backgroundColor = .green
-            }
+            sw.subviews[0].subviews[0].backgroundColor = .green
 
             // sw.backgroundColor = .green
         }

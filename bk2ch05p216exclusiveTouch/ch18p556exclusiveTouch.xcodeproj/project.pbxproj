@@ -267,7 +267,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch18p556exclusiveTouch/ch18p556exclusiveTouch-Prefix.pch";
 				INFOPLIST_FILE = "ch18p556exclusiveTouch/ch18p556exclusiveTouch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -289,7 +289,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch18p556exclusiveTouch/ch18p556exclusiveTouch-Prefix.pch";
 				INFOPLIST_FILE = "ch18p556exclusiveTouch/ch18p556exclusiveTouch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
