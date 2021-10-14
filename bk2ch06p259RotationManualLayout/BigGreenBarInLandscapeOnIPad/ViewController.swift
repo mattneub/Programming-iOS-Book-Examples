@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  BigGreenBarInLandscapeOnIPad
-//
-//  Created by Matt Neuburg on 7/17/18.
-//  Copyright © 2018 Matt Neuburg. All rights reserved.
-//
+
 
 import UIKit
 

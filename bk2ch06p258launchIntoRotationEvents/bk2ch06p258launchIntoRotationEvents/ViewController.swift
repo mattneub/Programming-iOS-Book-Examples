@@ -85,34 +85,32 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 }
 
 /*
- 
- iOS 11:
- 
+
+ iOS 15 (iPhone SE 2) [hint: don't forget to turn rotate lock off!]:
+
  === normal launch into portrait
- 
+
  viewDidLoad
- viewDidLoad reports (320.0, 568.0)
+ viewDidLoad reports (375.0, 667.0)
  viewDidLoad reports compact regular
- will appear (320.0, 568.0)
- trait collection did change to compact regular
- willLayout  (320.0, 568.0)
- didLayout (320.0, 568.0)
- did appear (320.0, 568.0)
+ will appear (375.0, 667.0)
+ willLayout  (375.0, 667.0)
+ didLayout (375.0, 667.0)
+ did appear (375.0, 667.0)
 
- === normal launch with device at landscape
- 
+ === normal launch with device held at landscape
+
  viewDidLoad
- viewDidLoad reports (568.0, 320.0)
+ viewDidLoad reports (667.0, 375.0)
  viewDidLoad reports compact compact
- will appear (568.0, 320.0)
- trait collection did change to compact compact
- willLayout  (568.0, 320.0)
- didLayout (568.0, 320.0)
- did appear (568.0, 320.0)
+ will appear (667.0, 375.0)
+ willLayout  (667.0, 375.0)
+ didLayout (667.0, 375.0)
+ did appear (667.0, 375.0)
 
- === app accepts only landscape
+ === app accepts only landscape, even if device is held in portrait
  
- same as previous!
+ same as previous
  
  === app accepts any, but landscape is first, but device is held in portrait
  
@@ -122,71 +120,30 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
  
  aha. Well, it depends. If the device is held in landscape, just like other landscape cases
  
- but if the device is held in portrait, launch into portrait and rotate, it's like iOS 10:
- NB iOS 13 still looks like this except no trait collection did change either
- 
+ but if the device is held in portrait, we launch into portrait and rotate:
+
  viewDidLoad
- viewDidLoad reports (320.0, 568.0)
+ viewDidLoad reports (375.0, 667.0)
  viewDidLoad reports compact regular
- will appear (320.0, 568.0) // proving that will appear can be too early for layout-related
+ will appear (375.0, 667.0) // proving that will appear can be too early for layout-related
  willTransition trait compact compact
- trait collection did change to compact compact
- NO SIZE CHANGE NOTIFICATION
- willLayout  (568.0, 320.0)
- didLayout (568.0, 320.0)
- did appear (568.0, 320.0)
- 
- but on iPad, there is no willTransition, because we did not change
+ trait collection did change to compact compact // nb; and note no size change
+ willLayout  (667.0, 375.0)
+ didLayout (667.0, 375.0)
+ willLayout  (667.0, 375.0)
+ didLayout (667.0, 375.0)
+ did appear (667.0, 375.0)
 
- 
- */
- 
+ // workaround: app accepts landscape only, v.c. wants landscape, app delegate permits all, held in portrait
+ works as if held in landscape:
 
-/*
- 
- iOS 10:
-
-=== normal launch into portrait:
-
-viewDidLoad, portrait view, portrait trait collection
-(will appear)
-trait collection did change
-(willLayout)
-(didLayout)
-(did appear)
-
-=== normal launch with device at landscape: NB this happens regardless of order in info plist!
-[basically the rule seems to be if app can launch into portrait, it will]
-
-viewDidLoad, portrait view, portrait trait collection
-trait collection did change (and the others)
-[visible rotation]
-will transition to landscape
-will transition to landscape view size
-trait collection did change
-did/will layout
-
-=== app accepts only landscape:
-
-viewDidLoad, landscape view, landscape trait collection
-(will appear)
-trait collection did change (and the others)
-=> so, in this case, we do not start with portrait and then rotate!
-
-=== app accepts any, but landscape is first, but device is held in portrait:
-[New: just like the first case! we launch into portrait and stay there]
-
-=== app accepts any, portrait or landscape is first (!), but view controller is landscape only, device is held in portrait or landscape:
-
-viewDidLoad, portrait view, portrait trait
-(will appear)
-will transition to landscape trait collection
-NO SIZE CHANGE NOTIFICATION
-trait collection did change
-(layout, did appear)
-[and if the app then rotates 180 degrees]
-will transition to same landscape size
-
+ viewDidLoad
+ viewDidLoad reports (667.0, 375.0)
+ viewDidLoad reports compact compact
+ will appear (667.0, 375.0)
+ willLayout  (667.0, 375.0)
+ didLayout (667.0, 375.0)
+ did appear (667.0, 375.0)
 
 */
 

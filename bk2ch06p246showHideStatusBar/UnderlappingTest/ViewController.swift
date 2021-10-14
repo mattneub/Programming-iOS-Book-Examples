@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     private var hide = false
     
     override var prefersStatusBarHidden : Bool {
+        print("he asked me, he asked me")
         // return false
         return self.hide
     }
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
 //        return;
         UIView.animate(withDuration:1) {
             self.setNeedsStatusBarAppearanceUpdate()
+            // uncomment the next line to avoid the jumpies
             // self.view.layoutIfNeeded()
         } completion: { _ in
             // new in iOS 13
